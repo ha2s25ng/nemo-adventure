@@ -35,7 +35,8 @@ jobs:
             test -s /tmp/nemo-extracted/index.html
             test -s /tmp/nemo-extracted/version.json
             test -d /tmp/nemo-extracted/assets
-            cp -a /tmp/nemo-extracted/. .
+            cp -a /tmp/nemo-extracted/assets ./assets
+            cp /tmp/nemo-extracted/index.html /tmp/nemo-extracted/version.json /tmp/nemo-extracted/.nojekyll /tmp/nemo-extracted/README.txt /tmp/nemo-extracted/Nemo_Always_This_File.html .
             rm -rf bootstrap
             git add -A
             git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore: extract Nemo Adventure v5.1.0 game source'
