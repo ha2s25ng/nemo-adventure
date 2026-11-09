@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.3.1" />
+</style><meta name="nemo-version" content="5.3.2" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -429,74 +429,113 @@ for(const item of COSTUMES){const img=new Image();img.src=item.atlas;costumeAtla
 const NEMO_FRAME=160,NEMO_SIZE=2.68,NEMO_Y=-.61,NEMO_CAST=.34;
 function faceFromAngle(a){const dirs=['right','down-right','down','down-left','left','up-left','up','up-right'];return dirs[(Math.round(a/(Math.PI/4)+8)%8)];} 
 function motionPose(p){
- const casting=p.castTimer>0,dir=p.moving?p.direction:(casting?p.castFacing:p.direction);
- const row=casting?(p.castTimer>.16?3:4):(p.moving?1+Math.floor(p.stepTime/.17)%2:0);
- // Every 8-direction pose now has a dedicated atlas column (8 columns, 5 motion rows).
+ const casting=p.castTimer>0;
+ const dir=p.moving?p.direction:(casting?p.castFacing:p.direction);
  const POSE_COLUMNS={'down':0,'up':1,'right':2,'left':3,
    'down-right':4,'down-left':5,'up-right':6,'up-left':7};
+ const walking=!!p.moving;
+ // The art contains just one painted pose per direction. Animate the two legs
+ // separately below the hips rather than bouncing the *whole* character.
+ const phase=walking?p.stepTime*16:0;
+ const stride=walking?Math.sin(phase):0;
+ const row=casting?(p.castTimer>.16?3:4):(walking?1+Math.floor(phase/Math.PI)%2:0);
  const col=POSE_COLUMNS[dir]??0;
- const flip=1;
- const bounce=p.moving?-.082*Math.abs(Math.sin(p.stepTime*21)):Math.sin(g.worldClock*2.2)*.015;
- const diagonal=dir.includes('-');
- // Slightly angled silhouettes distinguish lower diagonals too, without moving the hitbox.
- const facingLean={
-   'up-right':-.065,'up-left':.065,
-   'down-right':-.075,'down-left':.075
- };
- const tilt=(p.moving?Math.sin(p.stepTime*19)*.052:Math.sin(g.worldClock*2.2)*.008)
-   +(facingLean[dir]||0);
- return {row,col,flip,bounce,tilt,casting,dir};
+ // Both feet stay close to the ground. No artificial floating or rocking.
+ const bounce=0,tilt=walking?Math.sin(phase)*.008:0;
+ return {row,col,flip:1,bounce,tilt,casting,dir,walking,stride,phase};
 }
 // The gameplay projectile's origin uses the same source-frame wand-tip coordinates
 // and the same animation transform as the rendered dog. Never spawn spells at the torso.
 // Hand-painted wand artwork with one stable grip pivot. Directions are relative
 // to Nemo's pose so the wand never pivots around the head or floats above the paw.
-const NEMO_WAND_ART={width:.92,height:1.22,gripX:21/126,gripY:149/168,starX:84/126,starY:48/168};
+// Painted wand pivot is fixed at the character's actual right/left forepaw,
+// NOT the torso. Values are world-space coordinates in the 160px pose tile.
+const NEMO_WAND_ART={width:.75,height:1.04,gripX:21/126,gripY:149/168,starX:84/126,starY:48/168};
 const NEMO_WAND_DIRECTIONS={
-  'down':       {x:.40,y:.20,side:1,angle:-.04},
-  'up':         {x:.43,y:.12,side:1,angle:-.28},
-  'right':      {x:.47,y:.20,side:1,angle:.52},
-  'left':       {x:-.47,y:.20,side:-1,angle:-.52},
-  'down-right': {x:.45,y:.22,side:1,angle:.27},
-  'down-left':  {x:-.45,y:.22,side:-1,angle:-.27},
-  'up-right':   {x:.43,y:.15,side:1,angle:-.10},
-  'up-left':    {x:-.43,y:.15,side:-1,angle:.10}
+  'down':       {x:.39,y:.54,side: 1,angle:.10},
+  'up':         {x:.40,y:.52,side: 1,angle:.29},
+  'right':      {x:.38,y:.55,side: 1,angle:.52},
+  'left':       {x:-.38,y:.55,side:-1,angle:-.52},
+  'down-right': {x:.40,y:.56,side: 1,angle:.37},
+  'down-left':  {x:-.40,y:.56,side:-1,angle:-.37},
+  'up-right':   {x:.40,y:.57,side: 1,angle:.43},
+  'up-left':    {x:-.40,y:.57,side:-1,angle:-.43}
 };
 function nemoWandPose(q){
-  const base=NEMO_WAND_DIRECTIONS[q.dir]||NEMO_WAND_DIRECTIONS.down;
-  // A small wrist flick for the short casting animation.
-  const flick=q.casting?(-.11*base.side):0;
-  return {x:base.x,y:base.y,side:base.side,angle:base.angle+flick};
+ const base=NEMO_WAND_DIRECTIONS[q.dir]||NEMO_WAND_DIRECTIONS.down;
+ const flick=q.casting?-.18*base.side:0;
+ const walkSwing=q.walking?.025*Math.sin(q.phase):0;
+ return {x:base.x,y:base.y+walkSwing,side:base.side,angle:base.angle+flick};
 }
 function nemoWandTip(q){
-  const v=nemoWandPose(q),art=NEMO_WAND_ART;
-  const dx=(art.starX-art.gripX)*art.width*v.side;
-  const dy=(art.starY-art.gripY)*art.height;
-  const cosine=Math.cos(v.angle),sine=Math.sin(v.angle);
-  return {x:v.x+cosine*dx-sine*dy,y:v.y+sine*dx+cosine*dy};
+ const v=nemoWandPose(q),art=NEMO_WAND_ART;
+ const dx=(art.starX-art.gripX)*art.width*v.side;
+ const dy=(art.starY-art.gripY)*art.height;
+ const ct=Math.cos(v.angle),st=Math.sin(v.angle);
+ return {x:v.x+ct*dx-st*dy,y:v.y+st*dx+ct*dy};
 }
 function wandOrigin(p){
-  const q=motionPose(p),tip=nemoWandTip(q),ct=Math.cos(q.tilt),st=Math.sin(q.tilt);
-  return {x:p.x+ct*tip.x-st*tip.y,
-          y:p.y+NEMO_Y+q.bounce+st*tip.x+ct*tip.y};
+ const q=motionPose(p),tip=nemoWandTip(q),ct=Math.cos(q.tilt),st=Math.sin(q.tilt);
+ return {x:p.x+ct*tip.x-st*tip.y,y:p.y+NEMO_Y+st*tip.x+ct*tip.y};
 }
 function drawNemoWand(q,p){
-  const img=sprites.nemoWand;
-  if(!img?.complete||!img.naturalWidth)return;
-  const v=nemoWandPose(q),art=NEMO_WAND_ART,tip=nemoWandTip(q);
-  ctx.save();
-  ctx.translate(v.x,v.y);
-  ctx.rotate(v.angle);
-  ctx.scale(v.side,1);
-  ctx.drawImage(img,-art.gripX*art.width,-art.gripY*art.height,
-                art.width,art.height);
-  ctx.restore();
-  if(q.casting){
-    ctx.save();
-    ctx.globalAlpha=.40+Math.min(.25,p.castTimer/.34*.25);
-    ellipse(tip.x,tip.y,.19,.19,'#fff2b0',.45);
-    ctx.restore();
-  }
+ const img=sprites.nemoWand;
+ if(!img?.complete||!img.naturalWidth)return;
+ const v=nemoWandPose(q),art=NEMO_WAND_ART,tip=nemoWandTip(q);
+ ctx.save();
+ ctx.translate(v.x,v.y);
+ ctx.rotate(v.angle);
+ ctx.scale(v.side,1);
+ ctx.drawImage(img,-art.gripX*art.width,-art.gripY*art.height,art.width,art.height);
+ ctx.restore();
+ if(q.casting){
+   ctx.save();
+   ctx.globalAlpha=.52;
+   ellipse(tip.x,tip.y,.16,.16,'#fff2b0',.4);
+   ctx.restore();
+ }
+}
+// The forepaw is painted over the handle, hiding its bottom and making the
+// grip visually continuous instead of leaving a floating staff by the ear.
+function drawNemoGrip(q){
+ const img=sprites.nemoWand;
+ if(!img?.complete||!img.naturalWidth)return;
+ const v=nemoWandPose(q);
+ ctx.save();ctx.translate(v.x,v.y);
+ ctx.lineJoin='round';
+ ctx.fillStyle='#fff0d9';ctx.strokeStyle='#6f4977';ctx.lineWidth=.052;
+ ctx.beginPath();ctx.ellipse(0,.012,.125,.135,-.2,0,Math.PI*2);
+ ctx.fill();ctx.stroke();
+ ctx.strokeStyle='#d7ab9b';ctx.lineWidth=.017;
+ ctx.beginPath();ctx.moveTo(-.045,.055);ctx.quadraticCurveTo(0,.085,.055,.045);ctx.stroke();
+ ctx.restore();
+}
+// Separate lower-leg bands allow opposing footsteps without cropping the
+// approved watercolor head, ears, scarf, bag or tail.
+function drawNemoWalkSprite(im,col,q){
+ const F=NEMO_FRAME,S=NEMO_SIZE,k=S/F,baseX=-S/2,baseY=-S/2;
+ const sx=col*F;
+ if(!q.walking){
+   ctx.drawImage(im,sx,0,F,F,baseX,baseY,S,S);
+   return;
+ }
+ const split=119,half=F/2;
+ ctx.drawImage(im,sx,0,F,split,baseX,baseY,S,split*k);
+ for(let sy=split;sy<F;sy+=3){
+   const band=Math.min(3,F-sy),t=(sy-split)/(F-split);
+   const ease=t*t*(3-2*t);
+   for(let leg=0;leg<2;leg++){
+     const opposite=leg===0?1:-1;
+     const swing=opposite*q.stride;
+     const lift=Math.max(0,swing);
+     const shiftX=7*swing*ease;
+     const shiftY=(-7*lift+1.2*(1-lift))*ease;
+     const srcLeft=leg*half;
+     ctx.drawImage(im,sx+srcLeft,sy,half,band,
+       baseX+(srcLeft+shiftX)*k,
+       baseY+(sy+shiftY)*k,half*k,band*k+.002);
+   }
+ }
 }
 function castFromWand(p,a){p.castTimer=NEMO_CAST;p.castFacing=faceFromAngle(a);p.castAngle=a;const origin=wandOrigin(p);g.effects.push({kind:'wandGlow',x:origin.x,y:origin.y,life:.23,max:.23});return origin;}
 function wandLink(from,to,color='#fff1b4'){g.effects.push({kind:'wandLink',x:from.x,y:from.y,ex:to.x,ey:to.y,color,life:.28,max:.28});}
@@ -1319,14 +1358,26 @@ function drawPlayer(p){
  const flash=p.invuln>0&&Math.floor(p.invuln*13)%2===0?.53:1;
  const im=(costumeAtlases[saved.costumeEquipped]?.naturalWidth?costumeAtlases[saved.costumeEquipped]:sprites.nemoAnim);
  if(im?.complete&&im.naturalWidth){
-   ctx.save();ctx.translate(p.x,p.y+NEMO_Y+q.bounce);ctx.rotate(q.tilt);
+   ctx.save();
+   ctx.translate(p.x,p.y+NEMO_Y);
+   ctx.rotate(q.tilt);
    ctx.scale(q.flip*(p.hurtTimer>0?1.07:1),p.hurtTimer>0?.94:1);
    ctx.globalAlpha=flash;
    const safeCol=Math.max(0,Math.min(Math.floor(im.naturalWidth/NEMO_FRAME)-1,q.col));
-   ctx.drawImage(im,safeCol*NEMO_FRAME,0,NEMO_FRAME,NEMO_FRAME,-NEMO_SIZE/2,-NEMO_SIZE/2,NEMO_SIZE,NEMO_SIZE);
-   drawNemoWand(q,p);ctx.restore();
+   // While facing away, the wand passes BEHIND the torso.
+   const facingAway=q.dir==='up'||q.dir.startsWith('up-');
+   if(facingAway)drawNemoWand(q,p);
+   drawNemoWalkSprite(im,safeCol,q);
+   if(!facingAway){
+     drawNemoWand(q,p);
+     drawNemoGrip(q);
+   }
+   ctx.restore();
  }else imageSprite('nemo',p.x,p.y-.31,2.5,2.35,p.face,flash);
- if(p.invuln>0){ctx.strokeStyle='#ffe1a7';ctx.lineWidth=.045;ctx.beginPath();ctx.arc(p.x,p.y,.8,0,TAU);ctx.stroke();}
+ if(p.invuln>0){
+   ctx.strokeStyle='#ffe1a7';ctx.lineWidth=.045;ctx.beginPath();
+   ctx.arc(p.x,p.y,.8,0,TAU);ctx.stroke();
+ }
 }
 function drawBone(x,y,golden=false){ctx.save();ctx.translate(x,y);ctx.rotate(-.25);ctx.lineJoin='round';ctx.lineCap='round';ctx.strokeStyle='#704a85';ctx.lineWidth=.077;ctx.fillStyle=golden?'#fff0b8':'#fff9df';ctx.beginPath();ctx.moveTo(-.19,-.13);ctx.bezierCurveTo(-.31,-.29,-.43,-.17,-.32,-.06);ctx.bezierCurveTo(-.43,.07,-.32,.22,-.19,.14);ctx.lineTo(.19,.14);ctx.bezierCurveTo(.32,.22,.43,.07,.32,-.06);ctx.bezierCurveTo(.43,-.17,.31,-.29,.19,-.13);ctx.closePath();ctx.fill();ctx.stroke();ellipse(0,-.01,.13,.045,'#ffc2d1',.64);star(.01,-.035,.095,0,'#fff7bb','#db92ad');ctx.restore();}
 function drawGem(l){if(!visible(l.x,l.y,1))return;let y=l.y+Math.sin(l.phase)*.05;ellipse(l.x,l.y+.20,.22,.06,'#799f7f',.23);
@@ -1659,7 +1710,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.3.1';
+  const CURRENT='5.3.2';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
