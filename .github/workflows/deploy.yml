@@ -1,0 +1,49 @@
+name: Nemo Adventure - Publish
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Extract and verify game source (first deployment only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -d bootstrap ]; then
+            cat bootstrap/part_* > /tmp/nemo-live.zip
+            echo '6a709f68049357caa5af819babae6bd63174d8497cbeb9dc9cb9a37edae8cff6  /tmp/nemo-live.zip' | sha256sum -c -
+            mkdir -p /tmp/nemo-extracted
+            unzip -q -o /tmp/nemo-live.zip -d /tmp/nemo-extracted
+            test -s /tmp/nemo-extracted/index.html
+            test -s /tmp/nemo-extracted/version.json
+            test -d /tmp/nemo-extracted/assets
+            cp -a /tmp/nemo-extracted/. .
+            rm -rf bootstrap
+            git add -A
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'chore: extract Nemo Adventure v5.1.0 game source'
+            git push origin HEAD:main
+          fi
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+      - id: deployment
+        uses: actions/deploy-pages@v4
