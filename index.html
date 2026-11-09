@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.5.2" />
+</style><meta name="nemo-version" content="5.5.3" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -409,9 +409,9 @@ const DATA = Object.freeze({
  economy:{costs:[100,150,220,320,450,600,800,1050,1350,1700],rerollCosts:[600,1500],
  upgrades:{attack:['주문 연습','기본 공격력 +2',10],hp:['포근한 망토','기본 체력 +5',10],speed:['빠른 발걸음','이동 속도 +1%',5],pickup:['보석 수집','경험치 반경 +10%',5],crit:['행운의 부적','치명타 확률 +1%p',5],reroll:['다시 생각하기','카드 새로고침 +1회',2]}}
 });
-</script><script>const ASSET_DATA={"nemo":"./assets/v550/nemo_costume_default.webp?v=5.5.2","green":"./assets/green.png","blue":"./assets/blue.png","pinkmush":"./assets/pinkmush.png","boss":"./assets/boss.png","windmill":"./assets/windmill.png","ribbonIcon":"./assets/ribbonIcon.png","magnetIcon":"./assets/magnetIcon.png","mush":"./assets/mush.png","groundFull":"./assets/groundFull.jpg","tree_pink":"./assets/tree_pink.png","tree_green":"./assets/tree_green.png","pond":"./assets/pond.png","grain":"./assets/grain.jpg","nemoAnim":"./assets/v550/nemo_default_32.webp","nemoWand":"./assets/nemo-star-wand-v531.webp","ui_star":"./assets/ui_star.svg","ui_orbit":"./assets/ui_orbit.svg","ui_moon":"./assets/ui_moon.svg","ui_bubble":"./assets/ui_bubble.svg","ui_bloom":"./assets/ui_bloom.svg","ui_cloud":"./assets/ui_cloud.svg","ui_ribbon":"./assets/ui_ribbon.svg","ui_book":"./assets/ui_book.svg","ui_comet":"./assets/ui_comet.svg","ui_frost":"./assets/ui_frost.svg","ui_feather":"./assets/ui_feather.svg","ui_magnet":"./assets/ui_magnet.svg","ui_magic":"./assets/ui_magic.svg","ui_quick":"./assets/ui_quick.svg","ui_lucky":"./assets/ui_lucky.svg","ui_big":"./assets/ui_big.svg","ui_cloak":"./assets/ui_cloak.svg","ui_shoes":"./assets/ui_shoes.svg","armor":"./assets/armor.svg","spark":"./assets/spark.svg","ui_vortex":"./assets/ui_vortex.svg","ui_seed":"./assets/ui_seed.svg","ui_bell":"./assets/ui_bell.svg"};</script><script>
+</script><script>const ASSET_DATA={"nemo":"./assets/v550/nemo_costume_default.webp?v=5.5.2","windmill":"./assets/windmill.png","ribbonIcon":"./assets/ribbonIcon.png","magnetIcon":"./assets/magnetIcon.png","groundFull":"./assets/groundFull.jpg","tree_pink":"./assets/tree_pink.png","tree_green":"./assets/tree_green.png","pond":"./assets/pond.png","grain":"./assets/grain.jpg","nemoAnim":"./assets/v550/nemo_default_32.webp","nemoWand":"./assets/nemo-star-wand-v531.webp","ui_star":"./assets/ui_star.svg","ui_orbit":"./assets/ui_orbit.svg","ui_moon":"./assets/ui_moon.svg","ui_bubble":"./assets/ui_bubble.svg","ui_bloom":"./assets/ui_bloom.svg","ui_cloud":"./assets/ui_cloud.svg","ui_ribbon":"./assets/ui_ribbon.svg","ui_book":"./assets/ui_book.svg","ui_comet":"./assets/ui_comet.svg","ui_frost":"./assets/ui_frost.svg","ui_feather":"./assets/ui_feather.svg","ui_magnet":"./assets/ui_magnet.svg","ui_magic":"./assets/ui_magic.svg","ui_quick":"./assets/ui_quick.svg","ui_lucky":"./assets/ui_lucky.svg","ui_big":"./assets/ui_big.svg","ui_cloak":"./assets/ui_cloak.svg","ui_shoes":"./assets/ui_shoes.svg","ui_vortex":"./assets/ui_vortex.svg","ui_seed":"./assets/ui_seed.svg","ui_bell":"./assets/ui_bell.svg"};</script><script>
 const STORYBOOK_ART={"logo":"./assets/logo.png","button_start":"./assets/button_start.png","button_school":"./assets/button_school.png","button_settings":"./assets/button_settings.png","button_codex":"./assets/button_codex.png","button_normal":"./assets/button_normal.png","button_hard":"./assets/button_hard.png","button_hell":"./assets/button_hell.png","button_pause":"./assets/button_pause.png","title_ribbon":"./assets/title_ribbon.png","result_panel":"./assets/result_panel.png","card_blank_gold":"./assets/card_blank_gold.png","card_blank_lavender":"./assets/card_blank_lavender.png","card_blank_sun":"./assets/card_blank_sun.png","icon_star":"./assets/v550/fx_star.webp","icon_orbit":"./assets/icon_orbit.webp","icon_moon":"./assets/icon_moon.webp","icon_bubble":"./assets/icon_bubble.webp","icon_bloom":"./assets/icon_bloom.webp","icon_cloud":"./assets/v550/fx_cloud.webp","icon_ribbon":"./assets/icon_ribbon.webp","icon_book":"./assets/icon_book.webp","icon_comet":"./assets/v550/fx_fire.webp","icon_frost":"./assets/v550/fx_ice.webp","icon_feather":"./assets/icon_feather.webp","icon_vortex":"./assets/v550/fx_vortex.webp","icon_seed":"./assets/icon_seed.webp","icon_bell":"./assets/icon_bell.webp","icon_magic":"./assets/v550/fx_wand.webp","icon_quick":"./assets/icon_quick.png","icon_lucky":"./assets/icon_lucky.png","icon_area":"./assets/v550/fx_burst.webp","icon_cloak":"./assets/v550/fx_heart.webp","icon_shoes":"./assets/icon_shoes.png","icon_magnet":"./assets/v550/fx_magnet.webp","icon_heart":"./assets/v550/fx_heart.webp","icon_coin":"./assets/v550/fx_coin.webp","icon_gem":"./assets/icon_gem.png","icon_exp":"./assets/icon_exp.png","icon_paw":"./assets/icon_paw.png","icon_flower":"./assets/icon_flower.png","icon_crown":"./assets/icon_crown.png","icon_bone":"./assets/icon_bone.png","enemy_green":"./assets/enemy_green.png","enemy_blue":"./assets/enemy_blue.png","enemy_mush":"./assets/enemy_mush.png","enemy_firefly":"./assets/enemy_firefly.png","enemy_boss":"./assets/enemy_boss.png","item_gem":"./assets/item_gem.png","item_gold":"./assets/item_gold.png","item_bone":"./assets/item_bone.png","item_potion":"./assets/item_potion.png","item_magnet":"./assets/item_magnet.png","item_bag":"./assets/item_bag.png","item_chest":"./assets/item_chest.png","decor_tree_crown":"./assets/decor_tree_crown.png","decor_tree_trunk":"./assets/decor_tree_trunk.png","decor_tree_front":"./assets/decor_tree_front.png","decor_pond":"./assets/decor_pond.png","decor_windmill":"./assets/decor_windmill.png","decor_fence":"./assets/decor_fence.png","decor_rock":"./assets/decor_rock.png","decor_stump":"./assets/decor_stump.png","decor_flowers":"./assets/decor_flowers.png"};
-Object.assign(ASSET_DATA,{ui_star:STORYBOOK_ART["icon_star"],ui_orbit:STORYBOOK_ART["icon_orbit"],ui_moon:STORYBOOK_ART["icon_moon"],ui_bubble:STORYBOOK_ART["icon_bubble"],ui_bloom:STORYBOOK_ART["icon_bloom"],ui_cloud:STORYBOOK_ART["icon_cloud"],ui_ribbon:STORYBOOK_ART["icon_ribbon"],ui_book:STORYBOOK_ART["icon_book"],ui_comet:STORYBOOK_ART["icon_comet"],ui_frost:STORYBOOK_ART["icon_frost"],ui_feather:STORYBOOK_ART["icon_feather"],ui_vortex:STORYBOOK_ART["icon_vortex"],ui_seed:STORYBOOK_ART["icon_seed"],ui_bell:STORYBOOK_ART["icon_bell"],ui_magic:STORYBOOK_ART["icon_magic"],ui_quick:STORYBOOK_ART["icon_quick"],ui_lucky:STORYBOOK_ART["icon_lucky"],ui_area:STORYBOOK_ART["icon_area"],ui_cloak:STORYBOOK_ART["icon_cloak"],ui_shoes:STORYBOOK_ART["icon_shoes"],ui_magnet:STORYBOOK_ART["icon_magnet"],green:STORYBOOK_ART["enemy_green"],blue:STORYBOOK_ART["enemy_blue"],pinkmush:STORYBOOK_ART["enemy_mush"],mush:STORYBOOK_ART["enemy_mush"],boss:STORYBOOK_ART["enemy_boss"]});
+Object.assign(ASSET_DATA,{ui_star:STORYBOOK_ART["icon_star"],ui_orbit:STORYBOOK_ART["icon_orbit"],ui_moon:STORYBOOK_ART["icon_moon"],ui_bubble:STORYBOOK_ART["icon_bubble"],ui_bloom:STORYBOOK_ART["icon_bloom"],ui_cloud:STORYBOOK_ART["icon_cloud"],ui_ribbon:STORYBOOK_ART["icon_ribbon"],ui_book:STORYBOOK_ART["icon_book"],ui_comet:STORYBOOK_ART["icon_comet"],ui_frost:STORYBOOK_ART["icon_frost"],ui_feather:STORYBOOK_ART["icon_feather"],ui_vortex:STORYBOOK_ART["icon_vortex"],ui_seed:STORYBOOK_ART["icon_seed"],ui_bell:STORYBOOK_ART["icon_bell"],ui_magic:STORYBOOK_ART["icon_magic"],ui_quick:STORYBOOK_ART["icon_quick"],ui_lucky:STORYBOOK_ART["icon_lucky"],ui_area:STORYBOOK_ART["icon_area"],ui_cloak:STORYBOOK_ART["icon_cloak"],ui_shoes:STORYBOOK_ART["icon_shoes"],ui_magnet:STORYBOOK_ART["icon_magnet"]});
 </script>
 <script>(() => {
 'use strict';
@@ -430,6 +430,23 @@ Object.assign(ASSET_DATA,{
  fx_vortex:'./assets/v550/fx_vortex.webp',
  fx_burst:'./assets/v550/fx_burst.webp'
 });
+// Original world-space draw bounds, separate from the collision radii.
+const ENEMY_ART={
+ green:[1.13,0.94],
+ blue:[1.13,0.94],
+ fat:[1.27,1.13],
+ spore:[1.18,1.08],
+ firefly:[0.87,0.83],
+ armor:[1.13,0.94],
+ spark:[1.13,0.94],
+ petal:[1.13,0.94],
+ flower:[2.1,1.88],
+ horn:[2.1,1.88],
+ boss:[3.8,3.2],
+};
+for(const kind of Object.keys(ENEMY_ART)){
+ ASSET_DATA['enemy_'+kind]='./assets/monsters-v553/'+kind+'.webp';
+}
 const sprites={};Object.keys(ASSET_DATA).forEach(k=>{let im=new Image();im.src=ASSET_DATA[k];sprites[k]=im;});
 const COSTUMES=[{"id":"default","name":"기본 니모","price":0,"desc":"처음부터 함께하는 니모. 빨간 목도리와 별빛 마법봉.","icon":"🐾","atlas":"./assets/v550/nemo_default_32.webp","portrait":"./assets/v550/nemo_costume_default.webp?v=5.5.2"},{"id":"forest","name":"숲속 탐험가","price":250,"desc":"초록 모자와 탐험가 복장으로 숲을 누벼요.","icon":"🌿","atlas":"./assets/nemo-approved-forest-directions.webp","portrait":"./assets/v550/nemo_costume_forest.webp?v=5.5.2"},{"id":"rain","name":"노란 우비","price":450,"desc":"노란 우비와 후드로 빗방울도 두렵지 않아요.","icon":"🌧️","atlas":"./assets/nemo-approved-rain-directions.webp","portrait":"./assets/v550/nemo_costume_rain.webp?v=5.5.2"},{"id":"student","name":"마법학교 학생","price":750,"desc":"반짝이는 모자를 쓴 견습 멍법사.","icon":"🎓","atlas":"./assets/nemo-approved-student-directions.webp","portrait":"./assets/v550/nemo_costume_student.webp?v=5.5.2"},{"id":"starlight","name":"별빛 마법사","price":1100,"desc":"보랏빛 로브와 별무늬 마법 모자.","icon":"✨","atlas":"./assets/nemo-approved-starlight-directions.webp","portrait":"./assets/v550/nemo_costume_starlight.webp?v=5.5.2"},{"id":"royal","name":"왕관 니모","price":1600,"desc":"왕관과 붉은 망토로 숲의 주인공이 돼요.","icon":"👑","atlas":"./assets/nemo-approved-royal-directions.webp","portrait":"./assets/v550/nemo_costume_royal.webp?v=5.5.2"},{"id":"legend","name":"전설의 멍법사","price":2400,"desc":"환상적인 은은한 오라가 감도는 전설의 의상.","icon":"🌟","atlas":"./assets/nemo-approved-legend-directions.webp","portrait":"./assets/nemo-approved-legend-portrait.svg"}];
 const costumeAtlases={};
@@ -1339,17 +1356,19 @@ function background(){const c=g?g.camera:{x:50,y:50},left=c.x-DATA.widthWorld/2,
  ctx.lineWidth=.14;ctx.strokeStyle='#a7ac84';ctx.strokeRect(.07,.07,99.86,99.86);
 }
 function imageSprite(key,x,y,w,h,face=1,alpha=1){let im=sprites[key];if(!im?.complete||!im.naturalWidth)return;ctx.save();ctx.translate(x,y);ctx.scale(face,1);ctx.globalAlpha=alpha;ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();}
+// Fit the padded source without stretching and keep its baseline at the actor's feet.
+function drawEnemyArt(kind,x,baseline,maxWidth,maxHeight){
+ const key='enemy_'+kind, im=sprites[key];
+ if(!im?.complete||!im.naturalWidth)return;
+ const scale=Math.min(maxWidth/im.naturalWidth,maxHeight/im.naturalHeight);
+ const width=im.naturalWidth*scale,height=im.naturalHeight*scale;
+ imageSprite(key,x,baseline-height/2,width,height);
+}
 function drawEnemy(e){if(e.dead||!visible(e.x,e.y,3))return;
  const isboss=e.kind==='boss',iselite=e.kind==='flower'||e.kind==='horn';const bob=Math.sin((g?.worldClock||menuArtTime)*4+e.phase)*.045;
  ellipse(e.x,e.y+e.r*.64,e.r*1.03,e.r*.27,'#657c70',.20);
- let spriteName={green:'green',blue:'blue',fat:'pinkmush',spore:'mush',firefly:'blue',petal:'green',armor:'armor',spark:'spark',flower:'pinkmush',horn:'green',boss:'boss'}[e.kind];
- let wd=isboss?3.8:iselite?2.1:e.kind==='fat'?1.27:e.kind==='spore'?1.18:e.kind==='firefly'?.87:1.13;
- let ht=isboss?3.2:iselite?1.88:e.kind==='fat'?1.13:e.kind==='spore'?1.08:e.kind==='firefly'?.83:.94;
- if(e.kind==='firefly'){ellipse(e.x+.4,e.y-.42,.23,.28,'#f9e4ad',.40);ellipse(e.x-.35,e.y-.41,.19,.25,'#ffe4a0',.39);}
- if(e.kind==='horn')star(e.x,e.y-1.23,.26,-.3,'#fff3a0','#985d9e');
- if(e.kind==='armor'){star(e.x,e.y-.65,.23,.3,'#ffdaa2','#7e5aa2');ctx.strokeStyle='#795c9c';ctx.lineWidth=.07;ctx.strokeRect(e.x-.44,e.y-.30,.88,.16);}
- if(e.kind==='spark'){star(e.x,e.y-.55,.23,g.worldClock*3,'#e7f7ff','#8a5ab5');}
- imageSprite(spriteName,e.x,e.y-ht*.20+bob,wd,ht);if(e.kind==='armor')star(e.x,e.y-ht*.57,.20,g.worldClock*.6,'#ffdba8','#8c61ac');if(e.kind==='spark')star(e.x+.22,e.y-ht*.77,.16,g.worldClock*5,'#ccf6ff','#805da9');
+ const [wd,ht]=ENEMY_ART[e.kind];
+ drawEnemyArt(e.kind,e.x,e.y+ht*.30+bob,wd,ht);
  if(e.flash>0)ellipse(e.x,e.y-ht*.23,e.r*.84,e.r*.68,'#ffffff',e.flash*2.4);
  if(e.kind==='spore'&&e.attackState?.type==='spore'||e.kind==='flower'&&e.attackState?.type==='flower'){
   ellipse(e.x,e.y,1.1,1.1,'#f95886',.24);ctx.strokeStyle='#9e2b63';ctx.lineWidth=.13;ctx.beginPath();ctx.arc(e.x,e.y,1.0,0,TAU);ctx.stroke();}
@@ -1520,7 +1539,7 @@ function drawMenuWorld(){ctx.save();ctx.translate(VW/2-50*PPU,VH/2-50*PPU);ctx.s
  if(sprites.groundFull?.complete)ctx.drawImage(sprites.groundFull,0,0,100,100);
  const rr=hashed(23224);for(let i=0;i<440;i++){let x=36+rr()*28,y=40+rr()*17;flower(x,y,.08+rr()*.17,rr()>.65?'#e6b5ef':'#fff9df');}
  for(let i=0;i<18;i++){let a=i*TAU/18,r=9.5+rr()*7;drawTree(50+Math.cos(a)*r,50+Math.sin(a)*r,1.3+rr()*1.7,rr()>.4);}
- imageSprite('nemo',50,50,3.0,3.0,1,1);imageSprite('green',54.5,51,1.7,1.3);imageSprite('blue',45.8,52.4,1.5,1.3);ctx.restore();}
+ imageSprite('nemo',50,50,3.0,3.0,1,1);drawEnemyArt('green',54.5,51.65,1.7,1.3);drawEnemyArt('blue',45.8,53.05,1.5,1.3);ctx.restore();}
 function draw(){ctx.fillStyle='#c1dfa1';ctx.fillRect(0,0,VW,VH);if(g)drawBattle();else drawMenuWorld();
  if(opts.particles && sprites.grain?.complete&&sprites.grain.naturalWidth){ctx.save();ctx.globalAlpha=.17;ctx.drawImage(sprites.grain,0,0,VW,VH);ctx.restore();}
 }
@@ -1733,7 +1752,7 @@ if(new URLSearchParams(location.search).has('qa'))window.__NEMO_TEST__={
  resetSave:()=>{localStorage.removeItem(DATA.saveKey);saved=readSave();renderMenu();}
 };
 $('portrait').src=ASSET_DATA.nemo;
- for(const key of ['nemo','green','blue','mush','pinkmush','boss'])sprites[key].addEventListener('error',()=>{showToast('⚠ 캐릭터 '+key+' 이미지 로딩 실패');}); $('hero').src=ASSET_DATA.nemo;if(new URLSearchParams(location.search).has('qa'))window.__NEMO_QA={begin,spawn,fireWeapon,loot,collect,selectCard,openCards,update,draw,wandOrigin,pose:()=>g?motionPose(g.player):null,read:()=>g,screen:()=>screen,rollCards,getLevelNeed,xpNeedForLevel,updateLoot,updateHUD,renderCards,openForestChoice,skillIcon,bossCast,bossUpdate,bossPhase,bossDone,updateVortex,updateTraps,drawWeaponFields,blockedByTree,chooseDifficulty,difficulty,motionPose}; // Stable-URL build helpers; existing save key and game logic are unchanged.
+ for(const key of ['nemo',...Object.keys(ENEMY_ART).map(kind=>'enemy_'+kind)])sprites[key].addEventListener('error',()=>{showToast('⚠ 캐릭터 '+key+' 이미지 로딩 실패');}); $('hero').src=ASSET_DATA.nemo;if(new URLSearchParams(location.search).has('qa'))window.__NEMO_QA={begin,spawn,fireWeapon,loot,collect,selectCard,openCards,update,draw,wandOrigin,pose:()=>g?motionPose(g.player):null,read:()=>g,screen:()=>screen,rollCards,getLevelNeed,xpNeedForLevel,updateLoot,updateHUD,renderCards,openForestChoice,skillIcon,bossCast,bossUpdate,bossPhase,bossDone,updateVortex,updateTraps,drawWeaponFields,blockedByTree,chooseDifficulty,difficulty,motionPose}; // Stable-URL build helpers; existing save key and game logic are unchanged.
 window.__NEMO_SAFE_UPDATE__=()=>screen==='menu';
 window.__NEMO_IMPORT_SAVE__=(raw)=>{
   const v=JSON.parse(raw);
@@ -1746,7 +1765,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.5.2';
+  const CURRENT='5.5.3';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
