@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.5.5" />
+</style><meta name="nemo-version" content="5.5.6" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -345,7 +345,7 @@
       <div><strong id="shop-wallet">🪙 0 G</strong><button class="btn" id="shop-back">✕ 돌아가기</button></div>
     </header>
     <div class="nemo-shop-content">
-      <section class="nemo-shop-feature"><img id="shop-feature-art" alt="선택한 코스튬 미리보기" src="./assets/polish-v554/nemo_costume_default.webp"><h3 id="shop-feature-name">기본 니모</h3><p id="shop-feature-desc"></p><button class="btn primary" id="shop-action"></button><p class="shop-hint" id="shop-message">옷을 선택해 미리 입어 보세요.</p></section>
+      <section class="nemo-shop-feature"><img id="shop-feature-art" alt="선택한 코스튬 미리보기" src="./assets/nemo-polish/default-portrait.webp"><h3 id="shop-feature-name">기본 니모</h3><p id="shop-feature-desc"></p><button class="btn primary" id="shop-action"></button><p class="shop-hint" id="shop-message">옷을 선택해 미리 입어 보세요.</p></section>
       <section class="nemo-shop-grid" id="shop-items"></section>
     </div>
   </div>
@@ -410,7 +410,7 @@ const DATA = Object.freeze({
  economy:{costs:[100,150,220,320,450,600,800,1050,1350,1700],rerollCosts:[600,1500],
  upgrades:{attack:['주문 연습','기본 공격력 +2',10],hp:['포근한 망토','기본 체력 +5',10],speed:['빠른 발걸음','이동 속도 +1%',5],pickup:['보석 수집','경험치 반경 +10%',5],crit:['행운의 부적','치명타 확률 +1%p',5],reroll:['다시 생각하기','카드 새로고침 +1회',2]}}
 });
-</script><script>const ASSET_DATA={"nemo":"./assets/polish-v554/nemo_costume_default.webp","windmill":"./assets/windmill.png","ribbonIcon":"./assets/ribbonIcon.png","magnetIcon":"./assets/magnetIcon.png","groundFull":"./assets/groundFull.jpg","tree_pink":"./assets/tree_pink.png","tree_green":"./assets/tree_green.png","pond":"./assets/pond.png","grain":"./assets/grain.jpg","nemoAnim":"./assets/v550/nemo_default_32.webp","nemoWand":"./assets/nemo-star-wand-v531.webp","ui_star":"./assets/ui_star.svg","ui_orbit":"./assets/ui_orbit.svg","ui_moon":"./assets/ui_moon.svg","ui_bubble":"./assets/ui_bubble.svg","ui_bloom":"./assets/ui_bloom.svg","ui_cloud":"./assets/ui_cloud.svg","ui_ribbon":"./assets/ui_ribbon.svg","ui_book":"./assets/ui_book.svg","ui_comet":"./assets/ui_comet.svg","ui_frost":"./assets/ui_frost.svg","ui_feather":"./assets/ui_feather.svg","ui_magnet":"./assets/ui_magnet.svg","ui_magic":"./assets/ui_magic.svg","ui_quick":"./assets/ui_quick.svg","ui_lucky":"./assets/ui_lucky.svg","ui_big":"./assets/ui_big.svg","ui_cloak":"./assets/ui_cloak.svg","ui_shoes":"./assets/ui_shoes.svg","ui_vortex":"./assets/ui_vortex.svg","ui_seed":"./assets/ui_seed.svg","ui_bell":"./assets/ui_bell.svg"};</script><script>
+</script><script>const ASSET_DATA={"nemo":"./assets/nemo-polish/default-portrait.webp","windmill":"./assets/windmill.png","ribbonIcon":"./assets/ribbonIcon.png","magnetIcon":"./assets/magnetIcon.png","groundFull":"./assets/groundFull.jpg","tree_pink":"./assets/tree_pink.png","tree_green":"./assets/tree_green.png","pond":"./assets/pond.png","grain":"./assets/grain.jpg","nemoAnim":"./assets/v550/nemo_default_32.webp","nemoWand":"./assets/nemo-polish/star-wand.webp","ui_star":"./assets/ui_star.svg","ui_orbit":"./assets/ui_orbit.svg","ui_moon":"./assets/ui_moon.svg","ui_bubble":"./assets/ui_bubble.svg","ui_bloom":"./assets/ui_bloom.svg","ui_cloud":"./assets/ui_cloud.svg","ui_ribbon":"./assets/ui_ribbon.svg","ui_book":"./assets/ui_book.svg","ui_comet":"./assets/ui_comet.svg","ui_frost":"./assets/ui_frost.svg","ui_feather":"./assets/ui_feather.svg","ui_magnet":"./assets/ui_magnet.svg","ui_magic":"./assets/ui_magic.svg","ui_quick":"./assets/ui_quick.svg","ui_lucky":"./assets/ui_lucky.svg","ui_big":"./assets/ui_big.svg","ui_cloak":"./assets/ui_cloak.svg","ui_shoes":"./assets/ui_shoes.svg","ui_vortex":"./assets/ui_vortex.svg","ui_seed":"./assets/ui_seed.svg","ui_bell":"./assets/ui_bell.svg"};</script><script>
 const STORYBOOK_ART={"logo":"./assets/logo.png","button_start":"./assets/button_start.png","button_school":"./assets/button_school.png","button_settings":"./assets/button_settings.png","button_codex":"./assets/button_codex.png","button_normal":"./assets/button_normal.png","button_hard":"./assets/button_hard.png","button_hell":"./assets/button_hell.png","button_pause":"./assets/button_pause.png","title_ribbon":"./assets/title_ribbon.png","result_panel":"./assets/result_panel.png","card_blank_gold":"./assets/card_blank_gold.png","card_blank_lavender":"./assets/card_blank_lavender.png","card_blank_sun":"./assets/card_blank_sun.png","icon_star":"./assets/v550/fx_star.webp","icon_orbit":"./assets/icon_orbit.webp","icon_moon":"./assets/icon_moon.webp","icon_bubble":"./assets/icon_bubble.webp","icon_bloom":"./assets/icon_bloom.webp","icon_cloud":"./assets/v550/fx_cloud.webp","icon_ribbon":"./assets/icon_ribbon.webp","icon_book":"./assets/icon_book.webp","icon_comet":"./assets/v550/fx_fire.webp","icon_frost":"./assets/v550/fx_ice.webp","icon_feather":"./assets/icon_feather.webp","icon_vortex":"./assets/v550/fx_vortex.webp","icon_seed":"./assets/icon_seed.webp","icon_bell":"./assets/icon_bell.webp","icon_magic":"./assets/v550/fx_wand.webp","icon_quick":"./assets/icon_quick.png","icon_lucky":"./assets/icon_lucky.png","icon_area":"./assets/v550/fx_burst.webp","icon_cloak":"./assets/v550/fx_heart.webp","icon_shoes":"./assets/icon_shoes.png","icon_magnet":"./assets/v550/fx_magnet.webp","icon_heart":"./assets/v550/fx_heart.webp","icon_coin":"./assets/v550/fx_coin.webp","icon_gem":"./assets/icon_gem.png","icon_exp":"./assets/icon_exp.png","icon_paw":"./assets/icon_paw.png","icon_flower":"./assets/icon_flower.png","icon_crown":"./assets/icon_crown.png","icon_bone":"./assets/icon_bone.png","enemy_green":"./assets/enemy_green.png","enemy_blue":"./assets/enemy_blue.png","enemy_mush":"./assets/enemy_mush.png","enemy_firefly":"./assets/enemy_firefly.png","enemy_boss":"./assets/enemy_boss.png","item_gem":"./assets/item_gem.png","item_gold":"./assets/item_gold.png","item_bone":"./assets/item_bone.png","item_potion":"./assets/item_potion.png","item_magnet":"./assets/item_magnet.png","item_bag":"./assets/item_bag.png","item_chest":"./assets/item_chest.png","decor_tree_crown":"./assets/decor_tree_crown.png","decor_tree_trunk":"./assets/decor_tree_trunk.png","decor_tree_front":"./assets/decor_tree_front.png","decor_pond":"./assets/decor_pond.png","decor_windmill":"./assets/decor_windmill.png","decor_fence":"./assets/decor_fence.png","decor_rock":"./assets/decor_rock.png","decor_stump":"./assets/decor_stump.png","decor_flowers":"./assets/decor_flowers.png"};
 Object.assign(ASSET_DATA,{ui_star:STORYBOOK_ART["icon_star"],ui_orbit:STORYBOOK_ART["icon_orbit"],ui_moon:STORYBOOK_ART["icon_moon"],ui_bubble:STORYBOOK_ART["icon_bubble"],ui_bloom:STORYBOOK_ART["icon_bloom"],ui_cloud:STORYBOOK_ART["icon_cloud"],ui_ribbon:STORYBOOK_ART["icon_ribbon"],ui_book:STORYBOOK_ART["icon_book"],ui_comet:STORYBOOK_ART["icon_comet"],ui_frost:STORYBOOK_ART["icon_frost"],ui_feather:STORYBOOK_ART["icon_feather"],ui_vortex:STORYBOOK_ART["icon_vortex"],ui_seed:STORYBOOK_ART["icon_seed"],ui_bell:STORYBOOK_ART["icon_bell"],ui_magic:STORYBOOK_ART["icon_magic"],ui_quick:STORYBOOK_ART["icon_quick"],ui_lucky:STORYBOOK_ART["icon_lucky"],ui_area:STORYBOOK_ART["icon_area"],ui_cloak:STORYBOOK_ART["icon_cloak"],ui_shoes:STORYBOOK_ART["icon_shoes"],ui_magnet:STORYBOOK_ART["icon_magnet"]});
 </script>
@@ -459,40 +459,54 @@ for(const id of weaponKeys){
 }
 ASSET_DATA.ui_magic='./assets/polish-v554/magic-wand.webp';
 const sprites={};Object.keys(ASSET_DATA).forEach(k=>{let im=new Image();im.src=ASSET_DATA[k];sprites[k]=im;});
-const COSTUMES=[{"id":"default","name":"기본 니모","price":0,"desc":"처음부터 함께하는 니모. 빨간 목도리와 별빛 마법봉.","icon":"🐾","atlas":"./assets/v550/nemo_default_32.webp","portrait":"./assets/polish-v554/nemo_costume_default.webp"},{"id":"forest","name":"숲속 탐험가","price":250,"desc":"초록 모자와 탐험가 복장으로 숲을 누벼요.","icon":"🌿","atlas":"./assets/nemo-approved-forest-directions.webp","portrait":"./assets/polish-v554/nemo_costume_forest.webp"},{"id":"rain","name":"노란 우비","price":450,"desc":"노란 우비와 후드로 빗방울도 두렵지 않아요.","icon":"🌧️","atlas":"./assets/nemo-approved-rain-directions.webp","portrait":"./assets/polish-v554/nemo_costume_rain.webp"},{"id":"student","name":"마법학교 학생","price":750,"desc":"반짝이는 모자를 쓴 견습 멍법사.","icon":"🎓","atlas":"./assets/nemo-approved-student-directions.webp","portrait":"./assets/polish-v554/nemo_costume_student.webp"},{"id":"starlight","name":"별빛 마법사","price":1100,"desc":"보랏빛 로브와 별무늬 마법 모자.","icon":"✨","atlas":"./assets/nemo-approved-starlight-directions.webp","portrait":"./assets/polish-v554/nemo_costume_starlight.webp"},{"id":"royal","name":"왕관 니모","price":1600,"desc":"왕관과 붉은 망토로 숲의 주인공이 돼요.","icon":"👑","atlas":"./assets/nemo-approved-royal-directions.webp","portrait":"./assets/polish-v554/nemo_costume_royal.webp"},{"id":"legend","name":"전설의 멍법사","price":2400,"desc":"환상적인 은은한 오라가 감도는 전설의 의상.","icon":"🌟","atlas":"./assets/nemo-approved-legend-directions.webp","portrait":"./assets/polish-v554/nemo_costume_legend.webp"}];
+const COSTUMES=[{"id":"default","name":"기본 니모","price":0,"desc":"처음부터 함께하는 니모. 빨간 목도리와 별빛 마법봉.","icon":"🐾","atlas":"./assets/v550/nemo_default_32.webp","portrait":"./assets/nemo-polish/default-portrait.webp"},{"id":"forest","name":"숲속 탐험가","price":250,"desc":"초록 모자와 탐험가 복장으로 숲을 누벼요.","icon":"🌿","atlas":"./assets/nemo-approved-forest-directions.webp","portrait":"./assets/polish-v554/nemo_costume_forest.webp"},{"id":"rain","name":"노란 우비","price":450,"desc":"노란 우비와 후드로 빗방울도 두렵지 않아요.","icon":"🌧️","atlas":"./assets/nemo-approved-rain-directions.webp","portrait":"./assets/polish-v554/nemo_costume_rain.webp"},{"id":"student","name":"마법학교 학생","price":750,"desc":"반짝이는 모자를 쓴 견습 멍법사.","icon":"🎓","atlas":"./assets/nemo-approved-student-directions.webp","portrait":"./assets/polish-v554/nemo_costume_student.webp"},{"id":"starlight","name":"별빛 마법사","price":1100,"desc":"보랏빛 로브와 별무늬 마법 모자.","icon":"✨","atlas":"./assets/nemo-approved-starlight-directions.webp","portrait":"./assets/polish-v554/nemo_costume_starlight.webp"},{"id":"royal","name":"왕관 니모","price":1600,"desc":"왕관과 붉은 망토로 숲의 주인공이 돼요.","icon":"👑","atlas":"./assets/nemo-approved-royal-directions.webp","portrait":"./assets/polish-v554/nemo_costume_royal.webp"},{"id":"legend","name":"전설의 멍법사","price":2400,"desc":"환상적인 은은한 오라가 감도는 전설의 의상.","icon":"🌟","atlas":"./assets/nemo-approved-legend-directions.webp","portrait":"./assets/polish-v554/nemo_costume_legend.webp"}];
 const costumeAtlases={};
 for(const item of COSTUMES){const img=new Image();img.src=item.atlas;costumeAtlases[item.id]=img;}
 
-// 8-direction 5-pose hand-illustrated animation atlas, 8x5 cells x 300 px.
+// Hand-painted 8-direction atlas, with idle, two footsteps and cast rows.
 const NEMO_FRAME=160,NEMO_SIZE=2.68,NEMO_Y=-.61,NEMO_CAST=.34;
+const NEMO_STRIDE=.58,NEMO_FOOT_Y=(153/NEMO_FRAME-.5)*NEMO_SIZE;
+const NEMO_COSTUME_COLUMNS={'down':0,'up':1,'right':2,'left':3,
+ 'down-right':4,'down-left':5,'up-right':6,'up-left':7};
 function faceFromAngle(a){const dirs=['right','down-right','down','down-left','left','up-left','up','up-right'];return dirs[(Math.round(a/(Math.PI/4)+8)%8)];} 
 function motionPose(p){
  const casting=p.castTimer>0,walking=!!p.moving;
  const dir=walking?p.direction:(casting?p.castFacing:p.direction);
- const POSE_COLUMNS={'down':0,'up':1,'right':2,'left':3,
-   'down-right':4,'down-left':5,'up-right':6,'up-left':7};
- // Approved paintings: one idle pose, two *drawn* footsteps and one magic pose.
- const row=walking?(1+Math.floor(p.stepTime/.145)%2):(casting?3:0);
- return {row,col:POSE_COLUMNS[dir]??0,flip:1,bounce:0,tilt:0,
-         casting,dir,walking,phase:p.stepTime*17};
+ const step=p.stepDistance/NEMO_STRIDE;
+ const row=walking?1+Math.floor(step)%2:casting?3:0;
+ return {row,col:NEMO_COSTUME_COLUMNS[dir]??0,flip:1,bounce:0,tilt:0,
+         casting,dir,walking,phase:step*Math.PI};
 }
 const NEMO_PAINTED_FRAME=160;
 const NEMO_PAINTED_COLUMNS={
  'up-left':0,'up':1,'up-right':2,'left':3,'right':4,
  'down-left':5,'down':6,'down-right':7
 };
-const NEMO_PAINTED_WAND_TIPS={
- 'up-left':[31,107],'up':[31,104],'up-right':[140,103],'left':[31,104],
- 'right':[129,104],'down-left':[29,105],'down':[31,108],'down-right':[136,105]
-};
+// Star centers in source pixels, indexed by animation row and atlas column.
+const NEMO_PAINTED_WAND_TIPS=[
+ [[34,76],[36,82],[124,78],[36,92],[123,91],[38,96],[37,96],[125,92]],
+ [[36,78],[37,80],[123,79],[36,88],[126,88],[37,93],[39,94],[126,92]],
+ [[36,78],[38,86],[125,82],[36,94],[124,90],[38,100],[42,100],[126,98]],
+ [[30,55],[129,45],[130,45],[30,82],[130,73],[32,77],[114,89],[132,62]]
+];
+function nemoAtlas(){
+ const costume=costumeAtlases[saved.costumeEquipped];
+ return costume?.naturalWidth?costume:sprites.nemoAnim;
+}
 function isPaintedNemo(im){
- return saved.costumeEquipped==='default' && im?.naturalWidth===NEMO_PAINTED_FRAME*8
-        && im?.naturalHeight===NEMO_PAINTED_FRAME*4;
+ return im?.naturalWidth===NEMO_PAINTED_FRAME*8 && im?.naturalHeight===NEMO_PAINTED_FRAME*4;
 }
 function paintedWandTip(q){
- const pixel=NEMO_PAINTED_WAND_TIPS[q.dir]||NEMO_PAINTED_WAND_TIPS.down;
- return {x:(pixel[0]/NEMO_PAINTED_FRAME-.5)*NEMO_SIZE,
-         y:(pixel[1]/NEMO_PAINTED_FRAME-.5)*NEMO_SIZE};
+ const col=NEMO_PAINTED_COLUMNS[q.dir]??NEMO_PAINTED_COLUMNS.down;
+ const [x,y]=NEMO_PAINTED_WAND_TIPS[q.row][col];
+ return {x:(x/NEMO_PAINTED_FRAME-.5)*NEMO_SIZE,
+         y:(y/NEMO_PAINTED_FRAME-.5)*NEMO_SIZE};
+}
+function nemoBodyTransform(p,q,painted){
+ const stride=(p.gait||0)*(painted?.45:1);
+ const hurt=Math.min(1,(p.hurtTimer||0)/.24);
+ const scaleX=1+.07*hurt-.025*stride,scaleY=1-.06*hurt+.045*stride;
+ return {scaleX,scaleY,centerY:p.y+NEMO_Y+NEMO_FOOT_Y*(1-scaleY)};
 }
 // The gameplay projectile's origin uses the same source-frame wand-tip coordinates
 // and the same animation transform as the rendered dog. Never spawn spells at the torso.
@@ -500,7 +514,7 @@ function paintedWandTip(q){
 // to Nemo's pose so the wand never pivots around the head or floats above the paw.
 // Painted wand pivot is fixed at the character's actual right/left forepaw,
 // NOT the torso. Values are world-space coordinates in the 160px pose tile.
-const NEMO_WAND_ART={width:.75,height:1.04,gripX:21/126,gripY:149/168,starX:84/126,starY:48/168};
+const NEMO_WAND_ART={width:.644,height:.94,gripX:24/149,gripY:169/200,starX:111/149,starY:36/200};
 const NEMO_WAND_DIRECTIONS={
   'down':       {x:.39,y:.54,side: 1,angle:.10},
   'up':         {x:.40,y:.52,side: 1,angle:.29},
@@ -526,9 +540,10 @@ function nemoWandTip(q){
 }
 function wandOrigin(p){
  const q=motionPose(p);
- const tip=saved.costumeEquipped==='default'?paintedWandTip(q):nemoWandTip(q);
- // The exact same fixed anchor is used for rendering and attack effects.
- return {x:p.x+tip.x,y:p.y+NEMO_Y+tip.y};
+ const painted=isPaintedNemo(nemoAtlas());
+ const tip=painted?paintedWandTip(q):nemoWandTip(q);
+ const body=nemoBodyTransform(p,q,painted);
+ return {x:p.x+tip.x*body.scaleX,y:body.centerY+tip.y*body.scaleY};
 }
 function drawNemoWand(q,p){
  const img=sprites.nemoWand;
@@ -658,7 +673,7 @@ function difficulty(){return forestDanger(g?.t||0);}
 function renderDifficulty(){} // The old 3-choice selector was removed.
 function chooseDifficulty(){return;} // Compatibility shim for older test hooks.
 function begin(){rngState=seed;const hp=DATA.player.hp+saved.upgrades.hp*5;
- g={t:0,bossTime:0,difficulty:difficultyKey,player:{x:50,y:50,r:.44,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*2,walk:0,face:1,direction:'down',moving:false,stepTime:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
+ g={t:0,bossTime:0,difficulty:difficultyKey,player:{x:50,y:50,r:.44,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*2,face:1,direction:'down',moving:false,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
   speed:DATA.player.speed*(1+saved.upgrades.speed*.01),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
   weapons:{star:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
   enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0,
@@ -1205,11 +1220,27 @@ function blockedByTree(x,y,r){if(!g?.treeDecor)return false;
 function updateMovement(dt){const p=g.player;let dx=Number(keys.has('KeyD')||keys.has('ArrowRight'))-Number(keys.has('KeyA')||keys.has('ArrowLeft')),
  dy=Number(keys.has('KeyS')||keys.has('ArrowDown'))-Number(keys.has('KeyW')||keys.has('ArrowUp'));
  if(touch.active){dx=touch.x;dy=touch.y;}
- const norm=len(dx,dy);p.moving=norm>.08;p.castTimer=Math.max(0,p.castTimer-dt);p.hurtTimer=Math.max(0,(p.hurtTimer||0)-dt);if(norm>0){dx/=Math.max(1,norm);dy/=Math.max(1,norm);const travel=p.speed*(1+.08*getPassive('shoes')+.10*(g.blessings?.breeze||0))*dt;
- const nx=clamp(p.x+dx*travel,p.r,100-p.r),ny=clamp(p.y+dy*travel,p.r,100-p.r);
- // Axis-separated movement slides naturally along tree trunks, never through the wood.
- if(!blockedByTree(nx,p.y,p.r))p.x=nx;
- if(!blockedByTree(p.x,ny,p.r))p.y=ny;p.direction=faceFromAngle(Math.atan2(dy,dx));p.face=dx>=0?1:-1;p.walk+=dt*11;p.stepTime+=dt;}else{p.walk+=dt*1.7;p.stepTime=0;}
+ const norm=len(dx,dy),oldX=p.x,oldY=p.y;
+ p.castTimer=Math.max(0,p.castTimer-dt);
+ p.hurtTimer=Math.max(0,(p.hurtTimer||0)-dt);
+ if(norm>0){
+  dx/=Math.max(1,norm);dy/=Math.max(1,norm);
+  const travel=p.speed*(1+.08*getPassive('shoes')+.10*(g.blessings?.breeze||0))*dt;
+  const nx=clamp(p.x+dx*travel,p.r,100-p.r),ny=clamp(p.y+dy*travel,p.r,100-p.r);
+  // Resolve axes separately to preserve sliding along trees and map edges.
+  if(!blockedByTree(nx,p.y,p.r))p.x=nx;
+  if(!blockedByTree(p.x,ny,p.r))p.y=ny;
+ }
+ const movedX=p.x-oldX,movedY=p.y-oldY,distanceMoved=len(movedX,movedY);
+ p.moving=norm>.08&&distanceMoved>1e-6;
+ if(p.moving){
+  p.direction=faceFromAngle(Math.atan2(movedY,movedX));
+  if(Math.abs(movedX)>1e-6)p.face=movedX>0?1:-1;
+  p.stepDistance=(p.stepDistance+distanceMoved)%(2*NEMO_STRIDE);
+ }else if(norm<=.08)p.stepDistance=0;
+ // Ease the body motion independently of the controls and keep its pivot at the feet.
+ const stride=p.moving?Math.sin(Math.PI*p.stepDistance/NEMO_STRIDE)**2:0;
+ p.gait+=(stride-p.gait)*(-Math.expm1(-22*dt));
  g.camera=calcCamera();}
 function update(dt){
  if(!g||screen!=='playing'||g.done)return;
@@ -1427,17 +1458,16 @@ function drawPlayer(p){
  ellipse(p.x,p.y+.45,.46,.12,'#50425e',.11);
  const q=motionPose(p);
  const flash=p.invuln>0&&Math.floor(p.invuln*13)%2===0?.53:1;
- const im=(costumeAtlases[saved.costumeEquipped]?.naturalWidth
-     ?costumeAtlases[saved.costumeEquipped]:sprites.nemoAnim);
+ const im=nemoAtlas();
  if(im?.complete && im.naturalWidth){
+   const painted=isPaintedNemo(im),body=nemoBodyTransform(p,q,painted);
    ctx.save();
-   // Feet stay grounded: no vertical bob, per-pixel slicing or body rocking.
-   ctx.translate(p.x,p.y+NEMO_Y);
-   ctx.scale(q.flip*(p.hurtTimer>0?1.07:1),p.hurtTimer>0?.94:1);
+   ctx.translate(p.x,body.centerY);
+   ctx.scale(body.scaleX,body.scaleY);
    ctx.globalAlpha=flash;
    ctx.imageSmoothingEnabled=true;
    ctx.imageSmoothingQuality='high';
-   if(isPaintedNemo(im)){
+   if(painted){
      const col=NEMO_PAINTED_COLUMNS[q.dir]??NEMO_PAINTED_COLUMNS.down;
      const row=Math.max(0,Math.min(3,q.row));
      const F=NEMO_PAINTED_FRAME;
@@ -1445,8 +1475,7 @@ function drawPlayer(p){
      // This artwork already includes the wand held by Nemo's paw.
      // Never draw a duplicate wand or an artificial circle over the grip.
    }else{
-     // Keep previously purchased costumes usable until each costume receives
-     // its own illustrated walk cycle; do not distort their lower body.
+     // The costume atlas has directional art only; the full costume moves together.
      const col=Math.max(0,Math.min(Math.floor(im.naturalWidth/NEMO_FRAME)-1,q.col));
      const back=q.dir==='up'||q.dir.startsWith('up-');
      if(back)drawNemoWand(q,p);
@@ -1792,7 +1821,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.5.5';
+  const CURRENT='5.5.6';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
