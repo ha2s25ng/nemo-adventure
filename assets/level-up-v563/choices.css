@@ -1,0 +1,121 @@
+/* Level-up choices */
+#cards {
+  background: #182e26b8 !important;
+  padding: clamp(8px, 2.3vmin, 24px);
+}
+#cards .choice-board {
+  width: min(100%, 980px);
+  max-height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: clamp(12px, 2.5vmin, 25px);
+  border: 1px solid #aaad88;
+  border-radius: clamp(14px, 3vmin, 27px);
+  background: radial-gradient(ellipse at top, #fffdf2, #f2ebd8);
+  box-shadow: 0 5px 0 #203d32, 0 20px 50px #14271d73, inset 0 0 0 4px #fffaf0;
+  color: #253e32;
+}
+#cards .choice-heading {
+  padding: 0 0 clamp(8px, 1.7vmin, 16px);
+  text-align: center;
+}
+#cards-title {
+  margin: 0;
+  color: #263e31;
+  font-family: var(--display, Georgia), "Malgun Gothic", serif;
+  font-size: clamp(23px, 4.6vmin, 39px);
+  line-height: 1.15;
+}
+#cards .choice-heading p {
+  margin: 5px 0 0;
+  color: #586659;
+  font-size: clamp(12px, 1.9vmin, 14px);
+}
+#cards #card-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(7px, 1.7vmin, 15px);
+  margin: 0 auto;
+}
+#cards #card-options[data-count="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#cards #card-options[data-count="1"] { grid-template-columns: minmax(0, 1fr); }
+#cards .choice-card {
+  --tone: #3e6351;
+  --wash: #e8efe4;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(7px, 1.35vmin, 12px);
+  min-width: 0;
+  padding: clamp(10px, 2vmin, 18px);
+  border: 1px solid #b8beaa;
+  border-top: 3px solid var(--tone);
+  border-radius: 14px;
+  background: #fffcf2;
+  box-shadow: 0 2px 0 #d4ceba;
+  color: #263e33;
+  text-align: left;
+  transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+}
+#cards .choice-card[data-kind="growth"] { --tone: #875c25; --wash: #f8edd4; }
+#cards .choice-card:is([data-kind="passive"],[data-kind="evo"]) { --tone: #66507b; --wash: #efe8f3; }
+#cards .choice-card:hover { transform: translateY(-2px); border-color: var(--tone); box-shadow: 0 5px 0 #d4ceba; }
+#cards .choice-card:focus-visible, #cards #reroll:focus-visible { outline: 3px solid #a56c24; outline-offset: 2px; }
+#cards .choice-identity { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 9px; align-items: center; }
+#cards .choice-icon {
+  display: grid;
+  place-items: center;
+  width: clamp(37px, 8vmin, 66px);
+  aspect-ratio: 1;
+  border-radius: 13px;
+  background: var(--wash);
+  font-size: 26px;
+}
+#cards .choice-icon img { width: 88% !important; height: 88% !important; object-fit: contain; }
+#cards .choice-type { display: block; color: var(--tone); font-size: 11px; font-weight: 800; }
+#cards .choice-name { display: block; font-size: clamp(14px, 2.8vmin, 22px); line-height: 1.26; overflow-wrap: anywhere; }
+#cards .choice-effect {
+  display: grid;
+  gap: 2px;
+  padding: 7px 9px;
+  border-radius: 8px;
+  background: var(--wash);
+  color: var(--tone);
+  font-size: clamp(12px, 2.15vmin, 15px);
+  font-weight: 800;
+  line-height: 1.35;
+}
+#cards .choice-effect small { font-size: 10px; }
+#cards .choice-copy { color: #505f51; font-size: clamp(11px, 1.95vmin, 14px); line-height: 1.45; overflow-wrap: anywhere; }
+#cards .choice-meta { margin-top: auto; padding-top: 6px; border-top: 1px solid #dedbca; color: #586659; font-size: clamp(10px, 1.7vmin, 13px); line-height: 1.35; }
+#cards .choice-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 34px;
+  padding: 4px 9px;
+  border-radius: 8px;
+  background: var(--tone);
+  color: #fffdf2;
+  font-size: 12px;
+  font-weight: 800;
+}
+#cards .choice-cta kbd { border: 1px solid #ffffff8c; border-radius: 4px; padding: 0 5px; font: inherit; }
+#cards .choice-footer { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 9px; padding-top: 10px; font-size: 12px; }
+#cards #reroll { min-height: 36px; }
+@media (max-width: 650px) and (orientation: portrait) {
+  #cards #card-options[data-count] { grid-template-columns: minmax(0, 1fr); max-width: none; }
+  #cards .choice-card { gap: 6px; }
+  #cards .choice-cta, #cards #reroll { min-height: 44px; }
+}
+@media (max-height: 430px) and (orientation: landscape) {
+  #cards .choice-board { padding: 10px; }
+  #cards .choice-heading { padding-bottom: 6px; }
+  #cards .choice-card { padding: 7px; gap: 5px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #cards .choice-card { transition: none; }
+  #cards .choice-card:hover { transform: none; }
+}
+
+#cards .choice-growth { color: #536654; font-size: clamp(10px, 1.7vmin, 13px); line-height: 1.4; }
+#cards .choice-growth b { color: #345a45; }
