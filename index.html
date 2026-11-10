@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.5.4" />
+</style><meta name="nemo-version" content="5.5.5" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -447,6 +447,12 @@ const ENEMY_ART={
 };
 for(const kind of Object.keys(ENEMY_ART)){
  ASSET_DATA['enemy_'+kind]='./assets/monsters-v553/'+kind+'.webp';
+}
+const ENEMY_MOTION_KINDS=new Set(['armor','blue','fat','firefly','flower','green','horn','petal','spark','spore']);
+for(const kind of ENEMY_MOTION_KINDS){
+ for(const frame of ['move-1','move-2','attack','hit']){
+  ASSET_DATA['enemy_'+kind+'_'+frame]='./assets/monster-motion-v555/'+kind+'-'+frame+'.webp';
+ }
 }
 for(const id of weaponKeys){
  ASSET_DATA['ui_'+id]='./assets/polish-v554/weapon-'+id+'.webp';
@@ -965,6 +971,7 @@ function updateMonsters(dt){for(const e of g.enemies){if(e.dead)continue;e.flash
  }
  const collision=distance(e.x,e.y,g.player.x,g.player.y)<e.r+g.player.r-.1;
  if(collision){let amount=e.dmg;
+  if(ENEMY_MOTION_KINDS.has(e.kind)&&g.player.invuln<=0)e.attackArtUntil=g.worldClock+.18;
   if(e.kind==='firefly'&&e.attackState?.type==='dashing')amount=12;
   damagePlayer(amount,`${e.kind} 접촉`);if(screen!=='playing')return;}
  }}
@@ -1362,18 +1369,30 @@ function background(){const c=g?g.camera:{x:50,y:50},left=c.x-DATA.widthWorld/2,
 }
 function imageSprite(key,x,y,w,h,face=1,alpha=1){let im=sprites[key];if(!im?.complete||!im.naturalWidth)return;ctx.save();ctx.translate(x,y);ctx.scale(face,1);ctx.globalAlpha=alpha;ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();}
 // Fit the padded source without stretching and keep its baseline at the actor's feet.
-function drawEnemyArt(kind,x,baseline,maxWidth,maxHeight){
- const key='enemy_'+kind, im=sprites[key];
+function drawEnemyArt(kind,x,baseline,maxWidth,maxHeight,frame='move-1',face=1){
+ const baseKey='enemy_'+kind;
+ const frameKey=baseKey+'_'+frame;
+ const key=sprites[frameKey]?.naturalWidth?frameKey:baseKey;
+ const im=sprites[key];
  if(!im?.complete||!im.naturalWidth)return;
  const scale=Math.min(maxWidth/im.naturalWidth,maxHeight/im.naturalHeight);
  const width=im.naturalWidth*scale,height=im.naturalHeight*scale;
- imageSprite(key,x,baseline-height/2,width,height);
+ imageSprite(key,x,baseline-height/2,width,height,key===baseKey?1:face);
 }
 function drawEnemy(e){if(e.dead||!visible(e.x,e.y,3))return;
  const isboss=e.kind==='boss',iselite=e.kind==='flower'||e.kind==='horn';const bob=Math.sin((g?.worldClock||menuArtTime)*4+e.phase)*.045;
  ellipse(e.x,e.y+e.r*.64,e.r*1.03,e.r*.27,'#657c70',.20);
  const [wd,ht]=ENEMY_ART[e.kind];
- drawEnemyArt(e.kind,e.x,e.y+ht*.30+bob,wd,ht);
+ let frame='move-1',face=1;
+ if(ENEMY_MOTION_KINDS.has(e.kind)){
+  const clock=g.worldClock;
+  if(e.flash>0)frame='hit';
+  else if(e.attackState||e.attackArtUntil>clock)frame='attack';
+  else if(e.halt<=0)frame=Math.floor(clock*7+e.phase)%2?'move-2':'move-1';
+  const aim=e.attackState?.aim;
+  face=(aim==null?g.player.x-e.x:Math.cos(aim))<0?-1:1;
+ }
+ drawEnemyArt(e.kind,e.x,e.y+ht*.30+bob,wd,ht,frame,face);
  if(e.flash>0)ellipse(e.x,e.y-ht*.23,e.r*.84,e.r*.68,'#ffffff',e.flash*2.4);
  if(e.kind==='spore'&&e.attackState?.type==='spore'||e.kind==='flower'&&e.attackState?.type==='flower'){
   ellipse(e.x,e.y,1.1,1.1,'#f95886',.24);ctx.strokeStyle='#9e2b63';ctx.lineWidth=.13;ctx.beginPath();ctx.arc(e.x,e.y,1.0,0,TAU);ctx.stroke();}
@@ -1773,7 +1792,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.5.4';
+  const CURRENT='5.5.5';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
