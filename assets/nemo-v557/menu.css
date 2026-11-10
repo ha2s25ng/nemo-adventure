@@ -1,0 +1,107 @@
+#app #menu {
+  background: #28213c5c;
+  backdrop-filter: blur(2px);
+}
+#app #menu .menu-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, .75fr);
+  gap: clamp(18px, 3vw, 48px);
+  align-items: center;
+  width: min(930px, 94%) !important;
+  max-height: 94%;
+  padding: clamp(16px, 3vw, 38px) !important;
+  background: #fff9ed !important;
+  border: 2px solid #9675a5 !important;
+  border-radius: 24px;
+  box-shadow: 0 8px 0 #4e365e, 0 22px 60px #2b203c55 !important;
+  text-align: left;
+}
+#app #menu .menu-board::before,
+#app #menu .menu-board::after { display: none }
+#app #menu #storybook-logo {
+  width: min(100%, 300px);
+  height: auto;
+  margin: 0 0 12px;
+  filter: none;
+}
+#app #menu .menu-kicker {
+  margin-bottom: 8px;
+  color: #6d536e;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+#app #menu .menu-intro {
+  margin: 0 0 15px;
+  color: #533565;
+  font-size: clamp(14px, 1.55vw, 20px);
+  line-height: 1.45;
+  word-break: keep-all;
+}
+#app #menu .menu-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 13px;
+  align-items: center;
+  color: #674e71;
+  font-size: 12px;
+}
+#app #menu #menu-gold { margin: 0 !important; font-size: 12px !important }
+#app #menu .buttons {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  margin: 14px 0 12px;
+  gap: 8px;
+}
+#app #menu .buttons .btn {
+  min-height: 38px !important;
+  padding: 7px 5px !important;
+  word-break: keep-all;
+}
+#app #menu .buttons #start {
+  width: 100%;
+  min-height: 48px !important;
+  grid-column: 1 / -1 !important;
+}
+#app #menu .menu-controls {
+  color: #6d536e;
+  font-size: 11px;
+  line-height: 1.5;
+}
+#app #menu .menu-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-width: 0;
+  aspect-ratio: 1;
+  border: 1px solid #baae92;
+  border-radius: 20px;
+  isolation: isolate;
+  background: radial-gradient(ellipse at 48% 40%, #fff0bb 0%, #e8edcb 52%, #c4d4b4 100%);
+}
+#app #menu .menu-art::before {
+  content: '✧';
+  position: absolute;
+  inset: 9% 11% auto auto;
+  color: #8c668a;
+  font-size: 26px;
+}
+#app #menu .menu-art img {
+  object-fit: contain;
+  filter: drop-shadow(0 7px 3px #56426c26);
+}
+#app #menu #hero { width: 85%; height: 85%; }
+#app #menu .menu-monster {
+  position: absolute;
+  width: 24%;
+  height: 23%;
+  bottom: 6%;
+}
+#app #menu .menu-slime { left: 5%; }
+#app #menu .menu-mushroom { right: 5%; }
+@media (max-width: 650px) {
+  #app #menu .menu-board { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  #app #menu .menu-art { display: none; }
+  #app #menu #storybook-logo { width: min(100%, 205px); margin-bottom: 5px; }
+  #app #menu .menu-intro { margin-bottom: 8px; }
+  #app #menu .buttons { margin-top: 9px; }
+}
