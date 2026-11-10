@@ -1,0 +1,210 @@
+#app {
+  --game-ink: #49334e;
+  --game-muted: #705b74;
+  --game-plum: #765887;
+  --game-paper: #fff9ef;
+  --game-lilac: #f2e9f5;
+  --game-line: #c5abc9;
+  --game-shadow: 0 3px 0 #63467465, 0 8px 22px #48324c22;
+}
+#app .hud-player.panel,
+#app .timer,
+#app .money,
+#app #pause-btn {
+  background: #fff9eff7 !important;
+  border: 1px solid var(--game-plum) !important;
+  box-shadow: var(--game-shadow) !important;
+  color: var(--game-ink) !important;
+  border-radius: 15px !important;
+}
+#app .hud-player.panel {
+  top: 2% !important;
+  left: 2% !important;
+  width: clamp(142px, 20%, 250px) !important;
+  height: auto !important;
+  padding: 7px 10px;
+  gap: 8px;
+}
+#app #portrait { width: clamp(32px, 26%, 53px); border-width: 1px; }
+#app .hud-player .player-name { font-size: clamp(12px, 1.2vw, 17px); text-shadow: none; }
+#app .hud-player .track { height: 7px !important; border: 0 !important; background: #e4d1e6 !important; }
+#app .hud-player .track > i { background: linear-gradient(90deg,#a74275,#df7797) !important; box-shadow: none !important; }
+#app .hud-player .health-txt { font-size: 11px; font-variant-numeric: tabular-nums; }
+#app .timer {
+  top: 2% !important;
+  left: 50% !important;
+  width: clamp(104px, 20%, 235px) !important;
+  min-height: 0;
+  transform: translateX(-50%);
+  padding: 5px 8px;
+}
+#app .clock {
+  color: var(--game-ink) !important;
+  font-size: clamp(14px, 2.2vw, 30px) !important;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.05;
+  text-shadow: none !important;
+}
+#app .timer-note {
+  background: transparent !important;
+  color: var(--game-muted) !important;
+  font-size: clamp(9px, .9vw, 12px) !important;
+  line-height: 1.2;
+  margin-top: 3px;
+}
+#app .timer[data-rush="true"] { border-color: #ae4a70 !important; background: #fff0f2 !important; }
+#app .hud-right { top: 2%; right: 2%; gap: 7px; }
+#app .money { display: flex; align-items: center; gap: 4px; padding: 4px 9px; }
+#app .money-icon { width: 23px !important; height: 23px !important; object-fit: contain; }
+#app #pause-btn {
+  width: 42px !important;
+  height: 42px !important;
+  font-size: 19px !important;
+  line-height: 1;
+}
+#app #pause-btn::before, #app #pause-btn::after { content: none !important; }
+#app .bottom { left: 23% !important; right: 23% !important; bottom: 2% !important; height: auto !important; gap: 6px !important; }
+#app #weapon-slots { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 5px !important; }
+#app #weapon-slots .slot {
+  width: 100% !important;
+  height: auto !important;
+  min-height: 44px !important;
+  display: grid !important;
+  grid-template-columns: 31px minmax(0,1fr) !important;
+  grid-template-rows: auto auto;
+  column-gap: 5px;
+  padding: 4px !important;
+  border: 1px solid var(--game-plum) !important;
+  border-radius: 12px !important;
+  background: #fff9eff5 !important;
+  box-shadow: var(--game-shadow) !important;
+  text-align: left;
+}
+#app #weapon-slots .slot .ico {
+  width: 31px;
+  height: 31px;
+  border: 0;
+  background: #f4e8f3;
+  border-radius: 8px;
+}
+#app #weapon-slots .slot .ico img { width: 29px !important; height: 29px !important; }
+#app #weapon-slots .slot-name { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+#app #weapon-slots .slot small { color: var(--game-muted); }
+#app #weapon-slots .slot-empty { opacity: .58; align-items: center; }
+#app .xp-shell {
+  height: 16px !important;
+  border: 1px solid var(--game-plum) !important;
+  background: #fff9eff5 !important;
+  box-shadow: var(--game-shadow) !important;
+}
+#app .xp-fill { background: #f4d58b !important; }
+#app .xp-caption { color: var(--game-ink) !important; font-size: 10px !important; text-shadow: none !important; }
+#app #buffs:empty { display: none; }
+
+#app :is(#cards, #evolution) { background: #35274199 !important; }
+#app :is(#cards, #evolution) .card-wrap {
+  position: relative !important;
+  inset: auto !important;
+  width: min(940px, 95%) !important;
+  max-height: 94% !important;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: clamp(12px, 2vw, 25px) !important;
+  background: var(--game-paper) !important;
+  border: 2px solid var(--game-plum) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 7px #513964, 0 18px 46px #271b3b55 !important;
+}
+#app :is(#cards, #evolution) .card-wrap::before,
+#app :is(#cards, #evolution) .card-wrap::after { content: none; }
+#app :is(#cards, #evolution) .ribbon {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: var(--game-ink) !important;
+  padding: 0 !important;
+  text-shadow: none !important;
+  font-size: clamp(19px, 2.4vw, 31px) !important;
+}
+#app :is(#cards, #evolution) .card-sub { color: var(--game-muted) !important; margin-top: 3px !important; }
+#app :is(#cards, #evolution) .skill-card {
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  background: #fffef9 !important;
+  border: 1px solid var(--game-line) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 3px #d4bfd7 !important;
+  padding: 11px !important;
+  gap: 6px !important;
+}
+#app :is(#cards, #evolution) .skill-card:hover {
+  border-color: var(--game-plum) !important;
+  transform: translateY(-2px) !important;
+}
+#app :is(#cards, #evolution) .skill-card.featured { border-color: #b78b47 !important; }
+#app :is(#cards, #evolution) .skill-card .card-icon {
+  width: 62px !important;
+  height: 56px !important;
+  min-height: 56px !important;
+  margin: 0 auto !important;
+  background: var(--game-lilac) !important;
+  border: 0 !important;
+}
+#app :is(#cards, #evolution) .skill-card .card-icon img { width: 52px !important; height: 52px !important; }
+#app :is(#cards, #evolution) .card-title { color: var(--game-ink) !important; font-size: clamp(14px, 1.5vw, 19px) !important; }
+#app :is(#cards, #evolution) .skill-card :is(.card-lore,.card-upgrades,.card-bonus) {
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow: visible !important;
+  font-size: clamp(11px, 1vw, 13px) !important;
+  line-height: 1.45 !important;
+  padding: 6px 8px !important;
+  color: var(--game-ink) !important;
+  background: var(--game-lilac) !important;
+  border: 0 !important;
+}
+#app :is(#cards, #evolution) .card-footer { color: var(--game-muted); text-shadow: none; }
+#app :is(#cards, #evolution) .card-select-label {
+  color: var(--game-ink) !important;
+  border: 1px solid #d4af68 !important;
+  background: #ffedbf !important;
+  min-height: 28px;
+  display: grid !important;
+  place-items: center;
+  padding: 3px 8px !important;
+}
+#app #costume-shop .nemo-shop-feature { border: 1px solid var(--game-line); }
+#app #costume-shop .nemo-shop-item { border-width: 1px; }
+#app #costume-shop .nemo-shop-item small { color: var(--game-muted); }
+#app #costume-shop .nemo-shop-item[aria-pressed="true"] {
+  border-color: var(--game-plum);
+  box-shadow: inset 0 0 0 1px var(--game-plum);
+}
+@media (max-width: 720px) {
+  #app .hud-player.panel { width: min(31%, 142px) !important; padding: 3px 5px; gap: 4px; }
+  #app #portrait { width: clamp(19px, 28%, 32px); }
+  #app .hud-player .player-name { font-size: 10px; }
+  #app .hud-player .health-txt { font-size: 9px; }
+  #app .hud-player .track { height: 5px !important; }
+  #app .timer { width: max(25%, 85px) !important; }
+  #app .money { padding: 3px 6px; font-size: 11px; }
+  #app .money-icon { width: 17px !important; height: 17px !important; }
+  #app #pause-btn { width: 35px !important; height: 35px !important; }
+  #app .bottom { left: 24% !important; right: 24% !important; }
+  #app #weapon-slots .slot { display: flex !important; flex-direction: column; min-height: 34px !important; padding: 2px !important; gap: 0; }
+  #app #weapon-slots .slot .ico { width: 22px; height: 22px; }
+  #app #weapon-slots .slot .ico img { width: 20px !important; height: 20px !important; }
+  #app .xp-shell { height: 12px !important; }
+  #app .xp-caption { font-size: 8px !important; }
+}
+@media (orientation: portrait) and (max-width: 700px) {
+  #app:has(> :is(#cards,#evolution):not(.hidden)) { width: 100%; height: 100dvh; aspect-ratio: auto; }
+  #app:has(> :is(#cards,#evolution):not(.hidden)) #hud { visibility: hidden; }
+  #app :is(#cards, #evolution) :is(.cards,.evo-cards) { grid-template-columns: minmax(0,1fr) !important; }
+  #app :is(#cards, #evolution) .skill-card { padding: 8px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #app :is(#cards, #evolution) .skill-card:hover { transform: none !important; }
+}
