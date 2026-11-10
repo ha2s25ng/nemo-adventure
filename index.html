@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.1" />
+</style><meta name="nemo-version" content="5.6.2" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -318,6 +318,7 @@
 <link rel="stylesheet" href="./assets/nemo-v558/menu.css">
 <link rel="stylesheet" href="./assets/interface-v560/game.css">
 <link rel="stylesheet" href="./assets/forest-theme-v561/theme.css">
+<link rel="stylesheet" href="./assets/play-polish-v562/feedback.css">
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
 <div class="hidden" id="hud">
@@ -385,7 +386,7 @@
 <div class="overlay hidden" id="cards"><div class="card-wrap"><p class="folio">모험 중 선택</p><div class="ribbon" id="cards-title">✦ 레벨 업! ✦</div><p class="card-sub">이번 모험에 더할 마법을 고르세요.</p><div class="cards" id="card-options"></div><div class="card-footer"><span id="rerolls">새로고침 2회</span><button class="btn primary" id="reroll">↻ 카드 다시 뽑기</button></div></div></div>
 <div class="overlay hidden" id="evolution"><div class="card-wrap"><p class="folio">마법 성장</p><div class="ribbon" id="evo-title">🌟 최종 진화</div><p class="card-sub">기존 강화를 이어갈 진화 하나를 고르세요.</p><div class="evo-cards" id="evo-options"></div></div></div>
 <div class="overlay hidden" id="pause"><div class="small-board"><p class="folio">모험 중</p><h2>일시 정지</h2><p class="subtitle">준비되면 숲으로 돌아가세요.</p><div class="stack-btns"><button class="btn primary" id="resume">모험 계속하기</button><button class="btn" id="pause-codex">마법 도감</button><button class="btn" id="pause-menu">모험 종료 · 숲 입구</button></div></div></div>
-<div class="overlay hidden" id="result"><div class="big-board"><p class="folio">모험 일지</p><h2 id="result-title">모험 결과</h2><p class="subtitle" id="result-desc"></p><div class="reward" id="result-money"></div><div class="result-grid" id="result-grid"></div><div class="stack-btns" style="max-width:390px;margin:auto"><button class="btn primary" id="retry">✦ 다시 모험하기</button><button class="btn" id="result-menu">🏫 메인 화면 / 마법학교</button><button class="btn nemo-rank-result" id="result-rank-btn">🏆 내 기록 · 전체 랭킹</button></div></div></div>
+<div class="overlay hidden" id="result"><div class="big-board"><p class="folio">모험 일지</p><h2 id="result-title">모험 결과</h2><p class="subtitle" id="result-desc"></p><div class="result-summary"><div><small>생존 시간</small><strong id="result-time">00:00</strong></div><div class="reward"><small>획득 골드</small><strong id="result-money">+0 G</strong></div></div><div class="result-grid" id="result-grid"></div><div class="stack-btns" style="max-width:390px;margin:auto"><button class="btn primary" id="retry">다시 도전</button><button class="btn" id="result-menu">숲 입구로</button><button class="btn nemo-rank-result" id="result-rank-btn">내 기록과 랭킹</button></div></div></div>
 <div class="overlay hidden" id="codex"><div class="codex-board">
 <div class="codex-head"><div><p class="folio">마법 기록</p><h2>니모의 마법 도감</h2><p>14종 마법의 공격 방식·강화·두 가지 최종 진화를 확인할 수 있어.</p></div><button class="btn codex-close" id="codex-back">✕ 닫기</button></div>
 <div class="codex-tabs" id="codex-tabs"></div><div class="codex-details" id="codex-details"></div>
@@ -403,7 +404,7 @@
     <div class="nemo-rank-table-head"><span>순위 / 닉네임</span><span>기록</span><span>결과</span></div><div id="rank-online" class="nemo-rank-list"><p class="nemo-rank-empty">온라인 연결 전입니다. 프로젝트 설정 후 다른 PC의 기록을 볼 수 있어요.</p></div>
     <p class="nemo-rank-foot">개인 기록은 오프라인에서도 저장돼요. 온라인 점수는 브라우저 방식의 테스트 랭킹이므로 완전한 부정행위 방지는 제공하지 않아요.</p></section></div>
 </div></div>
-<div class="overlay hidden" id="settings"><div class="small-board"><p class="folio">게임 옵션</p><h2>설정</h2><div class="settings-line">반짝이 이펙트 <input checked="" id="setting-particles" type="checkbox"/></div><div class="settings-line">피해 숫자 <input checked="" id="setting-numbers" type="checkbox"/></div><div class="settings-line">화면 흔들림 (예비) <input checked="" id="setting-shake" type="checkbox"/></div><p class="hint">테스트 키: F2 디버그 · F3 60초 이동 · F4 경험치 · F5 체력 회복</p><p class="hint">고정 시드: 주소 마지막에 ?seed=1234</p><div class="stack-btns"><button class="btn" id="export-save">저장 데이터 복사</button><button class="btn" id="import-save" onclick="window.__NEMO_IMPORT_PROMPT__()">저장 데이터 가져오기</button><button class="btn primary" id="settings-back">← 돌아가기</button></div></div></div>
+<div class="overlay hidden" id="settings"><div class="small-board"><p class="folio">게임 옵션</p><h2>설정</h2><div class="settings-line">반짝이 이펙트 <input checked="" id="setting-particles" type="checkbox"/></div><div class="settings-line">피해 숫자 <input checked="" id="setting-numbers" type="checkbox"/></div><div class="settings-line">피격 시 화면 흔들림 <input checked="" id="setting-shake" type="checkbox"/></div><p class="hint">테스트 키: F2 디버그 · F3 60초 이동 · F4 경험치 · F5 체력 회복</p><p class="hint">고정 시드: 주소 마지막에 ?seed=1234</p><div class="stack-btns"><button class="btn" id="export-save">저장 데이터 복사</button><button class="btn" id="import-save" onclick="window.__NEMO_IMPORT_PROMPT__()">저장 데이터 가져오기</button><button class="btn primary" id="settings-back">← 돌아가기</button></div></div></div>
 <div class="toast hidden" id="toast"></div><pre class="debug hidden" id="debug"></pre><div aria-label="터치 이동 조이스틱" class="touch-pad hidden" id="touch-pad"><div class="touch-knob" id="touch-knob"></div></div>
 </main><script>'use strict';
 // Values here are the initial design specification, not dynamic difficulty adjustments.
@@ -665,9 +666,14 @@ function persist(){try{localStorage.setItem(DATA.saveKey,JSON.stringify(saved));
 const opts={numbers:true,particles:true,shake:true};
 try{let s=JSON.parse(localStorage.getItem(DATA.saveKey+'_settings')||'null');if(s)Object.assign(opts,s);}catch(e){}
 function saveSettings(){try{localStorage.setItem(DATA.saveKey+'_settings',JSON.stringify(opts));}catch(e){}}
-function setScreen(s){screen=s;for(const id of ['menu','nickname-setup','costume-shop','school','cards','evolution','pause','result','settings','codex','leaderboard'])$(id).classList.toggle('hidden',id!==s);
+let needsDraw=true;
+const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
+function setScreen(s){
+ if(s!=='playing'||screen!=='playing'){keys.clear();clearTouch();}
+ screen=s;needsDraw=true;$('app').dataset.screen=s;
+ if(s==='menu'||s==='result'){toastTimer=0;$('toast').classList.add('hidden');}for(const id of ['menu','nickname-setup','costume-shop','school','cards','evolution','pause','result','settings','codex','leaderboard'])$(id).classList.toggle('hidden',id!==s);
  $('hud').classList.toggle('hidden',!g || s==='menu'||s==='costume-shop'||s==='school'||s==='settings'||s==='codex'||s==='leaderboard');$('touch-pad').classList.toggle('hidden',s!=='playing');}
-let toastTimer=0;function showToast(t){$('toast').textContent=t;$('toast').classList.remove('hidden');toastTimer=2.5;}
+let toastTimer=0;function showToast(t,duration=2.5){$('toast').textContent=t;$('toast').classList.remove('hidden');toastTimer=duration;}
 // One continuous survival mode. Scales every real minute, not by a selected difficulty.
 const difficultyKey='adaptive';
 function forestDanger(t){
@@ -690,7 +696,12 @@ function begin(){rngState=seed;const hp=DATA.player.hp+saved.upgrades.hp*5;
   lastSample:0,magnetCount:0, healTimer:0, camera:{x:50,y:50},worldClock:0};
  g.metrics.aliveByMinute=[];
  saved.stats.plays++;persist();
- g.deco=makeDecor();g.treeDecor=g.deco.filter(d=>d.type==='tree');g.camera=calcCamera();setScreen('playing');showToast('✦ 숲이 조금씩 위험해지는 모험 시작!');updateHUD();
+ g.deco=makeDecor();g.treeDecor=g.deco.filter(d=>d.type==='tree');g.camera=calcCamera();setScreen('playing');
+ const touchControls=matchMedia('(pointer: coarse)').matches;
+ showToast(saved.stats.plays===1
+  ?(touchControls?'조이스틱으로 이동하세요. 마법은 자동으로 시전돼요.':'WASD 또는 방향키로 이동하세요. 마법은 자동으로 시전돼요.')
+  :'숲이 조금씩 깊어집니다.',saved.stats.plays===1?4.5:2);
+ updateHUD();
 }
 function menu(){g=null;setScreen('menu');renderMenu();}
 function resume(){setScreen(pausedFrom||'playing');}
@@ -1297,28 +1308,51 @@ function finish(victory){
  const rate=g.earnedXP?Math.round(100*g.totalXP/g.earnedXP):0;
  $('result-title').textContent='이번 모험의 기록';
  $('result-desc').textContent='숲에서 모은 골드와 생존 기록을 확인하세요.';
- $('result-money').textContent=`🪙 이번 판 +${g.gold.toLocaleString('ko-KR')} 골드`;
+ $('result-time').textContent=fmt(g.t);
+ $('result-money').textContent=`+${g.gold.toLocaleString('ko-KR')} G`;
  const best=Object.entries(g.metrics.weaponDamage).sort((a,b)=>b[1]-a[1])[0];
- const a=[['최종 위험도',difficulty().label],['생존 시간',fmt(g.t)],['레벨','Lv.'+g.player.level],
+ const a=[['최종 위험도',difficulty().label],['레벨','Lv.'+g.player.level],
  ['처치 수',g.totalKills+'마리'],['총 피해',Math.round(g.totalDamage).toLocaleString('ko-KR')],
  ['보석 회수율',rate+'%'],['피격',g.hitCount+'회'],['첫 진화',g.metrics.firstEvolution===null?'없음':fmt(g.metrics.firstEvolution)],
  ['최고 피해 무기',best?W[best[0]].name:'스타 샷']];
  $('result-grid').innerHTML=a.map(([k,v])=>`<div class="result-stat"><small>${k}</small><b>${v}</b></div>`).join('');
  console.info('[NEMO ENDLESS RUN]',JSON.stringify({seed,time:g.t,metrics:g.metrics,gold:g.gold}));updateHUD();
 }
-function updateHUD(){if(!g)return;let p=g.player;
- const rush=g.rushUntil>g.t;
- $('time').textContent=fmt(g.t);
- $('time-note').textContent=rush?'숲의 습격':difficulty().label;
- $('survival-timer').dataset.rush=String(rush);
- $('hp').textContent=`${Math.ceil(p.hp)} / ${Math.ceil(p.maxHp)}`;$('hp-fill').style.width=(p.hp/p.maxHp*100)+'%';$('level').textContent=`Lv.${p.level}`;
- $('gold-hud').textContent=String(g.achievedMinutes*20+g.gold);
- $('xp-fill').style.width=(Math.min(100,p.xp/getLevelNeed()*100))+'%';$('xp-text').textContent=`Lv.${p.level}   ✦   ${Math.floor(p.xp)} / ${getLevelNeed()} XP`;
- $('weapon-slots').innerHTML=Object.entries(g.weapons).map(([id,w])=>`<div class="slot"><span class="ico">${skillIcon(id,W[id].icon)}</span><span class="slot-name">${W[id].name}</span><small>Lv.${w.lv}${w.evo!==null?'★':''}</small></div>`).join('')+
- new Array(Math.max(0,4-Object.keys(g.weapons).length)).fill('<div class="slot slot-empty"><span class="ico" aria-hidden="true">✧</span><small>빈 슬롯</small></div>').join('');
- $('buffs').textContent=[...Object.keys(g.passives).filter(k=>g.passives[k]>0).map(k=>DATA.passives[k][1]+g.passives[k]),...Object.entries(g.blessings||{}).filter(([k,v])=>v>0).map(([k,v])=>({brave:'⭐',breeze:'🍃',gather:'🧲'}[k]+v))].join('   ');
- const boss=false;
- $('boss-hud').classList.toggle('hidden',!boss);if(boss){$('boss-fill').style.width=Math.max(0,g.boss.hp/g.boss.maxHp*100)+'%';$('boss-text').textContent=`${Math.max(0,Math.ceil(g.boss.hp)).toLocaleString('ko-KR')} / ${g.boss.maxHp.toLocaleString('ko-KR')}`;}
+let shownLoadout='';
+function hudText(id,value){
+ const el=$(id);
+ if(el.textContent!==value)el.textContent=value;
+}
+function hudData(el,key,value){
+ const text=String(value);
+ if(el.dataset[key]!==text)el.dataset[key]=text;
+}
+function hudFill(id,ratio){
+ const fill=$(id),width=Math.round(clamp(ratio,0,1)*1000)/10+'%';
+ if(fill.style.width!==width)fill.style.width=width;
+}
+function updateHUD(){
+ if(!g)return;
+ const p=g.player,rush=g.rushUntil>g.t,hpRatio=p.hp/p.maxHp,need=getLevelNeed();
+ hudText('time',fmt(g.t));
+ hudText('time-note',rush?'숲의 습격':difficulty().label);
+ hudData($('survival-timer'),'rush',rush);
+ hudText('hp',`${Math.ceil(p.hp)} / ${Math.ceil(p.maxHp)}`);
+ hudFill('hp-fill',hpRatio);
+ hudData($('portrait').parentElement,'health',hpRatio<=.25?'low':'normal');
+ hudData($('app'),'hit',!reducedMotion.matches&&(p.hurtTimer||0)>.13);
+ hudText('level',`Lv.${p.level}`);
+ hudText('gold-hud',String(g.done?g.gold:g.achievedMinutes*20+g.gold));
+ hudFill('xp-fill',p.xp/need);
+ hudText('xp-text',`Lv.${p.level}   ✦   ${Math.floor(p.xp)} / ${need} XP`);
+ const weapons=Object.entries(g.weapons);
+ const loadout=weapons.map(([id,w])=>`${id}:${w.lv}:${w.evo}`).join('|');
+ if(loadout!==shownLoadout){
+  shownLoadout=loadout;
+  $('weapon-slots').innerHTML=weapons.map(([id,w])=>`<div class="slot"><span class="ico">${skillIcon(id,W[id].icon)}</span><span class="slot-name">${W[id].name}</span><small>Lv.${w.lv}${w.evo!==null?'★':''}</small></div>`).join('')+
+   '<div class="slot slot-empty"><span class="ico" aria-hidden="true">✧</span><small>빈 슬롯</small></div>'.repeat(Math.max(0,4-weapons.length));
+ }
+ hudText('buffs',[...Object.keys(g.passives).filter(k=>g.passives[k]>0).map(k=>DATA.passives[k][1]+g.passives[k]),...Object.entries(g.blessings||{}).filter(([k,v])=>v>0).map(([k,v])=>({brave:'⭐',breeze:'🍃',gather:'🧲'}[k]+v))].join('   '));
 }
 // Cosmetic wardrobe: saved independently from online ranking.
 let shopSelected='default';
@@ -1559,7 +1593,13 @@ function drawOrbit(){let w=g.weapons.orbit;if(!w)return;let p=g.player,n=2+w.up[
  for(let i=0;i<n;i++){let a=(w.angle||0)+i*TAU/n,rr=r*(w.evo===0&&i%2?1.35:1);let x=p.x+Math.cos(a)*rr,y=p.y+Math.sin(a)*rr;if(w.orbitWand){const phase=clamp((g.worldClock-w.orbitBirth)/.48,0,1);x=w.orbitWand.x+(x-w.orbitWand.x)*phase;y=w.orbitWand.y+(y-w.orbitWand.y)*phase;if(phase>=1)w.orbitWand=null;}star(x,y,.40,g.worldClock*4,'#fff3a4','#a36fbb');
   ctx.strokeStyle='#fff8dd';ctx.lineWidth=.03;ctx.beginPath();ctx.arc(x,y,.47,0,TAU);ctx.stroke();
  }ctx.save();ctx.globalAlpha=.32;ctx.strokeStyle='#b78dcf';ctx.lineWidth=.08;ctx.setLineDash([.18,.20]);ctx.beginPath();ctx.arc(p.x,p.y,r,0,TAU);ctx.stroke();ctx.restore();}
-function drawBattle(){if(!g)return;ctx.save();ctx.translate(VW/2-g.camera.x*PPU,VH/2-g.camera.y*PPU);ctx.scale(PPU,PPU);
+function drawBattle(){
+ if(!g)return;
+ const hit=Math.max(0,g.player.hurtTimer||0);
+ const shake=screen==='playing'&&opts.shake&&!reducedMotion.matches?Math.min(5,hit*22):0;
+ ctx.save();
+ ctx.translate(VW/2-g.camera.x*PPU+Math.sin(hit*89)*shake,VH/2-g.camera.y*PPU+Math.cos(hit*74)*shake*.65);
+ ctx.scale(PPU,PPU);
  background();
  for(const z of g.zones)drawZone(z);
  drawWeaponFields();
@@ -1607,19 +1647,38 @@ function draw(){ctx.fillStyle='#c1dfa1';ctx.fillRect(0,0,VW,VH);if(g)drawBattle(
 }
 // --------- controls, fixed-step loop, saved upgrades and debug ---------------
 const keys=new Set(),touch={active:false,x:0,y:0,id:null},pad=$('touch-pad'),knob=$('touch-knob');
-function joystick(e){const rect=pad.getBoundingClientRect(),x=e.clientX-rect.left-rect.width/2,y=e.clientY-rect.top-rect.height/2,L=Math.max(1,len(x,y)),p=Math.min(1,L/(rect.width*.33));touch.x=x/L*p;touch.y=y/L*p;
- knob.style.left=(rect.width/2-23+touch.x*rect.width*.29)+'px';knob.style.top=(rect.height/2-23+touch.y*rect.height*.29)+'px';}
-pad.addEventListener('pointerdown',e=>{e.preventDefault();touch.active=true;touch.id=e.pointerId;pad.setPointerCapture(e.pointerId);joystick(e);});
+function joystick(e){
+ const rect=pad.getBoundingClientRect();
+ const x=e.clientX-rect.left-rect.width/2,y=e.clientY-rect.top-rect.height/2;
+ const magnitude=Math.max(1,len(x,y)),strength=Math.min(1,magnitude/(rect.width*.33));
+ touch.x=x/magnitude*strength;touch.y=y/magnitude*strength;
+ knob.style.left=(50+touch.x*29)+'%';
+ knob.style.top=(50+touch.y*29)+'%';
+}
+pad.addEventListener('pointerdown',e=>{
+ if(screen!=='playing'||touch.active)return;
+ e.preventDefault();
+ touch.active=true;touch.id=e.pointerId;
+ pad.setPointerCapture(e.pointerId);joystick(e);
+});
 pad.addEventListener('pointermove',e=>{if(touch.active&&e.pointerId===touch.id)joystick(e);});
-function clearTouch(){touch.active=false;touch.x=touch.y=0;knob.style.left='42px';knob.style.top='42px';}
-pad.addEventListener('pointerup',clearTouch);pad.addEventListener('pointercancel',clearTouch);
+function clearTouch(e){
+ if(e&&e.pointerId!==touch.id)return;
+ const id=touch.id;
+ touch.active=false;touch.id=null;touch.x=touch.y=0;
+ if(id!==null&&pad.hasPointerCapture(id))pad.releasePointerCapture(id);
+ knob.style.left='50%';knob.style.top='50%';
+}
+for(const event of ['pointerup','pointercancel','lostpointercapture'])pad.addEventListener(event,clearTouch);
 function showDebug(){if(!debug||!g)return;let a=g.metrics.weaponDamage,b=Object.entries(a).sort((x,y)=>y[1]-x[1]).map(([k,v])=>W[k].name+':'+Math.round(v)).join(' ');
  $('debug').textContent=`SEED ${seed} | state ${screen} | FPS ${fps}\ntime ${fmt(g.t)} boss ${fmt(g.bossTime)}\npos ${g.player.x.toFixed(1)},${g.player.y.toFixed(1)}\nHP ${Math.ceil(g.player.hp)}/${Math.ceil(g.player.maxHp)} LV ${g.player.level} XP ${Math.floor(g.player.xp)}\nMob ${g.enemies.length} · Shots ${g.shots.length}/${g.enemyShots.length}\nspawn ${g.spawnCount} skip ${g.metrics.skipped} invalid ${g.metrics.invalidSpawns}\nKills ${g.totalKills} DMG ${Math.round(g.totalDamage)}\nXP ${g.totalXP} / ${g.earnedXP} · cards ${JSON.stringify(g.metrics.cardPicks)}\nFirst evo ${g.metrics.firstEvolution}\nWeapon: ${b}\nF2 on/off · F3 +60s · F4 +5 levels · F5 heal`;
 }
 let frames=0,fps=60,secondTick=0;
 function frame(time){if(!last)last=time;let delta=clamp((time-last)/1000,0,.05);last=time;secondTick+=delta;frames++;if(secondTick>=1){fps=Math.round(frames/secondTick);frames=0;secondTick=0;}
  if(screen==='playing'||screen==='intro'){accumulator+=delta;let n=0;while(accumulator>=1/60&&n++<5){update(1/60);accumulator-=1/60;if(screen!=='playing'&&screen!=='intro'){accumulator=0;break;}}}else accumulator=0;
- menuArtTime+=delta;draw();if(toastTimer>0){toastTimer-=delta;if(toastTimer<=0)$('toast').classList.add('hidden');}
+ menuArtTime+=delta;
+ if(needsDraw||screen==='playing'||screen==='intro'){needsDraw=false;draw();}
+ if(toastTimer>0){toastTimer-=delta;if(toastTimer<=0)$('toast').classList.add('hidden');}
  showDebug();requestAnimationFrame(frame);}
 
 // --------- Shared leaderboard: REST / Supabase publishable key only ---------
@@ -1768,7 +1827,11 @@ async function rankAutoInit(){
   }catch(_){/* Keep local play available if the leaderboard is offline. */}
 }
 
-window.addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();
+window.addEventListener('keydown',e=>{
+ if(e.defaultPrevented||e.isComposing||e.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return;
+ const movement=['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code);
+ if(screen==='playing'&&movement){e.preventDefault();keys.add(e.code);return;}
+ if(e.repeat)return;
  if(e.code==='F2'){debug=!debug;$('debug').classList.toggle('hidden',!debug);return;}
  if(e.code==='F3'&&g&&screen==='playing'){g.debugUsed=true;g.t=Math.min(479.95,g.t+60);g.achievedMinutes=Math.min(8,Math.floor(g.t/60));showToast('디버그: 생존 시간 +60초');return;}
  if(e.code==='F4'&&g&&screen==='playing'){g.debugUsed=true;g.player.xp+=getLevelNeed()*5;maybeCards();return;}
@@ -1778,12 +1841,11 @@ window.addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowLeft','Arr
  if(e.code==='KeyH'&&['menu','playing','pause','intro'].includes(screen)){openCodex();return;}
  if(screen==='codex'&&(e.code==='Escape'||e.code==='KeyH')){closeCodex();return;}
  if(e.code==='Escape'||e.code==='KeyP'){if(screen==='playing'||screen==='intro')pause();else if(screen==='pause')resume();return;}
- if(screen==='playing')keys.add(e.code);
- if(screen==='menu'&&e.code==='Enter')begin();
+ if(screen==='menu'&&e.code==='Enter'&&!e.target?.closest?.('button,a'))$('start').click();
  if(screen==='result'&&e.code==='KeyR')begin();
 });
 window.addEventListener('keyup',e=>keys.delete(e.code));window.addEventListener('blur',()=>{keys.clear();clearTouch();if(screen==='playing'||screen==='intro')pause();});
-document.addEventListener('visibilitychange',()=>{if(document.hidden&&(screen==='playing'||screen==='intro'))pause();});
+document.addEventListener('visibilitychange',()=>{if(document.hidden){keys.clear();clearTouch();pause();}});
 $('codex-btn').onclick=openCodex;$('pause-codex').onclick=openCodex;$('codex-back').onclick=closeCodex;
 $('codex-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-codex]');if(!b)return;currentCodex=b.dataset.codex;renderCodex();});
 $('start').onclick=()=>{if(!nicknameConfirmed())showNicknameSetup('menu');else begin();};$('retry').onclick=begin;$('result-menu').onclick=menu;
@@ -1798,7 +1860,7 @@ $('reroll').onclick=reroll;
 $('card-options').addEventListener('click',e=>{let b=e.target.closest('[data-pick]');if(b)selectCard(Number(b.dataset.pick));});
 $('evo-options').addEventListener('click',e=>{let b=e.target.closest('[data-evo]');if(b)chooseEvo(Number(b.dataset.evo));});
 $('school-upgrades').addEventListener('click',e=>{let b=e.target.closest('[data-upgrade]');if(b)buySchool(b.dataset.upgrade);});
-for(const [id,key] of [['setting-particles','particles'],['setting-numbers','numbers'],['setting-shake','shake']])$(id).addEventListener('change',e=>{opts[key]=e.target.checked;saveSettings();});
+for(const [id,key] of [['setting-particles','particles'],['setting-numbers','numbers'],['setting-shake','shake']])$(id).addEventListener('change',e=>{opts[key]=e.target.checked;needsDraw=true;saveSettings();});
 $('export-save').onclick=()=>{const str=JSON.stringify(saved);navigator.clipboard?.writeText(str).then(()=>showToast('저장 데이터가 복사됐어')).catch(()=>showToast('브라우저가 복사를 제한했어'));};
 if(new URLSearchParams(location.search).has('qa'))window.__NEMO_TEST__={
  getState:()=>g?{direction:g.player.direction,pose:motionPose(g.player),traps:g.traps.length,t:g.t,bossTime:g.bossTime,bossHP:g.boss?.hp||0,level:g.player.level,hp:g.player.hp,enemyCount:g.enemies.length, weaponCount:Object.keys(g.weapons).length, weapons:Object.fromEntries(Object.entries(g.weapons).map(([k,v])=>[k,v.lv])), goldRun:g.gold,metrics:JSON.parse(JSON.stringify(g.metrics))}:{screen,gold:saved.gold},
@@ -1821,13 +1883,14 @@ window.__NEMO_IMPORT_SAVE__=(raw)=>{
   if(!v||typeof v!=='object'||!Number.isInteger(v.version)||!v.upgrades||typeof v.upgrades!=='object'||typeof v.gold!=='number'||v.gold<0||v.gold>99999999)throw Error('지원하지 않는 저장 데이터');
   localStorage.setItem(DATA.saveKey,JSON.stringify(v)); location.reload();
 };
+for(const im of Object.values(sprites))im.addEventListener('load',()=>{needsDraw=true;});
 rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSetup('menu');void rankAutoInit();requestAnimationFrame(frame);
 })();
 </script><script>
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.1';
+  const CURRENT='5.6.2';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';

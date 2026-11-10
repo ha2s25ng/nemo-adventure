@@ -1,0 +1,47 @@
+#app .result-summary {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap: 8px;
+  margin: 12px auto;
+  max-width: 520px;
+}
+#app .result-summary > div {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 4px;
+  padding: 10px;
+  margin: 0;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  background: #e7eee0;
+  color: var(--forest);
+}
+#app .result-summary small { font-size: 11px; }
+#app .result-summary strong {
+  font-size: clamp(18px,3.4vw,30px);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+#app #result-grid { grid-template-columns: repeat(4,minmax(0,1fr)) !important; }
+#app #result .stack-btns { margin-top: 12px !important; }
+#app #result .subtitle { margin-top: 5px; }
+#app .hud-player[data-health="low"] { border-color: #a13d66 !important; }
+#app .hud-player[data-health="low"] .health-txt { color: #8b2c54; }
+#app .hud-player[data-health="low"] .track > i { background: #a13d66 !important; }
+#app[data-screen="playing"][data-hit="true"] #vignette {
+  opacity: .44;
+  background: radial-gradient(ellipse at center,transparent 52%,#8f355c 100%) !important;
+}
+#app #touch-pad {
+  touch-action: none;
+  user-select: none;
+}
+#app #touch-knob {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+@media (orientation: portrait) and (max-width: 700px) {
+  #app #result-grid { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+}
