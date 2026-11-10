@@ -1,5 +1,6 @@
 /* Level-up choices */
 #cards {
+  z-index: 13;
   background: #182e26b8 !important;
   padding: clamp(8px, 2.3vmin, 24px);
 }
@@ -99,7 +100,7 @@
   font-size: 12px;
   font-weight: 800;
 }
-#cards .choice-cta kbd { border: 1px solid #ffffff8c; border-radius: 4px; padding: 0 5px; font: inherit; }
+#cards .choice-cta kbd { border: 1px solid #ffffff8c; border-radius: 4px; padding: 0 5px; background: transparent !important; color: inherit; font: inherit; }
 #cards .choice-footer { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 9px; padding-top: 10px; font-size: 12px; }
 #cards #reroll { min-height: 36px; }
 @media (max-width: 650px) and (orientation: portrait) {
