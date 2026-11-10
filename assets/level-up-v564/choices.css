@@ -1,0 +1,216 @@
+/* The level-up spread uses the same cards for rewards and forest blessings. */
+#cards {
+  z-index: 13;
+  padding: clamp(8px, 2.6vmin, 26px);
+  background: radial-gradient(ellipse at 50% 40%, #253f2d77, #0d1e19e8) !important;
+  backdrop-filter: blur(5px);
+}
+#cards .choice-board {
+  width: min(100%, 960px);
+  max-height: 100%;
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: clamp(12px, 3vmin, 27px);
+  border: 1px solid #b39a62;
+  border-radius: 25px;
+  background: radial-gradient(ellipse at top, #39584a, #1a322c 70%);
+  box-shadow: 0 0 0 3px #192a22, inset 0 0 0 5px #e0c28222, 0 18px 52px #091811a6;
+  color: #fff0d6;
+}
+#cards .choice-heading { padding: 0 0 clamp(12px, 2.5vmin, 22px); text-align: center; }
+#app #cards .choice-heading h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 0;
+  color: #fff0d6 !important;
+  font-family: Georgia, "Batang", serif;
+  font-size: clamp(25px, 5.2vmin, 43px);
+  line-height: 1.1;
+  letter-spacing: .02em;
+  text-shadow: 0 2px #162c24;
+}
+#cards-title::before, #cards-title::after {
+  content: "";
+  width: clamp(22px, 7vw, 80px);
+  height: 8px;
+  background:
+    radial-gradient(circle at center, #e3c690 0 2px, transparent 3px),
+    linear-gradient(90deg, transparent, #c9ab74, transparent) center / 100% 1px no-repeat;
+}
+#cards .choice-heading p { margin: 6px 0 0; color: #e0d5bc; font-size: clamp(12px, 2vmin, 14px); }
+#cards #card-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(9px, 2vmin, 17px);
+  margin: 0 auto;
+}
+#cards #card-options[data-count="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#cards #card-options[data-count="1"] { grid-template-columns: minmax(0, 1fr); }
+#cards .choice-card {
+  --ink: #244c42;
+  --banner: #396d5d;
+  --shadow: #194438;
+  --wash: #e4efe3;
+  --edge: #9cbfac;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(7px, 1.4vmin, 11px);
+  min-width: 0;
+  padding: 0 clamp(10px, 2vmin, 15px) 12px;
+  overflow: hidden;
+  border: 1px solid var(--edge);
+  border-radius: 17px;
+  background: linear-gradient(155deg, #fffaf0, #f4ead6);
+  box-shadow: 0 4px 0 #0b201a, 0 9px 18px #0a1b1466;
+  color: #322e24;
+  text-align: left;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+#cards .choice-card:is([data-kind="growth"],[data-kind="break"],[data-kind="gold"]) {
+  --ink: #633d17; --banner: #976635; --shadow: #563519; --wash: #f7e8c9; --edge: #e2ba78;
+}
+#cards .choice-card:is([data-kind="passive"],[data-kind="evo"],[data-kind="blessing"]) {
+  --ink: #523a69; --banner: #6e5687; --shadow: #48335f; --wash: #eee5f1; --edge: #c2abd4;
+}
+@media (hover: hover) {
+  #cards .choice-card:hover { transform: translateY(-4px); box-shadow: 0 7px 0 #0b201a, 0 12px 22px #0a1b1488; }
+}
+#cards .choice-card:focus-visible, #cards #reroll:focus-visible { outline: 3px solid #ffe5ac; outline-offset: 3px; }
+#cards .choice-identity {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  margin-inline: calc(-1 * clamp(10px, 2vmin, 15px));
+  padding: clamp(9px, 1.8vmin, 15px) 10px 9px;
+  border-bottom: 1px solid var(--edge);
+  background:
+    radial-gradient(ellipse at 50% 4%, #fff5d64d, transparent 75%),
+    repeating-linear-gradient(125deg, #fff8df0d 0 1px, transparent 1px 11px),
+    linear-gradient(145deg, var(--banner), var(--shadow));
+  color: #fff7e4;
+  text-align: center;
+}
+#cards .choice-identity::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid #ffefbf38;
+  border-radius: 12px 12px 3px 3px;
+  pointer-events: none;
+}
+#cards .choice-icon {
+  display: grid;
+  place-items: center;
+  width: clamp(48px, 12vmin, 88px);
+  aspect-ratio: 1;
+  border: 2px solid #e6c58d;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 25%, #fffef0, var(--wash) 72%);
+  box-shadow: 0 0 0 3px #fff3d22e, 0 3px 8px #0004, inset 0 0 0 3px #fffaf0;
+  font-size: 28px;
+}
+#cards .choice-icon img {
+  width: 84% !important;
+  height: 84% !important;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 2px #4c332338);
+}
+#cards .choice-type { display: block; color: #f4ddae; font-size: 11px; font-weight: 800; }
+#cards .choice-name {
+  display: block;
+  font-size: clamp(15px, 3.3vmin, 24px);
+  line-height: 1.22;
+  overflow-wrap: anywhere;
+}
+#cards .choice-effect {
+  display: grid;
+  gap: 2px;
+  padding: 7px 9px;
+  border: 1px solid var(--edge);
+  border-radius: 8px;
+  background: var(--wash);
+  color: var(--ink);
+  font-size: clamp(12px, 2.45vmin, 17px);
+  line-height: 1.3;
+}
+#cards .choice-effect small { font-size: 10px; font-weight: 800; }
+#cards .choice-copy, #cards .choice-growth {
+  color: #4e4b40;
+  font-size: clamp(11px, 2.05vmin, 14px);
+  line-height: 1.43;
+  overflow-wrap: anywhere;
+}
+#cards .choice-growth { font-size: clamp(10px, 1.8vmin, 12px); }
+#cards .choice-growth b { color: var(--ink); }
+#cards .choice-meta {
+  margin-top: auto;
+  padding-top: 6px;
+  border-top: 1px solid #b9a98780;
+  color: #575244;
+  font-size: clamp(10px, 1.8vmin, 13px);
+  line-height: 1.3;
+}
+#cards .choice-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 36px;
+  padding: 4px 10px;
+  border: 1px solid var(--shadow);
+  border-radius: 8px;
+  background: linear-gradient(180deg, var(--banner), var(--shadow));
+  box-shadow: inset 0 1px #fff5d54d;
+  color: #fffaf0;
+  font-size: 13px;
+  font-weight: 800;
+}
+#cards .choice-cta kbd {
+  border: 1px solid #fff4cbb3;
+  border-radius: 5px;
+  padding: 1px 6px;
+  background: #10171040 !important;
+  color: inherit;
+  font: inherit;
+}
+#cards .choice-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 13px;
+  color: #e6d6b6;
+  font-size: 12px;
+}
+#app #cards #reroll {
+  min-height: 36px;
+  border: 1px solid #d4b881 !important;
+  background: #e5cc97 !important;
+  color: #25392e !important;
+  box-shadow: 0 2px #112720 !important;
+}
+@media (max-width: 650px) and (orientation: portrait) {
+  #cards #card-options[data-count] { grid-template-columns: minmax(0, 1fr); max-width: none; }
+  #cards .choice-identity {
+    grid-template-columns: auto minmax(0, 1fr);
+    justify-items: start;
+    align-items: center;
+    gap: 12px;
+    padding-inline: 14px;
+    text-align: left;
+  }
+  #cards .choice-cta, #app #cards #reroll { min-height: 44px; }
+}
+@media (max-height: 430px) and (orientation: landscape) {
+  #cards .choice-board { padding: 10px; }
+  #cards .choice-heading { padding-bottom: 9px; }
+  #cards .choice-card { gap: 6px; padding-bottom: 8px; }
+  #cards .choice-identity { grid-template-columns: auto minmax(0, 1fr); text-align: left; align-items: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #cards .choice-card { transition: none; }
+  #cards .choice-card:hover { transform: none; }
+}
