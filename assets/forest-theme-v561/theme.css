@@ -1,0 +1,200 @@
+:root {
+  background: #263832;
+}
+body {
+  background: radial-gradient(ellipse at top, #56684e, #263832 74%);
+}
+#app {
+  --game-ink: #3f3048;
+  --game-muted: #67596c;
+  --game-plum: #755f83;
+  --game-paper: #faf3e4;
+  --game-lilac: #eee5f1;
+  --game-line: #c9b7cb;
+  --game-shadow: 0 2px 0 #48334b53, 0 8px 24px #33253628;
+  --forest: #263e37;
+  --leaf: #48634f;
+  --gold: #e6c781;
+  --rule: #d8cbb7;
+  --heading: "AppleMyungjo", "Batang", "Noto Serif CJK KR", Georgia, serif;
+  color: var(--game-ink);
+  border-color: #887593;
+}
+#app .overlay,
+#app #menu,
+#app :is(#cards,#evolution) {
+  background: #233632a8 !important;
+  backdrop-filter: blur(4px);
+}
+#app :is(.menu-board,.nemo-name-board,.nemo-shop-board,.nemo-leaderboard-board,.big-board,.small-board,.codex-board),
+#app #menu .menu-board,
+#app :is(#cards,#evolution) .card-wrap {
+  color: var(--game-ink);
+  background: radial-gradient(ellipse at top left,#fffaf0,transparent 70%), var(--game-paper) !important;
+  border: 1px solid var(--game-plum) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 0 0 1px #fff8e766, 0 6px #33263b, 0 22px 58px #18292580 !important;
+  overscroll-behavior: contain;
+}
+#app :is(.menu-board,.big-board,.small-board,.codex-board,.card-wrap)::before,
+#app :is(.menu-board,.big-board,.small-board,.codex-board,.card-wrap)::after {
+  display: none !important;
+}
+#app :is(.small-board,.big-board) { max-height: 92%; overflow: auto; }
+#app .overlay :is(h2,h3),
+#app :is(#cards,#evolution) .ribbon {
+  color: var(--game-ink) !important;
+  text-shadow: none !important;
+}
+#app .overlay h2, #app .folio-title, #app :is(#cards,#evolution) .ribbon {
+  font-family: var(--heading);
+  letter-spacing: -.035em;
+  font-weight: 800;
+}
+#app .overlay h2 { font-size: clamp(20px, 3vw, 36px) !important; }
+#app .folio, #app .menu-kicker {
+  display: block !important;
+  color: var(--leaf) !important;
+  font-size: 10px !important;
+  font-weight: 800;
+  letter-spacing: .14em;
+  line-height: 1.35;
+  text-shadow: none !important;
+}
+#app .folio { margin: 0 0 5px; }
+#app .overlay :is(.subtitle,.card-sub,.shop-hint,.nemo-name-help,.nemo-rank-foot,.school-desc) {
+  color: var(--game-muted) !important;
+  text-shadow: none !important;
+}
+#app .overlay .btn {
+  min-height: 37px;
+  border: 1px solid var(--game-plum) !important;
+  border-radius: 10px !important;
+  background: #fff9ec !important;
+  color: var(--game-ink) !important;
+  box-shadow: 0 2px #cbb8ce !important;
+  text-shadow: none !important;
+  line-height: 1.25;
+  word-break: keep-all;
+}
+#app .overlay .btn:hover:not(:disabled) { background: var(--game-lilac) !important; }
+#app .overlay .btn.primary,
+#app #menu .buttons #start {
+  color: #fff9e8 !important;
+  background: var(--forest) !important;
+  border-color: #355648 !important;
+  box-shadow: 0 2px #21362e !important;
+}
+#app .overlay .btn.primary:hover:not(:disabled),
+#app #menu .buttons #start:hover { background: var(--leaf) !important; }
+#app .overlay .btn:disabled { opacity: .54; }
+#app :is(button,input,select):focus-visible { outline: 2px solid #704e90; outline-offset: 3px; }
+#app .overlay input:not([type="checkbox"]) {
+  color: var(--game-ink);
+  background: #fffbf3;
+  border: 1px solid var(--game-plum);
+  border-radius: 9px;
+}
+#app .overlay input[type="checkbox"] { accent-color: var(--forest); }
+#app #menu .menu-board { gap: clamp(16px, 3vw, 36px); }
+#app #menu .folio-title {
+  display: block !important;
+  margin: 4px 0 13px;
+  color: var(--game-ink);
+  font-size: clamp(33px,5vw,70px) !important;
+  line-height: 1.04;
+  text-shadow: none !important;
+}
+#app #menu .folio-title::before,
+#app #menu .folio-title::after { content: none; }
+#app #menu .menu-intro { color: var(--game-muted); }
+#app :is(.menu-money,#shop-wallet,.reward) {
+  border: 1px solid #c5a363 !important;
+  border-radius: 8px !important;
+  background: #f4e6c3 !important;
+  color: #654c24 !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+}
+#app #menu .menu-art {
+  border: 1px solid #92a98b;
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse at 50% 38%, #fbf3cd 0%, #e3e9c8 45%, #a7b99d 100%);
+  box-shadow: inset 0 0 0 5px #f3f3db80;
+}
+#app #menu .menu-art::before { color: #725c81; }
+#app #menu .menu-art::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 71%;
+  aspect-ratio: 1;
+  border: 1px solid #fffef2a3;
+  border-radius: 50%;
+}
+#app :is(.nemo-shop-header,.codex-head,.nemo-rank-top) {
+  border-bottom: 1px solid var(--rule) !important;
+  padding-bottom: 10px !important;
+}
+#app :is(.nemo-shop-feature,.nemo-shop-item,.school-row,.settings-line,#result-grid .result-stat,.codex-details,.nemo-rank-left,.nemo-rank-right,.nemo-rank-local) {
+  color: var(--game-ink);
+  background: #fffaf0 !important;
+  border: 1px solid var(--rule) !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+#app .nemo-shop-feature {
+  background: radial-gradient(ellipse at 50% 25%,#fff4d1,transparent 64%),#fffaf0 !important;
+}
+#app #costume-shop .nemo-shop-item[aria-pressed="true"] {
+  background: var(--game-lilac) !important;
+  border-color: var(--game-plum) !important;
+}
+#app .nemo-shop-item.equipped small { background: #e2ebd8; color: #355544 !important; }
+#app :is(.codex-tab,.codex-emblem,.codex-section,.nemo-rank-table-head,.nemo-rank-row) {
+  border-color: var(--game-line) !important;
+  background: var(--game-lilac) !important;
+  box-shadow: none !important;
+  color: var(--game-ink);
+}
+#app .codex-tab.on {
+  background: #dde8d9 !important;
+  border-color: #718e73 !important;
+  color: var(--forest) !important;
+}
+#app .codex-tab { border-width: 1px !important; }
+#app #result-grid .result-stat small { color: var(--game-muted) !important; }
+#app #result-grid .result-stat b { color: var(--forest) !important; }
+#app :is(#cards,#evolution) .skill-card { background: #fffbf2 !important; }
+#app :is(#cards,#evolution) .card-select-label {
+  color: var(--forest) !important;
+  background: #e4ecd9 !important;
+  border-color: #a6b69a !important;
+}
+#app :is(.hud-player.panel,.timer,.money,#pause-btn,#weapon-slots .slot,.xp-shell) {
+  background: #faf3e4f5 !important;
+  border-color: var(--game-plum) !important;
+  color: var(--game-ink) !important;
+}
+#app .timer[data-rush="true"] { background: #fff0f1 !important; border-color: #a54e75 !important; }
+#app .xp-fill { background: var(--gold) !important; }
+#app #toast {
+  background: var(--forest) !important;
+  color: #fff9e8 !important;
+  border: 1px solid #8f9d77 !important;
+  box-shadow: var(--game-shadow) !important;
+}
+@media (orientation: portrait) and (max-width: 700px) {
+  #app:has(> :is(#pause,#result):not(.hidden)) { width: 100%; height: 100dvh; aspect-ratio: auto; }
+  #app:has(> :is(#pause,#result):not(.hidden)) #hud { visibility: hidden; }
+  #app #menu .folio-title { font-size: clamp(34px,9vw,52px) !important; }
+  #app :is(.nemo-shop-header,.codex-head,.nemo-rank-top) { gap: 8px; flex-wrap: wrap; }
+  #app .codex-tabs { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+  #app .nemo-rank-layout { grid-template-columns: minmax(0,1fr); }
+  #app .result-grid { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+  #app .overlay .btn { min-height: 42px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #app .overlay :is(.btn,.skill-card,.nemo-shop-item):hover { transform: none !important; }
+}
