@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.5.8" />
+</style><meta name="nemo-version" content="5.5.9" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -488,48 +488,26 @@ for(const id of weaponKeys){
 }
 ASSET_DATA.ui_magic='./assets/polish-v554/magic-wand.webp';
 const sprites={};Object.keys(ASSET_DATA).forEach(k=>{let im=new Image();im.src=ASSET_DATA[k];sprites[k]=im;});
-const COSTUMES=[{"id":"default","name":"기본 니모","price":0,"desc":"처음부터 함께하는 니모. 빨간 목도리와 별빛 마법봉.","icon":"🐾","atlas":"./assets/v550/nemo_default_32.webp","portrait":"./assets/nemo-polish/default-portrait.webp"},{"id":"forest","name":"숲속 탐험가","price":250,"desc":"초록 모자와 탐험가 복장으로 숲을 누벼요.","icon":"🌿","atlas":"./assets/nemo-approved-forest-directions.webp","portrait":"./assets/polish-v554/nemo_costume_forest.webp"},{"id":"rain","name":"노란 우비","price":450,"desc":"노란 우비와 후드로 빗방울도 두렵지 않아요.","icon":"🌧️","atlas":"./assets/nemo-approved-rain-directions.webp","portrait":"./assets/polish-v554/nemo_costume_rain.webp"},{"id":"student","name":"마법학교 학생","price":750,"desc":"반짝이는 모자를 쓴 견습 멍법사.","icon":"🎓","atlas":"./assets/nemo-approved-student-directions.webp","portrait":"./assets/polish-v554/nemo_costume_student.webp"},{"id":"starlight","name":"별빛 마법사","price":1100,"desc":"보랏빛 로브와 별무늬 마법 모자.","icon":"✨","atlas":"./assets/nemo-approved-starlight-directions.webp","portrait":"./assets/polish-v554/nemo_costume_starlight.webp"},{"id":"royal","name":"왕관 니모","price":1600,"desc":"왕관과 붉은 망토로 숲의 주인공이 돼요.","icon":"👑","atlas":"./assets/nemo-approved-royal-directions.webp","portrait":"./assets/polish-v554/nemo_costume_royal.webp"},{"id":"legend","name":"전설의 멍법사","price":2400,"desc":"환상적인 은은한 오라가 감도는 전설의 의상.","icon":"🌟","atlas":"./assets/nemo-approved-legend-directions.webp","portrait":"./assets/polish-v554/nemo_costume_legend.webp"}];
+const COSTUMES=[{"id":"default","name":"기본 니모","price":0,"desc":"처음부터 함께하는 니모. 빨간 목도리와 별빛 마법봉.","icon":"🐾","atlas":"./assets/nemo-walk-v559/default.webp","portrait":"./assets/nemo-polish/default-portrait.webp"},{"id":"forest","name":"숲속 탐험가","price":250,"desc":"초록 모자와 탐험가 복장으로 숲을 누벼요.","icon":"🌿","atlas":"./assets/nemo-walk-v559/forest.webp","portrait":"./assets/polish-v554/nemo_costume_forest.webp"},{"id":"rain","name":"노란 우비","price":450,"desc":"노란 우비와 후드로 빗방울도 두렵지 않아요.","icon":"🌧️","atlas":"./assets/nemo-walk-v559/rain.webp","portrait":"./assets/polish-v554/nemo_costume_rain.webp"},{"id":"student","name":"마법학교 학생","price":750,"desc":"반짝이는 모자를 쓴 견습 멍법사.","icon":"🎓","atlas":"./assets/nemo-walk-v559/student.webp","portrait":"./assets/polish-v554/nemo_costume_student.webp"},{"id":"starlight","name":"별빛 마법사","price":1100,"desc":"보랏빛 로브와 별무늬 마법 모자.","icon":"✨","atlas":"./assets/nemo-walk-v559/starlight.webp","portrait":"./assets/polish-v554/nemo_costume_starlight.webp"},{"id":"royal","name":"왕관 니모","price":1600,"desc":"왕관과 붉은 망토로 숲의 주인공이 돼요.","icon":"👑","atlas":"./assets/nemo-walk-v559/royal.webp","portrait":"./assets/polish-v554/nemo_costume_royal.webp"},{"id":"legend","name":"전설의 멍법사","price":2400,"desc":"환상적인 은은한 오라가 감도는 전설의 의상.","icon":"🌟","atlas":"./assets/nemo-walk-v559/legend.webp","portrait":"./assets/polish-v554/nemo_costume_legend.webp"}];
 const costumeAtlases={};
 for(const item of COSTUMES){const img=new Image();img.src=item.atlas;costumeAtlases[item.id]=img;}
 
-// Hand-painted 8-direction atlas, with idle, two footsteps and cast rows.
-const NEMO_FRAME=160,NEMO_SIZE=2.68,NEMO_Y=-.61,NEMO_CAST=.34;
-const NEMO_STRIDE=.66,NEMO_FOOT_Y=(153/NEMO_FRAME-.5)*NEMO_SIZE;
-const NEMO_COSTUME_COLUMNS={'down':0,'up':1,'right':2,'left':3,
- 'down-right':4,'down-left':5,'up-right':6,'up-left':7};
-function faceFromAngle(a){const dirs=['right','down-right','down','down-left','left','up-left','up','up-right'];return dirs[(Math.round(a/(Math.PI/4)+8)%8)];} 
+// Four painted gait poses per view: front, three-quarter and back.
+const NEMO_SIZE=2.68,NEMO_Y=-.61,NEMO_CAST=.34,NEMO_STRIDE=.66;
+const NEMO_WALK_FRAME=96,NEMO_WALK_FEET=89;
+const NEMO_FOOT_Y=(153/160-.5)*NEMO_SIZE;
+const NEMO_WALK_PIVOT=(NEMO_WALK_FEET/NEMO_WALK_FRAME-.5)*NEMO_SIZE;
+function faceFromAngle(a){const dirs=['right','down-right','down','down-left','left','up-left','up','up-right'];return dirs[(Math.round(a/(Math.PI/4)+8)%8)];}
 function motionPose(p){
  const casting=p.castTimer>0,walking=!!p.moving;
  const dir=walking?p.direction:(casting?p.castFacing:p.direction);
  const step=p.stepDistance/NEMO_STRIDE;
- const gaitFrame=Math.floor(step*4)%8;
- const row=walking?NEMO_WALK_ROWS[gaitFrame]:casting?3:0;
- return {row,col:NEMO_COSTUME_COLUMNS[dir]??0,gaitFrame,casting,dir,walking,phase:step*Math.PI};
+ const frame=walking?Math.floor(step*2)%4:1;
+ return {row:walking?[1,0,2,0][frame]:casting?3:0,frame,casting,castProgress:1-p.castTimer/NEMO_CAST,dir,walking,phase:step*Math.PI};
 }
-// Passing poses separate the painted left and right steps.
-const NEMO_WALK_ROWS=[0,1,1,1,0,2,2,2];
-const NEMO_PAW_LIFT=[0,3,6,3,0,-3,-6,-3];
-const costumeSteps=new WeakMap();
-function costumeStep(im,col,phase){
- const liftAmount=NEMO_PAW_LIFT[phase];
- if(liftAmount===0)return null;
- let poses=costumeSteps.get(im);
- if(!poses){poses=new Map();costumeSteps.set(im,poses);}
- const key=col*5+(liftAmount+6)/3;
- if(poses.has(key))return poses.get(key);
- const size=NEMO_FRAME,legTop=124;
- const tile=document.createElement('canvas');
- tile.width=tile.height=size;
- const paint=tile.getContext('2d');
- paint.drawImage(im,col*size,0,size,legTop,0,0,size,legTop);
- // Lift one paw at a time, tapering across the center and leaving the costume above it intact.
- for(let x=0;x<size;x++){
-  const side=Math.max(-1,Math.min(1,(x-size/2)/13));
-  const lift=Math.max(0,liftAmount*side);
-  paint.drawImage(im,col*size+x,legTop,1,size-legTop,x,legTop,1,size-legTop-lift);
- }
- poses.set(key,tile);
- return tile;
+function nemoWalkView(q){
+ const row=q.dir.startsWith('up')?2:q.dir==='down'?0:1;
+ return {row,flip:q.dir.includes('left')?-1:1};
 }
 const NEMO_PAINTED_FRAME=160;
 const NEMO_PAINTED_COLUMNS={
@@ -545,10 +523,8 @@ const NEMO_PAINTED_WAND_TIPS=[
 ];
 function nemoAtlas(){
  const costume=costumeAtlases[saved.costumeEquipped];
- return costume?.naturalWidth?costume:sprites.nemoAnim;
-}
-function isPaintedNemo(im){
- return im?.naturalWidth===NEMO_PAINTED_FRAME*8 && im?.naturalHeight===NEMO_PAINTED_FRAME*4;
+ return costume?.complete&&costume.naturalWidth===NEMO_WALK_FRAME*4&&
+        costume.naturalHeight===NEMO_WALK_FRAME*3?costume:sprites.nemoAnim;
 }
 function paintedWandTip(q){
  const col=NEMO_PAINTED_COLUMNS[q.dir]??NEMO_PAINTED_COLUMNS.down;
@@ -556,88 +532,59 @@ function paintedWandTip(q){
  return {x:(x/NEMO_PAINTED_FRAME-.5)*NEMO_SIZE,
          y:(y/NEMO_PAINTED_FRAME-.5)*NEMO_SIZE};
 }
-function nemoBodyTransform(p,q,painted){
- const stride=(p.gait||0)*(painted?.45:.62);
+function nemoBodyTransform(p,q,legacy){
+ const stride=(p.gait||0)*(legacy?.45:.28);
  const hurt=Math.min(1,(p.hurtTimer||0)/.24);
- const scaleX=1+.07*hurt-.025*stride,scaleY=1-.06*hurt+.032*stride;
- const lean=q.walking?Math.sin(q.phase)*.024*(painted?.6:1):0;
+ const scaleX=1+.07*hurt-.018*stride,scaleY=1-.06*hurt+.025*stride;
+ const lean=q.walking?Math.sin(q.phase)*.016:0;
  const footY=p.y+NEMO_Y+NEMO_FOOT_Y;
- return {scaleX,scaleY,lean,footY};
+ return {scaleX,scaleY,lean,footY,pivot:legacy?NEMO_FOOT_Y:NEMO_WALK_PIVOT};
 }
-// The gameplay projectile's origin uses the same source-frame wand-tip coordinates
-// and the same animation transform as the rendered dog. Never spawn spells at the torso.
-// Hand-painted wand artwork with one stable grip pivot. Directions are relative
-// to Nemo's pose so the wand never pivots around the head or floats above the paw.
-// Painted wand pivot is fixed at the character's actual right/left forepaw,
-// NOT the torso. Values are world-space coordinates in the 160px pose tile.
 const NEMO_WAND_ART={width:.644,height:.94,gripX:24/149,gripY:169/200,starX:111/149,starY:36/200};
-const NEMO_WAND_DIRECTIONS={
-  'down':       {x:.39,y:.54,side: 1,angle:.10},
-  'up':         {x:.40,y:.52,side: 1,angle:.29},
-  'right':      {x:.38,y:.55,side: 1,angle:.52},
-  'left':       {x:-.38,y:.55,side:-1,angle:-.52},
-  'down-right': {x:.40,y:.56,side: 1,angle:.37},
-  'down-left':  {x:-.40,y:.56,side:-1,angle:-.37},
-  'up-right':   {x:.40,y:.57,side: 1,angle:.43},
-  'up-left':    {x:-.40,y:.57,side:-1,angle:-.43}
+// Grip centers in normalized frame pixels, in front, three-quarter and rear order.
+const NEMO_GRIPS={
+ default:[[63,63],[70,62],[64,59]],
+ forest:[[39,63],[67,63],[66,59]],
+ rain:[[65,60],[69,60],[65,59]],
+ student:[[65,69],[68,68],[66,66]],
+ starlight:[[67,70],[70,68],[69,68]],
+ royal:[[67,70],[72,68],[70,67]],
+ legend:[[66,69],[70,68],[69,67]]
 };
-function nemoWandPose(q){
- const base=NEMO_WAND_DIRECTIONS[q.dir]||NEMO_WAND_DIRECTIONS.down;
- const flick=q.casting?-.18*base.side:0;
- const walkSwing=q.walking?.025*Math.sin(q.phase):0;
- return {x:base.x,y:base.y+walkSwing,side:base.side,angle:base.angle+flick};
+function nemoWandPose(q,view){
+ const grips=NEMO_GRIPS[saved.costumeEquipped]||NEMO_GRIPS.default;
+ const [x,y]=grips[view.row],side=x<NEMO_WALK_FRAME/2?-1:1;
+ const flick=q.casting?.29*Math.sin(Math.PI*Math.min(1,q.castProgress??0)):0;
+ return {x:(x/NEMO_WALK_FRAME-.5)*NEMO_SIZE,y:(y/NEMO_WALK_FRAME-.5)*NEMO_SIZE,
+         side,angle:side*(.27+flick)};
 }
-function nemoWandTip(q){
- const v=nemoWandPose(q),art=NEMO_WAND_ART;
+function nemoWandTip(v){
+ const art=NEMO_WAND_ART;
  const dx=(art.starX-art.gripX)*art.width*v.side;
  const dy=(art.starY-art.gripY)*art.height;
- const ct=Math.cos(v.angle),st=Math.sin(v.angle);
- return {x:v.x+ct*dx-st*dy,y:v.y+st*dx+ct*dy};
+ const c=Math.cos(v.angle),sn=Math.sin(v.angle);
+ return {x:v.x+c*dx-sn*dy,y:v.y+sn*dx+c*dy};
 }
 function wandOrigin(p){
- const q=motionPose(p);
- const painted=isPaintedNemo(nemoAtlas());
- const tip=painted?paintedWandTip(q):nemoWandTip(q);
- const body=nemoBodyTransform(p,q,painted);
- const x=tip.x*body.scaleX,y=(tip.y-NEMO_FOOT_Y)*body.scaleY;
+ const q=motionPose(p),legacy=nemoAtlas()===sprites.nemoAnim;
+ const view=nemoWalkView(q);
+ const tip=legacy?paintedWandTip(q):nemoWandTip(nemoWandPose(q,view));
+ const body=nemoBodyTransform(p,q,legacy);
+ const x=tip.x*body.scaleX*(legacy?1:view.flip),y=(tip.y-body.pivot)*body.scaleY;
  const c=Math.cos(body.lean),sn=Math.sin(body.lean);
  return {x:p.x+x*c-y*sn,y:body.footY+x*sn+y*c};
 }
-function drawNemoWand(q,p){
+function drawNemoWand(v){
  const img=sprites.nemoWand;
  if(!img?.complete||!img.naturalWidth)return;
- const v=nemoWandPose(q),art=NEMO_WAND_ART,tip=nemoWandTip(q);
+ const art=NEMO_WAND_ART;
  ctx.save();
  ctx.translate(v.x,v.y);
  ctx.rotate(v.angle);
  ctx.scale(v.side,1);
  ctx.drawImage(img,-art.gripX*art.width,-art.gripY*art.height,art.width,art.height);
  ctx.restore();
- if(q.casting){
-   ctx.save();
-   ctx.globalAlpha=.52;
-   ellipse(tip.x,tip.y,.16,.16,'#fff2b0',.4);
-   ctx.restore();
- }
 }
-// The forepaw is painted over the handle, hiding its bottom and making the
-// grip visually continuous instead of leaving a floating staff by the ear.
-function drawNemoGrip(q){
- const img=sprites.nemoWand;
- if(!img?.complete||!img.naturalWidth)return;
- const v=nemoWandPose(q);
- ctx.save();ctx.translate(v.x,v.y);
- ctx.lineJoin='round';
- ctx.fillStyle='#fff0d9';ctx.strokeStyle='#6f4977';ctx.lineWidth=.052;
- ctx.beginPath();ctx.ellipse(0,.012,.125,.135,-.2,0,Math.PI*2);
- ctx.fill();ctx.stroke();
- ctx.strokeStyle='#d7ab9b';ctx.lineWidth=.017;
- ctx.beginPath();ctx.moveTo(-.045,.055);ctx.quadraticCurveTo(0,.085,.055,.045);ctx.stroke();
- ctx.restore();
-}
-// Separate lower-leg bands allow opposing footsteps without cropping the
-// approved watercolor head, ears, scarf, bag or tail.
-// Drawn animation frames replace the former per-pixel leg slicing.
 function castFromWand(p,a){p.castTimer=NEMO_CAST;p.castFacing=faceFromAngle(a);p.castAngle=a;const origin=wandOrigin(p);g.effects.push({kind:'wandGlow',x:origin.x,y:origin.y,life:.23,max:.23});return origin;}
 function wandLink(from,to,color='#fff1b4'){g.effects.push({kind:'wandLink',x:from.x,y:from.y,ex:to.x,ey:to.y,color,life:.28,max:.28});}
 
@@ -1519,30 +1466,24 @@ function drawPlayer(p){
  const flash=p.invuln>0&&Math.floor(p.invuln*13)%2===0?.53:1;
  const im=nemoAtlas();
  if(im?.complete && im.naturalWidth){
-   const painted=isPaintedNemo(im),body=nemoBodyTransform(p,q,painted);
+   const legacy=im===sprites.nemoAnim,body=nemoBodyTransform(p,q,legacy),view=nemoWalkView(q);
    ctx.save();
    ctx.translate(p.x,body.footY);
    ctx.rotate(body.lean);
-   ctx.scale(body.scaleX,body.scaleY);
-   ctx.translate(0,-NEMO_FOOT_Y);
+   ctx.scale(body.scaleX*(legacy?1:view.flip),body.scaleY);
+   ctx.translate(0,-body.pivot);
    ctx.globalAlpha=flash;
    ctx.imageSmoothingEnabled=true;
    ctx.imageSmoothingQuality='high';
-   if(painted){
+   if(legacy){
      const col=NEMO_PAINTED_COLUMNS[q.dir]??NEMO_PAINTED_COLUMNS.down;
-     const row=Math.max(0,Math.min(3,q.row));
      const F=NEMO_PAINTED_FRAME;
-     ctx.drawImage(im,col*F,row*F,F,F,-NEMO_SIZE/2,-NEMO_SIZE/2,NEMO_SIZE,NEMO_SIZE);
-     // This artwork already includes the wand held by Nemo's paw.
-     // Never draw a duplicate wand or an artificial circle over the grip.
+     ctx.drawImage(im,col*F,q.row*F,F,F,-NEMO_SIZE/2,-NEMO_SIZE/2,NEMO_SIZE,NEMO_SIZE);
    }else{
-     const col=Math.max(0,Math.min(Math.floor(im.naturalWidth/NEMO_FRAME)-1,q.col));
-     const back=q.dir==='up'||q.dir.startsWith('up-');
-     if(back)drawNemoWand(q,p);
-     const step=q.walking?costumeStep(im,col,q.gaitFrame):null;
-     ctx.drawImage(step||im,step?0:col*NEMO_FRAME,0,NEMO_FRAME,NEMO_FRAME,
-                   -NEMO_SIZE/2,-NEMO_SIZE/2,NEMO_SIZE,NEMO_SIZE);
-     if(!back){drawNemoWand(q,p);drawNemoGrip(q);}
+     const F=NEMO_WALK_FRAME;
+     // The painted paw and sleeve cover the handle naturally.
+     drawNemoWand(nemoWandPose(q,view));
+     ctx.drawImage(im,q.frame*F,view.row*F,F,F,-NEMO_SIZE/2,-NEMO_SIZE/2,NEMO_SIZE,NEMO_SIZE);
    }
    ctx.restore();
  }else imageSprite('nemo',p.x,p.y-.31,2.5,2.35,p.face,flash);
@@ -1882,7 +1823,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.5.8';
+  const CURRENT='5.5.9';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
