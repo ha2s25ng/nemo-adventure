@@ -1,0 +1,113 @@
+/* Compact HUD plates and a distinct profile control in the lobby. */
+#app #hud {
+  --hud-edge: #342631;
+  --hud-paper: #fffdf5;
+  --hud-text: #252333;
+  --hud-blue: #185789;
+  --hud-radius: 13px;
+  color: var(--hud-text);
+}
+#app #hud :is(.hud-player,.timer,.money,#pause-btn,.hud-xp) {
+  border: 2px solid var(--hud-edge) !important;
+  border-radius: var(--hud-radius) !important;
+  background: var(--hud-paper) !important;
+  box-shadow: 0 2px var(--hud-edge) !important;
+}
+#app #hud .hud-player {
+  width: clamp(126px, 19%, 223px) !important;
+  padding: clamp(4px, .7vw, 9px);
+  gap: clamp(5px, .7vw, 9px);
+}
+#app #hud #portrait {
+  width: clamp(31px, 25%, 53px);
+  flex: 0 0 auto;
+  padding: 1px;
+  border: 2px solid #695285;
+  background: #f3e7ff;
+}
+#app #hud .hud-player .stats { display: grid; gap: 3px; }
+#app #hud .player-name { display: flex; justify-content: space-between; align-items: center; gap: 4px; color: var(--hud-text); line-height: 1.15; }
+#app #hud #level {
+  padding: 2px 5px;
+  border-radius: 5px;
+  background: #e6f1ff;
+  color: var(--hud-blue);
+  font-size: .82em;
+  white-space: nowrap;
+}
+#app #hud .hud-health { display: flex; justify-content: space-between; align-items: baseline; color: #62445b; font-size: clamp(9px,.95vw,12px); line-height: 1; }
+#app #hud .health-txt { color: var(--hud-text); font-size: inherit; }
+#app #hud .hud-player .track { height: 7px !important; background: #f0d9e1 !important; }
+#app #hud .hud-player .track > i { background: linear-gradient(90deg,#b33b68,#e1718f) !important; }
+#app #hud .hud-right { display: flex; align-items: stretch; gap: 6px; }
+#app #hud .money { min-width: 53px; justify-content: center; gap: 5px; background: #fff0ba !important; color: #4e3514 !important; }
+#app #hud #pause-btn { width: clamp(30px,4vw,42px) !important; height: clamp(30px,4vw,42px) !important; display: grid; place-items: center; }
+#app .pause-bars { display: block; width: 11px; height: 14px; border-inline: 3px solid var(--hud-text); border-radius: 1px; }
+#app #hud .bottom { left: 50% !important; right: auto !important; width: min(56%, 650px); transform: translateX(-50%); gap: 6px !important; }
+#app #hud #weapon-slots .slot {
+  grid-template-columns: auto minmax(0,1fr) !important;
+  grid-template-rows: 1fr;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px !important;
+  padding: 4px 7px !important;
+  border: 2px solid var(--hud-edge) !important;
+  border-radius: 10px !important;
+  background: var(--hud-paper) !important;
+  box-shadow: 0 2px var(--hud-edge) !important;
+  color: var(--hud-text);
+}
+#app #hud #weapon-slots .slot .ico { display: grid; place-items: center; background: #f5ebff; }
+#app #hud #weapon-slots .slot-info { display: grid; min-width: 0; gap: 2px; font-size: clamp(10px,1vw,14px); line-height: 1.05; }
+#app #hud #weapon-slots .slot small { font-size: clamp(9px,.85vw,11px); line-height: 1; }
+#app #hud #weapon-slots .slot-empty {
+  display: flex !important;
+  flex-direction: row;
+  justify-content: center;
+  gap: 5px;
+  opacity: 1;
+  border: 1px dashed #788375 !important;
+  background: #fbfff0cc !important;
+  box-shadow: none !important;
+}
+#app .slot-placeholder { width: 9px; height: 9px; border: 1px solid #6a7668; transform: rotate(45deg); }
+#app #hud .hud-xp { display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: center; gap: 7px; padding: 4px 8px; line-height: 1; }
+#app #hud .hud-xp-label { font-size: clamp(9px,.95vw,12px); color: var(--hud-blue); }
+#app #hud .hud-xp .xp-shell { height: 7px !important; border: 0 !important; border-radius: 8px !important; background: #ddeaff !important; box-shadow: none !important; }
+#app #hud .hud-xp .xp-caption { position: static; white-space: nowrap; font-size: clamp(9px,.95vw,12px) !important; }
+#app #menu .menu-meta { gap: 5px 7px; font-size: clamp(11px,1.15vw,14px); color: #153250; }
+#app #menu .menu-meta > span { border-radius: 6px; padding: 4px 6px; background: #dff3ff; }
+#app #menu #nemo-name-change {
+  min-height: 27px !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  max-width: 100%;
+  padding: 3px 6px !important;
+  border-radius: 7px !important;
+  font-size: inherit;
+}
+#app #menu #menu-profile-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#app #menu .profile-edit { color: #205783; border-left: 1px solid #afbdd0; padding-left: 5px; }
+#app #menu .buttons { max-width: none; grid-template-columns: repeat(6,minmax(0,1fr)) !important; gap: 8px !important; }
+#app #menu .buttons .btn { grid-column: span 2; width: 100% !important; }
+#app #menu .buttons :is(#settings-btn,#leaderboard-btn) { grid-column: span 3; }
+#app #menu .buttons #start { max-width: none !important; grid-column: 1 / -1 !important; }
+#app #menu .menu-controls-keyboard { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 12px; }
+#app #menu .menu-controls kbd { font: inherit; padding: 1px 3px; border-radius: 4px; background: #e5f4ff; color: #173550; }
+@media (pointer: coarse) { #app #menu .menu-controls-keyboard { display: none; } }
+@media (max-width: 720px) {
+  #app #hud .bottom { width: min(72%, 530px); }
+  #app #hud #weapon-slots .slot:not(.slot-empty) { display: grid !important; min-height: 32px !important; padding: 3px !important; gap: 3px; }
+  #app #hud #weapon-slots .slot-empty { min-height: 32px !important; padding: 3px !important; }
+}
+@media (max-width: 480px) and (orientation: portrait) {
+  #app #hud .hud-player { width: min(34%, 142px) !important; }
+  #app #hud .hud-player .stats { gap: 2px; }
+  #app #hud .hud-player .track { height: 4px !important; }
+  #app #hud .money { min-width: 34px; padding-inline: 4px; }
+  #app #hud .money-icon { width: 16px !important; height: 16px !important; }
+  #app #hud .bottom { width: 79%; }
+  #app #hud #weapon-slots .slot .ico { width: 18px; height: 18px; }
+  #app #hud #weapon-slots .slot .ico img { width: 16px !important; height: 16px !important; }
+}
