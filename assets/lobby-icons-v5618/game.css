@@ -1,0 +1,40 @@
+/* Crisp labels and one matched set of 96px source icons for the lobby. */
+#app #menu .menu-board { filter:none; }
+#app #menu :is(.menu-intro,.menu-meta,.menu-meta *, .menu-controls,.menu-controls *, .buttons .btn) {
+  font-family:"Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif !important;
+  font-weight:600 !important;
+  letter-spacing:0;
+  text-shadow:none !important;
+}
+#app #menu .menu-intro { font-weight:700 !important; }
+#app #menu .menu-meta { font-size:clamp(11px,1.1vw,14px); }
+#app #menu #menu-gold {
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  line-height:1.2;
+}
+#app #menu #menu-gold img { width:15px; height:15px; object-fit:contain; }
+#app #menu .menu-meta > span, #app #menu #nemo-name-change { line-height:1.3; }
+#app #menu .buttons .btn {
+  gap:5px;
+  font-size:clamp(13px,1.2vw,16px);
+  font-weight:700 !important;
+  line-height:1.2;
+}
+#app #menu .buttons .btn:hover:not(:disabled) { filter:none; }
+#app #menu .buttons #start { font-weight:800 !important; }
+#app #menu .buttons .btn .menu-button-icon {
+  display:block;
+  width:clamp(18px,2vw,25px);
+  height:clamp(18px,2vw,25px);
+  flex:0 0 clamp(18px,2vw,25px);
+  object-fit:contain;
+}
+#app #menu .buttons #start .menu-button-icon { width:30px; height:30px; flex-basis:30px; }
+#app #menu .menu-controls { font-size:clamp(11px,1vw,13px); line-height:1.45; }
+@media (max-width:480px) {
+  #app #menu .buttons .btn { padding-inline:4px !important; gap:3px; font-size:12px; }
+  #app #menu .buttons .btn .menu-button-icon { width:18px; height:18px; flex-basis:18px; }
+  #app #menu .buttons #start .menu-button-icon { width:24px; height:24px; flex-basis:24px; }
+}
