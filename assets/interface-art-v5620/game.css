@@ -1,0 +1,88 @@
+/* Illustrated surfaces with separate live text and bounded decorations. */
+#app #hud .survival-status .hud-player:has(#portrait),
+#app #hud .survival-status #survival-timer,
+#app #hud .survival-status .hud-right {
+  background: transparent var(--hud-art) center / 100% 100% no-repeat !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#app #hud .survival-status .hud-player:has(#portrait) { --hud-art:url("hp-frame.webp"); padding:5px 10px 5px 8px; width:min(100%,155px) !important; }
+#app #hud .survival-status #survival-timer { --hud-art:url("timer-frame.webp"); height:clamp(53px,6vw,77px); }
+#app #hud #survival-timer .timer-content { inset:31% 15% 15%; }
+#app #hud .survival-status #survival-timer[data-rush="true"] { background:transparent url("timer-frame.webp") center / 100% 100% no-repeat !important; filter:drop-shadow(0 0 3px #b97577); }
+#app #hud .survival-status .hud-right { --hud-art:url("count-frame.webp"); padding:5px 10px; }
+#app #hud .survival-status #weapon-slots .slot:not(.slot-empty) {
+  background:transparent url("weapon-frame.webp") center / 100% 100% no-repeat !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+#app #hud .survival-xp {
+  border:0;
+  border-radius:0;
+  border-image:url("xp-track.webp") 8 20 fill / 5px 15px stretch;
+  background:transparent;
+  padding:5px 12px;
+  min-height:clamp(21px,2.05vw,28px);
+}
+#app #hud .survival-xp .xp-shell { background:transparent !important; }
+#app #toast.toast {
+  top:calc(clamp(5px,1.1vw,13px) + clamp(21px,2.05vw,28px) + 6px + clamp(53px,6vw,77px) + 8px);
+  border:0 !important;
+  border-radius:0 !important;
+  border-image:url("notice-frame.webp") 21 48 fill / 9px 26px stretch !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  padding:8px 24px 8px 30px;
+}
+#app #pause .pause-board {
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  border-image:url("pause-board.webp") 35 52 51 52 fill / 21px 29px 30px 29px stretch !important;
+  box-shadow:none !important;
+}
+#app #pause .pause-heading { background:none; padding-right:0; }
+#app #pause .pause-heading-copy { flex:1 1 auto; min-width:0; }
+#app #pause .pause-heading > img { display:block; width:clamp(36px,5vw,64px); height:clamp(36px,5vw,64px); object-fit:contain; flex:0 0 auto; }
+#app #pause .pause-actions .btn, #app #cards #reroll {
+  display:flex; align-items:center; justify-content:center; gap:6px;
+  background:transparent !important;
+  border:0 !important;
+  border-radius:0 !important;
+  border-image:url("../paper-lobby-v5617/button.webp") 15 39 fill / 8px 20px stretch !important;
+  box-shadow:none !important;
+}
+#app #pause .pause-actions #resume {
+  background:transparent !important;
+  border:0 !important;
+  border-image:url("../paper-lobby-v5617/start.webp") 18 46 fill / 10px 24px stretch !important;
+  box-shadow:none !important;
+}
+#app #pause .pause-actions img, #app #cards #reroll img { width:19px; height:19px; object-fit:contain; flex:0 0 auto; }
+
+#app #cards .choice-card, #app #evolution .skill-card {
+  --choice-art:url("card-neutral.webp");
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent var(--choice-art) center / 100% 100% no-repeat !important;
+  box-shadow:none !important;
+}
+#app #cards .choice-card[data-kind="new"] { --choice-art:url("card-spell.webp"); }
+#app #cards .choice-card[data-kind="passive"] { --choice-art:url("card-passive.webp"); }
+#app #cards .choice-card:is([data-kind="growth"],[data-kind="break"],[data-kind="evo"]) { --choice-art:url("card-upgrade.webp"); }
+#app #cards .choice-identity {
+  margin-inline:0;
+  padding:9px 7px 7px;
+  background:transparent;
+  border:0;
+  min-height:clamp(57px,8vw,83px);
+}
+#app #cards .choice-name { word-break:keep-all; overflow-wrap:break-word; text-wrap:balance; }
+#app #cards .choice-qualifier { display:inline-block; white-space:nowrap; max-width:100%; }
+#app #cards :is(.choice-effect,.choice-copy,.choice-growth,.choice-meta) { word-break:keep-all; overflow-wrap:break-word; }
+#app #cards .choice-icon img { width:92% !important; height:92% !important; filter:none; }
+@media (max-width:480px) {
+  #app #hud .survival-status .hud-right { padding-inline:5px; }
+  #app #hud .survival-status .hud-player:has(#portrait) { padding-inline:5px; }
+  #app #cards .choice-identity { padding-inline:5px; }
+}
