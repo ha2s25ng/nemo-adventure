@@ -330,6 +330,19 @@
 <link rel="stylesheet" href="./assets/survival-hud-v5613/game.css">
 <link rel="stylesheet" href="./assets/woodland-ui-v5614/game.css">
 <style>
+#app #hud .survival-status .hud-player:has(#portrait) {
+  background: transparent url("./assets/woodland-ui-v5614/capsule.webp") center / 100% 100% no-repeat !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#app #hud .survival-status #survival-timer { padding: 9px 13px 8px; min-width: clamp(78px,11vw,145px); }
+#app #hud .survival-status #survival-timer .clock { font-size: clamp(19px,2.55vw,31px) !important; }
+#app #hud .survival-status #survival-timer .timer-note { padding: 1px 0 0; }
+@media (max-width: 480px) {
+  #app #hud .survival-status #survival-timer { padding: 7px 8px 6px; }
+}
+</style>
+<style>
 /* Keep name, level, and health in two readable rows at compact widths. */
 #app #hud .hud-player :is(.player-name,.hud-health) {
   gap: 4px;
