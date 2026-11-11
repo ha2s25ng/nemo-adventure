@@ -1,0 +1,21 @@
+#app #settings .settings-board { width:min(440px,92%) !important; padding:clamp(15px,3.6vmin,25px) !important; max-height:94%; text-align:left; }
+#app #settings .settings-heading { display:flex; align-items:center; gap:8px; padding-bottom:clamp(9px,2vmin,15px); border-bottom:1px solid #cbd3bc; }
+#app #settings .settings-heading img { width:35px; height:35px; object-fit:contain; }
+#app #settings #settings-title { margin:0; line-height:1.1; }
+#app #settings .settings-group { display:grid; gap:6px; margin-top:clamp(10px,2.2vmin,16px); }
+#app #settings .settings-group h3 { margin:0 0 2px; color:#4e624b !important; font-size:clamp(13px,2.25vmin,16px); }
+#app #settings .settings-line { display:flex; align-items:center; justify-content:space-between; gap:10px; min-height:clamp(37px,6.2vmin,46px); margin:0; padding:6px 10px; cursor:pointer; color:#304437 !important; border-radius:9px !important; box-shadow:none !important; }
+#app #settings .settings-line:hover { background:#f0f4e6 !important; }
+#app #settings .settings-line input { width:18px; height:18px; flex:0 0 18px; margin:0; accent-color:#657e55; cursor:pointer; }
+#app #settings .settings-line:has(input:focus-visible) { outline:2px solid #657e55; outline-offset:2px; }
+#app #settings .settings-actions { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:7px; }
+#app #settings #settings-back { display:block; width:100%; margin-top:clamp(12px,2.7vmin,19px); }
+@media (orientation:landscape) and (max-height:430px) {
+  #app #settings .settings-board { padding:10px 16px !important; }
+  #app #settings .settings-heading { padding-bottom:5px; }
+  #app #settings .settings-heading img { width:24px; height:24px; }
+  #app #settings .settings-group { gap:4px; margin-top:7px; }
+  #app #settings .settings-line { min-height:30px; padding-block:4px; }
+  #app #settings .settings-actions .btn,#app #settings #settings-back { min-height:31px; }
+  #app #settings #settings-back { margin-top:8px; }
+}

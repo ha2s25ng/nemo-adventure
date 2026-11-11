@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.21" />
+</style><meta name="nemo-version" content="5.6.22" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -349,6 +349,7 @@
 <link rel="stylesheet" href="./assets/pastel-ui-v5619/game.css">
 <link rel="stylesheet" href="./assets/interface-art-v5620/game.css">
 <link rel="stylesheet" href="./assets/readable-ui-v5621/game.css">
+<link rel="stylesheet" href="./assets/settings-v5622/game.css">
 <style>
 #app #hud .survival-status #survival-timer { inset: auto !important; }
 #app #toast.toast { top: calc(clamp(5px,1.1vw,13px) + clamp(25px,2.55vw,32px) + 6px + clamp(48px,6vw,77px) + 8px); }
@@ -498,8 +499,26 @@
     <div class="nemo-rank-table-head"><span>순위 / 닉네임</span><span>기록</span><span>결과</span></div><div id="rank-online" class="nemo-rank-list"><p class="nemo-rank-empty">온라인 연결 전입니다. 프로젝트 설정 후 다른 PC의 기록을 볼 수 있어요.</p></div>
     <p class="nemo-rank-foot">개인 기록은 오프라인에서도 저장돼요. 온라인 점수는 브라우저 방식의 테스트 랭킹이므로 완전한 부정행위 방지는 제공하지 않아요.</p></section></div>
 </div></div>
-<div class="overlay hidden" id="settings"><div class="small-board"><p class="folio">게임 옵션</p><h2>설정</h2><div class="settings-line">반짝이 이펙트 <input checked="" id="setting-particles" type="checkbox"/></div><div class="settings-line">피해 숫자 <input checked="" id="setting-numbers" type="checkbox"/></div><div class="settings-line">피격 시 화면 흔들림 <input checked="" id="setting-shake" type="checkbox"/></div><p class="hint">테스트 키: F2 디버그 · F3 60초 이동 · F4 경험치 · F5 체력 회복</p><p class="hint">고정 시드: 주소 마지막에 ?seed=1234</p><div class="stack-btns"><button class="btn" id="export-save">저장 데이터 복사</button><button class="btn" id="import-save" onclick="window.__NEMO_IMPORT_PROMPT__()">저장 데이터 가져오기</button><button class="btn primary" id="settings-back">← 돌아가기</button></div></div></div>
-<div class="toast hidden" id="toast" role="status"></div><pre class="debug hidden" id="debug"></pre><div aria-label="터치 이동 조이스틱" class="touch-pad hidden" id="touch-pad"><div class="touch-knob" id="touch-knob"></div></div>
+<div class="overlay hidden" id="settings" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+ <section class="small-board settings-board">
+  <header class="settings-heading"><img src="./assets/lobby-icons-v5618/settings.webp" alt=""><h2 id="settings-title">설정</h2></header>
+  <section class="settings-group" aria-labelledby="settings-effects">
+   <h3 id="settings-effects">화면 효과</h3>
+   <label class="settings-line"><span>반짝이 이펙트</span><input id="setting-particles" type="checkbox" checked></label>
+   <label class="settings-line"><span>피해 숫자</span><input id="setting-numbers" type="checkbox" checked></label>
+   <label class="settings-line"><span>피격 시 화면 흔들림</span><input id="setting-shake" type="checkbox" checked></label>
+  </section>
+  <section class="settings-group" aria-labelledby="settings-save">
+   <h3 id="settings-save">저장 데이터</h3>
+   <div class="settings-actions">
+    <button type="button" class="btn" id="export-save">복사</button>
+    <button type="button" class="btn" id="import-save" onclick="window.__NEMO_IMPORT_PROMPT__()">가져오기</button>
+   </div>
+  </section>
+  <button type="button" class="btn primary" id="settings-back">← 돌아가기</button>
+ </section>
+</div>
+<div class="toast hidden" id="toast" role="status"></div><div aria-label="터치 이동 조이스틱" class="touch-pad hidden" id="touch-pad"><div class="touch-knob" id="touch-knob"></div></div>
 </main><script>'use strict';
 // Values here are the initial design specification, not dynamic difficulty adjustments.
 const DATA = Object.freeze({
@@ -753,8 +772,7 @@ function renderCodex(){
 }
 
 let screen='menu', pausedFrom='playing', g=null, last=0, accumulator=0, saved=readSave();
-let seed=(parseInt(new URLSearchParams(location.search).get('seed')||'20261105',10)>>>0)||20261105;
-let rngState=seed,debug=false, menuArtTime=0;
+let rngState=(Math.random()*0x100000000)>>>0, menuArtTime=0;
 function rand(){rngState=(Math.imul(1664525,rngState)+1013904223)>>>0;return rngState/4294967296;}
 function range(a,b){return a+(b-a)*rand();}function choose(a){return a[Math.floor(rand()*a.length)];}
 function hashed(s){let v=s>>>0;return ()=>{v=(Math.imul(1664525,v)+1013904223)>>>0;return v/4294967296;};}
@@ -783,7 +801,7 @@ function forestDanger(t){
 function difficulty(){return forestDanger(g?.t||0);}
 function renderDifficulty(){} // The old 3-choice selector was removed.
 function chooseDifficulty(){return;} // Compatibility shim for older test hooks.
-function begin(){rngState=seed;const hp=DATA.player.hp+saved.upgrades.hp*5;
+function begin(){rngState=(Math.random()*0x100000000)>>>0;const hp=DATA.player.hp+saved.upgrades.hp*5;
  g={t:0,bossTime:0,difficulty:difficultyKey,player:{x:50,y:50,r:.44,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*2,face:1,direction:'down',moving:false,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
   speed:DATA.player.speed*(1+saved.upgrades.speed*.01),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
   weapons:{star:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
@@ -1417,7 +1435,7 @@ function finish(victory){
  ['보석 회수율',rate+'%'],['피격',g.hitCount+'회'],['첫 진화',g.metrics.firstEvolution===null?'없음':fmt(g.metrics.firstEvolution)],
  ['최고 피해 무기',best?W[best[0]].name:'스타 샷']];
  $('result-grid').innerHTML=a.map(([k,v])=>`<div class="result-stat"><small>${k}</small><b>${v}</b></div>`).join('');
- console.info('[NEMO ENDLESS RUN]',JSON.stringify({seed,time:g.t,metrics:g.metrics,gold:g.gold}));updateHUD();
+ updateHUD();
 }
 let shownLoadout='';
 function hudText(id,value){
@@ -1773,16 +1791,12 @@ function clearTouch(e){
  knob.style.left='50%';knob.style.top='50%';
 }
 for(const event of ['pointerup','pointercancel','lostpointercapture'])pad.addEventListener(event,clearTouch);
-function showDebug(){if(!debug||!g)return;let a=g.metrics.weaponDamage,b=Object.entries(a).sort((x,y)=>y[1]-x[1]).map(([k,v])=>W[k].name+':'+Math.round(v)).join(' ');
- $('debug').textContent=`SEED ${seed} | state ${screen} | FPS ${fps}\ntime ${fmt(g.t)} boss ${fmt(g.bossTime)}\npos ${g.player.x.toFixed(1)},${g.player.y.toFixed(1)}\nHP ${Math.ceil(g.player.hp)}/${Math.ceil(g.player.maxHp)} LV ${g.player.level} XP ${Math.floor(g.player.xp)}\nMob ${g.enemies.length} · Shots ${g.shots.length}/${g.enemyShots.length}\nspawn ${g.spawnCount} skip ${g.metrics.skipped} invalid ${g.metrics.invalidSpawns}\nKills ${g.totalKills} DMG ${Math.round(g.totalDamage)}\nXP ${g.totalXP} / ${g.earnedXP} · cards ${JSON.stringify(g.metrics.cardPicks)}\nFirst evo ${g.metrics.firstEvolution}\nWeapon: ${b}\nF2 on/off · F3 +60s · F4 +5 levels · F5 heal`;
-}
-let frames=0,fps=60,secondTick=0;
-function frame(time){if(!last)last=time;let delta=clamp((time-last)/1000,0,.05);last=time;secondTick+=delta;frames++;if(secondTick>=1){fps=Math.round(frames/secondTick);frames=0;secondTick=0;}
+function frame(time){if(!last)last=time;let delta=clamp((time-last)/1000,0,.05);last=time;
  if(screen==='playing'||screen==='intro'){accumulator+=delta;let n=0;while(accumulator>=1/60&&n++<5){update(1/60);accumulator-=1/60;if(screen!=='playing'&&screen!=='intro'){accumulator=0;break;}}}else accumulator=0;
  menuArtTime+=delta;
  if(needsDraw||screen==='playing'||screen==='intro'){needsDraw=false;draw();}
  if(toastTimer>0){toastTimer-=delta;if(toastTimer<=0)$('toast').classList.add('hidden');}
- showDebug();requestAnimationFrame(frame);}
+ requestAnimationFrame(frame);}
 
 // --------- Shared leaderboard: REST / Supabase publishable key only ---------
 const RANK_CFG_KEY='nemo_forest_leaderboard_config_v1';
@@ -1808,7 +1822,7 @@ function saveRunRecord(won){const t=Math.round(g.t*10)/10,b=Math.round(g.bossTim
   const record={run_id:(typeof crypto!=='undefined'&&crypto.randomUUID)?crypto.randomUUID():('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g,c=>{let r=Math.random()*16|0;return(c==='x'?r:(r&3|8)).toString(16);}),player_id:rankId,
     nickname:rankSanitizeName(rankCfg.nickname)||'익명의 멍법사',survival_seconds:t,boss_seconds:b,
     winner:!!won,kills:Math.max(0,g.totalKills|0),level:Math.max(1,g.player.level|0),
-    debug_used:!!g.debugUsed,created_at:new Date().toISOString(),
+    debug_used:false,created_at:new Date().toISOString(),
     rank_score:t,uploaded:false};
  rankRuns.unshift(record);rankRuns=rankRuns.slice(0,50);
  try{localStorage.setItem(RANK_RUNS_KEY,JSON.stringify(rankRuns));}catch(_){}
@@ -1935,10 +1949,6 @@ window.addEventListener('keydown',e=>{
  const movement=['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code);
  if(screen==='playing'&&movement){e.preventDefault();keys.add(e.code);return;}
  if(e.repeat)return;
- if(e.code==='F2'){debug=!debug;$('debug').classList.toggle('hidden',!debug);return;}
- if(e.code==='F3'&&g&&screen==='playing'){g.debugUsed=true;g.t=Math.min(479.95,g.t+60);g.achievedMinutes=Math.min(8,Math.floor(g.t/60));showToast('디버그: 생존 시간 +60초');return;}
- if(e.code==='F4'&&g&&screen==='playing'){g.debugUsed=true;g.player.xp+=getLevelNeed()*5;maybeCards();return;}
- if(e.code==='F5'&&g&&screen==='playing'){e.preventDefault();g.debugUsed=true;g.player.hp=g.player.maxHp;return;}
  if(screen==='cards'){if(['Digit1','Digit2','Digit3'].includes(e.code))selectCard(Number(e.code.slice(-1))-1);if(e.code==='KeyR')reroll();return;}
  if(screen==='evolution'){if(e.code==='Digit1')chooseEvo(0);if(e.code==='Digit2')chooseEvo(1);return;}
  if(e.code==='KeyH'&&['menu','playing','pause','intro'].includes(screen)){openCodex();return;}
@@ -1965,21 +1975,8 @@ $('evo-options').addEventListener('click',e=>{let b=e.target.closest('[data-evo]
 $('school-upgrades').addEventListener('click',e=>{let b=e.target.closest('[data-upgrade]');if(b)buySchool(b.dataset.upgrade);});
 for(const [id,key] of [['setting-particles','particles'],['setting-numbers','numbers'],['setting-shake','shake']])$(id).addEventListener('change',e=>{opts[key]=e.target.checked;needsDraw=true;saveSettings();});
 $('export-save').onclick=()=>{const str=JSON.stringify(saved);navigator.clipboard?.writeText(str).then(()=>showToast('저장 데이터가 복사됐어')).catch(()=>showToast('브라우저가 복사를 제한했어'));};
-if(new URLSearchParams(location.search).has('qa'))window.__NEMO_TEST__={
- getState:()=>g?{direction:g.player.direction,pose:motionPose(g.player),traps:g.traps.length,t:g.t,bossTime:g.bossTime,bossHP:g.boss?.hp||0,level:g.player.level,hp:g.player.hp,enemyCount:g.enemies.length, weaponCount:Object.keys(g.weapons).length, weapons:Object.fromEntries(Object.entries(g.weapons).map(([k,v])=>[k,v.lv])), goldRun:g.gold,metrics:JSON.parse(JSON.stringify(g.metrics))}:{screen,gold:saved.gold},
- start:begin,step:(n=1)=>{for(let i=0;i<n&&g&&['playing','intro'].includes(screen);i++)update(1/60);updateHUD();},
- spawn:(type='green',dx=4,dy=0)=>g&&spawn(type,{x:clamp(g.player.x+dx,2,98),y:clamp(g.player.y+dy,2,98)}),
- giveXP:(n=100)=>{if(g){g.player.xp+=n;maybeCards();}},chooseCard:selectCard,chooseEvo,reroll,
- jumpTo:(s=179)=>{if(g){g.debugUsed=true;g.t=clamp(s,0,480);g.spawnClock=0;g.achievedMinutes=Math.floor(g.t/60);}},
- invincible:(on=true)=>{if(!g)return;g.player.invuln=on?999999:0;}, damage:(n=10)=>g&&damagePlayer(n,'테스트'),
- unlockAll:()=>{if(!g)return;for(const id of weaponKeys)g.weapons[id]??={lv:1,up:[0,0,0],break:false,evo:null,clock:0};},
- forceWeapon:(id)=>{if(!g||!W[id])return false;g.weapons[id]??={lv:1,up:[0,0,0],break:false,evo:null,clock:0};return true;},
- forceDir:(dir)=>{if(!g)return;g.player.direction=dir;g.player.moving=true;g.player.castTimer=0;},
- boss:()=>{if(g){g.debugUsed=true;g.t=480;beginBoss();}},killBoss:()=>{if(g?.boss){g.debugUsed=true;deal(g.boss,g.boss.hp+1,'star',{critAllowed:false});}},
- resetSave:()=>{localStorage.removeItem(DATA.saveKey);saved=readSave();renderMenu();}
-};
 $('portrait').src=ASSET_DATA.nemo;
- for(const key of ['nemo',...Object.keys(ENEMY_ART).map(kind=>'enemy_'+kind)])sprites[key].addEventListener('error',()=>{showToast('⚠ 캐릭터 '+key+' 이미지 로딩 실패');}); $('hero').src=ASSET_DATA.nemo;if(new URLSearchParams(location.search).has('qa'))window.__NEMO_QA={begin,spawn,fireWeapon,loot,collect,selectCard,openCards,update,draw,wandOrigin,pose:()=>g?motionPose(g.player):null,read:()=>g,screen:()=>screen,rollCards,getLevelNeed,xpNeedForLevel,updateLoot,updateHUD,renderCards,openForestChoice,skillIcon,bossCast,bossUpdate,bossPhase,bossDone,updateVortex,updateTraps,drawWeaponFields,blockedByTree,chooseDifficulty,difficulty,motionPose}; // Stable-URL build helpers; existing save key and game logic are unchanged.
+ for(const key of ['nemo',...Object.keys(ENEMY_ART).map(kind=>'enemy_'+kind)])sprites[key].addEventListener('error',()=>{showToast('⚠ 캐릭터 '+key+' 이미지 로딩 실패');}); $('hero').src=ASSET_DATA.nemo; // Stable-URL build helpers; existing save key and game logic are unchanged.
 window.__NEMO_SAFE_UPDATE__=()=>screen==='menu';
 window.__NEMO_IMPORT_SAVE__=(raw)=>{
   const v=JSON.parse(raw);
@@ -1993,7 +1990,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.21';
+  const CURRENT='5.6.22';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
