@@ -1,0 +1,132 @@
+/* Keep artwork inside the picture frame and share the lobby palette. */
+#app {
+  --pastel-ink: #304437;
+  --pastel-paper: #fff9ed;
+  --pastel-line: #a5af90;
+  --pastel-sage: #e1ead4;
+}
+#app #menu .menu-art { background: none; box-shadow: none; }
+#app #menu .menu-art-mat {
+  position: absolute;
+  inset: 10px 6px 8px;
+  z-index: -1;
+  clip-path: polygon(5% 0,95% 0,100% 7%,100% 93%,95% 100%,5% 100%,0 93%,0 7%);
+  background: radial-gradient(ellipse at 49% 45%,#fff4d3,#cfdfb5 71%,#a6b694);
+}
+@media (max-width:700px) { #app #menu .menu-art-mat { inset: 7px 5px 6px; } }
+
+#app :is(#cards,#evolution,#pause,#result,#settings,#costume-shop,#school,#codex,#leaderboard,#nickname-setup) {
+  background: #384b3c80 !important;
+}
+#app :is(#cards,#evolution,#pause,#result,#settings,#costume-shop,#school,#codex,#leaderboard,#nickname-setup)
+  :is(.choice-board,.card-wrap,.big-board,.small-board,.nemo-shop-board,.codex-board,.nemo-leaderboard-board) {
+  border: 1px solid var(--pastel-line) !important;
+  border-radius: 20px !important;
+  color: var(--pastel-ink);
+  background: linear-gradient(145deg,#fff9ee,#f1ebd9) !important;
+  box-shadow: 0 3px #55634b5c,0 10px 28px #3346354d !important;
+}
+#app .overlay :is(h2,h3), #app #cards .choice-heading h2, #app #evolution .ribbon {
+  color: var(--pastel-ink) !important;
+  text-shadow: none !important;
+}
+#app :is(#cards,#evolution) :is(.choice-heading p,.choice-footer,.card-sub) { color: #4d5b4e !important; }
+#app #cards-title::before, #app #cards-title::after { width:18px; height:18px; background:url("leaf.webp") center / contain no-repeat; }
+#app #cards-title::before { transform:scaleX(-1); }
+#app #cards .choice-card, #app #evolution .skill-card {
+  --ink:#3e5942;
+  --wash:#e8efdc;
+  --edge:#bec9ab;
+  border:1px solid #b5bca0 !important;
+  border-radius:13px !important;
+  background:var(--pastel-paper) !important;
+  box-shadow:0 2px #b5bca0 !important;
+}
+#app #cards .choice-card:is([data-kind="growth"],[data-kind="break"],[data-kind="gold"]) { --ink:#7b4638; --wash:#fae6dc; --edge:#e2b8a6; }
+#app #cards .choice-card:is([data-kind="passive"],[data-kind="evo"],[data-kind="blessing"]) { --ink:#625079; --wash:#f0e7f4; --edge:#d8c7e0; }
+#app #cards .choice-identity { background:linear-gradient(115deg,var(--wash),#fffcf5); border-bottom:1px solid var(--edge); }
+#app #cards .choice-cta,#app #evolution .card-select-label {
+  color:var(--ink) !important;
+  background:var(--wash) !important;
+  border:1px solid var(--edge) !important;
+  box-shadow:none !important;
+}
+#app :is(#pause,#settings,#result,#costume-shop,#school,#codex,#leaderboard,#nickname-setup,#cards) .btn,
+#app #cards #reroll {
+  color:var(--pastel-ink) !important;
+  background:var(--pastel-paper) !important;
+  border:1px solid var(--pastel-line) !important;
+  border-radius:12px !important;
+  box-shadow:0 2px #a9b090 !important;
+}
+#app :is(#pause,#settings,#result,#costume-shop,#school,#codex,#leaderboard,#nickname-setup) .btn.primary,
+#app #pause .pause-actions #resume {
+  color:#552f29 !important;
+  background:linear-gradient(#fac3ae,#f1a891) !important;
+  border-color:#ca8e79 !important;
+  box-shadow:0 2px #bd8c7a !important;
+}
+#app #pause .pause-heading { background-image:url("leaf.webp"); }
+#app :is(.nemo-shop-feature,.nemo-shop-item,.school-row,.settings-line,#result-grid .result-stat,.codex-details,.nemo-rank-left,.nemo-rank-right,.nemo-rank-local) {
+  border:1px solid #b6c0a2 !important;
+  background:#fffbf0 !important;
+  box-shadow:0 2px #c0c6ab !important;
+}
+#app #costume-shop .nemo-shop-item[aria-pressed="true"],#app .codex-tab.on {
+  background:var(--pastel-sage) !important;
+  border-color:#91a782 !important;
+}
+#app :is(.codex-tab,.codex-emblem,.codex-section,.nemo-rank-table-head,.nemo-rank-row) {
+  background:#edf1df !important;
+  border-color:#b1bea0 !important;
+  color:var(--pastel-ink) !important;
+}
+
+#app #hud .survival-status .hud-player:has(#portrait),
+#app #hud .survival-status #survival-timer,
+#app #hud .survival-status .hud-right {
+  background:#f7f0de !important;
+  border:1px solid #879576 !important;
+  border-radius:11px !important;
+  box-shadow:0 2px #64785766 !important;
+  color:var(--pastel-ink) !important;
+  filter:none;
+}
+#app #hud .survival-status #survival-timer[data-rush="true"] { background:#f7d6cd !important; border-color:#b77e70 !important; }
+#app #hud #survival-timer .timer-content { inset:12% 9%; }
+#app #hud #survival-timer #time,#app #hud #survival-timer #time-note,#app #hud .survival-status #hp,
+#app #hud .survival-status .hud-right :is(.survival-kills,.money:has(#gold-hud)) { color:var(--pastel-ink) !important; }
+#app #hud .survival-status .woodland-portrait::after { background:none; }
+#app #hud .survival-status .woodland-portrait #portrait {
+  width:91%;
+  border:1px solid #afa583;
+  background:#fff6de;
+}
+#app #hud .survival-status .hud-player .track { background:#e5c8c3 !important; }
+#app #hud .survival-status .hud-player .track > i { background:linear-gradient(90deg,#cc7c7b,#e5a29a) !important; }
+#app #hud .survival-status #weapon-slots .slot:not(.slot-empty) {
+  background:#f8eedb !important;
+  border:1px solid #aab491 !important;
+  box-shadow:0 1px #85946e !important;
+}
+#app #hud .survival-status #weapon-slots .slot small { background:#dae6ce; color:var(--pastel-ink); }
+#app #hud .survival-xp {
+  border:1px solid #91a181;
+  border-image:none;
+  border-radius:8px;
+  background:#e4ead5;
+  min-height:clamp(19px,2.05vw,27px);
+  padding:3px 8px;
+}
+#app #hud .survival-xp .xp-shell { background:#c5d1b5 !important; }
+#app #hud .survival-xp-caption { background:#f5f1dfec; color:var(--pastel-ink); }
+#app #hud .survival-xp #level { color:var(--pastel-ink); }
+#app #toast.toast {
+  top:calc(clamp(5px,1.1vw,13px) + clamp(19px,2.05vw,27px) + 6px + clamp(48px,6vw,77px) + 8px);
+  border:1px solid #a4b290 !important;
+  border-image:none !important;
+  border-radius:12px !important;
+  background:#f7f0dd !important;
+  box-shadow:0 2px #7e90616b !important;
+  color:var(--pastel-ink) !important;
+}
