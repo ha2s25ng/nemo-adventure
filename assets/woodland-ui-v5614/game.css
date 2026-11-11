@@ -1,0 +1,83 @@
+/* Painted controls stay separate from readable, live game text. */
+#app #hud .survival-xp-caption { display:flex; align-items:center; gap:3px; }
+#app #hud .survival-xp-caption img { width:clamp(9px,1vw,13px); height:clamp(9px,1vw,13px); object-fit:contain; }
+#app #hud .survival-xp { border-color:#b5a576; }
+#app #hud .survival-xp .xp-fill { background:linear-gradient(90deg,#a9b97e,#d6dda5) !important; }
+
+#app #hud .survival-status .hud-player,
+#app #hud .survival-status #survival-timer,
+#app #hud .survival-status .hud-right {
+  background: transparent var(--woodland-plate) center / 100% 100% no-repeat !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: drop-shadow(0 1px 1px #22352c70);
+}
+#app #hud .survival-status .hud-player { --woodland-plate:url("capsule.webp"); padding:3px 9px 3px 4px; }
+#app #hud .survival-status #survival-timer { --woodland-plate:url("plaque.webp"); padding:7px 13px 7px; }
+#app #hud .survival-status #survival-timer[data-rush="true"] { filter:drop-shadow(0 0 4px #b04a52); }
+#app #hud .survival-status .hud-right { --woodland-plate:url("capsule.webp"); padding:2px 3px 2px 8px; }
+#app #hud .survival-status .timer-note, #app #hud .survival-status #hp { color:#fff9e9 !important; }
+#app #hud .survival-status .woodland-portrait {
+  position:relative;
+  display:grid;
+  place-items:center;
+  width:clamp(25px,3.05vw,42px);
+  aspect-ratio:1;
+  flex:0 0 auto;
+}
+#app #hud .survival-status .woodland-portrait::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url("portrait-ring.webp") center / contain no-repeat;
+  pointer-events:none;
+}
+#app #hud .survival-status .woodland-portrait #portrait {
+  width:79%;
+  border:0;
+  padding:0;
+  background:#fff1d8;
+  box-shadow:none;
+}
+#app #hud .survival-status .hud-player .track { background:#382e34 !important; height:5px !important; }
+#app #hud .survival-status .hud-health { align-items:center; }
+#app #hud .woodland-heart { width:clamp(11px,1.2vw,16px); height:clamp(11px,1.2vw,16px); object-fit:contain; }
+#app #hud .survival-status .hud-right #pause-btn img { width:100%; height:100%; object-fit:contain; display:block; }
+#app #hud .survival-status .hud-right #pause-btn:hover { background:transparent !important; filter:brightness(1.17); }
+#app #hud .survival-status .survival-kills { border-right-color:#d8c49277; }
+#app #hud .survival-status .woodland-kills-label { font-size:clamp(9px,1vw,12px); }
+#app #hud .survival-status #weapon-slots .slot:not(.slot-empty) {
+  border:0 !important;
+  box-shadow:none !important;
+  background:transparent url("spell-tile.webp") center / 100% 100% no-repeat !important;
+  grid-template-columns:minmax(0,1fr) !important;
+}
+#app #hud .survival-status #weapon-slots .slot .ico img {
+  width:82% !important;
+  height:82% !important;
+  object-fit:contain;
+}
+#app #hud .survival-status #weapon-slots .slot small {
+  bottom:2px;
+  right:2px;
+  background:#36422d;
+}
+#app #pause .pause-heading {
+  background:url("sprig.webp") right 1px center / clamp(32px,9vw,86px) auto no-repeat;
+  padding-right:34px;
+}
+#app #pause .pause-emblem { background:none; border:0; }
+#app #pause .pause-emblem img { width:100%; height:100%; object-fit:contain; }
+#app #pause #pause-codex { display:flex; align-items:center; justify-content:center; gap:5px; }
+#app #pause .woodland-book { width:20px; height:20px; object-fit:contain; }
+#app #cards-title::before, #app #cards-title::after {
+  display:block;
+  width:16px;
+  height:16px;
+  background:url("glint.webp") center / contain no-repeat;
+}
+@media (max-width:480px) {
+  #app #hud .survival-status #survival-timer { padding-inline:7px; }
+  #app #hud .survival-status .hud-right { padding-left:4px; }
+  #app #hud .survival-status .woodland-kills-label { display:none; }
+}

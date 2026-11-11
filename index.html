@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.13" />
+</style><meta name="nemo-version" content="5.6.14" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -328,6 +328,7 @@
 <link rel="stylesheet" href="./assets/hud-v569/game.css">
 <link rel="stylesheet" href="./assets/forest-hud-v5612/game.css">
 <link rel="stylesheet" href="./assets/survival-hud-v5613/game.css">
+<link rel="stylesheet" href="./assets/woodland-ui-v5614/game.css">
 <style>
 /* Keep name, level, and health in two readable rows at compact widths. */
 #app #hud .hud-player :is(.player-name,.hud-health) {
@@ -363,17 +364,17 @@
  <div class="hud-top">
   <div class="survival-xp">
    <div class="xp-shell"><div class="xp-fill" id="xp-fill"></div></div>
-   <span class="survival-xp-caption" id="xp-text">0 / 10 XP</span>
+   <div class="survival-xp-caption"><img src="./assets/woodland-ui-v5614/gem.webp" alt=""><span id="xp-text">0 / 10 XP</span></div>
    <span id="level">Lv.1</span>
   </div>
   <div class="survival-status">
    <div class="survival-left">
-    <div class="hud-player panel"><img alt="크림색 강아지 마법사 니모" class="portrait" id="portrait"/><div class="stats"><div class="hud-health"><span>체력</span><span class="health-txt" id="hp">100 / 100</span></div><div class="track"><i id="hp-fill"></i></div></div></div>
+    <div class="hud-player panel"><span class="woodland-portrait"><img alt="니모 초상화" class="portrait" id="portrait"></span><div class="stats"><div class="hud-health"><img class="woodland-heart" src="./assets/woodland-ui-v5614/heart.webp" alt="체력"><span class="health-txt" id="hp">100 / 100</span></div><div class="track"><i id="hp-fill"></i></div></div></div>
     <div class="slots" id="weapon-slots" aria-label="장착한 무기"></div>
     <div class="buff-line" id="buffs" aria-label="보유 강화 효과"></div>
    </div>
    <div class="timer" id="survival-timer"><div class="clock" id="time">00:00</div><div class="timer-note" id="time-note">새싹 숲</div></div>
-   <div class="hud-right"><div class="survival-kills"><span>처치</span><span id="kills-hud">0</span></div><div class="money"><img alt="골드" class="money-icon" src="./assets/v550/fx_coin.webp"><span id="gold-hud">0</span></div><button aria-label="일시 정지" class="pause-btn" id="pause-btn" type="button"><span class="pause-bars" aria-hidden="true"></span></button></div>
+   <div class="hud-right"><div class="survival-kills" role="group" aria-label="처치 수"><img src="./assets/woodland-ui-v5614/kills.webp" alt=""><span class="woodland-kills-label">처치</span><span id="kills-hud">0</span></div><div class="money"><img alt="골드" class="money-icon" src="./assets/woodland-ui-v5614/coin.webp"><span id="gold-hud">0</span></div><button aria-label="일시 정지" class="pause-btn" id="pause-btn" type="button"><img src="./assets/woodland-ui-v5614/pause.webp" alt=""></button></div>
   </div>
  </div>
  <div class="boss-hud hidden" id="boss-hud"><div class="boss-name">👑 왕관 슬라임</div><div class="boss-hp"><i id="boss-fill"></i></div><div class="boss-text" id="boss-text"></div></div>
@@ -443,13 +444,13 @@
 <div class="overlay hidden" id="pause" role="dialog" aria-modal="true" aria-labelledby="pause-title">
  <section class="small-board pause-board">
   <header class="pause-heading">
-   <span class="pause-emblem" aria-hidden="true"><span class="pause-bars"></span></span>
+   <span class="pause-emblem" aria-hidden="true"><img src="./assets/woodland-ui-v5614/pause.webp" alt=""></span>
    <div><h2 id="pause-title">일시 정지</h2><p class="subtitle">준비되면 숲으로 돌아가세요.</p></div>
   </header>
   <ul class="pause-loadout" id="pause-loadout" aria-label="장착한 무기"></ul>
   <div class="pause-actions">
    <button type="button" class="btn primary" id="resume">모험 계속하기</button>
-   <button type="button" class="btn" id="pause-codex">마법 도감</button>
+   <button type="button" class="btn" id="pause-codex"><img class="woodland-book" src="./assets/woodland-ui-v5614/book.webp" alt="">마법 도감</button>
    <button type="button" class="btn" id="pause-menu">모험 종료 · 숲 입구</button>
   </div>
  </section>
@@ -1410,7 +1411,7 @@ function updateHUD(){
  hudData($('survival-timer'),'rush',rush);
  hudText('hp',`${Math.ceil(p.hp)} / ${Math.ceil(p.maxHp)}`);
  hudFill('hp-fill',hpRatio);
- hudData($('portrait').parentElement,'health',hpRatio<=.25?'low':'normal');
+ hudData($('portrait').closest('.hud-player'),'health',hpRatio<=.25?'low':'normal');
  hudData($('app'),'hit',!reducedMotion.matches&&(p.hurtTimer||0)>.13);
  hudText('level',`Lv.${p.level}`);
  hudText('gold-hud',String(g.done?g.gold:g.achievedMinutes*20+g.gold));
@@ -1963,7 +1964,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.13';
+  const CURRENT='5.6.14';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
