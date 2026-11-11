@@ -1,0 +1,40 @@
+/* Survival HUD: progression across the top, controls in three compact groups. */
+#app #hud { --hud-ink:#fff9e7; --hud-rim:#afbf98; --hud-moss:#304739; --hud-gilt:#f5d896; }
+#app #hud .hud-top { position:absolute; inset:clamp(5px,1.1vw,13px) clamp(6px,1.4vw,18px) auto; display:grid; gap:6px; }
+#app #hud .survival-xp { display:grid; grid-template-columns:minmax(0,1fr) auto; min-height:clamp(16px,1.8vw,22px); overflow:hidden; border:1px solid var(--hud-rim); border-radius:7px; background:var(--hud-moss); box-shadow:0 2px #273c34; }
+#app #hud .survival-xp .xp-shell { grid-area:1 / 1; height:100% !important; border:0 !important; border-radius:0 !important; box-shadow:none !important; background:var(--hud-moss) !important; }
+#app #hud .survival-xp .xp-fill { background:linear-gradient(90deg,#a6bc8d,#cbd6a3) !important; }
+#app #hud .survival-xp-caption { grid-area:1 / 1; place-self:center; z-index:1; padding:0 5px; border-radius:4px; background:#2a4137ed; color:var(--hud-ink); font-size:clamp(10px,1.1vw,14px); line-height:1.2; }
+#app #hud .survival-xp #level { grid-column:2; display:grid; align-items:center; padding:0 8px; border-radius:0; border-left:1px solid var(--hud-rim); background:#475b46; color:var(--hud-gilt); font-size:clamp(11px,1.3vw,16px); }
+#app #hud .survival-status { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:start; gap:clamp(4px,1.2vw,16px); }
+#app #hud .survival-left { display:grid; justify-items:start; gap:5px; min-width:0; }
+#app #hud .survival-left .hud-player { position:static !important; width:min(100%,146px) !important; min-height:0; padding:3px 6px 3px 4px; gap:5px; border-radius:9px !important; }
+#app #hud .survival-left #portrait { width:clamp(20px,2.6vw,34px); margin:0; border-width:1px; }
+#app #hud .survival-left .hud-player .stats { gap:2px; }
+#app #hud .survival-left .hud-health { font-size:clamp(10px,1vw,13px); }
+#app #hud .survival-left .hud-player .track { height:5px !important; }
+#app #hud .survival-status #survival-timer { position:static !important; transform:none; width:auto !important; min-width:clamp(62px,9.5vw,120px); padding:3px 8px; border-radius:9px !important; }
+#app #hud .survival-status #survival-timer .clock { font-size:clamp(19px,3vw,38px) !important; }
+#app #hud .survival-status #survival-timer .timer-note { margin:0; font-size:clamp(9px,1vw,13px) !important; }
+#app #hud .survival-status .hud-right { position:static; justify-self:end; gap:0; max-width:100%; padding:0 2px; border-radius:9px; color:var(--hud-ink) !important; background:linear-gradient(150deg,#526c53,#304739) !important; border:1px solid var(--hud-rim) !important; }
+#app #hud .survival-status :is(.survival-kills,.money) { display:flex; justify-content:center; align-items:center; min-width:0; gap:3px; padding:2px clamp(3px,.6vw,8px); white-space:nowrap; font-size:clamp(11px,1.3vw,17px); }
+#app #hud .survival-status .survival-kills { border-right:1px solid #9bb39780; }
+#app #hud .survival-status :is(.survival-kills img,.money-icon) { width:clamp(13px,1.8vw,23px) !important; height:clamp(13px,1.8vw,23px) !important; object-fit:contain; }
+#app #hud .survival-status #pause-btn { width:clamp(27px,3.6vw,40px) !important; height:clamp(27px,3.6vw,40px) !important; }
+#app #hud .survival-status #weapon-slots { display:flex; justify-content:flex-start; max-width:100%; gap:4px !important; }
+#app #hud .survival-status #weapon-slots .slot:not(.slot-empty) { position:relative; display:grid !important; place-items:center; flex:0 0 auto; width:clamp(24px,3.5vw,43px) !important; min-width:0; min-height:0 !important; aspect-ratio:1; padding:2px !important; border:1px solid #b4b996 !important; border-radius:7px !important; background:#415944 !important; box-shadow:0 1px #2d4238 !important; }
+#app #hud .survival-status #weapon-slots .slot .ico { width:100%; height:100%; background:none; }
+#app #hud .survival-status #weapon-slots .slot small { position:absolute; right:1px; bottom:1px; padding:1px 2px; border-radius:3px; background:#2d4638; color:var(--hud-gilt); font-size:clamp(8px,.8vw,10px); }
+#app #hud .survival-left #buffs { position:static; max-width:100%; padding:2px 5px; text-align:left; border:1px solid var(--hud-rim); border-radius:5px; background:#394e40; color:var(--hud-ink); font-size:clamp(10px,.9vw,12px); }
+#app #hud .boss-hud { top:clamp(80px,13%,110px); }
+#app #pause .pause-loadout { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:5px; padding:0; margin:0 0 10px; list-style:none; }
+#app #pause .pause-loadout:empty { display:none; }
+#app #pause .pause-loadout li { display:flex; align-items:center; gap:4px; min-width:0; padding:4px 6px; border:1px solid #aab99c; border-radius:6px; background:#f9f6e9; color:#354839; font-size:clamp(11px,1.5vw,14px); }
+#app #pause .pause-loadout img { width:20px; height:20px; object-fit:contain; }
+#app #pause .pause-loadout li > span { min-width:0; overflow-wrap:anywhere; }
+#app #pause .pause-loadout small { margin-left:auto; white-space:nowrap; }
+@media (max-width:460px) {
+  #app #hud .survival-status #weapon-slots { gap:2px !important; }
+  #app #hud .survival-status .hud-right { padding-inline:0; }
+  #app #hud .survival-status .money:has(#gold-hud) { min-width:0; padding-inline:3px; }
+}
