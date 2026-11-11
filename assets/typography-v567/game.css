@@ -1,0 +1,57 @@
+/* Keep rounded display type separate from text players compare during play. */
+#app {
+  --nemo-body-font: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --nemo-display-font: "Jua", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --heading: var(--nemo-display-font);
+  font-family: var(--nemo-body-font);
+  font-weight: 600;
+}
+#app .overlay h2,
+#app #menu .folio-title,
+#app #cards .choice-heading h2,
+#app #evolution .ribbon {
+  font-family: var(--nemo-display-font);
+  font-weight: 400;
+  letter-spacing: .005em;
+  text-shadow: 0 1px 1px #17365f9c !important;
+}
+#app #cards .choice-name,
+#app #evolution .skill-card .card-title,
+#app #costume-shop .nemo-shop-feature h3 {
+  font-family: var(--nemo-display-font);
+  font-weight: 400 !important;
+  letter-spacing: 0;
+}
+#app #cards .choice-name { font-size: clamp(17px, 3.7vmin, 28px); }
+#app #cards .choice-effect strong { font-weight: 800; }
+#app #cards .choice-copy,
+#app #cards .choice-growth,
+#app #cards .choice-meta,
+#app .overlay .subtitle,
+#app .school-desc,
+#app .nemo-shop-feature p { font-weight: 400; word-break: keep-all; overflow-wrap: anywhere; }
+#app #menu .buttons #start {
+  font-family: var(--nemo-display-font);
+  font-weight: 400;
+  letter-spacing: .02em;
+}
+
+/* Use the same rounded lettering from the title down to the choice controls. */
+#app #cards :is(.choice-heading p,.choice-card,.choice-type,.choice-effect,.choice-copy,.choice-growth,.choice-meta,.choice-cta,.choice-footer,#reroll),
+#app #evolution :is(.skill-card,.card-topping,.card-sub,.card-desc,.card-lore,.card-meta,.card-select-label),
+#app .overlay .btn,
+#app :is(.menu-kicker,.menu-money,#shop-wallet,.nemo-shop-item strong,.nemo-shop-item small,.school-row strong,.school-level,.codex-tab,.settings-line),
+#app :is(.player-name,.clock,.timer-note,.money,.health-txt,.xp-caption,#weapon-slots .slot) {
+  font-family: var(--nemo-display-font);
+  font-weight: 400 !important;
+  letter-spacing: 0;
+}
+#app #cards .choice-effect strong,
+#app #cards .choice-growth b { font-weight: 400; }
+#app #cards .choice-effect strong { font-size: clamp(14px, 2.7vmin, 19px); }
+#app #cards .choice-effect small,
+#app #cards .choice-type { font-size: clamp(11px, 1.9vmin, 14px); }
+#app #cards .choice-copy { font-size: clamp(12px, 2.3vmin, 16px); line-height: 1.42; }
+#app #cards :is(.choice-growth,.choice-meta,.choice-footer) { font-size: clamp(11px, 2vmin, 14px); }
+#app #cards :is(.choice-cta,#reroll) { font-size: clamp(13px, 2.3vmin, 16px); }
+#app #cards .choice-cta kbd { font: inherit; }
