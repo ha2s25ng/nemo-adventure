@@ -327,6 +327,20 @@
 <link rel="stylesheet" href="./assets/typography-v568/game.css">
 <link rel="stylesheet" href="./assets/hud-v569/game.css">
 <link rel="stylesheet" href="./assets/forest-hud-v5612/game.css">
+<style>
+@media (max-width: 720px) {
+  #app #hud #weapon-slots .slot:not(.slot-empty) {
+    display: flex !important;
+    flex-direction: column;
+    gap: 2px;
+  }
+  #app #hud #weapon-slots .slot-info {
+    width: 100%;
+    padding: 0;
+    text-align: center;
+  }
+}
+</style>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
 <div class="hidden" id="hud">
