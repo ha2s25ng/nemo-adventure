@@ -327,6 +327,26 @@
 <link rel="stylesheet" href="./assets/typography-v568/game.css">
 <link rel="stylesheet" href="./assets/hud-v569/game.css">
 <link rel="stylesheet" href="./assets/hud-v5610/finish.css?v=5611">
+<style>
+/* Keep HUD surfaces and labels on the same palette. */
+#app #hud :is(.hud-player,#survival-timer) {
+  background: linear-gradient(165deg,var(--dock-blue),var(--dock-deep)) !important;
+  border: 1px solid var(--dock-line) !important;
+  box-shadow: inset 0 1px #fff8e267, inset 0 -2px #33493e, 0 3px #354a3f !important;
+}
+#app #hud #survival-timer[data-rush="true"] {
+  background: linear-gradient(#a84355,#782c41) !important;
+  border-color: #ffc9ad !important;
+}
+#app #hud .hud-right .money:has(#gold-hud),
+#app #hud .bottom .hud-xp:has(#xp-text) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#app #hud .hud-right .money:has(#gold-hud) { border-right: 1px solid #c9d3b45c !important; }
+#app #hud #weapon-slots .slot-name { color: var(--dock-cream) !important; }
+</style>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
 <div class="hidden" id="hud">
