@@ -344,6 +344,10 @@
 </style>
 <link rel="stylesheet" href="./assets/hud-meters-v5615/game.css">
 <style>
+#app #hud .survival-status #survival-timer { inset: auto !important; }
+#app #toast.toast { top: calc(clamp(5px,1.1vw,13px) + clamp(25px,2.55vw,32px) + 6px + clamp(48px,6vw,77px) + 8px); }
+</style>
+<style>
 /* Keep name, level, and health in two readable rows at compact widths. */
 #app #hud .hud-player :is(.player-name,.hud-health) {
   gap: 4px;
