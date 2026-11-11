@@ -1,0 +1,38 @@
+/* Quiet parchment, salmon action, and sage information chips. */
+#app #menu.menu-overlay { background:#40584242 !important; }
+#app #menu .menu-board {
+  background:transparent !important;
+  border-image:url("paper.webp") 42 110 79 63 fill / 32px 85px 58px 48px stretch !important;
+  filter:drop-shadow(0 8px 16px #364b3766);
+}
+#app #menu .menu-kicker { color:#526448 !important; }
+#app #menu .folio-title { color:#32483a !important; text-shadow:none !important; }
+#app #menu .menu-intro { color:#495a49 !important; }
+#app #menu .menu-controls { color:#52604e !important; }
+#app #menu .menu-controls kbd { background:#dfe9d2; color:#3c533f; }
+#app #menu .menu-meta > span,
+#app #menu #nemo-name-change {
+  color:#2f4537 !important;
+  border-image:url("tag.webp") 10 25 fill / 5px 12px stretch !important;
+}
+#app #menu .profile-edit { color:#3f5941; border-color:#657f6355; }
+#app #menu #menu-gold { background:#f6e5b9 !important; border-color:#c6a76c !important; }
+#app #menu .buttons .btn,
+#app #menu .buttons .btn:hover:not(:disabled) {
+  border-image:url("button.webp") 15 39 fill / 8px 20px stretch !important;
+  color:#304437 !important;
+}
+#app #menu .buttons #start,
+#app #menu .buttons #start:hover {
+  border-image:url("start.webp") 18 46 fill / 10px 24px stretch !important;
+  color:#512c24 !important;
+}
+#app #menu .buttons .btn:focus-visible,
+#app #menu #nemo-name-change:focus-visible { outline:2px solid #4c6a4e; outline-offset:2px; border-radius:20px !important; }
+#app #menu .buttons .btn:hover:not(:disabled) { filter:brightness(1.04); }
+#app #menu .menu-art { box-shadow:0 3px 10px #52644842; }
+#app #menu .menu-art::after { border-image-width:44px 48px 44px 48px; }
+@media (max-width:700px) {
+  #app #menu .menu-board { border-image-width:24px 44px 32px 30px !important; }
+  #app #menu .menu-art::after { border-image-width:30px 35px 30px 35px; }
+}
