@@ -44,12 +44,13 @@
 
 @media (max-width:650px) and (orientation:portrait) {
   #app:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"],[data-screen="cards"],[data-screen="evolution"]) {
-    width:100%; height:100dvh; max-height:100dvh; aspect-ratio:auto;
-    background:linear-gradient(165deg,#e4ecd8,#b6c9a8 80%);
+    --field-top:144px;
+    width:100%; height:min(100dvh,calc(56.25vw + 258px)); max-height:100dvh; aspect-ratio:auto;
+    background:linear-gradient(165deg,#e6edd8 0%,#cbdcbb 75%,#b9cdaa 100%);
   }
   #app:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"],[data-screen="cards"],[data-screen="evolution"]) #canvas {
-    position:absolute; top:48%; left:0; width:100%; height:auto;
-    aspect-ratio:16 / 9; transform:translateY(-50%);
+    position:absolute; top:var(--field-top); left:0; width:100%; height:auto;
+    aspect-ratio:16 / 9;
     box-shadow:0 -1px #9daf8d,0 1px #9daf8d;
   }
   #app #hud .hud-top { inset:max(10px,env(safe-area-inset-top)) 9px auto; gap:8px; }
@@ -73,9 +74,15 @@
   #app #hud .survival-status #weapon-slots .slot:not(.slot-empty) {
     width:35px !important; height:35px !important;
   }
-  #app #hud .survival-left #buffs { grid-column:1 / -1; }
-  #app #hud .boss-hud { top:max(148px,calc(48% - 28vw)); }
-  #app #toast.toast { top:auto; bottom:max(6px,calc(52% - 28vw - 38px)); }
+  #app #hud .survival-left #buffs { grid-column:1 / -1; position:absolute; top:calc(var(--field-top) + 44px); left:0; }
+  #app #hud .boss-hud { top:calc(var(--field-top) + 3px); }
+  #app:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"]) #toast.toast {
+    top:calc(var(--field-top) + 8px) !important; bottom:auto; height:auto;
+    min-height:32px; max-width:calc(100% - 24px); white-space:normal;
+  }
+  #app:has(#boss-hud:not(.hidden)):is([data-screen="playing"],[data-screen="intro"]) #toast.toast {
+    top:calc(var(--field-top) + 55px) !important;
+  }
   #app #touch-pad { width:92px; height:92px; bottom:max(10px,env(safe-area-inset-bottom)); }
   #app #cards #card-options[data-count] { gap:8px; }
   #app #cards .choice-card { gap:6px; }
@@ -84,9 +91,6 @@
   #app #evolution #evo-options { grid-template-columns:minmax(0,1fr); gap:8px; }
   #app #codex #codex-tabs { max-height:132px; align-content:start; }
   #app #codex .codex-details { min-height:0; }
-}
-@media (max-height:560px) and (max-width:650px) and (orientation:portrait) {
-  #app:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"],[data-screen="cards"],[data-screen="evolution"]) #canvas { top:56%; }
 }
 @media (pointer:coarse) {
   #app #cards .choice-cta kbd { display:none; }
