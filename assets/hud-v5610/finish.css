@@ -1,16 +1,16 @@
 /* Forest combat controls: one loadout dock, compact badges, and readable color. */
 #app #hud {
-  --dock-deep: #142f55;
-  --dock-blue: #246999;
-  --dock-line: #81c5de;
-  --dock-cream: #fff6dd;
-  --dock-gold: #ffdb83;
+  --dock-deep: #344b41;
+  --dock-blue: #5e775c;
+  --dock-line: #a7b79a;
+  --dock-cream: #fff5df;
+  --dock-gold: #f3d490;
 }
 #app #hud :is(.hud-player,.timer,.hud-right,.bottom) {
   color: var(--dock-cream) !important;
   background: linear-gradient(165deg, var(--dock-blue), var(--dock-deep)) !important;
   border: 1px solid var(--dock-line) !important;
-  box-shadow: inset 0 1px #d5fff234, 0 3px #142f37, 0 5px 14px #1b3a4040 !important;
+  box-shadow: inset 0 1px #f8f5dd34, 0 3px #2c4035, 0 5px 14px #29372a43 !important;
 }
 #app #hud .hud-player {
   left: 2.4% !important;
@@ -22,18 +22,18 @@
   margin-left: -5px;
   width: clamp(30px, 28%, 53px);
   border: 2px solid var(--dock-gold);
-  background: #fff2d9;
-  box-shadow: 0 2px 5px #122b42a1;
+  background: #fff1db;
+  box-shadow: 0 2px 5px #2d3e31a1;
 }
 #app #hud .hud-player .stats { gap: 3px; }
 #app #hud .player-name, #app #hud .health-txt { color: var(--dock-cream) !important; }
-#app #hud .hud-health { color: #bdd9d7; }
-#app #hud #level { color: var(--dock-gold); background: #183b47; }
-#app #hud .hud-player .track { height: 6px !important; background: #172e39 !important; }
-#app #hud .hud-player .track > i { background: linear-gradient(90deg,#e75f84,#ff9b9b) !important; }
+#app #hud .hud-health { color: #d8e6cb; }
+#app #hud #level { color: var(--dock-gold); background: #3d5445; }
+#app #hud .hud-player .track { height: 6px !important; background: #35483f !important; }
+#app #hud .hud-player .track > i { background: linear-gradient(90deg,#c05a75,#e498a0) !important; }
 #app #hud .timer { width: clamp(76px, 12%, 141px) !important; border-radius: 9px 9px 15px 15px !important; }
 #app #hud .clock { color: var(--dock-cream) !important; }
-#app #hud .timer-note { color: #bfe5de !important; }
+#app #hud .timer-note { color: #e0ebd1 !important; }
 #app #hud .timer[data-rush="true"] { background: linear-gradient(#a84355,#782c41) !important; border-color: #ffc9ad !important; }
 #app #hud .hud-right { gap: 0; padding: 2px; border-radius: 14px; }
 #app #hud .hud-right .money,
@@ -43,9 +43,9 @@
   border: 0 !important;
   box-shadow: none !important;
 }
-#app #hud .hud-right .money { border-right: 1px solid #a8ccc35c !important; border-radius: 0 !important; color: var(--dock-gold) !important; }
+#app #hud .hud-right .money { border-right: 1px solid #c9d3b45c !important; border-radius: 0 !important; color: var(--dock-gold) !important; }
 #app #hud .hud-right #pause-btn { border-radius: 9px !important; }
-#app #hud .hud-right #pause-btn:hover { background: #acd6e134 !important; }
+#app #hud .hud-right #pause-btn:hover { background: #eadfbb44 !important; }
 #app #hud .pause-bars { border-color: var(--dock-cream); }
 #app #hud .bottom {
   width: clamp(225px, 32%, 407px);
@@ -63,10 +63,10 @@
   gap: 3px;
   padding: 4px !important;
   min-height: 47px !important;
-  border: 1px solid #a2d9d1 !important;
+  border: 1px solid #b6c7a7 !important;
   border-radius: 8px !important;
-  background: linear-gradient(155deg,#3e88b2,#1e4d77) !important;
-  box-shadow: inset 0 1px #d0faf22b !important;
+  background: linear-gradient(155deg,#798d70,#4a6553) !important;
+  box-shadow: inset 0 1px #f4f3d22b !important;
   color: var(--dock-cream);
 }
 #app #hud #weapon-slots .slot .ico {
@@ -77,7 +77,7 @@
 #app #hud #weapon-slots .slot .ico img {
   width: 100% !important;
   height: 100% !important;
-  filter: drop-shadow(0 2px 2px #142a38a6);
+  filter: drop-shadow(0 2px 2px #293e35a6);
 }
 #app #hud #weapon-slots .slot-info { display: block; max-width: 100%; padding: 0 2px; font-size: clamp(9px, .98vw, 13px); }
 #app #hud #weapon-slots .slot-name { display: block; line-height: 1.1; }
@@ -87,17 +87,17 @@
   right: 4px;
   border-radius: 4px;
   padding: 2px 3px;
-  background: #172f3a;
+  background: #31483e;
   color: var(--dock-gold);
   font-size: clamp(8px,.8vw,10px);
 }
 #app #hud #weapon-slots .slot-empty {
-  border: 1px solid #6faaa863 !important;
-  background: #183653 !important;
-  box-shadow: inset 0 1px 5px #18313d !important;
+  border: 1px solid #9bae9663 !important;
+  background: #3f564b !important;
+  box-shadow: inset 0 1px 5px #32493e !important;
 }
 #app #hud #weapon-slots .slot-empty small { display: none; }
-#app #hud .slot-placeholder { border-color: #a2d2ca80; width: 7px; height: 7px; }
+#app #hud .slot-placeholder { border-color: #bdccab80; width: 7px; height: 7px; }
 #app #hud .bottom .hud-xp {
   background: transparent !important;
   border: 0 !important;
@@ -105,35 +105,35 @@
   border-radius: 0 !important;
   padding: 2px 2px 0;
 }
-#app #hud .hud-xp-label, #app #hud .hud-xp .xp-caption { color: #dcf7ef !important; }
-#app #hud .hud-xp .xp-shell { height: 5px !important; background: #102f3e !important; }
-#app #hud .xp-fill { background: linear-gradient(90deg,#55dfd3,#9bf5ec) !important; }
+#app #hud .hud-xp-label, #app #hud .hud-xp .xp-caption { color: #e7ebcf !important; }
+#app #hud .hud-xp .xp-shell { height: 5px !important; background: #344c40 !important; }
+#app #hud .xp-fill { background: linear-gradient(90deg,#acc68c,#dce7af) !important; }
 
 #app #menu .menu-board {
-  border: 1px solid #a6d3c5 !important;
-  background: radial-gradient(ellipse at 82% 25%,#54b8bc78,transparent 57%),linear-gradient(147deg,#2b668d,#193850) !important;
-  box-shadow: inset 0 1px #cff8eb66, 0 5px #122f3d, 0 20px 60px #13293686 !important;
+  border: 1px solid #b4c09f !important;
+  background: radial-gradient(ellipse at 82% 25%,#becb9978,transparent 57%),linear-gradient(147deg,#677f63,#3d5548) !important;
+  box-shadow: inset 0 1px #eff1cf66, 0 5px #34463b, 0 20px 60px #2c3d3286 !important;
 }
-#app #menu :is(.menu-kicker,.menu-intro,.menu-controls) { color: #d1ede9 !important; }
-#app #menu .menu-meta > span { color: #edf8f1; background: #bbf2e42e; }
-#app #menu #nemo-name-change { border: 1px solid #8fc9bb !important; background: #183f4f !important; color: #f8fff1 !important; box-shadow: none !important; }
-#app #menu .profile-edit { color: #ffe1a0; border-left-color: #74a3a8; }
+#app #menu :is(.menu-kicker,.menu-intro,.menu-controls) { color: #e3ebd0 !important; }
+#app #menu .menu-meta > span { color: #f4f4db; background: #e2ecc32e; }
+#app #menu #nemo-name-change { border: 1px solid #a7bc9f !important; background: #47604e !important; color: #fff6e2 !important; box-shadow: none !important; }
+#app #menu .profile-edit { color: #ffe1a0; border-left-color: #92a38a; }
 #app #menu .buttons .btn {
-  border: 1px solid #a6d3c5 !important;
+  border: 1px solid #b4c09f !important;
   background: linear-gradient(#fff9e9,#e7eee0) !important;
-  color: #213c40 !important;
-  box-shadow: 0 2px #132e39, inset 0 1px #fff !important;
+  color: #39493a !important;
+  box-shadow: 0 2px #39483c, inset 0 1px #fff !important;
 }
 #app #menu .buttons #start {
-  background: linear-gradient(#fff0b9,#f8c960) !important;
+  background: linear-gradient(#fff0b9,#e6bd78) !important;
   border: 1px solid #ffe2a1 !important;
-  box-shadow: 0 3px #684722, inset 0 1px #fffae5 !important;
+  box-shadow: 0 3px #785b39, inset 0 1px #fffae5 !important;
 }
 #app #menu .buttons .btn:hover:not(:disabled) { filter: brightness(1.07); }
 #app #menu .menu-art {
-  border: 1px solid #b4dcd0;
-  background: radial-gradient(ellipse at 49% 45%, #f9f5cc, #95d4cf 64%, #4a8ca4);
-  box-shadow: inset 0 0 0 4px #edf9dc42, 0 3px #173744;
+  border: 1px solid #b7c7a5;
+  background: radial-gradient(ellipse at 49% 45%, #fff3cf, #c4d8aa 64%, #8ea588);
+  box-shadow: inset 0 0 0 4px #fbf6db42, 0 3px #405143;
 }
 @media (max-width: 720px) {
   #app #hud .bottom { width: clamp(205px, 49%, 285px); }
@@ -149,9 +149,12 @@
 }
 
 #app #hud :is(.hud-player,.timer,.hud-right,.bottom) {
-  box-shadow: inset 0 1px #e9faff73, inset 0 -2px #0c294e, 0 3px #14304e, 0 5px 14px #1b3a4040 !important;
+  box-shadow: inset 0 1px #fff8e267, inset 0 -2px #33493e, 0 3px #354a3f, 0 5px 14px #29372a43 !important;
 }
 #app #hud :is(.timer,.hud-right) { border-color: #f2d898 !important; }
 #app #hud .hud-player { border-radius: 999px !important; }
 #app #hud .bottom { border-radius: 20px; }
 #app #hud #weapon-slots .slot:not(.slot-empty) { border-color: #edcb84 !important; }
+
+#app #menu .menu-kicker { color: #edf0d8 !important; }
+#app #menu .menu-controls kbd { background: #eaf0d5; color: #3e5344; }

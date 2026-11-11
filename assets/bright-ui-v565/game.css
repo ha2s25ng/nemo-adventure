@@ -1,33 +1,33 @@
 /* Bright, outlined game UI. Panel layouts and game controls are shared with the original screens. */
 #app {
-  --pop-ink: #26202a;
-  --pop-edge: #342631;
-  --pop-blue: #147ed6;
-  --pop-light: #d6efff;
-  --pop-paper: #fffefa;
-  --pop-yellow: #ffcf4b;
-  --pop-button: linear-gradient(#fffefa 76%, #ffe8ab 76%);
+  --pop-ink: #342d37;
+  --pop-edge: #50554a;
+  --pop-blue: #a5b493;
+  --pop-light: #e1ead3;
+  --pop-paper: #fffaf0;
+  --pop-yellow: #eac68a;
+  --pop-button: linear-gradient(#fffaf0 76%, #f0dfb9 76%);
   --game-ink: var(--pop-ink);
-  --game-muted: #3e5065;
+  --game-muted: #4e5145;
   --game-plum: var(--pop-edge);
   --heading: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
   font-family: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
   border-color: var(--pop-edge);
 }
 #app .overlay, #app #menu, #app :is(#cards,#evolution) {
-  background: #133754b3 !important;
+  background: #38473aa3 !important;
   backdrop-filter: blur(3px);
 }
 #app :is(.menu-board,.nemo-name-board,.nemo-shop-board,.nemo-leaderboard-board,.big-board,.small-board,.codex-board,.choice-board),
 #app #menu .menu-board,
 #app #evolution .card-wrap {
-  color: #182e46;
+  color: #3f4a3c;
   background:
-    radial-gradient(ellipse at 82% -10%, #88d6ff 0%, transparent 54%),
-    linear-gradient(155deg, #56bafb, var(--pop-blue) 78%) !important;
+    radial-gradient(ellipse at 82% -10%, #e8eccf 0%, transparent 54%),
+    linear-gradient(155deg, #d8e2c4, var(--pop-blue) 78%) !important;
   border: 3px solid var(--pop-edge) !important;
   border-radius: 23px !important;
-  box-shadow: inset 0 2px 0 #ccefff, 0 5px 0 #231d28, 0 15px 34px #0b274876 !important;
+  box-shadow: inset 0 2px 0 #fbf8e6, 0 5px 0 #44493c, 0 15px 34px #26332966 !important;
 }
 #app .overlay :is(h2,h3), #app #menu .folio-title, #app #evolution .ribbon {
   font-family: var(--heading);
@@ -36,23 +36,23 @@
 }
 #app .overlay h2, #app #cards .choice-heading h2, #app #menu .folio-title, #app #evolution .ribbon {
   color: #fff !important;
-  text-shadow: 0 2px 0 #234775, 0 3px 2px #193f6b !important;
+  text-shadow: 0 2px 0 #5b654e, 0 3px 2px #657159 !important;
 }
 #app #cards .choice-heading h2 { font-size: clamp(22px, 4.9vmin, 38px) !important; }
 #app #cards-title::before, #app #cards-title::after { display: none; }
 #app :is(.folio,.menu-kicker) {
-  color: #163452 !important;
+  color: #435740 !important;
   letter-spacing: .02em;
   font-weight: 900;
 }
 #app :is(.choice-heading p,.choice-footer,.overlay .subtitle,.overlay .card-sub,#menu .menu-intro,#menu .menu-controls) {
-  color: #102d4b !important;
+  color: #3d4c3c !important;
   text-shadow: none !important;
 }
 #app #menu .menu-art {
   border: 2px solid var(--pop-edge);
-  background: radial-gradient(ellipse at 50% 45%, #fff2bb, #c3ebff 59%, #76bdf7);
-  box-shadow: inset 0 0 0 4px #fff6c388, 0 3px var(--pop-edge);
+  background: radial-gradient(ellipse at 50% 45%, #fff0c8, #dde8c9 59%, #abbc97);
+  box-shadow: inset 0 0 0 4px #fff4dc99, 0 3px var(--pop-edge);
 }
 #app .overlay .btn, #app #cards #reroll {
   border: 2px solid var(--pop-edge) !important;
@@ -65,18 +65,18 @@
 }
 #app .overlay .btn.primary, #app #menu .buttons #start {
   color: var(--pop-ink) !important;
-  background: linear-gradient(#ffe78a 70%, #ffbd43 70%) !important;
+  background: linear-gradient(#f8e3b1 70%, #e4bd79 70%) !important;
   border: 2px solid var(--pop-edge) !important;
   box-shadow: 0 3px var(--pop-edge) !important;
 }
 #app .overlay .btn:hover:not(:disabled), #app #cards #reroll:hover:not(:disabled) {
-  background: linear-gradient(#ffffff 62%, #cdeaff 62%) !important;
+  background: linear-gradient(#ffffff 62%, #e3ead4 62%) !important;
 }
 #app .overlay .btn.primary:hover:not(:disabled), #app #menu .buttons #start:hover {
-  background: linear-gradient(#fff1a4 70%, #ffc356 70%) !important;
+  background: linear-gradient(#fff0cc 70%, #e9c38a 70%) !important;
 }
-#app :is(button,input,select):focus-visible { outline: 3px solid #ffde52; outline-offset: 3px; }
-#app .overlay input[type="checkbox"] { accent-color: #125bb9; }
+#app :is(button,input,select):focus-visible { outline: 3px solid #f2d68f; outline-offset: 3px; }
+#app .overlay input[type="checkbox"] { accent-color: #687f59; }
 #app #menu .buttons .btn:not(#nemo-name-change) {
   display: flex !important;
   align-items: center;
@@ -93,52 +93,52 @@
   color: var(--pop-ink) !important;
 }
 #app :is(.nemo-shop-header,.codex-head,.nemo-rank-top) {
-  border-bottom: 2px solid #1d5079 !important;
-  color: #102d4b;
+  border-bottom: 2px solid #78876d !important;
+  color: #3d4c3c;
 }
 #app #costume-shop .nemo-shop-item[aria-pressed="true"], #app .codex-tab.on {
-  background: #e0f2ff !important;
-  border-color: #1256a3 !important;
-  box-shadow: 0 2px #1256a3 !important;
+  background: #e5edd7 !important;
+  border-color: #6b805e !important;
+  box-shadow: 0 2px #6b805e !important;
 }
 #app :is(.nemo-shop-item,.school-row,.settings-line,.codex-tab) strong { font-weight: 900; }
 #app #school .school-row > div:first-child { display: grid; grid-template-columns: 32px minmax(0,1fr); column-gap: 9px; }
 #app #school .school-icon { grid-column: 1; grid-row: 1 / 4; width: 32px; height: 32px; align-self: center; object-fit: contain; }
 #app #school .school-row :is(strong,.school-desc,.school-level) { grid-column: 2; }
 #app :is(.codex-tab,.codex-emblem,.codex-section,.nemo-rank-table-head,.nemo-rank-row,#app .result-summary > div) {
-  background: #e6f5ff !important;
-  border-color: #689ac4 !important;
+  background: #edf1df !important;
+  border-color: #9eab91 !important;
   color: var(--pop-ink) !important;
 }
 #app :is(.menu-money,#shop-wallet,.reward) {
-  background: #ffec9a !important;
+  background: #f6e4b5 !important;
   border: 2px solid var(--pop-edge) !important;
   color: #442f16 !important;
 }
 #app :is(.hud-player.panel,.timer,.money,#pause-btn,#weapon-slots .slot,.xp-shell) {
-  background: #fffdf6 !important;
+  background: #fff9ea !important;
   border: 2px solid var(--pop-edge) !important;
   box-shadow: 0 2px var(--pop-edge) !important;
 }
-#app .xp-fill { background: linear-gradient(90deg, #63d9ff, #2587e7) !important; }
+#app .xp-fill { background: linear-gradient(90deg, #c1d9a2, #8fb87d) !important; }
 #app .timer[data-rush="true"] { background: #ffe3c9 !important; border-color: #a73928 !important; }
-#app #toast { background: #184d83 !important; border: 2px solid #a4d6ff !important; }
+#app #toast { background: #4e6653 !important; border: 2px solid #bacbac !important; }
 #app #cards .choice-card, #app #evolution .skill-card {
-  --ink: #104b81;
-  --wash: #e3f4ff;
-  --edge: #9cc9ef;
-  --banner: #319ded;
-  --shadow: #165ba8;
+  --ink: #355943;
+  --wash: #e6efda;
+  --edge: #a9bd9d;
+  --banner: #8ca883;
+  --shadow: #536f52;
   border: 2px solid var(--pop-edge) !important;
   border-radius: 14px !important;
   background: var(--pop-paper) !important;
-  box-shadow: 0 3px var(--pop-edge), inset 0 -5px #ffe5a7 !important;
+  box-shadow: 0 3px var(--pop-edge), inset 0 -5px #eddfbc !important;
 }
 #app #cards .choice-card:is([data-kind="growth"],[data-kind="break"],[data-kind="gold"]) {
-  --ink: #633c0d; --wash: #fff1c9; --edge: #f2cb64; --banner: #ffca50; --shadow: #9f5b20;
+  --ink: #745536; --wash: #f9edd2; --edge: #dabc88; --banner: #e3bd84; --shadow: #8b6446;
 }
 #app #cards .choice-card:is([data-kind="passive"],[data-kind="evo"],[data-kind="blessing"]) {
-  --ink: #522f81; --wash: #f3e9ff; --edge: #d7b8f4; --banner: #bc98f0; --shadow: #6139a8;
+  --ink: #684a6e; --wash: #f1e8ef; --edge: #d6c1d6; --banner: #bba6c4; --shadow: #745c82;
 }
 #app #cards .choice-identity {
   grid-template-columns: auto minmax(0,1fr);
@@ -146,7 +146,7 @@
   align-items: center;
   gap: clamp(6px, 1.55vmin, 13px);
   text-align: left;
-  background: linear-gradient(115deg, var(--wash), #fffefa);
+  background: linear-gradient(115deg, var(--wash), #fffaf0);
   color: var(--pop-ink);
   border-bottom: 2px solid var(--edge);
 }
@@ -161,7 +161,7 @@
 #app #cards .choice-type { color: var(--ink); }
 #app #cards .choice-name { font-weight: 900; }
 #app #cards .choice-cta, #app #evolution .card-select-label {
-  background: linear-gradient(#fffefa 68%, var(--wash) 68%) !important;
+  background: linear-gradient(#fffaf0 68%, var(--wash) 68%) !important;
   border: 2px solid var(--pop-edge) !important;
   color: var(--ink) !important;
   box-shadow: 0 2px var(--pop-edge) !important;
@@ -170,4 +170,16 @@
 @media (orientation: portrait) and (max-width: 700px) {
   #app:has(> :is(#settings,#school,#leaderboard,#nickname-setup):not(.hidden)) { width: 100%; height: 100dvh; aspect-ratio: auto; }
   #app #menu .buttons .btn .menu-button-icon { width: 18px; height: 18px; flex-basis: 18px; }
+}
+
+/* Use the woodland art's soft greens and lavender with warm parchment. */
+:root { background: #3b493c; }
+body { background: radial-gradient(ellipse at top, #6d7a5e, #3b493c 74%); }
+#app .overlay h2, #app #cards .choice-heading h2, #app #evolution .ribbon {
+  color: #303e32 !important;
+  text-shadow: 0 1px #fffaf0 !important;
+}
+#app #menu .folio-title { color: #fff5dd !important; }
+#app :is(.menu-board,.choice-board,.nemo-shop-board,.big-board,.small-board,.codex-board,.nemo-leaderboard-board) {
+  box-shadow: inset 0 2px 0 #fff9e27d, 0 4px #4b5141, 0 14px 32px #29372c55 !important;
 }
