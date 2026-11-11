@@ -1,0 +1,37 @@
+/* Make run information readable and controls easier to hit. */
+#app #hud .survival-status #survival-timer { height:clamp(58px,6.4vw,82px); }
+#app #hud #survival-timer .timer-content { inset:29% 13% 13%; }
+#app #hud #survival-timer #time { font-size:clamp(21px,2.35vw,30px) !important; }
+#app #hud #survival-timer #time-note { font-size:clamp(10px,1vw,13px) !important; }
+#app #hud .survival-status #hp { font-size:clamp(12px,1.3vw,16px); white-space:nowrap; }
+#app #hud .survival-status .hud-right :is(#gold-hud,#kills-hud) { font-size:clamp(13px,1.5vw,19px); }
+#app #hud .survival-status .hud-right #pause-btn {
+  display:grid;
+  place-items:center;
+  width:44px !important;
+  height:44px !important;
+}
+#app #hud .survival-status .hud-right #pause-btn img { width:29px; height:29px; }
+#app #hud .survival-xp .xp-shell { background:#e0e8cf !important; }
+#app #hud .survival-xp .xp-fill {
+  background:#769450 url("../hud-meters-v5615/xp-fill.webp") center / 100% 100% no-repeat !important;
+  background-blend-mode:multiply !important;
+  box-shadow:inset 0 1px #f0f6c069;
+}
+#app #toast.toast { top:calc(clamp(5px,1.1vw,13px) + clamp(21px,2.05vw,28px) + 6px + clamp(58px,6.4vw,82px) + 8px); }
+
+#app #cards .choice-effect strong { font-size:clamp(15px,2.7vmin,20px); line-height:1.27; }
+#app #cards .choice-name { word-break:keep-all; text-wrap:balance; }
+#app #pause .pause-gear:has(.pause-loadout:empty) { display:none; }
+#app #pause #pause-loadout-title {
+  margin:0 0 5px;
+  color:#4f6348 !important;
+  font-size:clamp(12px,2.1vmin,15px);
+  line-height:1.2;
+}
+#app #pause .pause-loadout:has(>li:only-child) { grid-template-columns:minmax(0,1fr); }
+@media (max-width:460px) {
+  #app #hud .survival-status .hud-right { gap:0; padding-inline:3px; }
+  #app #hud .survival-status .hud-right #pause-btn { margin-inline:-2px; }
+  #app #hud .survival-status .hud-right #pause-btn img { width:25px; height:25px; }
+}

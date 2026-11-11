@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.20" />
+</style><meta name="nemo-version" content="5.6.21" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -348,6 +348,7 @@
 <link rel="stylesheet" href="./assets/lobby-icons-v5618/game.css">
 <link rel="stylesheet" href="./assets/pastel-ui-v5619/game.css">
 <link rel="stylesheet" href="./assets/interface-art-v5620/game.css">
+<link rel="stylesheet" href="./assets/readable-ui-v5621/game.css">
 <style>
 #app #hud .survival-status #survival-timer { inset: auto !important; }
 #app #toast.toast { top: calc(clamp(5px,1.1vw,13px) + clamp(25px,2.55vw,32px) + 6px + clamp(48px,6vw,77px) + 8px); }
@@ -471,7 +472,7 @@
    <span class="pause-emblem" aria-hidden="true"><img src="./assets/pastel-ui-v5619/pause.webp" alt=""></span>
    <div class="pause-heading-copy"><h2 id="pause-title">일시 정지</h2><p class="subtitle">준비되면 숲으로 돌아가세요.</p></div><img src="./assets/interface-art-v5620/pause-sprig.webp" alt="">
   </header>
-  <ul class="pause-loadout" id="pause-loadout" aria-label="장착한 무기"></ul>
+  <div class="pause-gear"><h3 id="pause-loadout-title">장착 무기</h3><ul class="pause-loadout" id="pause-loadout" aria-labelledby="pause-loadout-title"></ul></div>
   <div class="pause-actions">
    <button type="button" class="btn primary" id="resume"><img src="./assets/interface-art-v5620/resume-icon.webp" alt="">모험 계속하기</button>
    <button type="button" class="btn" id="pause-codex"><img class="woodland-book" src="./assets/lobby-icons-v5618/book.webp" alt="">마법 도감</button>
@@ -584,6 +585,7 @@ for(const id of weaponKeys){
 }
 ASSET_DATA.ui_magic='./assets/polish-v554/magic-wand.webp';
 Object.assign(ASSET_DATA,{"ui_magic":"./assets/interface-art-v5620/magic.webp","ui_quick":"./assets/interface-art-v5620/quick.webp","ui_lucky":"./assets/interface-art-v5620/lucky.webp","ui_big":"./assets/interface-art-v5620/big.webp","ui_cloak":"./assets/interface-art-v5620/cloak.webp","ui_shoes":"./assets/interface-art-v5620/shoes.webp","ui_magnet":"./assets/interface-art-v5620/magnet.webp"});
+Object.assign(ASSET_DATA,{"ui_star":"./assets/readable-ui-v5621/star.webp","ui_orbit":"./assets/readable-ui-v5621/orbit.webp","ui_moon":"./assets/readable-ui-v5621/moon.webp","ui_bubble":"./assets/readable-ui-v5621/bubble.webp","ui_bloom":"./assets/readable-ui-v5621/bloom.webp","ui_cloud":"./assets/readable-ui-v5621/cloud.webp","ui_ribbon":"./assets/readable-ui-v5621/ribbon.webp","ui_feather":"./assets/readable-ui-v5621/feather.webp"});
 const sprites={};Object.keys(ASSET_DATA).forEach(k=>{let im=new Image();im.src=ASSET_DATA[k];sprites[k]=im;});
 const COSTUMES=[{"id":"default","name":"기본 니모","price":0,"desc":"처음부터 함께하는 니모. 빨간 목도리와 별빛 마법봉.","icon":"🐾","atlas":"./assets/nemo-walk-v559/default.webp","portrait":"./assets/nemo-polish/default-portrait.webp"},{"id":"forest","name":"숲속 탐험가","price":250,"desc":"초록 모자와 탐험가 복장으로 숲을 누벼요.","icon":"🌿","atlas":"./assets/nemo-walk-v559/forest.webp","portrait":"./assets/polish-v554/nemo_costume_forest.webp"},{"id":"rain","name":"노란 우비","price":450,"desc":"노란 우비와 후드로 빗방울도 두렵지 않아요.","icon":"🌧️","atlas":"./assets/nemo-walk-v559/rain.webp","portrait":"./assets/polish-v554/nemo_costume_rain.webp"},{"id":"student","name":"마법학교 학생","price":750,"desc":"반짝이는 모자를 쓴 견습 멍법사.","icon":"🎓","atlas":"./assets/nemo-walk-v559/student.webp","portrait":"./assets/polish-v554/nemo_costume_student.webp"},{"id":"starlight","name":"별빛 마법사","price":1100,"desc":"보랏빛 로브와 별무늬 마법 모자.","icon":"✨","atlas":"./assets/nemo-walk-v559/starlight.webp","portrait":"./assets/polish-v554/nemo_costume_starlight.webp"},{"id":"royal","name":"왕관 니모","price":1600,"desc":"왕관과 붉은 망토로 숲의 주인공이 돼요.","icon":"👑","atlas":"./assets/nemo-walk-v559/royal.webp","portrait":"./assets/polish-v554/nemo_costume_royal.webp"},{"id":"legend","name":"전설의 멍법사","price":2400,"desc":"환상적인 은은한 오라가 감도는 전설의 의상.","icon":"🌟","atlas":"./assets/nemo-walk-v559/legend.webp","portrait":"./assets/polish-v554/nemo_costume_legend.webp"}];
 const costumeAtlases={};
@@ -732,9 +734,11 @@ function guideMetrics(id){return weaponNumbers(id).map(x=>`<div><b>${x.k}</b><st
 function choiceDetail(c){
  const weapon=WEAPON_GUIDE[c.id];
  if(c.type==='new')return {label:'전투 역할',effect:weapon.role,copy:weapon.desc,growth:W[c.id].up.map(([name])=>name).join(' · ')};
+ if(c.type==='break'&&c.id==='star')return {label:'이번 돌파',effect:'추가 도탄 1회 · 도탄 피해 50%',copy:'적중하면 반경 3 안의 다른 적에게 별이 한 번 더 튕깁니다.'};
  const copy=c.type==='passive'?(PASSIVE_GUIDE[c.id]||PASSIVE_ROLE[c.id]):
    c.type==='blessing'?c.lore:weapon?.desc;
- const label=c.type==='growth'?'이번 강화':c.type==='passive'?'획득 효과':'선택 효과';
+ const labels={growth:'이번 강화',passive:'획득 효과',break:'이번 돌파',evo:'진화 방식'};
+ const label=labels[c.type]||'선택 효과';
  return {label,effect:friendlyEffect(c.desc||c.name),copy};
 }
 let codexReturn='menu',currentCodex='star';
@@ -892,10 +896,6 @@ function openForestChoice(stage){g.milestoneStage=stage;g.cardReason='milestone'
  {type:'blessing',id:'breeze',name:'숲의 산들바람',ico:'🍃',desc:'이동 속도 +10% · 주문 속도 +8%',lore:'산들바람의 힘으로 조금 더 빠르게 이동하고 마법을 써요.',meta:'숲의 축복 · 이번 판 한정'},
  {type:'blessing',id:'gather',name:'보석의 노래',ico:'🧲',desc:'경험치 획득 범위 +40% · 체력 20% 회복',lore:'숲의 보석들이 니모에게 더 쉽게 모여들어요.',meta:'숲의 축복 · 이번 판 한정'}];renderCards();setScreen('cards');}
 
-function choiceName(name){
- const [title,...qualifiers]=name.split(' · ');
- return qualifiers.length?`${title} <span class="choice-qualifier">· ${qualifiers.join(' · ')}</span>`:title;
-}
 function renderCards(){
  const milestone=g.cardReason==='milestone',bonus=g.cardReason==='bonus';
  $('cards-title').textContent=milestone?`숲의 축복 · ${fmt(g.t)}`:bonus?'엘리트 보상':`레벨 업 · Lv.${g.player.level}`;
@@ -906,7 +906,7 @@ function renderCards(){
   const {label,effect,copy,growth}=choiceDetail(c);
   const meta=c.type==='passive'?`강화 단계 ${getPassive(c.id)}/3 → ${getPassive(c.id)+1}/3`:c.meta;
   return `<button type="button" class="choice-card" data-kind="${c.type}" data-pick="${i}" aria-keyshortcuts="${i+1}">
-    <span class="choice-identity"><span class="choice-icon" aria-hidden="true">${skillIcon(c.id,c.ico)}</span><span><span class="choice-type">${tags[c.type]||'보상'}</span><strong class="choice-name">${choiceName(c.name)}</strong></span></span>
+    <span class="choice-identity"><span class="choice-icon" aria-hidden="true">${skillIcon(c.id,c.ico)}</span><span><span class="choice-type">${tags[c.type]||'보상'}</span><strong class="choice-name">${(c.type==='break'||c.type==='evo')?W[c.id].name:c.name}</strong></span></span>
     <span class="choice-effect"><small>${label}</small><strong>${effect}</strong></span>
     ${copy?`<span class="choice-copy">${copy}</span>`:''}
     ${growth?`<span class="choice-growth"><b>강화 방향</b> ${growth}</span>`:'' }
@@ -1993,7 +1993,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.20';
+  const CURRENT='5.6.21';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
