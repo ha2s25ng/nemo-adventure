@@ -1,0 +1,93 @@
+/* Forest palette and responsive layout for combat and menu screens. */
+#app #hud .survival-xp .xp-shell { background:#d5ddc3 !important; }
+#app #hud .survival-xp .xp-fill {
+  background:linear-gradient(90deg,#55764f,#749259) !important;
+  box-shadow:inset 0 1px #c8d8a1,inset -2px 0 #3f613c !important;
+}
+#app #hud .survival-xp .survival-xp-caption {
+  background:#fffae9 !important; color:#263b30 !important;
+  font-variant-numeric:tabular-nums; padding-inline:7px;
+}
+#app #hud .survival-xp #level { font-variant-numeric:tabular-nums; }
+#app #pause :focus-visible, #app #codex :focus-visible, #app #result :focus-visible {
+  outline:2px solid #436b48; outline-offset:2px;
+}
+#app #codex .codex-tab[aria-pressed="true"] {
+  border-color:#58734d !important;
+  box-shadow:inset 0 0 0 1px #58734d,0 2px #95a788 !important;
+  background:#dce8cc !important;
+}
+#app #codex .codex-details { overscroll-behavior:contain; }
+#app #cards .choice-name, #app #evolution :is(.card-title,.card-desc) {
+  word-break:keep-all; overflow-wrap:anywhere; text-wrap:balance;
+}
+#app #cards .choice-identity > span:last-child { min-width:0; }
+#app #cards .choice-effect { margin-top:0; }
+#app #cards :is(.choice-copy,.choice-growth,.choice-meta) { line-height:1.45; }
+#app #evolution .card-desc { font-size:clamp(14px,1.45vw,18px); line-height:1.5; }
+#app #evolution .card-topping { font-size:clamp(12px,1.3vw,15px); }
+#app #costume-shop .shop-art { display:grid; place-items:center; width:100%; }
+#app #costume-shop .shop-art img { grid-area:1 / 1; }
+#app #costume-shop .shop-art-status {
+  grid-area:1 / 1; z-index:1; color:#46563e; background:#edf0e1;
+  border:1px solid #b7c2a8; padding:4px 8px; border-radius:6px; font-size:12px;
+}
+#app #costume-shop [data-art-state="ready"] .shop-art-status { display:none; }
+#app #costume-shop [data-art-state="loading"] .shop-art-status::before { content:"불러오는 중"; }
+#app #costume-shop [data-art-state="error"] .shop-art-status::before { content:"이미지를 불러오지 못했어요"; }
+#app #costume-shop [data-art-state="error"] img { visibility:hidden; }
+#app #school .school-price { display:grid; justify-items:end; gap:3px; flex-shrink:0; }
+#app #school .school-price small { color:#785249; font-size:12px; }
+#app #result .result-summary { font-variant-numeric:tabular-nums; }
+#app #result-grid .result-stat { min-width:0; overflow-wrap:anywhere; }
+#app #result-grid .result-stat small { color:#4b5e48 !important; }
+
+@media (max-width:650px) and (orientation:portrait) {
+  #app:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"],[data-screen="cards"],[data-screen="evolution"]) {
+    width:100%; height:100dvh; max-height:100dvh; aspect-ratio:auto;
+    background:linear-gradient(165deg,#e4ecd8,#b6c9a8 80%);
+  }
+  #app:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"],[data-screen="cards"],[data-screen="evolution"]) #canvas {
+    position:absolute; top:48%; left:0; width:100%; height:auto;
+    aspect-ratio:16 / 9; transform:translateY(-50%);
+    box-shadow:0 -1px #9daf8d,0 1px #9daf8d;
+  }
+  #app #hud .hud-top { inset:max(10px,env(safe-area-inset-top)) 9px auto; gap:8px; }
+  #app #hud .survival-xp { min-height:25px; }
+  #app #hud .survival-xp-caption { font-size:12px; }
+  #app #hud .survival-xp #level { font-size:13px; }
+  #app #hud .survival-status {
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-areas:"timer counts" "gear gear"; gap:6px;
+  }
+  #app #hud .survival-status #survival-timer {
+    grid-area:timer; justify-self:start; width:104px !important; height:56px;
+  }
+  #app #hud .survival-status .hud-right { grid-area:counts; align-self:center; max-width:none; }
+  #app #hud .survival-status .survival-left {
+    grid-area:gear; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:5px 6px;
+  }
+  #app #hud .survival-status .hud-player:has(#portrait) { width:105px !important; }
+  #app #hud .survival-status #hp { font-size:12px; }
+  #app #hud .survival-status #weapon-slots { flex-wrap:wrap; }
+  #app #hud .survival-status #weapon-slots .slot:not(.slot-empty) {
+    width:35px !important; height:35px !important;
+  }
+  #app #hud .survival-left #buffs { grid-column:1 / -1; }
+  #app #hud .boss-hud { top:max(148px,calc(48% - 28vw)); }
+  #app #toast.toast { top:auto; bottom:max(6px,calc(52% - 28vw - 38px)); }
+  #app #touch-pad { width:92px; height:92px; bottom:max(10px,env(safe-area-inset-bottom)); }
+  #app #cards #card-options[data-count] { gap:8px; }
+  #app #cards .choice-card { gap:6px; }
+  #app #cards .choice-name { font-size:clamp(17px,5vw,24px); }
+  #app #cards .choice-icon { width:42px; height:42px; }
+  #app #evolution #evo-options { grid-template-columns:minmax(0,1fr); gap:8px; }
+  #app #codex #codex-tabs { max-height:132px; align-content:start; }
+  #app #codex .codex-details { min-height:0; }
+}
+@media (max-height:560px) and (max-width:650px) and (orientation:portrait) {
+  #app:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"],[data-screen="cards"],[data-screen="evolution"]) #canvas { top:56%; }
+}
+@media (pointer:coarse) {
+  #app #cards .choice-cta kbd { display:none; }
+}

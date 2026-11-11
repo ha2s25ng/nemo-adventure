@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.22" />
+</style><meta name="nemo-version" content="5.6.23" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -350,6 +350,7 @@
 <link rel="stylesheet" href="./assets/interface-art-v5620/game.css">
 <link rel="stylesheet" href="./assets/readable-ui-v5621/game.css">
 <link rel="stylesheet" href="./assets/settings-v5622/game.css">
+<link rel="stylesheet" href="./assets/ui-review-v5623/game.css">
 <style>
 #app #hud .survival-status #survival-timer { inset: auto !important; }
 #app #toast.toast { top: calc(clamp(5px,1.1vw,13px) + clamp(25px,2.55vw,32px) + 6px + clamp(48px,6vw,77px) + 8px); }
@@ -453,7 +454,7 @@
       <div><strong id="shop-wallet">🪙 0 G</strong><button class="btn" id="shop-back">✕ 돌아가기</button></div>
     </header>
     <div class="nemo-shop-content">
-      <section class="nemo-shop-feature"><img id="shop-feature-art" alt="선택한 코스튬 미리보기" src="./assets/nemo-polish/default-portrait.webp"><h3 id="shop-feature-name">기본 니모</h3><p id="shop-feature-desc"></p><button class="btn primary" id="shop-action"></button><p class="shop-hint" id="shop-message">옷을 선택해 미리 입어 보세요.</p></section>
+      <section class="nemo-shop-feature"><div class="shop-art" data-art-state="loading"><img id="shop-feature-art" alt="선택한 코스튬 미리보기" src="./assets/nemo-polish/default-portrait.webp"><span class="shop-art-status" aria-hidden="true"></span></div><h3 id="shop-feature-name">기본 니모</h3><p id="shop-feature-desc"></p><button class="btn primary" id="shop-action"></button><p class="shop-hint" id="shop-message">옷을 선택해 미리 입어 보세요.</p></section>
       <section class="nemo-shop-grid" id="shop-items"></section>
     </div>
   </div>
@@ -466,7 +467,7 @@
   <footer class="choice-footer"><span id="rerolls"></span><button class="btn primary" id="reroll" type="button"><img src="./assets/interface-art-v5620/reroll.webp" alt="">카드 다시 뽑기</button></footer>
  </div>
 </div>
-<div class="overlay hidden" id="evolution"><div class="card-wrap"><p class="folio">마법 성장</p><div class="ribbon" id="evo-title">🌟 최종 진화</div><p class="card-sub">기존 강화를 이어갈 진화 하나를 고르세요.</p><div class="evo-cards" id="evo-options"></div></div></div>
+<div class="overlay hidden" id="evolution" role="dialog" aria-modal="true" aria-labelledby="evo-title"><div class="card-wrap"><p class="folio">마법 성장</p><div class="ribbon" id="evo-title">🌟 최종 진화</div><p class="card-sub">기존 강화를 이어갈 진화 하나를 고르세요.</p><div class="evo-cards" id="evo-options"></div></div></div>
 <div class="overlay hidden" id="pause" role="dialog" aria-modal="true" aria-labelledby="pause-title">
  <section class="small-board pause-board">
   <header class="pause-heading">
@@ -481,12 +482,12 @@
   </div>
  </section>
 </div>
-<div class="overlay hidden" id="result"><div class="big-board"><p class="folio">모험 일지</p><h2 id="result-title">모험 결과</h2><p class="subtitle" id="result-desc"></p><div class="result-summary"><div><small>생존 시간</small><strong id="result-time">00:00</strong></div><div class="reward"><small>획득 골드</small><strong id="result-money">+0 G</strong></div></div><div class="result-grid" id="result-grid"></div><div class="stack-btns" style="max-width:390px;margin:auto"><button class="btn primary" id="retry">다시 도전</button><button class="btn" id="result-menu">숲 입구로</button><button class="btn nemo-rank-result" id="result-rank-btn">내 기록과 랭킹</button></div></div></div>
-<div class="overlay hidden" id="codex"><div class="codex-board">
-<div class="codex-head"><div><p class="folio">마법 기록</p><h2>니모의 마법 도감</h2><p>14종 마법의 공격 방식·강화·두 가지 최종 진화를 확인할 수 있어.</p></div><button class="btn codex-close" id="codex-back">✕ 닫기</button></div>
+<div class="overlay hidden" id="result" role="dialog" aria-modal="true" aria-labelledby="result-title"><div class="big-board"><p class="folio">모험 일지</p><h2 id="result-title">모험 결과</h2><p class="subtitle" id="result-desc"></p><div class="result-summary"><div><small>생존 시간</small><strong id="result-time">00:00</strong></div><div class="reward"><small>획득 골드</small><strong id="result-money">+0 G</strong></div></div><div class="result-grid" id="result-grid"></div><div class="stack-btns" style="max-width:390px;margin:auto"><button class="btn primary" id="retry">다시 도전</button><button class="btn" id="result-menu">숲 입구로</button><button class="btn nemo-rank-result" id="result-rank-btn">내 기록과 랭킹</button></div></div></div>
+<div class="overlay hidden" id="codex" role="dialog" aria-modal="true" aria-labelledby="codex-title"><div class="codex-board">
+<div class="codex-head"><div><p class="folio">마법 기록</p><h2 id="codex-title">니모의 마법 도감</h2><p>14종 마법의 공격 방식·강화·두 가지 최종 진화를 확인할 수 있어.</p></div><button class="btn codex-close" id="codex-back">✕ 닫기</button></div>
 <div class="codex-tabs" id="codex-tabs"></div><div class="codex-details" id="codex-details"></div>
 </div></div><div class="overlay hidden" id="leaderboard"><div class="nemo-leaderboard-board">
-  <div class="nemo-rank-top"><div><p class="folio">모험 기록</p><h2>숲의 명예의 전당</h2><p>모든 PC의 기록을 한곳에 · 클리어 우선 / 빠른 클리어순 / 실패 시 오래 생존한 순</p></div><button type="button" id="leaderboard-close" class="btn">✕ 돌아가기</button></div>
+  <div class="nemo-rank-top"><div><p class="folio">모험 기록</p><h2>숲의 명예의 전당</h2><p>무한 생존 · 플레이어별 최장 생존 기록</p></div><button type="button" id="leaderboard-close" class="btn">✕ 돌아가기</button></div>
   <div class="nemo-rank-layout"><section class="nemo-rank-left"><label for="rank-nickname">🐾 내 닉네임 (최대 16자)</label><input id="rank-nickname" maxlength="16" placeholder="예: 별빛 니모" autocomplete="nickname"/>
   <div class="nemo-rank-local" id="rank-local"></div>
   <div class="nemo-rank-setup"><h3>🌐 온라인 랭킹 연결</h3><p>공유 랭킹을 사용하려면 Supabase 프로젝트 URL과 공개용 publishable 키를 등록해 주세요.</p>
@@ -496,12 +497,12 @@
     <div class="nemo-rank-actions"><button class="btn primary" id="rank-save">연결 정보 저장 · 확인</button><button class="btn" id="rank-submit">방금 기록 업로드</button></div>
     <div id="rank-status" role="status" class="nemo-rank-status">미연결 — 개인 기록만 표시 중</div></div></section>
     <section class="nemo-rank-right"><div class="nemo-rank-table-title"><h3>✨ 전체 TOP 50</h3><button class="btn" id="rank-refresh">↻ 새로고침</button></div>
-    <div class="nemo-rank-table-head"><span>순위 / 닉네임</span><span>기록</span><span>결과</span></div><div id="rank-online" class="nemo-rank-list"><p class="nemo-rank-empty">온라인 연결 전입니다. 프로젝트 설정 후 다른 PC의 기록을 볼 수 있어요.</p></div>
-    <p class="nemo-rank-foot">개인 기록은 오프라인에서도 저장돼요. 온라인 점수는 브라우저 방식의 테스트 랭킹이므로 완전한 부정행위 방지는 제공하지 않아요.</p></section></div>
+    <div class="nemo-rank-table-head"><span>순위 / 닉네임</span><span>기록</span><span>결과</span></div><div id="rank-online" class="nemo-rank-list"><p class="nemo-rank-empty">온라인 기록을 불러오는 중이에요.</p></div>
+    <p class="nemo-rank-foot">온라인 연결이 끊겨도 이 기기의 개인 기록은 저장돼요.</p></section></div>
 </div></div>
 <div class="overlay hidden" id="settings" role="dialog" aria-modal="true" aria-labelledby="settings-title">
  <section class="small-board settings-board">
-  <header class="settings-heading"><img src="./assets/lobby-icons-v5618/settings.webp" alt=""><h2 id="settings-title">설정</h2></header>
+  <header class="settings-heading"><img src="./assets/lobby-icons-v5618/settings.webp" alt=""><h2 id="settings-title" tabindex="-1">설정</h2></header>
   <section class="settings-group" aria-labelledby="settings-effects">
    <h3 id="settings-effects">화면 효과</h3>
    <label class="settings-line"><span>반짝이 이펙트</span><input id="setting-particles" type="checkbox" checked></label>
@@ -755,20 +756,25 @@ function choiceDetail(c){
  if(c.type==='new')return {label:'전투 역할',effect:weapon.role,copy:weapon.desc,growth:W[c.id].up.map(([name])=>name).join(' · ')};
  if(c.type==='break'&&c.id==='star')return {label:'이번 돌파',effect:'추가 도탄 1회 · 도탄 피해 50%',copy:'적중하면 반경 3 안의 다른 적에게 별이 한 번 더 튕깁니다.'};
  const copy=c.type==='passive'?(PASSIVE_GUIDE[c.id]||PASSIVE_ROLE[c.id]):
-   c.type==='blessing'?c.lore:weapon?.desc;
+   c.type==='blessing'?c.lore:c.type==='break'?weapon?.role:'';
  const labels={growth:'이번 강화',passive:'획득 효과',break:'이번 돌파',evo:'진화 방식'};
  const label=labels[c.type]||'선택 효과';
  return {label,effect:friendlyEffect(c.desc||c.name),copy};
 }
 let codexReturn='menu',currentCodex='star';
 function openCodex(){codexReturn=(screen==='pause'||screen==='playing'||screen==='intro')?'pause':'menu';renderCodex();setScreen('codex');}
-function closeCodex(){setScreen(codexReturn);if(codexReturn==='menu')renderMenu();}
+function closeCodex(){
+ setScreen(codexReturn);
+ if(codexReturn==='menu')renderMenu();
+ $(codexReturn==='pause'?'pause-codex':'codex-btn').focus();
+}
 function renderCodex(){
- $('codex-tabs').innerHTML=weaponKeys.map(id=>`<button type="button" class="codex-tab ${id===currentCodex?'on':''}" data-codex="${id}"><span>${skillIcon(id,W[id].icon)}</span> ${W[id].name}${g?.weapons[id]?' · Lv.'+g.weapons[id].lv:''}</button>`).join('');
+ $('codex-tabs').innerHTML=weaponKeys.map(id=>`<button type="button" class="codex-tab ${id===currentCodex?'on':''}" data-codex="${id}" aria-pressed="${id===currentCodex}"><span aria-hidden="true">${skillIcon(id,W[id].icon)}</span> ${W[id].name}${g?.weapons[id]?' · Lv.'+g.weapons[id].lv:''}</button>`).join('');
  const d=W[currentCodex],v=WEAPON_GUIDE[currentCodex],w=g?.weapons[currentCodex];
  $('codex-details').innerHTML=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(currentCodex,d.icon)}</div><div class="codex-intro"><div class="codex-heading"><h3>${d.name}</h3><span>${w?'현재 Lv.'+w.lv:'기본 무기 Lv.1'}</span></div><p class="codex-role">${v.role}</p><p>${v.desc}</p><p class="codex-note">💡 ${v.value}</p></div></div>
  <div class="codex-benefit">🌟 <b>강화 방향</b> ${v.trade}</div><div class="codex-columns"><section><h4>✦ 일반 강화 (각 2회까지)</h4>${d.up.map((a,i)=>`<div class="codex-up"><b>${a[0]}</b><span>${friendlyEffect(a[1])}</span><em>${w?w.up[i]:0}/2</em></div>`).join('')}<h4>✦ Lv.4 중간 돌파</h4><p class="codex-text">${d.break}</p></section>
  <section><h4>🌟 Lv.7 최종 진화 — 둘 중 하나</h4>${d.evos.map((a,i)=>`<div class="codex-evo ${w?.evo===i?'chosen':''}"><b>${i===0?'①':'②'} ${a[0]}</b><span>${friendlyEffect(a[1])}</span></div>`).join('')}<p class="codex-note">${v.trade}</p></section></div>`;
+ $('codex-details').scrollTop=0;
 }
 
 let screen='menu', pausedFrom='playing', g=null, last=0, accumulator=0, saved=readSave();
@@ -786,9 +792,15 @@ let needsDraw=true;
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
 function setScreen(s){
  if(s!=='playing'||screen!=='playing'){keys.clear();clearTouch();}
+ const previous=screen;
  screen=s;needsDraw=true;$('app').dataset.screen=s;
  if(s==='menu'||s==='result'){toastTimer=0;$('toast').classList.add('hidden');}for(const id of ['menu','nickname-setup','costume-shop','school','cards','evolution','pause','result','settings','codex','leaderboard'])$(id).classList.toggle('hidden',id!==s);
- $('hud').classList.toggle('hidden',!g || s==='menu'||s==='costume-shop'||s==='school'||s==='settings'||s==='codex'||s==='leaderboard');$('touch-pad').classList.toggle('hidden',s!=='playing');}
+ $('hud').classList.toggle('hidden',!g || s==='menu'||s==='costume-shop'||s==='school'||s==='settings'||s==='codex'||s==='leaderboard');$('touch-pad').classList.toggle('hidden',s!=='playing');
+ $('hud').inert=s!=='playing';
+ const focusTarget={pause:'resume',codex:'codex-back',result:'retry',settings:'settings-title'}[s];
+ if(focusTarget)$(focusTarget).focus({preventScroll:true});
+ if(s==='playing'&&previous==='pause')$('pause-btn').focus({preventScroll:true});
+}
 let toastTimer=0;function showToast(t,duration=2.5){$('toast').textContent=t;$('toast').classList.remove('hidden');toastTimer=duration;}
 // One continuous survival mode. Scales every real minute, not by a selected difficulty.
 const difficultyKey='adaptive';
@@ -952,8 +964,8 @@ function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c)return;
   showToast(`🌼 ${c.name} 획득!`);
  }
  afterCard();}
-function renderEvo(id){let d=W[id];$('evo-title').textContent=`✦ ${d.name} · 최종 진화 ✦`;
- $('evo-options').innerHTML=d.evos.map(([name,desc],i)=>`<button class="skill-card featured" data-evo="${i}"><span class="card-topping">${i===0?'진화 A · 공격 특화':'진화 B · 전투 특화'}</span><div class="card-icon">${skillIcon(id,d.icon)}</div><div class="card-title">${name}</div><div class="card-desc">${friendlyEffect(desc)}</div><p class="card-lore">${WEAPON_GUIDE[id].desc}</p><div class="card-meta">${d.name} · Lv.6 → Lv.7 · 기존 강화 유지</div><span class="card-select-label">✦ 이 진화 선택</span></button>`).join('');}
+function renderEvo(id){let d=W[id];$('evo-title').textContent=`${d.name} · 최종 진화`;
+ $('evo-options').innerHTML=d.evos.map(([name,desc],i)=>`<button class="skill-card featured" data-evo="${i}"><span class="card-topping">${i===0?'진화 A · 공격 특화':'진화 B · 전투 특화'}</span><div class="card-icon">${skillIcon(id,d.icon)}</div><div class="card-title">${name}</div><div class="card-desc">${friendlyEffect(desc)}</div><div class="card-meta">${d.name} · Lv.6 → Lv.7 · 기존 강화 유지</div><span class="card-select-label">✦ 이 진화 선택</span></button>`).join('');}
 function chooseEvo(i){if(screen!=='evolution'||!g.currentEvo)return;let w=g.weapons[g.currentEvo];w.evo=i;w.lv=7;g.metrics.cardPicks[W[g.currentEvo].evos[i][0]]=(g.metrics.cardPicks[W[g.currentEvo].evos[i][0]]||0)+1;
  if(!g.metrics.firstEvolution)g.metrics.firstEvolution=g.t;showToast(`🌟 ${W[g.currentEvo].evos[i][0]} 진화!`);g.currentEvo=null;afterCard();}
 function afterCard(){setScreen('playing');maybeCards();updateHUD();}
@@ -1488,14 +1500,26 @@ function shopOpen(){shopSelected=saved.costumeEquipped||'default';setScreen('cos
 function shopRender(){
  const selected=costumeOf(shopSelected);const owned=costumeOwned(selected.id);
  $('shop-wallet').textContent='🪙 '+saved.gold.toLocaleString('ko-KR')+' G';
- $('shop-feature-art').src=selected.portrait;
+ const art=$('shop-feature-art');
+ if(art.getAttribute('src')!==selected.portrait){
+  art.parentElement.dataset.artState='loading';
+  art.src=selected.portrait;
+ }
+ updateShopArt(art);
  $('shop-feature-name').textContent=selected.name;
  $('shop-feature-desc').textContent=selected.desc;
- $('shop-items').innerHTML=COSTUMES.map(item=>'<button type="button" class="nemo-shop-item '+(item.id===shopSelected?'selected ':'')+(item.id===saved.costumeEquipped?'equipped':'')+'" data-costume="'+item.id+'" aria-pressed="'+(item.id===shopSelected)+'" aria-label="'+item.name+'"><img src="'+item.portrait+'" alt=""><strong>'+item.icon+' '+item.name+'</strong><small>'+(item.id===saved.costumeEquipped?'장착 중':costumeOwned(item.id)?'보유 중':'🪙 '+item.price.toLocaleString('ko-KR')+' G')+'</small></button>').join('');
- $('shop-action').disabled=owned&&selected.id===saved.costumeEquipped;
+ $('shop-items').innerHTML=COSTUMES.map(item=>'<button type="button" class="nemo-shop-item '+(item.id===shopSelected?'selected ':'')+(item.id===saved.costumeEquipped?'equipped':'')+'" data-costume="'+item.id+'" aria-pressed="'+(item.id===shopSelected)+'" aria-label="'+item.name+'"><span class="shop-art" data-art-state="loading"><img src="'+item.portrait+'" alt=""><span class="shop-art-status" aria-hidden="true"></span></span><strong>'+item.icon+' '+item.name+'</strong><small>'+(item.id===saved.costumeEquipped?'장착 중':costumeOwned(item.id)?'보유 중':'🪙 '+item.price.toLocaleString('ko-KR')+' G')+'</small></button>').join('');
+ for(const img of $('shop-items').querySelectorAll('img'))updateShopArt(img);
+ const shortfall=owned?0:Math.max(0,selected.price-saved.gold);
+ $('shop-action').disabled=shortfall>0||(owned&&selected.id===saved.costumeEquipped);
  $('shop-action').textContent=owned?(selected.id===saved.costumeEquipped?'장착 중':'이 코스튬 장착하기'):'🪙 '+selected.price.toLocaleString('ko-KR')+' G 구매하기';
- $('shop-message').textContent=owned?'이미 보유하고 있는 코스튬이야.':('구매하면 영구 보유하고, 장착은 따로 선택할 수 있어.');
+ $('shop-message').textContent=shortfall?`골드 ${shortfall.toLocaleString('ko-KR')} G 부족`:owned?'이미 보유하고 있는 코스튬이야.':'구매하면 영구 보유하고, 장착은 따로 선택할 수 있어.';
 }
+function updateShopArt(img){
+ if(!img?.matches('.shop-art img'))return;
+ img.parentElement.dataset.artState=!img.complete?'loading':img.naturalWidth?'ready':'error';
+}
+for(const event of ['load','error'])$('costume-shop').addEventListener(event,e=>updateShopArt(e.target),true);
 function shopAction(){
  const selected=costumeOf(shopSelected);
  if(!costumeOwned(selected.id)){
@@ -1510,8 +1534,9 @@ function shopAction(){
 
 function updateSchool(){$('school-gold').textContent=`🪙 보유 골드: ${saved.gold.toLocaleString('ko-KR')}`;
  $('school-upgrades').innerHTML=Object.entries(DATA.economy.upgrades).map(([key,a])=>{let lv=saved.upgrades[key],cost=(key==='reroll'?DATA.economy.rerollCosts:DATA.economy.costs)[lv],max=a[2];
+  const shortfall=lv<max?Math.max(0,cost-saved.gold):0;
   const schoolIcons={attack:'magic',hp:'cloak',speed:'shoes',pickup:'magnet',crit:'lucky',reroll:'quick'};
-  return `<div class="school-row"><div><img class="school-icon" src="${ASSET_DATA['ui_'+schoolIcons[key]]}" alt=""><strong>${a[0]}</strong><div class="school-desc">${a[1]}</div><div class="school-level">Lv.${lv} / ${max}</div></div><button class="btn ${saved.gold>=cost&&lv<max?'primary':''}" data-upgrade="${key}" ${lv>=max||saved.gold<cost?'disabled':''}>${lv>=max?'MAX':`🪙 ${cost}`}</button></div>`;}).join('');}
+  return `<div class="school-row"><div><img class="school-icon" src="${ASSET_DATA['ui_'+schoolIcons[key]]}" alt=""><strong>${a[0]}</strong><div class="school-desc">${a[1]}</div><div class="school-level">Lv.${lv} / ${max}</div></div><div class="school-price"><button class="btn ${!shortfall&&lv<max?'primary':''}" data-upgrade="${key}" ${lv>=max||shortfall?'disabled':''}>${lv>=max?'최대 강화':`🪙 ${cost}`}</button>${shortfall?`<small>${shortfall.toLocaleString('ko-KR')} G 부족</small>`:''}</div></div>`;}).join('');}
 function buySchool(k){const item=DATA.economy.upgrades[k];if(!item)return;let lvl=saved.upgrades[k];if(lvl>=item[2])return;const cost=(k==='reroll'?DATA.economy.rerollCosts:DATA.economy.costs)[lvl];if(saved.gold<cost)return;
  saved.gold-=cost;saved.upgrades[k]++;persist();updateSchool();renderMenu();}
 function renderMenu(){$('menu-gold-value').textContent=`${saved.gold.toLocaleString('ko-KR')} 골드`;$('total-plays').textContent=`모험 ${saved.stats.plays}회`;
@@ -1766,7 +1791,7 @@ function drawMenuWorld(){ctx.save();ctx.translate(VW/2-50*PPU,VH/2-50*PPU);ctx.s
 function draw(){ctx.fillStyle='#c1dfa1';ctx.fillRect(0,0,VW,VH);if(g)drawBattle();else drawMenuWorld();
  if(opts.particles && sprites.grain?.complete&&sprites.grain.naturalWidth){ctx.save();ctx.globalAlpha=.17;ctx.drawImage(sprites.grain,0,0,VW,VH);ctx.restore();}
 }
-// --------- controls, fixed-step loop, saved upgrades and debug ---------------
+// --------- controls, fixed-step loop and saved upgrades ---------------
 const keys=new Set(),touch={active:false,x:0,y:0,id:null},pad=$('touch-pad'),knob=$('touch-knob');
 function joystick(e){
  const rect=pad.getBoundingClientRect();
@@ -1834,7 +1859,7 @@ function rankDrawLocal(){$('rank-local').innerHTML=rankLocalText();}
 function rankOpen(){rankingReturn=['result','menu','pause'].includes(screen)?screen:'menu';
  $('rank-nickname').value=rankCfg.nickname||'';$('rank-url').value=rankCfg.url||'';$('rank-key').value=rankCfg.key||'';
  rankDrawLocal();setScreen('leaderboard');
- if(rankConfigured())void rankFetch();else{rankStatus('미연결 — URL과 publishable 키를 넣으면 공통 랭킹을 사용할 수 있어요.');rankEmpty('아직 온라인 서버가 연결되지 않았어요. 개인 기록은 왼쪽에 보관돼요.');}}
+ if(rankConfigured())void rankFetch();else{rankStatus('미연결 — URL과 publishable 키를 넣으면 공통 랭킹을 사용할 수 있어요.');rankEmpty('온라인 랭킹에 연결하는 중이에요. 잠시 후 새로고침할 수 있어요.');}}
 function rankClose(){setScreen(rankingReturn);if(rankingReturn==='menu')renderMenu();}
 function rankEmpty(s){$('rank-online').innerHTML=`<p class="nemo-rank-empty">${rankEsc(s)}</p>`;}
 function rankPersist(){const name=rankSanitizeName($('rank-nickname').value);
@@ -1844,8 +1869,10 @@ function rankPersist(){const name=rankSanitizeName($('rank-nickname').value);
  rankStatus('프로젝트 URL과 sb_publishable_... 공개용 키를 확인해 주세요. 비밀 키는 금지예요.');return false;}}
  rankCfg={url,key,nickname:name};try{localStorage.setItem(RANK_CFG_KEY,JSON.stringify(rankCfg));}catch(_){}return true;
 }
-async function rankFetch(){if(!rankConfigured()){rankStatus('현재 공통 온라인 랭킹이 연결되어 있지 않아요.');rankEmpty('온라인 연결 전이에요.');return;}
- rankStatus('전체 랭킹을 불러오는 중...');try{
+async function rankFetch(){if(!rankConfigured()){rankStatus('현재 공통 온라인 랭킹이 연결되어 있지 않아요.');rankEmpty('온라인 랭킹에 아직 연결되지 않았어요. 잠시 후 다시 시도해 주세요.');return;}
+ rankStatus('전체 랭킹을 불러오는 중...');
+ if(!$('rank-online').querySelector('.nemo-rank-row'))rankEmpty('온라인 기록을 불러오는 중이에요.');
+ try{
  const endpoint=rankCfg.url+'/rest/v1/nemo_forest_runs?select=nickname,player_id,survival_seconds,boss_seconds,winner,kills,level,rank_score,created_at&order=survival_seconds.desc&limit=500';
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),9000);
  let res;try{res=await fetch(endpoint,{headers:rankHeaders(),signal:controller.signal,cache:'no-store'});}finally{clearTimeout(timer);}
@@ -1853,9 +1880,9 @@ async function rankFetch(){if(!rankConfigured()){rankStatus('현재 공통 온�
  let items=await res.json();if(!Array.isArray(items))throw Error('응답 데이터 형식 오류');
  let seen=new Set(),top=[];for(const r of rankSort(items.filter(r=>!r.winner))){if(seen.has(r.player_id))continue;seen.add(r.player_id);top.push(r);if(top.length>=50)break;}
  if(!top.length)rankEmpty('아직 등록된 기록이 없어요. 첫 기록을 남겨 보세요!');
- else $('rank-online').innerHTML=top.map((r,i)=>`<div class="nemo-rank-row ${r.winner?'win':''}"><div><strong>${i<3?['🥇','🥈','🥉'][i]:i+1} ${rankEsc(r.nickname)}</strong>${r.player_id===rankId?'<small>나의 기록</small>':''}</div><div><strong>${rankFormatTime(Number(r.survival_seconds))}</strong><small>Lv.${Number(r.level)||1} · ${Number(r.kills)||0}마리</small></div><div>🌲 생존<small>최장 생존 시간 우선</small></div></div>`).join('');
+ else $('rank-online').innerHTML=top.map((r,i)=>`<div class="nemo-rank-row ${r.winner?'win':''}"><div><strong>${i<3?['🥇','🥈','🥉'][i]:i+1} ${rankEsc(r.nickname)}</strong>${r.player_id===rankId?'<small>나의 기록</small>':''}</div><div><strong>${rankFormatTime(Number(r.survival_seconds))}</strong><small>Lv.${Number(r.level)||1} · ${Number(r.kills)||0}마리</small></div><div>🌲 무한 생존</div></div>`).join('');
  rankStatus(`서버 연결 성공 · 전체 등록 기록 ${items.length}건 중 플레이어별 최고 기록 표시`);
- }catch(e){rankStatus('랭킹 조회 실패: '+(e.message||e));rankEmpty('온라인 랭킹에 연결할 수 없어요. 주소·키·테이블과 인터넷을 확인해 주세요.');}}
+ }catch(e){rankStatus('랭킹 조회 실패: '+(e.message||e));rankEmpty('온라인 기록을 불러오지 못했어요. 잠시 후 새로고침해 주세요.');}}
 async function rankUpload(run,notify=true){if(!rankConfigured()){if(notify)rankStatus('연결 정보부터 저장해 주세요.');return false;}
  if(!rankSanitizeName(rankCfg.nickname)){if(notify)rankStatus('먼저 닉네임을 저장해 주세요.');return false;}
  if(run.debug_used){if(notify)rankStatus('디버그 단축키를 사용한 판은 온라인 랭킹에 등록할 수 없어요.');return false;}
@@ -1945,7 +1972,19 @@ async function rankAutoInit(){
 }
 
 window.addEventListener('keydown',e=>{
- if(e.defaultPrevented||e.isComposing||e.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return;
+ if(e.defaultPrevented||e.isComposing)return;
+ const modal=$(screen);
+ if(e.key==='Tab'&&modal?.getAttribute('aria-modal')==='true'){
+  const controls=[...modal.querySelectorAll('button:not(:disabled),input:not(:disabled),[href]')].filter(el=>el.getClientRects().length);
+  if(controls.length){
+   const first=controls[0],lastControl=controls.at(-1),active=document.activeElement;
+   if(!controls.includes(active)||(e.shiftKey?active===first:active===lastControl)){
+    e.preventDefault();(e.shiftKey?lastControl:first).focus();
+   }
+  }
+  return;
+ }
+ if(e.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return;
  const movement=['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight'].includes(e.code);
  if(screen==='playing'&&movement){e.preventDefault();keys.add(e.code);return;}
  if(e.repeat)return;
@@ -1960,7 +1999,7 @@ window.addEventListener('keydown',e=>{
 window.addEventListener('keyup',e=>keys.delete(e.code));window.addEventListener('blur',()=>{keys.clear();clearTouch();if(screen==='playing'||screen==='intro')pause();});
 document.addEventListener('visibilitychange',()=>{if(document.hidden){keys.clear();clearTouch();pause();}});
 $('codex-btn').onclick=openCodex;$('pause-codex').onclick=openCodex;$('codex-back').onclick=closeCodex;
-$('codex-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-codex]');if(!b)return;currentCodex=b.dataset.codex;renderCodex();});
+$('codex-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-codex]');if(!b)return;currentCodex=b.dataset.codex;renderCodex();$('codex-tabs').querySelector('[aria-pressed="true"]').focus({preventScroll:true});});
 $('start').onclick=()=>{if(!nicknameConfirmed())showNicknameSetup('menu');else begin();};$('retry').onclick=begin;$('result-menu').onclick=menu;
 $('shop-btn').onclick=shopOpen;
 $('shop-back').onclick=()=>{setScreen('menu');renderMenu();};
@@ -1990,7 +2029,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.22';
+  const CURRENT='5.6.23';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
