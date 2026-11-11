@@ -1,0 +1,37 @@
+/* Keep rounded display type separate from text players compare during play. */
+#app {
+  --nemo-body-font: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --nemo-display-font: "Jua", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --heading: var(--nemo-display-font);
+  font-family: var(--nemo-body-font);
+  font-weight: 600;
+}
+#app .overlay h2,
+#app #menu .folio-title,
+#app #cards .choice-heading h2,
+#app #evolution .ribbon {
+  font-family: var(--nemo-display-font);
+  font-weight: 400;
+  letter-spacing: .005em;
+  text-shadow: 0 1px 1px #17365f9c !important;
+}
+#app #cards .choice-name,
+#app #evolution .skill-card .card-title,
+#app #costume-shop .nemo-shop-feature h3 {
+  font-family: var(--nemo-display-font);
+  font-weight: 400 !important;
+  letter-spacing: 0;
+}
+#app #cards .choice-name { font-size: clamp(17px, 3.7vmin, 28px); }
+#app #cards .choice-effect strong { font-weight: 800; }
+#app #cards .choice-copy,
+#app #cards .choice-growth,
+#app #cards .choice-meta,
+#app .overlay .subtitle,
+#app .school-desc,
+#app .nemo-shop-feature p { font-weight: 400; word-break: keep-all; overflow-wrap: anywhere; }
+#app #menu .buttons #start {
+  font-family: var(--nemo-display-font);
+  font-weight: 400;
+  letter-spacing: .02em;
+}
