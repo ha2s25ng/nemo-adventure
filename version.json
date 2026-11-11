@@ -1,5 +1,5 @@
 {
-  "version": "5.6.11",
+  "version": "5.6.12",
   "mode": "endless_survival",
-  "notes": "숲 배경과 캐릭터 일러스트에 맞춰 전체 UI 색상 조정"
+  "notes": "체력·시간·골드·경험치 가독성과 일시 정지 메뉴 개선"
 }

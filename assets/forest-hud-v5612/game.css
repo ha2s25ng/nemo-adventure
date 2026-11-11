@@ -1,0 +1,246 @@
+/* Forest combat controls: one loadout dock, compact badges, and readable color. */
+#app #hud {
+  --dock-deep: #344b41;
+  --dock-blue: #5e775c;
+  --dock-line: #a7b79a;
+  --dock-cream: #fff5df;
+  --dock-gold: #f3d490;
+}
+#app #hud :is(.hud-player,.timer,.hud-right,.bottom) {
+  color: var(--dock-cream) !important;
+  background: linear-gradient(165deg, var(--dock-blue), var(--dock-deep)) !important;
+  border: 1px solid var(--dock-line) !important;
+  box-shadow: inset 0 1px #f8f5dd34, 0 3px #2c4035, 0 5px 14px #29372a43 !important;
+}
+#app #hud .hud-player {
+  left: 2.4% !important;
+  width: clamp(126px,16%,205px) !important;
+  padding: 6px 9px 6px 0;
+  border-radius: 14px !important;
+}
+#app #hud #portrait {
+  margin-left: -5px;
+  width: clamp(30px, 28%, 53px);
+  border: 2px solid var(--dock-gold);
+  background: #fff1db;
+  box-shadow: 0 2px 5px #2d3e31a1;
+}
+#app #hud .hud-player .stats { gap: 3px; }
+#app #hud .player-name, #app #hud .health-txt { color: var(--dock-cream) !important; }
+#app #hud .hud-health { color: #d8e6cb; }
+#app #hud #level { color: var(--dock-gold); background: #3d5445; }
+#app #hud .hud-player .track { height: 6px !important; background: #35483f !important; }
+#app #hud .hud-player .track > i { background: linear-gradient(90deg,#c05a75,#e498a0) !important; }
+#app #hud .timer { width: clamp(76px, 12%, 141px) !important; border-radius: 9px 9px 15px 15px !important; }
+#app #hud .clock { color: var(--dock-cream) !important; }
+#app #hud .timer-note { color: #e0ebd1 !important; }
+#app #hud .timer[data-rush="true"] { background: linear-gradient(#a84355,#782c41) !important; border-color: #ffc9ad !important; }
+#app #hud .hud-right { gap: 0; padding: 2px; border-radius: 14px; }
+#app #hud .hud-right .money,
+#app #hud .hud-right #pause-btn {
+  background: transparent !important;
+  color: var(--dock-cream) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#app #hud .hud-right .money { border-right: 1px solid #c9d3b45c !important; border-radius: 0 !important; color: var(--dock-gold) !important; }
+#app #hud .hud-right #pause-btn { border-radius: 9px !important; }
+#app #hud .hud-right #pause-btn:hover { background: #eadfbb44 !important; }
+#app #hud .pause-bars { border-color: var(--dock-cream); }
+#app #hud .bottom {
+  width: clamp(225px, 32%, 407px);
+  padding: 6px 7px 5px;
+  border-radius: 14px;
+  gap: 4px !important;
+}
+#app #hud #weapon-slots { gap: 5px !important; }
+#app #hud #weapon-slots .slot {
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  padding: 4px !important;
+  min-height: 47px !important;
+  border: 1px solid #b6c7a7 !important;
+  border-radius: 8px !important;
+  background: linear-gradient(155deg,#798d70,#4a6553) !important;
+  box-shadow: inset 0 1px #f4f3d22b !important;
+  color: var(--dock-cream);
+}
+#app #hud #weapon-slots .slot .ico {
+  width: clamp(22px, 3.2vw, 40px);
+  height: clamp(22px, 3.2vw, 40px);
+  background: radial-gradient(#fff1b949,transparent 72%);
+}
+#app #hud #weapon-slots .slot .ico img {
+  width: 100% !important;
+  height: 100% !important;
+  filter: drop-shadow(0 2px 2px #293e35a6);
+}
+#app #hud #weapon-slots .slot-info { display: block; max-width: 100%; padding: 0 2px; font-size: clamp(9px, .98vw, 13px); }
+#app #hud #weapon-slots .slot-name { display: block; line-height: 1.1; }
+#app #hud #weapon-slots .slot-info small {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  border-radius: 4px;
+  padding: 2px 3px;
+  background: #31483e;
+  color: var(--dock-gold);
+  font-size: clamp(8px,.8vw,10px);
+}
+#app #hud #weapon-slots .slot-empty {
+  border: 1px solid #9bae9663 !important;
+  background: #3f564b !important;
+  box-shadow: inset 0 1px 5px #32493e !important;
+}
+#app #hud #weapon-slots .slot-empty small { display: none; }
+#app #hud .slot-placeholder { border-color: #bdccab80; width: 7px; height: 7px; }
+#app #hud .bottom .hud-xp {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 2px 2px 0;
+}
+#app #hud .hud-xp-label, #app #hud .hud-xp .xp-caption { color: #e7ebcf !important; }
+#app #hud .hud-xp .xp-shell { height: 5px !important; background: #344c40 !important; }
+#app #hud .xp-fill { background: linear-gradient(90deg,#acc68c,#dce7af) !important; }
+
+#app #menu .menu-board {
+  border: 1px solid #b4c09f !important;
+  background: radial-gradient(ellipse at 82% 25%,#becb9978,transparent 57%),linear-gradient(147deg,#677f63,#3d5548) !important;
+  box-shadow: inset 0 1px #eff1cf66, 0 5px #34463b, 0 20px 60px #2c3d3286 !important;
+}
+#app #menu :is(.menu-kicker,.menu-intro,.menu-controls) { color: #e3ebd0 !important; }
+#app #menu .menu-meta > span { color: #f4f4db; background: #e2ecc32e; }
+#app #menu #nemo-name-change { border: 1px solid #a7bc9f !important; background: #47604e !important; color: #fff6e2 !important; box-shadow: none !important; }
+#app #menu .profile-edit { color: #ffe1a0; border-left-color: #92a38a; }
+#app #menu .buttons .btn {
+  border: 1px solid #b4c09f !important;
+  background: linear-gradient(#fff9e9,#e7eee0) !important;
+  color: #39493a !important;
+  box-shadow: 0 2px #39483c, inset 0 1px #fff !important;
+}
+#app #menu .buttons #start {
+  background: linear-gradient(#fff0b9,#e6bd78) !important;
+  border: 1px solid #ffe2a1 !important;
+  box-shadow: 0 3px #785b39, inset 0 1px #fffae5 !important;
+}
+#app #menu .buttons .btn:hover:not(:disabled) { filter: brightness(1.07); }
+#app #menu .menu-art {
+  border: 1px solid #b7c7a5;
+  background: radial-gradient(ellipse at 49% 45%, #fff3cf, #c4d8aa 64%, #8ea588);
+  box-shadow: inset 0 0 0 4px #fbf6db42, 0 3px #405143;
+}
+@media (max-width: 720px) {
+  #app #hud .bottom { width: clamp(205px, 49%, 285px); }
+  #app #hud #weapon-slots .slot { min-height: 35px !important; }
+  #app #hud #weapon-slots .slot .ico { width: 22px; height: 22px; }
+}
+@media (max-width: 480px) and (orientation: portrait) {
+  #app #hud .bottom { width: 62%; padding: 3px; }
+  #app #hud #weapon-slots .slot { min-height: 28px !important; }
+  #app #hud #weapon-slots .slot .ico { width: 16px; height: 16px; }
+  #app #hud #weapon-slots .slot-info small { top: 1px; right: 1px; padding: 1px; }
+  #app #hud .hud-player { width: 34% !important; }
+}
+
+#app #hud :is(.hud-player,.timer,.hud-right,.bottom) {
+  box-shadow: inset 0 1px #fff8e267, inset 0 -2px #33493e, 0 3px #354a3f, 0 5px 14px #29372a43 !important;
+}
+#app #hud :is(.timer,.hud-right) { border-color: #f2d898 !important; }
+#app #hud .hud-player { border-radius: 999px !important; }
+#app #hud .bottom { border-radius: 20px; }
+#app #hud #weapon-slots .slot:not(.slot-empty) { border-color: #edcb84 !important; }
+
+#app #menu .menu-kicker { color: #edf0d8 !important; }
+#app #menu .menu-controls kbd { background: #eaf0d5; color: #3e5344; }
+
+/* Pin each HUD surface and its foreground together over legacy panel styles. */
+#app #hud :is(.hud-player,#survival-timer) {
+  color: #fffaf0 !important;
+  background: linear-gradient(165deg,#4f684f,#30463b) !important;
+  border: 1px solid #b4c4a1 !important;
+  box-shadow: inset 0 1px #fff8e252, 0 2px #293c33 !important;
+}
+#app #hud #survival-timer[data-rush="true"] {
+  background: linear-gradient(#a84355,#782c41) !important;
+  border-color: #ffc9ad !important;
+}
+#app #hud #survival-timer .clock { color: #fffaf0 !important; font-size: clamp(20px,2.45vw,33px) !important; }
+#app #hud #survival-timer .timer-note { color: #eef4de !important; font-size: clamp(11px,1.1vw,14px) !important; }
+#app #hud .hud-player :is(.player-name,.health-txt) { color: #fffaf0 !important; }
+#app #hud .hud-health { color: #eef4de; font-size: clamp(11px,1.1vw,14px); }
+#app #hud .hud-player .player-name { font-size: clamp(14px,1.5vw,20px); }
+#app #hud .hud-right .money:has(#gold-hud),
+#app #hud .bottom .hud-xp:has(#xp-text) {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+#app #hud .hud-right .money:has(#gold-hud) {
+  border-right: 1px solid #c9d3b45c !important;
+  color: #fff2c2 !important;
+  font-size: clamp(14px,1.5vw,19px);
+}
+#app #hud #weapon-slots .slot-name { color: #fffaf0 !important; }
+#app #hud .hud-xp-label,
+#app #hud .bottom .hud-xp .xp-caption { color: #fffaf0 !important; font-size: clamp(11px,1.1vw,14px) !important; }
+
+#app #pause { background: #263b31b3 !important; }
+#app #pause .pause-board {
+  width: min(450px,92%) !important;
+  max-height: 94%;
+  padding: clamp(12px,3.3vmin,24px) !important;
+  background: linear-gradient(145deg,#fff9eb,#e8eed6) !important;
+  border: 1px solid #aaba95 !important;
+  border-radius: 20px !important;
+  box-shadow: inset 0 1px #fff, 0 4px #344b3e, 0 15px 36px #162e2373 !important;
+  text-align: left;
+}
+#app #pause .pause-heading { display: flex; align-items: center; gap: 12px; margin-bottom: clamp(9px,2vmin,18px); }
+#app #pause .pause-emblem {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  aspect-ratio: 1;
+  border: 1px solid #9ab28e;
+  border-radius: 14px;
+  background: linear-gradient(#6b8568,#3c5747);
+  flex: 0 0 auto;
+}
+#app #pause .pause-emblem .pause-bars { border-color: #fff5df; height: 16px; }
+#app #pause #pause-title { margin: 0; color: #2c4136 !important; font-size: clamp(23px,4.7vmin,35px) !important; line-height: 1.05; }
+#app #pause .subtitle { margin: 4px 0 0; color: #45584b !important; font-size: clamp(12px,2vmin,15px); }
+#app #pause .pause-actions { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 8px; }
+#app #pause .pause-actions .btn {
+  min-height: 43px;
+  border: 1px solid #aab99c !important;
+  background: #fffaf0 !important;
+  box-shadow: 0 2px #b2bba1 !important;
+  color: #354839 !important;
+  font-size: clamp(13px,2.2vmin,16px);
+}
+#app #pause .pause-actions #resume {
+  grid-column: 1 / -1;
+  min-height: 47px;
+  color: #fffaf0 !important;
+  background: linear-gradient(#5b795f,#3d5848) !important;
+  border-color: #3b5847 !important;
+  box-shadow: 0 2px #2e4539 !important;
+  font-size: clamp(16px,2.7vmin,20px);
+}
+#app #pause .pause-actions .btn:hover { filter: brightness(1.06); }
+@media (max-width: 720px) {
+  #app #hud .bottom { width: min(64%,330px); }
+  #app #hud #weapon-slots .slot { min-height: 37px !important; }
+  #app #hud #weapon-slots .slot-info { font-size: 11px; }
+}
+@media (max-width: 440px) and (orientation: portrait) {
+  #app #hud .hud-player { padding: 3px 5px 3px 0; }
+  #app #hud .hud-health { font-size: 10px; }
+  #app #hud #weapon-slots .slot { min-height: 29px !important; }
+}
