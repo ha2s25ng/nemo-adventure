@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.31" />
+</style><meta name="nemo-version" content="5.6.32" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -351,6 +351,7 @@
 <link rel="stylesheet" href="./assets/readable-ui-v5621/game.css">
 <link rel="stylesheet" href="./assets/settings-v5622/game.css">
 <link rel="stylesheet" href="./assets/ui-review-v5623/game.css?v=5625">
+<link rel="stylesheet" href="./assets/adventure-v5632/game.css">
 <style>
 #app #hud .survival-status #survival-timer { inset: auto !important; }
 #app #toast.toast { top: calc(clamp(5px,1.1vw,13px) + clamp(25px,2.55vw,32px) + 6px + clamp(48px,6vw,77px) + 8px); }
@@ -403,7 +404,7 @@
    <div class="hud-right"><div class="survival-kills" role="group" aria-label="처치 수"><img src="./assets/pastel-ui-v5619/kills.webp" alt=""><span class="woodland-kills-label">처치</span><span id="kills-hud">0</span></div><div class="money"><img alt="골드" class="money-icon" src="./assets/pastel-ui-v5619/coin.webp"><span id="gold-hud">0</span></div><button aria-label="일시 정지" class="pause-btn" id="pause-btn" type="button"><img src="./assets/pastel-ui-v5619/pause.webp" alt=""></button></div>
   </div>
  </div>
- <div class="boss-hud hidden" id="boss-hud"><div class="boss-name">👑 왕관 슬라임</div><div class="boss-hp"><i id="boss-fill"></i></div><div class="boss-text" id="boss-text"></div></div>
+ <div class="boss-hud hidden" id="boss-hud" role="group" aria-labelledby="boss-name"><div class="boss-name" id="boss-name"></div><div class="boss-hp"><i id="boss-fill"></i></div><div class="boss-text" id="boss-text"></div></div>
 </div>
 <div class="overlay menu-overlay" id="menu">
   <div class="menu-board">
@@ -419,7 +420,7 @@
       </div>
       <div class="buttons">
         <button class="btn primary" id="start"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/paw.webp" alt="">모험 시작</button>
-        <button class="btn" id="school-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/wand.webp" alt="">마법학교</button>
+        <button class="btn" id="school-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/wand.webp" alt="">모험 강화</button>
         <button class="btn nemo-shop-entry" id="shop-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/bag.webp" alt="">코스튬 상점</button>
         <button class="btn" id="codex-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/book.webp" alt="">마법 도감</button>
         <button class="btn" id="settings-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/settings.webp" alt="">설정</button>
@@ -450,16 +451,16 @@
 </div>
 <div class="overlay hidden" id="costume-shop">
   <div class="nemo-shop-board">
-    <header class="nemo-shop-header"><div><p class="folio">의상 보관함</p><h2>코스튬 상점</h2><p>외형만 바뀌고 공격력·체력은 변하지 않아요.</p></div>
+    <header class="nemo-shop-header"><div><p class="folio">의상 보관함</p><h2>코스튬 상점</h2><p>장착한 코스튬의 체력·공격력 보너스가 모험에 적용돼요.</p></div>
       <div><strong id="shop-wallet">🪙 0 G</strong><button class="btn" id="shop-back">✕ 돌아가기</button></div>
     </header>
     <div class="nemo-shop-content">
-      <section class="nemo-shop-feature"><div class="shop-art" data-art-state="loading"><img id="shop-feature-art" alt="선택한 코스튬 미리보기" src="./assets/nemo-default-v5627/portrait.png"><span class="shop-art-status" aria-hidden="true"></span></div><h3 id="shop-feature-name">기본 니모</h3><p id="shop-feature-desc"></p><button class="btn primary" id="shop-action"></button><p class="shop-hint" id="shop-message">옷을 선택해 미리 입어 보세요.</p></section>
+      <section class="nemo-shop-feature"><div class="shop-art" data-art-state="loading"><img id="shop-feature-art" alt="선택한 코스튬 미리보기" src="./assets/nemo-default-v5627/portrait.png"><span class="shop-art-status" aria-hidden="true"></span></div><h3 id="shop-feature-name">기본 니모</h3><p id="shop-feature-desc"></p><p class="shop-feature-bonus" id="shop-feature-bonus"></p><button class="btn primary" id="shop-action"></button><p class="shop-hint" id="shop-message">옷을 선택해 미리 입어 보세요.</p></section>
       <section class="nemo-shop-grid" id="shop-items"></section>
     </div>
   </div>
 </div>
-<div class="overlay hidden" id="school"><div class="big-board"><p class="folio">영구 강화</p><h2>니모의 마법학교</h2><div class="menu-money" id="school-gold"></div><p class="subtitle">골드를 사용하면 다음 모험부터 영구 강화 효과가 적용돼.</p><div class="school-grid" id="school-upgrades"></div><button class="btn primary" id="school-back">← 숲 입구로</button></div></div>
+<div class="overlay hidden" id="school"><div class="big-board"><p class="folio">영구 강화</p><h2>모험 강화</h2><div class="menu-money" id="school-gold"></div><p class="subtitle">골드로 강화한 능력은 다음 모험부터 계속 적용돼요.</p><div class="school-grid" id="school-upgrades"></div><button class="btn primary" id="school-back">← 숲 입구로</button></div></div>
 <div class="overlay hidden" id="cards" role="dialog" aria-modal="true" aria-labelledby="cards-title">
  <div class="choice-board">
   <header class="choice-heading"><h2 id="cards-title">레벨 업</h2><p id="choice-description">이번 모험에 더할 마법을 고르세요.</p></header>
@@ -553,9 +554,9 @@ const DATA = Object.freeze({
   [360,420,1,5,110,{green:25,blue:26,fat:18,spore:9,firefly:10,armor:7,spark:5}],[420,480,1,6,110,{green:24,blue:22,fat:17,spore:13,firefly:10,armor:8,spark:6}]
  ],
  elites:{flower:{name:'꽃모자 버섯',hp:1800,dmg:14,speed:.8,xp:30,at:180,gold:30,r:.83},horn:{name:'별뿔 슬라임',hp:4000,dmg:16,speed:1.2,xp:50,at:360,gold:50,r:.83}},
- boss:{name:'왕관 슬라임',hp:68000,dmg:18,speed:.7,r:1.55},
+ boss:{name:'왕관 슬라임',hp:68000,dmg:18,speed:.7,r:1.55,gold:100},
  economy:{costs:[100,150,220,320,450,600,800,1050,1350,1700],rerollCosts:[600,1500],
- upgrades:{attack:['주문 연습','기본 공격력 +2',10],hp:['포근한 망토','기본 체력 +5',10],speed:['빠른 발걸음','이동 속도 +1%',5],pickup:['보석 수집','경험치 반경 +10%',5],crit:['행운의 부적','치명타 확률 +1%p',5],reroll:['다시 생각하기','카드 새로고침 +1회',2]}}
+ upgrades:{attack:['공격력 강화','기본 공격력 +2',10],hp:['체력 강화','최대 체력 +5',10],speed:['빠른 발걸음','이동 속도 +1%',5],pickup:['보석 수집','경험치 보석 획득 범위 +10%',5],crit:['치명타 강화','치명타 확률 +1%p',5],reroll:['카드 다시 뽑기','다시 뽑기 기회 +1회',2]}}
 });
 </script><script>const ASSET_DATA={"nemo":"./assets/nemo-default-v5627/portrait.png","windmill":"./assets/windmill.png","ribbonIcon":"./assets/ribbonIcon.png","magnetIcon":"./assets/magnetIcon.png","groundFull":"./assets/groundFull.jpg","tree_pink":"./assets/tree_pink.png","tree_green":"./assets/tree_green.png","pond":"./assets/pond.png","grain":"./assets/grain.jpg","nemoAnim":"./assets/v550/nemo_default_32.webp","nemoWand":"./assets/nemo-polish/star-wand.webp","ui_star":"./assets/ui_star.svg","ui_orbit":"./assets/ui_orbit.svg","ui_moon":"./assets/ui_moon.svg","ui_bubble":"./assets/ui_bubble.svg","ui_bloom":"./assets/ui_bloom.svg","ui_cloud":"./assets/ui_cloud.svg","ui_ribbon":"./assets/ui_ribbon.svg","ui_book":"./assets/ui_book.svg","ui_comet":"./assets/ui_comet.svg","ui_frost":"./assets/ui_frost.svg","ui_feather":"./assets/ui_feather.svg","ui_magnet":"./assets/ui_magnet.svg","ui_magic":"./assets/ui_magic.svg","ui_quick":"./assets/ui_quick.svg","ui_lucky":"./assets/ui_lucky.svg","ui_big":"./assets/ui_big.svg","ui_cloak":"./assets/ui_cloak.svg","ui_shoes":"./assets/ui_shoes.svg","ui_vortex":"./assets/ui_vortex.svg","ui_seed":"./assets/ui_seed.svg","ui_bell":"./assets/ui_bell.svg"};</script><script>
 const STORYBOOK_ART={"logo":"./assets/logo.png","button_start":"./assets/button_start.png","button_school":"./assets/button_school.png","button_settings":"./assets/button_settings.png","button_codex":"./assets/button_codex.png","button_normal":"./assets/button_normal.png","button_hard":"./assets/button_hard.png","button_hell":"./assets/button_hell.png","button_pause":"./assets/button_pause.png","title_ribbon":"./assets/title_ribbon.png","result_panel":"./assets/result_panel.png","card_blank_gold":"./assets/card_blank_gold.png","card_blank_lavender":"./assets/card_blank_lavender.png","card_blank_sun":"./assets/card_blank_sun.png","icon_star":"./assets/v550/fx_star.webp","icon_orbit":"./assets/icon_orbit.webp","icon_moon":"./assets/icon_moon.webp","icon_bubble":"./assets/icon_bubble.webp","icon_bloom":"./assets/icon_bloom.webp","icon_cloud":"./assets/v550/fx_cloud.webp","icon_ribbon":"./assets/icon_ribbon.webp","icon_book":"./assets/icon_book.webp","icon_comet":"./assets/v550/fx_fire.webp","icon_frost":"./assets/v550/fx_ice.webp","icon_feather":"./assets/icon_feather.webp","icon_vortex":"./assets/v550/fx_vortex.webp","icon_seed":"./assets/icon_seed.webp","icon_bell":"./assets/icon_bell.webp","icon_magic":"./assets/v550/fx_wand.webp","icon_quick":"./assets/icon_quick.png","icon_lucky":"./assets/icon_lucky.png","icon_area":"./assets/v550/fx_burst.webp","icon_cloak":"./assets/v550/fx_heart.webp","icon_shoes":"./assets/icon_shoes.png","icon_magnet":"./assets/v550/fx_magnet.webp","icon_heart":"./assets/v550/fx_heart.webp","icon_coin":"./assets/v550/fx_coin.webp","icon_gem":"./assets/icon_gem.png","icon_exp":"./assets/icon_exp.png","icon_paw":"./assets/icon_paw.png","icon_flower":"./assets/icon_flower.png","icon_crown":"./assets/icon_crown.png","icon_bone":"./assets/icon_bone.png","enemy_green":"./assets/enemy_green.png","enemy_blue":"./assets/enemy_blue.png","enemy_mush":"./assets/enemy_mush.png","enemy_firefly":"./assets/enemy_firefly.png","enemy_boss":"./assets/enemy_boss.png","item_gem":"./assets/item_gem.png","item_gold":"./assets/item_gold.png","item_bone":"./assets/item_bone.png","item_potion":"./assets/item_potion.png","item_magnet":"./assets/item_magnet.png","item_bag":"./assets/item_bag.png","item_chest":"./assets/item_chest.png","decor_tree_crown":"./assets/decor_tree_crown.png","decor_tree_trunk":"./assets/decor_tree_trunk.png","decor_tree_front":"./assets/decor_tree_front.png","decor_pond":"./assets/decor_pond.png","decor_windmill":"./assets/decor_windmill.png","decor_fence":"./assets/decor_fence.png","decor_rock":"./assets/decor_rock.png","decor_stump":"./assets/decor_stump.png","decor_flowers":"./assets/decor_flowers.png"};
@@ -626,17 +627,17 @@ ASSET_DATA.ui_heal='./assets/nemo-wardrobe-v5631/sweet-snack.png';
 const sprites={};Object.keys(ASSET_DATA).forEach(k=>{let im=new Image();im.src=ASSET_DATA[k];sprites[k]=im;});
 const COSTUME_ART='./assets/nemo-wardrobe-v5631/';
 const COSTUMES=[
- ["default","기본 니모",0,"빨간 목도리와 작은 가방을 멘 니모."],
- ["forest","숲속 탐험가",250,"잎사귀 모자와 초록 조끼를 입은 숲길 탐험가."],
- ["rain","노란 우비",450,"꿀빛 우비와 물방울 단추로 빗속에서도 산뜻해요."],
- ["redhood","빨간망토 차차 니모",650,"빨간 후드를 쓰고 작은 바구니를 든 동화 속 니모."],
- ["student","마법학교 학생",750,"크림색 칼라와 리본 넥타이, 책가방을 갖춘 마법학교 교복."],
- ["halloween","할로윈 니모",900,"작은 호박 모자와 박쥐 날개 망토로 꾸민 니모."],
- ["starlight","별빛 마법사",1100,"짙은 남색 망토에 금빛 별자리를 수놓은 밤하늘 마법사."],
- ["royal","왕관 니모",1600,"보석 왕관과 포근한 털 장식 망토를 입은 숲의 왕."],
- ["legend","전설의 멍법사",2400,"비취빛 예복과 잎사귀 관을 두른 전설 속 숲의 마법사."]
-].map(([id,name,price,desc])=>({
- id,name,price,desc,
+ ["default","기본 니모",0,"빨간 목도리와 작은 가방을 멘 니모.",0,0],
+ ["forest","숲속 탐험가",250,"잎사귀 모자와 초록 조끼를 입은 숲길 탐험가.",2,1],
+ ["rain","노란 우비",450,"꿀빛 우비와 물방울 단추로 빗속에서도 산뜻해요.",3,2],
+ ["redhood","빨간망토 차차 니모",650,"빨간 후드를 쓰고 작은 바구니를 든 동화 속 니모.",4,3],
+ ["student","마법학교 학생",750,"크림색 칼라와 리본 넥타이, 책가방을 갖춘 마법학교 교복.",5,4],
+ ["halloween","할로윈 니모",900,"작은 호박 모자와 박쥐 날개 망토로 꾸민 니모.",6,5],
+ ["starlight","별빛 마법사",1100,"짙은 남색 망토에 금빛 별자리를 수놓은 밤하늘 마법사.",7,6],
+ ["royal","왕관 니모",1600,"보석 왕관과 포근한 털 장식 망토를 입은 숲의 왕.",9,7],
+ ["legend","전설의 멍법사",2400,"비취빛 예복과 잎사귀 관을 두른 전설 속 숲의 마법사.",12,9]
+].map(([id,name,price,desc,hp,attack])=>({
+ id,name,price,desc,hp,attack,
  atlas:COSTUME_ART+id+'/walk.png',
  portrait:id==='default'?'./assets/nemo-default-v5627/portrait.png':COSTUME_ART+id+'/portrait.png'
 }));
@@ -878,12 +879,15 @@ function forestDanger(t){
 function difficulty(){return forestDanger(g?.t||0);}
 function renderDifficulty(){} // The old 3-choice selector was removed.
 function chooseDifficulty(){return;} // Compatibility shim for older test hooks.
-function begin(){rngState=(Math.random()*0x100000000)>>>0;const hp=DATA.player.hp+saved.upgrades.hp*5;
- g={t:0,bossTime:0,difficulty:difficultyKey,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.44,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*2,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
+function begin(){
+ rngState=(Math.random()*0x100000000)>>>0;
+ const outfit=costumeOf(saved.costumeEquipped);
+ const hp=DATA.player.hp+saved.upgrades.hp*5+outfit.hp;
+ g={t:0,bossTime:0,difficulty:difficultyKey,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.44,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*2+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
   speed:DATA.player.speed*(1+saved.upgrades.speed*.01),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
   weapons:{star:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
   enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0, waveIndex:0,
-  elites:{flower:false,horn:false},boss:null,bossPending:false, bossIntroTimer:0,freeCards:0, cardReason:'level',cards:[], cardOffers:[],rerolls:DATA.player.rerolls+saved.upgrades.reroll,
+  boss:null,bossEncounters:0,bossRestUntil:0,freeCards:0, cardReason:'level',cards:[], cardOffers:[],rerolls:DATA.player.rerolls+saved.upgrades.reroll,
   gold:0, achievedMinutes:0,eliteGold:0,bossGold:0, firstGold:0,done:false,blessings:{},milestones:{},rushUntil:0,rushFired:{}, totalKills:0, totalDamage:0, totalXP:0,earnedXP:0,hitCount:0,hitReasons:{},
   metrics:{weaponDamage:{},weaponKills:{},cardPicks:{},aliveByMinute:[],firstEvolution:null,killsByType:{},skipped:0,invalidSpawns:0,bossSeconds:null},
   lastSample:0,magnetCount:0, healTimer:0, camera:{x:WORLD_CENTER,y:WORLD_CENTER},worldClock:0};
@@ -960,9 +964,24 @@ function statusReady(e){return e.slowUntil>g.worldClock?1-e.slowAmount:1;}
 function knock(e,a,r){if(e.kind==='boss')return;let fac=e.kind==='fat'?.5:1;e.x=clamp(e.x+Math.cos(a)*r*fac,e.r,DATA.world-e.r);e.y=clamp(e.y+Math.sin(a)*r*fac,e.r,DATA.world-e.r);}
 function schedule(delay,fn){g.effects.push({kind:'event',life:delay,fn});}
 function loot(x,y,xp,kind='xp',healAmount=0){if(kind==='xp')g.earnedXP+=xp;g.loot.push({x,y,xp,kind,healAmount,ttl:95,r:kind==='xp'?.2:.33,phase:range(0,TAU)});}
-function kill(e){if(e.kind==='boss'){g.metrics.bossSeconds=g.bossTime;finish(true);return;}
+function kill(e){
+ if(e===g.boss){
+  g.boss=null;
+  g.bossRestUntil=g.t+18;
+ }
+ if(e.kind==='boss'){
+  g.metrics.bossSeconds=g.bossTime;
+  g.enemyShots=g.enemyShots.filter(shot=>!shot.label.includes('왕관'));
+  const reward=DATA.boss.gold;
+  g.gold+=reward;
+  loot(e.x,e.y,Math.ceil(getLevelNeed()*1.5));
+  loot(e.x+.7,e.y+.6,0,'snack',.2);
+  g.freeCards++;
+  showToast(`왕관 슬라임 격파! +${reward} 골드 · 성장 카드`,3.2);
+  return;
+ }
  let cfg=MD[e.kind];if(e.kind==='flower'||e.kind==='horn'){
-  let el=DATA.elites[e.kind];loot(e.x,e.y,el.xp);loot(e.x+.7,e.y+.6,0,'snack',.15);g.eliteGold+=el.gold;g.freeCards++;showToast(`✦ ${el.name} 격파! 무료 성장 +1`);
+  let el=DATA.elites[e.kind];loot(e.x,e.y,el.xp);loot(e.x+.7,e.y+.6,0,'snack',.15);g.gold+=el.gold;g.freeCards++;showToast(`${el.name} 격파! +${el.gold} 골드 · 성장 카드`,3.2);
  }else if(cfg){if(e.kind==='petal'||rand()<(DATA.progression.xpDrop[e.kind]??1))loot(e.x,e.y,cfg.xp);if(e.kind!=='petal'&&rand()<.01&&g.loot.filter(z=>z.kind==='bone'&&!z.dead).length<3)loot(e.x+.2,e.y+.15,0,'bone',.20);}
 }
 function collect(item){item.dead=true;const p=g.player;if(item.kind==='xp'){
@@ -974,7 +993,6 @@ function maybeCards(){if(screen!=='playing'||!g||g.done)return false;
  let p=g.player,need=getLevelNeed();
  if(p.xp>=need){p.xp-=need;p.level++;g.cardReason='level';openCards();return true;}
  if(g.freeCards>0){g.freeCards--;g.cardReason='bonus';openCards();return true;}
- if(g.bossPending){g.bossPending=false;startBossIntro();return true;}
  return false;}
 function hasGrowth(id){let w=g.weapons[id];if(!w||w.lv>=7)return false;if(w.lv===3||w.lv===6)return true;return w.up.reduce((a,b)=>a+b,0)<4&&w.up.some(v=>v<2);}
 function makeGrowth(id){let w=g.weapons[id],def=W[id];if(w.lv===3)return {type:'break',id,name:`${def.name} · 중간 돌파`,ico:def.icon,desc:def.break,meta:'Lv.3 → Lv.4 · 돌파',feature:true};
@@ -1052,8 +1070,8 @@ function calcCamera(){return {x:clamp(g.player.x,DATA.widthWorld/2,DATA.world-DA
 function visible(x,y,extra=2){if(!g)return true;return Math.abs(x-g.camera.x)<DATA.widthWorld/2+extra&&Math.abs(y-g.camera.y)<SCREEN_H/2+extra;}
 function targetNearest(x,y,r,exclude=new Set(),filter=null){let best=null,dd=r*r;for(const e of g.enemies){if(e.dead||exclude.has(e.id)||filter&&!filter(e))continue;let dx=e.x-x,dy=e.y-y,d=dx*dx+dy*dy;if(d<dd){dd=d;best=e;}}return best;}
 function targetHighestHP(x,y,r){let found=null,max=-Infinity;for(const e of g.enemies){if(e.dead||distance(e.x,e.y,x,y)>r)continue;if(e.hp>max){max=e.hp;found=e;}}return found;}
-function spawnPoint(entry=null){
- const c=g.camera,hw=DATA.widthWorld/2,hh=SCREEN_H/2;
+function spawnPoint(entry=null,r=.5){
+ const c=g.camera,hw=DATA.widthWorld/2,hh=SCREEN_H/2,border=Math.max(.8,r);
  for(let trial=0;trial<24;trial++){
   const formation=trial<7?entry:null;
   const side=formation?.side??Math.floor(rand()*4);
@@ -1062,8 +1080,8 @@ function spawnPoint(entry=null){
   const offset=clamp(across,-1,1)*(side<2?hw-1:hh-1);
   const x=side<2?c.x+offset:c.x+(side===2?-1:1)*(hw+margin);
   const y=side<2?c.y+(side===0?-1:1)*(hh+margin):c.y+offset;
-  if(x<.8||x>DATA.world-.8||y<.8||y>DATA.world-.8)continue;
-  if(distance(x,y,g.player.x,g.player.y)<9||blockedByTerrain(x,y,.5))continue;
+  if(x<border||x>DATA.world-border||y<border||y>DATA.world-border)continue;
+  if(distance(x,y,g.player.x,g.player.y)<9||blockedByTerrain(x,y,r))continue;
   return {x,y};
  }
  g.metrics.invalidSpawns++;return null;
@@ -1107,13 +1125,22 @@ function spawnGroup(){
  }
 }
 function enemyBullet(x,y,angle,speed,damage,life=4,label='적 탄환',pattern='normal') {g.enemyShots.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,dmg:damage*difficulty().damage,life,r:.18,label,pattern,dead:false});}
-function spawnElite(kind){g.elites[kind]=true;let at=spawnPoint()||{x:clamp(g.player.x+8,1,DATA.world-1),y:g.player.y};spawn(kind,at);loot(clamp(g.player.x+3,1,DATA.world-1),clamp(g.player.y-2,1,DATA.world-1),0,'magnet');showToast(`⚠ ${DATA.elites[kind].name} 등장!`);}
-function beginBoss(){g.bossPending=true;
- for(const e of g.enemies){e.dead=true;}g.enemies=[];g.enemyShots=[];
- for(const item of g.loot){if(item.kind==='xp'&&!item.dead){g.player.xp+=item.xp;g.totalXP+=item.xp;}item.dead=true;}g.loot=[];
- showToast('👑 왕관 슬라임의 기운이 느껴져!');maybeCards();}
-function startBossIntro(){g.bossIntroTimer=2.4;setScreen('intro');showToast('👑 왕관 슬라임 등장!');}
-function startBossCombat(){g.boss=spawn('boss',{x:clamp(g.player.x+7,4,DATA.world-4),y:clamp(g.player.y-1,4,DATA.world-4)});g.bossTime=0;setScreen('playing');}
+function updateBossEncounter(dt){
+ if(g.boss){g.bossTime+=dt;return;}
+ const count=g.bossEncounters;
+ const early=[['flower',DATA.elites.flower.at],['horn',DATA.elites.horn.at]];
+ const [kind,at]=early[count]||['boss',480+(count-2)*240];
+ if(g.t<at||g.t<g.bossRestUntil)return;
+ const def=kind==='boss'?DATA.boss:DATA.elites[kind];
+ const entry=spawnPoint(null,def.r);
+ if(!entry)return;
+ const boss=spawn(kind,entry);
+ if(!boss)return;
+ if(kind==='boss')boss.hp=boss.maxHp=Math.round(boss.maxHp*(1+.15*(count-2)));
+ g.boss=boss;
+ g.bossEncounters++;
+ showToast(`보스 · ${def.name} 등장!`,3.2);
+}
 function bossPhase(b){return b.hp/b.maxHp>.6?0:b.hp/b.maxHp>.25?1:2;}
 // Boss moves physically for every attack: no instant position assignment or teleport.
 // Phases combine several distinct, telegraphed patterns, never concurrently.
@@ -1530,6 +1557,7 @@ function update(dt){
  g.worldClock+=dt;g.t+=dt;
  p.invuln=Math.max(0,p.invuln-dt);
  updateMovement(dt);
+ updateBossEncounter(dt);
  const row=DATA.spawns.find(x=>g.t>=x[0]&&g.t<x[1])||DATA.spawns.at(-1);
  const baseInterval=Math.max(.45,row[2]/(1+Math.min(30,g.t/60)*.016));
  const spacing=[.86,.82,1.12,1.20];
@@ -1615,6 +1643,14 @@ function updateHUD(){
  hudText('kills-hud',String(g.totalKills));
  hudFill('xp-fill',p.xp/need);
  hudText('xp-text',`${Math.floor(p.xp)} / ${need} XP`);
+ const boss=!g.done&&g.boss;
+ $('boss-hud').classList.toggle('hidden',!boss);
+ if(boss){
+  const name=boss.kind==='boss'?DATA.boss.name:DATA.elites[boss.kind].name;
+  hudText('boss-name',`보스 · ${name}`);
+  hudFill('boss-fill',boss.hp/boss.maxHp);
+  hudText('boss-text',`${Math.ceil(boss.hp).toLocaleString('ko-KR')} / ${Math.ceil(boss.maxHp).toLocaleString('ko-KR')}`);
+ }
  const weapons=Object.entries(g.weapons);
  const loadout=weapons.map(([id,w])=>`${id}:${w.lv}:${w.evo}`).join('|');
  if(loadout!==shownLoadout){
@@ -1648,6 +1684,9 @@ function shopRender(){
  updateShopArt(art);
  $('shop-feature-name').textContent=selected.name;
  $('shop-feature-desc').textContent=selected.desc;
+ $('shop-feature-bonus').textContent=selected.hp||selected.attack
+  ?`장착 효과 · 최대 체력 +${selected.hp} · 공격력 +${selected.attack}`
+  :'기본 능력치';
  $('shop-items').innerHTML=COSTUMES.map(item=>'<button type="button" class="nemo-shop-item '+(item.id===shopSelected?'selected ':'')+(item.id===saved.costumeEquipped?'equipped':'')+'" data-costume="'+item.id+'" aria-pressed="'+(item.id===shopSelected)+'" aria-label="'+item.name+'"><span class="shop-art" data-art-state="loading"><img src="'+item.portrait+'" alt=""><span class="shop-art-status" aria-hidden="true"></span></span><strong>'+item.name+'</strong><small>'+(item.id===saved.costumeEquipped?'장착 중':costumeOwned(item.id)?'보유 중':'🪙 '+item.price.toLocaleString('ko-KR')+' G')+'</small></button>').join('');
  for(const img of $('shop-items').querySelectorAll('img'))updateShopArt(img);
  const shortfall=owned?0:Math.max(0,selected.price-saved.gold);
@@ -1672,11 +1711,18 @@ function shopAction(){
  if(saved.costumeEquipped!==selected.id){saved.costumeEquipped=selected.id;persist();syncCostumeVisual();shopRender();renderMenu();$('shop-message').textContent='장착 완료! 다음 모험에도 유지돼.';}
 }
 
+const SCHOOL_ICONS={
+ attack:'./assets/lobby-icons-v5618/wand.webp',
+ hp:'./assets/pastel-ui-v5619/heart.webp',
+ speed:ASSET_DATA.ui_shoes,
+ pickup:ASSET_DATA.ui_magnet,
+ crit:'./assets/readable-ui-v5621/star.webp',
+ reroll:'./assets/interface-art-v5620/reroll.webp'
+};
 function updateSchool(){$('school-gold').textContent=`🪙 보유 골드: ${saved.gold.toLocaleString('ko-KR')}`;
  $('school-upgrades').innerHTML=Object.entries(DATA.economy.upgrades).map(([key,a])=>{let lv=saved.upgrades[key],cost=(key==='reroll'?DATA.economy.rerollCosts:DATA.economy.costs)[lv],max=a[2];
   const shortfall=lv<max?Math.max(0,cost-saved.gold):0;
-  const schoolIcons={attack:'magic',hp:'cloak',speed:'shoes',pickup:'magnet',crit:'lucky',reroll:'quick'};
-  return `<div class="school-row"><div><img class="school-icon" src="${ASSET_DATA['ui_'+schoolIcons[key]]}" alt=""><strong>${a[0]}</strong><div class="school-desc">${a[1]}</div><div class="school-level">Lv.${lv} / ${max}</div></div><div class="school-price"><button class="btn ${!shortfall&&lv<max?'primary':''}" data-upgrade="${key}" ${lv>=max||shortfall?'disabled':''}>${lv>=max?'최대 강화':`🪙 ${cost}`}</button>${shortfall?`<small>${shortfall.toLocaleString('ko-KR')} G 부족</small>`:''}</div></div>`;}).join('');}
+  return `<div class="school-row"><div><img class="school-icon" src="${SCHOOL_ICONS[key]}" alt=""><strong>${a[0]}</strong><div class="school-desc">${a[1]}</div><div class="school-level">Lv.${lv} / ${max}</div></div><div class="school-price"><button class="btn ${!shortfall&&lv<max?'primary':''}" data-upgrade="${key}" ${lv>=max||shortfall?'disabled':''}>${lv>=max?'최대 강화':`🪙 ${cost}`}</button>${shortfall?`<small>${shortfall.toLocaleString('ko-KR')} G 부족</small>`:''}</div></div>`;}).join('');}
 function buySchool(k){const item=DATA.economy.upgrades[k];if(!item)return;let lvl=saved.upgrades[k];if(lvl>=item[2])return;const cost=(k==='reroll'?DATA.economy.rerollCosts:DATA.economy.costs)[lvl];if(saved.gold<cost)return;
  saved.gold-=cost;saved.upgrades[k]++;persist();updateSchool();renderMenu();}
 function renderMenu(){$('menu-gold-value').textContent=`${saved.gold.toLocaleString('ko-KR')} 골드`;$('total-plays').textContent=`모험 ${saved.stats.plays}회`;
@@ -2234,7 +2280,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.31';
+  const CURRENT='5.6.32';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';

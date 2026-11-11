@@ -1,0 +1,22 @@
+#app {
+ --boss-panel-top:calc(clamp(5px,1.1vw,13px) + clamp(21px,2.05vw,28px) + 6px + clamp(58px,6.4vw,82px) + 11px);
+}
+#app #hud #boss-hud {
+ top:var(--boss-panel-top); left:50%; transform:translateX(-50%); width:min(310px,56%);
+ padding:6px 12px; color:#643e43 !important; border:1px solid #ad7777 !important;
+ background:#fff0df !important; border-radius:11px !important;
+ box-shadow:0 2px #8a675c70; text-shadow:none !important;
+}
+#app #hud #boss-hud .boss-name { font-size:clamp(12px,1.2vw,16px); line-height:1.15; }
+#app #hud #boss-hud .boss-hp { height:7px; margin-top:4px; background:#e8c5bf; border:0; }
+#app #hud #boss-hud .boss-hp>i { background:linear-gradient(90deg,#a54e62,#ce7c7e); }
+#app #hud #boss-hud .boss-text { font-size:10px; line-height:1.18; margin-top:3px; font-variant-numeric:tabular-nums; }
+#app[data-screen="playing"]:has(#boss-hud:not(.hidden)) #toast.toast { top:calc(var(--boss-panel-top) + 54px) !important; }
+#app #costume-shop .shop-feature-bonus {
+ margin:6px 0 9px; padding:6px 8px; border-radius:7px; background:#e7ecd9;
+ color:#344936; font-size:12px; line-height:1.4; word-break:keep-all;
+}
+@media (max-width:650px) and (orientation:portrait) {
+ #app[data-screen="playing"] { --boss-panel-top:calc(var(--field-top) + 4px); }
+ #app #hud #boss-hud { width:min(225px,68%); padding:5px 8px; }
+}
