@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.30" />
+</style><meta name="nemo-version" content="5.6.31" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -475,6 +475,7 @@
    <div class="pause-heading-copy"><h2 id="pause-title">일시 정지</h2><p class="subtitle">준비되면 숲으로 돌아가세요.</p></div><img src="./assets/interface-art-v5620/pause-sprig.webp" alt="">
   </header>
   <div class="pause-gear"><h3 id="pause-loadout-title">장착 무기</h3><ul class="pause-loadout" id="pause-loadout" aria-labelledby="pause-loadout-title"></ul></div>
+  <div class="pause-gear" id="pause-passive-gear" hidden><h3 id="pause-passives-title">보유 패시브</h3><ul class="pause-loadout" id="pause-passives" aria-labelledby="pause-passives-title"></ul></div>
   <div class="pause-actions">
    <button type="button" class="btn primary" id="resume"><img src="./assets/interface-art-v5620/resume-icon.webp" alt="">모험 계속하기</button>
    <button type="button" class="btn" id="pause-codex"><img class="woodland-book" src="./assets/lobby-icons-v5618/book.webp" alt="">마법 도감</button>
@@ -620,12 +621,35 @@ Object.assign(ASSET_DATA,{
  tree_green:'./assets/forest-play-v5626/woodland-tree.png',
  pond:'./assets/forest-play-v5626/pond.png'
 });
+ASSET_DATA.ui_gold='./assets/nemo-wardrobe-v5631/gold-pouch.png';
+ASSET_DATA.ui_heal='./assets/nemo-wardrobe-v5631/sweet-snack.png';
 const sprites={};Object.keys(ASSET_DATA).forEach(k=>{let im=new Image();im.src=ASSET_DATA[k];sprites[k]=im;});
-const COSTUMES=[{"id":"default","name":"기본 니모","price":0,"desc":"처음부터 함께하는 니모. 빨간 목도리와 별빛 마법봉.","icon":"🐾","atlas":"./assets/nemo-default-v5627/walk.png","portrait":"./assets/nemo-default-v5627/portrait.png"},{"id":"forest","name":"숲속 탐험가","price":250,"desc":"초록 모자와 탐험가 복장으로 숲을 누벼요.","icon":"🌿","atlas":"./assets/nemo-walk-v559/forest.webp","portrait":"./assets/polish-v554/nemo_costume_forest.webp"},{"id":"rain","name":"노란 우비","price":450,"desc":"노란 우비와 후드로 빗방울도 두렵지 않아요.","icon":"🌧️","atlas":"./assets/nemo-walk-v559/rain.webp","portrait":"./assets/polish-v554/nemo_costume_rain.webp"},{"id":"student","name":"마법학교 학생","price":750,"desc":"반짝이는 모자를 쓴 견습 멍법사.","icon":"🎓","atlas":"./assets/nemo-walk-v559/student.webp","portrait":"./assets/polish-v554/nemo_costume_student.webp"},{"id":"starlight","name":"별빛 마법사","price":1100,"desc":"보랏빛 로브와 별무늬 마법 모자.","icon":"✨","atlas":"./assets/nemo-walk-v559/starlight.webp","portrait":"./assets/polish-v554/nemo_costume_starlight.webp"},{"id":"royal","name":"왕관 니모","price":1600,"desc":"왕관과 붉은 망토로 숲의 주인공이 돼요.","icon":"👑","atlas":"./assets/nemo-walk-v559/royal.webp","portrait":"./assets/polish-v554/nemo_costume_royal.webp"},{"id":"legend","name":"전설의 멍법사","price":2400,"desc":"환상적인 은은한 오라가 감도는 전설의 의상.","icon":"🌟","atlas":"./assets/nemo-walk-v559/legend.webp","portrait":"./assets/polish-v554/nemo_costume_legend.webp"}];
+const COSTUME_ART='./assets/nemo-wardrobe-v5631/';
+const COSTUMES=[
+ ["default","기본 니모",0,"빨간 목도리와 작은 가방을 멘 니모."],
+ ["forest","숲속 탐험가",250,"잎사귀 모자와 초록 조끼를 입은 숲길 탐험가."],
+ ["rain","노란 우비",450,"꿀빛 우비와 물방울 단추로 빗속에서도 산뜻해요."],
+ ["redhood","빨간망토 차차 니모",650,"빨간 후드를 쓰고 작은 바구니를 든 동화 속 니모."],
+ ["student","마법학교 학생",750,"크림색 칼라와 리본 넥타이, 책가방을 갖춘 마법학교 교복."],
+ ["halloween","할로윈 니모",900,"작은 호박 모자와 박쥐 날개 망토로 꾸민 니모."],
+ ["starlight","별빛 마법사",1100,"짙은 남색 망토에 금빛 별자리를 수놓은 밤하늘 마법사."],
+ ["royal","왕관 니모",1600,"보석 왕관과 포근한 털 장식 망토를 입은 숲의 왕."],
+ ["legend","전설의 멍법사",2400,"비취빛 예복과 잎사귀 관을 두른 전설 속 숲의 마법사."]
+].map(([id,name,price,desc])=>({
+ id,name,price,desc,
+ atlas:COSTUME_ART+id+'/walk.png',
+ portrait:id==='default'?'./assets/nemo-default-v5627/portrait.png':COSTUME_ART+id+'/portrait.png'
+}));
 const costumeAtlases={};
-for(const item of COSTUMES){const img=new Image();img.src=item.atlas;costumeAtlases[item.id]=img;}
+function loadCostumeAtlas(outfit){
+ if(costumeAtlases[outfit.id])return;
+ const image=new Image();
+ costumeAtlases[outfit.id]=image;
+ image.addEventListener('load',()=>{needsDraw=true;});
+ image.src=outfit.atlas;
+}
 
-// Four painted gait poses per view: front, three-quarter and back.
+// Walk poses are indexed by direction, with left directions mirrored.
 const NEMO_ART_SCALE=.79;
 const NEMO_SIZE=2.68*NEMO_ART_SCALE,NEMO_Y=-.61*NEMO_ART_SCALE,NEMO_CAST=.34,NEMO_STRIDE=1.12;
 const NEMO_WALK_FRAME=96,NEMO_WALK_FEET=89;
@@ -638,16 +662,21 @@ function motionPose(p){
  const step=p.stepDistance/NEMO_STRIDE;
  const frame=walking?Math.floor(step*2)%4:1;
  // Keep the planted pose for most of each step and briefly show the passing pose.
- const defaultFrame=walking&&step%1<.74?1+Math.floor(step):0;
- return {row:walking?[1,0,2,0][frame]:casting?3:0,frame,defaultFrame,casting,castProgress:1-p.castTimer/NEMO_CAST,dir,walking,phase:step*Math.PI};
+ const stepPhase=step%1,leftStep=Math.floor(step)%2===0;
+ const defaultFrame=walking&&stepPhase<.74?(leftStep?1:2):0;
+ const walkFrame=walking?(stepPhase<.62?(leftStep?1:3):2):0;
+ return {row:walking?[1,0,2,0][frame]:casting?3:0,frame,defaultFrame,walkFrame,casting,castProgress:1-p.castTimer/NEMO_CAST,dir,walking,phase:step*Math.PI};
 }
-const NEMO_DEFAULT_ROWS={down:0,'down-right':1,'down-left':1,right:2,left:2,'up-right':3,'up-left':3,up:4};
+const NEMO_DIRECTION_ROWS={down:0,'down-right':1,'down-left':1,right:2,left:2,'up-right':3,'up-left':3,up:4};
 function nemoWalkView(q,atlas){
- const isDefault=atlas===costumeAtlases.default&&atlas.naturalHeight===NEMO_WALK_FRAME*5;
+ const directional=atlas.naturalHeight===NEMO_WALK_FRAME*5;
  const flip=q.dir.includes('left')?-1:1;
- if(isDefault)return {row:NEMO_DEFAULT_ROWS[q.dir]??0,flip,frame:q.defaultFrame,isDefault};
+ if(directional){
+  const frame=atlas.naturalWidth===NEMO_WALK_FRAME*4?q.walkFrame:q.defaultFrame;
+  return {row:NEMO_DIRECTION_ROWS[q.dir]??0,flip,frame,directional};
+ }
  const row=q.dir.startsWith('up')?2:q.dir==='down'?0:1;
- return {row,flip,frame:q.frame,isDefault};
+ return {row,flip,frame:q.frame,directional};
 }
 const NEMO_PAINTED_FRAME=160;
 const NEMO_PAINTED_COLUMNS={
@@ -662,11 +691,14 @@ const NEMO_PAINTED_WAND_TIPS=[
  [[30,55],[129,45],[130,45],[30,82],[130,73],[32,77],[114,89],[132,62]]
 ];
 function nemoAtlas(){
- const costume=costumeAtlases[saved.costumeEquipped];
- if(!costume?.complete)return sprites.nemoAnim;
- const isDefault=costume===costumeAtlases.default;
- return costume.naturalWidth===NEMO_WALK_FRAME*(isDefault?3:4)&&
-        costume.naturalHeight===NEMO_WALK_FRAME*(isDefault?5:3)?costume:sprites.nemoAnim;
+ const outfit=costumeAtlases[saved.costumeEquipped];
+ const base=costumeAtlases.default;
+ for(const atlas of [outfit,base]){
+  if(!atlas?.complete)continue;
+  const columns=atlas.naturalWidth/NEMO_WALK_FRAME,rows=atlas.naturalHeight/NEMO_WALK_FRAME;
+  if((rows===5&&(columns===3||columns===4))||(rows===3&&columns===4))return atlas;
+ }
+ return sprites.nemoAnim;
 }
 function paintedWandTip(q){
  const col=NEMO_PAINTED_COLUMNS[q.dir]??NEMO_PAINTED_COLUMNS.down;
@@ -693,9 +725,9 @@ const NEMO_GRIPS={
  royal:[[67,70],[72,68],[70,67]],
  legend:[[66,69],[70,68],[69,67]]
 };
-const NEMO_DEFAULT_GRIPS=[[60,62],[65,63],[67,63],[65,63],[64,64]];
+const NEMO_DIRECTIONAL_GRIPS=[[60,62],[65,63],[67,63],[65,63],[64,64]];
 function nemoWandPose(q,view){
- const grips=view.isDefault?NEMO_DEFAULT_GRIPS:(NEMO_GRIPS[saved.costumeEquipped]||NEMO_GRIPS.default);
+ const grips=view.directional?NEMO_DIRECTIONAL_GRIPS:(NEMO_GRIPS[saved.costumeEquipped]||NEMO_GRIPS.default);
  const [x,y]=grips[view.row],side=x<NEMO_WALK_FRAME/2?-1:1;
  const flick=q.casting?.29*Math.sin(Math.PI*Math.min(1,q.castProgress??0)):0;
  return {x:(x/NEMO_WALK_FRAME-.5)*NEMO_SIZE,y:(y/NEMO_WALK_FRAME-.5)*NEMO_SIZE,
@@ -749,7 +781,7 @@ const WEAPON_GUIDE={
 };
 const PASSIVE_GUIDE={magnet:'경험치 획득 반경이 커져서 더 먼 보석도 즉시 얻습니다.'};
 const PASSIVE_ROLE={magic:'마법의 위력을 높여요',quick:'마법을 더욱 빠르게 사용해요',lucky:'행운의 한 방이 더 자주 터져요',big:'마법이 더 넓게 퍼져요',cloak:'더욱 튼튼해져요',shoes:'조금 더 빠르게 움직여요',magnet:'경험치 보석을 더 멀리서 모아요'};
-function skillIcon(id,fallback){const alias={brave:'star',breeze:'feather',gather:'magnet',heal:'cloak',gold:'lucky'};const src=ASSET_DATA['ui_'+(alias[id]||id)];return src?`<img class="new-magic-icon" src="${src}" alt="${W[id]?.name||DATA.passives[id]?.[0]||'스킬 아이콘'}">`:fallback;}
+function skillIcon(id,fallback){const alias={brave:'star',breeze:'feather',gather:'magnet'};const src=ASSET_DATA['ui_'+(alias[id]||id)];return src?`<img class="new-magic-icon" src="${src}" alt="${W[id]?.name||DATA.passives[id]?.[0]||(id==='gold'?'반짝이는 주머니':id==='heal'?'달콤한 간식':'스킬 아이콘')}">`:fallback;}
 function friendlyEffect(text){return text.replaceAll('×0.85','(별 하나의 위력 소폭 감소)').replaceAll('×0.8','(방울 하나의 위력 소폭 감소)').replaceAll('×0.75','(발사체 하나의 위력 소폭 감소)').replaceAll('×1.15','+15%').replaceAll('×1.25','+25%').replace(/×1\.2(?!\d)/g,'+20%').replaceAll('×1.3','+30%').replaceAll('×1.4','+40%').replaceAll('×1.5','+50%').replaceAll('×1.6','+60%').replaceAll('50%p','50%p');}
 function effectLines(text){
  const clauses=text.split(/ · (?!개별 피해\s*\(|[^()]*\))/u);
@@ -866,7 +898,20 @@ function begin(){rngState=(Math.random()*0x100000000)>>>0;const hp=DATA.player.h
 }
 function menu(){g=null;setScreen('menu');renderMenu();}
 function resume(){setScreen(pausedFrom||'playing');}
-function pause(){if(screen==='playing'||screen==='intro'){pausedFrom=screen;setScreen('pause');}}
+function pause(){
+ if(screen!=='playing'&&screen!=='intro')return;
+ pausedFrom=screen;
+ renderPausePassives();
+ setScreen('pause');
+}
+function renderPausePassives(){
+ const passives=Object.entries(g.passives).filter(([id,rank])=>DATA.passives[id]&&rank>0);
+ $('pause-passive-gear').hidden=!passives.length;
+ $('pause-passives').innerHTML=passives.map(([id,rank])=>{
+  const [name,icon]=DATA.passives[id];
+  return `<li>${skillIcon(id,icon)}<span>${name}</span><small>${rank}/3</small></li>`;
+ }).join('');
+}
 // XP curve is game data, with linear early levels and accelerated later growth.
 function xpNeedForLevel(level){const c=DATA.progression.xpToNext,late=Math.max(0,level-c.curveStart);return Math.ceil(c.base+c.linear*level+c.curve*late*late);}
 function getLevelNeed(){return xpNeedForLevel(g.player.level);}
@@ -1585,6 +1630,8 @@ function costumeOf(id){return COSTUMES.find(c=>c.id===id)||COSTUMES[0];}
 function costumeOwned(id){return Array.isArray(saved.costumesOwned)&&saved.costumesOwned.includes(id);}
 function syncCostumeVisual(){
  const outfit=costumeOf(saved.costumeEquipped);
+ loadCostumeAtlas(COSTUMES[0]);
+ if(outfit.id!=='default')loadCostumeAtlas(outfit);
  if(!sprites.nemo.src.endsWith(outfit.portrait.replace('./','/')))sprites.nemo.src=outfit.portrait;
  $('hero').src=outfit.portrait;
  $('portrait').src=outfit.portrait;
@@ -1601,7 +1648,7 @@ function shopRender(){
  updateShopArt(art);
  $('shop-feature-name').textContent=selected.name;
  $('shop-feature-desc').textContent=selected.desc;
- $('shop-items').innerHTML=COSTUMES.map(item=>'<button type="button" class="nemo-shop-item '+(item.id===shopSelected?'selected ':'')+(item.id===saved.costumeEquipped?'equipped':'')+'" data-costume="'+item.id+'" aria-pressed="'+(item.id===shopSelected)+'" aria-label="'+item.name+'"><span class="shop-art" data-art-state="loading"><img src="'+item.portrait+'" alt=""><span class="shop-art-status" aria-hidden="true"></span></span><strong>'+item.icon+' '+item.name+'</strong><small>'+(item.id===saved.costumeEquipped?'장착 중':costumeOwned(item.id)?'보유 중':'🪙 '+item.price.toLocaleString('ko-KR')+' G')+'</small></button>').join('');
+ $('shop-items').innerHTML=COSTUMES.map(item=>'<button type="button" class="nemo-shop-item '+(item.id===shopSelected?'selected ':'')+(item.id===saved.costumeEquipped?'equipped':'')+'" data-costume="'+item.id+'" aria-pressed="'+(item.id===shopSelected)+'" aria-label="'+item.name+'"><span class="shop-art" data-art-state="loading"><img src="'+item.portrait+'" alt=""><span class="shop-art-status" aria-hidden="true"></span></span><strong>'+item.name+'</strong><small>'+(item.id===saved.costumeEquipped?'장착 중':costumeOwned(item.id)?'보유 중':'🪙 '+item.price.toLocaleString('ko-KR')+' G')+'</small></button>').join('');
  for(const img of $('shop-items').querySelectorAll('img'))updateShopArt(img);
  const shortfall=owned?0:Math.max(0,selected.price-saved.gold);
  $('shop-action').disabled=shortfall>0||(owned&&selected.id===saved.costumeEquipped);
@@ -2155,7 +2202,13 @@ $('codex-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-cod
 $('start').onclick=()=>{if(!nicknameConfirmed())showNicknameSetup('menu');else begin();};$('retry').onclick=begin;$('result-menu').onclick=menu;
 $('shop-btn').onclick=shopOpen;
 $('shop-back').onclick=()=>{setScreen('menu');renderMenu();};
-$('shop-items').addEventListener('click',e=>{const btn=e.target.closest('[data-costume]');if(btn){shopSelected=btn.dataset.costume;shopRender();}});
+$('shop-items').addEventListener('click',e=>{
+ const button=e.target.closest('[data-costume]');
+ if(!button)return;
+ shopSelected=button.dataset.costume;
+ shopRender();
+ $('shop-items').querySelector('[aria-pressed="true"]')?.focus({preventScroll:true});
+});
 $('shop-action').onclick=shopAction;
 $('school-btn').onclick=()=>{setScreen('school');updateSchool();};$('school-back').onclick=()=>{setScreen('menu');renderMenu();};
 $('settings-btn').onclick=()=>setScreen('settings');$('settings-back').onclick=()=>{setScreen('menu');renderMenu();};
@@ -2181,7 +2234,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.30';
+  const CURRENT='5.6.31';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
