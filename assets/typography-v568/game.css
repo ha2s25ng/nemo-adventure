@@ -1,0 +1,26 @@
+/* Jua is the shared typeface for the game, including native form controls. */
+#app {
+  --nemo-display-font: "Jua", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --heading: var(--nemo-display-font);
+}
+#app,
+#app :where(*) {
+  font-family: var(--nemo-display-font) !important;
+  font-weight: 400 !important;
+}
+#app :is(.folio-title,.overlay h2,#evolution .ribbon) {
+  letter-spacing: .005em;
+  text-shadow: 0 1px 1px #17365f9c !important;
+}
+#app #menu .buttons #start { letter-spacing: .02em; }
+#app #cards .choice-name { font-size: clamp(17px, 3.7vmin, 28px); }
+#app #cards .choice-effect strong { font-size: clamp(14px, 2.7vmin, 19px); }
+#app #cards .choice-effect small,
+#app #cards .choice-type { font-size: clamp(11px, 1.9vmin, 14px); }
+#app #cards .choice-copy { font-size: clamp(12px, 2.3vmin, 16px); line-height: 1.42; }
+#app #cards :is(.choice-growth,.choice-meta,.choice-footer) { font-size: clamp(11px, 2vmin, 14px); }
+#app #cards :is(.choice-cta,#reroll) { font-size: clamp(13px, 2.3vmin, 16px); }
+#app :is(.choice-copy,.choice-growth,.choice-meta,.overlay .subtitle,.school-desc,.nemo-shop-feature p) {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
