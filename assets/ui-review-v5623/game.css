@@ -5,8 +5,10 @@
   box-shadow:inset 0 1px #c8d8a1,inset -2px 0 #3f613c !important;
 }
 #app #hud .survival-xp .survival-xp-caption {
-  background:#fffae9 !important; color:#263b30 !important;
-  font-variant-numeric:tabular-nums; padding-inline:7px;
+  background:transparent !important; color:#263b30 !important;
+  border:0; box-shadow:none; padding-inline:0;
+  font-variant-numeric:tabular-nums;
+  text-shadow:-1px -1px #fff8df,1px -1px #fff8df,-1px 1px #fff8df,1px 1px #fff8df;
 }
 #app #hud .survival-xp #level { font-variant-numeric:tabular-nums; }
 #app #pause :focus-visible, #app #codex :focus-visible, #app #result :focus-visible {
@@ -23,6 +25,13 @@
 }
 #app #cards .choice-identity > span:last-child { min-width:0; }
 #app #cards .choice-effect { margin-top:0; }
+#app :is(#cards,#evolution,#codex) .effect-lines {
+  display:grid; gap:3px; min-width:0; word-break:keep-all; overflow-wrap:anywhere;
+}
+#app :is(#cards,#evolution,#codex) .effect-lines > span { color:inherit; font-weight:inherit; }
+#app :is(#cards,#evolution,#codex) .effect-lines > .effect-note {
+  font-size:.82em; font-weight:600; line-height:1.45;
+}
 #app #cards :is(.choice-copy,.choice-growth,.choice-meta) { line-height:1.45; }
 #app #evolution .card-desc { font-size:clamp(14px,1.45vw,18px); line-height:1.5; }
 #app #evolution .card-topping { font-size:clamp(12px,1.3vw,15px); }
