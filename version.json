@@ -1,5 +1,5 @@
 {
-  "version": "5.6.57",
-  "mode": "endless_survival",
-  "notes": "스타 샷의 중복 적중과 관통 피해 조정"
+  "version": "5.7.0",
+  "mode": "endless_survival_and_campaign",
+  "notes": "스테이지 10개, 보스와 광폭화의 밤, 클리어 보상과 스테이지 전용 강화"
 }

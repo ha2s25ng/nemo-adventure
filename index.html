@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.57" />
+</style><meta name="nemo-version" content="5.7.0" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -558,6 +558,8 @@
 }
 
 </style>
+<link rel="stylesheet" href="./assets/campaign-v570/stages.css">
+<script src="./assets/campaign-v570/stages.js"></script>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
 <div class="hidden" id="hud">
@@ -572,7 +574,7 @@
     <div class="slots" id="weapon-slots" aria-label="장착한 무기"></div>
     <div class="buff-line" id="buffs" aria-label="보유 강화 효과"></div>
    </div>
-   <div class="timer" id="survival-timer"><div class="timer-content"><div class="clock" id="time">00:00</div></div></div>
+   <div class="timer" id="survival-timer"><div class="timer-content"><div class="clock" id="time">00:00</div><div id="stage-hud"></div></div></div>
    <div class="hud-right"><div class="survival-kills" role="group" aria-label="처치 수"><img src="./assets/spell-art-v5647/kills.png" alt=""><span id="kills-hud">0</span></div><div class="money"><img alt="골드" class="money-icon" src="./assets/pastel-ui-v5619/coin.webp"><span id="gold-hud">0</span></div><button aria-label="일시 정지" class="pause-btn" id="pause-btn" type="button"><img src="./assets/pastel-ui-v5619/pause.webp" alt=""></button></div>
   </div>
  </div>
@@ -590,7 +592,8 @@
         <button class="btn" type="button" id="nemo-name-change"><span id="menu-profile-name">닉네임</span><span class="profile-edit">변경</span></button>
       </div>
       <div class="buttons">
-        <button class="btn primary" id="start"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/paw.webp" alt="">모험 시작</button>
+        <button class="btn primary" id="start"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/paw.webp" alt="">무한 생존</button>
+        <button class="btn" id="campaign-open">스테이지 모험 · 10개 지역</button>
         <button class="btn" id="school-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/wand.webp" alt="">모험 강화</button>
         <button class="btn nemo-shop-entry" id="shop-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/bag.webp" alt="">코스튬 상점</button>
         <button class="btn" id="codex-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/book.webp" alt="">마법 도감</button>
@@ -606,6 +609,13 @@
       <img class="menu-monster menu-slime" src="./assets/monsters-v553/green.webp" alt="">
       <img class="menu-monster menu-mushroom" src="./assets/monsters-v553/fat.webp" alt="">
     </div>
+  </div>
+</div>
+<div class="overlay hidden" id="stages" role="dialog" aria-modal="true" aria-labelledby="stages-title">
+  <div class="big-board stage-board">
+    <header class="stage-header"><div><p class="folio">숲길 지도</p><h2 id="stages-title">스테이지 모험</h2><p class="subtitle">9분 동안 살아남고 보스를 쓰러뜨리세요.</p></div><button class="btn" id="stages-back">숲 입구</button></header>
+    <p id="stage-progress"></p>
+    <div class="stage-grid" id="stage-options"></div>
   </div>
 </div>
 <div class="overlay hidden" id="nickname-setup">
@@ -655,7 +665,7 @@
   </div>
  </section>
 </div>
-<div class="overlay hidden" id="result" role="dialog" aria-modal="true" aria-labelledby="result-title"><div class="big-board"><p class="folio">모험 일지</p><h2 id="result-title">모험 결과</h2><p class="subtitle" id="result-desc"></p><div class="result-summary"><div><small>생존 시간</small><strong id="result-time">00:00</strong></div><div class="reward"><small>획득 골드</small><strong id="result-money">+0 G</strong></div></div><div class="result-grid" id="result-grid"></div><div class="stack-btns" style="max-width:390px;margin:auto"><button class="btn primary" id="retry">다시 도전</button><button class="btn" id="result-menu">숲 입구로</button><button class="btn nemo-rank-result" id="result-rank-btn">내 기록과 랭킹</button></div></div></div>
+<div class="overlay hidden" id="result" role="dialog" aria-modal="true" aria-labelledby="result-title"><div class="big-board"><p class="folio">모험 일지</p><h2 id="result-title">모험 결과</h2><p class="subtitle" id="result-desc"></p><div class="result-summary"><div><small>생존 시간</small><strong id="result-time">00:00</strong></div><div class="reward"><small>획득 골드</small><strong id="result-money">+0 G</strong></div></div><div class="result-grid" id="result-grid"></div><div class="stack-btns" style="max-width:390px;margin:auto"><button class="btn primary hidden" id="next-stage">다음 스테이지</button><button class="btn primary" id="retry">다시 도전</button><button class="btn" id="result-menu">숲 입구로</button><button class="btn nemo-rank-result" id="result-rank-btn">내 기록과 랭킹</button></div></div></div>
 <div class="overlay hidden" id="codex" role="dialog" aria-modal="true" aria-labelledby="codex-title"><div class="codex-board">
 <div class="codex-head"><div><p class="folio">마법 기록</p><h2 id="codex-title">니모의 마법 도감</h2><p>14종 마법의 공격 방식·강화·두 가지 최종 진화를 확인할 수 있어.</p></div><button class="btn codex-close" id="codex-back">✕ 닫기</button></div>
 <div class="codex-tabs" id="codex-tabs"></div><div class="codex-details" id="codex-details"></div>
@@ -745,12 +755,13 @@ const DATA = Object.freeze({
  elites:{flower:{name:'꽃모자 버섯',hp:2070,dmg:16,speed:.98,xp:30,at:180,gold:30,r:.83},horn:{name:'별뿔 슬라임',hp:4480,dmg:18,speed:1.42,xp:50,at:360,gold:50,r:.83}},
  boss:{name:'왕관 슬라임',hp:38000,dmg:20,speed:.87,r:1.55,gold:100},
  economy:{costs:{
-  attack:[45,70,105,150,210,280,365,460,575,710],
-  hp:[45,70,100,140,195,260,335,425,530,650],
-  speed:[60,100,155,225,320],pickup:[55,90,140,205,290],
-  crit:[45,75,120,180,255],reroll:[150,360]
+  attack:[45,65,95,135,190,260,345,450,580,735],
+  hp:[40,60,90,130,180,245,325,425,540,680],
+  speed:[55,90,140,210,305],pickup:[50,80,120,175,245],
+  crit:[45,75,115,170,240],reroll:[145,340],
+  tempo:[80,125,180,255,350],guard:[75,120,175,245,335]
  },
- upgrades:{attack:['공격력 강화','기본 공격력 +2',10],hp:['체력 강화','최대 체력 +5',10],speed:['빠른 발걸음','이동 속도 +1%',5],pickup:['보석 수집','경험치 보석 획득 범위 +10%',5],crit:['치명타 강화','치명타 확률 +1%p',5],reroll:['카드 다시 뽑기','다시 뽑기 기회 +1회',2]}}
+ upgrades:{attack:['공격력 강화','기본 공격력 +2',10],hp:['체력 강화','최대 체력 +5',10],speed:['빠른 발걸음','이동 속도 +1%',5],pickup:['보석 수집','경험치 보석 획득 범위 +10%',5],crit:['치명타 강화','치명타 확률 +1%p',5],reroll:['카드 다시 뽑기','다시 뽑기 기회 +1회',2],tempo:['시전 훈련','스테이지 시전 속도 +2%',5],guard:['수호 훈련','스테이지 받는 피해 −2%',5]}}
 });
 </script><script>const ASSET_DATA={"nemo":"./assets/nemo-default-v5627/portrait.png","windmill":"./assets/windmill.png","ribbonIcon":"./assets/ribbonIcon.png","magnetIcon":"./assets/magnetIcon.png","groundFull":"./assets/groundFull.jpg","tree_pink":"./assets/tree_pink.png","tree_green":"./assets/tree_green.png","pond":"./assets/pond.png","grain":"./assets/grain.jpg","nemoAnim":"./assets/v550/nemo_default_32.webp","nemoWand":"./assets/nemo-polish/star-wand.webp","ui_star":"./assets/ui_star.svg","ui_orbit":"./assets/ui_orbit.svg","ui_moon":"./assets/ui_moon.svg","ui_bubble":"./assets/ui_bubble.svg","ui_bloom":"./assets/ui_bloom.svg","ui_cloud":"./assets/ui_cloud.svg","ui_ribbon":"./assets/ui_ribbon.svg","ui_book":"./assets/ui_book.svg","ui_comet":"./assets/ui_comet.svg","ui_frost":"./assets/ui_frost.svg","ui_feather":"./assets/ui_feather.svg","ui_magnet":"./assets/ui_magnet.svg","ui_magic":"./assets/ui_magic.svg","ui_quick":"./assets/ui_quick.svg","ui_lucky":"./assets/ui_lucky.svg","ui_big":"./assets/ui_big.svg","ui_cloak":"./assets/ui_cloak.svg","ui_shoes":"./assets/ui_shoes.svg","ui_vortex":"./assets/ui_vortex.svg","ui_seed":"./assets/ui_seed.svg","ui_bell":"./assets/ui_bell.svg"};</script><script>
 const STORYBOOK_ART={"logo":"./assets/logo.png","button_start":"./assets/button_start.png","button_school":"./assets/button_school.png","button_settings":"./assets/button_settings.png","button_codex":"./assets/button_codex.png","button_normal":"./assets/button_normal.png","button_hard":"./assets/button_hard.png","button_hell":"./assets/button_hell.png","button_pause":"./assets/button_pause.png","title_ribbon":"./assets/title_ribbon.png","result_panel":"./assets/result_panel.png","card_blank_gold":"./assets/card_blank_gold.png","card_blank_lavender":"./assets/card_blank_lavender.png","card_blank_sun":"./assets/card_blank_sun.png","icon_star":"./assets/v550/fx_star.webp","icon_orbit":"./assets/icon_orbit.webp","icon_moon":"./assets/icon_moon.webp","icon_bubble":"./assets/icon_bubble.webp","icon_bloom":"./assets/icon_bloom.webp","icon_cloud":"./assets/v550/fx_cloud.webp","icon_ribbon":"./assets/icon_ribbon.webp","icon_book":"./assets/icon_book.webp","icon_comet":"./assets/v550/fx_fire.webp","icon_frost":"./assets/v550/fx_ice.webp","icon_feather":"./assets/icon_feather.webp","icon_vortex":"./assets/v550/fx_vortex.webp","icon_seed":"./assets/icon_seed.webp","icon_bell":"./assets/icon_bell.webp","icon_magic":"./assets/v550/fx_wand.webp","icon_quick":"./assets/icon_quick.png","icon_lucky":"./assets/icon_lucky.png","icon_area":"./assets/v550/fx_burst.webp","icon_cloak":"./assets/v550/fx_heart.webp","icon_shoes":"./assets/icon_shoes.png","icon_magnet":"./assets/v550/fx_magnet.webp","icon_heart":"./assets/v550/fx_heart.webp","icon_coin":"./assets/v550/fx_coin.webp","icon_gem":"./assets/icon_gem.png","icon_exp":"./assets/icon_exp.png","icon_paw":"./assets/icon_paw.png","icon_flower":"./assets/icon_flower.png","icon_crown":"./assets/icon_crown.png","icon_bone":"./assets/icon_bone.png","enemy_green":"./assets/enemy_green.png","enemy_blue":"./assets/enemy_blue.png","enemy_mush":"./assets/enemy_mush.png","enemy_firefly":"./assets/enemy_firefly.png","enemy_boss":"./assets/enemy_boss.png","item_gem":"./assets/item_gem.png","item_gold":"./assets/item_gold.png","item_bone":"./assets/item_bone.png","item_potion":"./assets/item_potion.png","item_magnet":"./assets/item_magnet.png","item_bag":"./assets/item_bag.png","item_chest":"./assets/item_chest.png","decor_tree_crown":"./assets/decor_tree_crown.png","decor_tree_trunk":"./assets/decor_tree_trunk.png","decor_tree_front":"./assets/decor_tree_front.png","decor_pond":"./assets/decor_pond.png","decor_windmill":"./assets/decor_windmill.png","decor_fence":"./assets/decor_fence.png","decor_rock":"./assets/decor_rock.png","decor_stump":"./assets/decor_stump.png","decor_flowers":"./assets/decor_flowers.png"};
@@ -839,16 +850,19 @@ const ENEMY_ART={
  flower:[2.1,1.88],
  horn:[2.1,1.88],
  boss:[3.8,3.2],
+ 'root-boar':[4.45,3.44],
  'thorn-guardian':[4.30,3.62],'moonwing-queen':[5.0,3.42],'storm-owl':[4.48,3.83],
 };
 for(const kind of Object.keys(ENEMY_ART)){
  ASSET_DATA['enemy_'+kind]=NEW_FOREST_ENEMIES.has(kind)?'./assets/forest-enemies-v5641/'+kind+'.png':'./assets/monsters-v553/'+kind+'.webp';
 }
+ASSET_DATA['enemy_root-boar']='./assets/campaign-v570/boar-idle.webp';
+ASSET_DATA['enemy_root-boar_gait']='./assets/campaign-v570/boar-walk.webp';
 for(const boss of LATE_BOSSES)ASSET_DATA['enemy_'+boss.art]='./assets/forest-bosses-v5642/'+boss.art+'.png';
 const SPELL_ART='./assets/spell-art-v5647/';
 const FOREST_GAIT_TILES=96;
 const ENEMY_STRIDE_LENGTH={green:.86,blue:.96,petal:.84,armor:.95,bramble:.93,thief:1.16,
- fat:.80,spore:.87,flower:1.18,horn:1.14,spark:1.28,boss:1.60};
+ fat:.80,spore:.87,flower:1.18,horn:1.14,spark:1.28,boss:1.60,'root-boar':1.45};
 const JELLY_GAITS=new Set(['green','blue','petal','armor','boss']);
 const FLYING_ENEMIES=new Set(['moth','firefly','moonwing-queen','storm-owl']);
 for(const kind of NEW_FOREST_ENEMIES)ASSET_DATA['enemy_'+kind+'_gait']=kind==='bramble'?SPELL_ART+'bramble-gait.png':'./assets/forest-motion-v5643/'+kind+'.png';
@@ -882,14 +896,14 @@ const sprites={};Object.keys(ASSET_DATA).forEach(k=>{let im=new Image();im.src=A
 const COSTUME_ART='./assets/nemo-wardrobe-v5631/';
 const COSTUMES=[
  ["default","기본 니모",0,"빨간 목도리와 작은 가방을 멘 니모.",0,0],
- ["forest","숲속 탐험가",140,"잎사귀 모자와 초록 조끼를 입은 숲길 탐험가.",4,1],
- ["rain","노란 우비",200,"꿀빛 우비와 물방울 단추로 빗속에서도 산뜻해요.",7,2],
- ["redhood","빨간망토 차차 니모",280,"빨간 후드를 쓰고 작은 바구니를 든 동화 속 니모.",5,4],
- ["student","마법학교 학생",350,"크림색 칼라와 리본 넥타이, 책가방을 갖춘 마법학교 교복.",3,6],
- ["halloween","할로윈 니모",440,"작은 호박 모자와 박쥐 날개 망토로 꾸민 니모.",7,5],
- ["starlight","별빛 마법사",550,"짙은 남색 망토에 금빛 별자리를 수놓은 밤하늘 마법사.",5,8],
- ["royal","왕관 니모",680,"보석 왕관과 포근한 털 장식 망토를 입은 숲의 왕.",14,5],
- ["legend","전설의 멍법사",860,"비취빛 예복과 잎사귀 관을 두른 전설 속 숲의 마법사.",11,10]
+ ["forest","숲속 탐험가",160,"잎사귀 모자와 초록 조끼를 입은 숲길 탐험가.",4,1],
+ ["rain","노란 우비",225,"꿀빛 우비와 물방울 단추로 빗속에서도 산뜻해요.",7,2],
+ ["redhood","빨간망토 차차 니모",295,"빨간 후드를 쓰고 작은 바구니를 든 동화 속 니모.",5,4],
+ ["student","마법학교 학생",385,"크림색 칼라와 리본 넥타이, 책가방을 갖춘 마법학교 교복.",3,6],
+ ["halloween","할로윈 니모",475,"작은 호박 모자와 박쥐 날개 망토로 꾸민 니모.",7,5],
+ ["starlight","별빛 마법사",590,"짙은 남색 망토에 금빛 별자리를 수놓은 밤하늘 마법사.",5,8],
+ ["royal","왕관 니모",735,"보석 왕관과 포근한 털 장식 망토를 입은 숲의 왕.",14,5],
+ ["legend","전설의 멍법사",920,"비취빛 예복과 잎사귀 관을 두른 전설 속 숲의 마법사.",11,10]
 ].map(([id,name,price,desc,hp,attack])=>({
  id,name,price,desc,hp,attack,
  atlas:COSTUME_ART+id+'/walk.png',
@@ -1069,7 +1083,7 @@ function weaponNumbers(id){
 }
 function guideMetrics(id){return weaponNumbers(id).map(x=>`<div><b>${x.k}</b><strong>${x.v}</strong></div>`).join('');}
 function choiceDetail(c){
- const weapon=WEAPON_GUIDE[c.id];
+ const weapon=weaponGuide(c.id);
  if(c.type==='new')return {label:'전투 역할',effect:weapon.role,copy:weapon.desc,growth:W[c.id].up.map(([name])=>name).join(' · ')};
  const copy=c.type==='passive'?(PASSIVE_GUIDE[c.id]||PASSIVE_ROLE[c.id]):
    c.type==='blessing'?c.lore:c.type==='break'?weapon?.role:'';
@@ -1086,7 +1100,7 @@ function closeCodex(){
 }
 function renderCodex(){
  $('codex-tabs').innerHTML=weaponKeys.map(id=>`<button type="button" class="codex-tab ${id===currentCodex?'on':''}" data-codex="${id}" aria-pressed="${id===currentCodex}"><span aria-hidden="true">${skillIcon(id,W[id].icon)}</span> ${W[id].name}${g?.weapons[id]?' · Lv.'+g.weapons[id].lv:''}</button>`).join('');
- const d=W[currentCodex],v=WEAPON_GUIDE[currentCodex],w=g?.weapons[currentCodex];
+ const d=weaponRule(currentCodex),v=weaponGuide(currentCodex),w=g?.weapons[currentCodex];
  const growthList=d.steps
   ? Object.entries({...d.steps,4:['세 갈래 별',d.break]}).map(([lv,[name,desc]])=>`<div class="codex-up"><b>${name}</b><span class="effect-lines">${effectLines(desc)}</span><em>Lv.${lv}</em></div>`).join('')
   : d.up.map(([name,desc],i)=>`<div class="codex-up"><b>${name}</b><span class="effect-lines">${effectLines(friendlyEffect(desc))}</span><em>${w?w.up[i]:0}/2</em></div>`).join('')+`<h4>✦ Lv.4 중간 돌파</h4><p class="codex-text effect-lines">${effectLines(friendlyEffect(d.break))}</p>`;
@@ -1101,8 +1115,8 @@ let rngState=(Math.random()*0x100000000)>>>0, menuArtTime=0;
 function rand(){rngState=(Math.imul(1664525,rngState)+1013904223)>>>0;return rngState/4294967296;}
 function range(a,b){return a+(b-a)*rand();}function choose(a){return a[Math.floor(rand()*a.length)];}
 function hashed(s){let v=s>>>0;return ()=>{v=(Math.imul(1664525,v)+1013904223)>>>0;return v/4294967296;};}
-function readSave(){let defaults={version:DATA.version,gold:0,firstClear:false,unlocks:[],costumesOwned:['default'],costumeEquipped:'default',upgrades:{attack:0,hp:0,speed:0,pickup:0,crit:0,reroll:0},stats:{plays:0,wins:0}};
- try{const old=JSON.parse(localStorage.getItem(DATA.saveKey)||'null');if(!old||!Number.isInteger(old.version))return defaults;defaults.gold=clamp(Number(old.gold)||0,0,99999999);defaults.firstClear=!!old.firstClear;for(const k of Object.keys(defaults.upgrades))defaults.upgrades[k]=clamp(Number(old.upgrades?.[k])||0,0,DATA.economy.upgrades[k][2]);defaults.unlocked=old.unlocked||[];const owned=Array.isArray(old.costumesOwned)?old.costumesOwned.filter(id=>COSTUMES.some(item=>item.id===id)):[];defaults.costumesOwned=[...new Set(['default',...owned])];defaults.costumeEquipped=defaults.costumesOwned.includes(old.costumeEquipped)?old.costumeEquipped:'default';defaults.stats={plays:Number(old.stats?.plays)||0,wins:Number(old.stats?.wins)||0};return defaults;}catch(e){return defaults;}}
+function readSave(){let defaults={version:DATA.version,gold:0,firstClear:false,stagesCleared:0,unlocks:[],costumesOwned:['default'],costumeEquipped:'default',upgrades:{attack:0,hp:0,speed:0,pickup:0,crit:0,reroll:0,tempo:0,guard:0},stats:{plays:0,wins:0}};
+ try{const old=JSON.parse(localStorage.getItem(DATA.saveKey)||'null');if(!old||!Number.isInteger(old.version))return defaults;defaults.gold=clamp(Number(old.gold)||0,0,99999999);defaults.firstClear=!!old.firstClear;defaults.stagesCleared=clamp(Math.floor(Number(old.stagesCleared)||0),0,NEMO_STAGES.length);for(const k of Object.keys(defaults.upgrades))defaults.upgrades[k]=clamp(Math.floor(Number(old.upgrades?.[k])||0),0,DATA.economy.upgrades[k][2]);defaults.unlocked=old.unlocked||[];const owned=Array.isArray(old.costumesOwned)?old.costumesOwned.filter(id=>COSTUMES.some(item=>item.id===id)):[];defaults.costumesOwned=[...new Set(['default',...owned])];defaults.costumeEquipped=defaults.costumesOwned.includes(old.costumeEquipped)?old.costumeEquipped:'default';defaults.stats={plays:Number(old.stats?.plays)||0,wins:Number(old.stats?.wins)||0};return defaults;}catch(e){return defaults;}}
 function persist(){try{localStorage.setItem(DATA.saveKey,JSON.stringify(saved));return true;}catch(e){showToast('저장 공간을 사용할 수 없어 진행 상황이 유지되지 않을 수 있어.');return false;}}
 const opts={numbers:true,particles:true,shake:true};
 try{let s=JSON.parse(localStorage.getItem(DATA.saveKey+'_settings')||'null');if(s)Object.assign(opts,s);}catch(e){}
@@ -1113,10 +1127,10 @@ function setScreen(s){
  if(s!=='playing'||screen!=='playing'){keys.clear();clearTouch();}
  const previous=screen;
  screen=s;needsDraw=true;$('app').dataset.screen=s;
- if(s==='menu'||s==='result'){toastTimer=0;$('toast').classList.add('hidden');}for(const id of ['menu','nickname-setup','costume-shop','school','cards','evolution','pause','result','settings','codex','leaderboard'])$(id).classList.toggle('hidden',id!==s);
- $('hud').classList.toggle('hidden',!g || s==='menu'||s==='costume-shop'||s==='school'||s==='settings'||s==='codex'||s==='leaderboard');$('touch-pad').classList.toggle('hidden',s!=='playing');
+ if(s==='menu'||s==='result'){toastTimer=0;$('toast').classList.add('hidden');}for(const id of ['menu','stages','nickname-setup','costume-shop','school','cards','evolution','pause','result','settings','codex','leaderboard'])$(id).classList.toggle('hidden',id!==s);
+ $('hud').classList.toggle('hidden',!g || s==='menu'||s==='stages'||s==='costume-shop'||s==='school'||s==='settings'||s==='codex'||s==='leaderboard');$('touch-pad').classList.toggle('hidden',s!=='playing');
  $('hud').inert=s!=='playing';
- const focusTarget={pause:'resume',codex:'codex-back',result:'retry',settings:'settings-title'}[s];
+ const focusTarget={stages:'stages-back',pause:'resume',codex:'codex-back',result:'retry',settings:'settings-title'}[s];
  if(focusTarget)$(focusTarget).focus({preventScroll:true});
  if(s==='playing'&&previous==='pause')$('pause-btn').focus({preventScroll:true});
 }
@@ -1145,14 +1159,49 @@ function forestDanger(t){
  return {label,hp:blend(hp,1,.64),contactDamage,damage:1+(contactDamage-1)*.74,
   speed:Math.min(1.60,blend(speed,3,.011)),spawns:Math.min(2.60,blend(spawns,4,.028))};
 }
-function difficulty(){return forestDanger(g?.t||0);}
+function difficulty(){
+ const stage=g?.stage,diff=forestDanger(g?.t||0);
+ if(!stage)return diff;
+ const offset=stage.id-1;
+ diff.hp*=1+.065*offset;
+ diff.contactDamage*=1+.032*offset;
+ diff.damage*=1+.032*offset;
+ diff.speed*=1+.014*offset;
+ diff.spawns*=1+.035*offset;
+ return diff;
+}
+function stageOpen(){
+ g=null;
+ $('stage-progress').textContent=`클리어 ${saved.stagesCleared} / ${NEMO_STAGES.length}`;
+ $('stage-options').innerHTML=NEMO_STAGES.map(stage=>{
+  const cleared=stage.id<=saved.stagesCleared,locked=stage.id>saved.stagesCleared+1;
+  const status=cleared?'클리어':locked?'잠김':'도전 가능';
+  return `<button class="stage-card" type="button" data-stage="${stage.id}" data-status="${cleared?'cleared':locked?'locked':'next'}" ${locked?'disabled':''}><small>스테이지 ${stage.id} · ${status}</small><strong>${stage.name}</strong><small>${locked?'이전 스테이지 클리어':`클리어 보상 ${cleared?stage.replayGold:stage.reward} G`}</small></button>`;
+ }).join('');
+ setScreen('stages');
+}
+function stageReward(victory){
+ const stage=g.stage;
+ const first=stage.id>saved.stagesCleared;
+ const clearGold=victory?(first?stage.reward:stage.replayGold):0;
+ if(victory&&!g.debugUsed){
+  saved.stagesCleared=Math.max(saved.stagesCleared,stage.id);
+  saved.stats.wins++;
+ }
+ return clearGold;
+}
+function runGold(){
+ return g.achievedMinutes*(g.stage?.minuteGold??20)+g.gold;
+}
 function renderDifficulty(){} // The old 3-choice selector was removed.
 function chooseDifficulty(){return;} // Compatibility shim for older test hooks.
-function begin(){
+function begin(stageId=0){
+ const stage=typeof stageId==='number'&&stageId>0?NEMO_STAGES[stageId-1]:null;
+ if(stageId>0&&(!stage||stageId>saved.stagesCleared+1))return;
  rngState=(Math.random()*0x100000000)>>>0;
  const outfit=costumeOf(saved.costumeEquipped);
  const hp=DATA.player.hp+saved.upgrades.hp*5+outfit.hp;
- g={t:0,bossTime:0,difficulty:difficultyKey,runCostume:outfit.id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.44,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*2+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
+ g={stage,t:0,bossTime:0,difficulty:difficultyKey,runCostume:outfit.id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.44,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*2+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
   speed:DATA.player.speed*(1+saved.upgrades.speed*.01),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
   weapons:{star:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
   enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0, waveIndex:0,
@@ -1165,6 +1214,7 @@ function begin(){
  g.deco=forestDecor();g.treeDecor=g.deco.trees;g.camera=calcCamera();setScreen('playing');
  const touchControls=matchMedia('(pointer: coarse)').matches;
  if(saved.stats.plays===1)showToast(touchControls?'조이스틱으로 이동하세요. 마법은 자동으로 시전돼요.':'WASD 또는 방향키로 이동하세요. 마법은 자동으로 시전돼요.',4.5);
+ else if(stage)showToast(`스테이지 ${stage.id} · ${stage.name}`,2.6);
  else{toastTimer=0;$('toast').classList.add('hidden');}
  updateHUD();
 }
@@ -1187,7 +1237,7 @@ function renderPausePassives(){
 // XP curve is game data, with linear early levels and accelerated later growth.
 function xpNeedForLevel(level){const c=DATA.progression.xpToNext,late=Math.max(0,level-c.curveStart);return Math.ceil(c.base+c.linear*level+c.curve*late*late);}
 function getLevelNeed(){return xpNeedForLevel(g.player.level);}
-function maxWeaponSlots(){return DATA.player.weaponSlots;}
+function maxWeaponSlots(){return g?.stage?.weaponSlots??DATA.player.weaponSlots;}
 function maxPassiveSlots(){return DATA.player.passiveSlots;}
 function pcount(){return Object.values(g.passives).filter(v=>v>0).length;}
 function getPassive(k){return g.passives[k]||0;}
@@ -1200,7 +1250,7 @@ function rageActive(){return !!g&&g.worldClock<(g.player.rageUntil||0);}
 function rageRate(){return rageActive()?RAGE.tempo:1;}
 function spellTravelRate(){return rageActive()?RAGE.spell:1;}
 function clockMult(id,w=g?.weapons[id]){
- return 1+.08*(g?.passives.quick||0)+.08*(g?.blessings?.breeze||0)+.15*(w?.up[SPEED_RANK[id]]||0);
+ return 1+(g?.stage?.id?saved.upgrades.tempo*.02:0)+.08*(g?.passives.quick||0)+.08*(g?.blessings?.breeze||0)+.15*(w?.up[SPEED_RANK[id]]||0);
 }
 function cooldown(id,w=g?.weapons[id]){
  return Math.max(.08,W[id].cd/clockMult(id,w)*(id==='moon'&&w?.evo===1?1.2:1));
@@ -1258,7 +1308,7 @@ function forestFrenzied(){
  return !!g&&g.worldClock>=g.frenzyStarts&&g.worldClock<g.frenzyUntil;
 }
 function enemyPace(){return forestFrenzied()?1.30:1;}
-function damagePlayer(value,reason){const p=g.player;if(p.invuln>0||screen!=='playing')return;value=Math.round(value*(forestFrenzied()?1.20:1)*100)/100;p.hp=Math.max(0,p.hp-value);p.invuln=DATA.player.invuln;g.hitCount++;g.hitReasons[reason]=(g.hitReasons[reason]||0)+1;
+function damagePlayer(value,reason){const p=g.player;if(p.invuln>0||screen!=='playing')return;value=Math.round(value*(g.stage?1-saved.upgrades.guard*.02:1)*(forestFrenzied()?1.20:1)*100)/100;p.hp=Math.max(0,p.hp-value);p.invuln=DATA.player.invuln;g.hitCount++;g.hitReasons[reason]=(g.hitReasons[reason]||0)+1;
  p.hurtTimer=.24;if(opts.numbers)g.numbers.push({x:p.x,y:p.y-.75,text:'-'+Math.round(value),ttl:.8,color:'#e84779'});if(opts.particles)burst(p.x,p.y,'#ff9fbd',13);if(p.hp<=0)finish(false);}
 function slow(e,amount,duration){if(e.kind==='boss'){amount=Math.min(amount,.2);duration=Math.min(duration,.6);}if(amount>e.slowAmount||e.slowUntil<g.worldClock){e.slowAmount=amount;e.slowUntil=g.worldClock+duration;}else if(e.slowUntil<g.worldClock+duration)e.slowUntil=g.worldClock+duration;}
 function burst(x,y,color,n=7){if(!opts.particles)return;for(let i=0;i<n&&g.particles.length<320;i++){let a=rand()*TAU,sp=range(.4,2.8),ttl=range(.20,.70);g.particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:ttl,max:ttl,color,r:range(.035,.12)});}}
@@ -1283,6 +1333,7 @@ function knock(e,a,r){
 function schedule(delay,fn){g.effects.push({kind:'event',life:delay,fn});}
 function loot(x,y,xp,kind='xp',healAmount=0){if(kind==='xp')g.earnedXP+=xp;g.loot.push({x,y,xp,kind,healAmount,ttl:kind==='rage'?RAGE.dropLife:95,r:kind==='xp'?.2:.33,phase:range(0,TAU)});}
 function kill(e){
+ if(g.stage&&e===g.boss){finish(true);return;}
  if(e===g.boss){
   g.boss=null;
   g.bossRestUntil=g.t+18;
@@ -1339,7 +1390,7 @@ function maybeCards(){if(screen!=='playing'||!g||g.done)return false;
  if(g.freeCards>0){g.freeCards--;g.cardReason='bonus';openCards();return true;}
  return false;}
 function hasGrowth(id){let w=g.weapons[id];if(!w||w.lv>=7)return false;if(W[id].steps||w.lv===3||w.lv===6)return true;return w.up.reduce((a,b)=>a+b,0)<4&&w.up.some(v=>v<2);}
-function makeGrowth(id){let w=g.weapons[id],def=W[id];if(w.lv===3)return {type:'break',id,name:`${def.name} · 중간 돌파`,ico:def.icon,desc:def.break,meta:'Lv.3 → Lv.4 · 돌파',feature:true};
+function makeGrowth(id){let w=g.weapons[id],def=weaponRule(id);if(w.lv===3)return {type:'break',id,name:`${def.name} · 중간 돌파`,ico:def.icon,desc:def.break,meta:'Lv.3 → Lv.4 · 돌파',feature:true};
  if(w.lv===6)return {type:'evo',id,name:`${def.name} · 최종 진화`,ico:'🌟',desc:'두 가지 진화 중 하나를 비교하고 선택',meta:'Lv.6 → Lv.7 · 진화',feature:true};
  if(def.steps){
   const [name,desc]=def.steps[w.lv+1];
@@ -1351,7 +1402,7 @@ function makeGrowth(id){let w=g.weapons[id],def=W[id];if(w.lv===3)return {type:'
 function rollCards(){let out=[],owned=Object.keys(g.weapons),growth=owned.filter(hasGrowth);
  if(growth.length)out.push(makeGrowth(choose(growth)));
  const pool=[];
- if(owned.length<maxWeaponSlots())for(const id of weaponKeys){if(!g.weapons[id])pool.push({type:'new',id,name:W[id].name,ico:W[id].icon,desc:WEAPON_GUIDE[id].role,meta:'무기 슬롯 사용 · Lv.1'});}
+ if(owned.length<maxWeaponSlots())for(const id of weaponKeys){if(!g.weapons[id])pool.push({type:'new',id,name:W[id].name,ico:W[id].icon,desc:weaponGuide(id).role,meta:'무기 슬롯 사용 · Lv.1'});}
  const passiveOwned=pcount();for(const id of passiveKeys){if(getPassive(id)>=3)continue;if(!getPassive(id)&&passiveOwned>=maxPassiveSlots())continue;
   pool.push({type:'passive',id,name:DATA.passives[id][0],ico:DATA.passives[id][1],desc:DATA.passives[id][2],meta:`공용 패시브 · ${getPassive(id)}/3`});}
  // Can show upgrades for other owned weapons, one card per weapon max.
@@ -1408,10 +1459,10 @@ function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c)return;
   showToast(`🌼 ${c.name} 획득!`);
  }
  afterCard();}
-function renderEvo(id){let d=W[id];$('evo-title').textContent=`${d.name} · 최종 진화`;
+function renderEvo(id){let d=weaponRule(id);$('evo-title').textContent=`${d.name} · 최종 진화`;
  $('evo-options').innerHTML=d.evos.map(([name,desc],i)=>`<button class="skill-card featured" data-evo="${i}"><span class="card-topping">${i===0?'진화 A':'진화 B'}</span><div class="card-icon">${skillIcon(id,d.icon)}</div><div class="card-title">${name}</div><div class="card-desc effect-lines">${effectLines(friendlyEffect(desc))}</div><div class="card-meta">${d.name} · Lv.6 → Lv.7 · 기존 강화 유지</div><span class="card-select-label">✦ 이 진화 선택</span></button>`).join('');}
-function chooseEvo(i){if(screen!=='evolution'||!g.currentEvo)return;let w=g.weapons[g.currentEvo];w.evo=i;w.lv=7;g.metrics.cardPicks[W[g.currentEvo].evos[i][0]]=(g.metrics.cardPicks[W[g.currentEvo].evos[i][0]]||0)+1;
- if(!g.metrics.firstEvolution)g.metrics.firstEvolution=g.t;showToast(`🌟 ${W[g.currentEvo].evos[i][0]} 진화!`);g.currentEvo=null;afterCard();}
+function chooseEvo(i){if(screen!=='evolution'||!g.currentEvo)return;let w=g.weapons[g.currentEvo];w.evo=i;w.lv=7;g.metrics.cardPicks[weaponRule(g.currentEvo).evos[i][0]]=(g.metrics.cardPicks[weaponRule(g.currentEvo).evos[i][0]]||0)+1;
+ if(!g.metrics.firstEvolution)g.metrics.firstEvolution=g.t;showToast(`🌟 ${weaponRule(g.currentEvo).evos[i][0]} 진화!`);g.currentEvo=null;afterCard();}
 function afterCard(){setScreen('playing');maybeCards();updateHUD();}
 function reroll(){if(screen!=='cards'||g.rerolls<=0||g.cardReason==='milestone')return;g.rerolls--;g.cards=rollCards();renderCards();}
 function calcCamera(){return {x:clamp(g.player.x,DATA.widthWorld/2,DATA.world-DATA.widthWorld/2),y:clamp(g.player.y,SCREEN_H/2,DATA.world-SCREEN_H/2)};}
@@ -1482,15 +1533,16 @@ function spawnGroup(pace=wavePace()){
  // Distant ordinary mobs cannot occupy the spawn cap for the current area.
  g.enemies=g.enemies.filter(e=>!e.dead&&(e===g.boss||e.isBoss||DATA.elites[e.kind]||distance(e.x,e.y,p.x,p.y)<=activeRadius));
  const m=Math.max(0,g.t/60);
- const row=DATA.spawns.find(x=>g.t>=x[0]&&g.t<x[1])||DATA.spawns.at(-1);
+ const row=spawnRow();
+ const enemyWeights=waveWeights(row[5]);
  const cap=g.boss?bossEscortLimit():Math.min(190,Math.round((row[4]+Math.floor(Math.max(0,m-24)*2))*pace.cap));
  const counts={spore:0,firefly:0,spark:0,moth:0};let alive=0;
  for(const e of g.enemies){if(!isEscort(e))continue;alive++;if(e.kind in counts)counts[e.kind]++;}
- const pack=clamp(Math.round((row[3]+(g.rushUntil>g.t?(g.t<480?1:2):0))*difficulty().spawns*pace.pack),1,22);
+ const pack=clamp(Math.round((row[3]+(g.stage&&forestFrenzied()?2:0)+(g.rushUntil>g.t?(g.t<480?1:2):0))*difficulty().spawns*pace.pack),1,22);
  const entries=waveFormation(g.waveIndex++,g.t,pack);
  for(let i=0;i<pack;i++){
   if(alive>=cap){g.metrics.skipped+=pack-i;break;}
-  const pool=Object.entries(row[5]).filter(([k])=>counts[k]===undefined||counts[k]<(k==='spark'?Math.min(6,2+Math.floor(m/2)):k==='moth'?Math.min(8,2+Math.floor(m/3)):Math.min(15,6+Math.floor(m/4))));
+  const pool=Object.entries(enemyWeights).filter(([k])=>counts[k]===undefined||counts[k]<(k==='spark'?Math.min(6,2+Math.floor(m/2)):k==='moth'?Math.min(8,2+Math.floor(m/3)):Math.min(15,6+Math.floor(m/4))));
   if(!pool.length)break;
   let total=pool.reduce((a,p)=>a+p[1],0),r=rand()*total,type=pool[pool.length-1][0];
   for(const [name,weight] of pool){r-=weight;if(r<0){type=name;break;}}
@@ -1551,8 +1603,26 @@ function updateForestEncounter(){
  }
 }
 function enemyBullet(x,y,angle,speed,damage,life=4,label='적 탄환',pattern='normal',sourceId=null) {g.enemyShots.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,dmg:damage*difficulty().damage,life,r:.18,label,pattern,sourceId,dead:false});}
+function spawnRow(){
+ return DATA.spawns.find(entry=>g.t>=entry[0]&&g.t<entry[1])||DATA.spawns.at(-1);
+}
+function waveWeights(survivalWeights){
+ const stage=g.stage;
+ if(!stage)return survivalWeights;
+ if(g.t>=180)return stage.enemies;
+ const scout=stage.id>=6?'bramble':'green';
+ return {...stage.enemies,[scout]:(stage.enemies[scout]||0)+48,blue:(stage.enemies.blue||0)+16};
+}
+function stageBossDefinition(stage){
+ const templates={crown:DATA.boss,thorn:LATE_BOSSES[0],moon:LATE_BOSSES[1],owl:LATE_BOSSES[2],
+  boar:{art:'root-boar',hp:0,dmg:20,speed:1.0,r:1.65,tier:1,signature:'hedge'}};
+ const base=templates[stage.boss];
+ return {...base,name:stage.title,hp:stage.hp,dmg:18+stage.id*.85,
+  tier:Math.ceil(stage.id/3),patterns:stage.patterns};
+}
 function nextBossEncounter(){
  const count=g.bossEncounters;
+ if(g.stage)return ['boss',g.stage.bossAt,stageBossDefinition(g.stage)];
  if(count===0)return ['flower',DATA.elites.flower.at,DATA.elites.flower];
  if(count===1)return ['horn',DATA.elites.horn.at,DATA.elites.horn];
  if(count===2)return ['boss',480,DATA.boss];
@@ -1562,7 +1632,7 @@ function updateBossEncounter(dt){
  if(g.boss){
   g.bossTime+=dt;
   const boss=g.boss,t=g.worldClock;
-  if(boss.hp<boss.maxHp&&t-(boss.hitLast??t)>=7){
+  if(!g.stage&&boss.hp<boss.maxHp&&t-(boss.hitLast??t)>=7){
    boss.hp=Math.min(boss.maxHp,boss.hp+boss.maxHp*.0025*dt);
    if(t>=(boss.healFxAt||0)){
     boss.healFxAt=t+1.05;
@@ -1573,7 +1643,7 @@ function updateBossEncounter(dt){
  }
  const count=g.bossEncounters,[kind,at,def]=nextBossEncounter();
  if(g.t<at||g.t<g.bossRestUntil)return;
- const entry=spawnPoint(null,def.r);
+ const entry=(g.stage?forestEventEntry():null)||spawnPoint(null,def.r);
  if(!entry)return;
  const boss=spawn(kind,entry,def);
  if(!boss)return;
@@ -1584,6 +1654,12 @@ function updateBossEncounter(dt){
   boss.speed=Math.max(boss.speed,hardest.speed*diff.speed)*(1+Math.min(.16,.025*round));
  }
  g.boss=boss;
+ if(g.stage){
+  g.enemyShots=[];
+  g.bossTime=0;
+  g.player.hp=Math.min(g.player.maxHp,g.player.hp+g.player.maxHp*.15);
+  g.player.invuln=Math.max(g.player.invuln,1);
+ }
  g.bossEncounters++;
  arrangeBossEscort(boss);
  showToast(`보스 · ${def.name} 등장!`,3.2);
@@ -1711,7 +1787,7 @@ function bossUpdate(b,dt){
   }
  }else{
   b.specialClock-=dt;
-  if(b.specialClock<=0){const cycle=b.bossDef.signature?[b.bossDef.signature,...BOSS_PATTERN_CYCLE[ph]]:BOSS_PATTERN_CYCLE[ph];bossCast(b,cycle[b.patternIndex++%cycle.length]);}
+  if(b.specialClock<=0){const cycle=b.bossDef.patterns||(b.bossDef.signature?[b.bossDef.signature,...BOSS_PATTERN_CYCLE[ph]]:BOSS_PATTERN_CYCLE[ph]);bossCast(b,cycle[b.patternIndex++%cycle.length]);}
  }
  // Chase between patterns; avoid moving the caster during special attacks.
  if(!b.action)chase(b,dt);
@@ -2111,6 +2187,19 @@ function updateOrbit(dt){
   }
  }
 }
+const STAGE_VORTEX={
+ ...W.vortex,
+ up:[W.vortex.up[0],W.vortex.up[1],['느린 구름','범위 안의 적 둔화 +4%p']],
+ break:'범위 안의 적 둔화 +8%p',
+ evos:[['태풍 솜사탕','지속 피해 +30%'],['몽글몽글 바람','반경 +28% · 둔화 +8%p']]
+};
+const STAGE_VORTEX_GUIDE={
+ role:'근거리 · 범위 둔화',
+ desc:'니모를 따라가는 바람이 반초마다 범위 안의 적을 느리게 하고 피해를 줍니다.',
+ pair:'느려진 적을 블룸 가든에 오래 머물게 할 수 있어요.'
+};
+function weaponRule(id){return g?.stage&&id==='vortex'?STAGE_VORTEX:W[id];}
+function weaponGuide(id){return g?.stage&&id==='vortex'?STAGE_VORTEX_GUIDE:WEAPON_GUIDE[id];}
 function updateVortex(dt){
  const w=g.weapons.vortex;if(!w)return;
  w.vortexTick=(w.vortexTick??0)-dt*rageRate();
@@ -2122,6 +2211,10 @@ function updateVortex(dt){
   const d=distance(e.x,e.y,p.x,p.y);
   if(d>r+e.r)continue;
   deal(e,power,'vortex',{critAllowed:false});
+  if(g.stage){
+   if(!e.dead)slow(e,.15+.04*w.up[2]+(w.break?.08:0)+(w.evo===1?.08:0),.86);
+   continue;
+  }
   if(w.break||w.evo===1)slow(e,w.evo===1?.37:.23,.86);
   if(e.dead||e===g.boss||e.kind==='boss'||d<=1.60)continue;
   const step=Math.min(d-1.60,w.evo===0?.77:.47);
@@ -2247,8 +2340,14 @@ function update(dt){
  p.invuln=Math.max(0,p.invuln-dt);
  updateMovement(dt);
  updateBossEncounter(dt);
- updateForestEncounter();
- const row=DATA.spawns.find(x=>g.t>=x[0]&&g.t<x[1])||DATA.spawns.at(-1);
+ if(!g.stage)updateForestEncounter();
+ else if(g.t>=g.stage.frenzyAt&&!g.rushFired.campaignFrenzy){
+  g.rushFired.campaignFrenzy=true;
+  g.frenzyStarts=g.worldClock+1.2;
+  g.frenzyUntil=g.frenzyStarts+g.stage.frenzyDuration;
+  showToast(`광폭화의 밤 · ${g.stage.frenzyDuration}초`,3);
+ }
+ const row=spawnRow();
  const pace=wavePace();
  const baseInterval=Math.max(.48,row[2]*pace.interval/(1+Math.min(30,g.t/60)*.010));
  const spacing=[.86,.82,1.12,1.20];
@@ -2264,11 +2363,12 @@ function update(dt){
   if(g.t>=at&&!g.milestones[key]){g.milestones[key]=true;openForestChoice(key);return;}
  }
  for(const [at,key] of [[305,'sporeRush'],[440,'finalRush']]){
+  if(g.stage&&key==='finalRush')continue;
   if(g.t>=at&&!g.rushFired[key]){g.rushFired[key]=true;g.rushUntil=g.t+(key==='sporeRush'?14:17);showToast('⚠ 숲의 괴물들이 몰려오고 있어!');}
  }
  const lateWave=Math.floor(Math.max(0,g.t-480)/90);
- if(lateWave>(g.lateWave||0)){g.lateWave=lateWave;g.rushUntil=g.t+20;showToast('🌑 숲이 더욱 위험해졌어! 살아남아!');}
- const full=Math.floor(g.t/60);if(full>g.achievedMinutes)g.achievedMinutes=full;
+ if(!g.stage&&lateWave>(g.lateWave||0)){g.lateWave=lateWave;g.rushUntil=g.t+20;showToast('🌑 숲이 더욱 위험해졌어! 살아남아!');}
+ const full=Math.floor((g.stage?Math.min(g.t,g.stage.bossAt):g.t)/60);if(full>g.achievedMinutes)g.achievedMinutes=full;
  for(const id of Object.keys(g.weapons)){
   if(id==='orbit'||id==='vortex')continue;
   const w=g.weapons[id];w.clock-=dt*rageRate();
@@ -2290,12 +2390,19 @@ function update(dt){
 }
 function finish(victory){
  if(!g||g.done)return;
- g.done=true;saveRunRecord(false);
- g.gold=g.achievedMinutes*20+g.gold;
+ g.done=true;
+ const stage=g.stage;
+ if(!stage)saveRunRecord(false);
+ const cleared=!!(stage&&victory);
+ g.gold=runGold()+(stage&&!g.debugUsed?stageReward(cleared):0);
  saved.gold+=g.gold;persist();setScreen('result');
  const rate=g.earnedXP?Math.round(100*g.totalXP/g.earnedXP):0;
- $('result-title').textContent='이번 모험의 기록';
- $('result-desc').textContent='숲에서 모은 골드와 생존 기록을 확인하세요.';
+ $('result-title').textContent=stage?`스테이지 ${stage.id} · ${cleared?'클리어':'도전 종료'}`:'이번 모험의 기록';
+ $('result-desc').textContent=stage?(cleared&&stage.id===NEMO_STAGES.length?'숲의 모든 스테이지를 정복했어요.':stage.name):'숲에서 모은 골드와 생존 기록을 확인하세요.';
+ const next=$('next-stage');
+ next.classList.toggle('hidden',!cleared||stage.id>=NEMO_STAGES.length||!!g.debugUsed);
+ $('result-rank-btn').classList.toggle('hidden',!!stage);
+ $('result-menu').textContent=stage?'스테이지 지도':'숲 입구로';
  $('result-time').textContent=fmt(g.t);
  $('result-money').textContent=`+${g.gold.toLocaleString('ko-KR')} G`;
  const best=Object.entries(g.metrics.weaponDamage).sort((a,b)=>b[1]-a[1])[0];
@@ -2323,6 +2430,7 @@ function updateHUD(){
  if(!g)return;
  const p=g.player,rush=g.rushUntil>g.t||forestFrenzied(),hpRatio=p.hp/p.maxHp,need=getLevelNeed();
  hudText('time',fmt(g.t));
+ hudText('stage-hud',g.stage?`스테이지 ${g.stage.id} · ${g.boss?'보스전':'보스까지 '+fmt(Math.max(0,Math.ceil(g.stage.bossAt-g.t)))}`:'');
  hudData($('survival-timer'),'rush',rush);
  hudText('hp',`${Math.ceil(p.hp)} / ${Math.ceil(p.maxHp)}`);
  hudFill('hp-fill',hpRatio);
@@ -2331,7 +2439,7 @@ function updateHUD(){
  hudData(playerHud,'healing',(p.healUntil||0)>g.worldClock);
  hudData($('app'),'hit',!reducedMotion.matches&&(p.hurtTimer||0)>.13);
  hudText('level',`Lv.${p.level}`);
- hudText('gold-hud',String(g.done?g.gold:g.achievedMinutes*20+g.gold));
+ hudText('gold-hud',String(g.done?g.gold:runGold()));
  hudText('kills-hud',String(g.totalKills));
  const choosingLevel=g.cardReason==='level'&&(screen==='cards'||screen==='evolution');
  const xpProgress=choosingLevel?1:clamp(p.xp/need,0,1);
@@ -2405,7 +2513,8 @@ const SCHOOL_ICONS={
  speed:ASSET_DATA.ui_shoes,
  pickup:ASSET_DATA.ui_magnet,
  crit:'./assets/readable-ui-v5621/star.webp',
- reroll:'./assets/interface-art-v5620/reroll.webp'
+ reroll:'./assets/interface-art-v5620/reroll.webp',
+ tempo:ASSET_DATA.ui_quick,guard:ASSET_DATA.ui_cloak
 };
 function updateSchool(){$('school-gold').textContent=`🪙 보유 골드: ${saved.gold.toLocaleString('ko-KR')}`;
  $('school-upgrades').innerHTML=Object.entries(DATA.economy.upgrades).map(([key,a])=>{let lv=saved.upgrades[key],cost=DATA.economy.costs[key][lv],max=a[2];
@@ -2565,7 +2674,7 @@ function imageSprite(key,x,y,w,h,face=1,alpha=1){let im=sprites[key];if(!im?.com
 // Fit the padded source without stretching and keep its baseline at the actor's feet.
 function drawEnemyArt(kind,x,baseline,maxWidth,maxHeight,pose){
  const baseKey='enemy_'+kind,frameKey=baseKey+'_'+pose.frame;
- const atlas=sprites[baseKey+'_gait'],F=FOREST_GAIT_TILES;
+ const atlas=sprites[baseKey+'_gait'],F=kind==='root-boar'?144:FOREST_GAIT_TILES;
  const animated=atlas?.complete&&atlas.naturalWidth===F*4&&atlas.naturalHeight===F;
  const key=sprites[frameKey]?.naturalWidth?frameKey:baseKey;
  const im=animated?atlas:sprites[key];
@@ -2576,7 +2685,7 @@ function drawEnemyArt(kind,x,baseline,maxWidth,maxHeight,pose){
  ctx.globalAlpha=pose.opacity;
  if(animated){
   const size=Math.max(maxWidth,maxHeight)*1.10;
-  const anchor=kind==='moth'?.65:91/F;
+  const anchor=kind==='moth'?.65:kind==='root-boar'?137/F:91/F;
   ctx.drawImage(im,pose.cell*F,0,F,F,-size/2,-size*anchor,size,size);
  }else{
   const scale=Math.min(maxWidth/im.naturalWidth,maxHeight/im.naturalHeight);
@@ -2616,7 +2725,7 @@ function drawEnemy(e){
  if(attack?.endsWith('-warn')){
   const glint=.19+Math.sin(g.worldClock*15)*.045;
   star(e.x,e.y-ht*.86,glint,0,'#fff0b6','#76526b');
-  if(attack==='fan-warn'){
+  if(attack==='fan-warn'&&!g.stage){
    const ang=atan(e.x,e.y,g.player.x,g.player.y);
    for(const da of [-.56,0,.56])line(e.x,e.y,e.x+Math.cos(ang+da)*4.6,e.y+Math.sin(ang+da)*4.6,'#ffb16d',.12);
   }
@@ -3361,7 +3470,8 @@ window.addEventListener('keydown',e=>{
  if(screen==='codex'&&(e.code==='Escape'||e.code==='KeyH')){closeCodex();return;}
  if(e.code==='Escape'){if(screen==='playing'||screen==='intro')pause();else if(screen==='pause')resume();return;}
  if(screen==='menu'&&e.code==='Enter'&&!e.target?.closest?.('button,a'))$('start').click();
- if(screen==='result'&&e.code==='KeyR')begin();
+ if(screen==='result'&&e.code==='KeyR')begin(g?.stage?.id??0);
+ if(screen==='stages'&&e.code==='Escape')menu();
 });
 function releaseInput(){
  keys.clear();
@@ -3372,7 +3482,15 @@ window.addEventListener('blur',releaseInput);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)releaseInput();});
 $('codex-btn').onclick=openCodex;$('pause-codex').onclick=openCodex;$('codex-back').onclick=closeCodex;
 $('codex-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-codex]');if(!b)return;currentCodex=b.dataset.codex;renderCodex();$('codex-tabs').querySelector('[aria-pressed="true"]').focus({preventScroll:true});});
-$('start').onclick=()=>{if(!nicknameConfirmed())showNicknameSetup('menu');else begin();};$('retry').onclick=begin;$('result-menu').onclick=menu;
+$('start').onclick=()=>{if(!nicknameConfirmed())showNicknameSetup('menu');else begin();};$('retry').onclick=()=>begin(g?.stage?.id??0);
+$('result-menu').onclick=()=>g?.stage?stageOpen():menu();
+$('next-stage').onclick=()=>{if(g?.stage&&g.done&&!$('next-stage').classList.contains('hidden'))begin(g.stage.id+1);};
+$('campaign-open').onclick=stageOpen;
+$('stages-back').onclick=menu;
+$('stage-options').addEventListener('click',event=>{
+ const button=event.target.closest('[data-stage]');
+ if(button&&!button.disabled)begin(Number(button.dataset.stage));
+});
 $('shop-btn').onclick=shopOpen;
 $('shop-back').onclick=()=>{setScreen('menu');renderMenu();};
 $('shop-items').addEventListener('click',e=>{
@@ -3407,7 +3525,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.57';
+  const CURRENT='5.7.0';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
