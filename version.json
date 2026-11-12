@@ -1,5 +1,5 @@
 {
-  "version": "5.6.56",
+  "version": "5.6.57",
   "mode": "endless_survival",
-  "notes": "스타 샷 발사체와 피해·치명타 강화를 교차 배치"
+  "notes": "스타 샷의 중복 적중과 관통 피해 조정"
 }
