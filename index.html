@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.35" />
+</style><meta name="nemo-version" content="5.6.36" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -527,7 +527,7 @@
 const DATA = Object.freeze({
  progression:{xpToNext:{base:8,linear:2,curve:.32,curveStart:8},xpDrop:{green:.82,blue:.88,fat:.88,spore:.9,firefly:.9,armor:.95,spark:.90}},
  title:'니모의 낯선 모험', saveKey:'nemo_strange_adventure_FULL_v1', version:1,
- world:120, survival:null, widthWorld:28,
+ world:160, survival:null, widthWorld:28,
  player:{attack:100,hp:100,speed:4,crit:.05,critMultiplier:1.5,invuln:.7,pickup:1.5,weaponSlots:4,passiveSlots:3,rerolls:2},
  weapons:{
   star:{name:'스타 샷',icon:'⭐',coef:.60,cd:.70,range:12,up:[['별 하나 더','발사체 +1 · 개별 피해 ×0.85'],['반짝이는 별','스타 샷 피해 +25%'],['행운의 별','스타 샷 치명타 확률 +10%p']],break:'적중 후 반경 3에서 다른 적 1회 도탄 · 도탄 피해 50%',evos:[['별사탕 소나기','탄환 +2 · 개별 피해 ×0.75 · 직격 시 40% 폭발(반경 1.2)'],['소원별','치명타 확률 +20%p · 치명타 배율 +75%p · 약한 적 피해 +30%']]},
@@ -567,36 +567,49 @@ Object.assign(ASSET_DATA,{ui_star:STORYBOOK_ART["icon_star"],ui_orbit:STORYBOOK_
 const $ = id => document.getElementById(id), canvas=$('canvas'),ctx=canvas.getContext('2d',{alpha:false});
 const VW=1600,VH=900,PPU=VW/DATA.widthWorld,SCREEN_H=VH/PPU, TAU=Math.PI*2;
 const WORLD_CENTER=DATA.world/2;
-const WINDMILL={key:'windmill',x:51.8,y:59.05,h:5.85,rx:1.48,ry:.72};
+const forestPoint=(x,y)=>[WORLD_CENTER+x,WORLD_CENTER+y];
+const placeInForest=({x,y,...art})=>({...art,x:WORLD_CENTER+x,y:WORLD_CENTER+y});
+const WINDMILL=placeInForest({key:'windmill',x:-8.2,y:-.95,h:5.85,rx:1.48,ry:.72});
 const PONDS=[
- {x:68.1,y:63.45,w:8.2,h:4.9,rx:2.9,ry:1.42},
- {x:84,y:43,w:10.5,h:6.5,rx:3.95,ry:2.13},
- {x:32,y:83,w:8.5,h:5.4,rx:3.05,ry:1.7}
-];
+ {x:8.1,y:3.45,w:8.2,h:4.9,rx:2.9,ry:1.42},
+ {x:24,y:-17,w:10.5,h:6.5,rx:3.95,ry:2.13},
+ {x:-28,y:23,w:8.5,h:5.4,rx:3.05,ry:1.7},
+ {x:-59,y:-26,w:12.2,h:7.8,rx:4.62,ry:2.48},
+ {x:51,y:44,w:10.1,h:6.5,rx:3.76,ry:2.14}
+].map(placeInForest);
 const ROCKS=[
- {key:'rock',x:56,y:65.1,h:1.2,rx:.85,ry:.43},
- {key:'rock',x:65,y:54.3,h:1.05,rx:.76,ry:.37},
- {key:'rock',x:73,y:57.4,h:1.4,rx:.92,ry:.5},
- {key:'rock',x:88,y:49,h:1.9,rx:1.23,ry:.62},
- {key:'rock',x:28,y:79,h:1.65,rx:1.07,ry:.56},
- {key:'rock',x:98,y:82,h:1.7,rx:1.13,ry:.57},
- {key:'rock',x:35,y:34,h:1.6,rx:1.05,ry:.52}
-];
+ [-4,5.1,1.2,.85,.43],[5,-5.7,1.05,.76,.37],[13,-2.6,1.4,.92,.5],
+ [28,-11,1.9,1.23,.62],[-32,19,1.65,1.07,.56],[38,22,1.7,1.13,.57],
+ [-21,-26,1.6,1.05,.52],[-63,-20,1.9,1.2,.65],[-54,-28,1.5,1.01,.53],
+ [-53,48,2.1,1.36,.69],[-46,51,1.4,.94,.49],[-18,-57,1.85,1.17,.6],
+ [36,-49,2.05,1.33,.67],[58,42,1.82,1.16,.59],[48,53,1.65,1.07,.56]
+].map(([x,y,h,rx,ry])=>placeInForest({key:'rock',x,y,h,rx,ry}));
 const STRUCTURES=[WINDMILL,...ROCKS],LANDMARKS=[...STRUCTURES,...PONDS];
+
+// Junctions are shared anchors so the main trail, outer loop and shortcuts meet exactly.
+const westJunction=[-55,13], eastJunction=[56,6], northJunction=[9,-47], southJunction=[-8,51];
+const millJunction=[-5,1.8], bloomJunction=[4,.7], southFork=[-18,9], lakeFork=[-22,24];
 const FOREST_PATHS=[
- {width:1.82,points:[[-4,84],[24,78],[42,69],[53,62],[60,60],[64,60.6],[77,58],[95,63],[124,74]]},
- {width:1.15,points:[[52,59],[52.8,61],[56,61.2]]},
- {width:1.30,points:[[64,60.6],[67,54.5],[72,48],[82,45.6],[97,39],[110,20],[124,12]]},
- {width:1.13,points:[[42,69],[39,74],[37,79],[38,91],[51,108],[58,124]]}
-];
-const PATH_SEGMENTS=FOREST_PATHS.flatMap(({width,points})=>points.slice(1).map(([bx,by],i)=>{
- const [x,y]=points[i],dx=bx-x,dy=by-y;
- return {x,y,dx,dy,length:Math.hypot(dx,dy),clearance:width*.5+.57};
-}));
+ {width:2.35,points:[westJunction,[-37,16],southFork,millJunction,[0,0],bloomJunction,[17,-2],[35,3],eastJunction]},
+ {width:1.58,points:[westJunction,[-65,-6],[-68,-18],[-69,-30],[-57,-40],[-40,-43],[-26,-39],[-9,-48],northJunction,[30,-53],[52,-45],[64,-23],[62,-7],eastJunction,[63,26],[64,43],[57,54],[47,60],[27,60],[9,58],southJunction,[-30,54],[-49,43],[-62,28],westJunction]},
+ {width:1.74,points:[bloomJunction,[10,-9],[15,-17],[24,-24],[31,-29],[31,-36],[22,-43],northJunction]},
+ {width:1.67,points:[southFork,[-21,16],lakeFork,[-26,34],[-20,45],southJunction]},
+ {width:1.34,points:[[WINDMILL.x-WORLD_CENTER,WINDMILL.y-WORLD_CENTER+.68],[-8,1],[-6.7,2.2],millJunction]},
+ {width:1.32,points:[lakeFork,[-13,32],[2,33],[20,26],[37,18],eastJunction]},
+ {width:1.20,points:[westJunction,[-42,-3],[-31,-13],[-25,-25],[-16,-37],northJunction]}
+].map(({width,points})=>makeForestPath(width,points.map(([x,y])=>forestPoint(x,y))));
+const PATH_SEGMENTS=FOREST_PATHS.flatMap(({segments})=>segments);
 const GROVES=[
- {x:46,y:54,r:8,pink:true},{x:64,y:49,r:10,pink:true},{x:74,y:69,r:9,pink:false},
- {x:84,y:36,r:10,pink:false},{x:31,y:74,r:11,pink:false},{x:98,y:78,r:14,pink:true},
- {x:26,y:38,r:12,pink:false},{x:54,y:96,r:14,pink:false},{x:67,y:25,r:11,pink:true}
+ [-14,-6,8,true],[4,-11,10,true],[14,9,9,false],[24,-24,10,false],[-29,14,11,false],
+ [38,18,14,true],[-34,-22,12,false],[-6,36,14,false],[7,-35,11,true],
+ [-64,-35,11,true],[-49,-55,15,false],[-22,-61,13,true],[23,-64,14,false],[55,-54,12,true],
+ [67,-29,10,false],[70,15,10,true],[62,47,11,false],[40,56,12,true],[19,68,12,false],
+ [-13,64,12,true],[-42,64,12,false],[-61,49,13,true],[-68,11,9,false]
+].map(([x,y,r,pink])=>placeInForest({x,y,r,pink}));
+const FOREST_WASHES=[
+ [-4,-1,10,'#fff2ca65'],[9,4,8,'#a9d4b34d'],[-13,-9,10,'#f9d7c34d'],[23,-17,11,'#9bc5a44d'],
+ [-58,-26,20,'#98c8aa55'],[-9,-48,15,'#f6d2c346'],[45,-45,19,'#9acbb052'],
+ [49,45,20,'#8acbb057'],[-36,46,18,'#f5dfaa66'],[14,66,13,'#b5cfa451']
 ];
 const W=DATA.weapons,MD=DATA.monsters,passiveKeys=Object.keys(DATA.passives),weaponKeys=Object.keys(W);
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)), sq=(x)=>x*x, len=(a,b)=>Math.hypot(a,b), distance=(a,b,c,d)=>Math.hypot(a-c,b-d), atan=(a,b,c,d)=>Math.atan2(d-b,c-a);
@@ -1793,61 +1806,101 @@ function drawWorldProp(prop){
  ellipse(x,y+.025,w*.30,h*.062,'#465b42',key==='windmill'?.18:.14);
  imageSprite(key,x,y-h*.5,w,h,flip);
 }
-function drawForestPath({points,width}){
- ctx.beginPath();ctx.moveTo(...points[0]);
- for(let i=1;i<points.length-1;i++){
-  const [x,y]=points[i],[nx,ny]=points[i+1];
-  ctx.quadraticCurveTo(x,y,(x+nx)/2,(y+ny)/2);
+function makeForestPath(width,points){
+ const outline=new Path2D(),segments=[];
+ const loop=points[0][0]===points.at(-1)[0]&&points[0][1]===points.at(-1)[1];
+ const at=i=>loop?points[(i+points.length-1)%(points.length-1)]:points[Math.max(0,Math.min(i,points.length-1))];
+ outline.moveTo(...points[0]);
+ let minX=points[0][0],maxX=minX,minY=points[0][1],maxY=minY;
+ for(let i=0;i<points.length-1;i++){
+  const [ax,ay]=at(i),[bx,by]=at(i+1),[px,py]=at(i-1),[nx,ny]=at(i+2);
+  const c1x=ax+(bx-px)*.15,c1y=ay+(by-py)*.15,c2x=bx-(nx-ax)*.15,c2y=by-(ny-ay)*.15;
+  outline.bezierCurveTo(c1x,c1y,c2x,c2y,bx,by);
+  const count=Math.ceil(Math.hypot(bx-ax,by-ay)/1.4);
+  let x=ax,y=ay;
+  for(let j=1;j<=count;j++){
+   const t=j/count,u=1-t;
+   const nextX=u**3*ax+3*u*u*t*c1x+3*u*t*t*c2x+t**3*bx;
+   const nextY=u**3*ay+3*u*u*t*c1y+3*u*t*t*c2y+t**3*by;
+   const dx=nextX-x,dy=nextY-y,length=Math.hypot(dx,dy);
+   segments.push({x,y,dx,dy,length,width});
+   minX=Math.min(minX,nextX);maxX=Math.max(maxX,nextX);
+   minY=Math.min(minY,nextY);maxY=Math.max(maxY,nextY);
+   x=nextX;y=nextY;
+  }
  }
- ctx.lineTo(...points.at(-1));
- ctx.lineCap='round';ctx.lineJoin='round';
- ctx.strokeStyle='#bda77826';ctx.lineWidth=width+.28;ctx.stroke();
- ctx.strokeStyle='#e3cca0';ctx.lineWidth=width;ctx.stroke();
- ctx.strokeStyle='#efdcb5a6';ctx.lineWidth=width*.73;ctx.stroke();
+ if(loop)outline.closePath();
+ return {width,outline,segments,minX,maxX,minY,maxY};
 }
-function isNearForestPath(x,y){
- return PATH_SEGMENTS.some(({x:ax,y:ay,dx,dy,length,clearance})=>{
+function isNearForestPath(x,y,pad){
+ return PATH_SEGMENTS.some(segment=>{
+  const {x:ax,y:ay,dx,dy,length,width}=segment,r=width*.5+pad;
+  if(Math.abs(x-ax)>length+r||Math.abs(y-ay)>length+r)return false;
   const t=clamp(((x-ax)*dx+(y-ay)*dy)/(length*length),0,1);
-  return (x-ax-t*dx)**2+(y-ay-t*dy)**2<clearance*clearance;
+  return (x-ax-t*dx)**2+(y-ay-t*dy)**2<r*r;
  });
+}
+function drawForestTrails(c,flecks){
+ const left=c.x-DATA.widthWorld/2-2,right=c.x+DATA.widthWorld/2+2;
+ const top=c.y-SCREEN_H/2-2,bottom=c.y+SCREEN_H/2+2;
+ const routes=FOREST_PATHS.filter(p=>p.minX<right&&p.maxX>left&&p.minY<bottom&&p.maxY>top);
+ ctx.save();
+ ctx.lineCap='round';ctx.lineJoin='round';
+ // Paint each layer across the whole network so junctions have no interior seams.
+ for(const [color,scale,margin] of [['#c3bb91',1,.38],['#dfc9a4',1,.19],['#ead6b2',.89,0]]){
+  ctx.strokeStyle=color;
+  for(const {width,outline} of routes){
+   ctx.lineWidth=width*scale+margin;
+   ctx.stroke(outline);
+  }
+ }
+ for(const {x,y,s,stone} of flecks){
+  if(visibleTerrain(x,y,c,.4))ellipse(x,y,s,s*.54,stone?'#a89470':'#a7815a',stone?.42:.25);
+ }
+ ctx.restore();
 }
 let cachedForestDecor;
 function forestDecor(){
  if(cachedForestDecor)return cachedForestDecor;
  const rand=hashed(386122),trees=[],dressing=[],trailFlecks=[];
  const authored=[
-  [48.2,56.8,4.7,false],[47.7,62.0,3.9,true],[55.4,55.5,4.25,true],
-  [62.6,55.0,4.7,true],[70.2,55.8,4.5,false],[72.3,63.4,4.4,false],
-  [59.0,67.4,3.8,true],[66.6,68.0,4.6,false],[52.0,66.8,4.3,false]
+  [-11.8,-3.2,4.7,false],[-12.3,2,3.9,true],[-4.6,-4.5,4.25,true],
+  [2.6,-5,4.7,true],[10.2,-4.2,4.5,false],[12.3,3.4,4.4,false],
+  [-1,7.4,3.8,true],[6.6,8,4.6,false],[-8,6.8,4.3,false]
  ];
  function addTree(x,y,h,pink){
   trees.push({key:pink?'tree_pink':'tree_green',x,y,h,s:h/2.52,flip:rand()<.5?-1:1});
  }
- for(const [x,y,h,pink] of authored)addTree(x,y,h,pink);
+ for(const [relativeX,relativeY,h,pink] of authored){
+  const [x,y]=forestPoint(relativeX,relativeY);
+  if(!isNearForestPath(x,y,1.5))addTree(x,y,h,pink);
+ }
  for(const grove of GROVES){
   for(let i=0;i<20;i++){
    const angle=rand()*TAU,radius=Math.sqrt(rand())*grove.r;
    const x=grove.x+Math.cos(angle)*radius,y=grove.y+Math.sin(angle)*radius;
    if(x<3||y<3||x>DATA.world-3||y>DATA.world-3||Math.hypot(x-WORLD_CENTER,y-WORLD_CENTER)<8)continue;
-   if(blockedByTerrain(x,y,2.05)||isNearForestPath(x,y)||trees.some(t=>distance(x,y,t.x,t.y)<2.7))continue;
+   if(blockedByTerrain(x,y,2.05)||isNearForestPath(x,y,1.5)||trees.some(t=>distance(x,y,t.x,t.y)<2.7))continue;
    addTree(x,y,2.9+rand()*2.5,rand()<(grove.pink?.76:.13));
   }
  }
- for(let i=0;i<560;i++){
+ for(let i=0;i<970;i++){
   const x=rand()*DATA.world,y=rand()*DATA.world,kind=rand();
-  if(blockedByTerrain(x,y,.3)||isNearForestPath(x,y))continue;
+  if(blockedByTerrain(x,y,.3)||isNearForestPath(x,y,.30))continue;
   const key=kind<.49?'flowers':kind<.76?'mushroom':'bush';
   dressing.push({key,x,y,h:key==='bush'?.54+rand()*.55:.24+rand()*.40,flip:rand()<.5?-1:1});
  }
- for(const [x,y,key,h] of [[54.4,59.2,'flowers',.59],[52.6,60.2,'flowers',.44],[56.7,62.5,'mushroom',.53],
-  [59,58.3,'flowers',.47],[61.8,62.6,'flowers',.55],[64.5,63.5,'bush',.80],[72.6,65.7,'mushroom',.62],
-  [67.2,55.4,'flowers',.47],[54.2,64.4,'bush',.73],[50.6,61.7,'flowers',.45]]){
-  dressing.push({key,x,y,h});
+ for(const [relativeX,relativeY,key,h] of [[-5.6,-.8,'flowers',.59],[-7.4,.2,'flowers',.44],[-3.3,2.5,'mushroom',.53],
+  [-1,-1.7,'flowers',.47],[1.8,2.6,'flowers',.55],[4.5,3.5,'bush',.80],[12.6,5.7,'mushroom',.62],
+  [7.2,-4.6,'flowers',.47],[-5.8,4.4,'bush',.73],[-9.4,1.7,'flowers',.45]]){
+  const [x,y]=forestPoint(relativeX,relativeY);
+  if(!isNearForestPath(x,y,.30))dressing.push({key,x,y,h});
  }
- for(const {x,y,dx,dy,length,clearance} of PATH_SEGMENTS){
-  for(let i=0;i<Math.floor(length*2);i++){
-   const t=rand(),offset=(rand()-.5)*clearance*.56;
-   trailFlecks.push({x:x+t*dx-offset*dy/length,y:y+t*dy+offset*dx/length,s:.022+rand()*.051});
+ for(const {x,y,dx,dy,length,width} of PATH_SEGMENTS){
+  for(let i=0;i<Math.floor(length*6);i++){
+   const t=rand(),stone=rand()<.13;
+   const offset=(rand()-.5)*width*(stone?.88:.78);
+   trailFlecks.push({x:x+t*dx-offset*dy/length,y:y+t*dy+offset*dx/length,s:stone?.038+rand()*.043:.012+rand()*.028,stone});
   }
  }
  return cachedForestDecor={trees,dressing,trailFlecks};
@@ -1863,18 +1916,14 @@ function drawWorldGround(c,deco){
  if(ground?.complete&&ground.naturalWidth){
   ctx.drawImage(ground,0,0,DATA.world,DATA.world);
  }
- for(const [x,y,r,color] of [[56,59,10,'#fff2ca65'],[69,64,8,'#a9d4b34d'],[47,51,10,'#f9d7c34d'],[83,43,11,'#9bc5a44d']]){
+ for(const [relativeX,relativeY,r,color] of FOREST_WASHES){
+  const [x,y]=forestPoint(relativeX,relativeY);
   if(!visibleTerrain(x,y,c,r))continue;
   const wash=ctx.createRadialGradient(x,y,0,x,y,r);
   wash.addColorStop(0,color);wash.addColorStop(1,'#dce7bd00');
   ctx.fillStyle=wash;ctx.fillRect(x-r,y-r,r*2,r*2);
  }
- ctx.save();
- for(let i=FOREST_PATHS.length-1;i>=0;i--)drawForestPath(FOREST_PATHS[i]);
- for(const speck of deco.trailFlecks){
-  if(visibleTerrain(speck.x,speck.y,c,1))ellipse(speck.x,speck.y,speck.s,speck.s*.47,'#a6845a',.23);
- }
- ctx.restore();
+ drawForestTrails(c,deco.trailFlecks);
  for(const pond of PONDS){
   if(!visibleTerrain(pond.x,pond.y,c,6))continue;
   if(sprites.pond?.naturalWidth)imageSprite('pond',pond.x,pond.y-.21,pond.w,pond.h);
@@ -2371,7 +2420,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.35';
+  const CURRENT='5.6.36';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
