@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.37" />
+</style><meta name="nemo-version" content="5.6.38" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -391,8 +391,7 @@
 <div class="hidden" id="hud">
  <div class="hud-top">
   <div class="survival-xp" role="group" aria-label="경험치와 레벨">
-   <div class="xp-shell"><div class="xp-fill" id="xp-fill"></div></div>
-   <div class="survival-xp-caption"><span id="xp-text">0 / 10 XP</span></div>
+   <div class="xp-shell" id="xp-progress" role="progressbar" aria-label="경험치" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="xp-fill" id="xp-fill"></div></div>
    <span id="level">Lv.1</span>
   </div>
   <div class="survival-status">
@@ -526,28 +525,28 @@
 </main><script>'use strict';
 // Values here are the initial design specification, not dynamic difficulty adjustments.
 const DATA = Object.freeze({
- progression:{xpToNext:{base:8,linear:2,curve:.32,curveStart:8},xpDrop:{green:.82,blue:.88,fat:.88,spore:.9,firefly:.9,armor:.95,spark:.90}},
+ progression:{xpToNext:{base:8,linear:2,curve:.32,curveStart:8},xpDrops:{green:[.65,.054,.004],blue:[.46,.32,.045],fat:[.32,.42,.13],spore:[.38,.38,.11],firefly:[.43,.34,.135],armor:[.24,.43,.25],spark:[.35,.40,.14],petal:[.78,.055,.005]}},
  title:'니모의 낯선 모험', saveKey:'nemo_strange_adventure_FULL_v1', version:1,
  world:160, survival:null, widthWorld:28,
  player:{attack:100,hp:100,speed:4,crit:.05,critMultiplier:1.5,invuln:.7,pickup:1.5,weaponSlots:4,passiveSlots:3,rerolls:2},
  weapons:{
-  star:{name:'스타 샷',icon:'⭐',coef:.60,cd:.70,range:12,up:[['별 하나 더','발사체 +1 · 개별 피해 ×0.85'],['반짝이는 별','스타 샷 피해 +25%'],['행운의 별','스타 샷 치명타 확률 +10%p']],break:'적중 후 반경 3에서 다른 적 1회 도탄 · 도탄 피해 50%',evos:[['별사탕 소나기','탄환 +2 · 개별 피해 ×0.75 · 직격 시 40% 폭발(반경 1.2)'],['소원별','치명타 확률 +20%p · 치명타 배율 +75%p · 약한 적 피해 +30%']]},
-  orbit:{name:'스타 오비트',icon:'💫',coef:.35,cd:0,range:1.8,up:[['별 하나 더','회전 별 +1'],['별빛 강화','접촉 피해 +25%'],['넓은 궤도','회전 반경 +15%']],break:'회전 속도 +30% · 적중 시 20% 둔화 1초',evos:[['은하수 고리','별 +2 · 피해 ×1.15 · 겹궤도 반경 ×1.35'],['수호별','피해 ×1.25 · 적 투사체 초당 1개 제거']]},
-  moon:{name:'문라이트',icon:'🌙',coef:1.10,cd:1.20,range:14,up:[['달빛 집중','피해 +25%'],['빠른 달빛','공격 속도 +15%'],['넓은 달빛','폭 +25%']],break:'달빛이 끝에서 원점으로 돌아오며 50% 피해',evos:[['쌍둥이 달','±10°의 달빛 2개 · 각각 피해 ×0.65'],['보름달','피해 ×1.6 · 폭 ×1.5 · 공격 주기 ×1.2']]},
-  bubble:{name:'버블 완드',icon:'🫧',coef:1.30,cd:1.80,range:12,up:[['쌍둥이 방울','방울 +1 · 개별 피해 ×0.8'],['꿈빛 방울','피해 +25%'],['커다란 방울','폭발 반경 +20%']],break:'폭발 적중 시 30% 둔화 1.5초',evos:[['비눗방울 축제','폭발 시 작은 방울 2개 분열 · 피해 30%'],['꿈방울','폭발 반경 ×1.4 · 일반 적 띄우기 · 보스 피해 ×1.5']]},
-  bloom:{name:'블룸 가든',icon:'🌸',coef:.25,cd:3,range:12,up:[['꽃잎 가득','장판 피해 +25%'],['넓은 꽃밭','꽃밭 반경 +20%'],['오래 피는 꽃','지속시간 +0.5초']],break:'장판 내 적 25% 둔화',evos:[['요정 정원','틱 피해 ×1.3 · 반경 ×1.25 · 생성 시 꽃잎 폭발 ×0.8'],['치유 정원','꽃밭 안에서 매초 최대 체력 1% 회복 · 이탈 후 1초']]},
-  cloud:{name:'구름 친구',icon:'☁️',coef:1.60,cd:2,range:12,up:[['먹구름 집중','피해 +25%'],['재빠른 천둥','공격 속도 +15%'],['번개 행운','치명타 확률 +10%p']],break:'적중 후 2초간 대상 받는 피해 +10% (첫 타 제외)',evos:[['뇌운 친구','0.2초 뒤 같은 적 추가 낙뢰 · 피해 70%'],['무지개 구름','서로 다른 적 최대 3명에게 동시 낙뢰 · 각각 ×0.75']]},
-  ribbon:{name:'리본 댄스',icon:'🎀',coef:1.20,cd:1,range:2.5,up:[['리본 매듭','피해 +25%'],['넓은 춤','반경 +20%'],['빠른 발놀림','공격 속도 +15%']],break:'0.2초 후 50% 피해의 후속 공격',evos:[['리본 왈츠','기본·후속 공격 360° · 피해 ×1.15'],['축제의 리본','기본 피해 ×1.3 · 후속 피해 100% · 넉백 ×1.5']]},
-  book:{name:'꿈꾸는 마법책',icon:'📖',coef:.70,cd:1.60,range:12,up:[['종이 요정','요정 +1 · 개별 피해 ×0.85'],['동화의 힘','피해 +25%'],['빠른 책장','공격 속도 +15%']],break:'첫 적중 후 다른 적에게 50% 피해 추가 공격',evos:[['요정 도서관','요정 +2 · 개별 피해 ×0.8 · 추가 공격 총 2회'],['금빛 동화책','피해 ×1.4 · 동일 적도 추가 공격 가능 · 보스 피해 ×1.2']]},
-  comet:{name:'별똥별 소나기',icon:'☄️',coef:1.25,cd:2.4,range:12,up:[['유성 하나 더','유성 +1 · 개별 위력 소폭 감소'],['빛나는 꼬리','낙하 피해 +25%'],['커다란 별','폭발 범위 +20%']],break:'유성이 떨어진 자리에서 별가루가 잠시 반짝이며 추가 피해',evos:[['유성 축제','유성 +2 · 개별 위력 소폭 감소'],['큰별 충돌','폭발 범위 +50% · 충돌 피해 +40%']]},
-  frost:{name:'서리 수정',icon:'❄️',coef:.75,cd:1.1,range:13,up:[['수정 하나 더','수정 +1 · 개별 위력 소폭 감소'],['차가운 빛','수정 피해 +25%'],['짙은 한기','둔화 시간 +0.5초']],break:'최대 3명의 적을 관통하고 움직임을 늦춤',evos:[['빙하의 숨결','수정 +2 · 둔화 강화'],['서리꽃','관통한 자리에 눈꽃 폭발을 만들어 주변 적 둔화']]},
-  vortex:{name:'솜사탕 소용돌이',icon:'🌀',coef:.29,cd:0,range:2.3,up:[['더 넓은 바람','소용돌이 반경 +20%'],['달콤한 바람','지속 피해 +25%'],['느린 구름','둔화 효과 강화']],break:'소용돌이 안의 적이 느려지고 끌어당기는 힘 증가',evos:[['태풍 솜사탕','지속 피해 +30% · 끌어당기는 힘 강화'],['몽글몽글 바람','반경 +28% · 중심부를 더욱 안전하게 유지']]},
-  seed:{name:'별씨앗 덫',icon:'🌱',coef:1.25,cd:2.0,range:10,up:[['씨앗 주머니','최대 설치 덫 +1'],['꽃폭탄','덫 폭발 피해 +25%'],['꽃잎 폭발','폭발 반경 +20%']],break:'덫 폭발 후 작은 꽃씨 덫 2개 생성',evos:[['마법 꽃밭','덫 최대 +2 · 폭발 후 잠시 지속 피해'],['요정의 덫','감지 범위 +40% · 폭발 범위 +50% · 보스 피해 +30%']]},
-  bell:{name:'달빛 종소리',icon:'🔔',coef:1.05,cd:2.4,range:3.4,up:[['넓은 울림','충격파 범위 +22%'],['맑은 종소리','충격파 피해 +25%'],['빠른 울림','공격 속도 +15%']],break:'종소리에 맞은 적을 밀쳐내고 잠시 느리게 함',evos:[['두 번 울리는 종','두 번째 충격파 발동 · 적 밀치기 강화'],['수호의 종','충격파 범위 +30% · 맞닿는 적 탄환 제거']]},
-  feather:{name:'바람 깃털',icon:'🍃',coef:.85,cd:1.35,range:13,up:[['깃털 하나 더','깃털 +1 · 개별 위력 소폭 감소'],['날카로운 깃털','깃털 피해 +25%'],['가벼운 바람','공격 속도 +15%']],break:'적중한 깃털이 다른 적을 한 번 더 추적',evos:[['춤추는 깃털','깃털 +2 · 추가 추적 횟수 증가'],['돌아오는 바람','깃털이 돌아오며 적을 한 번 더 공격']]} 
+  star:{name:'스타 샷',icon:'⭐',coef:0.6,cd:0.68,range:12.8,up:[['별 하나 더','발사체 +1 · 개별 피해 ×0.85'],['반짝이는 별','스타 샷 피해 +25%'],['행운의 별','스타 샷 치명타 확률 +10%p']],break:'적중 후 반경 3에서 다른 적 1회 도탄 · 도탄 피해 50%',evos:[["별사탕 소나기","별 +2 · 개별 피해 소폭 감소 · 직격 시 작은 별 폭발"],["소원별","치명타 확률 +20%p · 치명타 배율 +75%p · 체력이 낮은 적에게 피해 +30%"]]},
+  orbit:{name:'스타 오비트',icon:'💫',coef:0.32,cd:0,range:1.65,up:[['별 하나 더','회전 별 +1'],['별빛 강화','접촉 피해 +25%'],['넓은 궤도','회전 반경 +15%']],break:'회전 속도 +30% · 닿은 적을 1초간 20% 둔화',evos:[["은하수 고리","회전 별 +2 · 피해 +15% · 안쪽과 바깥쪽에 별을 배치"],["수호별","피해 +25% · 초당 1회 가까운 적 탄환 차단"]]},
+  moon:{name:'문라이트',icon:'🌙',coef:1.08,cd:1.58,range:14,up:[['달빛 집중','피해 +25%'],['빠른 달빛','공격 속도 +15%'],['넓은 달빛','폭 +25%']],break:'달빛이 끝에서 원점으로 돌아오며 50% 피해',evos:[["쌍둥이 달","달빛을 두 갈래로 발사 · 각 갈래는 피해 65%"],["보름달","피해 +60% · 폭 +50% · 재사용 대기시간 +20%"]]},
+  bubble:{name:'버블 완드',icon:'🫧',coef:1.03,cd:2.06,range:12,up:[['쌍둥이 방울','방울 +1 · 개별 피해 ×0.8'],['꿈빛 방울','피해 +25%'],['커다란 방울','폭발 반경 +20%']],break:'폭발 둔화를 30%로 강화 · 1.5초 지속',evos:[["비눗방울 축제","큰 방울이 터질 때 작은 방울 2개 분열 · 개별 피해 30%"],["꿈방울","폭발 반경 +40% · 더 강한 둔화 · 왕관 슬라임 피해 +50%"]]},
+  bloom:{name:'블룸 가든',icon:'🌸',coef:0.26,cd:3.3,range:12,up:[['꽃잎 가득','장판 피해 +25%'],['넓은 꽃밭','꽃밭 반경 +20%'],['오래 피는 꽃','지속시간 +0.5초']],break:'장판 내 적 25% 둔화',evos:[["요정 정원","꽃밭 피해 +30% · 반경 +25% · 생성 순간 추가 피해"],["치유 정원","꽃밭 안에서 최대 체력의 1%를 초당 회복 · 이탈 후 1초간 지속"]]},
+  cloud:{name:'구름 친구',icon:'☁️',coef:1.52,cd:2.4,range:12,up:[['먹구름 집중','피해 +25%'],['재빠른 천둥','공격 속도 +15%'],['번개 행운','치명타 확률 +10%p']],break:'적중 후 2.5초간 대상이 받는 피해 +15%',evos:[["뇌운 친구","같은 대상에 추가 낙뢰 · 추가 피해 70%"],["무지개 구름","최대 3명에게 동시 낙뢰 · 개별 피해 75%"]]},
+  ribbon:{name:'리본 댄스',icon:'🎀',coef:1.15,cd:1.1,range:2.7,up:[['리본 매듭','피해 +25%'],['넓은 춤','반경 +20%'],['빠른 발놀림','공격 속도 +15%']],break:'0.2초 후 50% 피해의 후속 공격',evos:[["리본 왈츠","기본·후속 공격이 360도 타격 · 피해 +15%"],["축제의 리본","피해 +30% · 넉백 강화 · 후속 공격 피해 100%"]]},
+  book:{name:'꿈꾸는 마법책',icon:'📖',coef:0.73,cd:1.9,range:12.5,up:[['종이 요정','요정 +1 · 개별 피해 ×0.85'],['동화의 힘','피해 +25%'],['빠른 책장','공격 속도 +15%']],break:'첫 적중 후 다른 적에게 50% 피해 추가 공격',evos:[["요정 도서관","요정 +2 · 개별 피해 80% · 각 요정 최대 2회 연쇄"],["금빛 동화책","피해 +40% · 한 적에게 여러 요정 집중 가능 · 왕관 슬라임 피해 +20%"]]},
+  comet:{name:'별똥별 소나기',icon:'☄️',coef:1.48,cd:3,range:13.5,up:[['유성 하나 더','유성 +1 · 개별 위력 소폭 감소'],['빛나는 꼬리','낙하 피해 +25%'],['커다란 별','폭발 범위 +20%']],break:'유성이 떨어진 자리에서 별가루가 잠시 반짝이며 추가 피해',evos:[["유성 축제","유성 +2 · 개별 피해 70%"],["큰별 충돌","폭발 반경 +50% · 피해 +40%"]]},
+  frost:{name:'서리 수정',icon:'❄️',coef:0.66,cd:1.38,range:12.5,up:[['수정 하나 더','수정 +1 · 개별 위력 소폭 감소'],['차가운 빛','수정 피해 +25%'],['짙은 한기','둔화 시간 +0.5초']],break:'최대 4명까지 관통',evos:[["빙하의 숨결","수정 +2 · 둔화 강화"],["서리꽃","적중 지점에 작은 눈꽃 폭발 · 주변 적 둔화"]]},
+  vortex:{name:'솜사탕 소용돌이',icon:'🌀',coef:0.24,cd:0,range:2.9,up:[['더 넓은 바람','소용돌이 반경 +20%'],['달콤한 바람','지속 피해 +25%'],['느린 구름','둔화 효과 강화']],break:'소용돌이 안의 적이 느려지고 끌어당기는 힘 증가',evos:[["태풍 솜사탕","지속 피해 +30% · 적을 더 강하게 끌어당김"],["몽글몽글 바람","반경 +28% · 닿은 적을 더 강하게 둔화"]]},
+  seed:{name:'별씨앗 덫',icon:'🌱',coef:1.37,cd:1.65,range:5,up:[['씨앗 주머니','최대 설치 덫 +1'],['꽃폭탄','덫 폭발 피해 +25%'],['꽃잎 폭발','폭발 반경 +20%']],break:'덫 폭발 후 작은 꽃씨 덫 2개 생성',evos:[["마법 꽃밭","덫 최대 +2 · 터진 자리에 지속 피해"],["요정의 덫","감지 범위 +40% · 폭발 반경 +50% · 왕관 슬라임 피해 +30%"]]},
+  bell:{name:'달빛 종소리',icon:'🔔',coef:0.83,cd:3.3,range:2.65,up:[['넓은 울림','충격파 범위 +22%'],['맑은 종소리','충격파 피해 +25%'],['빠른 울림','공격 속도 +15%']],break:'충격파에 맞은 적을 1초간 둔화',evos:[["두 번 울리는 종","두 번째 충격파 · 더 강한 넉백"],["수호의 종","충격파 반경 +30% · 파동에 닿은 모든 적 탄환 제거"]]},
+  feather:{name:'바람 깃털',icon:'🍃',coef:0.71,cd:1.55,range:10.5,up:[['깃털 하나 더','깃털 +1 · 개별 위력 소폭 감소'],['날카로운 깃털','깃털 피해 +25%'],['가벼운 바람','공격 속도 +15%']],break:'나가는 깃털이 다른 적에게 1회 연쇄',evos:[["춤추는 깃털","깃털 +2 · 나가는 길에 최대 2회 연쇄"],["돌아오는 바람","돌아오는 길 피해 +50% · 복귀 속도 증가"]]} 
  },
  passives:{magic:['마법 강화','✨','모든 무기 피해 +20%'],quick:['빠른 주문','⏱','모든 공격 속도 +8%'],lucky:['행운의 리본','🎗','치명타 확률 +5%p'],big:['커다란 마법','💠','공격 반경·폭·폭발 반경 +8%'],cloak:['포근한 망토','💖','최대 체력 +15% · 증가량만큼 현재 체력 회복'],shoes:['가벼운 발걸음','👟','이동 속도 +8%'],magnet:['보석 자석','🧲','경험치 획득 범위 +20%']},
- monsters:{green:{name:'초록 슬라임',hp:45,dmg:8,speed:1.3,xp:1,r:.48},blue:{name:'파랑 슬라임',hp:90,dmg:10,speed:1.7,xp:2,r:.48},fat:{name:'통통 버섯',hp:150,dmg:12,speed:.9,xp:3,r:.53},spore:{name:'포자 버섯',hp:100,dmg:8,speed:.8,xp:3,r:.51},firefly:{name:'반딧불',hp:70,dmg:8,speed:2,xp:3,r:.38},armor:{name:'밤송이 슬라임',hp:240,dmg:14,speed:.95,xp:4,r:.57},spark:{name:'별빛 도깨비',hp:110,dmg:11,speed:1.65,xp:3,r:.44},petal:{name:'소환 슬라임',hp:90,dmg:8,speed:1.3,xp:1,r:.46}},
+ monsters:{green:{name:'초록 슬라임',hp:45,dmg:8,speed:1.3,r:.48},blue:{name:'파랑 슬라임',hp:90,dmg:10,speed:1.7,r:.48},fat:{name:'통통 버섯',hp:150,dmg:12,speed:.9,r:.53},spore:{name:'포자 버섯',hp:100,dmg:8,speed:.8,r:.51},firefly:{name:'반딧불',hp:70,dmg:8,speed:2,r:.38},armor:{name:'밤송이 슬라임',hp:240,dmg:14,speed:.95,r:.57},spark:{name:'별빛 도깨비',hp:110,dmg:11,speed:1.65,r:.44},petal:{name:'소환 슬라임',hp:90,dmg:8,speed:1.3,r:.46}},
  spawns:[
   [0,35,1.5,2,50,{green:100}],[35,60,1.5,2,50,{green:84,blue:16}],[60,120,1.5,3,50,{green:75,blue:25}],
   [120,180,1.2,3,70,{green:60,blue:25,fat:15}],[180,240,1.2,4,70,{green:45,blue:30,fat:15,spore:10}],
@@ -813,20 +812,20 @@ function castFromWand(p,a){p.castTimer=NEMO_CAST;p.castFacing=faceFromAngle(a);p
 function wandLink(from,to,color='#fff1b4'){g.effects.push({kind:'wandLink',x:from.x,y:from.y,ex:to.x,ey:to.y,color,life:.28,max:.28});}
 
 const WEAPON_GUIDE={
- star:{role:'원거리 · 자동 추적',desc:'가장 가까운 적에게 반짝이는 별을 발사합니다. 별을 여러 개 쏘도록 강화할 수 있어요.',trade:'별 추가 · 별 공격력 강화 · 행운의 별',value:'기본 무기'},
- orbit:{role:'근거리 · 회전 공격',desc:'니모 주변을 별들이 빙글빙글 돌면서 다가오는 적을 공격합니다.',trade:'별 개수 증가 · 별 공격력 강화 · 회전 범위 확장',value:'주변 회전형 마법'},
- moon:{role:'원거리 · 관통 공격',desc:'한 줄로 몰려 있는 적들을 달빛으로 시원하게 관통합니다.',trade:'달빛 강화 · 빠른 발사 · 달빛 폭 확장',value:'관통형 마법'},
- bubble:{role:'원거리 · 추적 폭발',desc:'적을 따라가는 마법 방울을 날립니다. 방울이 터지면 주변 적도 함께 공격받아요.',trade:'방울 추가 · 방울 강화 · 폭발 범위 증가',value:'추적형 마법'},
- bloom:{role:'광역 · 지속 공격',desc:'몬스터가 있는 곳에 마법 꽃밭을 피워 지속적으로 피해를 줍니다.',trade:'꽃밭 강화 · 꽃밭 확장 · 오래 피는 꽃',value:'장판형 마법'},
- cloud:{role:'원거리 · 집중 낙뢰',desc:'체력이 가장 높은 적에게 번개를 떨어뜨립니다. 강한 적을 상대할 때 좋아요.',trade:'번개 강화 · 낙뢰 속도 증가 · 번개 행운',value:'강력한 단발 마법'},
- ribbon:{role:'근거리 · 광역 · 밀쳐내기',desc:'전방 180도 범위를 리본 마법으로 휩쓸어 주변 적에게 피해를 줍니다. 근거리 광역 공격이며 적을 뒤로 밀쳐냅니다.',trade:'리본 피해 강화 · 공격 범위 확장 · 공격 속도 증가',value:'근거리 범위 마법'},
- book:{role:'원거리 · 다중 공격',desc:'마법책에서 종이 요정들이 날아가 적을 공격합니다. 여러 적을 우선 노려요.',trade:'요정 추가 · 요정 공격력 강화 · 공격 속도 증가',value:'다중 목표 마법'},
- comet:{role:'원거리 · 범위 폭발',desc:'지팡이에서 빛나는 별을 불러 목표 지점에 유성 소나기를 내립니다. 몰려 있는 적을 공격해요.',trade:'유성 추가 · 피해 증가 · 충돌 범위 증가',value:'광역 낙하 마법'},
- frost:{role:'원거리 · 관통 · 둔화',desc:'차가운 수정을 발사해 적들을 관통하고 움직임을 느리게 합니다.',trade:'수정 추가 · 피해 증가 · 둔화 연장',value:'전투 제어 마법'},
- feather:{role:'원거리 · 추적 연쇄',desc:'바람에 실린 깃털을 날려 적을 때린 뒤 다른 적을 이어서 추적합니다.',trade:'깃털 추가 · 피해 증가 · 공격 속도 증가',value:'연쇄 추적 마법'},
- vortex:{role:'근거리 · 회전 소용돌이',desc:'니모를 따라다니는 마법 소용돌이가 주변 적을 천천히 끌어당기고 지속적으로 공격해요.',trade:'소용돌이 확장 · 피해 증가 · 느려지는 바람',value:'따라다니는 지속 공격'},
- seed:{role:'설치형 · 자동 발동 덫',desc:'적이 다가오면 꽃씨 덫이 터져 주변 몬스터를 공격해요. 덫은 바닥에 잠시 남아 기다려요.',trade:'덫 수 증가 · 꽃폭탄 위력 강화 · 폭발 범위 확장',value:'설치형 함정 마법'},
- bell:{role:'근거리 · 파동 · 밀쳐내기',desc:'니모 주변으로 종소리 마법이 퍼져나가 적을 밀쳐내며 공격해요.',trade:'충격파 범위 확장 · 마법 위력 강화 · 더 자주 울리기',value:'원형 충격파 마법'}
+ star:{"role":"원거리 · 빠른 단일 공격","desc":"가까운 적에게 별을 발사합니다. 날아가는 동안 목표를 살짝 따라가고, 돌파하면 다른 적에게 튕깁니다.","pair":"구름 친구가 약화한 보스에게 꾸준히 피해를 줄 수 있어요."},
+ orbit:{"role":"근거리 · 회전 접촉 공격","desc":"회전하는 별에 닿은 적만 피해를 받습니다. 적에게 접근하며 별의 궤도를 맞출수록 강해져요.","pair":"달빛 종소리로 적을 밀어낸 뒤 회전 별의 궤도에 걸치게 해보세요."},
+ moon:{"role":"원거리 · 밀집 대열 관통","desc":"가까운 적 중 달빛 한 줄에 가장 많은 적을 담을 수 있는 방향을 찾습니다. 달빛은 줄지어 오는 적을 관통해요.","pair":"솜사탕 소용돌이로 모은 적을 한 줄로 꿰뚫기 좋아요."},
+ bubble:{"role":"원거리 · 추적 폭발과 둔화","desc":"느리게 따라가는 방울이 부딪히거나 수명이 다하면 터집니다. 폭발 주변의 적을 잠시 둔화시켜요.","pair":"방울로 적을 늦추면 별똥별이 무리에 떨어질 시간을 벌 수 있어요."},
+ bloom:{"role":"광역 · 거점 유지","desc":"적이 뭉친 곳에 꽃밭을 피웁니다. 꽃밭에 오래 머무는 적에게 반초마다 피해를 줘요.","pair":"서리 수정이 적을 늦추면 꽃밭에 더 오래 머물러요."},
+ cloud:{"role":"원거리 · 보스 집중과 약화","desc":"보스를 우선 노리고, 보스가 사거리 밖이면 현재 체력이 가장 높은 적에게 벼락을 떨어뜨립니다. 돌파하면 대상이 받는 피해가 늘어요.","pair":"스타 샷처럼 빠르게 연속으로 맞히는 무기가 약화 효과를 활용하기 좋아요."},
+ ribbon:{"role":"근거리 · 전방 돌파","desc":"가까운 적을 향해 130도 부채꼴로 리본을 휘둘러 적을 밖으로 밀어냅니다. 돌파하면 같은 방향을 다시 쓸어요.","pair":"리본으로 적을 밀어 꽃밭이나 덫 쪽으로 유도할 수 있어요."},
+ book:{"role":"원거리 · 여러 적 동시 추적","desc":"종이 요정이 각자 다른 적을 추적합니다. 적이 여러 방향에서 들어올 때 가장 강해요.","pair":"니모 주변을 지키는 달빛 종소리와 함께 쓰면 여러 방향에서 들어오는 적을 상대하기 좋아요."},
+ comet:{"role":"광역 · 지연 폭발","desc":"가장 밀집한 곳을 조준한 뒤, 별똥별이 잠시 뒤에 떨어져 한꺼번에 피해를 줍니다.","pair":"서리 수정과 함께 쓰면 예고 지점에서 적이 벗어나기 어려워요."},
+ frost:{"role":"원거리 · 관통 둔화","desc":"서리 수정이 기본으로 적 2명을 관통합니다. 맞은 적의 이동 속도가 느려져요.","pair":"블룸 가든이나 별똥별 소나기가 피해를 넣을 시간을 벌어줘요."},
+ feather:{"role":"원거리 · 왕복 투사체","desc":"깃털을 던지면 끝에서 방향을 돌려 니모에게 돌아옵니다. 위치를 바꿔 돌아오는 길에도 적을 맞힐 수 있어요.","pair":"리본으로 길을 열고 자리를 옮기면 깃털이 돌아오는 궤적도 바뀌어요."},
+ vortex:{"role":"근거리 · 적 모으기","desc":"니모를 따라가는 바람이 반초마다 적을 바깥쪽에서 끌어당기고 피해를 줍니다. 다가오는 무리를 한곳에 모으기 좋아요.","pair":"가까이 모은 적을 달빛 종소리로 한꺼번에 밀어낼 수 있어요."},
+ seed:{"role":"설치형 · 추격 경로 방어","desc":"움직일 때는 뒤에 덫을 심고, 멈춰 있을 때는 가까운 적 밑에 심습니다. 덫을 따라오도록 유도해 보세요.","pair":"리본으로 적을 덫 쪽에 밀거나, 둔화로 덫을 심을 시간을 벌 수 있어요."},
+ bell:{"role":"근거리 · 탄환 방어","desc":"가까운 적이나 탄환을 감지하면 종이 울려요. 적을 밀어내고 파동에 닿은 적 탄환을 최대 2개 지웁니다.","pair":"꽃밭이나 회전 별처럼 가까운 곳을 지키는 무기와 함께 쓰기 좋아요."}
 };
 const PASSIVE_GUIDE={magnet:'경험치 획득 반경이 커져서 더 먼 보석도 즉시 얻습니다.'};
 const PASSIVE_ROLE={magic:'마법의 위력을 높여요',quick:'마법을 더욱 빠르게 사용해요',lucky:'행운의 한 방이 더 자주 터져요',big:'마법이 더 넓게 퍼져요',cloak:'더욱 튼튼해져요',shoes:'조금 더 빠르게 움직여요',magnet:'경험치 보석을 더 멀리서 모아요'};
@@ -844,25 +843,20 @@ function effectLines(text){
 function fmtN(n){return (Math.round(n*100)/100).toLocaleString('ko-KR',{maximumFractionDigits:2});}
 function weaponNumbers(id){
  const d=W[id],w=g?.weapons[id]||{lv:1,up:[0,0,0],break:false,evo:null};
- let raw=(g?.player.attack||100)*d.coef;
- if(g)raw*=1+.2*getPassive('magic');
- const index={star:1,orbit:1,moon:0,bubble:1,bloom:0,cloud:0,ribbon:0,book:1,comet:1,frost:1,feather:1,vortex:1,seed:1,bell:1}[id];raw*=1+.25*w.up[index];
- if(id==='star')raw*=Math.pow(.85,w.up[0])*(w.evo===0?.75:1);
- if(id==='bubble')raw*=Math.pow(.8,w.up[0]);
- if(id==='book')raw*=Math.pow(.85,w.up[0])*(w.evo===0?.8:w.evo===1?1.4:1);if(id==='comet')raw*=Math.pow(.75,w.up[0])*(w.evo===0?.7:w.evo===1?1.4:1);if(id==='frost'||id==='feather')raw*=Math.pow(.85,w.up[0]);
- if(id==='orbit')raw*=w.evo===0?1.15:w.evo===1?1.25:1;
- if(id==='vortex')raw*=w.evo===0?1.3:1;
- if(id==='seed')raw*=w.evo===1?1.35:1;
- if(id==='bell')raw*=w.evo===0?1.15:1;
- if(id==='moon'&&w.evo===1)raw*=1.6;
- if(id==='bloom'&&w.evo===0)raw*=1.3;
- if(id==='ribbon')raw*=w.evo===0?1.15:w.evo===1?1.3:1;
- const speed=1+.08*(g?getPassive('quick'):0)+.08*(g?.blessings?.breeze||0)+.15*( ['moon','cloud','ribbon','book','feather','seed','bell'].includes(id)?w.up[id==='moon'?1:id==='ribbon'?2:id==='book'?2:1]:0);
- const sec=d.cd?fmtN(Math.max(.08,d.cd/speed*(id==='moon'&&w.evo===1?1.2:1)))+'초':'상시';
- const bullets=id==='vortex'?1:id==='seed'?3+w.up[0]:id==='bell'?1:id==='star'?1+w.up[0]+(w.evo===0?2:0):id==='orbit'?2+w.up[0]+(w.evo===0?2:0):id==='bubble'?1+w.up[0]:id==='book'?2+w.up[0]+(w.evo===0?2:0):['comet','frost','feather'].includes(id)?1+w.up[0]+(w.evo===0?2:0):1;
- const labels={star:'탄환 수',orbit:'회전 별',moon:'관통 달빛',bubble:'추적 방울',bloom:'꽃밭 수',cloud:'낙뢰',ribbon:'리본 타격',book:'종이 요정',comet:'유성',frost:'수정',feather:'깃털',vortex:'소용돌이',seed:'최대 설치 덫',bell:'충격파'};
- const range=id==='vortex'?2.3*Math.pow(1.2,w.up[0]):id==='seed'?1.15*Math.pow(1.2,w.up[2]):id==='bell'?2.4*Math.pow(1.22,w.up[0]):id==='orbit'?1.8*Math.pow(1.15,w.up[2]):id==='ribbon'?2.5*Math.pow(1.2,w.up[1]):id==='bloom'?1.5*Math.pow(1.2,w.up[1]):id==='bubble'?1.2*Math.pow(1.2,w.up[2]):id==='comet'?1.15*Math.pow(1.2,w.up[2]):d.range;
- return [{k:'기본 1회 피해',v:fmtN(raw)},{k:'공격 주기',v:sec},{k:labels[id],v:bullets+'개'},{k:['orbit','ribbon','bloom','bubble','vortex','seed','bell'].includes(id)?'범위/반경':'사거리',v:fmtN(range)}];
+ const extra=w.evo===0?2:0;
+ const count={
+  star:1+w.up[0]+extra,orbit:2+w.up[0]+extra,moon:w.evo===0?2:1,bubble:1+w.up[0],
+  bloom:1,cloud:w.evo===1?3:w.evo===0?2:1,ribbon:w.break?2:1,book:2+w.up[0]+extra,
+  comet:1+w.up[0]+extra,frost:1+w.up[0]+extra,feather:1+w.up[0]+extra,vortex:1,
+  seed:3+w.up[0]+extra,bell:w.evo===0?2:1
+ }[id];
+ const labels={star:'탄환 수',orbit:'회전 별',moon:'관통 달빛',bubble:'추적 방울',bloom:'꽃밭 수',cloud:'최대 낙뢰',ribbon:'리본 타격',book:'최대 종이 요정',comet:'유성',frost:'수정',feather:'깃털',vortex:'소용돌이',seed:'최대 설치 덫',bell:'충격파'};
+ const perHit=id==='moon'&&w.evo===0?.65:id==='cloud'&&w.evo===1?.75:1;
+ const raw=weaponPower(id,d.coef,w)*perHit;
+ const radius=['orbit','ribbon','bloom','bubble','vortex','seed','bell','comet'].includes(id);
+ return [{k:id==='bloom'||id==='vortex'?'지속 피해 1회':'기본 타격 피해',v:fmtN(raw)},
+  {k:'공격 주기',v:d.cd?fmtN(cooldown(id,w))+'초':'상시'},{k:labels[id],v:count+'개'},
+  {k:radius?'공격 반경':'사거리',v:fmtN(weaponReach(id,w))}];
 }
 function guideMetrics(id){return weaponNumbers(id).map(x=>`<div><b>${x.k}</b><strong>${x.v}</strong></div>`).join('');}
 function choiceDetail(c){
@@ -885,9 +879,9 @@ function closeCodex(){
 function renderCodex(){
  $('codex-tabs').innerHTML=weaponKeys.map(id=>`<button type="button" class="codex-tab ${id===currentCodex?'on':''}" data-codex="${id}" aria-pressed="${id===currentCodex}"><span aria-hidden="true">${skillIcon(id,W[id].icon)}</span> ${W[id].name}${g?.weapons[id]?' · Lv.'+g.weapons[id].lv:''}</button>`).join('');
  const d=W[currentCodex],v=WEAPON_GUIDE[currentCodex],w=g?.weapons[currentCodex];
- $('codex-details').innerHTML=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(currentCodex,d.icon)}</div><div class="codex-intro"><div class="codex-heading"><h3>${d.name}</h3><span>${w?'현재 Lv.'+w.lv:'기본 무기 Lv.1'}</span></div><p class="codex-role">${v.role}</p><p>${v.desc}</p><p class="codex-note">💡 ${v.value}</p></div></div>
- <div class="codex-benefit">🌟 <b>강화 방향</b> ${v.trade}</div><div class="codex-columns"><section><h4>✦ 일반 강화 (각 2회까지)</h4>${d.up.map((a,i)=>`<div class="codex-up"><b>${a[0]}</b><span class="effect-lines">${effectLines(friendlyEffect(a[1]))}</span><em>${w?w.up[i]:0}/2</em></div>`).join('')}<h4>✦ Lv.4 중간 돌파</h4><p class="codex-text effect-lines">${effectLines(friendlyEffect(d.break))}</p></section>
- <section><h4>🌟 Lv.7 최종 진화 — 둘 중 하나</h4>${d.evos.map((a,i)=>`<div class="codex-evo ${w?.evo===i?'chosen':''}"><b>${i===0?'①':'②'} ${a[0]}</b><span class="effect-lines">${effectLines(friendlyEffect(a[1]))}</span></div>`).join('')}<p class="codex-note">${v.trade}</p></section></div>`;
+ $('codex-details').innerHTML=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(currentCodex,d.icon)}</div><div class="codex-intro"><div class="codex-heading"><h3>${d.name}</h3><span>${w?'현재 Lv.'+w.lv:'기본 무기 Lv.1'}</span></div><p class="codex-role">${v.role}</p><p>${v.desc}</p><p class="codex-note">${v.pair}</p></div></div>
+ <div class="codex-metrics">${guideMetrics(currentCodex)}</div><div class="codex-columns"><section><h4>✦ 일반 강화 (각 2회까지)</h4>${d.up.map((a,i)=>`<div class="codex-up"><b>${a[0]}</b><span class="effect-lines">${effectLines(friendlyEffect(a[1]))}</span><em>${w?w.up[i]:0}/2</em></div>`).join('')}<h4>✦ Lv.4 중간 돌파</h4><p class="codex-text effect-lines">${effectLines(friendlyEffect(d.break))}</p></section>
+ <section><h4>🌟 Lv.7 최종 진화 — 둘 중 하나</h4>${d.evos.map((a,i)=>`<div class="codex-evo ${w?.evo===i?'chosen':''}"><b>${i===0?'①':'②'} ${a[0]}</b><span class="effect-lines">${effectLines(friendlyEffect(a[1]))}</span></div>`).join('')}</section></div>`;
  $('codex-details').scrollTop=0;
 }
 
@@ -971,25 +965,41 @@ function maxPassiveSlots(){return DATA.player.passiveSlots;}
 function pcount(){return Object.values(g.passives).filter(v=>v>0).length;}
 function getPassive(k){return g.passives[k]||0;}
 function radiusMult(){return 1+.08*getPassive('big');}
-function clockMult(id){let v=1+.08*getPassive('quick')+.08*(g.blessings?.breeze||0);let w=g.weapons[id];if(w && ['moon','cloud','ribbon','book','feather','seed','bell'].includes(id))v+=.15*(w.up[id==='moon'?1:id==='cloud'?1:id==='ribbon'?2:id==='bell'?2:id==='seed'?0:2]||0)*(id==='seed'?0:1);return v;}
-function cooldown(id){const def=W[id],w=g.weapons[id];let c=def.cd/(clockMult(id));if(id==='moon'&&w.evo===1)c*=1.2;return Math.max(.08,c);}
-function wpBase(id,coefficient,overrides={}){const w=g.weapons[id];let mult=(1+.2*getPassive('magic'))*(1+.12*(g.blessings?.brave||0));
- let index={star:1,orbit:1,moon:0,bubble:1,bloom:0,cloud:0,ribbon:0,book:1,comet:1,frost:1,feather:1,vortex:1,seed:1,bell:1}[id];
- mult*=1+.25*w.up[index];
- if(id==='star')mult*=Math.pow(.85,w.up[0])*(w.evo===0?.75:1);
- if(id==='bubble')mult*=Math.pow(.8,w.up[0]);
- if(id==='book')mult*=Math.pow(.85,w.up[0]);if(id==='comet')mult*=Math.pow(.75,w.up[0])*(w.evo===0?.7:w.evo===1?1.4:1);if(id==='frost'||id==='feather')mult*=Math.pow(.85,w.up[0]);
- if(id==='orbit'&&w.evo===0)mult*=1.15;if(id==='orbit'&&w.evo===1)mult*=1.25;
- if(id==='moon'&&w.evo===1)mult*=1.6;
- if(id==='bloom'&&w.evo===0)mult*=1.3;
- if(id==='ribbon'&&w.evo===0)mult*=1.15;
- if(id==='ribbon'&&w.evo===1)mult*=1.3;
- if(id==='book'&&w.evo===0)mult*=.8;if(id==='book'&&w.evo===1)mult*=1.4;
- return g.player.attack*coefficient*mult*(overrides.mult||1);
+const DAMAGE_RANK={star:1,orbit:1,moon:0,bubble:1,bloom:0,cloud:0,ribbon:0,book:1,comet:1,frost:1,feather:1,vortex:1,seed:1,bell:1};
+const SPEED_RANK={moon:1,cloud:1,ribbon:2,book:2,feather:2,bell:2};
+const EXTRA_DAMAGE={star:[.75,1],orbit:[1.15,1.25],moon:[1,1.6],bloom:[1.3,1],ribbon:[1.15,1.3],book:[.8,1.4],comet:[.7,1.4],vortex:[1.3,1]};
+const SPREAD_DAMAGE={star:.85,bubble:.8,book:.85,comet:.75,frost:.85,feather:.85};
+function clockMult(id,w=g?.weapons[id]){
+ return 1+.08*(g?.passives.quick||0)+.08*(g?.blessings?.breeze||0)+.15*(w?.up[SPEED_RANK[id]]||0);
+}
+function cooldown(id,w=g?.weapons[id]){
+ return Math.max(.08,W[id].cd/clockMult(id,w)*(id==='moon'&&w?.evo===1?1.2:1));
+}
+function weaponPower(id,coefficient,w){
+ const magic=1+.20*(g?.passives.magic||0),brave=1+.12*(g?.blessings?.brave||0);
+ const growth=1+.25*w.up[DAMAGE_RANK[id]];
+ const spread=Math.pow(SPREAD_DAMAGE[id]??1,w.up[0]);
+ const evolution=EXTRA_DAMAGE[id]?.[w.evo]??1;
+ return (g?.player.attack??DATA.player.attack)*coefficient*magic*brave*growth*spread*evolution;
+}
+function wpBase(id,coefficient){return weaponPower(id,coefficient,g.weapons[id]);}
+function weaponReach(id,w=g?.weapons[id]){
+ const rm=1+.08*(g?.passives.big||0),d=W[id];
+ switch(id){
+  case 'ribbon':return d.range*1.2**w.up[1]*rm;
+  case 'bell':return d.range*1.22**w.up[0]*rm*(w.evo===1?1.3:1);
+  case 'orbit':return d.range*1.15**w.up[2]*rm;
+  case 'vortex':return d.range*1.2**w.up[0]*rm*(w.evo===1?1.28:1);
+  case 'bloom':return 1.68*1.2**w.up[1]*rm*(w.evo===0?1.25:1);
+  case 'comet':return 1.46*1.2**w.up[2]*rm*(w.evo===1?1.5:1);
+  case 'bubble':return 1.33*1.2**w.up[2]*rm*(w.evo===1?1.4:1);
+  case 'seed':return 1.22*1.2**w.up[2]*rm*(w.evo===1?1.5:1);
+  default:return d.range;
+ }
 }
 function wpCrit(id){let chance=g.player.crit+.05*getPassive('lucky');if(id==='star')chance+=.1*g.weapons.star.up[2]+(g.weapons.star.evo===1?.2:0);if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
 function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
- let value=raw;if(e.vulnerableUntil>g.worldClock)value*=1.1;
+ let value=raw;if(e.vulnerableUntil>g.worldClock)value*=1.15;
  if(id==='star'&&g.weapons.star.evo===1&&e.hp<=e.maxHp*.3)value*=1.3;
  if(id==='book'&&g.weapons.book.evo===1&&e.kind==='boss')value*=1.2;
  if(id==='bubble'&&g.weapons.bubble.evo===1&&e.kind==='boss')value*=1.5;
@@ -1029,7 +1039,12 @@ function kill(e){
  }
  let cfg=MD[e.kind];if(e.kind==='flower'||e.kind==='horn'){
   let el=DATA.elites[e.kind];loot(e.x,e.y,el.xp);loot(e.x+.7,e.y+.6,0,'snack',.15);g.gold+=el.gold;g.freeCards++;showToast(`${el.name} 격파! +${el.gold} 골드 · 성장 카드`,3.2);
- }else if(cfg){if(e.kind==='petal'||rand()<(DATA.progression.xpDrop[e.kind]??1))loot(e.x,e.y,cfg.xp);if(e.kind!=='petal'&&rand()<.01&&g.loot.filter(z=>z.kind==='bone'&&!z.dead).length<3)loot(e.x+.2,e.y+.15,0,'bone',.20);}
+ }else if(cfg){
+  const [common,uncommon,rare]=DATA.progression.xpDrops[e.kind];
+  const roll=rand(),xp=roll<rare?8:roll<rare+uncommon?3:roll<rare+uncommon+common?1:0;
+  if(xp)loot(e.x,e.y,xp);
+  if(e.kind!=='petal'&&rand()<.01&&g.loot.filter(z=>z.kind==='bone'&&!z.dead).length<3)loot(e.x+.2,e.y+.15,0,'bone',.20);
+ }
 }
 function collect(item){item.dead=true;const p=g.player;if(item.kind==='xp'){
   p.xp+=item.xp;g.totalXP+=item.xp;
@@ -1115,7 +1130,7 @@ function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c)return;
  }
  afterCard();}
 function renderEvo(id){let d=W[id];$('evo-title').textContent=`${d.name} · 최종 진화`;
- $('evo-options').innerHTML=d.evos.map(([name,desc],i)=>`<button class="skill-card featured" data-evo="${i}"><span class="card-topping">${i===0?'진화 A · 공격 특화':'진화 B · 전투 특화'}</span><div class="card-icon">${skillIcon(id,d.icon)}</div><div class="card-title">${name}</div><div class="card-desc effect-lines">${effectLines(friendlyEffect(desc))}</div><div class="card-meta">${d.name} · Lv.6 → Lv.7 · 기존 강화 유지</div><span class="card-select-label">✦ 이 진화 선택</span></button>`).join('');}
+ $('evo-options').innerHTML=d.evos.map(([name,desc],i)=>`<button class="skill-card featured" data-evo="${i}"><span class="card-topping">${i===0?'진화 A':'진화 B'}</span><div class="card-icon">${skillIcon(id,d.icon)}</div><div class="card-title">${name}</div><div class="card-desc effect-lines">${effectLines(friendlyEffect(desc))}</div><div class="card-meta">${d.name} · Lv.6 → Lv.7 · 기존 강화 유지</div><span class="card-select-label">✦ 이 진화 선택</span></button>`).join('');}
 function chooseEvo(i){if(screen!=='evolution'||!g.currentEvo)return;let w=g.weapons[g.currentEvo];w.evo=i;w.lv=7;g.metrics.cardPicks[W[g.currentEvo].evos[i][0]]=(g.metrics.cardPicks[W[g.currentEvo].evos[i][0]]||0)+1;
  if(!g.metrics.firstEvolution)g.metrics.firstEvolution=g.t;showToast(`🌟 ${W[g.currentEvo].evos[i][0]} 진화!`);g.currentEvo=null;afterCard();}
 function afterCard(){setScreen('playing');maybeCards();updateHUD();}
@@ -1346,87 +1361,141 @@ function updateMonsters(dt){for(const e of g.enemies){if(e.dead)continue;e.flash
   if(e.kind==='firefly'&&e.attackState?.type==='dashing')amount=12;
   damagePlayer(amount,`${e.kind} 접촉`);if(screen!=='playing')return;}
  }}
-function fireWeapon(id){const p=g.player,w=g.weapons[id],d=W[id],rm=radiusMult();
- if(id==='orbit'||id==='vortex')return false;
- let t=id==='cloud'?targetHighestHP(p.x,p.y,d.range):targetNearest(p.x,p.y,id==='bell'?2.4*Math.pow(1.22,w.up[0])*rm:d.range);
- if(!t)return false;let a=atan(p.x,p.y,t.x,t.y);const origin=castFromWand(p,a);a=atan(origin.x,origin.y,t.x,t.y);
- if(id==='star'){
-  let count=1+w.up[0]+(w.evo===0?2:0);
-  for(let i=0;i<count;i++){let ang=a+(i-(count-1)/2)*.20;
-   g.shots.push({kind:'star',weapon:id,x:origin.x,y:origin.y,vx:Math.cos(ang)*15,vy:Math.sin(ang)*15,life:.95,r:.25,damage:wpBase(id,d.coef),bounce:w.break?1:0,hit:new Set(),direct:true,trail:[],dead:false});}
+function nearbyTargets(p,range){
+ return g.enemies.filter(e=>!e.dead&&distance(e.x,e.y,p.x,p.y)<=range);
+}
+function crowdedTarget(p,range,radius,beamWidth=0){
+ const targets=nearbyTargets(p,range);
+ targets.sort((a,b)=>distance(p.x,p.y,a.x,a.y)-distance(p.x,p.y,b.x,b.y));
+ let best=targets[0]||null,bestScore=0;
+ for(const candidate of targets.slice(0,16)){
+  const angle=atan(p.x,p.y,candidate.x,candidate.y),nx=Math.cos(angle),ny=Math.sin(angle);
+  let score=0;
+  for(const e of targets){
+   if(beamWidth){
+    const x=e.x-p.x,y=e.y-p.y,along=x*nx+y*ny;
+    if(along>=0&&along<=range+e.r&&Math.abs(x*ny-y*nx)<=beamWidth*.5+e.r)score++;
+   }else if(distance(candidate.x,candidate.y,e.x,e.y)<=radius+e.r)score++;
+  }
+  if(score>bestScore){bestScore=score;best=candidate;}
  }
- if(id==='moon'){
-  let count=w.evo===0?2:1, angles=count===2?[a-.1745,a+.1745]:[a],raw=wpBase(id,d.coef)*(count===2?.65:1);
-  for(const ang of angles)beam(origin.x,origin.y,ang,d.range,.8*Math.pow(1.25,w.up[2])*rm*(w.evo===1?1.5:1),raw,'moon',1);
- }
- if(id==='bubble'){
-  let count=1+w.up[0];for(let i=0;i<count;i++){let aa=a+(i-(count-1)/2)*.22;
-   g.shots.push({kind:'bubble',weapon:id,x:origin.x,y:origin.y,vx:Math.cos(aa)*4.8,vy:Math.sin(aa)*4.8,speed:5.2,life:4,r:.24,damage:wpBase(id,d.coef),target:t.id,sub:false,hit:new Set(),dead:false,trail:[]});}
- }
- if(id==='bloom'){
-  const r=1.5*Math.pow(1.2,w.up[1])*rm*(w.evo===0?1.25:1),duration=2+.5*w.up[2];
-  wandLink(origin,t,'#ffd1eb');g.zones.push({kind:'bloom',x:t.x,y:t.y,r,remain:duration,next:.5,damage:wpBase(id,.25),id:g.n++,lastTick:-100});
-  if(w.evo===0){for(const e of g.enemies){if(!e.dead&&distance(e.x,e.y,t.x,t.y)<=r+e.r)deal(e,wpBase(id,.8),'bloom',{critAllowed:false});}}
- }
- if(id==='cloud'){
-  let targets=w.evo===1?g.enemies.filter(e=>!e.dead&&distance(e.x,e.y,p.x,p.y)<=d.range).sort((a,b)=>b.hp-a.hp).slice(0,3):[t];
-  for(const e of targets){let raw=wpBase(id,d.coef)*(w.evo===1?.75:1);thunder(e,raw,origin);}
- }
- if(id==='ribbon'){
-  doRibbon(a,1,origin);
-  if(w.break)schedule(.2,()=>doRibbon(a,w.evo===1?1:.5,wandOrigin(p)));
- }
- if(id==='book'){
-  let n=2+w.up[0]+(w.evo===0?2:0),used=new Set();
-  for(let i=0;i<n;i++){
-   let tr=targetNearest(p.x,p.y,d.range,used)||t;used.add(tr.id);
-   let angle=a+(i-(n-1)/2)*.22;
-   g.shots.push({kind:'fairy',weapon:id,x:origin.x,y:origin.y,vx:Math.cos(angle)*5,vy:Math.sin(angle)*5,speed:8,life:3,r:.23,target:tr.id,
-    damage:wpBase(id,d.coef),hit:new Set(),chains:w.break?(w.evo===0?2:1):0,dead:false,trail:[]});
+ return best;
+}
+function placeSeedTrap(p,w,d){
+ const direction=NEMO_DIRECTIONS.indexOf(p.direction)*Math.PI/4;
+ const target=p.moving?null:targetNearest(p.x,p.y,d.range);
+ if(!p.moving&&!target)return false;
+ const px=clamp(target?.x??p.x-Math.cos(direction)*.92,.4,DATA.world-.4);
+ const py=clamp(target?.y??p.y-Math.sin(direction)*.92,.4,DATA.world-.4);
+ const live=g.traps.filter(z=>!z.dead&&!z.mini);
+ if(blockedByTerrain(px,py,.16)||live.some(z=>distance(px,py,z.x,z.y)<.95))return false;
+ const max=3+w.up[0]+(w.evo===0?2:0),r=weaponReach('seed',w);
+ const origin=castFromWand(p,atan(p.x,p.y,px,py));
+ g.traps.push({x:px,y:py,r,trigger:.80*(w.evo===1?1.4:1),damage:wpBase('seed',d.coef),life:9,armed:.27,mini:false,dead:false,phase:range(0,TAU)});
+ if(live.length>=max)live[0].dead=true;
+ wandLink(origin,{x:px,y:py},'#f2c5dc');g.effects.push({kind:'seedPlace',x:px,y:py,r:.6,life:.35,max:.35});
+ return true;
+}
+function ringBell(p,w,d){
+ const r=weaponReach('bell',w),power=wpBase('bell',d.coef);
+ const enemyNear=g.enemies.some(e=>!e.dead&&distance(e.x,e.y,p.x,p.y)<=r+e.r);
+ const bulletNear=g.enemyShots.some(b=>!b.dead&&distance(b.x,b.y,p.x,p.y)<=r+b.r);
+ if(!enemyNear&&!bulletNear)return false;
+ function pulse(scale,limit){
+  g.effects.push({kind:'bellWave',x:p.x,y:p.y,r,life:.48,max:.48});
+  for(const e of g.enemies){
+   if(e.dead||distance(e.x,e.y,p.x,p.y)>r+e.r)continue;
+   deal(e,power*scale,'bell');knock(e,atan(p.x,p.y,e.x,e.y),w.evo===0?1.02:.73);
+   if(w.break)slow(e,.18,1);
+  }
+  const bullets=g.enemyShots.filter(b=>!b.dead&&distance(b.x,b.y,p.x,p.y)<=r+b.r);
+  bullets.sort((a,b)=>distance(a.x,a.y,p.x,p.y)-distance(b.x,b.y,p.x,p.y));
+  for(const bullet of bullets.slice(0,limit)){
+   bullet.dead=true;burst(bullet.x,bullet.y,'#f9e6a8',4);
   }
  }
- // NEW: Three distinct wands, all sourced from the animated wand tip.
- if(id==='comet'){
-  const count=1+w.up[0]+(w.evo===0?2:0),spread=.82;
+ pulse(1,w.evo===1?Infinity:2);
+ if(w.evo===0)schedule(.25,()=>pulse(.45,1));
+ return true;
+}
+function fireWeapon(id){
+ const p=g.player,w=g.weapons[id],d=W[id];
+ if(id==='orbit'||id==='vortex')return false;
+ if(id==='seed')return placeSeedTrap(p,w,d);
+ if(id==='bell')return ringBell(p,w,d);
+ const width=id==='moon'?.87*1.25**w.up[2]*radiusMult()*(w.evo===1?1.5:1):0;
+ let t;
+ if(id==='cloud'){
+  const boss=g.boss;
+  t=boss&&!boss.dead&&distance(p.x,p.y,boss.x,boss.y)<=d.range?boss:targetHighestHP(p.x,p.y,d.range);
+ }else if(id==='moon'||id==='comet'||id==='bloom'){
+  t=crowdedTarget(p,d.range,weaponReach(id,w),width);
+ }else if(id==='ribbon'){
+  const r=weaponReach(id,w);
+  t=targetNearest(p.x,p.y,r+1,new Set(),e=>distance(p.x,p.y,e.x,e.y)<=r+e.r);
+ }else t=targetNearest(p.x,p.y,d.range);
+ if(!t)return false;
+ let a=atan(p.x,p.y,t.x,t.y);
+ const origin=castFromWand(p,a);
+ a=atan(origin.x,origin.y,t.x,t.y);
+ const damage=wpBase(id,d.coef),extra=w.evo===0?2:0;
+ if(id==='star'||id==='bubble'||id==='frost'||id==='feather'){
+  const count=1+w.up[0]+(id==='bubble'?0:extra);
+  const speed={star:17,bubble:5.6,frost:14,feather:11.5}[id];
+  const life={star:1,bubble:3.65,frost:1.14,feather:.96}[id];
+  const radius={star:.23,bubble:.25,frost:.22,feather:.24}[id];
   for(let i=0;i<count;i++){
-   const ox=(i-(count-1)/2)*spread,tx=clamp(t.x+ox,1,DATA.world-1),ty=clamp(t.y+(i%2?.28:-.28),1,DATA.world-1),rad=1.15*Math.pow(1.2,w.up[2])*rm*(w.evo===1?1.5:1);
-   const dmg=wpBase(id,d.coef);
-   wandLink(origin,{x:tx,y:ty},'#ffe9a6');
-   g.effects.push({kind:'cometWarn',x:tx,y:ty,r:rad,life:.36+i*.06,max:.36+i*.06});
-   schedule(.30+i*.06,()=>{
-    g.effects.push({kind:'starBoom',x:tx,y:ty,r:rad,life:.30,max:.30});
-    for(const enemy of g.enemies){if(enemy.dead||distance(enemy.x,enemy.y,tx,ty)>rad+enemy.r)continue;deal(enemy,dmg,'comet');}
-    if(w.break)g.zones.push({kind:'comet',x:tx,y:ty,r:rad*.74,remain:1.7,next:.45,damage:dmg*.14,id:g.n++});
-    burst(tx,ty,'#ffedb0',9);
+   const angle=a+(i-(count-1)/2)*(id==='star'?.16:.20);
+   g.shots.push({kind:id,weapon:id,x:origin.x,y:origin.y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,
+    speed,life,r:radius,damage,target:id==='bubble'||(id==='star'&&count===1)?t.id:null,bounce:id==='star'&&w.break?1:0,
+    chains:id==='frost'?(w.break?3:1):id==='feather'&&w.break?(w.evo===0?2:1):0,sub:false,returning:false,direct:true,hit:new Set(),trail:[],dead:false});
+  }
+ }else if(id==='moon'){
+  const angles=w.evo===0?[a-.13,a+.13]:[a];
+  for(const angle of angles)beam(origin.x,origin.y,angle,d.range,width,damage*(angles.length===2?.65:1),id,1);
+ }else if(id==='bloom'){
+  const r=weaponReach(id,w),duration=2.2+.5*w.up[2];
+  wandLink(origin,t,'#ffd1eb');
+  g.zones.push({kind:'bloom',x:t.x,y:t.y,r,remain:duration,next:.25,damage,id:g.n++});
+  if(w.evo===0)for(const e of g.enemies){
+   if(!e.dead&&distance(e.x,e.y,t.x,t.y)<=r+e.r)deal(e,damage*2.6,id,{critAllowed:false});
+  }
+ }else if(id==='cloud'){
+  const others=w.evo===1?nearbyTargets(p,d.range).filter(e=>e!==t).sort((a,b)=>b.hp-a.hp).slice(0,2):[];
+  for(const e of [t,...others])thunder(e,damage*(w.evo===1?.75:1),origin);
+ }else if(id==='ribbon'){
+  const swing=atan(p.x,p.y,t.x,t.y);
+  doRibbon(swing,1);
+  if(w.break)schedule(.19,()=>doRibbon(swing,w.evo===1?1:.5));
+ }else if(id==='book'){
+  const count=2+w.up[0]+extra,used=new Set();
+  for(let i=0;i<count;i++){
+   const target=targetNearest(p.x,p.y,d.range,used)||(w.evo===1?t:null);
+   if(!target)break;
+   used.add(target.id);
+   const angle=atan(origin.x,origin.y,target.x,target.y);
+   g.shots.push({kind:'fairy',weapon:id,x:origin.x,y:origin.y,vx:Math.cos(angle)*7,vy:Math.sin(angle)*7,speed:9,life:2.7,r:.23,target:target.id,
+    damage,hit:new Set(),chains:w.break?(w.evo===0?2:1):0,dead:false,trail:[]});
+  }
+ }else if(id==='comet'){
+  const count=1+w.up[0]+extra,r=weaponReach(id,w),spread=count===1?0:r*.86;
+  wandLink(origin,t,'#ffe9a6');
+  for(let i=0;i<count;i++){
+   const angle=i*TAU/count,tx=clamp(t.x+Math.cos(angle)*spread,.4,DATA.world-.4),ty=clamp(t.y+Math.sin(angle)*spread,.4,DATA.world-.4);
+   const delay=.46+i*.075;
+   g.effects.push({kind:'cometWarn',x:tx,y:ty,r,life:delay,max:delay});
+   schedule(delay,()=>{
+    g.effects.push({kind:'starBoom',x:tx,y:ty,r,life:.34,max:.34});
+    for(const e of g.enemies){
+     if(!e.dead&&distance(e.x,e.y,tx,ty)<=r+e.r)deal(e,damage,id);
+    }
+    if(w.break)g.zones.push({kind:'comet',weapon:id,x:tx,y:ty,r:r*.74,remain:1.65,next:.45,damage:damage*.14,id:g.n++});
+    burst(tx,ty,'#ffdb93',10);
    });
   }
  }
- if(id==='seed'){
-  // From wand to target: flower-seed trap is placed in-world (not a flying bullet).
-  const max=3+w.up[0]+(w.evo===0?2:0),r=1.15*Math.pow(1.2,w.up[2])*rm*(w.evo===1?1.5:1);
-  const px=clamp(t.x+Math.cos(g.worldClock*3+w.lv)*.7,1,DATA.world-1),py=clamp(t.y+Math.sin(g.worldClock*2+w.lv)*.7,1,DATA.world-1);
-  g.traps.push({x:px,y:py,r,trigger:.65*(w.evo===1?1.4:1),damage:wpBase(id,d.coef),life:8,armed:.24,mini:false,dead:false,phase:range(0,TAU)});
-  const live=g.traps.filter(z=>!z.dead&&!z.mini);
-  if(live.length>max)live[0].dead=true;
-  wandLink(origin,{x:px,y:py},'#e9b6ed');g.effects.push({kind:'seedPlace',x:px,y:py,r:.6,life:.35,max:.35});
- }
- if(id==='bell'){
-  // Instant circular magical shockwave. No outgoing missile.
-  const r=2.4*Math.pow(1.22,w.up[0])*rm*(w.evo===1?1.3:1),power=wpBase(id,d.coef);
-  function bellPulse(scale=1){g.effects.push({kind:'bellWave',x:p.x,y:p.y,r,life:.45,max:.45});
-   for(const e of g.enemies){if(e.dead||distance(e.x,e.y,p.x,p.y)>r+e.r)continue;deal(e,power*scale,'bell');knock(e,atan(p.x,p.y,e.x,e.y),.38*(w.evo===0?1.4:1));if(w.break)slow(e,.18,1.0);}
-   if(w.evo===1){for(const b of g.enemyShots){if(distance(b.x,b.y,p.x,p.y)<=r)b.dead=true;}}
-  }
-  bellPulse();if(w.evo===0)schedule(.24,()=>bellPulse(.45));
- }
- if(id==='frost'||id==='feather'){
-  const count=1+w.up[0]+(w.evo===0?2:0);
-  for(let i=0;i<count;i++){
-   const ang=a+(i-(count-1)/2)*.18;
-   g.shots.push({kind:id,weapon:id,x:origin.x,y:origin.y,vx:Math.cos(ang)*(id==='frost'?13:9),vy:Math.sin(ang)*(id==='frost'?13:9),speed:id==='frost'?13:9,life:1.35,r:.23,damage:wpBase(id,d.coef),hit:new Set(),chains:id==='frost'?(w.break?2:0):(w.break?(w.evo===0?2:1):0),returning:false,dead:false,trail:[]});
-  }
- }
- burst(origin.x,origin.y,'#fff4b2',5);return true;
+ burst(origin.x,origin.y,'#fff4b2',4);
+ return true;
 }
 function beam(x,y,a,range,width,raw,id,coef){let ex=x+Math.cos(a)*range,ey=y+Math.sin(a)*range;
  g.effects.push({kind:'beam',x,y,ex,ey,width,life:.22,max:.22});
@@ -1435,34 +1504,51 @@ function beam(x,y,a,range,width,raw,id,coef){let ex=x+Math.cos(a)*range,ey=y+Mat
   if(along>=-.1&&along<=range+e.r&&cross<=width/2+e.r)deal(e,raw*coef,id);}
  if(g.weapons.moon?.break && coef===1){schedule(.16,()=>beam(ex,ey,a+Math.PI,range,width,raw,'moon',.5));}
 }
-function thunder(e,raw,origin=null){if(e.dead)return;if(origin)wandLink(origin,e,'#e5c8ff');g.effects.push({kind:'thunder',x:e.x,y:e.y,life:.30,max:.30});deal(e,raw,'cloud');if(g.weapons.cloud.break&& !e.dead)e.vulnerableUntil=Math.max(e.vulnerableUntil,g.worldClock+2);
+function thunder(e,raw,origin=null){if(e.dead)return;if(origin)wandLink(origin,e,'#e5c8ff');g.effects.push({kind:'thunder',x:e.x,y:e.y,life:.30,max:.30});deal(e,raw,'cloud');if(g.weapons.cloud.break&& !e.dead)e.vulnerableUntil=Math.max(e.vulnerableUntil,g.worldClock+2.5);
  if(g.weapons.cloud.evo===0)schedule(.2,()=>{if(!e.dead){if(origin)wandLink(origin,e,'#f6e8ad');g.effects.push({kind:'thunder',x:e.x,y:e.y,life:.24,max:.24});deal(e,raw*.7,'cloud');}});}
-function doRibbon(a,scale,origin=null){const p=g.player,w=g.weapons.ribbon;if(!w)return;const r=2.5*Math.pow(1.2,w.up[1])*radiusMult();const anchor=origin||wandOrigin(p);
- g.effects.push({kind:'ribbon',x:anchor.x,y:anchor.y,r,angle:a,full:w.evo===0,life:.23,max:.23});
- for(const e of g.enemies){if(e.dead||distance(e.x,e.y,p.x,p.y)>r+e.r)continue;
-  const ea=atan(p.x,p.y,e.x,e.y),dif=Math.atan2(Math.sin(ea-a),Math.cos(ea-a));if(w.evo!==0&&Math.abs(dif)>Math.PI/2)continue;
-  let base=wpBase('ribbon',1.20)*scale;if(w.evo===1&&scale===1)base=wpBase('ribbon',1.20)*scale;
-  deal(e,base,'ribbon');knock(e,a,.5*(w.evo===1?1.5:1));}
+function doRibbon(a,scale){
+ const p=g.player,w=g.weapons.ribbon,r=weaponReach('ribbon',w),arc=w.evo===0?TAU:Math.PI*130/180;
+ g.effects.push({kind:'ribbon',x:p.x,y:p.y,r,angle:a,arc,life:.26,max:.26});
+ for(const e of g.enemies){
+  if(e.dead||distance(e.x,e.y,p.x,p.y)>r+e.r)continue;
+  const angle=atan(p.x,p.y,e.x,e.y),diff=Math.atan2(Math.sin(angle-a),Math.cos(angle-a));
+  if(Math.abs(diff)>arc*.5)continue;
+  deal(e,wpBase('ribbon',W.ribbon.coef)*scale,'ribbon');knock(e,angle,w.evo===1?1.12:.82);
+ }
 }
-function explodeBubble(b){if(b.dead)return;b.dead=true;let w=g.weapons.bubble,mult=radiusMult(),r=b.sub?.7:1.2*Math.pow(1.2,w.up[2])*mult*(w.evo===1?1.4:1);
+function explodeBubble(b){if(b.dead)return;b.dead=true;let w=g.weapons.bubble,mult=radiusMult(),r=b.sub?.72*mult:weaponReach('bubble',w);
  g.effects.push({kind:'bubbleBoom',x:b.x,y:b.y,r,life:.35,max:.35});
- for(const e of g.enemies){if(e.dead||distance(e.x,e.y,b.x,b.y)>r+e.r)continue;deal(e,b.damage,'bubble');if(w.break)slow(e,.3,1.5);if(w.evo===1&&e.kind!=='boss')slow(e,.6,.8);}
+ for(const e of g.enemies){if(e.dead||distance(e.x,e.y,b.x,b.y)>r+e.r)continue;deal(e,b.damage,'bubble');slow(e,w.break?.30:.14,w.break?1.5:.65);if(w.evo===1)slow(e,.56,.9);}
  if(!b.sub&&w.evo===0){for(let i=0;i<2;i++){let aa=i*Math.PI+rand()*.7;
   g.shots.push({kind:'bubble',weapon:'bubble',x:b.x,y:b.y,vx:Math.cos(aa)*5,vy:Math.sin(aa)*5,speed:5,life:2,r:.19,damage:b.damage*.3,target:null,sub:true,hit:new Set(),dead:false,trail:[]});}}
  burst(b.x,b.y,'#f7c4f2',10);
 }
-function wfrostSlow(){return g.weapons.frost?.evo===0?.45:.25;}
+function wfrostSlow(){return g.weapons.frost?.evo===0?.49:.29;}
 function outsideWorld(x,y,pad=0){
  return x<-pad||x>DATA.world+pad||y<-pad||y>DATA.world+pad;
 }
 function updateShots(dt){for(const s of g.shots){if(s.dead)continue;s.life-=dt;
- if(s.kind==='bubble'||s.kind==='fairy'||(s.kind==='feather'&&(s.target||s.returning))){
-  let t=s.returning?g.player:g.enemies.find(e=>!e.dead&&e.id===s.target)||targetNearest(s.x,s.y,s.kind==='bubble'?10:12,s.hit);
-  if(t){s.target=t.id;let dx=t.x-s.x,dy=t.y-s.y,L=len(dx,dy)||1;s.vx+=(dx/L*s.speed-s.vx)*clamp(dt*5,0,1);s.vy+=(dy/L*s.speed-s.vy)*clamp(dt*5,0,1);}
+ if(s.kind==='feather'&&!s.returning&&(s.life<=0||outsideWorld(s.x,s.y))){
+  s.returning=true;s.target=null;s.hit.clear();s.life=1.48;
+  s.speed=g.weapons.feather.evo===1?16:13.5;
+  if(g.weapons.feather.evo===1)s.damage*=1.5;
  }
- s.x+=s.vx*dt;s.y+=s.vy*dt;if(s.kind==='feather'&&s.returning&&distance(s.x,s.y,g.player.x,g.player.y)<.6){s.dead=true;continue;}
+ const homing=s.kind==='bubble'||s.kind==='fairy'||s.target!=null||s.returning;
+ if(homing){
+  const target=s.returning?g.player:g.enemies.find(e=>!e.dead&&e.id===s.target)||
+   (s.kind==='bubble'||s.kind==='fairy'?targetNearest(s.x,s.y,10,s.hit):null);
+  if(target){
+   const dx=target.x-s.x,dy=target.y-s.y,length=Math.hypot(dx,dy)||1;
+   if(!s.returning)s.target=target.id;
+   const steering=clamp(dt*(s.kind==='star'?2.8:s.returning?12:7),0,1);
+   s.vx+=(dx/length*s.speed-s.vx)*steering;s.vy+=(dy/length*s.speed-s.vy)*steering;
+  }
+ }
+ s.x+=s.vx*dt;s.y+=s.vy*dt;
+ if(s.returning&&distance(s.x,s.y,g.player.x,g.player.y)<.62){s.dead=true;continue;}
  if(s.trail){s.trail.push({x:s.x,y:s.y});if(s.trail.length>6)s.trail.shift();}
- if(s.life<=0||outsideWorld(s.x,s.y,NEMO_SIZE/2)){if(s.kind==='bubble')explodeBubble(s);else s.dead=true;continue;}
+ const outside=outsideWorld(s.x,s.y,NEMO_SIZE/2);
+ if(s.life<=0||(outside&&s.kind!=='feather')){if(s.kind==='bubble')explodeBubble(s);else s.dead=true;continue;}
  for(const e of g.enemies){if(e.dead||s.hit.has(e.id)||distance(s.x,s.y,e.x,e.y)>s.r+e.r)continue;
   s.hit.add(e.id);if(s.kind==='bubble'){explodeBubble(s);break;}
   if(s.kind==='star'){
@@ -1471,14 +1557,15 @@ function updateShots(dt){for(const s of g.shots){if(s.dead)continue;s.life-=dt;
    if(s.bounce>0){let nxt=targetNearest(e.x,e.y,3,new Set([e.id]));if(nxt){let a=atan(e.x,e.y,nxt.x,nxt.y);
     g.shots.push({kind:'star',weapon:'star',x:e.x,y:e.y,vx:Math.cos(a)*15,vy:Math.sin(a)*15,life:.25,r:.23,damage:s.damage*.5,bounce:0,hit:new Set([e.id]),direct:false,trail:[],dead:false});}}
   }else if(s.kind==='frost'){
-   deal(e,s.damage,'frost');slow(e,wfrostSlow(),1.2+.5*g.weapons.frost.up[2]);
+   deal(e,s.damage,'frost');slow(e,wfrostSlow(),1.05+.5*g.weapons.frost.up[2]);
    if(g.weapons.frost.evo===1){g.effects.push({kind:'starBoom',x:e.x,y:e.y,r:.85,life:.28,max:.28});for(const other of g.enemies){if(!other.dead&&other.id!==e.id&&distance(other.x,other.y,e.x,e.y)<.85+other.r){deal(other,s.damage*.38,'frost',{critAllowed:false});slow(other,.25,1);}}}
    if(s.chains-->0){break;}s.dead=true;
   }else if(s.kind==='feather'){
    deal(e,s.damage,'feather');
-   if(g.weapons.feather.evo===1&&!s.returning){s.returning=true;s.target=null;s.chains=0;s.hit=new Set([e.id]);s.life=1.4;break;}
-   if(s.chains>0){const nxt=targetNearest(e.x,e.y,9,s.hit);if(nxt){s.target=nxt.id;s.chains--;s.damage*=.65;s.life=Math.max(.65,s.life);break;}}
-   s.dead=true;
+   if(!s.returning&&s.chains>0){
+    const next=targetNearest(e.x,e.y,6,s.hit);
+    if(next){s.target=next.id;s.chains--;s.damage*=.76;s.life=Math.max(s.life,.34);}
+   }
   }else if(s.kind==='fairy'){
    deal(e,s.damage,'book');if(s.chains>0){let excl=new Set(s.hit);if(g.weapons.book.evo===1)excl=new Set([e.id]);let nxt=targetNearest(e.x,e.y,10,excl);
     if(nxt){s.target=nxt.id;s.chains--;s.damage*=.5;s.x=e.x;s.y=e.y;s.life=Math.max(s.life,.65);break;}}
@@ -1493,34 +1580,55 @@ function updateShots(dt){for(const s of g.shots){if(s.dead)continue;s.life-=dt;
   if(!b.dead&&distance(b.x,b.y,g.player.x,g.player.y)<b.r+g.player.r){damagePlayer(b.dmg,b.label);b.dead=true;if(screen!=='playing')return;}
  }g.enemyShots=g.enemyShots.filter(b=>!b.dead);
 }
-function updateOrbit(dt){let w=g.weapons.orbit;if(!w)return;const p=g.player,base=w.evo===0?2:2,n=base+w.up[0]+(w.evo===0?2:0),r=1.8*Math.pow(1.15,w.up[2]),frequency=1*(w.break?1.3:1)*(1+.08*getPassive('quick'));
- w.angle=(w.angle||0)+TAU*frequency*dt;
- let dealt=0;
+function orbitPosition(p,w,i,count,r){
+ const a=(w.angle||0)+TAU*i/count,reach=r*(w.evo===0?(i%2?1.47:.80):1);
+ const x=p.x+Math.cos(a)*reach,y=p.y+Math.sin(a)*reach;
+ if(!w.orbitWand)return {x,y};
+ const t=clamp((g.worldClock-w.orbitBirth)/.48,0,1);
+ return {x:w.orbitWand.x+(x-w.orbitWand.x)*t,y:w.orbitWand.y+(y-w.orbitWand.y)*t};
+}
+function updateOrbit(dt){
+ const w=g.weapons.orbit;if(!w)return;
+ const p=g.player,n=2+w.up[0]+(w.evo===0?2:0),r=weaponReach('orbit',w);
+ const frequency=(w.break?1.3:1)*clockMult('orbit');
+ w.angle=((w.angle||0)+TAU*frequency*dt)%TAU;
+ if(w.orbitWand&&g.worldClock-w.orbitBirth>=.48)w.orbitWand=null;
+ const hitTimes=w.hitTimes??=new Map();
+ const power=wpBase('orbit',W.orbit.coef);
  for(let i=0;i<n;i++){
-  const a=w.angle+TAU*i/n,rr=r*(w.evo===0&&i%2===1?1.35:1),x=p.x+Math.cos(a)*rr,y=p.y+Math.sin(a)*rr;
-  for(const e of g.enemies){if(e.dead||distance(x,y,e.x,e.y)>.29+e.r)continue;
-   if(!w.hitTimes)w.hitTimes=new Map();const key=i+':'+e.id;if(g.worldClock-(w.hitTimes.get(key)||-100)<.5)continue;w.hitTimes.set(key,g.worldClock);
-   deal(e,wpBase('orbit',.35),'orbit');if(w.break)slow(e,.2,1);dealt++;}
+  const {x,y}=orbitPosition(p,w,i,n,r);
+  for(const e of g.enemies){
+   if(e.dead||distance(x,y,e.x,e.y)>.28+e.r||g.worldClock-(hitTimes.get(e.id)??-100)<.30)continue;
+   hitTimes.set(e.id,g.worldClock);
+   deal(e,power,'orbit');if(w.break)slow(e,.20,1);
+  }
  }
- if(w.hitTimes?.size>1200){for(const [key,value] of w.hitTimes)if(g.worldClock-value>2)w.hitTimes.delete(key);}
- if(w.evo===1){w.blockTimer=(w.blockTimer||0)-dt;if(w.blockTimer<=0){for(const b of g.enemyShots){if(b.dead)continue;
-  if(distance(b.x,b.y,p.x,p.y)<r+.7){b.dead=true;w.blockTimer=1;burst(b.x,b.y,'#fff5bb',9);break;}}}}
+ if(hitTimes.size>240)for(const [id,time] of hitTimes)if(g.worldClock-time>2)hitTimes.delete(id);
+ if(w.evo===1){
+  w.blockTimer=(w.blockTimer||0)-dt;
+  if(w.blockTimer<=0){
+   const bullet=g.enemyShots.find(b=>!b.dead&&distance(b.x,b.y,p.x,p.y)<=r+.72);
+   if(bullet){bullet.dead=true;w.blockTimer=1;burst(bullet.x,bullet.y,'#fff5bb',7);}
+  }
+ }
 }
 function updateVortex(dt){
  const w=g.weapons.vortex;if(!w)return;
- const p=g.player,rad=2.3*Math.pow(1.2,w.up[0])*radiusMult()*(w.evo===1?1.28:1);
  w.vortexTick=(w.vortexTick??0)-dt;
- if(w.vortexTick<=0){w.vortexTick=.52/clockMult('vortex');
-  const dmg=wpBase('vortex',.29)*(w.evo===0?1.3:1);
-  for(const e of g.enemies){if(e.dead)continue;const d=distance(e.x,e.y,p.x,p.y);
-   if(d>rad+e.r)continue;
-   deal(e,dmg,'vortex',{critAllowed:false});if(w.break)slow(e,.26,1.1);
-  }
+ if(w.vortexTick>0)return;
+ w.vortexTick=.52/clockMult('vortex');
+ const p=g.player,r=weaponReach('vortex',w),power=wpBase('vortex',W.vortex.coef);
+ for(const e of g.enemies){
+  if(e.dead)continue;
+  const d=distance(e.x,e.y,p.x,p.y);
+  if(d>r+e.r)continue;
+  deal(e,power,'vortex',{critAllowed:false});
+  if(w.break||w.evo===1)slow(e,w.evo===1?.37:.23,.86);
+  if(e.dead||e===g.boss||e.kind==='boss'||d<=1.60)continue;
+  const step=Math.min(d-1.60,w.evo===0?.77:.47);
+  const x=clamp(e.x+(p.x-e.x)/d*step,e.r,DATA.world-e.r),y=clamp(e.y+(p.y-e.y)/d*step,e.r,DATA.world-e.r);
+  if(!blockedByTerrain(x,y,e.r)){e.x=x;e.y=y;}
  }
- for(const e of g.enemies){if(e.dead||e.kind==='boss')continue;
-  const d=distance(e.x,e.y,p.x,p.y),pull=w.evo===0?.78:.36;
-  if(d>1.4&&d<rad){e.x=clamp(e.x+(p.x-e.x)/d*pull*dt,e.r,DATA.world-e.r);
-   e.y=clamp(e.y+(p.y-e.y)/d*pull*dt,e.r,DATA.world-e.r);}}
 }
 function updateTraps(dt){
  const w=g.weapons.seed;if(!w){g.traps.length=0;return;}
@@ -1532,17 +1640,17 @@ function updateTraps(dt){
    deal(e,z.damage*(w.evo===1&&e.kind==='boss'?1.3:1),'seed',{critAllowed:!z.mini});}
   if(w.break&&!z.mini){for(let k=0;k<2;k++){let a=k*Math.PI+(g.worldClock%2);
    g.traps.push({x:clamp(z.x+Math.cos(a)*.8,1,DATA.world-1),y:clamp(z.y+Math.sin(a)*.8,1,DATA.world-1),r:.65,trigger:.43,damage:z.damage*.30,life:2,armed:.2,mini:true,dead:false,phase:a});}}
-  if(w.evo===0&&!z.mini)g.zones.push({kind:'comet',x:z.x,y:z.y,r:z.r*.9,remain:1.5,next:.45,damage:z.damage*.16,id:g.n++});
+  if(w.evo===0&&!z.mini)g.zones.push({kind:'comet',weapon:'seed',x:z.x,y:z.y,r:z.r*.9,remain:1.5,next:.45,damage:z.damage*.16,id:g.n++});
  }
  g.traps=g.traps.filter(z=>!z.dead).slice(-32);
 }
-function updateZones(dt){for(const z of g.zones){z.remain-=dt;z.next-=dt;if(z.kind==='comet'){if(z.next<=0){z.next+=.45;for(const e of g.enemies){if(!e.dead&&distance(e.x,e.y,z.x,z.y)<=z.r+e.r)deal(e,z.damage,'comet',{critAllowed:false});}}}if(z.kind==='bloom'){
+function updateZones(dt){for(const z of g.zones){z.remain-=dt;z.next-=dt;if(z.kind==='comet'){if(z.next<=0){z.next+=.45;for(const e of g.enemies){if(!e.dead&&distance(e.x,e.y,z.x,z.y)<=z.r+e.r)deal(e,z.damage,z.weapon,{critAllowed:false});}}}if(z.kind==='bloom'){
   if(g.weapons.bloom?.break)for(const e of g.enemies){if(!e.dead&&distance(e.x,e.y,z.x,z.y)<z.r+e.r)slow(e,.25,.25);}
   if(z.next<=0){z.next+=.5;for(const e of g.enemies){if(e.dead||distance(e.x,e.y,z.x,z.y)>z.r+e.r)continue;
     if(g.worldClock-(e.lastBloomTick||-100)<.48)continue;e.lastBloomTick=g.worldClock;deal(e,z.damage,'bloom',{critAllowed:false});}}
  }
  }g.zones=g.zones.filter(z=>z.remain>0);
- if(g.weapons.bloom?.evo===1){let inside=g.zones.some(z=>distance(z.x,z.y,g.player.x,g.player.y)<=z.r);
+ if(g.weapons.bloom?.evo===1){let inside=g.zones.some(z=>z.kind==='bloom'&&distance(z.x,z.y,g.player.x,g.player.y)<=z.r);
   if(inside)g.healTimer=1;else g.healTimer=Math.max(0,g.healTimer-dt);
   if(g.healTimer>0)g.player.hp=Math.min(g.player.maxHp,g.player.hp+g.player.maxHp*.01*dt);
  }
@@ -1557,7 +1665,7 @@ function updateLoot(dt){
   if(distance(p.x,p.y,l.x,l.y)<=threshold){
    if(l.kind==='xp'&&g.effects.length<160){
     const travel=clamp(distance(p.x,p.y,l.x,l.y)/35,.085,.20);
-    g.effects.push({kind:'xpSwoosh',x:l.x,y:l.y,ex:p.x,ey:p.y,life:travel,max:travel});
+    g.effects.push({kind:'xpSwoosh',x:l.x,y:l.y,ex:p.x,ey:p.y,xp:l.xp,life:travel,max:travel});
    }
    collect(l);
   }
@@ -1662,7 +1770,7 @@ function update(dt){
  if(lateWave>(g.lateWave||0)){g.lateWave=lateWave;g.rushUntil=g.t+20;showToast('🌑 숲이 더욱 위험해졌어! 살아남아!');}
  const full=Math.floor(g.t/60);if(full>g.achievedMinutes)g.achievedMinutes=full;
  for(const id of Object.keys(g.weapons)){
-  if(id==='orbit')continue;
+  if(id==='orbit'||id==='vortex')continue;
   const w=g.weapons[id];w.clock-=dt;
   if(w.clock<=0){if(fireWeapon(id))w.clock=cooldown(id);else w.clock=0;}
  }
@@ -1725,8 +1833,11 @@ function updateHUD(){
  hudText('level',`Lv.${p.level}`);
  hudText('gold-hud',String(g.done?g.gold:g.achievedMinutes*20+g.gold));
  hudText('kills-hud',String(g.totalKills));
- hudFill('xp-fill',p.xp/need);
- hudText('xp-text',`${Math.floor(p.xp)} / ${need} XP`);
+ const choosingLevel=g.cardReason==='level'&&(screen==='cards'||screen==='evolution');
+ const xpProgress=choosingLevel?1:clamp(p.xp/need,0,1);
+ hudFill('xp-fill',xpProgress);
+ const xpBar=$('xp-progress'),xpPercent=String(Math.round(xpProgress*100));
+ if(xpBar.getAttribute('aria-valuenow')!==xpPercent)xpBar.setAttribute('aria-valuenow',xpPercent);
  const boss=!g.done&&g.boss?.kind!=='flower'&&g.boss;
  $('boss-hud').classList.toggle('hidden',!boss);
  if(boss){
@@ -2035,9 +2146,27 @@ function drawPickup(key,x,y,size){
  const im=sprites[key],scale=size/Math.max(im.naturalWidth,im.naturalHeight);
  imageSprite(key,x,y,im.naturalWidth*scale,im.naturalHeight*scale);
 }
+const gemArt=new Map();
+function drawCrystal(x,y,xp,scale=1){
+ const source=sprites.pickupCrystal;
+ if(!source?.naturalWidth)return false;
+ const grade=xp>=8?2:xp>=3?1:0;
+ let art=gemArt.get(grade)||source;
+ if(grade&&art===source){
+  art=document.createElement('canvas');
+  art.width=source.naturalWidth;art.height=source.naturalHeight;
+  const paint=art.getContext('2d');
+  paint.filter=grade===2?'hue-rotate(132deg) saturate(1.45) brightness(1.22)':'hue-rotate(222deg) saturate(1.20) brightness(1.10)';
+  paint.drawImage(source,0,0);
+  gemArt.set(grade,art);
+ }
+ const height=[.53,.65,.78][grade]*scale,width=height*source.naturalWidth/source.naturalHeight;
+ ctx.drawImage(art,x-width/2,y-height/2,width,height);
+ return true;
+}
 function drawGem(l){if(!visible(l.x,l.y,1))return;let y=l.y+Math.sin(l.phase)*.05;ellipse(l.x,l.y+.20,.22,.06,'#799f7f',.23);
  if(l.kind==='xp'){
-  if(sprites.pickupCrystal?.naturalWidth){drawPickup('pickupCrystal',l.x,y,.58);return;}
+  if(drawCrystal(l.x,y,l.xp))return;
   polygon([[l.x,y-.23],[l.x+.17,y-.08],[l.x+.16,y+.12],[l.x,y+.25],[l.x-.18,y+.10],[l.x-.16,y-.07]],'#a380da','#78539c',.052);
   polygon([[l.x,y-.20],[l.x+.14,y-.08],[l.x,y+.19]],'#ede0ff',null);
  }else if(l.kind==='bone'){
@@ -2084,9 +2213,13 @@ function drawEffects(){for(const e of g.effects){if(e.kind==='event')continue;co
  }else if(e.kind==='xpSwoosh'){
   const t=1-f,curve=t*t*(3-2*t),x=e.x+(e.ex-e.x)*curve,y=e.y+(e.ey-e.y)*curve-.20*Math.sin(Math.PI*t);
   line(e.x+(e.ex-e.x)*Math.max(0,curve-.16),e.y+(e.ey-e.y)*Math.max(0,curve-.16),x,y,'#e9d7ff',.10);
-  if(sprites.pickupCrystal?.naturalWidth)drawPickup('pickupCrystal',x,y,.49);
-  else polygon([[x,y-.20],[x+.14,y],[x,y+.20],[x-.14,y]],'#b58cf8','#654581',.048);
- }else if(e.kind==='cometWarn'){star(e.x,e.y,.38,g.worldClock*5,'#fff0a0','#9664b5');}
+  if(!drawCrystal(x,y,e.xp,.8))polygon([[x,y-.20],[x+.14,y],[x,y+.20],[x-.14,y]],'#b58cf8','#654581',.048);
+ }else if(e.kind==='cometWarn'){
+  const drop=3.6*f**1.35;
+  star(e.x,e.y,.14,0,'#ffe7ae','#ad794d');
+  line(e.x-.30,e.y-drop-.80,e.x,e.y-drop,'#eab46f',.18);
+  star(e.x,e.y-drop,.29+.08*(1-f),g.worldClock*6,'#fff0a0','#a06a55');
+ }
  else if(e.kind==='wandGlow'){ellipse(e.x,e.y,.32,.32,'#f6c9ee',.56*f);star(e.x,e.y,.18,0,'#fff5ac','#a469b5');}
 else if(e.kind==='wandLink'){const dx=e.ex-e.x,dy=e.ey-e.y;ctx.strokeStyle=e.color;ctx.lineWidth=.10*f+.025;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(e.x,e.y);ctx.quadraticCurveTo(e.x+dx*.47-dy*.065,e.y+dy*.47+dx*.065,e.ex,e.ey);ctx.stroke();star(e.x,e.y,.17,g.worldClock*5,'#fff5bc','#a06cc3');}
 else if(e.kind==='beam'){
@@ -2128,9 +2261,9 @@ else if(e.kind==='beam'){
    }
   }
  else if(e.kind==='ribbon'){
-   const count=e.full?9:5;
+   const count=e.arc===TAU?10:6;
    for(let i=0;i<count;i++){
-    const a=e.angle+(i/(count-1)-.5)*(e.full?TAU-.45:Math.PI);
+    const a=e.angle+(i/(count-1)-.5)*Math.min(TAU-.45,e.arc);
     const r=e.r*(.74+.21*Math.sin(i*1.48+f*1.4));
     const x=e.x+Math.cos(a)*r,y=e.y+Math.sin(a)*r;
     ctx.save();ctx.translate(x,y);ctx.rotate(a+.8);
@@ -2155,7 +2288,7 @@ function drawZone(z){
 function drawWeaponFields(){
  const p=g.player,t=g.worldClock;
  if(g.weapons.vortex){
-  const w=g.weapons.vortex,r=2.3*Math.pow(1.2,w.up[0])*radiusMult()*(w.evo===1?1.28:1);
+  const w=g.weapons.vortex,r=weaponReach('vortex',w);
   for(let k=0;k<9;k++){
    const a=t*2.05+k*2.39996,reach=r*(.31+(k%5)*.13);
    const x=p.x+Math.cos(a)*reach,y=p.y+Math.sin(a)*reach;
@@ -2171,8 +2304,12 @@ function drawWeaponFields(){
   ellipse(z.x,z.y,.48,.25,'#7eae7c',.28);flower(z.x,z.y,.35,z.mini?'#fee4a8':'#f59bc9',z.phase+t*.6);
  }
 }
-function drawOrbit(){let w=g.weapons.orbit;if(!w)return;let p=g.player,n=2+w.up[0]+(w.evo===0?2:0),r=1.8*Math.pow(1.15,w.up[2]);
- for(let i=0;i<n;i++){let a=(w.angle||0)+i*TAU/n,rr=r*(w.evo===0&&i%2?1.35:1);let x=p.x+Math.cos(a)*rr,y=p.y+Math.sin(a)*rr;if(w.orbitWand){const phase=clamp((g.worldClock-w.orbitBirth)/.48,0,1);x=w.orbitWand.x+(x-w.orbitWand.x)*phase;y=w.orbitWand.y+(y-w.orbitWand.y)*phase;if(phase>=1)w.orbitWand=null;}star(x,y,.40,g.worldClock*4,'#fff3a4','#a36fbb');
+function drawOrbit(){
+ const w=g.weapons.orbit;if(!w)return;
+ const n=2+w.up[0]+(w.evo===0?2:0),r=weaponReach('orbit',w);
+ for(let i=0;i<n;i++){
+  const {x,y}=orbitPosition(g.player,w,i,n,r);
+  star(x,y,.29,g.worldClock*4,'#fff3a4','#a36fbb');
  }
 }
 function drawEnemyBullet(b){
@@ -2475,7 +2612,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.37';
+  const CURRENT='5.6.38';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
