@@ -1,5 +1,5 @@
 {
-  "version": "5.6.51",
+  "version": "5.6.52",
   "mode": "endless_survival",
-  "notes": "황혼의 별 및 희귀 전용 무기 슬롯 제거"
+  "notes": "마법별 전투 이펙트 개선 및 문라이트 판정 폭 표시"
 }
