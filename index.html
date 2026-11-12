@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.42" />
+</style><meta name="nemo-version" content="5.6.43" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -400,6 +400,56 @@
     text-align: center;
   }
 }
+#app #hud .survival-status .survival-left {
+  --gear-tile: clamp(38px,5.15vw,54px);
+  gap: 7px;
+}
+#app #hud .survival-status .hud-player:has(#portrait) {
+  width: min(100%,clamp(160px,20vw,218px)) !important;
+  gap: 8px;
+  padding: 6px 12px 6px 8px;
+}
+#app #hud .survival-status .woodland-portrait { width: clamp(35px,4.6vw,52px); }
+#app #hud .survival-status .hud-player #hp { font-size: clamp(16px,1.75vw,22px); }
+#app #hud .survival-status .hud-player .track { height: 9px !important; min-height: 9px; }
+#app #hud .survival-status #weapon-slots { gap: 6px !important; flex-wrap: wrap; }
+#app #hud .survival-status #weapon-slots .slot:not(.slot-empty) {
+  display: grid !important;
+  grid-template-rows: minmax(0,1fr) auto;
+  box-sizing: border-box;
+  width: var(--gear-tile) !important;
+  height: var(--gear-tile) !important;
+  gap: 0;
+  padding: 4px 5px 4px !important;
+}
+#app #hud .survival-status #weapon-slots .slot .ico {
+  display: grid; place-items: center; min-width: 0; min-height: 0;
+}
+#app #hud .survival-status #weapon-slots .slot .ico img {
+  width: 100% !important; height: 100% !important;
+}
+#app #hud .survival-status #weapon-slots .slot small {
+  position: static; justify-self: end;
+  padding: 0 2px; line-height: 1.05; font-size: clamp(9px,1.05vw,12px);
+}
+@media (max-width:650px) and (orientation:portrait) {
+  #app:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"],[data-screen="cards"],[data-screen="evolution"]) {
+    --field-top: 164px;
+    height: min(100dvh,calc(56.25vw + 278px));
+  }
+  #app #hud .survival-status .survival-left { --gear-tile: clamp(32px,11vw,47px); gap: 5px 6px; }
+  #app #hud .survival-status .hud-player:has(#portrait) {
+    width: clamp(116px,35vw,164px) !important;
+    gap: 5px; padding: 5px 7px 5px 5px;
+  }
+  #app #hud .survival-status .woodland-portrait { width: clamp(30px,9.8vw,42px); }
+  #app #hud .survival-status .hud-player #hp { font-size: clamp(13px,3.9vw,17px); }
+  #app #hud .survival-status .hud-player .track { height: 7px !important; min-height: 7px; }
+  #app #hud .survival-status #weapon-slots { gap: 4px !important; }
+  #app #hud .survival-status #weapon-slots .slot:not(.slot-empty) { padding: 3px 4px !important; }
+  #app #hud .survival-status #weapon-slots .slot small { font-size: clamp(8px,2.65vw,11px); }
+}
+
 </style>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
@@ -669,6 +719,9 @@ for(const kind of Object.keys(ENEMY_ART)){
  ASSET_DATA['enemy_'+kind]=NEW_FOREST_ENEMIES.has(kind)?'./assets/forest-enemies-v5641/'+kind+'.png':'./assets/monsters-v553/'+kind+'.webp';
 }
 for(const boss of LATE_BOSSES)ASSET_DATA['enemy_'+boss.art]='./assets/forest-bosses-v5642/'+boss.art+'.png';
+const FOREST_GAIT_TILES=96;
+const FLYING_ENEMIES=new Set(['moth','firefly','moonwing-queen','storm-owl']);
+for(const kind of NEW_FOREST_ENEMIES)ASSET_DATA['enemy_'+kind+'_gait']='./assets/forest-motion-v5643/'+kind+'.png';
 const ENEMY_MOTION_KINDS=new Set(['armor','blue','fat','firefly','flower','green','horn','petal','spark','spore']);
 for(const kind of ENEMY_MOTION_KINDS){
  for(const frame of ['move-1','move-2','attack','hit']){
@@ -1530,19 +1583,33 @@ function moveForestSpecial(e,angle,dt,pace=1){
   e.moveFace=x<e.x?-1:x>e.x?1:(e.moveFace||1);e.x=x;e.y=y;return;
  }
 }
-function updateMonsters(dt){for(const e of g.enemies){if(e.dead)continue;e.flash=Math.max(0,e.flash-dt);
- applyEnemyPush(e,dt);
+function updateMonsters(dt){
+ for(const e of g.enemies){
+  if(e.dead)continue;
+  applyEnemyPush(e,dt);
+  const oldX=e.x,oldY=e.y;
+  updateMonster(e,dt);
+  const dx=e.x-oldX,dy=e.y-oldY,travel=Math.hypot(dx,dy);
+  const stride=e.kind==='thief'?.66:e.kind==='bramble'?.49:e.isBoss?1.15:.64;
+  e.stride=((e.stride??e.phase/TAU)+travel/stride)%1;
+  e.gait=(e.gait||0)+(clamp(travel/dt/.75,0,1)-(e.gait||0))*(-Math.expm1(-19*dt));
+  if(Math.abs(dx)>.006)e.moveFace=dx<0?-1:1;
+  if(screen!=='playing')return;
+ }
+}
+function updateMonster(e,dt){
+ e.flash=Math.max(0,e.flash-dt);
  if(e.retreat){
-  if(g.worldClock>=e.retreat||!visible(e.x,e.y,1.4)){e.dead=true;continue;}
+  if(g.worldClock>=e.retreat||!visible(e.x,e.y,1.4)){e.dead=true;return;}
   const away=atan(g.player.x,g.player.y,e.x,e.y);
-  moveForestSpecial(e,away,dt,Math.max(1,2.45/e.speed));continue;
+  moveForestSpecial(e,away,dt,Math.max(1,2.45/e.speed));return;
  }
  if(e.kind==='thief'){
-  if(g.worldClock>=e.escapeAt){e.dead=true;continue;}
+  if(g.worldClock>=e.escapeAt){e.dead=true;return;}
   const p=g.player,away=atan(p.x,p.y,e.x,e.y),weave=Math.sin(g.worldClock*2.4+e.phase)*.64;
-  moveForestSpecial(e,away+weave,dt);continue;
+  moveForestSpecial(e,away+weave,dt);return;
  }
- if(e.kind==='boss'){bossUpdate(e,dt);if(screen!=='playing')return;continue;}
+ if(e.kind==='boss'){bossUpdate(e,dt);return;}
  if(e.halt>0){e.halt-=dt;}
  else if(e.attackState){let a=e.attackState;a.t-=dt;
   if(a.type==='moth-warn'&&a.t<=0){
@@ -1600,8 +1667,9 @@ function updateMonsters(dt){for(const e of g.enemies){if(e.dead)continue;e.flash
  if(collision){let amount=e.dmg;
   if(ENEMY_MOTION_KINDS.has(e.kind)&&g.player.invuln<=0)e.attackArtUntil=g.worldClock+.18;
   if(e.attackState?.type==='dashing')amount=e.kind==='horn'?21:12;
-  damagePlayer(amount,`${e.kind} 접촉`);if(screen!=='playing')return;}
- }}
+  damagePlayer(amount,`${e.kind} 접촉`);
+ }
+}
 function nearbyTargets(p,range){
  return g.enemies.filter(e=>!e.dead&&!e.retreat&&distance(e.x,e.y,p.x,p.y)<=range);
 }
@@ -2320,40 +2388,53 @@ function drawWorldGround(c,deco){
 }
 function imageSprite(key,x,y,w,h,face=1,alpha=1){let im=sprites[key];if(!im?.complete||!im.naturalWidth)return;ctx.save();ctx.translate(x,y);ctx.scale(face,1);ctx.globalAlpha=alpha;ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();}
 // Fit the padded source without stretching and keep its baseline at the actor's feet.
-function drawEnemyArt(kind,x,baseline,maxWidth,maxHeight,frame='move-1',face=1,alpha=1){
- const baseKey='enemy_'+kind;
- const frameKey=baseKey+'_'+frame;
+function drawEnemyArt(kind,x,baseline,maxWidth,maxHeight,pose){
+ const baseKey='enemy_'+kind,frameKey=baseKey+'_'+pose.frame;
+ const atlas=sprites[baseKey+'_gait'],F=FOREST_GAIT_TILES;
+ const animated=atlas?.complete&&atlas.naturalWidth===F*4&&atlas.naturalHeight===F;
  const key=sprites[frameKey]?.naturalWidth?frameKey:baseKey;
- const im=sprites[key];
+ const im=animated?atlas:sprites[key];
  if(!im?.complete||!im.naturalWidth)return;
- const scale=Math.min(maxWidth/im.naturalWidth,maxHeight/im.naturalHeight);
- const width=im.naturalWidth*scale,height=im.naturalHeight*scale;
- imageSprite(key,x,baseline-height/2,width,height,key===baseKey&&!NEW_FOREST_ENEMIES.has(kind)?1:face,alpha);
-}
-function drawEnemy(e){if(e.dead||!visible(e.x,e.y,3))return;
- const isboss=e.kind==='boss',iselite=Object.hasOwn(DATA.elites,e.kind);
- const sprinting=e.kind==='spark'&&(e.sprintUntil||0)>g.worldClock;
- const bob=Math.sin((g?.worldClock||menuArtTime)*(sprinting?14:4)+e.phase)*(sprinting?.066:.045);
- const opacity=e.retreat?clamp((e.retreat-g.worldClock)/.72,0,1):1;
- ellipse(e.x,e.y+e.r*.64,e.r*1.03,e.r*.27,'#657c70',.20*opacity);
- const art=e.bossDef?.art||e.kind,[wd,ht]=ENEMY_ART[art];
- let frame='move-1',face=1;
- if(ENEMY_MOTION_KINDS.has(e.kind)){
-  const clock=g.worldClock;
-  if(e.flash>0)frame='hit';
-  else if(e.attackState||e.attackArtUntil>clock)frame='attack';
-  else if(e.halt<=0)frame=Math.floor(clock*(sprinting?14:7)+e.phase)%2?'move-2':'move-1';
-  const aim=e.attackState?.aim;
-  face=(aim==null?g.player.x-e.x:Math.cos(aim))<0?-1:1;
+ const directional=animated||key!==baseKey||NEW_FOREST_ENEMIES.has(kind)||kind==='thorn-guardian';
+ ctx.save();
+ ctx.translate(x,baseline);ctx.rotate(pose.lean);ctx.scale(directional?pose.face:1,pose.stretch);
+ ctx.globalAlpha=pose.opacity;
+ if(animated){
+  const size=Math.max(maxWidth,maxHeight)*1.10;
+  const anchor=kind==='moth'?.65:91/F;
+  ctx.drawImage(im,pose.cell*F,0,F,F,-size/2,-size*anchor,size,size);
+ }else{
+  const scale=Math.min(maxWidth/im.naturalWidth,maxHeight/im.naturalHeight);
+  const width=im.naturalWidth*scale,height=im.naturalHeight*scale;
+  ctx.drawImage(im,-width/2,-height,width,height);
  }
- if(NEW_FOREST_ENEMIES.has(e.kind)){
-  const clock=g.worldClock,wave=Math.sin(clock*(e.kind==='thief'?13:9)+e.phase);
-  const hover=e.kind==='moth'?-.25-.12*wave:Math.min(0,wave)*.08;
-  const facing=e.kind==='moth'?1:e.kind==='thief'?(e.moveFace||1):g.player.x<e.x?-1:1;
-  drawEnemyArt(e.kind,e.x,e.y+ht*.30+hover,wd*(1+wave*.045),ht,frame,facing,opacity);
- }else drawEnemyArt(art,e.x,e.y+ht*.30+bob,wd,ht,frame,e.retreat?(e.moveFace||face):face,opacity);
- if(e.flash>0)ellipse(e.x,e.y-ht*.23,e.r*.84,e.r*.68,'#ffffff',e.flash*2.4);
+ ctx.restore();
+}
+function drawEnemy(e){
+ if(e.dead||!visible(e.x,e.y,3))return;
+ const isboss=e.kind==='boss',iselite=Object.hasOwn(DATA.elites,e.kind);
+ const art=e.bossDef?.art||e.kind,[wd,ht]=ENEMY_ART[art];
+ const flying=FLYING_ENEMIES.has(art),clock=g.worldClock;
+ const gait=e.gait||0,stride=e.stride??e.phase/TAU;
+ const step=Math.sin(stride*TAU*2),breath=Math.sin(clock*3.8+e.phase);
  const attack=isboss?e.action?.type:e.attackState?.type;
+ const winding=attack==='dash-warn',charging=attack==='dash-run'||attack==='dashing';
+ const pulse=flying?Math.sin(clock*(art==='moth'?13:8)+e.phase):step;
+ const bob=flying?-.16+breath*.07:Math.min(0,step)*(.085+ht*.028)*gait;
+ const aim=winding?(e.action?.aim??e.attackState?.aim):null;
+ const face=aim!=null?(Math.cos(aim)<0?-1:1):(e.moveFace||(g.player.x<e.x?-1:1));
+ const opacity=e.retreat?clamp((e.retreat-clock)/.72,0,1):1;
+ const stretch=winding?.91:charging?1.06:flying?1+pulse*.08:1+step*.034*gait+breath*.014*(1-gait);
+ const lean=winding?-.058*face:charging?.11*face:flying?pulse*.030:step*gait*.055*face;
+ const beating=flying?Math.floor(clock*(art==='moth'?15:12)+e.phase):Math.floor(stride*4);
+ let frame='move-1';
+ if(e.flash>0)frame='hit';
+ else if((attack&&!charging)||e.attackArtUntil>clock)frame='attack';
+ else if(flying?beating%2:gait>.12&&beating%4>=2)frame='move-2';
+ const cell=art==='moth'?beating%4:gait>.12?beating%4:0;
+ ellipse(e.x,e.y+e.r*.64,e.r*1.03,e.r*.27,'#657c70',.20*opacity);
+ drawEnemyArt(art,e.x,e.y+ht*.30+bob,wd,ht,{frame,face,stretch,lean,opacity,cell});
+ if(e.flash>0)ellipse(e.x,e.y-ht*.23,e.r*.84,e.r*.68,'#ffffff',e.flash*2.4);
  if(attack?.endsWith('-warn')){
   const glint=.19+Math.sin(g.worldClock*15)*.045;
   star(e.x,e.y-ht*.86,glint,0,'#fff0b6','#76526b');
@@ -2553,9 +2634,32 @@ else if(e.kind==='beam'){
    }
   }
  ctx.restore();}}
+function drawCometEmbers(z,t){
+ const fade=clamp(z.remain/.42,0,1);
+ ctx.save();
+ ctx.globalAlpha=fade;
+ for(let i=0;i<8;i++){
+  const angle=i*2.39996+z.id*.47,reach=z.r*Math.sqrt((i+.35)/8)*.85;
+  const x=z.x+Math.cos(angle)*reach,y=z.y+Math.sin(angle)*reach;
+  const phase=(t*(1.03+i%3*.16)+i*.293)%1;
+  const flame=.15+(.095+.035*(i%3))*Math.sin(Math.PI*phase);
+  const lean=Math.sin(t*6+i)*flame*.28;
+  ellipse(x,y+.025,flame*.63,flame*.20,'#b3774f',.33);
+  ctx.beginPath();ctx.moveTo(x-flame*.54,y);
+  ctx.quadraticCurveTo(x-flame*.68,y-flame*.34,x+lean,y-flame*1.35);
+  ctx.quadraticCurveTo(x+flame*.16,y-flame*.68,x+flame*.34,y-flame*.84);
+  ctx.quadraticCurveTo(x+flame*.82,y-flame*.16,x+flame*.48,y);
+  ctx.closePath();ctx.fillStyle=i%2?'#eb9361':'#d77a55';ctx.fill();
+  ellipse(x+.018,y-flame*.18,flame*.22,flame*.38,'#ffe3a0',.92);
+  const rise=phase*.49;
+  ellipse(x+lean*phase*1.5,y-rise-flame*.7,.024,.029,'#f7bf74',.75*(1-phase));
+ }
+ ctx.restore();
+}
 function drawZone(z){
  if(!visible(z.x,z.y,z.r+1))return;
  const comet=z.kind==='comet',t=g.worldClock;
+ if(comet&&z.weapon==='comet'){drawCometEmbers(z,t);return;}
  for(let k=0;k<12;k++){
   const a=k*2.39996+z.id*.47,r=z.r*Math.sqrt((k+.5)/12)*.83;
   const x=z.x+Math.cos(a)*r,y=z.y+Math.sin(a)*r;
@@ -2926,7 +3030,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.42';
+  const CURRENT='5.6.43';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
