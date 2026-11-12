@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.55" />
+</style><meta name="nemo-version" content="5.6.56" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -702,11 +702,11 @@ const DATA = Object.freeze({
  world:160, survival:null, widthWorld:28,
  player:{attack:100,hp:100,speed:4,crit:.05,critMultiplier:1.5,invuln:1,pickup:1.75,weaponSlots:4,passiveSlots:3,rerolls:2},
  weapons:{
-  star:{name:'스타 샷',icon:'⭐',coef:0.6,cd:0.68,range:12.8,up:[],break:'별 +1 · 한 번에 총 4발 발사',steps:{
+  star:{name:'스타 샷',icon:'⭐',coef:0.6,cd:0.68,range:12.8,up:[],break:'별 +1 · 한 번에 총 3발 발사',steps:{
    2:['쌍별','별 +1 · 한 번에 총 2발 발사'],
-   3:['세 갈래 별','별 +1 · 한 번에 총 3발 발사'],
-   5:['빛나는 별','별 한 발 피해 +25%'],
-   6:['행운의 별','치명타 확률 +15%p · 치명타 피해 1.5배 → 2배']
+   3:['빛나는 별','모든 별의 피해 +25%'],
+   5:['행운의 별','치명타 확률 +15%p'],
+   6:['별빛 치명타','치명타 피해 1.5배 → 2배']
   },evos:[['별사탕 소나기','피해 +35% · 별마다 적 2마리 추가 관통'],['소원별','피해 +20% · 치명타 확률 +20%p · 별마다 적 1마리 추가 관통']]},
   orbit:{name:'스타 오비트',icon:'💫',coef:0.32,cd:0,range:1.65,up:[['별 하나 더','회전 별 +1'],['별빛 강화','접촉 피해 +25%'],['넓은 궤도','회전 반경 +15%']],break:'회전 속도 +30% · 닿은 적을 1초간 20% 둔화',evos:[["은하수 고리","회전 별 +2 · 피해 +15% · 안쪽과 바깥쪽에 별을 배치"],["수호별","피해 +25% · 초당 1회 가까운 적 탄환 차단"]]},
   moon:{name:'문라이트',icon:'🌙',coef:1.08,cd:1.58,range:14,up:[['달빛 집중','피해 +25%'],['빠른 달빛','공격 속도 +15%'],['넓은 달빛','폭 +25%']],break:'달빛이 끝에서 원점으로 돌아오며 50% 피해',evos:[["쌍둥이 달","달빛을 두 갈래로 발사 · 각 갈래는 피해 65%"],["보름달","피해 +60% · 폭 +50% · 재사용 대기시간 +20%"]]},
@@ -1021,7 +1021,7 @@ function castFromWand(p,a){p.castDuration=NEMO_CAST/spellTravelRate();p.castTime
 function wandLink(from,to,color='#fff1b4'){g.effects.push({kind:'wandLink',x:from.x,y:from.y,ex:to.x,ey:to.y,color,life:.28,max:.28});}
 
 const WEAPON_GUIDE={
- star:{role:'원거리 · 별 탄막',desc:'가까운 적에게 별을 발사합니다. Lv.4까지 별이 하나씩 늘고, 최종 진화하면 적을 관통해요.',pair:'별이 늘어날수록 넓게 퍼져요. 별 한 발의 피해는 추가 발사체마다 ×0.85가 적용돼요.'},
+ star:{role:'원거리 · 별 탄막',desc:'가까운 적에게 별을 발사합니다. 별 추가와 피해 강화를 번갈아 얻고, 최종 진화하면 적을 관통해요.',pair:'추가로 퍼지는 별은 중앙 별의 70% 피해를 줘요.'},
  orbit:{"role":"근거리 · 회전 접촉 공격","desc":"회전하는 별에 닿은 적만 피해를 받습니다. 적에게 접근하며 별의 궤도를 맞출수록 강해져요.","pair":"달빛 종소리로 적을 밀어낸 뒤 회전 별의 궤도에 걸치게 해보세요."},
  moon:{"role":"원거리 · 밀집 대열 관통","desc":"가까운 적 중 달빛 한 줄에 가장 많은 적을 담을 수 있는 방향을 찾습니다. 달빛은 줄지어 오는 적을 관통해요.","pair":"솜사탕 소용돌이로 모은 적을 한 줄로 꿰뚫기 좋아요."},
  bubble:{"role":"원거리 · 추적 폭발과 둔화","desc":"느리게 따라가는 방울이 부딪히거나 수명이 다하면 터집니다. 폭발 주변의 적을 잠시 둔화시켜요.","pair":"방울로 적을 늦추면 별똥별이 무리에 떨어질 시간을 벌 수 있어요."},
@@ -1088,7 +1088,7 @@ function renderCodex(){
  $('codex-tabs').innerHTML=weaponKeys.map(id=>`<button type="button" class="codex-tab ${id===currentCodex?'on':''}" data-codex="${id}" aria-pressed="${id===currentCodex}"><span aria-hidden="true">${skillIcon(id,W[id].icon)}</span> ${W[id].name}${g?.weapons[id]?' · Lv.'+g.weapons[id].lv:''}</button>`).join('');
  const d=W[currentCodex],v=WEAPON_GUIDE[currentCodex],w=g?.weapons[currentCodex];
  const growthList=d.steps
-  ? Object.entries({...d.steps,4:['네 번째 별',d.break]}).map(([lv,[name,desc]])=>`<div class="codex-up"><b>${name}</b><span class="effect-lines">${effectLines(desc)}</span><em>Lv.${lv}</em></div>`).join('')
+  ? Object.entries({...d.steps,4:['세 갈래 별',d.break]}).map(([lv,[name,desc]])=>`<div class="codex-up"><b>${name}</b><span class="effect-lines">${effectLines(desc)}</span><em>Lv.${lv}</em></div>`).join('')
   : d.up.map(([name,desc],i)=>`<div class="codex-up"><b>${name}</b><span class="effect-lines">${effectLines(friendlyEffect(desc))}</span><em>${w?w.up[i]:0}/2</em></div>`).join('')+`<h4>✦ Lv.4 중간 돌파</h4><p class="codex-text effect-lines">${effectLines(friendlyEffect(d.break))}</p>`;
  $('codex-details').innerHTML=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(currentCodex,d.icon)}</div><div class="codex-intro"><div class="codex-heading"><h3>${d.name}</h3><span>${w?'현재 Lv.'+w.lv:'기본 무기 Lv.1'}</span></div><p class="codex-role">${v.role}</p><p>${v.desc}</p><p class="codex-note">${v.pair}</p></div></div>
  <div class="codex-metrics">${guideMetrics(currentCodex)}</div><div class="codex-columns"><section><h4>✦ ${d.steps?'레벨별 강화':'일반 강화 (각 2회까지)'}</h4>${growthList}</section>
@@ -1205,9 +1205,9 @@ function clockMult(id,w=g?.weapons[id]){
 function cooldown(id,w=g?.weapons[id]){
  return Math.max(.08,W[id].cd/clockMult(id,w)*(id==='moon'&&w?.evo===1?1.2:1));
 }
-function starShotCount(w){return Math.min(w.lv,4);}
+function starShotCount(w){return 1+Number(w.lv>=2)+Number(w.lv>=4);}
 function starShotPower(w){
- return .85**(starShotCount(w)-1)*(w.lv>=5?1.25:1)*([1.35,1.20][w.evo]??1);
+ return (w.lv>=3?1.25:1)*([1.35,1.20][w.evo]??1);
 }
 function weaponPower(id,coefficient,w){
  const magic=1+.20*(g?.passives.magic||0),brave=1+.12*(g?.blessings?.brave||0);
@@ -1230,7 +1230,7 @@ function weaponReach(id,w=g?.weapons[id]){
   default:return d.range;
  }
 }
-function wpCrit(id){let chance=g.player.crit+.05*getPassive('lucky');if(id==='star')chance+=(g.weapons.star.lv>=6?.15:0)+(g.weapons.star.evo===1?.20:0);if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
+function wpCrit(id){let chance=g.player.crit+.05*getPassive('lucky');if(id==='star')chance+=(g.weapons.star.lv>=5?.15:0)+(g.weapons.star.evo===1?.20:0);if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
 function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
  let value=raw;if(e.vulnerableUntil>g.worldClock)value*=1.15;
  if(e.kind==='bramble'&&g.worldClock>=(e.guardUntil||0)){
@@ -1924,9 +1924,9 @@ function fireWeapon(id){
   const radius={star:.23,bubble:.25,frost:.22,feather:.24}[id];
   if(id==='star')w.fanSide=-(w.fanSide??-1);
   for(let i=0;i<count;i++){
-   const angle=a+(id==='star'?[0,-1,1,-2][i]*.16*w.fanSide:(i-(count-1)/2)*.20);
+   const angle=a+(id==='star'?[0,-1,1][i]*.16*w.fanSide:(i-(count-1)/2)*.20);
    g.shots.push({kind:id,weapon:id,x:origin.x,y:origin.y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,
-    speed,life,r:radius,damage,target:id==='bubble'||(id==='star'&&i===0)?t.id:null,
+    speed,life,r:radius,damage:id==='star'&&i>0?damage*.70:damage,target:id==='bubble'||(id==='star'&&i===0)?t.id:null,
     chains:id==='star'?([2,1][w.evo]??0):id==='frost'?(w.break?3:1):id==='feather'&&w.break?(w.evo===0?2:1):0,sub:false,returning:false,hit:new Set(),trail:[],dead:false});
   }
  }else if(id==='moon'){
@@ -3404,7 +3404,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.55';
+  const CURRENT='5.6.56';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
