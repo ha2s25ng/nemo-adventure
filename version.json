@@ -1,5 +1,5 @@
 {
-  "version": "5.6.46",
+  "version": "5.6.47",
   "mode": "endless_survival",
-  "notes": "실제 판정 크기에 맞춘 고대비 적 탄환"
+  "notes": "마법 아이콘과 이펙트 통일, 네 발 고슴도치, 처치 HUD와 시도별 랭킹 개선"
 }

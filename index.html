@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.46" />
+</style><meta name="nemo-version" content="5.6.47" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -466,6 +466,32 @@
 
 #app #hud .survival-left #buffs[data-rage="true"] { color:#fff1d8 !important; background:#8a354b !important; border-color:#e8a491 !important; }
 
+#app #codex .codex-tabs { grid-template-columns:repeat(8,minmax(0,1fr)) !important; }
+#app #codex :is(.codex-tab,.codex-emblem) .new-magic-icon { display:block; object-fit:contain; object-position:center; }
+#app #codex .codex-emblem .new-magic-icon { width:82% !important; height:82% !important; max-width:100% !important; max-height:100% !important; }
+#app #codex .codex-tab[data-codex="eclipse"] { border-color:#a774b7 !important; }
+#app #hud .survival-status #weapon-slots .slot small {
+ align-self:center; text-align:center; color:#313e32 !important; background:transparent !important;
+ border:0 !important; box-shadow:none !important; text-shadow:none !important;
+}
+#app #hud .survival-status .survival-left #weapon-slots .slot .ico { justify-items:center; }
+#app #hud .survival-status .hud-right .survival-kills { gap:4px; }
+#app #hud .survival-status .hud-right .survival-kills img { width:clamp(20px,2.12vw,27px) !important; height:clamp(20px,2.12vw,27px) !important; }
+#app #hud #kills-hud { font-variant-numeric:tabular-nums; }
+@media(max-width:880px) { #app #codex .codex-tabs { grid-template-columns:repeat(5,minmax(0,1fr)) !important; } }
+@media(max-width:500px) { #app #codex .codex-tabs { grid-template-columns:repeat(4,minmax(0,1fr)) !important; } }
+
+#app #leaderboard :is(.nemo-rank-table-head,.nemo-rank-row) { grid-template-columns:minmax(90px,1fr) minmax(67px,.7fr) minmax(115px,1.42fr); }
+#app #leaderboard .rank-spells { margin:0; gap:3px 6px; }
+#app #leaderboard .rank-spell { display:inline-flex; align-items:center; gap:3px; max-width:100%; font-size:11px; line-height:1.2; color:#51425e; }
+#app #leaderboard .rank-spell img { flex:none; }
+#app #leaderboard .rank-missing { color:#897989; }
+#app #leaderboard .rank-more { margin:8px 0 0; }
+@media(max-width:480px) {
+ #app #leaderboard :is(.nemo-rank-table-head,.nemo-rank-row) { grid-template-columns:minmax(76px,1fr) minmax(55px,.66fr) minmax(88px,1.18fr); gap:5px; }
+ #app #leaderboard .rank-spell { font-size:10px; }
+}
+
 </style>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
@@ -482,7 +508,7 @@
     <div class="buff-line" id="buffs" aria-label="보유 강화 효과"></div>
    </div>
    <div class="timer" id="survival-timer"><div class="timer-content"><div class="clock" id="time">00:00</div></div></div>
-   <div class="hud-right"><div class="survival-kills" role="group" aria-label="처치 수"><img src="./assets/pastel-ui-v5619/kills.webp" alt=""><span class="woodland-kills-label">처치</span><span id="kills-hud">0</span></div><div class="money"><img alt="골드" class="money-icon" src="./assets/pastel-ui-v5619/coin.webp"><span id="gold-hud">0</span></div><button aria-label="일시 정지" class="pause-btn" id="pause-btn" type="button"><img src="./assets/pastel-ui-v5619/pause.webp" alt=""></button></div>
+   <div class="hud-right"><div class="survival-kills" role="group" aria-label="처치 수"><img src="./assets/spell-art-v5647/kills.png" alt=""><span id="kills-hud">0</span></div><div class="money"><img alt="골드" class="money-icon" src="./assets/pastel-ui-v5619/coin.webp"><span id="gold-hud">0</span></div><button aria-label="일시 정지" class="pause-btn" id="pause-btn" type="button"><img src="./assets/pastel-ui-v5619/pause.webp" alt=""></button></div>
   </div>
  </div>
 </div>
@@ -578,8 +604,9 @@
     <p class="nemo-rank-warning">⚠ 절대로 secret / service_role 키를 입력하지 마세요. 연결 정보는 현재 브라우저에만 저장돼요.</p>
     <div class="nemo-rank-actions"><button class="btn primary" id="rank-save">연결 정보 저장 · 확인</button><button class="btn" id="rank-submit">방금 기록 업로드</button></div>
     <div id="rank-status" role="status" class="nemo-rank-status">미연결 — 개인 기록만 표시 중</div></div></section>
-    <section class="nemo-rank-right"><div class="nemo-rank-table-title"><h3>✨ 전체 TOP 50</h3><button class="btn" id="rank-refresh">↻ 새로고침</button></div>
-    <div class="nemo-rank-table-head"><span>순위 / 닉네임</span><span>기록</span><span>결과</span></div><div id="rank-online" class="nemo-rank-list"><p class="nemo-rank-empty">온라인 기록을 불러오는 중이에요.</p></div>
+    <section class="nemo-rank-right"><div class="nemo-rank-table-title"><h3>전체 시도 기록</h3><button class="btn" id="rank-refresh">↻ 새로고침</button></div>
+    <div class="nemo-rank-table-head"><span>순위 / 닉네임</span><span>기록</span><span>사용 마법</span></div><div id="rank-online" class="nemo-rank-list"><p class="nemo-rank-empty">온라인 기록을 불러오는 중이에요.</p></div>
+    <button class="btn rank-more" id="rank-more" type="button" hidden>기록 더 보기</button>
     <p class="nemo-rank-foot">온라인 연결이 끊겨도 이 기기의 개인 기록은 저장돼요.</p></section></div>
 </div></div>
 <div class="overlay hidden" id="settings" role="dialog" aria-modal="true" aria-labelledby="settings-title">
@@ -608,7 +635,7 @@ const DATA = Object.freeze({
  progression:{xpToNext:{base:8,linear:2,curve:.32,curveStart:8},xpDrops:{green:[.54,.087,.006],blue:[.31,.38,.05],fat:[.24,.42,.135],spore:[.27,.41,.125],firefly:[.29,.37,.145],armor:[.155,.40,.25],spark:[.26,.40,.14],petal:[.61,.09,.008],bramble:[.19,.41,.19],moth:[.32,.35,.11]}},
  title:'니모의 낯선 모험', saveKey:'nemo_strange_adventure_FULL_v1', version:1,
  world:160, survival:null, widthWorld:28,
- player:{attack:100,hp:100,speed:4,crit:.05,critMultiplier:1.5,invuln:.7,pickup:1.75,weaponSlots:4,passiveSlots:3,rerolls:2},
+ player:{attack:100,hp:100,speed:4,crit:.05,critMultiplier:1.5,invuln:1,pickup:1.75,weaponSlots:4,passiveSlots:3,rerolls:2},
  weapons:{
   star:{name:'스타 샷',icon:'⭐',coef:0.6,cd:0.68,range:12.8,up:[['별 하나 더','발사체 +1 · 개별 피해 ×0.85'],['반짝이는 별','스타 샷 피해 +25%'],['행운의 별','스타 샷 치명타 확률 +10%p']],break:'적중 후 반경 3에서 다른 적 1회 도탄 · 도탄 피해 50%',evos:[["별사탕 소나기","별 +2 · 개별 피해 소폭 감소 · 직격 시 작은 별 폭발"],["소원별","치명타 확률 +20%p · 치명타 배율 +75%p · 체력이 낮은 적에게 피해 +30%"]]},
   orbit:{name:'스타 오비트',icon:'💫',coef:0.32,cd:0,range:1.65,up:[['별 하나 더','회전 별 +1'],['별빛 강화','접촉 피해 +25%'],['넓은 궤도','회전 반경 +15%']],break:'회전 속도 +30% · 닿은 적을 1초간 20% 둔화',evos:[["은하수 고리","회전 별 +2 · 피해 +15% · 안쪽과 바깥쪽에 별을 배치"],["수호별","피해 +25% · 초당 1회 가까운 적 탄환 차단"]]},
@@ -624,7 +651,7 @@ const DATA = Object.freeze({
   seed:{name:'별씨앗 덫',icon:'🌱',coef:1.37,cd:1.65,range:5,up:[['씨앗 주머니','최대 설치 덫 +1'],['꽃폭탄','덫 폭발 피해 +25%'],['꽃잎 폭발','폭발 반경 +20%']],break:'덫 폭발 후 작은 꽃씨 덫 2개 생성',evos:[["마법 꽃밭","덫 최대 +2 · 터진 자리에 지속 피해"],["요정의 덫","감지 범위 +40% · 폭발 반경 +50% · 왕관 슬라임 피해 +30%"]]},
   bell:{name:'달빛 종소리',icon:'🔔',coef:0.83,cd:3.3,range:2.65,up:[['넓은 울림','충격파 범위 +22%'],['맑은 종소리','충격파 피해 +25%'],['빠른 울림','공격 속도 +15%']],break:'충격파에 맞은 적을 1초간 둔화',evos:[["두 번 울리는 종","두 번째 충격파 · 더 강한 넉백"],["수호의 종","충격파 반경 +30% · 파동에 닿은 모든 적 탄환 제거"]]},
   feather:{name:'바람 깃털',icon:'🍃',coef:0.71,cd:1.55,range:10.5,up:[['깃털 하나 더','깃털 +1 · 개별 위력 소폭 감소'],['날카로운 깃털','깃털 피해 +25%'],['가벼운 바람','공격 속도 +15%']],break:'나가는 깃털이 다른 적에게 1회 연쇄',evos:[["춤추는 깃털","깃털 +2 · 나가는 길에 최대 2회 연쇄"],["돌아오는 바람","돌아오는 길 피해 +50% · 복귀 속도 증가"]]},
-  eclipse:{name:'황혼의 별',icon:'✦',coef:2.05,cd:2.75,range:13.2,up:[['넓은 황혼','폭발 반경 +15%'],['별의 심장','피해 +25%'],['빠른 공명','공격 속도 +15%']],break:'폭발에 맞은 적이 잠시 느려져요',evos:[['새벽의 왕관','추가 폭발 1회 · 추가 폭발 피해 55%'],['황혼의 왕관','피해 +30% · 폭발 반경 +20%']]}
+  eclipse:{name:'황혼의 별',icon:'✦',coef:2.95,cd:2.55,range:13.2,up:[['넓은 황혼','폭발 반경 +15%'],['별의 심장','피해 +25%'],['빠른 공명','공격 속도 +15%']],break:'폭발에 맞은 적이 잠시 느려져요',evos:[['새벽의 왕관','추가 폭발 1회 · 추가 폭발 피해 55%'],['황혼의 왕관','피해 +30% · 폭발 반경 +20%']]}
  },
  passives:{magic:['마법 강화','✨','모든 무기 피해 +20%'],quick:['빠른 주문','⏱','모든 공격 속도 +8%'],lucky:['행운의 리본','🎗','치명타 확률 +5%p'],big:['커다란 마법','💠','공격 반경·폭·폭발 반경 +8%'],cloak:['포근한 망토','💖','최대 체력 +15% · 증가량만큼 현재 체력 회복'],shoes:['가벼운 발걸음','👟','이동 속도 +8%'],magnet:['보석 자석','🧲','경험치 획득 범위 +20%']},
  monsters:{green:{name:'초록 슬라임',hp:45,dmg:8,speed:1.3,r:.48},blue:{name:'파랑 슬라임',hp:90,dmg:10,speed:1.7,r:.48},fat:{name:'통통 버섯',hp:150,dmg:12,speed:.9,r:.53},spore:{name:'포자 버섯',hp:100,dmg:8,speed:.8,r:.51},firefly:{name:'반딧불',hp:70,dmg:8,speed:2,r:.38},armor:{name:'밤송이 슬라임',hp:240,dmg:14,speed:.95,r:.57},spark:{name:'별빛 도깨비',hp:92,dmg:10,speed:3.10,r:.44},petal:{name:'소환 슬라임',hp:90,dmg:8,speed:1.3,r:.46},
@@ -732,7 +759,7 @@ const LATE_BOSSES=[
  {art:'storm-owl',name:'폭풍 부엉이',hp:67000,dmg:27,speed:1.25,r:1.68,gold:210,tier:3,signature:'wing'}
 ];
 const ENEMY_ART={
- bramble:[1.21,1.02],moth:[1.42,1.12],thief:[1.18,1.06],
+ bramble:[1.34,.94],moth:[1.42,1.12],thief:[1.18,1.06],
  green:[1.13,0.94],
  blue:[1.13,0.94],
  fat:[1.27,1.13],
@@ -750,21 +777,22 @@ for(const kind of Object.keys(ENEMY_ART)){
  ASSET_DATA['enemy_'+kind]=NEW_FOREST_ENEMIES.has(kind)?'./assets/forest-enemies-v5641/'+kind+'.png':'./assets/monsters-v553/'+kind+'.webp';
 }
 for(const boss of LATE_BOSSES)ASSET_DATA['enemy_'+boss.art]='./assets/forest-bosses-v5642/'+boss.art+'.png';
+const SPELL_ART='./assets/spell-art-v5647/';
 const FOREST_GAIT_TILES=96;
+const ENEMY_STRIDE_LENGTH={green:.86,blue:.96,petal:.84,armor:.95,bramble:.93,thief:1.16,
+ fat:.80,spore:.87,flower:1.18,horn:1.14,spark:1.28,boss:1.60};
+const JELLY_GAITS=new Set(['green','blue','petal','armor','boss']);
 const FLYING_ENEMIES=new Set(['moth','firefly','moonwing-queen','storm-owl']);
-for(const kind of NEW_FOREST_ENEMIES)ASSET_DATA['enemy_'+kind+'_gait']='./assets/forest-motion-v5643/'+kind+'.png';
+for(const kind of NEW_FOREST_ENEMIES)ASSET_DATA['enemy_'+kind+'_gait']=kind==='bramble'?SPELL_ART+'bramble-gait.png':'./assets/forest-motion-v5643/'+kind+'.png';
 const ENEMY_MOTION_KINDS=new Set(['armor','blue','fat','firefly','flower','green','horn','petal','spark','spore']);
 for(const kind of ENEMY_MOTION_KINDS){
  for(const frame of ['move-1','move-2','attack','hit']){
   ASSET_DATA['enemy_'+kind+'_'+frame]='./assets/monster-motion-v555/'+kind+'-'+frame+'.webp';
  }
 }
-for(const id of weaponKeys){
- ASSET_DATA['ui_'+id]='./assets/polish-v554/weapon-'+id+'.webp';
-}
+for(const id of weaponKeys)ASSET_DATA['ui_'+id]=SPELL_ART+id+'.png';
 ASSET_DATA.ui_magic='./assets/polish-v554/magic-wand.webp';
 Object.assign(ASSET_DATA,{"ui_magic":"./assets/interface-art-v5620/magic.webp","ui_quick":"./assets/interface-art-v5620/quick.webp","ui_lucky":"./assets/interface-art-v5620/lucky.webp","ui_big":"./assets/interface-art-v5620/big.webp","ui_cloak":"./assets/interface-art-v5620/cloak.webp","ui_shoes":"./assets/interface-art-v5620/shoes.webp","ui_magnet":"./assets/interface-art-v5620/magnet.webp"});
-Object.assign(ASSET_DATA,{"ui_star":"./assets/readable-ui-v5621/star.webp","ui_orbit":"./assets/readable-ui-v5621/orbit.webp","ui_moon":"./assets/readable-ui-v5621/moon.webp","ui_bubble":"./assets/readable-ui-v5621/bubble.webp","ui_bloom":"./assets/readable-ui-v5621/bloom.webp","ui_cloud":"./assets/readable-ui-v5621/cloud.webp","ui_ribbon":"./assets/readable-ui-v5621/ribbon.webp","ui_feather":"./assets/readable-ui-v5621/feather.webp"});
 const FOREST_ART='./assets/storybook-forest-v5633/';
 Object.assign(ASSET_DATA,{
  windmill:FOREST_ART+'windmill.png',
@@ -777,10 +805,9 @@ Object.assign(ASSET_DATA,{
  flowers:FOREST_ART+'flowers.png',
  groundFull:FOREST_ART+'meadow.jpg'
 });
-ASSET_DATA.ui_cloud='./assets/forest-enemies-v5641/cloud-familiar.png';
+ASSET_DATA.cloudFamiliar='./assets/forest-enemies-v5641/cloud-familiar.png';
 ASSET_DATA.pickupCrystal='./assets/forest-pickups-v5637/xp-crystal.png';
 ASSET_DATA.pickupBone='./assets/forest-pickups-v5637/health-bone.png';
-ASSET_DATA.ui_eclipse=STORYBOOK_ART.icon_crown;
 ASSET_DATA.ui_gold='./assets/nemo-wardrobe-v5631/gold-pouch.png';
 ASSET_DATA.ui_heal='./assets/nemo-wardrobe-v5631/sweet-snack.png';
 const sprites={};Object.keys(ASSET_DATA).forEach(k=>{let im=new Image();im.src=ASSET_DATA[k];sprites[k]=im;});
@@ -926,7 +953,7 @@ function castFromWand(p,a){p.castDuration=NEMO_CAST/spellTravelRate();p.castTime
 function wandLink(from,to,color='#fff1b4'){g.effects.push({kind:'wandLink',x:from.x,y:from.y,ex:to.x,ey:to.y,color,life:.28,max:.28});}
 
 const WEAPON_GUIDE={
- eclipse:{role:'희귀 마법 · 연속 폭발',desc:'스타 샷을 대신 장착합니다. 가장 가까운 적의 위치에 보랏빛 별이 여러 번 폭발해요.',pair:'서리 수정으로 적을 늦추면 같은 자리에서 연속 폭발을 맞히기 쉬워요.'},
+ eclipse:{role:'희귀 마법 · 연속 폭발',desc:'스타 샷을 대신 장착합니다. 적이 밀집한 곳에 보랏빛 별이 여러 번 폭발해요.',pair:'서리 수정으로 적을 늦추면 같은 자리에서 연속 폭발을 맞히기 쉬워요.'},
  star:{"role":"원거리 · 빠른 단일 공격","desc":"가까운 적에게 별을 발사합니다. 날아가는 동안 목표를 살짝 따라가고, 돌파하면 다른 적에게 튕깁니다.","pair":"구름 친구가 약화한 보스에게 꾸준히 피해를 줄 수 있어요."},
  orbit:{"role":"근거리 · 회전 접촉 공격","desc":"회전하는 별에 닿은 적만 피해를 받습니다. 적에게 접근하며 별의 궤도를 맞출수록 강해져요.","pair":"달빛 종소리로 적을 밀어낸 뒤 회전 별의 궤도에 걸치게 해보세요."},
  moon:{"role":"원거리 · 밀집 대열 관통","desc":"가까운 적 중 달빛 한 줄에 가장 많은 적을 담을 수 있는 방향을 찾습니다. 달빛은 줄지어 오는 적을 관통해요.","pair":"솜사탕 소용돌이로 모은 적을 한 줄로 꿰뚫기 좋아요."},
@@ -1129,7 +1156,7 @@ function weaponReach(id,w=g?.weapons[id]){
   case 'comet':return 1.46*1.2**w.up[2]*rm*(w.evo===1?1.5:1);
   case 'bubble':return 1.33*1.2**w.up[2]*rm*(w.evo===1?1.4:1);
   case 'seed':return 1.22*1.2**w.up[2]*rm*(w.evo===1?1.5:1);
-  case 'eclipse':return 2.18*1.15**w.up[0]*rm*(w.evo===1?1.2:1);
+  case 'eclipse':return 2.50*1.15**w.up[0]*rm*(w.evo===1?1.2:1);
   default:return d.range;
  }
 }
@@ -1157,7 +1184,7 @@ function forestFrenzied(){
  return !!g&&g.worldClock>=g.frenzyStarts&&g.worldClock<g.frenzyUntil;
 }
 function enemyPace(){return forestFrenzied()?1.30:1;}
-function damagePlayer(value,reason){const p=g.player;if(p.invuln>0||screen!=='playing')return;value=Math.round(value*(forestFrenzied()?1.20:1)*100)/100;p.hp=Math.max(0,p.hp-value);p.invuln=.7;g.hitCount++;g.hitReasons[reason]=(g.hitReasons[reason]||0)+1;
+function damagePlayer(value,reason){const p=g.player;if(p.invuln>0||screen!=='playing')return;value=Math.round(value*(forestFrenzied()?1.20:1)*100)/100;p.hp=Math.max(0,p.hp-value);p.invuln=DATA.player.invuln;g.hitCount++;g.hitReasons[reason]=(g.hitReasons[reason]||0)+1;
  p.hurtTimer=.24;if(opts.numbers)g.numbers.push({x:p.x,y:p.y-.75,text:'-'+Math.round(value),ttl:.8,color:'#e84779'});if(opts.particles)burst(p.x,p.y,'#ff9fbd',13);if(p.hp<=0)finish(false);}
 function slow(e,amount,duration){if(e.kind==='boss'){amount=Math.min(amount,.2);duration=Math.min(duration,.6);}if(amount>e.slowAmount||e.slowUntil<g.worldClock){e.slowAmount=amount;e.slowUntil=g.worldClock+duration;}else if(e.slowUntil<g.worldClock+duration)e.slowUntil=g.worldClock+duration;}
 function burst(x,y,color,n=7){if(!opts.particles)return;for(let i=0;i<n&&g.particles.length<320;i++){let a=rand()*TAU,sp=range(.4,2.8),ttl=range(.20,.70);g.particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:ttl,max:ttl,color,r:range(.035,.12)});}}
@@ -1653,7 +1680,7 @@ function moveForestSpecial(e,angle,dt,pace=1){
   const x=clamp(e.x+Math.cos(angle+offset)*step,e.r,DATA.world-e.r);
   const y=clamp(e.y+Math.sin(angle+offset)*step,e.r,DATA.world-e.r);
   if(distance(e.x,e.y,x,y)<step*.45||blockedByTerrain(x,y,e.r))continue;
-  e.moveFace=x<e.x?-1:x>e.x?1:(e.moveFace||1);e.x=x;e.y=y;return;
+  e.x=x;e.y=y;return;
  }
 }
 function updateMonsters(dt){
@@ -1663,10 +1690,11 @@ function updateMonsters(dt){
   const oldX=e.x,oldY=e.y;
   updateMonster(e,dt);
   const dx=e.x-oldX,dy=e.y-oldY,travel=Math.hypot(dx,dy);
-  const stride=e.kind==='thief'?.66:e.kind==='bramble'?.49:e.isBoss?1.15:.64;
+  const stride=ENEMY_STRIDE_LENGTH[e.kind]??.94;
   e.stride=((e.stride??e.phase/TAU)+travel/stride)%1;
   e.gait=(e.gait||0)+(clamp(travel/dt/.75,0,1)-(e.gait||0))*(-Math.expm1(-19*dt));
-  if(Math.abs(dx)>.006)e.moveFace=dx<0?-1:1;
+  e.faceVelocity=(e.faceVelocity||0)+(dx/dt-(e.faceVelocity||0))*(-Math.expm1(-12*dt));
+  if(Math.abs(e.faceVelocity)>.42)e.moveFace=e.faceVelocity<0?-1:1;
   if(screen!=='playing')return;
  }
 }
@@ -1810,7 +1838,7 @@ function fireWeapon(id){
  if(id==='cloud'){
   const boss=g.boss;
   t=boss&&!boss.dead&&distance(p.x,p.y,boss.x,boss.y)<=d.range?boss:targetHighestHP(p.x,p.y,d.range);
- }else if(id==='moon'||id==='comet'||id==='bloom'){
+ }else if(id==='moon'||id==='comet'||id==='bloom'||id==='eclipse'){
   t=crowdedTarget(p,d.range,weaponReach(id,w),width);
  }else if(id==='ribbon'){
   const r=weaponReach(id,w);
@@ -1862,7 +1890,7 @@ function fireWeapon(id){
  }else if(id==='eclipse'){
   const r=weaponReach(id,w),x=t.x,y=t.y,rate=spellTravelRate();
   wandLink(origin,t,'#d6a7fe');
-  const pulses=w.evo===0?[1,.64,.49,.55]:[1,.64,.49];
+  const pulses=w.evo===0?[1,.74,.63,.55]:[1,.74,.63];
   for(const [i,weight] of pulses.entries())schedule((.14+i*.31)/rate,()=>{
    g.effects.push({kind:'eclipsePulse',x,y,r,life:.42,max:.42});
    for(const enemy of g.enemies){
@@ -1879,7 +1907,7 @@ function fireWeapon(id){
    const delay=(.46+i*.075)/spellTravelRate();
    g.effects.push({kind:'cometWarn',x:tx,y:ty,r,life:delay,max:delay});
    schedule(delay,()=>{
-    g.effects.push({kind:'starBoom',x:tx,y:ty,r,life:.34,max:.34});
+    g.effects.push({kind:'cometImpact',x:tx,y:ty,r,life:.34,max:.34});
     for(const e of g.enemies){
      if(!e.dead&&distance(e.x,e.y,tx,ty)<=r+e.r)deal(e,damage,id);
     }
@@ -1968,7 +1996,7 @@ function updateShots(dt){const step=dt*spellTravelRate();for(const s of g.shots)
     g.shots.push({kind:'star',weapon:'star',x:e.x,y:e.y,vx:Math.cos(a)*15,vy:Math.sin(a)*15,life:.25,r:.23,damage:s.damage*.5,bounce:0,hit:new Set([e.id]),direct:false,trail:[],dead:false});}}
   }else if(s.kind==='frost'){
    deal(e,s.damage,'frost');slow(e,wfrostSlow(),1.05+.5*g.weapons.frost.up[2]);
-   if(g.weapons.frost.evo===1){g.effects.push({kind:'starBoom',x:e.x,y:e.y,r:.85,life:.28,max:.28});for(const other of g.enemies){if(!other.dead&&other.id!==e.id&&distance(other.x,other.y,e.x,e.y)<.85+other.r){deal(other,s.damage*.38,'frost',{critAllowed:false});slow(other,.25,1);}}}
+   if(g.weapons.frost.evo===1){g.effects.push({kind:'frostBurst',x:e.x,y:e.y,r:.85,life:.28,max:.28});for(const other of g.enemies){if(!other.dead&&other.id!==e.id&&distance(other.x,other.y,e.x,e.y)<.85+other.r){deal(other,s.damage*.38,'frost',{critAllowed:false});slow(other,.25,1);}}}
    if(s.chains-->0){break;}s.dead=true;
   }else if(s.kind==='feather'){
    deal(e,s.damage,'feather');
@@ -2483,7 +2511,7 @@ function drawEnemyArt(kind,x,baseline,maxWidth,maxHeight,pose){
  if(!im?.complete||!im.naturalWidth)return;
  const directional=animated||key!==baseKey||NEW_FOREST_ENEMIES.has(kind)||kind==='thorn-guardian';
  ctx.save();
- ctx.translate(x,baseline);ctx.rotate(pose.lean);ctx.scale(directional?pose.face:1,pose.stretch);
+ ctx.translate(x,baseline);ctx.rotate(pose.lean);ctx.scale((directional?pose.face:1)*pose.widthScale,pose.stretch);
  ctx.globalAlpha=pose.opacity;
  if(animated){
   const size=Math.max(maxWidth,maxHeight)*1.10;
@@ -2506,12 +2534,15 @@ function drawEnemy(e){
  const attack=isboss?e.action?.type:e.attackState?.type;
  const winding=attack==='dash-warn',charging=attack==='dash-run'||attack==='dashing';
  const pulse=flying?Math.sin(clock*(art==='moth'?13:8)+e.phase):step;
- const bob=flying?-.16+breath*.07:Math.min(0,step)*(.085+ht*.028)*gait;
+ const jelly=JELLY_GAITS.has(art),planted=art==='bramble';
+ const lift=Math.max(0,Math.sin(stride*TAU));
+ const bob=flying?-.16+breath*.045:planted?0:jelly?-lift*.12*gait:Math.min(0,step)*.048*gait;
  const aim=winding?(e.action?.aim??e.attackState?.aim):null;
  const face=aim!=null?(Math.cos(aim)<0?-1:1):(e.moveFace||(g.player.x<e.x?-1:1));
  const opacity=e.retreat?clamp((e.retreat-clock)/.72,0,1):1;
- const stretch=winding?.91:charging?1.06:flying?1+pulse*.08:1+step*.034*gait+breath*.014*(1-gait);
- const lean=winding?-.058*face:charging?.11*face:flying?pulse*.030:step*gait*.055*face;
+ const stretch=winding?.92:charging?1.035:flying?1+pulse*.052:planted?1+step*.013*gait:jelly?1+(lift-.36)*.14*gait:1+step*.024*gait;
+ const widthScale=jelly?1-(stretch-1)*.65:1;
+ const lean=winding?-.05*face:charging?.085*face:flying?pulse*.025:planted?0:step*gait*.034*face;
  const beating=flying?Math.floor(clock*(art==='moth'?15:12)+e.phase):Math.floor(stride*4);
  let frame='move-1';
  if(e.flash>0)frame='hit';
@@ -2519,7 +2550,7 @@ function drawEnemy(e){
  else if(flying?beating%2:gait>.12&&beating%4>=2)frame='move-2';
  const cell=art==='moth'?beating%4:gait>.12?beating%4:0;
  ellipse(e.x,e.y+e.r*.64,e.r*1.03,e.r*.27,'#657c70',.20*opacity);
- drawEnemyArt(art,e.x,e.y+ht*.30+bob,wd,ht,{frame,face,stretch,lean,opacity,cell});
+ drawEnemyArt(art,e.x,e.y+ht*.30+bob,wd,ht,{frame,face,stretch,widthScale,lean,opacity,cell});
  if(e.flash>0)ellipse(e.x,e.y-ht*.23,e.r*.84,e.r*.68,'#ffffff',e.flash*2.4);
  if(attack?.endsWith('-warn')){
   const glint=.19+Math.sin(g.worldClock*15)*.045;
@@ -2610,7 +2641,7 @@ function drawCrystal(x,y,xp,scale=1){
 }
 function drawGem(l){
  if(!visible(l.x,l.y,1))return;
- const y=l.y+Math.sin(l.phase)*.05;
+ const y=l.kind==='xp'?l.y:l.y+Math.sin(l.phase)*.05;
  const shadow=l.kind==='xp'?CRYSTAL_HEIGHTS[crystalGrade(l.xp)]:.68;
  ellipse(l.x,l.y+shadow*.31,shadow*.32,shadow*.085,'#799f7f',.23);
  if(l.kind==='xp'){
@@ -2634,25 +2665,30 @@ function drawGem(l){
   if(sprites.ui_heal?.naturalWidth)drawPickup('ui_heal',l.x,y,.72);
   else drawBone(l.x,y,true);
  }else if(l.kind==='magnet')imageSprite('fx_magnet',l.x,y,.55,.55);else imageSprite('fx_coin',l.x,y,.56,.56);}
+const SPELL_TRAILS={star:'#e3a466',bubble:'#9ecbe8',fairy:'#d7b5e9',frost:'#87c2e6',feather:'#9dbea0'};
 function drawProjectile(s){
  if(!visible(s.x,s.y,1))return;
  if(s.trail?.length>1){
   ctx.beginPath();ctx.moveTo(s.trail[0].x,s.trail[0].y);
   for(const point of s.trail.slice(1))ctx.lineTo(point.x,point.y);
-  ctx.strokeStyle=s.kind==='star'?'#edbaf1':s.kind==='bubble'?'#edc2f3':'#f8d9b0';
-  ctx.lineWidth=.055;ctx.stroke();
+  ctx.strokeStyle=SPELL_TRAILS[s.kind]||'#e9c1a0';ctx.lineWidth=.052;ctx.stroke();
  }
  const diameter=s.r*2;
- if(s.kind==='star')imageSprite('ui_star',s.x,s.y,diameter,diameter);
+ if(s.kind==='star')star(s.x,s.y,s.r-.035,Math.atan2(s.vy,s.vx), '#ffe59a','#9d6744');
  if(s.kind==='bubble'){
-  ellipse(s.x,s.y,s.r,s.r,'#a379be',.85);
-  ellipse(s.x,s.y,s.r*.82,s.r*.82,'#c7edf2',.75);
-  ellipse(s.x-s.r*.26,s.y-s.r*.31,s.r*.31,s.r*.23,'#fff');
+  ellipse(s.x,s.y,s.r,s.r,'#7988bc',.86);
+  ellipse(s.x,s.y,s.r*.81,s.r*.81,'#b7dcef',.83);
+  ellipse(s.x-s.r*.28,s.y-s.r*.29,s.r*.30,s.r*.22,'#fff8e7');
  }
- if(s.kind==='fairy')star(s.x,s.y,s.r-.045,g.worldClock*7,'#fff9d9','#a66cbb');
+ if(s.kind==='fairy'){
+  ctx.save();ctx.translate(s.x,s.y);ctx.rotate(Math.atan2(s.vy,s.vx));
+  polygon([[s.r*.86,0],[-s.r*.74,-s.r*.63],[-s.r*.37,0],[-s.r*.74,s.r*.63]],'#fff1d9','#9063a2',.033);
+  line(-s.r*.35,0,s.r*.52,0,'#d8afe6',.026);
+  ctx.restore();
+ }
  if(s.kind==='frost')imageSprite('ui_frost',s.x,s.y,diameter,diameter);
  if(s.kind==='feather'){
-  ctx.save();ctx.translate(s.x,s.y);ctx.rotate(Math.atan2(s.vy,s.vx)+Math.PI/2);
+  ctx.save();ctx.translate(s.x,s.y);ctx.rotate(Math.atan2(s.vy,s.vx)+.75);
   imageSprite('ui_feather',0,0,diameter,diameter);ctx.restore();
  }
 }
@@ -2670,7 +2706,7 @@ function drawEffects(){for(const e of g.effects){if(e.kind==='event')continue;co
   }
  }else if(e.kind==='eclipsePulse'){
   const radius=e.r*(.23+.66*(1-f));
-  star(e.x,e.y,.31+f*.20,g.worldClock*4,'#fff3ad','#7d3daa');
+  imageSprite('ui_eclipse',e.x,e.y,.78+f*.38,.78+f*.38,1,f);
   for(let i=0;i<8;i++){
    const a=i*TAU/8+g.worldClock*.93,x=e.x+Math.cos(a)*radius,y=e.y+Math.sin(a)*radius;
    line(e.x+(x-e.x)*.45,e.y+(y-e.y)*.45,x,y,'#a553d0',.10);
@@ -2683,14 +2719,14 @@ function drawEffects(){for(const e of g.effects){if(e.kind==='event')continue;co
   star(e.x-.23,e.y-.08,.16,0,'#fff4ad','#8b6d43');
   star(e.x+.16,e.y+.10,.10,0,'#e5edbc','#728354');
  }else if(e.kind==='xpSwoosh'){
-  const t=1-f,curve=t*t*(3-2*t),x=e.x+(e.ex-e.x)*curve,y=e.y+(e.ey-e.y)*curve-.20*Math.sin(Math.PI*t);
+  const t=1-f,curve=t*t*(3-2*t),x=e.x+(e.ex-e.x)*curve,y=e.y+(e.ey-e.y)*curve;
   line(e.x+(e.ex-e.x)*Math.max(0,curve-.16),e.y+(e.ey-e.y)*Math.max(0,curve-.16),x,y,'#e9d7ff',.10);
   if(!drawCrystal(x,y,e.xp,.8))polygon([[x,y-.20],[x+.14,y],[x,y+.20],[x-.14,y]],'#b58cf8','#654581',.048);
  }else if(e.kind==='cometWarn'){
   const drop=3.6*f**1.35;
   star(e.x,e.y,.14,0,'#ffe7ae','#ad794d');
   line(e.x-.30,e.y-drop-.80,e.x,e.y-drop,'#eab46f',.18);
-  star(e.x,e.y-drop,.29+.08*(1-f),g.worldClock*6,'#fff0a0','#a06a55');
+  imageSprite('ui_comet',e.x,e.y-drop,.70+.17*(1-f),.70+.17*(1-f),1,Math.min(1,f+.37));
  }
  else if(e.kind==='wandGlow'){ellipse(e.x,e.y,.32,.32,'#f6c9ee',.56*f);star(e.x,e.y,.18,0,'#fff5ac','#a469b5');}
 else if(e.kind==='wandLink'){const dx=e.ex-e.x,dy=e.ey-e.y;ctx.strokeStyle=e.color;ctx.lineWidth=.10*f+.025;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(e.x,e.y);ctx.quadraticCurveTo(e.x+dx*.47-dy*.065,e.y+dy*.47+dx*.065,e.ex,e.ey);ctx.stroke();star(e.x,e.y,.17,g.worldClock*5,'#fff5bc','#a06cc3');}
@@ -2699,14 +2735,14 @@ else if(e.kind==='beam'){
   ctx.translate(e.x,e.y);ctx.rotate(Math.atan2(dy,dx));
   const glow=ctx.createLinearGradient(0,0,length,0);
   glow.addColorStop(0,'#fff0ba');glow.addColorStop(.22,'#fbf4e7');
-  glow.addColorStop(.65,'#c5cef5');glow.addColorStop(1,'#8887c5');
+  glow.addColorStop(.65,'#efe1d7');glow.addColorStop(1,'#c9b4dc');
   ctx.beginPath();ctx.moveTo(0,0);
   ctx.quadraticCurveTo(length*.39,-half*1.55,length,0);
   ctx.quadraticCurveTo(length*.41,half*1.43,0,0);
   ctx.fillStyle=glow;ctx.fill();
   ctx.strokeStyle='#716493';ctx.lineWidth=.065;ctx.stroke();
   line(.18,0,length*.89,0,'#fff7d8',Math.min(.14,e.width*.18));
-  star(length*.96,0,.20,0,'#fff5cb','#7a689b');
+  imageSprite('ui_moon',length*.96,0,.54,.54,1,f);
  }
  else if(e.kind==='thunder'){
   const x=e.x,y=e.y,lean=e.lean;
@@ -2733,27 +2769,46 @@ else if(e.kind==='beam'){
   if(sprites.ui_bell?.naturalWidth)imageSprite('ui_bell',e.x,e.y-1.18-progress*.23,.56,.56,1,Math.min(1,1.8*f));
  }
  else if(e.kind==='seedPlace'||e.kind==='seedBurst'){
-  const r=e.r*(e.kind==='seedBurst'?(1.1-f*.2):.6);
-  for(let i=0;i<7;i++){const a=i*TAU/7+g.worldClock*2;flower(e.x+Math.cos(a)*r,e.y+Math.sin(a)*r,.16,'#fff1ba',a);}
+  const r=e.r*(e.kind==='seedBurst'?(1-.45*f):.40);
+  for(let i=0;i<6;i++){
+   const a=i*TAU/6+g.worldClock,x=e.x+Math.cos(a)*r,y=e.y+Math.sin(a)*r;
+   ctx.save();ctx.translate(x,y);ctx.rotate(a);
+   ellipse(0,0,.15,.057,i%2?'#afc983':'#e8adbd',.92);
+   ctx.restore();
+  }
  }
- else if(e.kind==='bubbleBoom'||e.kind==='starBoom'){
-   const reach=e.r*(1-.65*f);
-   for(let i=0;i<6;i++){
-    const a=i*TAU/6,r=reach*(i%2?.76:1);
-    star(e.x+Math.cos(a)*r,e.y+Math.sin(a)*r,.1+.06*f,a,e.kind==='starBoom'?'#fff3bf':'#f9e5ff','#c390d0');
-   }
+ else if(e.kind==='bubbleBoom'){
+  const r=e.r*(.36+.54*(1-f));
+  for(let i=0;i<6;i++){
+   const a=i*TAU/6,reach=r*(i%2?.78:1),x=e.x+Math.cos(a)*reach,y=e.y+Math.sin(a)*reach;
+   const size=.07+.085*f;
+   ellipse(x,y,size,size,'#8095c7');
+   ellipse(x,y,size*.76,size*.76,'#bce5f2');
+   ellipse(x-size*.27,y-size*.30,size*.21,size*.16,'#fff');
   }
+ }
+ else if(e.kind==='starBoom'||e.kind==='cometImpact'||e.kind==='frostBurst'){
+  const frost=e.kind==='frostBurst',comet=e.kind==='cometImpact';
+  const radius=e.r*(.29+.62*(1-f));
+  for(let i=0;i<7;i++){
+   const a=i*TAU/7,reach=radius*(i%2?.76:1);
+   const x=e.x+Math.cos(a)*reach,y=e.y+Math.sin(a)*reach;
+   if(frost)line(x-Math.cos(a)*.14,y-Math.sin(a)*.14,x,y,'#91c8e8',.09);
+   else star(x,y,.09+.08*f,a,comet?'#ffdc93':'#fff1ac',comet?'#bd6b49':'#b48858');
+  }
+ }
  else if(e.kind==='ribbon'){
-   const count=e.arc===TAU?10:6;
-   for(let i=0;i<count;i++){
-    const a=e.angle+(i/(count-1)-.5)*Math.min(TAU-.45,e.arc);
-    const r=e.r*(.74+.21*Math.sin(i*1.48+f*1.4));
-    const x=e.x+Math.cos(a)*r,y=e.y+Math.sin(a)*r;
-    ctx.save();ctx.translate(x,y);ctx.rotate(a+.8);
-    ellipse(0,0,.22*f+.09,.07,'#f9b6db',.86);ctx.restore();
-    if(i%2===0)star(x,y,.12,a,'#fff3db','#d48ebd');
-   }
+  const arc=Math.min(TAU-.30,e.arc),parts=e.arc===TAU?3:2;
+  const center=e.angle-arc*.50,r=e.r*(.68+.20*(1-f));
+  for(let i=0;i<parts;i++){
+   const start=center+arc*i/parts+.07,end=center+arc*(i+1)/parts-.07;
+   ctx.beginPath();ctx.arc(e.x,e.y,r,start,end);
+   ctx.lineCap='round';ctx.strokeStyle='#a9576b';ctx.lineWidth=.17*f+.045;ctx.stroke();
+   ctx.strokeStyle='#ffc1bc';ctx.lineWidth=.11*f+.023;ctx.stroke();
+   const x=e.x+Math.cos(end)*r,y=e.y+Math.sin(end)*r;
+   ellipse(x,y,.062,.05,'#ffedc2');
   }
+ }
  ctx.restore();}}
 function drawCometEmbers(z,t){
  const fade=clamp(z.remain/.42,0,1);
@@ -2805,10 +2860,11 @@ function drawWeaponFields(){
  }
  if(g.weapons.cloud){
   const cloud=cloudPosition(p),flashing=(g.weapons.cloud.cloudFlashUntil||0)>t;
-  if(sprites.ui_cloud?.naturalWidth)drawPickup('ui_cloud',cloud.x,cloud.y,flashing?1.23:1.12);
+  if(sprites.cloudFamiliar?.naturalWidth)drawPickup('cloudFamiliar',cloud.x,cloud.y,flashing?1.23:1.12);
  }
  for(const z of g.traps){if(!visible(z.x,z.y,2))continue;
-  ellipse(z.x,z.y,.48,.25,'#7eae7c',.28);flower(z.x,z.y,.35,z.mini?'#fee4a8':'#f59bc9',z.phase+t*.6);
+  ellipse(z.x,z.y+.10,.24,.085,'#557857',.29);
+  imageSprite('ui_seed',z.x,z.y-.025,z.mini?.39:.62,z.mini?.39:.62,1,z.armed>0?.70:1);
  }
 }
 function drawOrbit(){
@@ -2816,7 +2872,9 @@ function drawOrbit(){
  const n=2+w.up[0]+(w.evo===0?2:0),r=weaponReach('orbit',w);
  for(let i=0;i<n;i++){
   const {x,y}=orbitPosition(g.player,w,i,n,r);
-  star(x,y,.29,g.worldClock*4,'#fff3a4','#a36fbb');
+  const trail=(w.angle||0)+TAU*i/n-.19;
+  line(x-Math.cos(trail+Math.PI/2)*.24,y-Math.sin(trail+Math.PI/2)*.24,x,y,'#c59be0',.09);
+  star(x,y,.25,g.worldClock*3,'#ffe793','#89599a');
  }
 }
 const ENEMY_BOLT_COLORS={
@@ -2959,17 +3017,19 @@ function normalizeRankLoadout(value){
  }
  return costume||weapons.length?{costume:costume??null,weapons}:null;
 }
-function rankLoadoutHTML(value){
+function rankLoadoutHTML(value,part='all'){
  const loadout=normalizeRankLoadout(value);
- if(!loadout)return '';
+ if(!loadout)return part==='weapons'?'<span class="rank-missing">—</span>':'';
  const costume=COSTUMES.find(outfit=>outfit.id===loadout.costume);
  const label=costume?costume.name+' · 코스튬':'';
- const portrait=costume?`<img class="rank-outfit" src="${rankEsc(costume.portrait)}" alt="${rankEsc(label)}" title="${rankEsc(label)}" loading="lazy">`:'';
- const weapons=loadout.weapons.map(({id,level})=>{
-  const name=rankEsc(W[id].name+' · Lv.'+level);
-  return `<img src="${rankEsc(ASSET_DATA['ui_'+id])}" alt="${name}" title="${name}" loading="lazy">`;
+ const portrait=costume&&part!=='weapons'?`<img class="rank-outfit" src="${rankEsc(costume.portrait)}" alt="${rankEsc(label)}" title="${rankEsc(label)}" loading="lazy">`:'';
+ const weapons=part==='costume'?'':loadout.weapons.map(({id,level})=>{
+  const name=rankEsc(W[id].name),title=name+' · Lv.'+level;
+  const icon=`<img src="${rankEsc(ASSET_DATA['ui_'+id])}" alt="${part==='weapons'?'':title}" title="${title}" loading="lazy">`;
+  return part==='weapons'?`<span class="rank-spell" title="${title}">${icon}<span>${name}</span></span>`:icon;
  }).join('');
- return `<span class="rank-loadout" aria-label="사용 코스튬과 무기">${portrait}${weapons}</span>`;
+ if(!portrait&&!weapons)return part==='weapons'?'<span class="rank-missing">—</span>':'';
+ return `<span class="rank-loadout${part==='weapons'?' rank-spells':''}">${portrait}${weapons}</span>`;
 }
 async function rankMissingLoadout(response){
  if(response.ok||response.status!==400)return false;
@@ -3002,23 +3062,51 @@ function rankPersist(){const name=rankSanitizeName($('rank-nickname').value);
  rankStatus('프로젝트 URL과 sb_publishable_... 공개용 키를 확인해 주세요. 비밀 키는 금지예요.');return false;}}
  rankCfg={url,key,nickname:name};try{localStorage.setItem(RANK_CFG_KEY,JSON.stringify(rankCfg));}catch(_){}return true;
 }
-async function rankFetch(){if(!rankConfigured()){rankStatus('현재 공통 온라인 랭킹이 연결되어 있지 않아요.');rankEmpty('온라인 랭킹에 아직 연결되지 않았어요. 잠시 후 다시 시도해 주세요.');return;}
- rankStatus('전체 랭킹을 불러오는 중...');
- if(!$('rank-online').querySelector('.nemo-rank-row'))rankEmpty('온라인 기록을 불러오는 중이에요.');
+const RANK_PAGE_SIZE=30;
+let rankLoaded=0,rankRequestId=0;
+function rankRow(r,index){
+ const medal=index<3?['🥇','🥈','🥉'][index]:index+1;
+ return `<div class="nemo-rank-row"><div><strong>${medal} ${rankEsc(r.nickname)}</strong>${r.player_id===rankId?'<small>나의 기록</small>':''}${rankLoadoutHTML(r.loadout,'costume')}</div><div><strong>${rankFormatTime(Number(r.survival_seconds))}</strong><small>Lv.${Number(r.level)||1} · ${Number(r.kills)||0}마리</small></div><div>${rankLoadoutHTML(r.loadout,'weapons')}</div></div>`;
+}
+async function rankFetch(append=false){
+ const more=$('rank-more'),list=$('rank-online');
+ if(append&&more.disabled)return;
+ const requestId=++rankRequestId,offset=append?rankLoaded:0;
+ if(!rankConfigured()){
+  more.hidden=true;more.disabled=false;
+  rankStatus('현재 공통 온라인 랭킹이 연결되어 있지 않아요.');
+  rankEmpty('온라인 랭킹에 아직 연결되지 않았어요. 잠시 후 다시 시도해 주세요.');
+  return;
+ }
+ if(!append)more.hidden=true;
+ more.disabled=true;
+ rankStatus('모험 기록을 불러오는 중...');
+ if(!append&&!list.querySelector('.nemo-rank-row'))rankEmpty('온라인 기록을 불러오는 중이에요.');
  try{
- const base=rankCfg.url+'/rest/v1/nemo_forest_runs?select=nickname,player_id,survival_seconds,boss_seconds,winner,kills,level,rank_score,created_at';
- const suffix='&order=survival_seconds.desc&limit=500';
- const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),9000);
- const request=loadout=>fetch(base+(loadout?',loadout':'')+suffix,{headers:rankHeaders(),signal:controller.signal,cache:'no-store'});
- let res;
- try{res=await request(true);if(await rankMissingLoadout(res))res=await request(false);}finally{clearTimeout(timer);}
- if(!res.ok)throw Error('서버 응답 '+res.status+' · Supabase 테이블/RLS 설정 확인');
- let items=await res.json();if(!Array.isArray(items))throw Error('응답 데이터 형식 오류');
- let seen=new Set(),top=[];for(const r of rankSort(items.filter(r=>!r.winner))){if(seen.has(r.player_id))continue;seen.add(r.player_id);top.push(r);if(top.length>=50)break;}
- if(!top.length)rankEmpty('아직 등록된 기록이 없어요. 첫 기록을 남겨 보세요!');
- else $('rank-online').innerHTML=top.map((r,i)=>`<div class="nemo-rank-row ${r.winner?'win':''}"><div><strong>${i<3?['🥇','🥈','🥉'][i]:i+1} ${rankEsc(r.nickname)}</strong>${r.player_id===rankId?'<small>나의 기록</small>':''}${rankLoadoutHTML(r.loadout)}</div><div><strong>${rankFormatTime(Number(r.survival_seconds))}</strong><small>Lv.${Number(r.level)||1} · ${Number(r.kills)||0}마리</small></div><div>🌲 무한 생존</div></div>`).join('');
- rankStatus(`서버 연결 성공 · 전체 등록 기록 ${items.length}건 중 플레이어별 최고 기록 표시`);
- }catch(e){rankStatus('랭킹 조회 실패: '+(e.message||e));rankEmpty('온라인 기록을 불러오지 못했어요. 잠시 후 새로고침해 주세요.');}}
+  const base=rankCfg.url+'/rest/v1/nemo_forest_runs?select=nickname,player_id,survival_seconds,kills,level';
+  const suffix=`&order=survival_seconds.desc,kills.desc,created_at.asc,run_id.asc&offset=${offset}&limit=${RANK_PAGE_SIZE+1}`;
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),9000);
+  const request=loadout=>fetch(base+(loadout?',loadout':'')+suffix,{headers:rankHeaders(),signal:controller.signal,cache:'no-store'});
+  let res;
+  try{res=await request(true);if(await rankMissingLoadout(res))res=await request(false);}finally{clearTimeout(timer);}
+  if(!res.ok)throw Error('서버 응답 '+res.status);
+  const items=await res.json();if(!Array.isArray(items))throw Error('응답 데이터 형식 오류');
+  if(requestId!==rankRequestId)return;
+  const page=items.slice(0,RANK_PAGE_SIZE),html=page.map((row,i)=>rankRow(row,offset+i)).join('');
+  if(append)list.insertAdjacentHTML('beforeend',html);
+  else if(page.length)list.innerHTML=html;
+  else rankEmpty('아직 등록된 기록이 없어요. 첫 기록을 남겨 보세요!');
+  rankLoaded=offset+page.length;
+  more.hidden=items.length<=RANK_PAGE_SIZE;
+  rankStatus(`서버 연결 성공 · 시도 ${rankLoaded}건 표시`);
+ }catch(e){
+  if(requestId!==rankRequestId)return;
+  rankStatus('랭킹 조회 실패: '+(e.message||e));
+  if(!append)rankEmpty('온라인 기록을 불러오지 못했어요. 잠시 후 새로고침해 주세요.');
+ }finally{
+  if(requestId===rankRequestId)more.disabled=false;
+ }
+}
 async function rankUpload(run,notify=true){if(!rankConfigured()){if(notify)rankStatus('연결 정보부터 저장해 주세요.');return false;}
  if(!rankSanitizeName(rankCfg.nickname)){if(notify)rankStatus('먼저 닉네임을 저장해 주세요.');return false;}
  if(run.debug_used){if(notify)rankStatus('디버그 단축키를 사용한 판은 온라인 랭킹에 등록할 수 없어요.');return false;}
@@ -3074,6 +3162,7 @@ function rankWire(){
  $('leaderboard-btn').onclick=rankOpen;$('result-rank-btn').onclick=rankOpen;$('leaderboard-close').onclick=rankClose;
  $('rank-save').onclick=()=>{if(rankPersist()){rankStatus(rankConfigured()?'설정 저장 완료 · 연결 확인 중...':'닉네임 저장 완료 · 온라인 연결은 아직 안 됐어.');if(rankConfigured())void rankFetch();}};
  $('rank-refresh').onclick=()=>{if(rankPersist())void rankFetch();};
+ $('rank-more').onclick=()=>{void rankFetch(true);};
  $('rank-submit').onclick=()=>{if(!rankPersist())return;const r=rankRuns.find(r=>!r.uploaded&&!r.debug_used);if(!r){rankStatus('업로드할 새 기록이 없어요.');return;}void rankUpload(r,true);};
 }
 
@@ -3181,7 +3270,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.46';
+  const CURRENT='5.6.47';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
