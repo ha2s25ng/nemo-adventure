@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.40" />
+</style><meta name="nemo-version" content="5.6.41" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -525,7 +525,7 @@
 </main><script>'use strict';
 // Values here are the initial design specification, not dynamic difficulty adjustments.
 const DATA = Object.freeze({
- progression:{xpToNext:{base:8,linear:2,curve:.32,curveStart:8},xpDrops:{green:[.65,.054,.004],blue:[.46,.32,.045],fat:[.32,.42,.13],spore:[.38,.38,.11],firefly:[.43,.34,.135],armor:[.24,.43,.25],spark:[.35,.40,.14],petal:[.78,.055,.005]}},
+ progression:{xpToNext:{base:8,linear:2,curve:.32,curveStart:8},xpDrops:{green:[.54,.087,.006],blue:[.31,.38,.05],fat:[.24,.42,.135],spore:[.27,.41,.125],firefly:[.29,.37,.145],armor:[.155,.40,.25],spark:[.26,.40,.14],petal:[.61,.09,.008],bramble:[.19,.41,.19],moth:[.32,.35,.11]}},
  title:'니모의 낯선 모험', saveKey:'nemo_strange_adventure_FULL_v1', version:1,
  world:160, survival:null, widthWorld:28,
  player:{attack:100,hp:100,speed:4,crit:.05,critMultiplier:1.5,invuln:.7,pickup:1.5,weaponSlots:4,passiveSlots:3,rerolls:2},
@@ -546,12 +546,17 @@ const DATA = Object.freeze({
   feather:{name:'바람 깃털',icon:'🍃',coef:0.71,cd:1.55,range:10.5,up:[['깃털 하나 더','깃털 +1 · 개별 위력 소폭 감소'],['날카로운 깃털','깃털 피해 +25%'],['가벼운 바람','공격 속도 +15%']],break:'나가는 깃털이 다른 적에게 1회 연쇄',evos:[["춤추는 깃털","깃털 +2 · 나가는 길에 최대 2회 연쇄"],["돌아오는 바람","돌아오는 길 피해 +50% · 복귀 속도 증가"]]} 
  },
  passives:{magic:['마법 강화','✨','모든 무기 피해 +20%'],quick:['빠른 주문','⏱','모든 공격 속도 +8%'],lucky:['행운의 리본','🎗','치명타 확률 +5%p'],big:['커다란 마법','💠','공격 반경·폭·폭발 반경 +8%'],cloak:['포근한 망토','💖','최대 체력 +15% · 증가량만큼 현재 체력 회복'],shoes:['가벼운 발걸음','👟','이동 속도 +8%'],magnet:['보석 자석','🧲','경험치 획득 범위 +20%']},
- monsters:{green:{name:'초록 슬라임',hp:45,dmg:8,speed:1.3,r:.48},blue:{name:'파랑 슬라임',hp:90,dmg:10,speed:1.7,r:.48},fat:{name:'통통 버섯',hp:150,dmg:12,speed:.9,r:.53},spore:{name:'포자 버섯',hp:100,dmg:8,speed:.8,r:.51},firefly:{name:'반딧불',hp:70,dmg:8,speed:2,r:.38},armor:{name:'밤송이 슬라임',hp:240,dmg:14,speed:.95,r:.57},spark:{name:'별빛 도깨비',hp:110,dmg:11,speed:1.65,r:.44},petal:{name:'소환 슬라임',hp:90,dmg:8,speed:1.3,r:.46}},
+ monsters:{green:{name:'초록 슬라임',hp:45,dmg:8,speed:1.3,r:.48},blue:{name:'파랑 슬라임',hp:90,dmg:10,speed:1.7,r:.48},fat:{name:'통통 버섯',hp:150,dmg:12,speed:.9,r:.53},spore:{name:'포자 버섯',hp:100,dmg:8,speed:.8,r:.51},firefly:{name:'반딧불',hp:70,dmg:8,speed:2,r:.38},armor:{name:'밤송이 슬라임',hp:240,dmg:14,speed:.95,r:.57},spark:{name:'별빛 도깨비',hp:110,dmg:11,speed:1.65,r:.44},petal:{name:'소환 슬라임',hp:90,dmg:8,speed:1.3,r:.46},
+  bramble:{name:'가시 고슴도치',hp:118,dmg:10,speed:1.10,r:.50},moth:{name:'달가루 나방',hp:83,dmg:7,speed:1.68,r:.43},thief:{name:'도토리 도둑',hp:145,dmg:0,speed:2.8,r:.42}},
  spawns:[
-  [0,35,1.5,2,50,{green:100}],[35,60,1.5,2,50,{green:84,blue:16}],[60,120,1.5,3,50,{green:75,blue:25}],
-  [120,180,1.2,3,70,{green:60,blue:25,fat:15}],[180,240,1.2,4,70,{green:45,blue:30,fat:15,spore:10}],
-  [240,300,1,4,90,{green:35,blue:26,fat:14,spore:13,armor:7,spark:5}],[300,360,1,5,90,{green:32,blue:22,fat:14,spore:10,firefly:10,armor:7,spark:5}],
-  [360,420,1,5,110,{green:25,blue:26,fat:18,spore:9,firefly:10,armor:7,spark:5}],[420,480,1,6,110,{green:24,blue:22,fat:17,spore:13,firefly:10,armor:8,spark:6}]
+  [0,24,1.5,2,50,{green:100}],[24,48,1.5,2,50,{green:75,blue:15,bramble:10}],
+  [48,90,1.45,3,54,{green:63,blue:21,bramble:10,moth:6}],
+  [90,150,1.35,3,60,{green:49,blue:23,bramble:11,moth:8,fat:9}],
+  [150,210,1.2,4,72,{green:39,blue:22,bramble:10,moth:8,fat:12,spore:9}],
+  [210,285,1.16,4,82,{green:33,blue:20,bramble:10,moth:8,fat:11,spore:10,armor:8}],
+  [285,360,1.05,5,94,{green:29,blue:17,bramble:10,moth:8,fat:11,spore:8,armor:7,firefly:6,spark:4}],
+  [360,420,1,5,110,{green:23,blue:17,bramble:11,moth:8,fat:11,spore:8,armor:8,firefly:8,spark:6}],
+  [420,480,1,6,110,{green:21,blue:17,bramble:10,moth:8,fat:12,spore:8,armor:8,firefly:9,spark:7}]
  ],
  elites:{flower:{name:'꽃모자 버섯',hp:1800,dmg:14,speed:.8,xp:30,at:180,gold:30,r:.83},horn:{name:'별뿔 슬라임',hp:4000,dmg:16,speed:1.2,xp:50,at:360,gold:50,r:.83}},
  boss:{name:'왕관 슬라임',hp:68000,dmg:18,speed:.7,r:1.55,gold:100},
@@ -625,7 +630,9 @@ Object.assign(ASSET_DATA,{
  fx_burst:'./assets/v550/fx_burst.webp'
 });
 // Original world-space draw bounds, separate from the collision radii.
+const NEW_FOREST_ENEMIES=new Set(['bramble','moth','thief']);
 const ENEMY_ART={
+ bramble:[1.21,1.02],moth:[1.42,1.12],thief:[1.18,1.06],
  green:[1.13,0.94],
  blue:[1.13,0.94],
  fat:[1.27,1.13],
@@ -639,7 +646,7 @@ const ENEMY_ART={
  boss:[3.8,3.2],
 };
 for(const kind of Object.keys(ENEMY_ART)){
- ASSET_DATA['enemy_'+kind]='./assets/monsters-v553/'+kind+'.webp';
+ ASSET_DATA['enemy_'+kind]=NEW_FOREST_ENEMIES.has(kind)?'./assets/forest-enemies-v5641/'+kind+'.png':'./assets/monsters-v553/'+kind+'.webp';
 }
 const ENEMY_MOTION_KINDS=new Set(['armor','blue','fat','firefly','flower','green','horn','petal','spark','spore']);
 for(const kind of ENEMY_MOTION_KINDS){
@@ -665,6 +672,7 @@ Object.assign(ASSET_DATA,{
  flowers:FOREST_ART+'flowers.png',
  groundFull:FOREST_ART+'meadow.jpg'
 });
+ASSET_DATA.ui_cloud='./assets/forest-enemies-v5641/cloud-familiar.png';
 ASSET_DATA.pickupCrystal='./assets/forest-pickups-v5637/xp-crystal.png';
 ASSET_DATA.pickupBone='./assets/forest-pickups-v5637/health-bone.png';
 ASSET_DATA.ui_gold='./assets/nemo-wardrobe-v5631/gold-pouch.png';
@@ -929,7 +937,7 @@ function begin(){
   speed:DATA.player.speed*(1+saved.upgrades.speed*.01),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
   weapons:{star:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
   enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0, waveIndex:0,
-  boss:null,bossEncounters:0,bossRestUntil:0,freeCards:0, cardReason:'level',cards:[], cardOffers:[],rerolls:DATA.player.rerolls+saved.upgrades.reroll,
+  boss:null,bossEncounters:0,bossRestUntil:0,nextForestEvent:66,forestEventBag:[],lastForestEvent:null,freeCards:0, cardReason:'level',cards:[], cardOffers:[],rerolls:DATA.player.rerolls+saved.upgrades.reroll,
   gold:0, achievedMinutes:0,eliteGold:0,bossGold:0, firstGold:0,done:false,blessings:{},milestones:{},rushUntil:0,rushFired:{}, totalKills:0, totalDamage:0, totalXP:0,earnedXP:0,hitCount:0,hitReasons:{},
   metrics:{weaponDamage:{},weaponKills:{},cardPicks:{},aliveByMinute:[],firstEvolution:null,killsByType:{},skipped:0,invalidSpawns:0,bossSeconds:null},
   lastSample:0,magnetCount:0, healTimer:0, camera:{x:WORLD_CENTER,y:WORLD_CENTER},worldClock:0};
@@ -1000,6 +1008,10 @@ function weaponReach(id,w=g?.weapons[id]){
 function wpCrit(id){let chance=g.player.crit+.05*getPassive('lucky');if(id==='star')chance+=.1*g.weapons.star.up[2]+(g.weapons.star.evo===1?.2:0);if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
 function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
  let value=raw;if(e.vulnerableUntil>g.worldClock)value*=1.15;
+ if(e.kind==='bramble'&&g.worldClock>=(e.guardUntil||0)){
+  value*=.38;e.guardUntil=g.worldClock+3.2;
+  g.effects.push({kind:'shellSpark',x:e.x,y:e.y-.29,life:.26,max:.26});
+ }
  if(id==='star'&&g.weapons.star.evo===1&&e.hp<=e.maxHp*.3)value*=1.3;
  if(id==='book'&&g.weapons.book.evo===1&&e.kind==='boss')value*=1.2;
  if(id==='bubble'&&g.weapons.bubble.evo===1&&e.kind==='boss')value*=1.5;
@@ -1035,6 +1047,11 @@ function kill(e){
   loot(e.x+.7,e.y+.6,0,'snack',.2);
   g.freeCards++;
   showToast(`왕관 슬라임 격파! +${reward} 골드 · 성장 카드`,3.2);
+  return;
+ }
+ if(e.kind==='thief'){
+  loot(e.x,e.y,8);g.gold+=8;
+  showToast('도토리 도둑을 잡았어요! +8 골드',2.3);
   return;
  }
  let cfg=MD[e.kind];if(e.kind==='flower'||e.kind==='horn'){
@@ -1170,9 +1187,10 @@ function spawn(type,pos=null){if(!g)return null;const at=pos||spawnPoint();if(!a
  let cfg=MD[type]||DATA.elites[type]||DATA.boss;if(!cfg)return null;
  let mult=(type in MD && type!=='petal')?1+.08*(g.t/60):1,dmgMult=(type in MD && type!=='petal')?1+.035*(g.t/60):1;
  const diff=difficulty(),isBoss=type==='boss',hpFactor=diff.hp*(isBoss?diff.bossHp/diff.hp:1);
- let e={id:++g.n,kind:type,x:at.x,y:at.y,r:cfg.r,hp:cfg.hp*mult*hpFactor,maxHp:cfg.hp*mult*hpFactor,dmg:cfg.dmg*dmgMult*diff.damage,speed:cfg.speed*diff.speed,flash:0,dead:false,slowAmount:0,slowUntil:0,vulnerableUntil:0,phase:rand()*TAU,
-  patternTimer:type==='spore'?2.8:type==='firefly'?4:5,telegraph:null,attackState:null,dashDir:0,dashLeft:0,halt:0,orbitHit:{},isBoss:type==='boss'};
+ let e={id:++g.n,kind:type,x:at.x,y:at.y,r:cfg.r,hp:cfg.hp*mult*hpFactor,maxHp:cfg.hp*mult*hpFactor,dmg:cfg.dmg*dmgMult*diff.damage,speed:cfg.speed*(type==='thief'?Math.min(diff.speed,1.25):diff.speed),flash:0,dead:false,slowAmount:0,slowUntil:0,vulnerableUntil:0,phase:rand()*TAU,
+  patternTimer:type==='spore'?2.8:type==='firefly'?4:type==='moth'?range(2.0,3.5):5,telegraph:null,attackState:null,dashDir:0,dashLeft:0,halt:0,orbitHit:{},isBoss:type==='boss'};
  if(type==='boss'){e.specialClock=4;e.patternIndex=0;e.action=null;e.summonClock=0;}
+ if(type==='thief')e.escapeAt=g.worldClock+12;
  g.enemies.push(e);g.spawnCount++;return e;}
 function spawnGroup(){
  const p=g.player,activeRadius=DATA.widthWorld*1.5;
@@ -1181,7 +1199,7 @@ function spawnGroup(){
  const m=Math.max(0,g.t/60);
  const row=DATA.spawns.find(x=>g.t>=x[0]&&g.t<x[1])||DATA.spawns.at(-1);
  const cap=Math.min(210,row[4]+Math.floor(Math.max(0,m-8)*7));
- const counts={spore:0,firefly:0,spark:0};let alive=0;
+ const counts={spore:0,firefly:0,spark:0,moth:0};let alive=0;
  for(const e of g.enemies){if(e.dead)continue;if(e.kind!=='flower'&&e.kind!=='horn')alive++;if(e.kind in counts)counts[e.kind]++;}
  const pack=Math.min(22,Math.ceil((row[3]+(g.rushUntil>g.t?2:0))*difficulty().spawns));
  const entries=waveFormation(g.waveIndex++,g.t,pack);
@@ -1194,6 +1212,51 @@ function spawnGroup(){
   const at=spawnPoint(entries[i]);
   if(!at)continue;
   const e=spawn(type,at);if(e){alive++;if(type in counts)counts[type]++;}
+ }
+}
+function forestEventEntry(){
+ const p=g.player,start=rand()*TAU;
+ for(let i=0;i<24;i++){
+  const angle=start+i*TAU/24;
+  const x=p.x+Math.cos(angle)*7.5,y=p.y+Math.sin(angle)*6.0;
+  if(x<1||y<1||x>DATA.world-1||y>DATA.world-1||!visible(x,y,-.6)||blockedByTree(x,y,.44))continue;
+  return {x,y};
+ }
+ return null;
+}
+function updateForestEncounter(){
+ if(g.t<g.nextForestEvent)return;
+ if(g.boss||g.rushUntil>g.t){g.nextForestEvent=g.t+7;return;}
+ if(!g.forestEventBag.length){
+  const bag=['pincer','thief','moths'];
+  for(let i=bag.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[bag[i],bag[j]]=[bag[j],bag[i]];}
+  if(bag[0]===g.lastForestEvent)[bag[0],bag[1]]=[bag[1],bag[0]];
+  g.forestEventBag=bag;
+ }
+ const event=g.forestEventBag.shift();
+ g.lastForestEvent=event;g.nextForestEvent=g.t+range(58,81);
+ if(event==='thief'){
+  const entry=forestEventEntry();
+  if(!entry){g.forestEventBag.unshift(event);g.nextForestEvent=g.t+3;return;}
+  spawn('thief',entry);showToast('도토리 도둑이 나타났어요!',2.3);return;
+ }
+ const moths=event==='moths';
+ showToast(moths?'달가루 나방 떼가 다가와요!':'여러 방향에서 숲의 괴물들이 다가와요!',2.4);
+ const c=g.camera,hw=DATA.widthWorld/2,hh=SCREEN_H/2;
+ const sides=[c.y-hh,DATA.world-c.y-hh,c.x-hw,DATA.world-c.x-hw]
+  .flatMap((space,index)=>space>2.7?[index]:[]);
+ const start=Math.floor(rand()*sides.length);
+ for(let i=0;i<3;i++){
+  const side=sides[(start+i)%sides.length];
+  schedule(.85+i*.86,()=>{
+   const kind=moths?(i===1?'bramble':'moth'):(i===2?'bramble':'blue');
+   const at=spawnPoint({side,offset:range(-.28,.28),margin:1.35},MD[kind].r);
+   if(at)spawn(kind,at);
+   if(!moths&&at){
+    const follower=spawnPoint({side,offset:range(-.38,.38),margin:2},MD.green.r);
+    if(follower)spawn('green',follower);
+   }
+  });
  }
 }
 function enemyBullet(x,y,angle,speed,damage,life=4,label='적 탄환',pattern='normal') {g.enemyShots.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,dmg:damage*difficulty().damage,life,r:.18,label,pattern,dead:false});}
@@ -1332,15 +1395,39 @@ function chase(e,dt,scale=1){
  const tx=clamp(e.x+ax/length*travel,e.r,DATA.world-e.r),ty=clamp(e.y+ay/length*travel,e.r,DATA.world-e.r);
  if(!blockedByTerrain(tx,ty,e.r)){e.x=tx;e.y=ty;}
 }
+function moveForestSpecial(e,angle,dt){
+ const step=e.speed*statusReady(e)*dt;
+ for(const offset of [0,.72,-.72,1.50,-1.50,2.35,-2.35]){
+  const x=clamp(e.x+Math.cos(angle+offset)*step,e.r,DATA.world-e.r);
+  const y=clamp(e.y+Math.sin(angle+offset)*step,e.r,DATA.world-e.r);
+  if(distance(e.x,e.y,x,y)<step*.45||blockedByTerrain(x,y,e.r))continue;
+  e.moveFace=x<e.x?-1:x>e.x?1:(e.moveFace||1);e.x=x;e.y=y;return;
+ }
+}
 function updateMonsters(dt){for(const e of g.enemies){if(e.dead)continue;e.flash=Math.max(0,e.flash-dt);
+ if(e.kind==='thief'){
+  if(g.worldClock>=e.escapeAt){e.dead=true;continue;}
+  const p=g.player,away=atan(p.x,p.y,e.x,e.y),weave=Math.sin(g.worldClock*2.4+e.phase)*.64;
+  moveForestSpecial(e,away+weave,dt);continue;
+ }
  if(e.kind==='boss'){bossUpdate(e,dt);if(screen!=='playing')return;continue;}
  if(e.halt>0){e.halt-=dt;}
  else if(e.attackState){let a=e.attackState;a.t-=dt;
+  if(a.type==='moth-warn'&&a.t<=0){
+   for(const offset of [-.36,0,.36])enemyBullet(e.x,e.y,a.aim+offset,3.15,6,4,'달가루 나방 탄환','moth');
+   e.attackState=null;
+  }
   if(a.type==='spore'&&a.t<=0){enemyBullet(e.x,e.y,a.aim,2.5,8,4,'포자 버섯 탄환');e.attackState=null;}
   else if(a.type==='flower'&&a.t<=0){for(let i=0;i<6;i++)enemyBullet(e.x,e.y,i*TAU/6,2,10,5,'꽃모자 버섯 탄막');e.attackState=null;}
   else if(a.type==='dash-warn'&&a.t<=0){e.attackState={type:'dashing',t:e.kind==='firefly'?.6:.7,aim:a.aim};}
   else if(a.type==='dashing'){let speed=e.kind==='firefly'?6:5;e.x=clamp(e.x+Math.cos(a.aim)*speed*dt,e.r,DATA.world-e.r);e.y=clamp(e.y+Math.sin(a.aim)*speed*dt,e.r,DATA.world-e.r);
    if(a.t<=0){e.attackState=null;if(e.kind==='horn')e.halt=1;}}
+ }else if(e.kind==='moth'){
+  const p=g.player,d=distance(e.x,e.y,p.x,p.y),toward=atan(e.x,e.y,p.x,p.y);
+  const angle=d>7?toward+.28:d<4.6?toward+Math.PI:toward+(e.id%2?1:-1)*Math.PI/2;
+  moveForestSpecial(e,angle,dt);
+  e.patternTimer-=dt;
+  if(e.patternTimer<=0&&d<=9){e.patternTimer=range(3.3,4.0);e.attackState={type:'moth-warn',t:.60,aim:toward};}
  }else if(e.kind==='spore'){
   let d=distance(e.x,e.y,g.player.x,g.player.y);
   if(d>6)chase(e,dt);else if(d<4)chase(e,dt,-1);e.patternTimer-=dt;
@@ -1504,8 +1591,24 @@ function beam(x,y,a,range,width,raw,id,coef){let ex=x+Math.cos(a)*range,ey=y+Mat
   if(along>=-.1&&along<=range+e.r&&cross<=width/2+e.r)deal(e,raw*coef,id);}
  if(g.weapons.moon?.break && coef===1){schedule(.16,()=>beam(ex,ey,a+Math.PI,range,width,raw,'moon',.5));}
 }
-function thunder(e,raw,origin=null){if(e.dead)return;if(origin)wandLink(origin,e,'#e5c8ff');g.effects.push({kind:'thunder',x:e.x,y:e.y,life:.30,max:.30});deal(e,raw,'cloud');if(g.weapons.cloud.break&& !e.dead)e.vulnerableUntil=Math.max(e.vulnerableUntil,g.worldClock+2.5);
- if(g.weapons.cloud.evo===0)schedule(.2,()=>{if(!e.dead){if(origin)wandLink(origin,e,'#f6e8ad');g.effects.push({kind:'thunder',x:e.x,y:e.y,life:.24,max:.24});deal(e,raw*.7,'cloud');}});}
+function cloudPosition(p){
+ const t=g.worldClock;
+ return {x:p.x+1.48+Math.cos(t*1.6)*.19,y:p.y-1.48+Math.sin(t*2.0)*.17};
+}
+function thunder(e,raw,origin=null){
+ if(e.dead)return;
+ const w=g.weapons.cloud;
+ if(origin&&g.worldClock>=(w.cloudFlashUntil||0))wandLink(origin,cloudPosition(g.player),'#e6cbf2');
+ function strike(damage,life){
+  if(e.dead)return;
+  w.cloudFlashUntil=g.worldClock+.20;
+  g.effects.push({kind:'thunder',x:e.x,y:e.y,lean:Math.cos(e.phase)*.51,life,max:life});
+  deal(e,damage,'cloud');
+ }
+ strike(raw,.34);
+ if(w.break&&!e.dead)e.vulnerableUntil=Math.max(e.vulnerableUntil,g.worldClock+2.5);
+ if(w.evo===0)schedule(.22,()=>strike(raw*.7,.29));
+}
 function doRibbon(a,scale){
  const p=g.player,w=g.weapons.ribbon,r=weaponReach('ribbon',w),arc=w.evo===0?TAU:Math.PI*130/180;
  g.effects.push({kind:'ribbon',x:p.x,y:p.y,r,angle:a,arc,life:.26,max:.26});
@@ -1749,6 +1852,7 @@ function update(dt){
  p.invuln=Math.max(0,p.invuln-dt);
  updateMovement(dt);
  updateBossEncounter(dt);
+ updateForestEncounter();
  const row=DATA.spawns.find(x=>g.t>=x[0]&&g.t<x[1])||DATA.spawns.at(-1);
  const baseInterval=Math.max(.45,row[2]/(1+Math.min(30,g.t/60)*.016));
  const spacing=[.86,.82,1.12,1.20];
@@ -2078,7 +2182,7 @@ function drawEnemyArt(kind,x,baseline,maxWidth,maxHeight,frame='move-1',face=1){
  if(!im?.complete||!im.naturalWidth)return;
  const scale=Math.min(maxWidth/im.naturalWidth,maxHeight/im.naturalHeight);
  const width=im.naturalWidth*scale,height=im.naturalHeight*scale;
- imageSprite(key,x,baseline-height/2,width,height,key===baseKey?1:face);
+ imageSprite(key,x,baseline-height/2,width,height,key===baseKey&&!NEW_FOREST_ENEMIES.has(kind)?1:face);
 }
 function drawEnemy(e){if(e.dead||!visible(e.x,e.y,3))return;
  const isboss=e.kind==='boss',iselite=e.kind==='flower'||e.kind==='horn';const bob=Math.sin((g?.worldClock||menuArtTime)*4+e.phase)*.045;
@@ -2093,7 +2197,12 @@ function drawEnemy(e){if(e.dead||!visible(e.x,e.y,3))return;
   const aim=e.attackState?.aim;
   face=(aim==null?g.player.x-e.x:Math.cos(aim))<0?-1:1;
  }
- drawEnemyArt(e.kind,e.x,e.y+ht*.30+bob,wd,ht,frame,face);
+ if(NEW_FOREST_ENEMIES.has(e.kind)){
+  const clock=g.worldClock,wave=Math.sin(clock*(e.kind==='thief'?13:9)+e.phase);
+  const hover=e.kind==='moth'?-.25-.12*wave:Math.min(0,wave)*.08;
+  const facing=e.kind==='moth'?1:e.kind==='thief'?(e.moveFace||1):g.player.x<e.x?-1:1;
+  drawEnemyArt(e.kind,e.x,e.y+ht*.30+hover,wd*(1+wave*.045),ht,frame,facing);
+ }else drawEnemyArt(e.kind,e.x,e.y+ht*.30+bob,wd,ht,frame,face);
  if(e.flash>0)ellipse(e.x,e.y-ht*.23,e.r*.84,e.r*.68,'#ffffff',e.flash*2.4);
  const attack=isboss?e.action?.type:e.attackState?.type;
  if(attack?.endsWith('-warn')){
@@ -2146,7 +2255,7 @@ function drawPickup(key,x,y,size){
  const im=sprites[key],scale=size/Math.max(im.naturalWidth,im.naturalHeight);
  imageSprite(key,x,y,im.naturalWidth*scale,im.naturalHeight*scale);
 }
-const gemArt=new Map(),CRYSTAL_HEIGHTS=[.37,.46,.56];
+const gemArt=new Map(),CRYSTAL_HEIGHTS=[.27,.34,.42];
 const crystalGrade=xp=>xp>=8?2:xp>=3?1:0;
 function drawCrystal(x,y,xp,scale=1){
  const source=sprites.pickupCrystal;
@@ -2216,6 +2325,9 @@ function drawEffects(){for(const e of g.effects){if(e.kind==='event')continue;co
     line(x,y-size,x,y+size,color,width);
    }
   }
+ }else if(e.kind==='shellSpark'){
+  star(e.x-.23,e.y-.08,.16,0,'#fff4ad','#8b6d43');
+  star(e.x+.16,e.y+.10,.10,0,'#e5edbc','#728354');
  }else if(e.kind==='xpSwoosh'){
   const t=1-f,curve=t*t*(3-2*t),x=e.x+(e.ex-e.x)*curve,y=e.y+(e.ey-e.y)*curve-.20*Math.sin(Math.PI*t);
   line(e.x+(e.ex-e.x)*Math.max(0,curve-.16),e.y+(e.ey-e.y)*Math.max(0,curve-.16),x,y,'#e9d7ff',.10);
@@ -2242,7 +2354,18 @@ else if(e.kind==='beam'){
   line(.18,0,length*.89,0,'#fff7d8',Math.min(.14,e.width*.18));
   star(length*.96,0,.20,0,'#fff5cb','#7a689b');
  }
- else if(e.kind==='thunder'){line(e.x-.4,e.y-3.3,e.x+.14,e.y-.25,'#fff6b3',.22);line(e.x+.15,e.y-2.5,e.x-.12,e.y-.22,'#c994ea',.09);star(e.x,e.y,.5,0,'#fff2c7','#bd7ac2');}
+ else if(e.kind==='thunder'){
+  const x=e.x,y=e.y,lean=e.lean;
+  ctx.globalAlpha=Math.min(1,f*1.65);
+  ctx.beginPath();ctx.moveTo(x+lean,y-3.10);ctx.lineTo(x-.31,y-1.95);
+  ctx.lineTo(x+.31,y-1.65);ctx.lineTo(x-.12,y-.86);ctx.lineTo(x+.13,y-.72);ctx.lineTo(x,y);
+  ctx.lineCap='round';ctx.lineJoin='round';
+  for(const [color,width] of [['#ac82bd',.23],['#f4c973',.14],['#fff9d1',.065]]){
+   ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();
+  }
+  line(x-.31,y-1.95,x-.65,y-1.32,'#e5b3ec',.055);
+  star(x,y,.24,0,'#ffefb1','#a67bb3');
+ }
  else if(e.kind==='bellWave'){
   const progress=1-f,r=e.r*(.27+.73*progress);
   ctx.globalAlpha=Math.min(1,1.75*f);
@@ -2303,9 +2426,10 @@ function drawWeaponFields(){
    ctx.restore();flower(x,y,.12,k%2?'#fff0dd':'#f3b6d6',a);
   }
  }
- if(g.weapons.cloud){const x=p.x+1.45+Math.cos(t*1.4)*.27,y=p.y-1.8+Math.sin(t*2.1)*.15;
-  ellipse(x-.26,y,.43,.32,'#fff9ff',.97);ellipse(x+.20,y-.08,.49,.37,'#eee1ff',.98);ellipse(x,y-.22,.44,.33,'#f9f3ff',.98);
-  ellipse(x-.14,y-.04,.038,.053,'#7d528d');ellipse(x+.23,y-.04,.038,.053,'#7d528d');star(x+.35,y-.33,.16,t,'#fff2a1','#a575bf');}
+ if(g.weapons.cloud){
+  const cloud=cloudPosition(p),flashing=(g.weapons.cloud.cloudFlashUntil||0)>t;
+  if(sprites.ui_cloud?.naturalWidth)drawPickup('ui_cloud',cloud.x,cloud.y,flashing?1.23:1.12);
+ }
  for(const z of g.traps){if(!visible(z.x,z.y,2))continue;
   ellipse(z.x,z.y,.48,.25,'#7eae7c',.28);flower(z.x,z.y,.35,z.mini?'#fee4a8':'#f59bc9',z.phase+t*.6);
  }
@@ -2322,7 +2446,8 @@ const ENEMY_BOLT_COLORS={
  normal:['#663c33','#e07849','#ffbd75'],
  fan:['#6b343b','#dd6654','#ffb381'],
  ring:['#6b354b','#d96075','#ffa6a1'],
- spiral:['#593558','#b16592','#f1a4bd']
+ spiral:['#593558','#b16592','#f1a4bd'],
+ moth:['#62513c','#c99555','#ffe8a8']
 };
 function drawEnemyBullet(b){
  if(!visible(b.x,b.y,1))return;
@@ -2635,7 +2760,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.40';
+  const CURRENT='5.6.41';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
