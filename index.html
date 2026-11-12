@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.44" />
+</style><meta name="nemo-version" content="5.6.45" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -454,6 +454,18 @@
   #app #hud .survival-status #weapon-slots .slot small { font-size: clamp(8px,2.65vw,11px); }
 }
 
+#app #cards .choice-card[data-kind="rare"] { background: linear-gradient(145deg,#f3e4ff,#fff5e2) !important; border-color:#9f68be !important; box-shadow:inset 0 0 0 2px #f3d395,0 3px #84609a !important; }
+#app #cards .choice-card[data-kind="rare"] :is(.choice-type,.choice-name,.choice-effect,.choice-cta) { color:#622e82 !important; }
+#app #cards .choice-card[data-kind="rare"] .choice-effect { background:#eaddf5 !important; border-color:#b688d1 !important; }
+#app #hud #weapon-slots .slot[data-rare="true"] { outline:2px solid #a26abe; outline-offset:-2px; }
+
+#app #leaderboard .rank-loadout { display:flex; flex-wrap:wrap; gap:4px; align-items:center; margin-top:4px; }
+#app #leaderboard .rank-loadout img { display:block; width:20px; height:20px; object-fit:contain; border-radius:4px; background:#fff8e9; }
+#app #leaderboard .rank-loadout .rank-outfit { width:23px; height:23px; background:#e2ead5; }
+@media(max-width:480px) { #app #leaderboard .rank-loadout img { width:16px; height:16px; } #app #leaderboard .rank-loadout .rank-outfit { width:19px; height:19px; } }
+
+#app #hud .survival-left #buffs[data-rage="true"] { color:#fff1d8 !important; background:#8a354b !important; border-color:#e8a491 !important; }
+
 </style>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
@@ -596,7 +608,7 @@ const DATA = Object.freeze({
  progression:{xpToNext:{base:8,linear:2,curve:.32,curveStart:8},xpDrops:{green:[.54,.087,.006],blue:[.31,.38,.05],fat:[.24,.42,.135],spore:[.27,.41,.125],firefly:[.29,.37,.145],armor:[.155,.40,.25],spark:[.26,.40,.14],petal:[.61,.09,.008],bramble:[.19,.41,.19],moth:[.32,.35,.11]}},
  title:'니모의 낯선 모험', saveKey:'nemo_strange_adventure_FULL_v1', version:1,
  world:160, survival:null, widthWorld:28,
- player:{attack:100,hp:100,speed:4,crit:.05,critMultiplier:1.5,invuln:.7,pickup:1.5,weaponSlots:4,passiveSlots:3,rerolls:2},
+ player:{attack:100,hp:100,speed:4,crit:.05,critMultiplier:1.5,invuln:.7,pickup:1.75,weaponSlots:4,passiveSlots:3,rerolls:2},
  weapons:{
   star:{name:'스타 샷',icon:'⭐',coef:0.6,cd:0.68,range:12.8,up:[['별 하나 더','발사체 +1 · 개별 피해 ×0.85'],['반짝이는 별','스타 샷 피해 +25%'],['행운의 별','스타 샷 치명타 확률 +10%p']],break:'적중 후 반경 3에서 다른 적 1회 도탄 · 도탄 피해 50%',evos:[["별사탕 소나기","별 +2 · 개별 피해 소폭 감소 · 직격 시 작은 별 폭발"],["소원별","치명타 확률 +20%p · 치명타 배율 +75%p · 체력이 낮은 적에게 피해 +30%"]]},
   orbit:{name:'스타 오비트',icon:'💫',coef:0.32,cd:0,range:1.65,up:[['별 하나 더','회전 별 +1'],['별빛 강화','접촉 피해 +25%'],['넓은 궤도','회전 반경 +15%']],break:'회전 속도 +30% · 닿은 적을 1초간 20% 둔화',evos:[["은하수 고리","회전 별 +2 · 피해 +15% · 안쪽과 바깥쪽에 별을 배치"],["수호별","피해 +25% · 초당 1회 가까운 적 탄환 차단"]]},
@@ -611,7 +623,8 @@ const DATA = Object.freeze({
   vortex:{name:'솜사탕 소용돌이',icon:'🌀',coef:0.24,cd:0,range:2.9,up:[['더 넓은 바람','소용돌이 반경 +20%'],['달콤한 바람','지속 피해 +25%'],['느린 구름','둔화 효과 강화']],break:'소용돌이 안의 적이 느려지고 끌어당기는 힘 증가',evos:[["태풍 솜사탕","지속 피해 +30% · 적을 더 강하게 끌어당김"],["몽글몽글 바람","반경 +28% · 닿은 적을 더 강하게 둔화"]]},
   seed:{name:'별씨앗 덫',icon:'🌱',coef:1.37,cd:1.65,range:5,up:[['씨앗 주머니','최대 설치 덫 +1'],['꽃폭탄','덫 폭발 피해 +25%'],['꽃잎 폭발','폭발 반경 +20%']],break:'덫 폭발 후 작은 꽃씨 덫 2개 생성',evos:[["마법 꽃밭","덫 최대 +2 · 터진 자리에 지속 피해"],["요정의 덫","감지 범위 +40% · 폭발 반경 +50% · 왕관 슬라임 피해 +30%"]]},
   bell:{name:'달빛 종소리',icon:'🔔',coef:0.83,cd:3.3,range:2.65,up:[['넓은 울림','충격파 범위 +22%'],['맑은 종소리','충격파 피해 +25%'],['빠른 울림','공격 속도 +15%']],break:'충격파에 맞은 적을 1초간 둔화',evos:[["두 번 울리는 종","두 번째 충격파 · 더 강한 넉백"],["수호의 종","충격파 반경 +30% · 파동에 닿은 모든 적 탄환 제거"]]},
-  feather:{name:'바람 깃털',icon:'🍃',coef:0.71,cd:1.55,range:10.5,up:[['깃털 하나 더','깃털 +1 · 개별 위력 소폭 감소'],['날카로운 깃털','깃털 피해 +25%'],['가벼운 바람','공격 속도 +15%']],break:'나가는 깃털이 다른 적에게 1회 연쇄',evos:[["춤추는 깃털","깃털 +2 · 나가는 길에 최대 2회 연쇄"],["돌아오는 바람","돌아오는 길 피해 +50% · 복귀 속도 증가"]]} 
+  feather:{name:'바람 깃털',icon:'🍃',coef:0.71,cd:1.55,range:10.5,up:[['깃털 하나 더','깃털 +1 · 개별 위력 소폭 감소'],['날카로운 깃털','깃털 피해 +25%'],['가벼운 바람','공격 속도 +15%']],break:'나가는 깃털이 다른 적에게 1회 연쇄',evos:[["춤추는 깃털","깃털 +2 · 나가는 길에 최대 2회 연쇄"],["돌아오는 바람","돌아오는 길 피해 +50% · 복귀 속도 증가"]]},
+  eclipse:{name:'황혼의 별',icon:'✦',coef:2.05,cd:2.75,range:13.2,up:[['넓은 황혼','폭발 반경 +15%'],['별의 심장','피해 +25%'],['빠른 공명','공격 속도 +15%']],break:'폭발에 맞은 적이 잠시 느려져요',evos:[['새벽의 왕관','추가 폭발 1회 · 추가 폭발 피해 55%'],['황혼의 왕관','피해 +30% · 폭발 반경 +20%']]}
  },
  passives:{magic:['마법 강화','✨','모든 무기 피해 +20%'],quick:['빠른 주문','⏱','모든 공격 속도 +8%'],lucky:['행운의 리본','🎗','치명타 확률 +5%p'],big:['커다란 마법','💠','공격 반경·폭·폭발 반경 +8%'],cloak:['포근한 망토','💖','최대 체력 +15% · 증가량만큼 현재 체력 회복'],shoes:['가벼운 발걸음','👟','이동 속도 +8%'],magnet:['보석 자석','🧲','경험치 획득 범위 +20%']},
  monsters:{green:{name:'초록 슬라임',hp:45,dmg:8,speed:1.3,r:.48},blue:{name:'파랑 슬라임',hp:90,dmg:10,speed:1.7,r:.48},fat:{name:'통통 버섯',hp:150,dmg:12,speed:.9,r:.53},spore:{name:'포자 버섯',hp:100,dmg:8,speed:.8,r:.51},firefly:{name:'반딧불',hp:70,dmg:8,speed:2,r:.38},armor:{name:'밤송이 슬라임',hp:240,dmg:14,speed:.95,r:.57},spark:{name:'별빛 도깨비',hp:92,dmg:10,speed:3.10,r:.44},petal:{name:'소환 슬라임',hp:90,dmg:8,speed:1.3,r:.46},
@@ -624,11 +637,23 @@ const DATA = Object.freeze({
   [210,285,1.16,4,82,{green:28,blue:20,bramble:10,moth:8,fat:11,spore:10,armor:8,spark:5}],
   [285,360,1.05,5,94,{green:29,blue:17,bramble:10,moth:8,fat:11,spore:8,armor:7,firefly:6,spark:4}],
   [360,420,1,5,110,{green:23,blue:17,bramble:11,moth:8,fat:11,spore:8,armor:8,firefly:8,spark:6}],
-  [420,480,1,6,110,{green:21,blue:17,bramble:10,moth:8,fat:12,spore:8,armor:8,firefly:9,spark:7}]
+  [420,480,1,6,108,{green:21,blue:17,bramble:10,moth:8,fat:12,spore:8,armor:8,firefly:9,spark:7}],
+  [480,600,1.00,6,112,{green:18,blue:15,bramble:13,moth:7,fat:15,spore:8,armor:11,firefly:7,spark:6}],
+  [600,720,.98,6,116,{green:15,blue:14,bramble:8,moth:12,fat:12,spore:14,armor:10,firefly:9,spark:6}],
+  [720,900,.95,6,122,{green:13,blue:15,bramble:11,moth:8,fat:12,spore:9,armor:13,firefly:9,spark:10}],
+  [900,1080,.93,6,128,{green:12,blue:12,bramble:10,moth:12,fat:11,spore:10,armor:11,firefly:10,spark:12}],
+  [1080,1260,.91,7,134,{green:11,blue:12,bramble:12,moth:11,fat:12,spore:10,armor:12,firefly:10,spark:10}],
+  [1260,1440,.89,7,140,{green:10,blue:11,bramble:11,moth:13,fat:11,spore:13,armor:12,firefly:9,spark:10}],
+  [1440,Infinity,.88,7,146,{green:9,blue:10,bramble:12,moth:12,fat:12,spore:12,armor:13,firefly:10,spark:10}]
  ],
  elites:{flower:{name:'꽃모자 버섯',hp:2070,dmg:16,speed:.98,xp:30,at:180,gold:30,r:.83},horn:{name:'별뿔 슬라임',hp:4480,dmg:18,speed:1.42,xp:50,at:360,gold:50,r:.83}},
- boss:{name:'왕관 슬라임',hp:73500,dmg:20,speed:.87,r:1.55,gold:100},
- economy:{costs:[100,150,220,320,450,600,800,1050,1350,1700],rerollCosts:[600,1500],
+ boss:{name:'왕관 슬라임',hp:38000,dmg:20,speed:.87,r:1.55,gold:100},
+ economy:{costs:{
+  attack:[45,70,105,150,210,280,365,460,575,710],
+  hp:[45,70,100,140,195,260,335,425,530,650],
+  speed:[60,100,155,225,320],pickup:[55,90,140,205,290],
+  crit:[45,75,120,180,255],reroll:[150,360]
+ },
  upgrades:{attack:['공격력 강화','기본 공격력 +2',10],hp:['체력 강화','최대 체력 +5',10],speed:['빠른 발걸음','이동 속도 +1%',5],pickup:['보석 수집','경험치 보석 획득 범위 +10%',5],crit:['치명타 강화','치명타 확률 +1%p',5],reroll:['카드 다시 뽑기','다시 뽑기 기회 +1회',2]}}
 });
 </script><script>const ASSET_DATA={"nemo":"./assets/nemo-default-v5627/portrait.png","windmill":"./assets/windmill.png","ribbonIcon":"./assets/ribbonIcon.png","magnetIcon":"./assets/magnetIcon.png","groundFull":"./assets/groundFull.jpg","tree_pink":"./assets/tree_pink.png","tree_green":"./assets/tree_green.png","pond":"./assets/pond.png","grain":"./assets/grain.jpg","nemoAnim":"./assets/v550/nemo_default_32.webp","nemoWand":"./assets/nemo-polish/star-wand.webp","ui_star":"./assets/ui_star.svg","ui_orbit":"./assets/ui_orbit.svg","ui_moon":"./assets/ui_moon.svg","ui_bubble":"./assets/ui_bubble.svg","ui_bloom":"./assets/ui_bloom.svg","ui_cloud":"./assets/ui_cloud.svg","ui_ribbon":"./assets/ui_ribbon.svg","ui_book":"./assets/ui_book.svg","ui_comet":"./assets/ui_comet.svg","ui_frost":"./assets/ui_frost.svg","ui_feather":"./assets/ui_feather.svg","ui_magnet":"./assets/ui_magnet.svg","ui_magic":"./assets/ui_magic.svg","ui_quick":"./assets/ui_quick.svg","ui_lucky":"./assets/ui_lucky.svg","ui_big":"./assets/ui_big.svg","ui_cloak":"./assets/ui_cloak.svg","ui_shoes":"./assets/ui_shoes.svg","ui_vortex":"./assets/ui_vortex.svg","ui_seed":"./assets/ui_seed.svg","ui_bell":"./assets/ui_bell.svg"};</script><script>
@@ -684,6 +709,8 @@ const FOREST_WASHES=[
  [-58,-26,20,'#98c8aa55'],[-9,-48,15,'#f6d2c346'],[45,-45,19,'#9acbb052'],
  [49,45,20,'#8acbb057'],[-36,46,18,'#f5dfaa66'],[14,66,13,'#b5cfa451']
 ];
+const RAGE={unlock:45,chance:.006,dropLife:24,dropGap:60,healthCost:.42,duration:12,power:1.55,tempo:1.50,spell:1.40};
+const RARE_ECLIPSE_CHANCE=.025;
 const W=DATA.weapons,MD=DATA.monsters,passiveKeys=Object.keys(DATA.passives),weaponKeys=Object.keys(W);
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)), sq=(x)=>x*x, len=(a,b)=>Math.hypot(a,b), distance=(a,b,c,d)=>Math.hypot(a-c,b-d), atan=(a,b,c,d)=>Math.atan2(d-b,c-a);
 const fmt=t=>`${String(Math.floor(t/60)).padStart(2,'0')}:${String(Math.floor(t%60)).padStart(2,'0')}`;
@@ -700,9 +727,9 @@ Object.assign(ASSET_DATA,{
 // Original world-space draw bounds, separate from the collision radii.
 const NEW_FOREST_ENEMIES=new Set(['bramble','moth','thief']);
 const LATE_BOSSES=[
- {art:'thorn-guardian',name:'가시숲 수호자',hp:85600,dmg:22,speed:1.02,r:1.63,gold:135,tier:1,signature:'hedge'},
- {art:'moonwing-queen',name:'달날개 여왕',hp:101000,dmg:24,speed:1.13,r:1.52,gold:170,tier:2,signature:'cross'},
- {art:'storm-owl',name:'폭풍 부엉이',hp:119000,dmg:27,speed:1.25,r:1.68,gold:210,tier:3,signature:'wing'}
+ {art:'thorn-guardian',name:'가시숲 수호자',hp:47500,dmg:22,speed:1.02,r:1.63,gold:135,tier:1,signature:'hedge'},
+ {art:'moonwing-queen',name:'달날개 여왕',hp:56000,dmg:24,speed:1.13,r:1.52,gold:170,tier:2,signature:'cross'},
+ {art:'storm-owl',name:'폭풍 부엉이',hp:67000,dmg:27,speed:1.25,r:1.68,gold:210,tier:3,signature:'wing'}
 ];
 const ENEMY_ART={
  bramble:[1.21,1.02],moth:[1.42,1.12],thief:[1.18,1.06],
@@ -753,20 +780,21 @@ Object.assign(ASSET_DATA,{
 ASSET_DATA.ui_cloud='./assets/forest-enemies-v5641/cloud-familiar.png';
 ASSET_DATA.pickupCrystal='./assets/forest-pickups-v5637/xp-crystal.png';
 ASSET_DATA.pickupBone='./assets/forest-pickups-v5637/health-bone.png';
+ASSET_DATA.ui_eclipse=STORYBOOK_ART.icon_crown;
 ASSET_DATA.ui_gold='./assets/nemo-wardrobe-v5631/gold-pouch.png';
 ASSET_DATA.ui_heal='./assets/nemo-wardrobe-v5631/sweet-snack.png';
 const sprites={};Object.keys(ASSET_DATA).forEach(k=>{let im=new Image();im.src=ASSET_DATA[k];sprites[k]=im;});
 const COSTUME_ART='./assets/nemo-wardrobe-v5631/';
 const COSTUMES=[
  ["default","기본 니모",0,"빨간 목도리와 작은 가방을 멘 니모.",0,0],
- ["forest","숲속 탐험가",250,"잎사귀 모자와 초록 조끼를 입은 숲길 탐험가.",2,1],
- ["rain","노란 우비",450,"꿀빛 우비와 물방울 단추로 빗속에서도 산뜻해요.",3,2],
- ["redhood","빨간망토 차차 니모",650,"빨간 후드를 쓰고 작은 바구니를 든 동화 속 니모.",4,3],
- ["student","마법학교 학생",750,"크림색 칼라와 리본 넥타이, 책가방을 갖춘 마법학교 교복.",5,4],
- ["halloween","할로윈 니모",900,"작은 호박 모자와 박쥐 날개 망토로 꾸민 니모.",6,5],
- ["starlight","별빛 마법사",1100,"짙은 남색 망토에 금빛 별자리를 수놓은 밤하늘 마법사.",7,6],
- ["royal","왕관 니모",1600,"보석 왕관과 포근한 털 장식 망토를 입은 숲의 왕.",9,7],
- ["legend","전설의 멍법사",2400,"비취빛 예복과 잎사귀 관을 두른 전설 속 숲의 마법사.",12,9]
+ ["forest","숲속 탐험가",140,"잎사귀 모자와 초록 조끼를 입은 숲길 탐험가.",4,1],
+ ["rain","노란 우비",200,"꿀빛 우비와 물방울 단추로 빗속에서도 산뜻해요.",7,2],
+ ["redhood","빨간망토 차차 니모",280,"빨간 후드를 쓰고 작은 바구니를 든 동화 속 니모.",5,4],
+ ["student","마법학교 학생",350,"크림색 칼라와 리본 넥타이, 책가방을 갖춘 마법학교 교복.",3,6],
+ ["halloween","할로윈 니모",440,"작은 호박 모자와 박쥐 날개 망토로 꾸민 니모.",7,5],
+ ["starlight","별빛 마법사",550,"짙은 남색 망토에 금빛 별자리를 수놓은 밤하늘 마법사.",5,8],
+ ["royal","왕관 니모",680,"보석 왕관과 포근한 털 장식 망토를 입은 숲의 왕.",14,5],
+ ["legend","전설의 멍법사",860,"비취빛 예복과 잎사귀 관을 두른 전설 속 숲의 마법사.",11,10]
 ].map(([id,name,price,desc,hp,attack])=>({
  id,name,price,desc,hp,attack,
  atlas:COSTUME_ART+id+'/walk.png',
@@ -798,7 +826,7 @@ function motionPose(p){
  const stepPhase=step%1,leftStep=Math.floor(step)%2===0;
  const defaultFrame=walking&&stepPhase<.74?(leftStep?1:2):0;
  const walkFrame=walking?(stepPhase<.55?(leftStep?1:3):(leftStep?2:0)):0;
- return {row:walking?[1,0,2,0][frame]:casting?3:0,frame,defaultFrame,walkFrame,casting,castProgress:1-p.castTimer/NEMO_CAST,dir,walking,phase:step*Math.PI};
+ return {row:walking?[1,0,2,0][frame]:casting?3:0,frame,defaultFrame,walkFrame,casting,castProgress:1-p.castTimer/(p.castDuration||NEMO_CAST),dir,walking,phase:step*Math.PI};
 }
 const NEMO_DIRECTION_ROWS={down:0,'down-right':1,'down-left':1,right:2,left:2,'up-right':3,'up-left':3,up:4};
 function nemoWalkView(q,atlas){
@@ -894,10 +922,11 @@ function drawNemoWand(v){
  ctx.drawImage(img,-art.gripX*art.width,-art.gripY*art.height,art.width,art.height);
  ctx.restore();
 }
-function castFromWand(p,a){p.castTimer=NEMO_CAST;p.castFacing=faceFromAngle(a);p.castAngle=a;const origin=wandOrigin(p);g.effects.push({kind:'wandGlow',x:origin.x,y:origin.y,life:.23,max:.23});return origin;}
+function castFromWand(p,a){p.castDuration=NEMO_CAST/spellTravelRate();p.castTimer=p.castDuration;p.castFacing=faceFromAngle(a);p.castAngle=a;const origin=wandOrigin(p);g.effects.push({kind:'wandGlow',x:origin.x,y:origin.y,life:.23,max:.23});return origin;}
 function wandLink(from,to,color='#fff1b4'){g.effects.push({kind:'wandLink',x:from.x,y:from.y,ex:to.x,ey:to.y,color,life:.28,max:.28});}
 
 const WEAPON_GUIDE={
+ eclipse:{role:'희귀 마법 · 연속 폭발',desc:'스타 샷을 대신 장착합니다. 가장 가까운 적의 위치에 보랏빛 별이 여러 번 폭발해요.',pair:'서리 수정으로 적을 늦추면 같은 자리에서 연속 폭발을 맞히기 쉬워요.'},
  star:{"role":"원거리 · 빠른 단일 공격","desc":"가까운 적에게 별을 발사합니다. 날아가는 동안 목표를 살짝 따라가고, 돌파하면 다른 적에게 튕깁니다.","pair":"구름 친구가 약화한 보스에게 꾸준히 피해를 줄 수 있어요."},
  orbit:{"role":"근거리 · 회전 접촉 공격","desc":"회전하는 별에 닿은 적만 피해를 받습니다. 적에게 접근하며 별의 궤도를 맞출수록 강해져요.","pair":"달빛 종소리로 적을 밀어낸 뒤 회전 별의 궤도에 걸치게 해보세요."},
  moon:{"role":"원거리 · 밀집 대열 관통","desc":"가까운 적 중 달빛 한 줄에 가장 많은 적을 담을 수 있는 방향을 찾습니다. 달빛은 줄지어 오는 적을 관통해요.","pair":"솜사탕 소용돌이로 모은 적을 한 줄로 꿰뚫기 좋아요."},
@@ -934,19 +963,20 @@ function weaponNumbers(id){
   star:1+w.up[0]+extra,orbit:2+w.up[0]+extra,moon:w.evo===0?2:1,bubble:1+w.up[0],
   bloom:1,cloud:w.evo===1?3:w.evo===0?2:1,ribbon:w.break?2:1,book:2+w.up[0]+extra,
   comet:1+w.up[0]+extra,frost:1+w.up[0]+extra,feather:1+w.up[0]+extra,vortex:1,
-  seed:3+w.up[0]+extra,bell:w.evo===0?2:1
+  seed:3+w.up[0]+extra,bell:w.evo===0?2:1,eclipse:w.evo===0?4:3
  }[id];
- const labels={star:'탄환 수',orbit:'회전 별',moon:'관통 달빛',bubble:'추적 방울',bloom:'꽃밭 수',cloud:'최대 낙뢰',ribbon:'리본 타격',book:'최대 종이 요정',comet:'유성',frost:'수정',feather:'깃털',vortex:'소용돌이',seed:'최대 설치 덫',bell:'충격파'};
+ const labels={star:'탄환 수',orbit:'회전 별',moon:'관통 달빛',bubble:'추적 방울',bloom:'꽃밭 수',cloud:'최대 낙뢰',ribbon:'리본 타격',book:'최대 종이 요정',comet:'유성',frost:'수정',feather:'깃털',vortex:'소용돌이',seed:'최대 설치 덫',bell:'충격파',eclipse:'연속 폭발'};
  const perHit=id==='moon'&&w.evo===0?.65:id==='cloud'&&w.evo===1?.75:1;
  const raw=weaponPower(id,d.coef,w)*perHit;
- const radius=['orbit','ribbon','bloom','bubble','vortex','seed','bell','comet'].includes(id);
+ const radius=['orbit','ribbon','bloom','bubble','vortex','seed','bell','comet','eclipse'].includes(id);
  return [{k:id==='bloom'||id==='vortex'?'지속 피해 1회':'기본 타격 피해',v:fmtN(raw)},
-  {k:'공격 주기',v:d.cd?fmtN(cooldown(id,w))+'초':'상시'},{k:labels[id],v:count+'개'},
+  {k:'공격 주기',v:d.cd?fmtN(cooldown(id,w)/rageRate())+'초':'상시'},{k:labels[id],v:count+'개'},
   {k:radius?'공격 반경':'사거리',v:fmtN(weaponReach(id,w))}];
 }
 function guideMetrics(id){return weaponNumbers(id).map(x=>`<div><b>${x.k}</b><strong>${x.v}</strong></div>`).join('');}
 function choiceDetail(c){
  const weapon=WEAPON_GUIDE[c.id];
+ if(c.type==='rare')return {label:'교체 효과',effect:'별빛이 한 지점에서 연속 폭발',copy:'스타 샷이 황혼의 별로 바뀌어요. 지금까지 올린 무기 레벨과 강화 단계가 이어집니다.'};
  if(c.type==='new')return {label:'전투 역할',effect:weapon.role,copy:weapon.desc,growth:W[c.id].up.map(([name])=>name).join(' · ')};
  if(c.type==='break'&&c.id==='star')return {label:'이번 돌파',effect:'추가 도탄 1회 · 도탄 피해 50%',copy:'적중하면 반경 3 안의 다른 적에게 별이 한 번 더 튕깁니다.'};
  const copy=c.type==='passive'?(PASSIVE_GUIDE[c.id]||PASSIVE_ROLE[c.id]):
@@ -998,11 +1028,27 @@ function setScreen(s){
 let toastTimer=0;function showToast(t,duration=2.5){$('toast').textContent=t;$('toast').classList.remove('hidden');toastTimer=duration;}
 // One continuous survival mode. Scales every real minute, not by a selected difficulty.
 const difficultyKey='adaptive';
+// [minute, normal HP, normal contact damage, movement speed, pack factor, stage]
+const FOREST_DIFFICULTY=[
+ [0,1,1,1,1,'새싹 숲'],[1.5,1.25,1.13,1.025,1.07,'꽃길'],
+ [3,1.58,1.29,1.05,1.14,'깊어지는 숲'],[4.5,1.98,1.48,1.075,1.20,'버섯 고개'],
+ [6,2.48,1.69,1.10,1.26,'그림자 숲'],[8,3.30,2.02,1.13,1.34,'별빛 폭풍'],
+ [10,4.16,2.37,1.16,1.41,'가시 숲'],[12,5.10,2.72,1.19,1.48,'달빛 숲'],
+ [15,6.55,3.27,1.23,1.57,'폭풍 전야'],[18,8.11,3.83,1.27,1.66,'끝없는 밤'],
+ [21,9.79,4.42,1.31,1.75,'심연의 입구'],[24,11.57,5.04,1.35,1.84,'심연의 숲'],
+ [30,15.42,6.33,1.42,2.02,'깊은 심연']
+];
 function forestDanger(t){
- const m=Math.max(0,(Number(t)||0)/60);
- return {label:m<2?'새싹 숲':m<4?'깊어지는 숲':m<6?'그림자 숲':m<8?'별빛 폭풍':m<12?'끝없는 밤':m<18?'위험한 숲':'심연의 숲',
- hp:1+.075*m+.013*m*m,damage:1+.055*m+.006*m*m,
- speed:1+Math.min(.60,.018*m),spawns:1+Math.min(1.8,.05*m),bossHp:1};
+ const minute=Math.max(0,(Number(t)||0)/60);
+ const nextIndex=FOREST_DIFFICULTY.findIndex(row=>row[0]>minute);
+ const index=nextIndex<0?FOREST_DIFFICULTY.length-1:nextIndex-1;
+ const [start,hp,contact,speed,spawns,label]=FOREST_DIFFICULTY[index];
+ const elapsed=minute-start;
+ const next=FOREST_DIFFICULTY[index+1];
+ const blend=(value,column,lateRate)=>next?value+(next[column]-value)*elapsed/(next[0]-start):value+elapsed*lateRate;
+ const contactDamage=blend(contact,2,.20);
+ return {label,hp:blend(hp,1,.64),contactDamage,damage:1+(contactDamage-1)*.74,
+  speed:Math.min(1.60,blend(speed,3,.011)),spawns:Math.min(2.60,blend(spawns,4,.028))};
 }
 function difficulty(){return forestDanger(g?.t||0);}
 function renderDifficulty(){} // The old 3-choice selector was removed.
@@ -1011,7 +1057,7 @@ function begin(){
  rngState=(Math.random()*0x100000000)>>>0;
  const outfit=costumeOf(saved.costumeEquipped);
  const hp=DATA.player.hp+saved.upgrades.hp*5+outfit.hp;
- g={t:0,bossTime:0,difficulty:difficultyKey,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.44,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*2+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
+ g={t:0,bossTime:0,difficulty:difficultyKey,runCostume:outfit.id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.44,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*2+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
   speed:DATA.player.speed*(1+saved.upgrades.speed*.01),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
   weapons:{star:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
   enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0, waveIndex:0,
@@ -1051,10 +1097,13 @@ function maxPassiveSlots(){return DATA.player.passiveSlots;}
 function pcount(){return Object.values(g.passives).filter(v=>v>0).length;}
 function getPassive(k){return g.passives[k]||0;}
 function radiusMult(){return 1+.08*getPassive('big');}
-const DAMAGE_RANK={star:1,orbit:1,moon:0,bubble:1,bloom:0,cloud:0,ribbon:0,book:1,comet:1,frost:1,feather:1,vortex:1,seed:1,bell:1};
-const SPEED_RANK={moon:1,cloud:1,ribbon:2,book:2,feather:2,bell:2};
-const EXTRA_DAMAGE={star:[.75,1],orbit:[1.15,1.25],moon:[1,1.6],bloom:[1.3,1],ribbon:[1.15,1.3],book:[.8,1.4],comet:[.7,1.4],vortex:[1.3,1]};
+const DAMAGE_RANK={eclipse:1,star:1,orbit:1,moon:0,bubble:1,bloom:0,cloud:0,ribbon:0,book:1,comet:1,frost:1,feather:1,vortex:1,seed:1,bell:1};
+const SPEED_RANK={eclipse:2,moon:1,cloud:1,ribbon:2,book:2,feather:2,bell:2};
+const EXTRA_DAMAGE={eclipse:[1,1.30],star:[.75,1],orbit:[1.15,1.25],moon:[1,1.6],bloom:[1.3,1],ribbon:[1.15,1.3],book:[.8,1.4],comet:[.7,1.4],vortex:[1.3,1]};
 const SPREAD_DAMAGE={star:.85,bubble:.8,book:.85,comet:.75,frost:.85,feather:.85};
+function rageActive(){return !!g&&g.worldClock<(g.player.rageUntil||0);}
+function rageRate(){return rageActive()?RAGE.tempo:1;}
+function spellTravelRate(){return rageActive()?RAGE.spell:1;}
 function clockMult(id,w=g?.weapons[id]){
  return 1+.08*(g?.passives.quick||0)+.08*(g?.blessings?.breeze||0)+.15*(w?.up[SPEED_RANK[id]]||0);
 }
@@ -1066,7 +1115,7 @@ function weaponPower(id,coefficient,w){
  const growth=1+.25*w.up[DAMAGE_RANK[id]];
  const spread=Math.pow(SPREAD_DAMAGE[id]??1,w.up[0]);
  const evolution=EXTRA_DAMAGE[id]?.[w.evo]??1;
- return (g?.player.attack??DATA.player.attack)*coefficient*magic*brave*growth*spread*evolution;
+ return (g?.player.attack??DATA.player.attack)*coefficient*magic*brave*growth*spread*evolution*(rageActive()?RAGE.power:1);
 }
 function wpBase(id,coefficient){return weaponPower(id,coefficient,g.weapons[id]);}
 function weaponReach(id,w=g?.weapons[id]){
@@ -1080,6 +1129,7 @@ function weaponReach(id,w=g?.weapons[id]){
   case 'comet':return 1.46*1.2**w.up[2]*rm*(w.evo===1?1.5:1);
   case 'bubble':return 1.33*1.2**w.up[2]*rm*(w.evo===1?1.4:1);
   case 'seed':return 1.22*1.2**w.up[2]*rm*(w.evo===1?1.5:1);
+  case 'eclipse':return 2.18*1.15**w.up[0]*rm*(w.evo===1?1.2:1);
   default:return d.range;
  }
 }
@@ -1130,7 +1180,7 @@ function knock(e,a,r){
  pushEnemy(e,Math.cos(a)*force,Math.sin(a)*force);
 }
 function schedule(delay,fn){g.effects.push({kind:'event',life:delay,fn});}
-function loot(x,y,xp,kind='xp',healAmount=0){if(kind==='xp')g.earnedXP+=xp;g.loot.push({x,y,xp,kind,healAmount,ttl:95,r:kind==='xp'?.2:.33,phase:range(0,TAU)});}
+function loot(x,y,xp,kind='xp',healAmount=0){if(kind==='xp')g.earnedXP+=xp;g.loot.push({x,y,xp,kind,healAmount,ttl:kind==='rage'?RAGE.dropLife:95,r:kind==='xp'?.2:.33,phase:range(0,TAU)});}
 function kill(e){
  if(e===g.boss){
   g.boss=null;
@@ -1159,10 +1209,19 @@ function kill(e){
   const roll=rand(),xp=roll<rare?8:roll<rare+uncommon?3:roll<rare+uncommon+common?1:0;
   if(xp)loot(e.x,e.y,xp);
   if(e.kind!=='petal'&&rand()<.01&&g.loot.filter(z=>z.kind==='bone'&&!z.dead).length<3)loot(e.x+.2,e.y+.15,0,'bone',.20);
+  if(e.kind!=='petal'&&g.t>=RAGE.unlock&&g.worldClock>=(g.nextRageDrop||0)&&!rageActive()&&rand()<RAGE.chance){
+   g.nextRageDrop=g.worldClock+RAGE.dropGap;
+   loot(e.x-.24,e.y+.16,0,'rage');
+  }
  }
 }
 function collect(item){item.dead=true;const p=g.player;if(item.kind==='xp'){
   p.xp+=item.xp;g.totalXP+=item.xp;
+ }else if(item.kind==='rage'){
+  p.hp=Math.max(1,p.hp*(1-RAGE.healthCost));
+  p.rageUntil=g.worldClock+RAGE.duration;
+  burst(p.x,p.y,'#ed777a',15);
+  showToast('광견병 · 12초 동안 마법 폭주',2.3);
  }else if(item.kind==='snack'||item.kind==='bone'){
   const previous=p.hp;
   p.hp=Math.min(p.maxHp,p.hp+p.maxHp*item.healAmount);
@@ -1187,7 +1246,7 @@ function makeGrowth(id){let w=g.weapons[id],def=W[id];if(w.lv===3)return {type:'
 function rollCards(){let out=[],owned=Object.keys(g.weapons),growth=owned.filter(hasGrowth);
  if(growth.length)out.push(makeGrowth(choose(growth)));
  const pool=[];
- if(owned.length<maxWeaponSlots())for(const id of weaponKeys){if(!g.weapons[id])pool.push({type:'new',id,name:W[id].name,ico:W[id].icon,desc:WEAPON_GUIDE[id].role,meta:'무기 슬롯 사용 · Lv.1'});}
+ if(owned.length<maxWeaponSlots())for(const id of weaponKeys){if(id!=='eclipse'&&!g.weapons[id]&&!(id==='star'&&g.weapons.eclipse))pool.push({type:'new',id,name:W[id].name,ico:W[id].icon,desc:WEAPON_GUIDE[id].role,meta:'무기 슬롯 사용 · Lv.1'});}
  const passiveOwned=pcount();for(const id of passiveKeys){if(getPassive(id)>=3)continue;if(!getPassive(id)&&passiveOwned>=maxPassiveSlots())continue;
   pool.push({type:'passive',id,name:DATA.passives[id][0],ico:DATA.passives[id][1],desc:DATA.passives[id][2],meta:`공용 패시브 · ${getPassive(id)}/3`});}
  // Can show upgrades for other owned weapons, one card per weapon max.
@@ -1199,6 +1258,12 @@ function rollCards(){let out=[],owned=Object.keys(g.weapons),growth=owned.filter
  {type:'gold',id:'gold',name:'반짝이는 주머니',ico:'🪙',desc:'이번 판 골드 10 추가',meta:'대체 카드'}];
  for(const reward of fallback){if(out.length>=3)break;if(!out.some(c=>c.id===reward.id))out.push(reward);}
 
+ if(g.cardReason==='level'&&g.player.level>=6&&g.weapons.star){
+  if(g.rareRollLevel!==g.player.level){
+   g.rareRollLevel=g.player.level;g.rareRollWon=rand()<RARE_ECLIPSE_CHANCE;
+  }
+  if(g.rareRollWon)out[Math.min(2,out.length)]={type:'rare',id:'eclipse',name:W.eclipse.name,ico:W.eclipse.icon,meta:'스타 샷 교체 · 강화 단계 계승'};
+ }
  return out;}
 function openCards(){g.cards=rollCards();renderCards();setScreen('cards');}
 function openForestChoice(stage){g.milestoneStage=stage;g.cardReason='milestone';g.cards=[
@@ -1210,7 +1275,7 @@ function renderCards(){
  const milestone=g.cardReason==='milestone',bonus=g.cardReason==='bonus';
  $('cards-title').textContent=milestone?`숲의 축복 · ${fmt(g.t)}`:bonus?'엘리트 보상':`레벨 업 · Lv.${g.player.level}`;
  $('choice-description').textContent=milestone?'이번 모험에 적용할 축복을 고르세요.':bonus?'전투에서 얻은 보상을 고르세요.':'이번 모험에 더할 마법이나 강화를 고르세요.';
- const tags={new:'새로운 마법',growth:'마법 강화',break:'중간 돌파',evo:'최종 진화',passive:'공용 패시브',heal:'회복 보상',gold:'추가 골드',blessing:'숲의 축복'};
+ const tags={rare:'희귀 마법',new:'새로운 마법',growth:'마법 강화',break:'중간 돌파',evo:'최종 진화',passive:'공용 패시브',heal:'회복 보상',gold:'추가 골드',blessing:'숲의 축복'};
  const options=$('card-options');
  options.innerHTML=g.cards.map((c,i)=>{
   const {label,effect,copy,growth}=choiceDetail(c);
@@ -1230,7 +1295,11 @@ function renderCards(){
  $('reroll').disabled=g.rerolls<=0||milestone;
 }
 function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c)return;g.metrics.cardPicks[c.name]=(g.metrics.cardPicks[c.name]||0)+1;
- if(c.type==='new'){g.weapons[c.id]={lv:1,up:[0,0,0],break:false,evo:null,clock:.1};if(c.id==='orbit'){const p=g.player;p.castTimer=NEMO_CAST;p.castFacing=p.direction;g.weapons.orbit.orbitBirth=g.worldClock;g.weapons.orbit.orbitWand=wandOrigin(p);}}
+ if(c.type==='new'){g.weapons[c.id]={lv:1,up:[0,0,0],break:false,evo:null,clock:.1};if(c.id==='orbit'){const p=g.player;p.castDuration=NEMO_CAST;p.castTimer=NEMO_CAST;p.castFacing=p.direction;g.weapons.orbit.orbitBirth=g.worldClock;g.weapons.orbit.orbitWand=wandOrigin(p);}}
+ if(c.type==='rare'&&g.weapons.star){
+  g.weapons=Object.fromEntries(Object.entries(g.weapons).map(([id,w])=>id==='star'?['eclipse',{...w,clock:.12}]:[id,w]));
+  g.shots=g.shots.filter(shot=>shot.weapon!=='star');
+ }
  if(c.type==='growth'){let w=g.weapons[c.id];w.up[c.up]++;w.lv++;}
  if(c.type==='break'){let w=g.weapons[c.id];w.break=true;w.lv=4;}
  if(c.type==='evo'){g.currentEvo=c.id;renderEvo(c.id);setScreen('evolution');return;}
@@ -1283,9 +1352,9 @@ function waveFormation(index,time,pack){
 }
 function spawn(type,pos=null,variant=null){if(!g)return null;const at=pos||spawnPoint();if(!at)return null;
  let cfg=variant||MD[type]||DATA.elites[type]||DATA.boss;if(!cfg)return null;
- let mult=(type in MD && type!=='petal')?1+.08*(g.t/60):1,dmgMult=(type in MD && type!=='petal')?1+.035*(g.t/60):1;
- const diff=difficulty(),isBoss=type==='boss',hpFactor=diff.hp*(isBoss?diff.bossHp/diff.hp:1);
- let e={id:++g.n,kind:type,x:at.x,y:at.y,r:cfg.r,hp:cfg.hp*mult*hpFactor,maxHp:cfg.hp*mult*hpFactor,dmg:cfg.dmg*dmgMult*diff.damage,speed:cfg.speed*(type==='spark'?Math.min(diff.speed,1.22):type==='thief'?Math.min(diff.speed,1.25):diff.speed),flash:0,dead:false,slowAmount:0,slowUntil:0,vulnerableUntil:0,phase:rand()*TAU,
+ const diff=difficulty(),isBoss=type==='boss',regular=Object.hasOwn(MD,type)&&type!=='petal';
+ const hpFactor=isBoss?1:regular?diff.hp:1+(diff.hp-1)*.62;
+ let e={id:++g.n,kind:type,x:at.x,y:at.y,r:cfg.r,hp:cfg.hp*hpFactor,maxHp:cfg.hp*hpFactor,dmg:cfg.dmg*(regular?diff.contactDamage:diff.damage),speed:cfg.speed*(type==='spark'?Math.min(diff.speed,1.22):type==='thief'?Math.min(diff.speed,1.25):diff.speed),flash:0,dead:false,slowAmount:0,slowUntil:0,vulnerableUntil:0,phase:rand()*TAU,
   patternTimer:type==='spore'?2.8:type==='firefly'?4:type==='moth'?range(2.0,3.5):5,telegraph:null,attackState:null,dashDir:0,dashLeft:0,halt:0,orbitHit:{},isBoss:type==='boss'};
  if(type==='boss'){e.specialClock=3.5;e.patternIndex=0;e.action=null;e.summonClock=0;e.bossDef=cfg;}
  if(type==='thief')e.escapeAt=g.worldClock+12;
@@ -1319,14 +1388,14 @@ function spawnGroup(pace=wavePace()){
  g.enemies=g.enemies.filter(e=>!e.dead&&(e===g.boss||e.isBoss||DATA.elites[e.kind]||distance(e.x,e.y,p.x,p.y)<=activeRadius));
  const m=Math.max(0,g.t/60);
  const row=DATA.spawns.find(x=>g.t>=x[0]&&g.t<x[1])||DATA.spawns.at(-1);
- const cap=g.boss?bossEscortLimit():Math.min(210,Math.round((row[4]+Math.floor(Math.max(0,m-8)*7))*pace.cap));
+ const cap=g.boss?bossEscortLimit():Math.min(190,Math.round((row[4]+Math.floor(Math.max(0,m-24)*2))*pace.cap));
  const counts={spore:0,firefly:0,spark:0,moth:0};let alive=0;
  for(const e of g.enemies){if(!isEscort(e))continue;alive++;if(e.kind in counts)counts[e.kind]++;}
- const pack=clamp(Math.round((row[3]+(g.rushUntil>g.t?2:0))*difficulty().spawns*pace.pack),1,22);
+ const pack=clamp(Math.round((row[3]+(g.rushUntil>g.t?(g.t<480?1:2):0))*difficulty().spawns*pace.pack),1,22);
  const entries=waveFormation(g.waveIndex++,g.t,pack);
  for(let i=0;i<pack;i++){
   if(alive>=cap){g.metrics.skipped+=pack-i;break;}
-  const pool=Object.entries(row[5]).filter(([k])=>counts[k]===undefined||counts[k]<(k==='spark'?Math.min(6,2+Math.floor(m/2)):Math.min(15,6+Math.floor(m/4))));
+  const pool=Object.entries(row[5]).filter(([k])=>counts[k]===undefined||counts[k]<(k==='spark'?Math.min(6,2+Math.floor(m/2)):k==='moth'?Math.min(8,2+Math.floor(m/3)):Math.min(15,6+Math.floor(m/4))));
   if(!pool.length)break;
   let total=pool.reduce((a,p)=>a+p[1],0),r=rand()*total,type=pool[pool.length-1][0];
   for(const [name,weight] of pool){r-=weight;if(r<0){type=name;break;}}
@@ -1399,7 +1468,7 @@ function updateBossEncounter(dt){
   g.bossTime+=dt;
   const boss=g.boss,t=g.worldClock;
   if(boss.hp<boss.maxHp&&t-(boss.hitLast??t)>=7){
-   boss.hp=Math.min(boss.maxHp,boss.hp+boss.maxHp*.003*dt);
+   boss.hp=Math.min(boss.maxHp,boss.hp+boss.maxHp*.0025*dt);
    if(t>=(boss.healFxAt||0)){
     boss.healFxAt=t+1.05;
     g.effects.push({kind:'bossRecover',x:boss.x,y:boss.y-.75,life:.53,max:.53});
@@ -1790,12 +1859,24 @@ function fireWeapon(id){
    g.shots.push({kind:'fairy',weapon:id,x:origin.x,y:origin.y,vx:Math.cos(angle)*7,vy:Math.sin(angle)*7,speed:9,life:2.7,r:.23,target:target.id,
     damage,hit:new Set(),chains:w.break?(w.evo===0?2:1):0,dead:false,trail:[]});
   }
+ }else if(id==='eclipse'){
+  const r=weaponReach(id,w),x=t.x,y=t.y,rate=spellTravelRate();
+  wandLink(origin,t,'#d6a7fe');
+  const pulses=w.evo===0?[1,.64,.49,.55]:[1,.64,.49];
+  for(const [i,weight] of pulses.entries())schedule((.14+i*.31)/rate,()=>{
+   g.effects.push({kind:'eclipsePulse',x,y,r,life:.42,max:.42});
+   for(const enemy of g.enemies){
+    if(enemy.dead||distance(enemy.x,enemy.y,x,y)>r+enemy.r)continue;
+    deal(enemy,damage*weight,id);
+    if(w.break)slow(enemy,.30,1.1);
+   }
+  });
  }else if(id==='comet'){
   const count=1+w.up[0]+extra,r=weaponReach(id,w),spread=count===1?0:r*.86;
   wandLink(origin,t,'#ffe9a6');
   for(let i=0;i<count;i++){
    const angle=i*TAU/count,tx=clamp(t.x+Math.cos(angle)*spread,.4,DATA.world-.4),ty=clamp(t.y+Math.sin(angle)*spread,.4,DATA.world-.4);
-   const delay=.46+i*.075;
+   const delay=(.46+i*.075)/spellTravelRate();
    g.effects.push({kind:'cometWarn',x:tx,y:ty,r,life:delay,max:delay});
    schedule(delay,()=>{
     g.effects.push({kind:'starBoom',x:tx,y:ty,r,life:.34,max:.34});
@@ -1856,7 +1937,7 @@ function wfrostSlow(){return g.weapons.frost?.evo===0?.49:.29;}
 function outsideWorld(x,y,pad=0){
  return x<-pad||x>DATA.world+pad||y<-pad||y>DATA.world+pad;
 }
-function updateShots(dt){for(const s of g.shots){if(s.dead)continue;s.life-=dt;
+function updateShots(dt){const step=dt*spellTravelRate();for(const s of g.shots){if(s.dead)continue;s.life-=dt;
  if(s.kind==='feather'&&!s.returning&&(s.life<=0||outsideWorld(s.x,s.y))){
   s.returning=true;s.target=null;s.hit.clear();s.life=1.48;
   s.speed=g.weapons.feather.evo===1?16:13.5;
@@ -1873,7 +1954,7 @@ function updateShots(dt){for(const s of g.shots){if(s.dead)continue;s.life-=dt;
    s.vx+=(dx/length*s.speed-s.vx)*steering;s.vy+=(dy/length*s.speed-s.vy)*steering;
   }
  }
- s.x+=s.vx*dt;s.y+=s.vy*dt;
+ s.x+=s.vx*step;s.y+=s.vy*step;
  if(s.returning&&distance(s.x,s.y,g.player.x,g.player.y)<.62){s.dead=true;continue;}
  if(s.trail){s.trail.push({x:s.x,y:s.y});if(s.trail.length>6)s.trail.shift();}
  const outside=outsideWorld(s.x,s.y,NEMO_SIZE/2);
@@ -1919,7 +2000,7 @@ function orbitPosition(p,w,i,count,r){
 function updateOrbit(dt){
  const w=g.weapons.orbit;if(!w)return;
  const p=g.player,n=2+w.up[0]+(w.evo===0?2:0),r=weaponReach('orbit',w);
- const frequency=(w.break?1.3:1)*clockMult('orbit');
+ const frequency=(w.break?1.3:1)*clockMult('orbit')*rageRate();
  w.angle=((w.angle||0)+TAU*frequency*dt)%TAU;
  if(w.orbitWand&&g.worldClock-w.orbitBirth>=.48)w.orbitWand=null;
  const hitTimes=w.hitTimes??=new Map();
@@ -1943,7 +2024,7 @@ function updateOrbit(dt){
 }
 function updateVortex(dt){
  const w=g.weapons.vortex;if(!w)return;
- w.vortexTick=(w.vortexTick??0)-dt;
+ w.vortexTick=(w.vortexTick??0)-dt*rageRate();
  if(w.vortexTick>0)return;
  w.vortexTick=.52/clockMult('vortex');
  const p=g.player,r=weaponReach('vortex',w),power=wpBase('vortex',W.vortex.coef);
@@ -2080,7 +2161,7 @@ function update(dt){
  updateForestEncounter();
  const row=DATA.spawns.find(x=>g.t>=x[0]&&g.t<x[1])||DATA.spawns.at(-1);
  const pace=wavePace();
- const baseInterval=Math.max(.45,row[2]*pace.interval/(1+Math.min(30,g.t/60)*.016));
+ const baseInterval=Math.max(.48,row[2]*pace.interval/(1+Math.min(30,g.t/60)*.010));
  const spacing=[.86,.82,1.12,1.20];
  let interval=Math.max(.45,baseInterval*spacing[g.waveIndex%spacing.length]);
  g.spawnClock+=dt;
@@ -2094,14 +2175,14 @@ function update(dt){
   if(g.t>=at&&!g.milestones[key]){g.milestones[key]=true;openForestChoice(key);return;}
  }
  for(const [at,key] of [[305,'sporeRush'],[440,'finalRush']]){
-  if(g.t>=at&&!g.rushFired[key]){g.rushFired[key]=true;g.rushUntil=g.t+18;showToast('⚠ 숲의 괴물들이 몰려오고 있어!');}
+  if(g.t>=at&&!g.rushFired[key]){g.rushFired[key]=true;g.rushUntil=g.t+(key==='sporeRush'?14:17);showToast('⚠ 숲의 괴물들이 몰려오고 있어!');}
  }
  const lateWave=Math.floor(Math.max(0,g.t-480)/90);
  if(lateWave>(g.lateWave||0)){g.lateWave=lateWave;g.rushUntil=g.t+20;showToast('🌑 숲이 더욱 위험해졌어! 살아남아!');}
  const full=Math.floor(g.t/60);if(full>g.achievedMinutes)g.achievedMinutes=full;
  for(const id of Object.keys(g.weapons)){
   if(id==='orbit'||id==='vortex')continue;
-  const w=g.weapons[id];w.clock-=dt;
+  const w=g.weapons[id];w.clock-=dt*rageRate();
   if(w.clock<=0){if(fireWeapon(id))w.clock=cooldown(id);else w.clock=0;}
  }
  updateMonsters(dt);if(screen!=='playing')return;
@@ -2172,10 +2253,11 @@ function updateHUD(){
  const loadout=weapons.map(([id,w])=>`${id}:${w.lv}:${w.evo}`).join('|');
  if(loadout!==shownLoadout){
   shownLoadout=loadout;
-  $('weapon-slots').innerHTML=weapons.map(([id,w])=>`<div class="slot" title="${W[id].name} · Lv.${w.lv}"><span class="ico">${skillIcon(id,W[id].icon)}</span><small>Lv.${w.lv}${w.evo!==null?'★':''}</small></div>`).join('');
+  $('weapon-slots').innerHTML=weapons.map(([id,w])=>`<div class="slot" data-rare="${id==='eclipse'}" title="${W[id].name} · Lv.${w.lv}"><span class="ico">${skillIcon(id,W[id].icon)}</span><small>Lv.${w.lv}${w.evo!==null?'★':''}</small></div>`).join('');
   $('pause-loadout').innerHTML=weapons.map(([id,w])=>`<li>${skillIcon(id,W[id].icon)}<span>${W[id].name}</span><small>Lv.${w.lv}${w.evo!==null?'★':''}</small></li>`).join('');
  }
- hudText('buffs',[...Object.keys(g.passives).filter(k=>g.passives[k]>0).map(k=>DATA.passives[k][1]+g.passives[k]),...Object.entries(g.blessings||{}).filter(([k,v])=>v>0).map(([k,v])=>({brave:'⭐',breeze:'🍃',gather:'🧲'}[k]+v))].join('   '));
+ hudData($('buffs'),'rage',rageActive());
+ hudText('buffs',[...(rageActive()?['광견병 '+Math.ceil(p.rageUntil-g.worldClock)+'초']:[]),...Object.keys(g.passives).filter(k=>g.passives[k]>0).map(k=>DATA.passives[k][1]+g.passives[k]),...Object.entries(g.blessings||{}).filter(([k,v])=>v>0).map(([k,v])=>({brave:'⭐',breeze:'🍃',gather:'🧲'}[k]+v))].join('   '));
 }
 // Cosmetic wardrobe: saved independently from online ranking.
 let shopSelected='default';
@@ -2237,10 +2319,10 @@ const SCHOOL_ICONS={
  reroll:'./assets/interface-art-v5620/reroll.webp'
 };
 function updateSchool(){$('school-gold').textContent=`🪙 보유 골드: ${saved.gold.toLocaleString('ko-KR')}`;
- $('school-upgrades').innerHTML=Object.entries(DATA.economy.upgrades).map(([key,a])=>{let lv=saved.upgrades[key],cost=(key==='reroll'?DATA.economy.rerollCosts:DATA.economy.costs)[lv],max=a[2];
+ $('school-upgrades').innerHTML=Object.entries(DATA.economy.upgrades).map(([key,a])=>{let lv=saved.upgrades[key],cost=DATA.economy.costs[key][lv],max=a[2];
   const shortfall=lv<max?Math.max(0,cost-saved.gold):0;
   return `<div class="school-row"><div><img class="school-icon" src="${SCHOOL_ICONS[key]}" alt=""><strong>${a[0]}</strong><div class="school-desc">${a[1]}</div><div class="school-level">Lv.${lv} / ${max}</div></div><div class="school-price"><button class="btn ${!shortfall&&lv<max?'primary':''}" data-upgrade="${key}" ${lv>=max||shortfall?'disabled':''}>${lv>=max?'최대 강화':`🪙 ${cost}`}</button>${shortfall?`<small>${shortfall.toLocaleString('ko-KR')} G 부족</small>`:''}</div></div>`;}).join('');}
-function buySchool(k){const item=DATA.economy.upgrades[k];if(!item)return;let lvl=saved.upgrades[k];if(lvl>=item[2])return;const cost=(k==='reroll'?DATA.economy.rerollCosts:DATA.economy.costs)[lvl];if(saved.gold<cost)return;
+function buySchool(k){const item=DATA.economy.upgrades[k];if(!item)return;let lvl=saved.upgrades[k];if(lvl>=item[2])return;const cost=DATA.economy.costs[k][lvl];if(saved.gold<cost)return;
  saved.gold-=cost;saved.upgrades[k]++;persist();updateSchool();renderMenu();}
 function renderMenu(){$('menu-gold-value').textContent=`${saved.gold.toLocaleString('ko-KR')} 골드`;$('total-plays').textContent=`모험 ${saved.stats.plays}회`;
  $('menu-profile-name').textContent=rankSanitizeName(rankCfg.nickname)||'닉네임 설정';
@@ -2450,11 +2532,28 @@ function drawEnemy(e){
  if(!e.retreat&&!isboss&&!iselite&&e.hp<e.maxHp){
   const ww=.85,yy=e.y-ht*.91;ctx.fillStyle='#654775';ctx.fillRect(e.x-ww/2,yy,ww,.12);ctx.fillStyle='#f7b6c4';ctx.fillRect(e.x-ww/2+.03,yy+.025,(ww-.06)*clamp(e.hp/e.maxHp,0,1),.06);}
 }
+const NEMO_RAGE_EYES=[[[39,37],[59,37]],[[52,37],[71,36]],[[64,35]],[[73,38]],[]];
+function drawRageEyes(view,frame){
+ const eyes=view.directional?NEMO_RAGE_EYES[view.row]:NEMO_RAGE_EYES[view.row===0?0:view.row===1?1:4];
+ for(const [px,py] of eyes){
+  const x=(px/frame-.5)*NEMO_SIZE,y=(py/frame-.5)*NEMO_SIZE;
+  ellipse(x,y,.062,.057,'#a92d40',.88);
+  ellipse(x+.012,y-.012,.030,.029,'#ff6668');
+  ellipse(x+.014,y-.019,.010,.010,'#ffe2c3');
+ }
+}
 function drawPlayer(p){
  if(!p)return;
  ellipse(p.x,p.y+.35,.54,.17,'#67617a',.16);
  ellipse(p.x,p.y+.36,.36,.095,'#50425e',.11);
- const q=motionPose(p);
+ const q=motionPose(p),raging=rageActive();
+ if(raging){
+  const t=g.worldClock;
+  for(let i=0;i<5;i++){
+   const a=t*4+i*TAU/5,x=p.x+Math.cos(a)*.77,y=p.y+Math.sin(a)*.28-.28-(i%3)*.18;
+   star(x,y,.068+.029*Math.sin(t*8+i),a,'#ffd0a6','#b34658');
+  }
+ }
  const flash=p.invuln>0&&Math.floor(p.invuln*13)%2===0?.53:1;
  const im=nemoAtlas();
  if(im?.complete && im.naturalWidth){
@@ -2476,6 +2575,7 @@ function drawPlayer(p){
      // The painted paw and sleeve cover the handle naturally.
      drawNemoWand(nemoWandPose(q,view));
      ctx.drawImage(im,view.frame*F,view.row*F,F,F,-NEMO_SIZE/2,-NEMO_SIZE/2,NEMO_SIZE,NEMO_SIZE);
+     if(raging)drawRageEyes(view,F);
    }
    ctx.restore();
  }else imageSprite('nemo',p.x,p.y-.24,2.5*NEMO_ART_SCALE,2.35*NEMO_ART_SCALE,p.face,flash);
@@ -2518,6 +2618,15 @@ function drawGem(l){
   const grade=crystalGrade(l.xp),h=CRYSTAL_HEIGHTS[grade]*.5;
   const palette=[['#a380da','#78539c'],['#80c8a1','#4f876f'],['#efca72','#9d743e']][grade];
   polygon([[l.x,y-h],[l.x+h*.67,y],[l.x,y+h],[l.x-h*.67,y]],palette[0],palette[1],.04);
+ }else if(l.kind==='rage'){
+  ctx.save();ctx.translate(l.x,y);ctx.rotate(-.20);
+  ellipse(0,.03,.23,.27,'#68263e');
+  ellipse(.015,.055,.169,.20,'#d75668');
+  ellipse(-.071,-.02,.057,.106,'#ffb495',.86);
+  ctx.fillStyle='#593841';ctx.fillRect(-.105,-.33,.21,.16);
+  ctx.fillStyle='#e2b36b';ctx.fillRect(-.093,-.315,.186,.08);
+  star(.045,.09,.078,.24,'#fff0b8','#9f3548');
+  ctx.restore();
  }else if(l.kind==='bone'){
   if(sprites.pickupBone?.naturalWidth)drawPickup('pickupBone',l.x,y,.72);
   else drawBone(l.x,y);
@@ -2558,6 +2667,14 @@ function drawEffects(){for(const e of g.effects){if(e.kind==='event')continue;co
     line(x-size,y,x+size,y,color,width);
     line(x,y-size,x,y+size,color,width);
    }
+  }
+ }else if(e.kind==='eclipsePulse'){
+  const radius=e.r*(.23+.66*(1-f));
+  star(e.x,e.y,.31+f*.20,g.worldClock*4,'#fff3ad','#7d3daa');
+  for(let i=0;i<8;i++){
+   const a=i*TAU/8+g.worldClock*.93,x=e.x+Math.cos(a)*radius,y=e.y+Math.sin(a)*radius;
+   line(e.x+(x-e.x)*.45,e.y+(y-e.y)*.45,x,y,'#a553d0',.10);
+   star(x,y,.11+f*.085,a,'#ffe8a0','#8e53ba');
   }
  }else if(e.kind==='bossRecover'){
   const y=e.y-(1-f)*.57;
@@ -2837,18 +2954,45 @@ function rankConfigured(){return /^https:\/\/[a-z0-9-]+\.supabase\.co\/?$/i.test
 function rankHeaders(){return {'apikey':rankCfg.key,'Content-Type':'application/json','Accept':'application/json'};}
 function rankSort(rows){return [...rows].sort((a,b)=>(Number(b.survival_seconds)||0)-(Number(a.survival_seconds)||0)||(Number(b.kills)||0)-(Number(a.kills)||0));}
 function rankEsc(t){return String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function normalizeRankLoadout(value){
+ if(!value||typeof value!=='object'||Array.isArray(value))return null;
+ const costume=COSTUMES.find(outfit=>outfit.id===value.costume)?.id;
+ const weapons=[];
+ if(Array.isArray(value.weapons))for(const item of value.weapons.slice(0,4)){
+  if(!item||typeof item.id!=='string'||!Object.hasOwn(W,item.id)||weapons.some(w=>w.id===item.id))continue;
+  weapons.push({id:item.id,level:clamp((Number.isFinite(item.level)?Math.floor(item.level):1),1,7)});
+ }
+ return costume||weapons.length?{costume:costume??null,weapons}:null;
+}
+function rankLoadoutHTML(value){
+ const loadout=normalizeRankLoadout(value);
+ if(!loadout)return '';
+ const costume=COSTUMES.find(outfit=>outfit.id===loadout.costume);
+ const label=costume?costume.name+' · 코스튬':'';
+ const portrait=costume?`<img class="rank-outfit" src="${rankEsc(costume.portrait)}" alt="${rankEsc(label)}" title="${rankEsc(label)}" loading="lazy">`:'';
+ const weapons=loadout.weapons.map(({id,level})=>{
+  const name=rankEsc(W[id].name+' · Lv.'+level);
+  return `<img src="${rankEsc(ASSET_DATA['ui_'+id])}" alt="${name}" title="${name}" loading="lazy">`;
+ }).join('');
+ return `<span class="rank-loadout" aria-label="사용 코스튬과 무기">${portrait}${weapons}</span>`;
+}
+async function rankMissingLoadout(response){
+ if(response.ok||response.status!==400)return false;
+ const error=await response.clone().json().catch(()=>null);
+ return !!error&&['42703','PGRST204'].includes(error.code)&&/\bloadout\b/i.test(error.message||'');
+}
 function saveRunRecord(won){const t=Math.round(g.t*10)/10,b=Math.round(g.bossTime*10)/10;
   const record={run_id:(typeof crypto!=='undefined'&&crypto.randomUUID)?crypto.randomUUID():('xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx').replace(/[xy]/g,c=>{let r=Math.random()*16|0;return(c==='x'?r:(r&3|8)).toString(16);}),player_id:rankId,
     nickname:rankSanitizeName(rankCfg.nickname)||'익명의 멍법사',survival_seconds:t,boss_seconds:b,
     winner:!!won,kills:Math.max(0,g.totalKills|0),level:Math.max(1,g.player.level|0),
     debug_used:false,created_at:new Date().toISOString(),
-    rank_score:t,uploaded:false};
+    rank_score:t,loadout:normalizeRankLoadout({costume:g.runCostume,weapons:Object.entries(g.weapons).map(([id,w])=>({id,level:w.lv}))}),uploaded:false};
  rankRuns.unshift(record);rankRuns=rankRuns.slice(0,50);
  try{localStorage.setItem(RANK_RUNS_KEY,JSON.stringify(rankRuns));}catch(_){}
  if(rankConfigured()&&rankSanitizeName(rankCfg.nickname)&&!record.debug_used)void rankUpload(record,false);
 }
 function rankLocalText(){let good=rankRuns.filter(r=>!r.debug_used&&!r.winner),best=rankSort(good)[0],total=good.length;
- return '<strong>나의 최고 기록</strong><p>'+(best?`${'🌲 무한 생존'} ${rankFormatTime(best.survival_seconds)} · Lv.${best.level} · 처치 ${best.kills}마리`:'아직 기록이 없어요. 모험을 플레이해 보세요!')+`</p><small>이 PC에서 저장한 기록 ${total}회 · 별도 서버 없이 보관</small>`;}
+ return '<strong>나의 최고 기록</strong><p>'+(best?`${'🌲 무한 생존'} ${rankFormatTime(best.survival_seconds)} · Lv.${best.level} · 처치 ${best.kills}마리${rankLoadoutHTML(best.loadout)}`:'아직 기록이 없어요. 모험을 플레이해 보세요!')+`</p><small>이 PC에서 저장한 기록 ${total}회 · 별도 서버 없이 보관</small>`;}
 function rankDrawLocal(){$('rank-local').innerHTML=rankLocalText();}
 function rankOpen(){rankingReturn=['result','menu','pause'].includes(screen)?screen:'menu';
  $('rank-nickname').value=rankCfg.nickname||'';$('rank-url').value=rankCfg.url||'';$('rank-key').value=rankCfg.key||'';
@@ -2867,14 +3011,17 @@ async function rankFetch(){if(!rankConfigured()){rankStatus('현재 공통 온�
  rankStatus('전체 랭킹을 불러오는 중...');
  if(!$('rank-online').querySelector('.nemo-rank-row'))rankEmpty('온라인 기록을 불러오는 중이에요.');
  try{
- const endpoint=rankCfg.url+'/rest/v1/nemo_forest_runs?select=nickname,player_id,survival_seconds,boss_seconds,winner,kills,level,rank_score,created_at&order=survival_seconds.desc&limit=500';
+ const base=rankCfg.url+'/rest/v1/nemo_forest_runs?select=nickname,player_id,survival_seconds,boss_seconds,winner,kills,level,rank_score,created_at';
+ const suffix='&order=survival_seconds.desc&limit=500';
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),9000);
- let res;try{res=await fetch(endpoint,{headers:rankHeaders(),signal:controller.signal,cache:'no-store'});}finally{clearTimeout(timer);}
+ const request=loadout=>fetch(base+(loadout?',loadout':'')+suffix,{headers:rankHeaders(),signal:controller.signal,cache:'no-store'});
+ let res;
+ try{res=await request(true);if(await rankMissingLoadout(res))res=await request(false);}finally{clearTimeout(timer);}
  if(!res.ok)throw Error('서버 응답 '+res.status+' · Supabase 테이블/RLS 설정 확인');
  let items=await res.json();if(!Array.isArray(items))throw Error('응답 데이터 형식 오류');
  let seen=new Set(),top=[];for(const r of rankSort(items.filter(r=>!r.winner))){if(seen.has(r.player_id))continue;seen.add(r.player_id);top.push(r);if(top.length>=50)break;}
  if(!top.length)rankEmpty('아직 등록된 기록이 없어요. 첫 기록을 남겨 보세요!');
- else $('rank-online').innerHTML=top.map((r,i)=>`<div class="nemo-rank-row ${r.winner?'win':''}"><div><strong>${i<3?['🥇','🥈','🥉'][i]:i+1} ${rankEsc(r.nickname)}</strong>${r.player_id===rankId?'<small>나의 기록</small>':''}</div><div><strong>${rankFormatTime(Number(r.survival_seconds))}</strong><small>Lv.${Number(r.level)||1} · ${Number(r.kills)||0}마리</small></div><div>🌲 무한 생존</div></div>`).join('');
+ else $('rank-online').innerHTML=top.map((r,i)=>`<div class="nemo-rank-row ${r.winner?'win':''}"><div><strong>${i<3?['🥇','🥈','🥉'][i]:i+1} ${rankEsc(r.nickname)}</strong>${r.player_id===rankId?'<small>나의 기록</small>':''}${rankLoadoutHTML(r.loadout)}</div><div><strong>${rankFormatTime(Number(r.survival_seconds))}</strong><small>Lv.${Number(r.level)||1} · ${Number(r.kills)||0}마리</small></div><div>🌲 무한 생존</div></div>`).join('');
  rankStatus(`서버 연결 성공 · 전체 등록 기록 ${items.length}건 중 플레이어별 최고 기록 표시`);
  }catch(e){rankStatus('랭킹 조회 실패: '+(e.message||e));rankEmpty('온라인 기록을 불러오지 못했어요. 잠시 후 새로고침해 주세요.');}}
 async function rankUpload(run,notify=true){if(!rankConfigured()){if(notify)rankStatus('연결 정보부터 저장해 주세요.');return false;}
@@ -2884,8 +3031,13 @@ async function rankUpload(run,notify=true){if(!rankConfigured()){if(notify)rankS
  if(notify)rankStatus('게임 기록을 전송하는 중...');try{
  const payload={run_id:run.run_id,player_id:rankId,nickname:rankSanitizeName(rankCfg.nickname),
  survival_seconds:run.survival_seconds,boss_seconds:run.boss_seconds,winner:run.winner,kills:run.kills,level:run.level};
+ const loadout=normalizeRankLoadout(run.loadout);
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),10000);
- let res;try{res=await fetch(rankCfg.url+'/rest/v1/nemo_forest_runs',{method:'POST',headers:{...rankHeaders(),'Prefer':'return=minimal'},body:JSON.stringify(payload),signal:controller.signal});}finally{clearTimeout(timer);}
+ const send=data=>fetch(rankCfg.url+'/rest/v1/nemo_forest_runs',{method:'POST',headers:{...rankHeaders(),'Prefer':'return=minimal'},body:JSON.stringify(data),signal:controller.signal});
+ let res;try{
+  res=await send(loadout?{...payload,loadout}:payload);
+  if(loadout&&await rankMissingLoadout(res))res=await send(payload);
+ }finally{clearTimeout(timer);}
  if(!res.ok){const error=await res.text();throw Error('업로드 실패 '+res.status+' '+error.slice(0,120));}
  run.uploaded=true;try{localStorage.setItem(RANK_RUNS_KEY,JSON.stringify(rankRuns));}catch(_){}
  rankStatus('🏆 랭킹 등록 성공!');if(screen==='leaderboard')void rankFetch();return true;
@@ -3034,7 +3186,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.44';
+  const CURRENT='5.6.45';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
