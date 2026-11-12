@@ -1,5 +1,5 @@
 {
-  "version": "5.6.43",
+  "version": "5.6.44",
   "mode": "endless_survival",
-  "notes": "좌측 HUD 확대, 몬스터 보행과 날갯짓, 별똥별 장판 잔불"
+  "notes": "확대된 무기 슬롯에서 아이콘과 레벨 숫자의 공간 분리"
 }
