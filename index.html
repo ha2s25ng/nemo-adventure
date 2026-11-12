@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.54" />
+</style><meta name="nemo-version" content="5.6.55" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -702,7 +702,12 @@ const DATA = Object.freeze({
  world:160, survival:null, widthWorld:28,
  player:{attack:100,hp:100,speed:4,crit:.05,critMultiplier:1.5,invuln:1,pickup:1.75,weaponSlots:4,passiveSlots:3,rerolls:2},
  weapons:{
-  star:{name:'스타 샷',icon:'⭐',coef:0.6,cd:0.68,range:12.8,up:[['별 하나 더','발사체 +1 · 개별 피해 ×0.85'],['반짝이는 별','스타 샷 피해 +25%'],['행운의 별','스타 샷 치명타 확률 +10%p']],break:'적중 후 반경 3에서 다른 적 1회 도탄 · 도탄 피해 50%',evos:[["별사탕 소나기","별 +2 · 개별 피해 소폭 감소 · 직격 시 작은 별 폭발"],["소원별","치명타 확률 +20%p · 치명타 배율 +75%p · 체력이 낮은 적에게 피해 +30%"]]},
+  star:{name:'스타 샷',icon:'⭐',coef:0.6,cd:0.68,range:12.8,up:[],break:'별 +1 · 한 번에 총 4발 발사',steps:{
+   2:['쌍별','별 +1 · 한 번에 총 2발 발사'],
+   3:['세 갈래 별','별 +1 · 한 번에 총 3발 발사'],
+   5:['빛나는 별','별 한 발 피해 +25%'],
+   6:['행운의 별','치명타 확률 +15%p · 치명타 피해 1.5배 → 2배']
+  },evos:[['별사탕 소나기','피해 +35% · 별마다 적 2마리 추가 관통'],['소원별','피해 +20% · 치명타 확률 +20%p · 별마다 적 1마리 추가 관통']]},
   orbit:{name:'스타 오비트',icon:'💫',coef:0.32,cd:0,range:1.65,up:[['별 하나 더','회전 별 +1'],['별빛 강화','접촉 피해 +25%'],['넓은 궤도','회전 반경 +15%']],break:'회전 속도 +30% · 닿은 적을 1초간 20% 둔화',evos:[["은하수 고리","회전 별 +2 · 피해 +15% · 안쪽과 바깥쪽에 별을 배치"],["수호별","피해 +25% · 초당 1회 가까운 적 탄환 차단"]]},
   moon:{name:'문라이트',icon:'🌙',coef:1.08,cd:1.58,range:14,up:[['달빛 집중','피해 +25%'],['빠른 달빛','공격 속도 +15%'],['넓은 달빛','폭 +25%']],break:'달빛이 끝에서 원점으로 돌아오며 50% 피해',evos:[["쌍둥이 달","달빛을 두 갈래로 발사 · 각 갈래는 피해 65%"],["보름달","피해 +60% · 폭 +50% · 재사용 대기시간 +20%"]]},
   bubble:{name:'버블 완드',icon:'🫧',coef:1.03,cd:2.06,range:12,up:[['쌍둥이 방울','방울 +1 · 개별 피해 ×0.8'],['꿈빛 방울','피해 +25%'],['커다란 방울','폭발 반경 +20%']],break:'폭발 둔화를 30%로 강화 · 1.5초 지속',evos:[["비눗방울 축제","큰 방울이 터질 때 작은 방울 2개 분열 · 개별 피해 30%"],["꿈방울","폭발 반경 +40% · 더 강한 둔화 · 왕관 슬라임 피해 +50%"]]},
@@ -1016,7 +1021,7 @@ function castFromWand(p,a){p.castDuration=NEMO_CAST/spellTravelRate();p.castTime
 function wandLink(from,to,color='#fff1b4'){g.effects.push({kind:'wandLink',x:from.x,y:from.y,ex:to.x,ey:to.y,color,life:.28,max:.28});}
 
 const WEAPON_GUIDE={
- star:{"role":"원거리 · 빠른 단일 공격","desc":"가까운 적에게 별을 발사합니다. 날아가는 동안 목표를 살짝 따라가고, 돌파하면 다른 적에게 튕깁니다.","pair":"구름 친구가 약화한 보스에게 꾸준히 피해를 줄 수 있어요."},
+ star:{role:'원거리 · 별 탄막',desc:'가까운 적에게 별을 발사합니다. Lv.4까지 별이 하나씩 늘고, 최종 진화하면 적을 관통해요.',pair:'별이 늘어날수록 넓게 퍼져요. 별 한 발의 피해는 추가 발사체마다 ×0.85가 적용돼요.'},
  orbit:{"role":"근거리 · 회전 접촉 공격","desc":"회전하는 별에 닿은 적만 피해를 받습니다. 적에게 접근하며 별의 궤도를 맞출수록 강해져요.","pair":"달빛 종소리로 적을 밀어낸 뒤 회전 별의 궤도에 걸치게 해보세요."},
  moon:{"role":"원거리 · 밀집 대열 관통","desc":"가까운 적 중 달빛 한 줄에 가장 많은 적을 담을 수 있는 방향을 찾습니다. 달빛은 줄지어 오는 적을 관통해요.","pair":"솜사탕 소용돌이로 모은 적을 한 줄로 꿰뚫기 좋아요."},
  bubble:{"role":"원거리 · 추적 폭발과 둔화","desc":"느리게 따라가는 방울이 부딪히거나 수명이 다하면 터집니다. 폭발 주변의 적을 잠시 둔화시켜요.","pair":"방울로 적을 늦추면 별똥별이 무리에 떨어질 시간을 벌 수 있어요."},
@@ -1049,7 +1054,7 @@ function weaponNumbers(id){
  const d=W[id],w=g?.weapons[id]||{lv:1,up:[0,0,0],break:false,evo:null};
  const extra=w.evo===0?2:0;
  const count={
-  star:1+w.up[0]+extra,orbit:2+w.up[0]+extra,moon:w.evo===0?2:1,bubble:1+w.up[0],
+  star:starShotCount(w),orbit:2+w.up[0]+extra,moon:w.evo===0?2:1,bubble:1+w.up[0],
   bloom:1,cloud:w.evo===1?3:w.evo===0?2:1,ribbon:w.break?2:1,book:2+w.up[0]+extra,
   comet:1+w.up[0]+extra,frost:1+w.up[0]+extra,feather:1+w.up[0]+extra,vortex:1,
   seed:3+w.up[0]+extra,bell:w.evo===0?2:1
@@ -1066,7 +1071,6 @@ function guideMetrics(id){return weaponNumbers(id).map(x=>`<div><b>${x.k}</b><st
 function choiceDetail(c){
  const weapon=WEAPON_GUIDE[c.id];
  if(c.type==='new')return {label:'전투 역할',effect:weapon.role,copy:weapon.desc,growth:W[c.id].up.map(([name])=>name).join(' · ')};
- if(c.type==='break'&&c.id==='star')return {label:'이번 돌파',effect:'추가 도탄 1회 · 도탄 피해 50%',copy:'적중하면 반경 3 안의 다른 적에게 별이 한 번 더 튕깁니다.'};
  const copy=c.type==='passive'?(PASSIVE_GUIDE[c.id]||PASSIVE_ROLE[c.id]):
    c.type==='blessing'?c.lore:c.type==='break'?weapon?.role:'';
  const labels={growth:'이번 강화',passive:'획득 효과',break:'이번 돌파',evo:'진화 방식'};
@@ -1083,8 +1087,11 @@ function closeCodex(){
 function renderCodex(){
  $('codex-tabs').innerHTML=weaponKeys.map(id=>`<button type="button" class="codex-tab ${id===currentCodex?'on':''}" data-codex="${id}" aria-pressed="${id===currentCodex}"><span aria-hidden="true">${skillIcon(id,W[id].icon)}</span> ${W[id].name}${g?.weapons[id]?' · Lv.'+g.weapons[id].lv:''}</button>`).join('');
  const d=W[currentCodex],v=WEAPON_GUIDE[currentCodex],w=g?.weapons[currentCodex];
+ const growthList=d.steps
+  ? Object.entries({...d.steps,4:['네 번째 별',d.break]}).map(([lv,[name,desc]])=>`<div class="codex-up"><b>${name}</b><span class="effect-lines">${effectLines(desc)}</span><em>Lv.${lv}</em></div>`).join('')
+  : d.up.map(([name,desc],i)=>`<div class="codex-up"><b>${name}</b><span class="effect-lines">${effectLines(friendlyEffect(desc))}</span><em>${w?w.up[i]:0}/2</em></div>`).join('')+`<h4>✦ Lv.4 중간 돌파</h4><p class="codex-text effect-lines">${effectLines(friendlyEffect(d.break))}</p>`;
  $('codex-details').innerHTML=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(currentCodex,d.icon)}</div><div class="codex-intro"><div class="codex-heading"><h3>${d.name}</h3><span>${w?'현재 Lv.'+w.lv:'기본 무기 Lv.1'}</span></div><p class="codex-role">${v.role}</p><p>${v.desc}</p><p class="codex-note">${v.pair}</p></div></div>
- <div class="codex-metrics">${guideMetrics(currentCodex)}</div><div class="codex-columns"><section><h4>✦ 일반 강화 (각 2회까지)</h4>${d.up.map((a,i)=>`<div class="codex-up"><b>${a[0]}</b><span class="effect-lines">${effectLines(friendlyEffect(a[1]))}</span><em>${w?w.up[i]:0}/2</em></div>`).join('')}<h4>✦ Lv.4 중간 돌파</h4><p class="codex-text effect-lines">${effectLines(friendlyEffect(d.break))}</p></section>
+ <div class="codex-metrics">${guideMetrics(currentCodex)}</div><div class="codex-columns"><section><h4>✦ ${d.steps?'레벨별 강화':'일반 강화 (각 2회까지)'}</h4>${growthList}</section>
  <section><h4>🌟 Lv.7 최종 진화 — 둘 중 하나</h4>${d.evos.map((a,i)=>`<div class="codex-evo ${w?.evo===i?'chosen':''}"><b>${i===0?'①':'②'} ${a[0]}</b><span class="effect-lines">${effectLines(friendlyEffect(a[1]))}</span></div>`).join('')}</section></div>`;
  $('codex-details').scrollTop=0;
 }
@@ -1185,10 +1192,10 @@ function maxPassiveSlots(){return DATA.player.passiveSlots;}
 function pcount(){return Object.values(g.passives).filter(v=>v>0).length;}
 function getPassive(k){return g.passives[k]||0;}
 function radiusMult(){return 1+.08*getPassive('big');}
-const DAMAGE_RANK={star:1,orbit:1,moon:0,bubble:1,bloom:0,cloud:0,ribbon:0,book:1,comet:1,frost:1,feather:1,vortex:1,seed:1,bell:1};
+const DAMAGE_RANK={orbit:1,moon:0,bubble:1,bloom:0,cloud:0,ribbon:0,book:1,comet:1,frost:1,feather:1,vortex:1,seed:1,bell:1};
 const SPEED_RANK={moon:1,cloud:1,ribbon:2,book:2,feather:2,bell:2};
-const EXTRA_DAMAGE={star:[.75,1],orbit:[1.15,1.25],moon:[1,1.6],bloom:[1.3,1],ribbon:[1.15,1.3],book:[.8,1.4],comet:[.7,1.4],vortex:[1.3,1]};
-const SPREAD_DAMAGE={star:.85,bubble:.8,book:.85,comet:.75,frost:.85,feather:.85};
+const EXTRA_DAMAGE={orbit:[1.15,1.25],moon:[1,1.6],bloom:[1.3,1],ribbon:[1.15,1.3],book:[.8,1.4],comet:[.7,1.4],vortex:[1.3,1]};
+const SPREAD_DAMAGE={bubble:.8,book:.85,comet:.75,frost:.85,feather:.85};
 function rageActive(){return !!g&&g.worldClock<(g.player.rageUntil||0);}
 function rageRate(){return rageActive()?RAGE.tempo:1;}
 function spellTravelRate(){return rageActive()?RAGE.spell:1;}
@@ -1198,12 +1205,15 @@ function clockMult(id,w=g?.weapons[id]){
 function cooldown(id,w=g?.weapons[id]){
  return Math.max(.08,W[id].cd/clockMult(id,w)*(id==='moon'&&w?.evo===1?1.2:1));
 }
+function starShotCount(w){return Math.min(w.lv,4);}
+function starShotPower(w){
+ return .85**(starShotCount(w)-1)*(w.lv>=5?1.25:1)*([1.35,1.20][w.evo]??1);
+}
 function weaponPower(id,coefficient,w){
  const magic=1+.20*(g?.passives.magic||0),brave=1+.12*(g?.blessings?.brave||0);
- const growth=1+.25*w.up[DAMAGE_RANK[id]];
- const spread=Math.pow(SPREAD_DAMAGE[id]??1,w.up[0]);
- const evolution=EXTRA_DAMAGE[id]?.[w.evo]??1;
- return (g?.player.attack??DATA.player.attack)*coefficient*magic*brave*growth*spread*evolution*(rageActive()?RAGE.power:1);
+ const power=id==='star'?starShotPower(w)
+  :(1+.25*w.up[DAMAGE_RANK[id]])*(SPREAD_DAMAGE[id]??1)**w.up[0]*(EXTRA_DAMAGE[id]?.[w.evo]??1);
+ return (g?.player.attack??DATA.player.attack)*coefficient*magic*brave*power*(rageActive()?RAGE.power:1);
 }
 function wpBase(id,coefficient){return weaponPower(id,coefficient,g.weapons[id]);}
 function weaponReach(id,w=g?.weapons[id]){
@@ -1220,18 +1230,17 @@ function weaponReach(id,w=g?.weapons[id]){
   default:return d.range;
  }
 }
-function wpCrit(id){let chance=g.player.crit+.05*getPassive('lucky');if(id==='star')chance+=.1*g.weapons.star.up[2]+(g.weapons.star.evo===1?.2:0);if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
+function wpCrit(id){let chance=g.player.crit+.05*getPassive('lucky');if(id==='star')chance+=(g.weapons.star.lv>=6?.15:0)+(g.weapons.star.evo===1?.20:0);if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
 function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
  let value=raw;if(e.vulnerableUntil>g.worldClock)value*=1.15;
  if(e.kind==='bramble'&&g.worldClock>=(e.guardUntil||0)){
   value*=.38;e.guardUntil=g.worldClock+3.2;
   g.effects.push({kind:'shellSpark',x:e.x,y:e.y-.29,life:.26,max:.26});
  }
- if(id==='star'&&g.weapons.star.evo===1&&e.hp<=e.maxHp*.3)value*=1.3;
  if(id==='book'&&g.weapons.book.evo===1&&e.kind==='boss')value*=1.2;
  if(id==='bubble'&&g.weapons.bubble.evo===1&&e.kind==='boss')value*=1.5;
  const crit=(settings.critAllowed!==false)&&rand()<wpCrit(id);
- if(crit)value*=1.5+(id==='star'&&g.weapons.star.evo===1?.75:0);
+ if(crit)value*=id==='star'&&g.weapons.star.lv>=6?2:1.5;
  value=Math.round(value*100)/100;const actual=Math.min(e.hp,value);
  e.hp-=value;e.flash=.13;e.hitLast=g.worldClock;
  g.metrics.weaponDamage[id]=(g.metrics.weaponDamage[id]||0)+actual;g.totalDamage+=actual;
@@ -1329,9 +1338,13 @@ function maybeCards(){if(screen!=='playing'||!g||g.done)return false;
  if(p.xp>=need){p.xp-=need;p.level++;g.cardReason='level';openCards();return true;}
  if(g.freeCards>0){g.freeCards--;g.cardReason='bonus';openCards();return true;}
  return false;}
-function hasGrowth(id){let w=g.weapons[id];if(!w||w.lv>=7)return false;if(w.lv===3||w.lv===6)return true;return w.up.reduce((a,b)=>a+b,0)<4&&w.up.some(v=>v<2);}
+function hasGrowth(id){let w=g.weapons[id];if(!w||w.lv>=7)return false;if(W[id].steps||w.lv===3||w.lv===6)return true;return w.up.reduce((a,b)=>a+b,0)<4&&w.up.some(v=>v<2);}
 function makeGrowth(id){let w=g.weapons[id],def=W[id];if(w.lv===3)return {type:'break',id,name:`${def.name} · 중간 돌파`,ico:def.icon,desc:def.break,meta:'Lv.3 → Lv.4 · 돌파',feature:true};
  if(w.lv===6)return {type:'evo',id,name:`${def.name} · 최종 진화`,ico:'🌟',desc:'두 가지 진화 중 하나를 비교하고 선택',meta:'Lv.6 → Lv.7 · 진화',feature:true};
+ if(def.steps){
+  const [name,desc]=def.steps[w.lv+1];
+  return {type:'growth',id,name,ico:def.icon,desc,meta:`${def.name} · Lv.${w.lv} → ${w.lv+1}`,feature:true};
+ }
  const choices=[0,1,2].filter(i=>w.up[i]<2);
  if(!choices.length)return null;const i=choose(choices);
  return {type:'growth',id,up:i,name:def.up[i][0],ico:def.icon,desc:def.up[i][1],meta:`${def.name} · Lv.${w.lv} → ${w.lv+1} · 중첩 ${w.up[i]}/2`,feature:true};}
@@ -1382,7 +1395,7 @@ function renderCards(){
 }
 function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c)return;g.metrics.cardPicks[c.name]=(g.metrics.cardPicks[c.name]||0)+1;
  if(c.type==='new'){g.weapons[c.id]={lv:1,up:[0,0,0],break:false,evo:null,clock:.1};if(c.id==='orbit'){const p=g.player;p.castDuration=NEMO_CAST;p.castTimer=NEMO_CAST;p.castFacing=p.direction;g.weapons.orbit.orbitBirth=g.worldClock;g.weapons.orbit.orbitWand=wandOrigin(p);}}
- if(c.type==='growth'){let w=g.weapons[c.id];w.up[c.up]++;w.lv++;}
+ if(c.type==='growth'){const w=g.weapons[c.id];if(c.up!==undefined)w.up[c.up]++;w.lv++;}
  if(c.type==='break'){let w=g.weapons[c.id];w.break=true;w.lv=4;}
  if(c.type==='evo'){g.currentEvo=c.id;renderEvo(c.id);setScreen('evolution');return;}
  if(c.type==='passive'){g.passives[c.id]=(g.passives[c.id]||0)+1;
@@ -1905,15 +1918,16 @@ function fireWeapon(id){
  a=atan(origin.x,origin.y,t.x,t.y);
  const damage=wpBase(id,d.coef),extra=w.evo===0?2:0;
  if(id==='star'||id==='bubble'||id==='frost'||id==='feather'){
-  const count=1+w.up[0]+(id==='bubble'?0:extra);
+  const count=id==='star'?starShotCount(w):1+w.up[0]+(id==='bubble'?0:extra);
   const speed={star:17,bubble:5.6,frost:14,feather:11.5}[id];
   const life={star:1,bubble:3.65,frost:1.14,feather:.96}[id];
   const radius={star:.23,bubble:.25,frost:.22,feather:.24}[id];
+  if(id==='star')w.fanSide=-(w.fanSide??-1);
   for(let i=0;i<count;i++){
-   const angle=a+(i-(count-1)/2)*(id==='star'?.16:.20);
+   const angle=a+(id==='star'?[0,-1,1,-2][i]*.16*w.fanSide:(i-(count-1)/2)*.20);
    g.shots.push({kind:id,weapon:id,x:origin.x,y:origin.y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,
-    speed,life,r:radius,damage,target:id==='bubble'||(id==='star'&&count===1)?t.id:null,bounce:id==='star'&&w.break?1:0,
-    chains:id==='frost'?(w.break?3:1):id==='feather'&&w.break?(w.evo===0?2:1):0,sub:false,returning:false,direct:true,hit:new Set(),trail:[],dead:false});
+    speed,life,r:radius,damage,target:id==='bubble'||(id==='star'&&i===0)?t.id:null,
+    chains:id==='star'?([2,1][w.evo]??0):id==='frost'?(w.break?3:1):id==='feather'&&w.break?(w.evo===0?2:1):0,sub:false,returning:false,hit:new Set(),trail:[],dead:false});
   }
  }else if(id==='moon'){
   const angles=w.evo===0?[a-.13,a+.13]:[a];
@@ -2033,10 +2047,11 @@ function updateShots(dt){const step=dt*spellTravelRate();for(const s of g.shots)
  for(const e of g.enemies){if(e.dead||s.hit.has(e.id)||distance(s.x,s.y,e.x,e.y)>s.r+e.r)continue;
   s.hit.add(e.id);if(s.kind==='bubble'){explodeBubble(s);break;}
   if(s.kind==='star'){
-   deal(e,s.damage,'star');s.dead=true;
-   if(g.weapons.star.evo===0 && s.direct){g.effects.push({kind:'starBoom',x:s.x,y:s.y,r:1.2*radiusMult(),life:.28,max:.28});for(const v of g.enemies){if(v.dead||distance(v.x,v.y,s.x,s.y)>v.r+1.2*radiusMult())continue;deal(v,s.damage*.4,'star',{critAllowed:false});}}
-   if(s.bounce>0){let nxt=targetNearest(e.x,e.y,3,new Set([e.id]));if(nxt){let a=atan(e.x,e.y,nxt.x,nxt.y);
-    g.shots.push({kind:'star',weapon:'star',x:e.x,y:e.y,vx:Math.cos(a)*15,vy:Math.sin(a)*15,life:.25,r:.23,damage:s.damage*.5,bounce:0,hit:new Set([e.id]),direct:false,trail:[],dead:false});}}
+   deal(e,s.damage,'star');
+   if(s.chains===0){s.dead=true;break;}
+   s.chains--;
+   s.target=null;
+   continue;
   }else if(s.kind==='frost'){
    deal(e,s.damage,'frost');slow(e,wfrostSlow(),1.05+.5*g.weapons.frost.up[2]);
    if(g.weapons.frost.evo===1){g.effects.push({kind:'frostBurst',x:e.x,y:e.y,r:.85,life:.28,max:.28});for(const other of g.enemies){if(!other.dead&&other.id!==e.id&&distance(other.x,other.y,e.x,e.y)<.85+other.r){deal(other,s.damage*.38,'frost',{critAllowed:false});slow(other,.25,1);}}}
@@ -2767,7 +2782,16 @@ function drawProjectile(s){
   if(s.kind==='star')ellipse(s.x,s.y,s.r*.66,s.r*.50,light,.40);
  }
  const diameter=s.r*2;
- if(s.kind==='star')star(s.x,s.y,s.r-.035,Math.atan2(s.vy,s.vx), '#ffe59a','#9d6744');
+ if(s.kind==='star'){
+  const evo=g.weapons.star.evo;
+  const [fill,edge]=evo===0?['#fff0a2','#ae6644']:evo===1?['#ffe0e5','#925681']:['#ffe59a','#9d6744'];
+  if(evo!==null&&!reducedMotion.matches){
+   const speed=Math.hypot(s.vx,s.vy)||1,dx=s.vx/speed,dy=s.vy/speed;
+   line(s.x-dx*.54,s.y-dy*.54,s.x,s.y,edge,.11);
+   line(s.x-dx*.47,s.y-dy*.47,s.x,s.y,fill,.058);
+  }
+  star(s.x,s.y,s.r-.035,Math.atan2(s.vy,s.vx),fill,edge);
+ }
  if(s.kind==='bubble'){
   ellipse(s.x,s.y,s.r,s.r,'#7988bc',.86);
   ellipse(s.x,s.y,s.r*.81,s.r*.81,'#b7dcef',.83);
@@ -2886,14 +2910,14 @@ else if(e.kind==='beam'){
    ellipse(x-size*.27,y-size*.30,size*.21,size*.16,'#fff');
   }
  }
- else if(e.kind==='starBoom'||e.kind==='cometImpact'||e.kind==='frostBurst'){
-  const frost=e.kind==='frostBurst',comet=e.kind==='cometImpact';
+ else if(e.kind==='cometImpact'||e.kind==='frostBurst'){
+  const frost=e.kind==='frostBurst';
   const radius=e.r*(.29+.62*(1-f));
   for(let i=0;i<7;i++){
    const a=i*TAU/7,reach=radius*(i%2?.76:1);
    const x=e.x+Math.cos(a)*reach,y=e.y+Math.sin(a)*reach;
    if(frost)line(x-Math.cos(a)*.14,y-Math.sin(a)*.14,x,y,'#91c8e8',.09);
-   else star(x,y,.09+.08*f,a,comet?'#ffdc93':'#fff1ac',comet?'#bd6b49':'#b48858');
+   else star(x,y,.09+.08*f,a,'#ffdc93','#bd6b49');
   }
  }
  else if(e.kind==='ribbon'){
@@ -3380,7 +3404,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.54';
+  const CURRENT='5.6.55';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
