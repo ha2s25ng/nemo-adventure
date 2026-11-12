@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.6.52" />
+</style><meta name="nemo-version" content="5.6.53" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -476,16 +476,82 @@
 @media(max-width:880px) { #app #codex .codex-tabs { grid-template-columns:repeat(5,minmax(0,1fr)) !important; } }
 @media(max-width:500px) { #app #codex .codex-tabs { grid-template-columns:repeat(4,minmax(0,1fr)) !important; } }
 
-#app #leaderboard :is(.nemo-rank-table-head,.nemo-rank-row) { grid-template-columns:minmax(90px,1fr) minmax(67px,.7fr) minmax(115px,1.42fr); }
-#app #leaderboard .rank-spells { margin:0; gap:3px 6px; }
-#app #leaderboard .rank-spell { display:inline-flex; align-items:center; gap:3px; max-width:100%; font-size:11px; line-height:1.2; color:#51425e; }
-#app #leaderboard .rank-spell img { flex:none; }
-#app #leaderboard .rank-missing { color:#897989; }
+#app #leaderboard .nemo-rank-layout {
+ grid-template-columns:minmax(190px, .72fr) minmax(0, 2fr);
+ gap:16px;
+}
+#app #leaderboard .nemo-rank-right { container:rankings / inline-size; }
+#app #leaderboard :is(.nemo-rank-table-head,.nemo-rank-row) {
+ grid-template-columns:minmax(0, 1.12fr) minmax(76px, .67fr) minmax(0, 1.65fr);
+ column-gap:12px;
+ padding-inline:12px;
+}
+#app #leaderboard .nemo-rank-table-head {
+ color:#45624e; background:#e7eddd; font-size:11px; border-radius:10px;
+}
+#app #leaderboard .nemo-rank-list {
+ display:grid; gap:6px; margin-top:6px; padding-right:3px; scrollbar-gutter:stable;
+}
+#app #leaderboard .nemo-rank-row {
+ padding-block:8px; min-height:62px; background:#fcf9ee; border:1px solid #dedfc9;
+ border-radius:10px; color:#304437;
+}
+#app #leaderboard .nemo-rank-row.is-mine {
+ background:#edf1e3; border-color:#b9c6aa;
+}
+#app #leaderboard .rank-player {
+ min-width:0; display:flex; align-items:center; gap:7px;
+}
+#app #leaderboard .rank-place {
+ display:grid; place-items:center; flex:none; min-width:27px; height:24px;
+ padding:0 4px; border-radius:7px; background:#e8ebdc; color:#4a6250;
+ font:inherit; font-weight:800; font-variant-numeric:tabular-nums;
+}
+#app #leaderboard .rank-place[data-podium="1"] { background:#f5e1ad; color:#674719; }
+#app #leaderboard .rank-place[data-podium="2"] { background:#e7e9e5; color:#495654; }
+#app #leaderboard .rank-place[data-podium="3"] { background:#f0ddca; color:#784e36; }
+#app #leaderboard .rank-player .rank-loadout { flex:none; margin:0; }
+#app #leaderboard .rank-player .rank-outfit {
+ width:32px; height:32px; border-radius:50%; padding:2px;
+ border:1px solid #ced7be; background:#f2f2df;
+}
+#app #leaderboard .rank-identity { min-width:0; }
+#app #leaderboard .rank-name {
+ display:block; font-size:13px; line-height:1.25;
+ word-break:keep-all; overflow-wrap:anywhere;
+}
+#app #leaderboard .rank-mine-label { margin-top:3px; color:#4c6950; }
+#app #leaderboard .rank-time {
+ display:block; font-size:15px; line-height:1.12; font-variant-numeric:tabular-nums;
+}
+#app #leaderboard .rank-stats { margin-top:4px; color:#5c6c58; }
+#app #leaderboard .rank-spells {
+ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:4px;
+ margin:0;
+}
+#app #leaderboard .rank-spell {
+ display:flex; align-items:center; gap:4px; min-width:0; padding:2px 4px;
+ border-radius:6px; background:#f5edde; color:#453b39;
+ font-size:11px; line-height:1.22; word-break:keep-all; overflow-wrap:anywhere;
+}
+#app #leaderboard .rank-spell img {
+ flex:none; width:18px; height:18px; background:transparent;
+}
+#app #leaderboard .rank-missing { color:#697260; }
 #app #leaderboard .rank-more { margin:8px 0 0; }
 #app #leaderboard .rank-more[hidden] { display:none !important; }
-@media(max-width:480px) {
- #app #leaderboard :is(.nemo-rank-table-head,.nemo-rank-row) { grid-template-columns:minmax(76px,1fr) minmax(55px,.66fr) minmax(88px,1.18fr); gap:5px; }
- #app #leaderboard .rank-spell { font-size:10px; }
+@media(max-width:770px) {
+ #app #leaderboard .nemo-rank-layout { grid-template-columns:minmax(0,1fr); gap:10px; }
+}
+@container rankings (max-width:445px) {
+ #app #leaderboard :is(.nemo-rank-table-head,.nemo-rank-row) {
+  grid-template-columns:minmax(0,1fr) auto; gap:7px; padding-inline:8px;
+ }
+ #app #leaderboard .nemo-rank-table-head span:last-child { display:none; }
+ #app #leaderboard .rank-record { text-align:right; }
+ #app #leaderboard .rank-gear { grid-column:1 / -1; }
+ #app #leaderboard .rank-gear:has(> .rank-missing) { display:none; }
+ #app #leaderboard .rank-player .rank-outfit { width:26px; height:26px; }
 }
 
 @media (max-width:430px) and (orientation:portrait) {
@@ -604,7 +670,7 @@
     <div class="nemo-rank-actions"><button class="btn primary" id="rank-save">연결 정보 저장 · 확인</button><button class="btn" id="rank-submit">방금 기록 업로드</button></div>
     <div id="rank-status" role="status" class="nemo-rank-status">미연결 — 개인 기록만 표시 중</div></div></section>
     <section class="nemo-rank-right"><div class="nemo-rank-table-title"><h3>전체 시도 기록</h3><button class="btn" id="rank-refresh">↻ 새로고침</button></div>
-    <div class="nemo-rank-table-head"><span>순위 / 닉네임</span><span>기록</span><span>사용 마법</span></div><div id="rank-online" class="nemo-rank-list"><p class="nemo-rank-empty">온라인 기록을 불러오는 중이에요.</p></div>
+    <div class="nemo-rank-table-head"><span>순위 / 닉네임</span><span>생존 기록</span><span>사용 마법</span></div><div id="rank-online" class="nemo-rank-list"><p class="nemo-rank-empty">온라인 기록을 불러오는 중이에요.</p></div>
     <button class="btn rank-more" id="rank-more" type="button" hidden>기록 더 보기</button>
     <p class="nemo-rank-foot">온라인 연결이 끊겨도 이 기기의 개인 기록은 저장돼요.</p></section></div>
 </div></div>
@@ -3104,8 +3170,13 @@ function rankPersist(){const name=rankSanitizeName($('rank-nickname').value);
 const RANK_PAGE_SIZE=30;
 let rankLoaded=0,rankRequestId=0;
 function rankRow(r,index){
- const medal=index<3?['🥇','🥈','🥉'][index]:index+1;
- return `<div class="nemo-rank-row"><div><strong>${medal} ${rankEsc(r.nickname)}</strong>${r.player_id===rankId?'<small>나의 기록</small>':''}${rankLoadoutHTML(r.loadout,'costume')}</div><div><strong>${rankFormatTime(Number(r.survival_seconds))}</strong><small>Lv.${Number(r.level)||1} · ${Number(r.kills)||0}마리</small></div><div>${rankLoadoutHTML(r.loadout,'weapons')}</div></div>`;
+ const place=index+1,mine=r.player_id===rankId;
+ const name=rankEsc(r.nickname),costume=rankLoadoutHTML(r.loadout,'costume'),spells=rankLoadoutHTML(r.loadout,'weapons');
+ return `<div class="nemo-rank-row${mine?' is-mine':''}">
+  <div class="rank-player"><span class="rank-place" aria-label="${place}위"${place<=3?` data-podium="${place}"`:''}>${place}</span>${costume}<div class="rank-identity"><strong class="rank-name">${name}</strong>${mine?'<small class="rank-mine-label">나의 기록</small>':''}</div></div>
+  <div class="rank-record"><strong class="rank-time">${rankFormatTime(Number(r.survival_seconds))}</strong><small class="rank-stats">Lv.${Number(r.level)||1} · ${(Number(r.kills)||0).toLocaleString('ko-KR')}마리</small></div>
+  <div class="rank-gear">${spells}</div>
+ </div>`;
 }
 async function rankFetch(append=false){
  const more=$('rank-more'),list=$('rank-online');
@@ -3309,7 +3380,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.6.52';
+  const CURRENT='5.6.53';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
