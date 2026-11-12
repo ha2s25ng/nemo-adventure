@@ -1,5 +1,5 @@
 {
-  "version": "5.7.0",
+  "version": "5.7.1",
   "mode": "endless_survival_and_campaign",
-  "notes": "스테이지 10개, 보스와 광폭화의 밤, 클리어 보상과 스테이지 전용 강화"
+  "notes": "로비의 주 버튼을 스테이지 모험으로 변경하고 무한 생존을 보조로 배치"
 }

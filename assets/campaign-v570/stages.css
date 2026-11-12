@@ -1,8 +1,9 @@
-#app #menu .buttons #campaign-open {
+#app #menu .buttons #survival-start {
   grid-column: 1 / -1;
   width: 100%;
   max-width: none;
-  background: #e3ecdb !important;
+  min-height: 37px !important;
+  font-size: clamp(12px, 1.12vw, 15px) !important;
 }
 #app #stages .stage-board { width: min(940px, 94%); }
 .stage-header { display:flex; gap:12px; align-items:flex-start; justify-content:space-between; }
