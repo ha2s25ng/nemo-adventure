@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.8.7" />
+</style><meta name="nemo-version" content="5.8.8" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -763,7 +763,7 @@
 </main><script>'use strict';
 // Values here are the initial design specification, not dynamic difficulty adjustments.
 const DATA = Object.freeze({
- progression:{xpToNext:{base:8,linear:2,curve:.32,curveStart:8},xpDrops:{green:[.54,.087,.006],blue:[.31,.38,.05],fat:[.24,.42,.135],spore:[.27,.41,.125],firefly:[.29,.37,.145],armor:[.155,.40,.25],spark:[.26,.40,.14],petal:[.61,.09,.008],bramble:[.19,.41,.19],moth:[.32,.35,.11]}},
+ progression:{xpToNext:{base:8,linear:2,curve:.32,curveStart:8},xpDrops:{webcap:[.22,.43,.17],shardling:[.18,.44,.20],moonbloom:[.15,.42,.24],green:[.54,.087,.006],blue:[.31,.38,.05],fat:[.24,.42,.135],spore:[.27,.41,.125],firefly:[.29,.37,.145],armor:[.155,.40,.25],spark:[.26,.40,.14],petal:[.61,.09,.008],bramble:[.19,.41,.19],moth:[.32,.35,.11]}},
  title:'니모의 낯선 모험', saveKey:'nemo_strange_adventure_FULL_v1', version:1,
  world:160, survival:null, widthWorld:28,
  player:{attack:100,hp:100,speed:3.65,crit:.05,critMultiplier:1.5,invuln:1,pickup:1.75,weaponSlots:4,passiveSlots:3,rerolls:1},
@@ -792,7 +792,10 @@ const DATA = Object.freeze({
   windstep:['바람 걸음','🪶','이동 중 공격 속도 +6%'],leafguard:['잎새 방패','🛡','적 탄환으로 받는 피해 8% 감소'],
   emberheart:['마지막 불씨','🔥','체력 절반 이하에서 공격력 +12%'],honeypouch:['꿀풀 주머니','🍯','뼈다귀와 간식 회복량 +25%']},
  monsters:{green:{name:'초록 슬라임',hp:45,dmg:8,speed:1.3,r:.48},blue:{name:'파랑 슬라임',hp:90,dmg:10,speed:1.7,r:.48},fat:{name:'통통 버섯',hp:150,dmg:12,speed:.9,r:.53},spore:{name:'포자 버섯',hp:100,dmg:8,speed:.8,r:.51},firefly:{name:'반딧불',hp:70,dmg:8,speed:2,r:.38},armor:{name:'밤송이 슬라임',hp:240,dmg:14,speed:.95,r:.57},spark:{name:'별빛 도깨비',hp:92,dmg:10,speed:3.10,r:.44},petal:{name:'소환 슬라임',hp:90,dmg:8,speed:1.3,r:.46},
-  bramble:{name:'가시 고슴도치',hp:118,dmg:10,speed:1.10,r:.50},moth:{name:'달가루 나방',hp:83,dmg:7,speed:1.68,r:.43},thief:{name:'도토리 도둑',hp:145,dmg:0,speed:2.8,r:.42}},
+  bramble:{name:'가시 고슴도치',hp:118,dmg:10,speed:1.10,r:.50},moth:{name:'달가루 나방',hp:83,dmg:7,speed:1.68,r:.43},thief:{name:'도토리 도둑',hp:145,dmg:0,speed:2.8,r:.42},
+  webcap:{name:'안개갓 버섯',hp:142,dmg:8,speed:.84,r:.50},
+  shardling:{name:'수정등 딱정벌레',hp:116,dmg:9,speed:1.16,r:.48},
+  moonbloom:{name:'밤꽃 정령',hp:160,dmg:10,speed:.95,r:.50}},
  spawns:[
   [0,24,1.5,2,50,{green:100}],[24,48,1.5,2,50,{green:75,blue:15,bramble:10}],
   [48,90,1.45,3,54,{green:59,blue:21,bramble:10,moth:6,spark:4}],
@@ -903,6 +906,11 @@ Object.assign(ASSET_DATA,{
  fx_burst:'./assets/v550/fx_burst.webp'
 });
 // Original world-space draw bounds, separate from the collision radii.
+const ENDLESS_ENEMIES={
+ webcap:{at:300,cap:3,range:8.0,rest:5.6,windup:.85,weight:14,color:'#70578f'},
+ shardling:{at:540,cap:3,range:9.3,rest:5.3,windup:.72,weight:13,color:'#166d70'},
+ moonbloom:{at:840,cap:2,range:8.8,rest:6.4,windup:.92,weight:12,color:'#5d4a91'}
+};
 const NEW_FOREST_ENEMIES=new Set(['bramble','moth','thief']);
 const LATE_BOSSES=[
  {art:'thorn-guardian',name:'가시숲 수호자',hp:47500,dmg:22,speed:1.02,r:1.63,gold:135,tier:1,signature:'hedge'},
@@ -910,6 +918,7 @@ const LATE_BOSSES=[
  {art:'storm-owl',name:'폭풍 부엉이',hp:67000,dmg:27,speed:1.25,r:1.68,gold:210,tier:3,signature:'wing'}
 ];
 const ENEMY_ART={
+ webcap:[1.28,1.19],shardling:[1.18,1.08],moonbloom:[1.29,1.28],
  bramble:[1.34,.94],moth:[1.42,1.12],thief:[1.18,1.06],
  green:[1.13,0.94],
  blue:[1.13,0.94],
@@ -930,6 +939,7 @@ for(const kind of Object.keys(ENEMY_ART)){
 }
 ASSET_DATA['enemy_root-boar']='./assets/campaign-v570/boar-idle.webp';
 ASSET_DATA['enemy_root-boar_gait']='./assets/campaign-v570/boar-walk.webp';
+for(const kind of Object.keys(ENDLESS_ENEMIES))ASSET_DATA['enemy_'+kind]='./assets/endless-v588/'+kind+'.webp';
 for(const boss of LATE_BOSSES)ASSET_DATA['enemy_'+boss.art]='./assets/forest-bosses-v5642/'+boss.art+'.png';
 const SPELL_ART='./assets/spell-art-v5647/';
 const FOREST_GAIT_TILES=96;
@@ -1339,7 +1349,7 @@ function begin(stageId=0){
  const outfit=activeCostume();
  loadCostumeAtlas(outfit);
  const hp=DATA.player.hp+saved.upgrades.hp*5+outfit.hp;
- g={stage,map:stage?CAMPAIGN_MAPS[stage.id-1]:null,t:0,bossTime:0,difficulty:difficultyKey,runCostume:outfit.id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.40,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*(stage?3:2)+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
+ g={stage,endlessIntroduced:new Set(),sporePatches:[],map:stage?CAMPAIGN_MAPS[stage.id-1]:null,t:0,bossTime:0,difficulty:difficultyKey,runCostume:outfit.id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.40,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*(stage?3:2)+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
   speed:DATA.player.speed*(1+saved.upgrades.speed*.02),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
   weapons:{star:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
   enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],bellEchoes:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0, waveIndex:0,
@@ -1708,6 +1718,7 @@ function spawn(type,pos=null,variant=null){if(!g)return null;const at=pos||spawn
  let e={id:++g.n,kind:type,x:at.x,y:at.y,r:cfg.r,hp:cfg.hp*hpFactor,maxHp:cfg.hp*hpFactor,dmg:cfg.dmg*(regular?diff.contactDamage:diff.damage),speed:cfg.speed*(type==='spark'?Math.min(diff.speed,1.22):type==='thief'?Math.min(diff.speed,1.25):diff.speed),flash:0,dead:false,slowAmount:0,slowUntil:0,vulnerableUntil:0,phase:rand()*TAU,
   patternTimer:type==='spore'?2.8:type==='firefly'?4:type==='moth'?range(2.0,3.5):5,telegraph:null,attackState:null,dashDir:0,dashLeft:0,halt:0,orbitHit:{},isBoss:type==='boss'};
  if(type==='boss'){e.specialClock=cfg.barrage?2.4:3.5;e.patternIndex=0;e.action=null;e.summonClock=0;e.bossDef=cfg;}
+ if(ENDLESS_ENEMIES[type])e.patternTimer=range(2,4);
  if(type==='thief')e.escapeAt=g.worldClock+12;
  if(type==='spark')e.sprintReady=g.worldClock+.56+rand()*.66;
  g.enemies.push(e);g.spawnCount++;return e;}
@@ -1741,19 +1752,29 @@ function spawnGroup(pace=wavePace()){
  const row=spawnRow();
  const enemyWeights=waveWeights(row[5]);
  const cap=g.boss?bossEscortLimit():Math.min(190,Math.round((row[4]+Math.floor(Math.max(0,m-24)*2))*pace.cap));
- const counts={spore:0,firefly:0,spark:0,moth:0};let alive=0;
+ const counts={spore:0,firefly:0,spark:0,moth:0,webcap:0,shardling:0,moonbloom:0};let alive=0;
  for(const e of g.enemies){if(!isEscort(e))continue;alive++;if(e.kind in counts)counts[e.kind]++;}
  const pack=clamp(Math.round((row[3]+(g.stage&&forestFrenzied()?2:0)+(g.rushUntil>g.t?(g.t<480?1:2):0))*difficulty().spawns*pace.pack),1,22);
  const entries=waveFormation(g.waveIndex++,g.t,pack);
  for(let i=0;i<pack;i++){
   if(alive>=cap){g.metrics.skipped+=pack-i;break;}
-  const pool=Object.entries(enemyWeights).filter(([k])=>counts[k]===undefined||counts[k]<(k==='spark'?Math.min(6,2+Math.floor(m/2)):k==='moth'?Math.min(8,2+Math.floor(m/3)):Math.min(15,6+Math.floor(m/4))));
+  const pool=Object.entries(enemyWeights).filter(([k])=>counts[k]===undefined||counts[k]<(
+   ENDLESS_ENEMIES[k]?(g.boss?1:ENDLESS_ENEMIES[k].cap):k==='spark'?Math.min(6,2+Math.floor(m/2)):k==='moth'?Math.min(8,2+Math.floor(m/3)):Math.min(15,6+Math.floor(m/4))));
   if(!pool.length)break;
   let total=pool.reduce((a,p)=>a+p[1],0),r=rand()*total,type=pool[pool.length-1][0];
   for(const [name,weight] of pool){r-=weight;if(r<0){type=name;break;}}
+  const newcomer=!g.stage&&!g.boss&&pool.find(([kind])=>ENDLESS_ENEMIES[kind]&&!g.endlessIntroduced.has(kind));
+  if(newcomer)type=newcomer[0];
   const at=spawnPoint(entries[i]);
   if(!at)continue;
-  const e=spawn(type,at);if(e){alive++;if(type in counts)counts[type]++;}
+  const e=spawn(type,at);
+  if(e){
+   alive++;if(type in counts)counts[type]++;
+   if(ENDLESS_ENEMIES[type]&&!g.endlessIntroduced.has(type)){
+    g.endlessIntroduced.add(type);
+    showToast(`새 몬스터 · ${MD[type].name}`,2.8);
+   }
+  }
  }
 }
 function forestEventEntry(radius=.44){
@@ -1822,7 +1843,17 @@ function spawnRow(){
 }
 function waveWeights(survivalWeights){
  const stage=g.stage;
- if(!stage)return survivalWeights;
+ if(!stage){
+  if(g.t<ENDLESS_ENEMIES.webcap.at)return survivalWeights;
+  const weights={...survivalWeights};
+  // Shift part of the late roster toward the new monsters while keeping early mobs in rotation.
+  if(weights.green)weights.green*=.65;
+  if(weights.blue)weights.blue*=.75;
+  for(const [kind,enemy] of Object.entries(ENDLESS_ENEMIES)){
+   if(g.t>=enemy.at)weights[kind]=enemy.weight;
+  }
+  return weights;
+ }
  const early=g.t<95;
  const weights=stage.id===1&&g.t>=75?{...stage.enemies,spore:12}:stage.enemies;
  if(!early)return weights;
@@ -2119,6 +2150,10 @@ function updateMonster(e,dt){
  if(e.kind==='boss'){bossUpdate(e,dt);return;}
  if(e.halt>0){e.halt-=dt;}
  else if(e.attackState){let a=e.attackState;a.t-=dt;
+  if(a.type==='endless-warn'&&a.t<=0){
+   castEndlessAttack(e,a);
+   e.attackState=null;
+  }
   if(a.type==='moth-warn'&&a.t<=0){
    for(const offset of [-.36,0,.36])enemyBullet(e.x,e.y,a.aim+offset,3.15,6,4,'달가루 나방 탄환','moth');
    e.attackState=null;
@@ -2144,6 +2179,8 @@ function updateMonster(e,dt){
     }else{e.attackState=null;if(horn)e.halt=.78;}
    }
   }
+ }else if(ENDLESS_ENEMIES[e.kind]){
+  updateEndlessMonster(e,dt);
  }else if(e.kind==='moth'){
   const p=g.player,d=distance(e.x,e.y,p.x,p.y),toward=atan(e.x,e.y,p.x,p.y);
   const angle=d>7?toward+.28:d<4.6?toward+Math.PI:toward+(e.id%2?1:-1)*Math.PI/2;
@@ -2175,6 +2212,58 @@ function updateMonster(e,dt){
   if(ENEMY_MOTION_KINDS.has(e.kind)&&g.player.invuln<=0)e.attackArtUntil=g.worldClock+.18;
   if(e.attackState?.type==='dashing')amount=e.kind==='horn'?21:12;
   damagePlayer(amount,`${e.kind} 접촉`);
+ }
+}
+function updateEndlessMonster(e,dt){
+ const rule=ENDLESS_ENEMIES[e.kind],p=g.player,d=distance(e.x,e.y,p.x,p.y);
+ if(d>rule.range*.7)chase(e,dt);
+ else if(d<rule.range*.40)chase(e,dt,-.7);
+ e.patternTimer-=dt;
+ if(e.patternTimer>0||d>rule.range||!visible(e.x,e.y,.5))return;
+ e.patternTimer=rule.rest+range(0,.8);
+ const aim=atan(e.x,e.y,p.x,p.y);
+ e.attackState={type:'endless-warn',t:rule.windup,aim};
+ if(e.kind==='webcap'&&g.sporePatches.length<4){
+  g.sporePatches.push({x:p.x,y:p.y,r:1.28,warn:rule.windup,life:2.3});
+ }
+}
+function castEndlessAttack(e,attack){
+ if(e.kind==='webcap')return;
+ const late=g.t>=1200;
+ if(e.kind==='shardling'){
+  const spread=late?[-.56,-.28,0,.28,.56]:[-.51,-.17,.17,.51];
+  for(const offset of spread)enemyBullet(e.x,e.y,attack.aim+offset,3.55,7,3.8,'수정등 딱정벌레 파편','shard',e.id);
+  return;
+ }
+ const count=late?13:11;
+ // Keep three adjacent lanes open toward the player when the wind-up starts.
+ for(let lane=2;lane<count-1;lane++){
+  enemyBullet(e.x,e.y,attack.aim+lane*TAU/count,2.95,8,4.3,'밤꽃 정령 꽃잎탄','petal',e.id);
+ }
+}
+function updateSporePatches(dt){
+ if(!g.sporePatches.length)return;
+ const p=g.player;
+ for(const patch of g.sporePatches){
+  if(patch.warn>0){patch.warn-=dt;continue;}
+  patch.life-=dt;
+  if(patch.life>0&&distance(p.x,p.y,patch.x,patch.y)<patch.r+p.r){
+   damagePlayer(5*difficulty().damage,'안개갓 버섯 포자 웅덩이');
+   if(screen!=='playing')return;
+  }
+ }
+ g.sporePatches=g.sporePatches.filter(patch=>patch.life>0);
+}
+function drawSporePatches(){
+ for(const patch of g.sporePatches){
+  if(!visible(patch.x,patch.y,patch.r))continue;
+  const warning=patch.warn>0;
+  ellipse(patch.x,patch.y,patch.r,patch.r,warning?'#fff0bd':'#694a8d',warning?.36:.40);
+  ctx.save();
+  ctx.strokeStyle=warning?'#815349':'#4e376e';
+  ctx.lineWidth=.08;
+  if(warning)ctx.setLineDash([.2,.14]);
+  ctx.beginPath();ctx.arc(patch.x,patch.y,patch.r,0,TAU);ctx.stroke();ctx.restore();
  }
 }
 function nearbyTargets(p,range){
@@ -2728,7 +2817,11 @@ function update(dt){
   const w=g.weapons[id];w.clock-=dt*rageRate()*moveCastRate();
   if(w.clock<=0){if(fireWeapon(id))w.clock=cooldown(id);else w.clock=0;}
  }
- if(!frozen)updateMonsters(dt);if(screen!=='playing')return;
+ if(!frozen){
+  updateMonsters(dt);
+  if(screen==='playing')updateSporePatches(dt);
+ }
+ if(screen!=='playing')return;
  updateShots(dt,!frozen);if(screen!=='playing')return;
  updateOrbit(dt);if(screen!=='playing')return;
  updateVortex(dt);updateTraps(dt);if(screen!=='playing')return;
@@ -3123,7 +3216,7 @@ function drawEnemy(e){
  if(e.flash>0)ellipse(e.x,e.y-ht*.23,e.r*.84,e.r*.68,'#ffffff',e.flash*2.4);
  if(attack?.endsWith('-warn')){
   const glint=.19+Math.sin(g.worldClock*15)*.045;
-  star(e.x,e.y-ht*.86,glint,0,'#fff0b6','#76526b');
+  star(e.x,e.y-ht*.86,glint,0,'#fff0b6',ENDLESS_ENEMIES[e.kind]?.color??'#76526b');
   if(isboss&&g.stage&&(attack==='ring-warn'||attack==='fan-warn'||attack==='spiral-warn')){
    const angle=attack==='ring-warn'?e.action.gap:attack==='fan-warn'?e.action.aim:atan(e.x,e.y,g.player.x,g.player.y);
    const start=attack==='ring-warn'?angle+.53:angle-.66;
@@ -3570,7 +3663,9 @@ const ENEMY_BOLT_COLORS={
  fan:['#421a29','#ff6038','#fff2c5'],
  ring:['#41152c','#ec3d64','#ffe4bd'],
  spiral:['#321532','#ed4f85','#fff0c7'],
- moth:['#39242c','#f57928','#fff1ae']
+ moth:['#39242c','#f57928','#fff1ae'],
+ shard:['#193746','#35b7aa','#fff1bd'],
+ petal:['#36204f','#ab72e4','#fff1e9']
 };
 function drawEnemyBullet(b){
  if(!visible(b.x,b.y,1))return;
@@ -3608,6 +3703,7 @@ function drawBattle(){
  ctx.translate(VW/2-g.camera.x*PPU+Math.sin(hit*89)*shake,VH/2-g.camera.y*PPU+Math.cos(hit*74)*shake*.65);
  ctx.scale(PPU,PPU);
  drawWorldGround(g.camera,g.deco);
+ drawSporePatches();
  for(const z of g.zones)drawZone(z);
  drawWeaponFields();
  for(const l of g.loot)drawGem(l);
@@ -4073,7 +4169,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.8.7';
+  const CURRENT='5.8.8';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
