@@ -1,5 +1,5 @@
 {
-  "version": "5.7.6",
+  "version": "5.7.7",
   "mode": "endless_survival_and_campaign",
-  "notes": "6분 스테이지 보스 3단계, 타이머와 카드 이름 정리, 균등 카드 추첨"
+  "notes": "스테이지 후반 난이도 강화 및 좁은 화면 타이머 배치 보정"
 }
