@@ -283,7 +283,8 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.8.13" />
+#setting-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
+</style><meta name="nemo-version" content="5.8.14" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -745,6 +746,10 @@
    <label class="settings-line"><span>피해 숫자</span><input id="setting-numbers" type="checkbox" checked></label>
    <label class="settings-line"><span>피격 시 화면 흔들림</span><input id="setting-shake" type="checkbox" checked></label>
   </section>
+  <section class="settings-group" aria-labelledby="settings-audio">
+   <h3 id="settings-audio">소리</h3>
+   <label class="settings-line"><span>효과음 음량</span><input id="setting-volume" type="range" min="0" max="100" step="5" value="45"></label>
+  </section>
   <section class="settings-group" aria-labelledby="settings-controls">
    <h3 id="settings-controls">조작</h3>
    <label class="settings-line"><span>게임 창을 벗어나면 일시 정지</span><input id="setting-auto-pause" type="checkbox"></label>
@@ -1170,7 +1175,7 @@ function drawVictoryPaw(x,y,unit,angle){
  ctx.stroke();
  ctx.restore();
 }
-function castFromWand(p,a){p.castDuration=NEMO_CAST/spellTravelRate();p.castTimer=p.castDuration;p.castFacing=faceFromAngle(a);p.castAngle=a;const origin=wandOrigin(p);g.effects.push({kind:'wandGlow',x:origin.x,y:origin.y,life:.23,max:.23});return origin;}
+function castFromWand(p,a){playSound('cast');p.castDuration=NEMO_CAST/spellTravelRate();p.castTimer=p.castDuration;p.castFacing=faceFromAngle(a);p.castAngle=a;const origin=wandOrigin(p);g.effects.push({kind:'wandGlow',x:origin.x,y:origin.y,life:.23,max:.23});return origin;}
 function wandLink(from,to,color='#fff1b4'){g.effects.push({kind:'wandLink',x:from.x,y:from.y,ex:to.x,ey:to.y,color,life:.28,max:.28});}
 
 const WEAPON_GUIDE={
@@ -1278,9 +1283,66 @@ function readSave(){let defaults={version:DATA.version,gold:0,firstClear:false,s
  }catch(e){return defaults;}
 }
 function persist(){try{localStorage.setItem(DATA.saveKey,JSON.stringify(saved));return true;}catch(e){showToast('저장 공간을 사용할 수 없어 진행 상황이 유지되지 않을 수 있어.');return false;}}
-const opts={numbers:true,particles:true,shake:true,autoPause:false};
+const opts={numbers:true,particles:true,shake:true,autoPause:false,volume:45};
 try{let s=JSON.parse(localStorage.getItem(DATA.saveKey+'_settings')||'null');if(s)Object.assign(opts,s);}catch(e){}
 function saveSettings(){try{localStorage.setItem(DATA.saveKey+'_settings',JSON.stringify(opts));}catch(e){}}
+let audioContext=null,audioGain=null;
+const soundTimes={};
+// Each note is delay, starting pitch, ending pitch, length, gain and waveform.
+const GAME_SOUNDS={
+ tap:[.07,[[0,620,500,.048,.065,'triangle']]],
+ cast:[.14,[[0,420,730,.065,.040,'sine'],[.028,920,810,.077,.023,'triangle']]],
+ hit:[.19,[[0,300,195,.07,.047,'triangle']]],
+ pickup:[.105,[[0,880,1175,.072,.040,'sine']]],
+ reward:[.22,[[0,523,523,.12,.06,'triangle'],[.066,784,784,.18,.046,'sine']]],
+ level:[.26,[[0,523,523,.15,.09,'triangle'],[.075,659,659,.18,.08,'triangle'],[.15,880,880,.27,.06,'sine']]],
+ hurt:[.20,[[0,190,106,.17,.13,'triangle'],[0,131,75,.19,.045,'sine']]],
+ boss:[.65,[[0,196,196,.28,.09,'triangle'],[.15,233,233,.34,.08,'triangle'],[.30,146,110,.45,.10,'sine']]],
+ clear:[.65,[[0,523,523,.22,.09,'triangle'],[.1,659,659,.23,.072,'triangle'],[.2,784,784,.26,.06,'triangle'],[.3,1047,1047,.40,.065,'sine']]],
+ end:[.65,[[0,440,440,.16,.07,'triangle'],[.11,349,349,.24,.065,'triangle'],[.22,262,262,.34,.07,'sine']]]
+};
+function effectVolume(){
+ return typeof opts.volume==='number'&&Number.isFinite(opts.volume)?clamp(opts.volume,0,100):45;
+}
+function syncSoundVolume(){
+ if(audioGain)audioGain.gain.setTargetAtTime(effectVolume()/100,audioContext.currentTime,.025);
+}
+async function unlockSound(){
+ if(!effectVolume())return;
+ const AudioEngine=window.AudioContext||window.webkitAudioContext;
+ if(!AudioEngine)return;
+ try{
+  if(!audioContext){
+   audioContext=new AudioEngine();
+   audioGain=audioContext.createGain();
+   audioGain.gain.value=effectVolume()/100;
+   audioGain.connect(audioContext.destination);
+  }
+  if(audioContext.state!=='running')await audioContext.resume();
+ }catch(_){}
+}
+function playSound(name){
+ if(audioContext?.state!=='running'||!effectVolume()||document.hidden)return false;
+ const [spacing,notes]=GAME_SOUNDS[name],now=audioContext.currentTime;
+ if(now-(soundTimes[name]??-Infinity)<spacing)return false;
+ soundTimes[name]=now;
+ for(const [delay,startPitch,endPitch,duration,volume,wave] of notes){
+  const start=now+delay,end=start+duration;
+  const tone=audioContext.createOscillator(),envelope=audioContext.createGain();
+  tone.type=wave;
+  tone.frequency.setValueAtTime(startPitch,start);
+  tone.frequency.exponentialRampToValueAtTime(endPitch,end);
+  envelope.gain.setValueAtTime(.0001,start);
+  envelope.gain.exponentialRampToValueAtTime(volume,start+.012);
+  envelope.gain.exponentialRampToValueAtTime(.0001,end);
+  tone.connect(envelope);
+  envelope.connect(audioGain);
+  tone.start(start);
+  tone.stop(end);
+  tone.onended=()=>{tone.disconnect();envelope.disconnect();};
+ }
+ return true;
+}
 let needsDraw=true;
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
 function setScreen(s){
@@ -1470,6 +1532,7 @@ function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
  if(crit)value*=id==='star'&&g.weapons.star.lv>=6?2:1.5;
  value=Math.round(value*100)/100;const actual=Math.min(e.hp,value);
  e.hp-=value;e.flash=.13;e.hitLast=g.worldClock;
+ if(visible(e.x,e.y,0))playSound('hit');
  g.metrics.weaponDamage[id]=(g.metrics.weaponDamage[id]||0)+actual;g.totalDamage+=actual;
  if(opts.numbers&&g.numbers.length<160)g.numbers.push({x:e.x,y:e.y-.55,text:String(Math.round(value)),crit,ttl:.69,color:crit?'#f9b64a':'#fffefa'});
  const paint=SPELL_EFFECT_PAINT[id];
@@ -1486,7 +1549,7 @@ function forestFrenzied(){
 }
 function enemyPace(){return forestFrenzied()?1.30:1;}
 function damagePlayer(value,reason,projectile=false){const p=g.player;if(p.invuln>0||screen!=='playing')return;value=Math.round(value*(projectile?1-.08*getPassive('leafguard'):1)*(1-saved.upgrades.guard*.03)*(forestFrenzied()?1.20:1)*100)/100;p.hp=Math.max(0,p.hp-value);p.invuln=DATA.player.invuln;g.hitCount++;g.hitReasons[reason]=(g.hitReasons[reason]||0)+1;
- p.hurtTimer=.24;if(opts.numbers)g.numbers.push({x:p.x,y:p.y-.75,text:'-'+Math.round(value),ttl:.8,color:'#e84779'});if(opts.particles)burst(p.x,p.y,'#ff9fbd',13);if(p.hp<=0)finish(false);}
+ playSound('hurt');p.hurtTimer=.24;if(opts.numbers)g.numbers.push({x:p.x,y:p.y-.75,text:'-'+Math.round(value),ttl:.8,color:'#e84779'});if(opts.particles)burst(p.x,p.y,'#ff9fbd',13);if(p.hp<=0)finish(false);}
 function slow(e,amount,duration){if(e.kind==='boss'){amount=Math.min(amount,.2);duration=Math.min(duration,.6);}if(amount>e.slowAmount||e.slowUntil<g.worldClock){e.slowAmount=amount;e.slowUntil=g.worldClock+duration;}else if(e.slowUntil<g.worldClock+duration)e.slowUntil=g.worldClock+duration;}
 function burst(x,y,color,n=7){if(!opts.particles)return;for(let i=0;i<n&&g.particles.length<320;i++){let a=rand()*TAU,sp=range(.4,2.8),ttl=range(.20,.70);g.particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:ttl,max:ttl,color,r:range(.035,.12)});}}
 function statusReady(e){return enemyPace()*(e.slowUntil>g.worldClock?1-e.slowAmount:1);}
@@ -1560,7 +1623,9 @@ function sweepNonBosses(){
  }
 }
 function timeIsSealed(){return !!g&&g.worldClock<(g.timeSealUntil??0);}
-function collect(item){if(item.dead)return;item.dead=true;const p=g.player;if(item.kind==='xp'){
+function collect(item){if(item.dead)return;item.dead=true;
+ playSound(item.kind==='xp'?'pickup':'reward');
+ const p=g.player;if(item.kind==='xp'){
   p.xp=Math.round((p.xp+item.xp*(1+scaledPassive('insight')))*100)/100;g.totalXP+=item.xp;
  }else if(item.kind==='rage'){
   p.hp=Math.max(1,p.hp*(1-RAGE.healthCost));
@@ -1639,7 +1704,7 @@ function rollCards(rare){
  for(const reward of fallback){if(out.length>=3)break;if(!out.some(c=>c.id===reward.id))out.push(reward);}
 
  return out;}
-function openCards(){g.cards=rollCards(rollRareCard());renderCards(true);setScreen('cards');}
+function openCards(){g.cards=rollCards(rollRareCard());renderCards(true);setScreen('cards');playSound('level');}
 function openForestChoice(stage){g.milestoneStage=stage;g.cardReason='milestone';g.cards=[
  {type:'blessing',id:'brave',name:'용기의 별빛',ico:'⭐',desc:'공격력 +12%',lore:'적이 거세지는 숲에서 별빛의 힘으로 맞서요.',meta:'숲의 축복 · 이번 판 한정'},
  {type:'blessing',id:'breeze',name:'숲의 산들바람',ico:'🍃',desc:'이동 속도 +10% · 주문 속도 +8%',lore:'산들바람의 힘으로 조금 더 빠르게 이동하고 마법을 써요.',meta:'숲의 축복 · 이번 판 한정'},
@@ -1680,6 +1745,7 @@ function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c||(c.typ
   if(c.id==='cloak'){let amt=DATA.player.hp*.15;g.player.hp+=amt;g.player.maxHp+=amt;}}
  if(c.type==='rare'){
   g.rareCard=c.id;
+  playSound('reward');
   if(c.id==='bookFamiliar'){
    g.shots=g.shots.filter(s=>s.weapon!=='book');
    const {x,y}=wandOrigin(g.player);
@@ -1698,6 +1764,7 @@ function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c||(c.typ
 function renderEvo(id){let d=weaponRule(id);$('evo-title').textContent=`${d.name} · 최종 진화`;
  $('evo-options').innerHTML=d.evos.map(([name,desc],i)=>`<button class="skill-card featured" data-evo="${i}"><span class="card-topping">${i===0?'진화 A':'진화 B'}</span><div class="card-icon">${skillIcon(id,d.icon)}</div><div class="card-title">${d.name}</div><div class="card-desc effect-lines"><b class="evo-variant-name">${name}</b>${effectLines(friendlyEffect(desc))}</div><div class="card-meta">Lv.6 → Lv.7 · 기존 강화 유지</div><span class="card-select-label">✦ 이 진화 선택</span></button>`).join('');}
 function chooseEvo(i){if(screen!=='evolution'||!g.currentEvo)return;let w=g.weapons[g.currentEvo];w.evo=i;w.lv=7;g.metrics.cardPicks[weaponRule(g.currentEvo).evos[i][0]]=(g.metrics.cardPicks[weaponRule(g.currentEvo).evos[i][0]]||0)+1;
+ playSound('level');
  if(!g.metrics.firstEvolution)g.metrics.firstEvolution=g.t;showToast(`🌟 ${weaponRule(g.currentEvo).evos[i][0]} 진화!`);g.currentEvo=null;afterCard();}
 function afterCard(){setScreen('playing');maybeCards();updateHUD();}
 function reroll(){if(screen!=='cards'||g.rerolls<=0||g.cardReason==='milestone')return;g.rerolls--;g.cards=rollCards(g.cards.find(card=>card.type==='rare'));renderCards();}
@@ -1946,6 +2013,7 @@ function updateBossEncounter(dt){
  }
  g.bossEncounters++;
  arrangeBossEscort(boss);
+ playSound('boss');
  showToast(`보스 · ${def.name} 등장!`,3.2);
 }
 function bossPhase(b){return b.hp/b.maxHp>.6?0:b.hp/b.maxHp>.25?1:2;}
@@ -2974,6 +3042,7 @@ function finish(victory){
  const stage=g.stage;
  if(!stage)saveRunRecord(false);
  const cleared=!!(stage&&victory);
+ playSound(cleared?'clear':'end');
  g.gold=runGold()+(stage&&!g.debugUsed?stageReward(cleared):0);
  saved.gold+=g.gold;persist();setScreen('result');
  const rate=g.earnedXP?Math.round(100*g.totalXP/g.earnedXP):0;
@@ -3113,7 +3182,8 @@ function renderMenu(){$('menu-gold-value').textContent=`${saved.gold.toLocaleStr
  $('menu-profile-name').textContent=rankSanitizeName(rankCfg.nickname)||'닉네임 설정';
  $('nemo-name-change').setAttribute('aria-label','닉네임 변경');
  syncCostumeVisual();
- renderDifficulty();$('setting-numbers').checked=opts.numbers;$('setting-particles').checked=opts.particles;$('setting-shake').checked=opts.shake;$('setting-auto-pause').checked=opts.autoPause;}
+ renderDifficulty();$('setting-numbers').checked=opts.numbers;$('setting-particles').checked=opts.particles;$('setting-shake').checked=opts.shake;$('setting-auto-pause').checked=opts.autoPause;
+ $('setting-volume').value=effectVolume();}
 // ------------ DRAWING: watercolor grounds, layered illustration sprites ------------
 function ellipse(x,y,rx,ry,fill,alpha=1){ctx.save();ctx.globalAlpha*=alpha;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,TAU);ctx.fillStyle=fill;ctx.fill();ctx.restore();}
 function polygon(points,fill,stroke='#755483',lw=.055){ctx.beginPath();ctx.moveTo(...points[0]);for(let i=1;i<points.length;i++)ctx.lineTo(...points[i]);ctx.closePath();if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.lineJoin='round';ctx.stroke();}}
@@ -4326,6 +4396,23 @@ $('card-options').addEventListener('click',e=>{let b=e.target.closest('[data-pic
 $('evo-options').addEventListener('click',e=>{let b=e.target.closest('[data-evo]');if(b)chooseEvo(Number(b.dataset.evo));});
 $('school-upgrades').addEventListener('click',e=>{let b=e.target.closest('[data-upgrade]');if(b)buySchool(b.dataset.upgrade);});
 for(const [id,key] of [['setting-particles','particles'],['setting-numbers','numbers'],['setting-shake','shake'],['setting-auto-pause','autoPause']])$(id).addEventListener('change',e=>{opts[key]=e.target.checked;needsDraw=true;saveSettings();});
+$('setting-volume').addEventListener('input',e=>{
+ opts.volume=Number(e.target.value);
+ syncSoundVolume();
+ saveSettings();
+});
+$('setting-volume').addEventListener('change',async()=>{
+ await unlockSound();
+ playSound('tap');
+});
+document.addEventListener('keydown',e=>{if(!e.repeat&&audioContext?.state!=='running')void unlockSound();},true);
+document.addEventListener('click',async e=>{
+ if(!e.isTrusted)return;
+ const button=e.target.closest('button:not(:disabled)');
+ if(!button)return;
+ await unlockSound();
+ if(!button.matches('[data-pick],[data-evo]'))playSound('tap');
+},true);
 $('export-save').onclick=()=>{const str=JSON.stringify(saved);navigator.clipboard?.writeText(str).then(()=>showToast('저장 데이터가 복사됐어')).catch(()=>showToast('브라우저가 복사를 제한했어'));};
 $('portrait').src=ASSET_DATA.nemo;
  for(const key of ['nemo',...Object.keys(ENEMY_ART).map(kind=>'enemy_'+kind)])sprites[key].addEventListener('error',()=>{showToast('⚠ 캐릭터 '+key+' 이미지 로딩 실패');}); $('hero').src=ASSET_DATA.nemo; // Stable-URL build helpers; existing save key and game logic are unchanged.
@@ -4342,7 +4429,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.8.13';
+  const CURRENT='5.8.14';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
