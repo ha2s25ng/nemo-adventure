@@ -283,8 +283,8 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-#setting-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.8.14" />
+#setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
+</style><meta name="nemo-version" content="5.8.15" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -749,6 +749,7 @@
   <section class="settings-group" aria-labelledby="settings-audio">
    <h3 id="settings-audio">소리</h3>
    <label class="settings-line"><span>효과음 음량</span><input id="setting-volume" type="range" min="0" max="100" step="5" value="45"></label>
+   <label class="settings-line"><span>배경음 음량</span><input id="setting-music-volume" type="range" min="0" max="100" step="5" value="30"></label>
   </section>
   <section class="settings-group" aria-labelledby="settings-controls">
    <h3 id="settings-controls">조작</h3>
@@ -1283,10 +1284,10 @@ function readSave(){let defaults={version:DATA.version,gold:0,firstClear:false,s
  }catch(e){return defaults;}
 }
 function persist(){try{localStorage.setItem(DATA.saveKey,JSON.stringify(saved));return true;}catch(e){showToast('저장 공간을 사용할 수 없어 진행 상황이 유지되지 않을 수 있어.');return false;}}
-const opts={numbers:true,particles:true,shake:true,autoPause:false,volume:45};
+const opts={numbers:true,particles:true,shake:true,autoPause:false,volume:45,musicVolume:30};
 try{let s=JSON.parse(localStorage.getItem(DATA.saveKey+'_settings')||'null');if(s)Object.assign(opts,s);}catch(e){}
 function saveSettings(){try{localStorage.setItem(DATA.saveKey+'_settings',JSON.stringify(opts));}catch(e){}}
-let audioContext=null,audioGain=null;
+let audioContext=null,audioGain=null,musicGain=null,musicSession=null;
 const soundTimes={};
 // Each note is delay, starting pitch, ending pitch, length, gain and waveform.
 const GAME_SOUNDS={
@@ -1301,14 +1302,16 @@ const GAME_SOUNDS={
  clear:[.65,[[0,523,523,.22,.09,'triangle'],[.1,659,659,.23,.072,'triangle'],[.2,784,784,.26,.06,'triangle'],[.3,1047,1047,.40,.065,'sine']]],
  end:[.65,[[0,440,440,.16,.07,'triangle'],[.11,349,349,.24,.065,'triangle'],[.22,262,262,.34,.07,'sine']]]
 };
-function effectVolume(){
- return typeof opts.volume==='number'&&Number.isFinite(opts.volume)?clamp(opts.volume,0,100):45;
+function soundVolume(key,fallback){
+ return Number.isFinite(opts[key])?clamp(opts[key],0,100):fallback;
 }
+function effectVolume(){return soundVolume('volume',45);}
+function musicVolume(){return soundVolume('musicVolume',30);}
 function syncSoundVolume(){
  if(audioGain)audioGain.gain.setTargetAtTime(effectVolume()/100,audioContext.currentTime,.025);
 }
 async function unlockSound(){
- if(!effectVolume())return;
+ if(!effectVolume()&&!musicVolume())return;
  const AudioEngine=window.AudioContext||window.webkitAudioContext;
  if(!AudioEngine)return;
  try{
@@ -1317,6 +1320,9 @@ async function unlockSound(){
    audioGain=audioContext.createGain();
    audioGain.gain.value=effectVolume()/100;
    audioGain.connect(audioContext.destination);
+   musicGain=audioContext.createGain();
+   musicGain.gain.value=musicVolume()/100;
+   musicGain.connect(audioContext.destination);
   }
   if(audioContext.state!=='running')await audioContext.resume();
  }catch(_){}
@@ -1327,21 +1333,99 @@ function playSound(name){
  if(now-(soundTimes[name]??-Infinity)<spacing)return false;
  soundTimes[name]=now;
  for(const [delay,startPitch,endPitch,duration,volume,wave] of notes){
-  const start=now+delay,end=start+duration;
-  const tone=audioContext.createOscillator(),envelope=audioContext.createGain();
-  tone.type=wave;
-  tone.frequency.setValueAtTime(startPitch,start);
-  tone.frequency.exponentialRampToValueAtTime(endPitch,end);
-  envelope.gain.setValueAtTime(.0001,start);
-  envelope.gain.exponentialRampToValueAtTime(volume,start+.012);
-  envelope.gain.exponentialRampToValueAtTime(.0001,end);
-  tone.connect(envelope);
-  envelope.connect(audioGain);
-  tone.start(start);
-  tone.stop(end);
-  tone.onended=()=>{tone.disconnect();envelope.disconnect();};
+  scheduleTone(audioGain,now+delay,duration,startPitch,endPitch,volume,wave,.012);
  }
  return true;
+}
+function scheduleTone(bus,start,duration,startPitch,endPitch,volume,wave,attack){
+ const end=start+duration;
+ const tone=audioContext.createOscillator(),envelope=audioContext.createGain();
+ tone.type=wave;
+ tone.frequency.setValueAtTime(startPitch,start);
+ tone.frequency.exponentialRampToValueAtTime(endPitch,end);
+ envelope.gain.setValueAtTime(.0001,start);
+ envelope.gain.exponentialRampToValueAtTime(volume,start+attack);
+ envelope.gain.exponentialRampToValueAtTime(.0001,end);
+ tone.connect(envelope);
+ envelope.connect(bus);
+ tone.start(start);
+ tone.stop(end);
+ tone.onended=()=>{tone.disconnect();envelope.disconnect();};
+}
+// Each bar has a MIDI chord (bass first) and a melody in eighth notes. Zero is a rest.
+const MUSIC_TRACKS={
+ menu:{bpm:80,arp:[0,2,1,2,1,2],bars:[
+  [[48,60,64,67],[72,0,76,79,0,76]],[[45,60,64,69],[74,0,72,69,0,67]],
+  [[41,60,65,69],[69,0,72,77,76,72]],[[43,59,62,67],[71,74,72,67,0,0]],
+  [[48,59,64,67],[76,0,79,83,79,76]],[[45,60,64,69],[72,76,81,79,76,72]],
+  [[41,60,64,69],[77,76,72,69,67,69]],[[43,62,65,69],[74,0,71,67,0,0]]
+ ]},
+ field:{bpm:96,arp:[0,1,2,3,1,2,3,2],bars:[
+  [[50,62,65,69],[69,0,72,74,0,76,74,72]],[[46,62,65,69],[70,0,69,65,67,0,69,0]],
+  [[41,60,65,69],[72,0,77,76,72,69,0,72]],[[48,60,64,67],[76,74,72,0,67,0,0,67]],
+  [[50,62,65,69],[69,74,77,0,76,74,72,69]],[[46,62,65,69],[70,0,74,77,0,74,72,70]],
+  [[43,62,67,70],[67,0,70,72,74,72,70,67]],[[45,61,64,69],[69,72,76,74,73,69,0,0]]
+ ]},
+ boss:{bpm:128,arp:[0,2,0,3,0,2,1,3],bars:[
+  [[38,57,62,65],[74,0,77,76,0,74,72,69]],[[34,53,58,62],[70,0,74,77,76,74,70,0]],
+  [[43,55,58,62],[79,77,74,0,70,74,77,74]],[[45,57,61,64],[76,0,73,76,79,76,73,0]],
+  [[38,57,62,65],[74,77,81,0,79,77,76,74]],[[36,55,60,64],[72,0,76,79,77,76,72,0]],
+  [[34,53,58,62],[70,74,77,0,74,70,69,65]],[[45,55,61,64],[69,73,76,79,76,73,0,0]]
+ ]}
+};
+function musicScene(){
+ if(document.hidden||screen==='result'||!musicVolume())return null;
+ if(!g)return 'menu';
+ return g.boss&&!g.boss.dead?'boss':'field';
+}
+function playMusicNote(bus,at,length,midi,volume,wave,attack){
+ const hz=440*2**((midi-69)/12);
+ scheduleTone(bus,at,length,hz,hz,volume,wave,attack);
+}
+function queueMusicStep(session){
+ const {track,index,next,bus}=session;
+ const steps=track.arp.length,step=index%steps;
+ const [chord,melody]=track.bars[Math.floor(index/steps)%track.bars.length];
+ const beat=30/track.bpm,boss=session.scene==='boss';
+ if(step===0){
+  for(const note of chord.slice(1))playMusicNote(bus,next,beat*(steps+.16),note,.022,'sine',.18);
+ }
+ const picked=track.arp[step];
+ playMusicNote(bus,next,beat*(picked===0?1.55:1.16),chord[picked],picked===0?.075:.038,boss?'triangle':'sine',.024);
+ if(melody[step]){
+  const hold=melody[(step+1)%steps]===0?1.52:1.06;
+  playMusicNote(bus,next,beat*hold,melody[step],boss?.065:.082,'triangle',.020);
+  playMusicNote(bus,next+.065,beat*hold,melody[step]+12,.014,'sine',.036);
+ }
+ session.index++;
+ session.next+=beat;
+}
+function updateMusic(){
+ const scene=musicScene();
+ if(audioContext?.state!=='running'||!musicGain)return;
+ const now=audioContext.currentTime;
+ if(scene!==(musicSession?.scene??null)){
+  if(musicSession){
+   const oldBus=musicSession.bus;
+   oldBus.gain.setTargetAtTime(0,now,.08);
+   setTimeout(()=>oldBus.disconnect(),650);
+   musicSession=null;
+  }
+  if(scene){
+   const bus=audioContext.createGain();
+   bus.gain.value=0;
+   bus.connect(musicGain);
+   musicSession={scene,bus,track:MUSIC_TRACKS[scene],index:0,next:now+.04,level:null};
+  }
+ }
+ if(!musicSession)return;
+ const level=!g||screen==='playing'||screen==='intro'?1:.44;
+ if(musicSession.level!==level){
+  musicSession.level=level;
+  musicSession.bus.gain.setTargetAtTime(level,now,.14);
+ }
+ if(musicSession.next<now)musicSession.next=now+.025;
+ while(musicSession.next<now+.14)queueMusicStep(musicSession);
 }
 let needsDraw=true;
 const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)');
@@ -3183,7 +3267,8 @@ function renderMenu(){$('menu-gold-value').textContent=`${saved.gold.toLocaleStr
  $('nemo-name-change').setAttribute('aria-label','닉네임 변경');
  syncCostumeVisual();
  renderDifficulty();$('setting-numbers').checked=opts.numbers;$('setting-particles').checked=opts.particles;$('setting-shake').checked=opts.shake;$('setting-auto-pause').checked=opts.autoPause;
- $('setting-volume').value=effectVolume();}
+ $('setting-volume').value=effectVolume();
+ $('setting-music-volume').value=musicVolume();}
 // ------------ DRAWING: watercolor grounds, layered illustration sprites ------------
 function ellipse(x,y,rx,ry,fill,alpha=1){ctx.save();ctx.globalAlpha*=alpha;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,TAU);ctx.fillStyle=fill;ctx.fill();ctx.restore();}
 function polygon(points,fill,stroke='#755483',lw=.055){ctx.beginPath();ctx.moveTo(...points[0]);for(let i=1;i<points.length;i++)ctx.lineTo(...points[i]);ctx.closePath();if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=lw;ctx.lineJoin='round';ctx.stroke();}}
@@ -4020,6 +4105,7 @@ function frame(time){if(!last)last=time;let delta=clamp((time-last)/1000,0,.05);
  if(screen==='playing'||screen==='intro'){accumulator+=delta;let n=0;while(accumulator>=1/60&&n++<5){update(1/60);accumulator-=1/60;if(screen!=='playing'&&screen!=='intro'){accumulator=0;break;}}}else accumulator=0;
  menuArtTime+=delta;
  if(needsDraw||screen==='playing'||screen==='intro'){needsDraw=false;draw();}
+ updateMusic();
  if(toastTimer>0){toastTimer-=delta;if(toastTimer<=0)$('toast').classList.add('hidden');}
  requestAnimationFrame(frame);}
 
@@ -4405,6 +4491,13 @@ $('setting-volume').addEventListener('change',async()=>{
  await unlockSound();
  playSound('tap');
 });
+$('setting-music-volume').addEventListener('input',e=>{
+ opts.musicVolume=Number(e.target.value);
+ if(musicGain)musicGain.gain.setTargetAtTime(musicVolume()/100,audioContext.currentTime,.025);
+ saveSettings();
+});
+$('setting-music-volume').addEventListener('change',unlockSound);
+document.addEventListener('visibilitychange',updateMusic);
 document.addEventListener('keydown',e=>{if(!e.repeat&&audioContext?.state!=='running')void unlockSound();},true);
 document.addEventListener('click',async e=>{
  if(!e.isTrusted)return;
@@ -4429,7 +4522,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.8.14';
+  const CURRENT='5.8.15';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
