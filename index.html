@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.7.1" />
+</style><meta name="nemo-version" content="5.7.2" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -558,7 +558,7 @@
 }
 
 </style>
-<link rel="stylesheet" href="./assets/campaign-v570/stages.css?v=5.7.1">
+<link rel="stylesheet" href="./assets/campaign-v570/stages.css?v=5.7.2">
 <script src="./assets/campaign-v570/stages.js"></script>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
@@ -717,19 +717,19 @@ const DATA = Object.freeze({
    5:['행운의 별','치명타 확률 +15%p'],
    6:['별빛 치명타','치명타 피해 1.5배 → 2배']
   },evos:[['별사탕 소나기','피해 +15% · 별마다 적 2마리 추가 관통 · 관통할 때마다 다음 적 피해 30% 감소'],['소원별','피해 +10% · 치명타 확률 +10%p · 별마다 적 1마리 추가 관통 · 관통 후 다음 적 피해 30% 감소']]},
-  orbit:{name:'스타 오비트',icon:'💫',coef:0.32,cd:0,range:1.65,up:[['별 하나 더','회전 별 +1'],['별빛 강화','접촉 피해 +25%'],['넓은 궤도','회전 반경 +15%']],break:'회전 속도 +30% · 닿은 적을 1초간 20% 둔화',evos:[["은하수 고리","회전 별 +2 · 피해 +15% · 안쪽과 바깥쪽에 별을 배치"],["수호별","피해 +25% · 초당 1회 가까운 적 탄환 차단"]]},
+  orbit:{name:'스타 오비트',icon:'💫',coef:0.32,cd:0,range:1.65,up:[['별 하나 더','회전 별 +1'],['별빛 강화','접촉 피해 +25%'],['넓은 궤도','회전 반경 +15%']],break:'회전 속도 +30% · 닿은 적을 1초간 20% 둔화',evos:[["은하수 고리","회전 별 +2 · 피해 +10% · 두 겹 궤도"],["수호별","피해 +25% · 0.8초마다 가까운 적 탄환 최대 1개 차단"]]},
   moon:{name:'문라이트',icon:'🌙',coef:1.08,cd:1.58,range:14,up:[['달빛 집중','피해 +25%'],['빠른 달빛','공격 속도 +15%'],['넓은 달빛','폭 +25%']],break:'달빛이 끝에서 원점으로 돌아오며 50% 피해',evos:[["쌍둥이 달","달빛을 두 갈래로 발사 · 각 갈래는 피해 65%"],["보름달","피해 +60% · 폭 +50% · 재사용 대기시간 +20%"]]},
   bubble:{name:'버블 완드',icon:'🫧',coef:1.03,cd:2.06,range:12,up:[['쌍둥이 방울','방울 +1 · 개별 피해 ×0.8'],['꿈빛 방울','피해 +25%'],['커다란 방울','폭발 반경 +20%']],break:'폭발 둔화를 30%로 강화 · 1.5초 지속',evos:[["비눗방울 축제","큰 방울이 터질 때 작은 방울 2개 분열 · 개별 피해 30%"],["꿈방울","폭발 반경 +40% · 더 강한 둔화 · 왕관 슬라임 피해 +50%"]]},
-  bloom:{name:'블룸 가든',icon:'🌸',coef:0.26,cd:3.3,range:12,up:[['꽃잎 가득','장판 피해 +25%'],['넓은 꽃밭','꽃밭 반경 +20%'],['오래 피는 꽃','지속시간 +0.5초']],break:'장판 내 적 25% 둔화',evos:[["요정 정원","꽃밭 피해 +30% · 반경 +25% · 생성 순간 추가 피해"],["치유 정원","꽃밭 안에서 최대 체력의 1%를 초당 회복 · 이탈 후 1초간 지속"]]},
-  cloud:{name:'구름 친구',icon:'☁️',coef:1.52,cd:2.4,range:12,up:[['먹구름 집중','피해 +25%'],['재빠른 천둥','공격 속도 +15%'],['번개 행운','치명타 확률 +10%p']],break:'적중 후 2.5초간 대상이 받는 피해 +15%',evos:[["뇌운 친구","같은 대상에 추가 낙뢰 · 추가 피해 70%"],["무지개 구름","최대 3명에게 동시 낙뢰 · 개별 피해 75%"]]},
-  ribbon:{name:'리본 댄스',icon:'🎀',coef:1.15,cd:1.1,range:2.7,up:[['리본 매듭','피해 +25%'],['넓은 춤','반경 +20%'],['빠른 발놀림','공격 속도 +15%']],break:'0.2초 후 50% 피해의 후속 공격',evos:[["리본 왈츠","기본·후속 공격이 360도 타격 · 피해 +15%"],["축제의 리본","피해 +30% · 넉백 강화 · 후속 공격 피해 100%"]]},
-  book:{name:'꿈꾸는 마법책',icon:'📖',coef:0.73,cd:1.9,range:12.5,up:[['종이 요정','요정 +1 · 개별 피해 ×0.85'],['동화의 힘','피해 +25%'],['빠른 책장','공격 속도 +15%']],break:'첫 적중 후 다른 적에게 50% 피해 추가 공격',evos:[["요정 도서관","요정 +2 · 개별 피해 80% · 각 요정 최대 2회 연쇄"],["금빛 동화책","피해 +40% · 한 적에게 여러 요정 집중 가능 · 왕관 슬라임 피해 +20%"]]},
+  bloom:{name:'블룸 가든',icon:'🌸',coef:0.26,cd:3.3,range:12,up:[['꽃잎 가득','장판 피해 +25%'],['넓은 꽃밭','꽃밭 반경 +20%'],['오래 피는 꽃','지속시간 +0.5초']],break:'장판 내 적 25% 둔화',evos:[["요정 정원","꽃밭 피해 +30% · 반경 +25% · 생성 순간 추가 피해"],["치유 정원","꽃밭 피해 +20% · 최대 체력 초당 1.5% 회복 · 이탈 후 1.5초 지속"]]},
+  cloud:{name:'구름 친구',icon:'☁️',coef:1.52,cd:2.4,range:12,up:[['먹구름 집중','피해 +25%'],['재빠른 천둥','공격 속도 +15%'],['번개 행운','치명타 확률 +10%p']],break:'적중 후 2.5초간 대상이 받는 피해 +15%',evos:[["뇌운 친구","같은 대상에 추가 낙뢰 · 추가 피해 85%"],["무지개 구름","최대 4마리 동시 낙뢰 · 첫 대상 피해 100% · 나머지 75%"]]},
+  ribbon:{name:'리본 댄스',icon:'🎀',coef:1.15,cd:1.1,range:2.7,up:[['리본 매듭','피해 +25%'],['넓은 춤','반경 +20%'],['빠른 발놀림','공격 속도 +15%']],break:'0.2초 후 50% 피해의 후속 공격',evos:[["리본 왈츠","360도 타격 · 피해 +10% · 정면 130° 밖은 피해 40% · 후속타 피해 35%"],["축제의 리본","피해 +30% · 넉백 강화 · 후속 공격 피해 100%"]]},
+  book:{name:'꿈꾸는 마법책',icon:'📖',coef:0.73,cd:1.9,range:12.5,up:[['종이 요정','요정 +1 · 개별 피해 ×0.85'],['동화의 힘','피해 +25%'],['빠른 책장','공격 속도 +15%']],break:'첫 적중 후 다른 적에게 50% 피해 추가 공격',evos:[["요정 도서관","요정 +2 · 개별 피해 85% · 최대 2회 연쇄, 연쇄마다 피해 72% · 적이 하나면 보조 요정 1발 추가"],["금빛 동화책","피해 +40% · 한 적에게 여러 요정 집중 가능 · 왕관 슬라임 피해 +20%"]]},
   comet:{name:'별똥별 소나기',icon:'☄️',coef:1.48,cd:3,range:13.5,up:[['유성 하나 더','유성 +1 · 개별 위력 소폭 감소'],['빛나는 꼬리','낙하 피해 +25%'],['커다란 별','폭발 범위 +20%']],break:'유성이 떨어진 자리에서 별가루가 잠시 반짝이며 추가 피해',evos:[["유성 축제","유성 +2 · 개별 피해 70%"],["큰별 충돌","폭발 반경 +50% · 피해 +40%"]]},
-  frost:{name:'서리 수정',icon:'❄️',coef:0.66,cd:1.38,range:12.5,up:[['수정 하나 더','수정 +1 · 개별 위력 소폭 감소'],['차가운 빛','수정 피해 +25%'],['짙은 한기','둔화 시간 +0.5초']],break:'최대 4명까지 관통',evos:[["빙하의 숨결","수정 +2 · 둔화 강화"],["서리꽃","적중 지점에 작은 눈꽃 폭발 · 주변 적 둔화"]]},
-  vortex:{name:'솜사탕 소용돌이',icon:'🌀',coef:0.24,cd:0,range:2.9,up:[['더 넓은 바람','소용돌이 반경 +20%'],['달콤한 바람','지속 피해 +25%'],['느린 구름','둔화 효과 강화']],break:'소용돌이 안의 적이 느려지고 끌어당기는 힘 증가',evos:[["태풍 솜사탕","지속 피해 +30% · 적을 더 강하게 끌어당김"],["몽글몽글 바람","반경 +28% · 닿은 적을 더 강하게 둔화"]]},
+  frost:{name:'서리 수정',icon:'❄️',coef:0.66,cd:1.38,range:12.5,up:[['수정 하나 더','수정 +1 · 개별 위력 소폭 감소'],['차가운 빛','수정 피해 +25%'],['짙은 한기','둔화 시간 +0.5초']],break:'최대 4명까지 관통',evos:[["빙하의 숨결","수정 +2 · 둔화 강화"],["서리꽃","직격 대상에 15% 추가 피해 · 주변 적에게 38% 피해와 둔화"]]},
+  vortex:{name:'솜사탕 소용돌이',icon:'🌀',coef:0.24,cd:0,range:2.9,up:[['더 넓은 바람','소용돌이 반경 +20%'],['달콤한 바람','지속 피해 +25%'],['느린 구름','둔화 강도 +5%p']],break:'둔화 강도 증가 (무한 생존 +23%p · 스테이지 +8%p)',evos:[["태풍 솜사탕","지속 피해 +30% · 적을 더 강하게 끌어당김"],["몽글몽글 바람","반경 +28% · 둔화 강도 증가 (무한 생존 +14%p · 스테이지 +8%p)"]]},
   seed:{name:'별씨앗 덫',icon:'🌱',coef:1.37,cd:1.65,range:5,up:[['씨앗 주머니','최대 설치 덫 +1'],['꽃폭탄','덫 폭발 피해 +25%'],['꽃잎 폭발','폭발 반경 +20%']],break:'덫 폭발 후 작은 꽃씨 덫 2개 생성',evos:[["마법 꽃밭","덫 최대 +2 · 터진 자리에 지속 피해"],["요정의 덫","감지 범위 +40% · 폭발 반경 +50% · 왕관 슬라임 피해 +30%"]]},
-  bell:{name:'달빛 종소리',icon:'🔔',coef:0.83,cd:3.3,range:2.65,up:[['넓은 울림','충격파 범위 +22%'],['맑은 종소리','충격파 피해 +25%'],['빠른 울림','공격 속도 +15%']],break:'충격파에 맞은 적을 1초간 둔화',evos:[["두 번 울리는 종","두 번째 충격파 · 더 강한 넉백"],["수호의 종","충격파 반경 +30% · 파동에 닿은 모든 적 탄환 제거"]]},
-  feather:{name:'바람 깃털',icon:'🍃',coef:0.71,cd:1.55,range:10.5,up:[['깃털 하나 더','깃털 +1 · 개별 위력 소폭 감소'],['날카로운 깃털','깃털 피해 +25%'],['가벼운 바람','공격 속도 +15%']],break:'나가는 깃털이 다른 적에게 1회 연쇄',evos:[["춤추는 깃털","깃털 +2 · 나가는 길에 최대 2회 연쇄"],["돌아오는 바람","돌아오는 길 피해 +50% · 복귀 속도 증가"]]},
+  bell:{name:'달빛 종소리',icon:'🔔',coef:0.83,cd:2.8,range:2.65,up:[['넓은 울림','충격파 범위 +22%'],['맑은 종소리','충격파 피해 +25%'],['빠른 울림','공격 속도 +15%']],break:'충격파에 맞은 적을 1초간 둔화',evos:[["두 번 울리는 종","두 번째 충격파 · 더 강한 넉백"],["수호의 종","충격파 반경 +30% · 파동에 닿은 모든 적 탄환 제거"]]},
+  feather:{name:'바람 깃털',icon:'🍃',coef:0.71,cd:1.55,range:10.5,up:[['깃털 하나 더','깃털 +1 · 개별 위력 소폭 감소'],['날카로운 깃털','깃털 피해 +25%'],['가벼운 바람','공격 속도 +15%']],break:'나가는 깃털이 다른 적에게 1회 연쇄',evos:[["춤추는 깃털","깃털 +2 · 개별 피해 −10% · 나가는 길에 최대 2회 연쇄"],["돌아오는 바람","돌아오는 길 피해 +50% · 복귀 속도 18"]]},
  },
  passives:{magic:['마법 강화','✨','모든 무기 피해 +20%'],quick:['빠른 주문','⏱','모든 공격 속도 +8%'],lucky:['행운의 리본','🎗','치명타 확률 +5%p'],big:['커다란 마법','💠','공격 반경·폭·폭발 반경 +8%'],cloak:['포근한 망토','💖','최대 체력 +15% · 증가량만큼 현재 체력 회복'],shoes:['가벼운 발걸음','👟','이동 속도 +8%'],magnet:['보석 자석','🧲','경험치 획득 범위 +20%']},
  monsters:{green:{name:'초록 슬라임',hp:45,dmg:8,speed:1.3,r:.48},blue:{name:'파랑 슬라임',hp:90,dmg:10,speed:1.7,r:.48},fat:{name:'통통 버섯',hp:150,dmg:12,speed:.9,r:.53},spore:{name:'포자 버섯',hp:100,dmg:8,speed:.8,r:.51},firefly:{name:'반딧불',hp:70,dmg:8,speed:2,r:.38},armor:{name:'밤송이 슬라임',hp:240,dmg:14,speed:.95,r:.57},spark:{name:'별빛 도깨비',hp:92,dmg:10,speed:3.10,r:.44},petal:{name:'소환 슬라임',hp:90,dmg:8,speed:1.3,r:.46},
@@ -1068,12 +1068,12 @@ function weaponNumbers(id){
  const extra=w.evo===0?2:0;
  const count={
   star:starShotCount(w),orbit:2+w.up[0]+extra,moon:w.evo===0?2:1,bubble:1+w.up[0],
-  bloom:1,cloud:w.evo===1?3:w.evo===0?2:1,ribbon:w.break?2:1,book:2+w.up[0]+extra,
+  bloom:1,cloud:w.evo===1?4:w.evo===0?2:1,ribbon:w.break?2:1,book:2+w.up[0]+extra,
   comet:1+w.up[0]+extra,frost:1+w.up[0]+extra,feather:1+w.up[0]+extra,vortex:1,
   seed:3+w.up[0]+extra,bell:w.evo===0?2:1
  }[id];
  const labels={star:'탄환 수',orbit:'회전 별',moon:'관통 달빛',bubble:'추적 방울',bloom:'꽃밭 수',cloud:'최대 낙뢰',ribbon:'리본 타격',book:'최대 종이 요정',comet:'유성',frost:'수정',feather:'깃털',vortex:'소용돌이',seed:'최대 설치 덫',bell:'충격파'};
- const perHit=id==='moon'&&w.evo===0?.65:id==='cloud'&&w.evo===1?.75:1;
+ const perHit=id==='moon'&&w.evo===0?.65:1;
  const raw=weaponPower(id,d.coef,w)*perHit;
  const radius=['orbit','ribbon','bloom','bubble','vortex','seed','bell','comet'].includes(id);
  return [{k:id==='bloom'||id==='vortex'?'지속 피해 1회':'기본 타격 피해',v:fmtN(raw)},
@@ -1243,7 +1243,7 @@ function getPassive(k){return g.passives[k]||0;}
 function radiusMult(){return 1+.08*getPassive('big');}
 const DAMAGE_RANK={orbit:1,moon:0,bubble:1,bloom:0,cloud:0,ribbon:0,book:1,comet:1,frost:1,feather:1,vortex:1,seed:1,bell:1};
 const SPEED_RANK={moon:1,cloud:1,ribbon:2,book:2,feather:2,bell:2};
-const EXTRA_DAMAGE={orbit:[1.15,1.25],moon:[1,1.6],bloom:[1.3,1],ribbon:[1.15,1.3],book:[.8,1.4],comet:[.7,1.4],vortex:[1.3,1]};
+const EXTRA_DAMAGE={orbit:[1.10,1.25],moon:[1,1.6],bloom:[1.3,1.20],ribbon:[1.10,1.3],book:[.85,1.4],comet:[.7,1.4],vortex:[1.3,1],feather:[.90,1]};
 const SPREAD_DAMAGE={bubble:.8,book:.85,comet:.75,frost:.85,feather:.85};
 function rageActive(){return !!g&&g.worldClock<(g.player.rageUntil||0);}
 function rageRate(){return rageActive()?RAGE.tempo:1;}
@@ -2016,21 +2016,24 @@ function fireWeapon(id){
    if(!e.dead&&distance(e.x,e.y,t.x,t.y)<=r+e.r)deal(e,damage*2.6,id,{critAllowed:false});
   }
  }else if(id==='cloud'){
-  const others=w.evo===1?nearbyTargets(p,d.range).filter(e=>e!==t).sort((a,b)=>b.hp-a.hp).slice(0,2):[];
-  for(const e of [t,...others])thunder(e,damage*(w.evo===1?.75:1),origin);
+  const others=w.evo===1?nearbyTargets(p,d.range).filter(e=>e!==t).sort((a,b)=>b.hp-a.hp).slice(0,3):[];
+  thunder(t,damage,origin);
+  for(const e of others)thunder(e,damage*.75,origin);
  }else if(id==='ribbon'){
   const swing=atan(p.x,p.y,t.x,t.y);
   doRibbon(swing,1);
-  if(w.break)schedule(.19,()=>doRibbon(swing,w.evo===1?1:.5));
+  if(w.break)schedule(.19,()=>doRibbon(swing,w.evo===1?1:w.evo===0?.35:.5));
  }else if(id==='book'){
   const count=2+w.up[0]+extra,used=new Set();
+  const singleTarget=w.evo===0&&nearbyTargets(p,d.range).length===1;
   for(let i=0;i<count;i++){
-   const target=targetNearest(p.x,p.y,d.range,used)||(w.evo===1?t:null);
+   const extraFairy=singleTarget&&i===1;
+   const target=targetNearest(p.x,p.y,d.range,used)||(w.evo===1||extraFairy?t:null);
    if(!target)break;
    used.add(target.id);
    const angle=atan(origin.x,origin.y,target.x,target.y);
    g.shots.push({kind:'fairy',weapon:id,x:origin.x,y:origin.y,vx:Math.cos(angle)*7,vy:Math.sin(angle)*7,speed:9,life:2.7,r:.23,target:target.id,
-    damage,hit:new Set(),chains:w.break?(w.evo===0?2:1):0,dead:false,trail:[]});
+    damage:extraFairy?damage*.75:damage,hit:new Set(),chains:w.break?(w.evo===0?2:1):0,dead:false,trail:[]});
   }
  }else if(id==='comet'){
   const count=1+w.up[0]+extra,r=weaponReach(id,w),spread=count===1?0:r*.86;
@@ -2075,7 +2078,7 @@ function thunder(e,raw,origin=null){
  }
  strike(raw,.34);
  if(w.break&&!e.dead)e.vulnerableUntil=Math.max(e.vulnerableUntil,g.worldClock+2.5);
- if(w.evo===0)schedule(.22,()=>strike(raw*.7,.29));
+ if(w.evo===0)schedule(.22,()=>strike(raw*.85,.29));
 }
 function doRibbon(a,scale){
  const p=g.player,w=g.weapons.ribbon,r=weaponReach('ribbon',w),arc=w.evo===0?TAU:Math.PI*130/180;
@@ -2084,7 +2087,9 @@ function doRibbon(a,scale){
   if(e.dead||distance(e.x,e.y,p.x,p.y)>r+e.r)continue;
   const angle=atan(p.x,p.y,e.x,e.y),diff=Math.atan2(Math.sin(angle-a),Math.cos(angle-a));
   if(Math.abs(diff)>arc*.5)continue;
-  deal(e,wpBase('ribbon',W.ribbon.coef)*scale,'ribbon');knock(e,angle,w.evo===1?1.12:.82);
+  const outsideFront=Math.abs(diff)>Math.PI*65/180;
+  deal(e,wpBase('ribbon',W.ribbon.coef)*scale*(outsideFront?.40:1),'ribbon');
+  knock(e,angle,w.evo===1?1.12:outsideFront?.48:.82);
  }
 }
 function explodeBubble(b){if(b.dead)return;b.dead=true;let w=g.weapons.bubble,mult=radiusMult(),r=b.sub?.72*mult:weaponReach('bubble',w);
@@ -2101,7 +2106,7 @@ function outsideWorld(x,y,pad=0){
 function updateShots(dt){const step=dt*spellTravelRate();for(const s of g.shots){if(s.dead)continue;s.life-=dt;
  if(s.kind==='feather'&&!s.returning&&(s.life<=0||outsideWorld(s.x,s.y))){
   s.returning=true;s.target=null;s.hit.clear();s.life=1.48;
-  s.speed=g.weapons.feather.evo===1?16:13.5;
+  s.speed=g.weapons.feather.evo===1?18:13.5;
   if(g.weapons.feather.evo===1)s.damage*=1.5;
  }
  const homing=s.kind==='bubble'||s.kind==='fairy'||s.target!=null||s.returning;
@@ -2132,7 +2137,7 @@ function updateShots(dt){const step=dt*spellTravelRate();for(const s of g.shots)
    continue;
   }else if(s.kind==='frost'){
    deal(e,s.damage,'frost');slow(e,wfrostSlow(),1.05+.5*g.weapons.frost.up[2]);
-   if(g.weapons.frost.evo===1){g.effects.push({kind:'frostBurst',x:e.x,y:e.y,r:.85,life:.28,max:.28});for(const other of g.enemies){if(!other.dead&&other.id!==e.id&&distance(other.x,other.y,e.x,e.y)<.85+other.r){deal(other,s.damage*.38,'frost',{critAllowed:false});slow(other,.25,1);}}}
+   if(g.weapons.frost.evo===1){deal(e,s.damage*.15,'frost',{critAllowed:false});g.effects.push({kind:'frostBurst',x:e.x,y:e.y,r:.85,life:.28,max:.28});for(const other of g.enemies){if(!other.dead&&other.id!==e.id&&distance(other.x,other.y,e.x,e.y)<.85+other.r){deal(other,s.damage*.38,'frost',{critAllowed:false});slow(other,.25,1);}}}
    if(s.chains-->0){break;}s.dead=true;
   }else if(s.kind==='feather'){
    deal(e,s.damage,'feather');
@@ -2142,7 +2147,7 @@ function updateShots(dt){const step=dt*spellTravelRate();for(const s of g.shots)
    }
   }else if(s.kind==='fairy'){
    deal(e,s.damage,'book');if(s.chains>0){let excl=new Set(s.hit);if(g.weapons.book.evo===1)excl=new Set([e.id]);let nxt=targetNearest(e.x,e.y,10,excl);
-    if(nxt){s.target=nxt.id;s.chains--;s.damage*=.5;s.x=e.x;s.y=e.y;s.life=Math.max(s.life,.65);break;}}
+    if(nxt){s.target=nxt.id;s.chains--;s.damage*=g.weapons.book.evo===0?.72:.5;s.x=e.x;s.y=e.y;s.life=Math.max(s.life,.65);break;}}
    s.dead=true;
   }
   break;
@@ -2172,7 +2177,7 @@ function updateOrbit(dt){
  for(let i=0;i<n;i++){
   const {x,y}=orbitPosition(p,w,i,n,r);
   for(const e of g.enemies){
-   if(e.dead||distance(x,y,e.x,e.y)>.28+e.r||g.worldClock-(hitTimes.get(e.id)??-100)<.30)continue;
+   if(e.dead||distance(x,y,e.x,e.y)>.28+e.r||g.worldClock-(hitTimes.get(e.id)??-100)<.36)continue;
    hitTimes.set(e.id,g.worldClock);
    deal(e,power,'orbit');if(w.break)slow(e,.20,1);
   }
@@ -2182,7 +2187,7 @@ function updateOrbit(dt){
   w.blockTimer=(w.blockTimer||0)-dt;
   if(w.blockTimer<=0){
    const bullet=g.enemyShots.find(b=>!b.dead&&distance(b.x,b.y,p.x,p.y)<=r+.72);
-   if(bullet){bullet.dead=true;w.blockTimer=1;burst(bullet.x,bullet.y,'#fff5bb',7);}
+   if(bullet){bullet.dead=true;w.blockTimer=.8;burst(bullet.x,bullet.y,'#fff5bb',7);}
   }
  }
 }
@@ -2205,16 +2210,18 @@ function updateVortex(dt){
  if(w.vortexTick>0)return;
  w.vortexTick=.52/clockMult('vortex');
  const p=g.player,r=weaponReach('vortex',w),power=wpBase('vortex',W.vortex.coef);
+ const baseSlow=g.stage?.15+(w.break?.08:0)+(w.evo===1?.08:0):w.evo===1?.37:w.break?.23:0;
+ const slowAmount=baseSlow+.05*w.up[2];
  for(const e of g.enemies){
   if(e.dead)continue;
   const d=distance(e.x,e.y,p.x,p.y);
   if(d>r+e.r)continue;
   deal(e,power,'vortex',{critAllowed:false});
   if(g.stage){
-   if(!e.dead)slow(e,.15+.04*w.up[2]+(w.break?.08:0)+(w.evo===1?.08:0),.86);
+   if(!e.dead)slow(e,slowAmount,.86);
    continue;
   }
-  if(w.break||w.evo===1)slow(e,w.evo===1?.37:.23,.86);
+  if(slowAmount>0)slow(e,slowAmount,.86);
   if(e.dead||e===g.boss||e.kind==='boss'||d<=1.60)continue;
   const step=Math.min(d-1.60,w.evo===0?.77:.47);
   pushEnemy(e,(p.x-e.x)/d*step,(p.y-e.y)/d*step);
@@ -2241,8 +2248,8 @@ function updateZones(dt){for(const z of g.zones){z.remain-=dt;z.next-=dt;if(z.ki
  }
  }g.zones=g.zones.filter(z=>z.remain>0);
  if(g.weapons.bloom?.evo===1){let inside=g.zones.some(z=>z.kind==='bloom'&&distance(z.x,z.y,g.player.x,g.player.y)<=z.r);
-  if(inside)g.healTimer=1;else g.healTimer=Math.max(0,g.healTimer-dt);
-  if(g.healTimer>0)g.player.hp=Math.min(g.player.maxHp,g.player.hp+g.player.maxHp*.01*dt);
+  if(inside)g.healTimer=1.5;else g.healTimer=Math.max(0,g.healTimer-dt);
+  if(g.healTimer>0)g.player.hp=Math.min(g.player.maxHp,g.player.hp+g.player.maxHp*.015*dt);
  }
 }
 function updateLoot(dt){
@@ -3524,7 +3531,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.7.1';
+  const CURRENT='5.7.2';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
