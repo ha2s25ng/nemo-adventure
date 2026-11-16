@@ -1,5 +1,5 @@
 {
-  "version": "5.8.12",
+  "version": "5.8.13",
   "mode": "endless_survival_and_campaign",
-  "notes": "모험 강화의 시전 훈련과 수호 훈련 설명에서 ‘모든 모드에서’ 문구 제거"
+  "notes": "일반 몬스터와 보스의 8방향 걷기·비행·돌진 모션"
 }
