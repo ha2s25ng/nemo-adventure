@@ -11,12 +11,12 @@ const NEMO_STAGES = [
   {id:10,name:'숲의 심장', boss:'crown', title:'숲의 심장 · 왕관 슬라임', hp:49000, reward:500, patterns:['dash','ring','spiral','fan','dash'], enemies:{bramble:20,armor:23,moth:18,spark:22,spore:17}}
 ].map((stage,index)=>Object.freeze({
   ...stage,
-  bossAt: 540,
-  frenzyAt: 432,
+  bossAt: 360,
+  frenzyAt: 310,
   frenzyDuration: [18,20,22,24,26,29,32,35,38,42][index],
   hp: Math.round(stage.hp*[.90,.94,1,1.03,1.08,1.13,1.19,1.25,1.32,1.40][index]),
   reward: stage.reward+stage.id*12,
-  minuteGold: 16+stage.id*2,
+  minuteGold: 21+stage.id*2,
   replayGold: Math.round((stage.reward+stage.id*12)*.36),
   pressure: [.90,.96,1,1.06,1.13,1.21,1.30,1.40,1.51,1.64][index],
   recommended: index<3?'기본 장비':index<6?'공격력 · 체력 강화 권장':index<8?'시전 · 수호 훈련 권장':'공격력 · 체력 · 스테이지 훈련 권장',
