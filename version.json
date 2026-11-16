@@ -1,5 +1,5 @@
 {
-  "version": "5.7.3",
+  "version": "5.7.4",
   "mode": "endless_survival_and_campaign",
-  "notes": "스테이지 10종 맵과 난이도·영구 강화 조정"
+  "notes": "스테이지 보스 탄막 강화 및 니모 피격 판정 정렬"
 }
