@@ -1,5 +1,5 @@
 {
-  "version": "5.8.17",
+  "version": "5.8.18",
   "mode": "endless_survival_and_campaign",
-  "notes": "희귀 카드 전체 보라색 테마와 은은한 별빛 애니메이션"
+  "notes": "스테이지 지도에서 보스 등장 시간 안내 문구 제거"
 }
