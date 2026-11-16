@@ -284,7 +284,7 @@
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
 #setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.8.15" />
+</style><meta name="nemo-version" content="5.8.16" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -1734,9 +1734,11 @@ function collect(item){if(item.dead)return;item.dead=true;
   showToast('쓸어버리는 별 · 일반 적 제거',2.7);
  }else if(item.kind==='magnet'){
   g.magnetCount++;
-  for(const drop of g.loot)if(drop.kind==='xp'&&!drop.dead)collect(drop);
+  for(const drop of g.loot){
+   if(drop.kind==='xp'&&!drop.dead&&drop.ttl>0)drop.pullSpeed??=0;
+  }
   burst(p.x,p.y,RARE_PICKUPS.magnet.color,18);
-  showToast('보석 소집 · 모든 경험치 보석 획득',2.7);
+  showToast('보석 소집 · 경험치 보석이 니모에게 모여요!',2.7);
  }
 }
 function maybeCards(){if(screen!=='playing'||!g||g.done)return false;
@@ -2952,22 +2954,42 @@ function updateZones(dt){for(const z of g.zones){z.remain-=dt;z.next-=dt;if(z.ki
   if(g.healTimer>0)g.player.hp=Math.min(g.player.maxHp,g.player.hp+g.player.maxHp*.015*dt);
  }
 }
+function pullGemToNemo(gem,p,dt){
+ const dx=p.x-gem.x,dy=p.y+NEMO_HURT_Y-gem.y,gap=Math.hypot(dx,dy);
+ const contact=p.r+gem.r;
+ const remaining=gap-contact;
+ if(remaining<=0){collect(gem);return;}
+ const targetSpeed=clamp(12+gap*1.6,16,92);
+ gem.pullSpeed+=(targetSpeed-gem.pullSpeed)*(-Math.expm1(-7*dt));
+ const step=Math.min(remaining,gem.pullSpeed*dt);
+ gem.pullDX=dx/gap;
+ gem.pullDY=dy/gap;
+ gem.x+=gem.pullDX*step;
+ gem.y+=gem.pullDY*step;
+ if(step>=remaining)collect(gem);
+}
 function updateLoot(dt){
  const p=g.player;
- // Rank 1/2/3 magnet increases immediate pickup reach by 50/100/150%.
- // XP is credited immediately and removed from the ground; short visual suction is cosmetic.
- const rad=p.pickup*(1+.50*getPassive('magnet')+.45*(g.blessings?.gather||0));
- for(const l of g.loot){if(l.dead)continue;l.ttl-=dt;l.phase+=dt*4;
-  const threshold=l.kind==='xp'?rad:p.r+l.r;
-  if(distance(p.x,p.y,l.x,l.y)<=threshold){
-   if(l.kind==='xp'&&g.effects.length<160){
-    const travel=clamp(distance(p.x,p.y,l.x,l.y)/35,.085,.20);
-    g.effects.push({kind:'xpSwoosh',x:l.x,y:l.y,ex:p.x,ey:p.y,xp:l.xp,life:travel,max:travel});
-   }
-   collect(l);
-  }
+ // Resolve items first so a magnet can pull even gems inside the normal pickup radius.
+ for(const item of g.loot){
+  if(item.dead||item.kind==='xp')continue;
+  item.ttl-=dt;item.phase+=dt*4;
+  if(distance(p.x,p.y,item.x,item.y)<=p.r+item.r)collect(item);
  }
- g.loot=g.loot.filter(l=>!l.dead&&l.ttl>0);
+ const rad=p.pickup*(1+.50*getPassive('magnet')+.45*(g.blessings?.gather||0));
+ for(const gem of g.loot){
+  if(gem.dead||gem.kind!=='xp')continue;
+  if(gem.pullSpeed!=null){pullGemToNemo(gem,p,dt);continue;}
+  gem.ttl-=dt;
+  const gap=distance(p.x,p.y,gem.x,gem.y);
+  if(gap>rad)continue;
+  if(g.effects.length<160){
+   const travel=clamp(gap/35,.085,.20);
+   g.effects.push({kind:'xpSwoosh',x:gem.x,y:gem.y,ex:p.x,ey:p.y,xp:gem.xp,life:travel,max:travel});
+  }
+  collect(gem);
+ }
+ g.loot=g.loot.filter(item=>!item.dead&&item.ttl>0);
 }
 function updateBellEchoes(dt){
  for(const echo of g.bellEchoes){
@@ -3616,7 +3638,13 @@ function drawGem(l){
  if(!visible(l.x,l.y,1))return;
  const y=l.kind==='xp'?l.y:l.y+Math.sin(l.phase)*.05;
  const shadow=l.kind==='xp'?CRYSTAL_HEIGHTS[crystalGrade(l.xp)]:.68;
- ellipse(l.x,l.y+shadow*.31,shadow*.32,shadow*.085,'#799f7f',.23);
+ if(l.pullSpeed>0){
+  if(!reducedMotion.matches){
+   const tail=Math.min(.9,l.pullSpeed*.022),tx=l.x-l.pullDX*tail,ty=y-l.pullDY*tail;
+   line(tx,ty,l.x,y,'#b9a1e9',.095);
+   line((tx+l.x)/2,(ty+y)/2,l.x,y,'#f7e6ff',.045);
+  }
+ }else ellipse(l.x,l.y+shadow*.31,shadow*.32,shadow*.085,'#799f7f',.23);
  if(l.kind==='xp'){
   if(drawCrystal(l.x,y,l.xp))return;
   const grade=crystalGrade(l.xp),h=CRYSTAL_HEIGHTS[grade]*.5;
@@ -4522,7 +4550,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.8.15';
+  const CURRENT='5.8.16';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
