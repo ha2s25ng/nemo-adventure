@@ -1,5 +1,5 @@
 {
-  "version": "5.8.2",
+  "version": "5.8.3",
   "mode": "endless_survival_and_campaign",
-  "notes": "희귀 아이템, 이동·경험치 패시브, 코스튬 보너스, 자동 일시 정지와 지형 가림 개선"
+  "notes": "영구 강화·패시브·축복의 공격력 용어 통일"
 }
