@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.8.3" />
+</style><meta name="nemo-version" content="5.8.4" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -582,6 +582,12 @@
  #app #hud .survival-clock { grid-area:timer; justify-self:start; }
  #app #hud .survival-status .survival-clock #survival-timer { grid-area:auto; justify-self:center; }
 }
+
+#app .rank-prize-summary { margin:8px 0; color:#415c48; font-size:11px; }
+#app .rank-podium { display:flex; flex-wrap:wrap; gap:5px 8px; margin:6px 0; color:#415c48; font-size:11px; }
+#app .rank-podium span { display:inline-flex; gap:4px; align-items:center; padding:2px 8px 2px 3px; background:#eeeedf; border:1px solid #d5d8bc; border-radius:8px; }
+#app .rank-podium img { width:23px; height:23px; object-fit:contain; }
+#app .nemo-shop-item[data-costume^="victory-"] { border-color:#997a4d; }
 </style>
 <script src="./assets/campaign-v573/stages.js?v=576"></script>
 <script src="./assets/campaign-v573/maps.js"></script>
@@ -707,6 +713,7 @@
     <div id="rank-status" role="status" class="nemo-rank-status">미연결 — 개인 기록만 표시 중</div></div></section>
     <section class="nemo-rank-right"><div class="nemo-rank-table-title"><h3>이번 주 시도 기록</h3><button class="btn" id="rank-refresh">↻ 새로고침</button></div>
     <p id="rank-week" class="nemo-rank-foot"></p>
+    <div class="rank-prize-summary"><strong>지난 주 코스튬 수상자</strong><div id="rank-podium" class="rank-podium"></div></div>
     <div class="nemo-rank-table-head"><span>순위 / 닉네임</span><span>생존 기록</span><span>사용 마법</span></div><div id="rank-online" class="nemo-rank-list"><p class="nemo-rank-empty">온라인 기록을 불러오는 중이에요.</p></div>
     <button class="btn rank-more" id="rank-more" type="button" hidden>기록 더 보기</button>
   </section></div>
@@ -958,6 +965,14 @@ const COSTUMES=[
  atlas:COSTUME_ART+id+'/walk.png',
  portrait:id==='default'?'./assets/nemo-default-v5627/portrait.png':COSTUME_ART+id+'/portrait.png'
 }));
+const VICTORY_COSTUMES=[
+ {id:'victory-gold',name:'승리의 니모 · 황금',hp:24,attack:15,place:1},
+ {id:'victory-silver',name:'승리의 니모 · 백은',hp:22,attack:14,place:2},
+ {id:'victory-bronze',name:'승리의 니모 · 청동',hp:21,attack:13,place:3}
+].map(outfit=>({...outfit,portrait:'./assets/victory-v584/'+outfit.id+'.png',
+ atlas:'./assets/victory-v584/'+outfit.id+'-walk.png',
+ desc:'지난 주 무한 생존 순위 보상. 이번 주에 입을 수 있어요.'}));
+COSTUMES.push(...VICTORY_COSTUMES);
 const costumeAtlases={};
 function loadCostumeAtlas(outfit){
  if(costumeAtlases[outfit.id])return;
@@ -1011,7 +1026,7 @@ const NEMO_PAINTED_WAND_TIPS=[
  [[30,55],[129,45],[130,45],[30,82],[130,73],[32,77],[114,89],[132,62]]
 ];
 function nemoAtlas(){
- const outfit=costumeAtlases[saved.costumeEquipped];
+ const outfit=costumeAtlases[g?.runCostume??activeCostume().id];
  const base=costumeAtlases.default;
  for(const atlas of [outfit,base]){
   if(!atlas?.complete)continue;
@@ -1048,7 +1063,7 @@ const NEMO_GRIPS={
 };
 const NEMO_DIRECTIONAL_GRIPS=[[60,62],[65,63],[67,63],[65,63],[64,64]];
 function nemoWandPose(q,view){
- const grips=view.directional?NEMO_DIRECTIONAL_GRIPS:(NEMO_GRIPS[saved.costumeEquipped]||NEMO_GRIPS.default);
+ const grips=view.directional?NEMO_DIRECTIONAL_GRIPS:(NEMO_GRIPS[g?.runCostume??activeCostume().id]||NEMO_GRIPS.default);
  const [x,y]=grips[view.row],side=x<NEMO_WALK_FRAME/2?-1:1;
  const flick=q.casting?.29*Math.sin(Math.PI*Math.min(1,q.castProgress??0)):0;
  return {x:(x/NEMO_WALK_FRAME-.5)*NEMO_SIZE,y:(y/NEMO_WALK_FRAME-.5)*NEMO_SIZE,
@@ -1171,8 +1186,8 @@ let rngState=(Math.random()*0x100000000)>>>0, menuArtTime=0;
 function rand(){rngState=(Math.imul(1664525,rngState)+1013904223)>>>0;return rngState/4294967296;}
 function range(a,b){return a+(b-a)*rand();}function choose(a){return a[Math.floor(rand()*a.length)];}
 function hashed(s){let v=s>>>0;return ()=>{v=(Math.imul(1664525,v)+1013904223)>>>0;return v/4294967296;};}
-function readSave(){let defaults={version:DATA.version,gold:0,firstClear:false,stagesCleared:0,unlocks:[],costumesOwned:['default'],costumeEquipped:'default',upgrades:{attack:0,hp:0,speed:0,pickup:0,crit:0,reroll:0,tempo:0,guard:0},stats:{plays:0,wins:0}};
- try{const old=JSON.parse(localStorage.getItem(DATA.saveKey)||'null');if(!old||!Number.isInteger(old.version))return defaults;defaults.gold=clamp(Number(old.gold)||0,0,99999999);defaults.firstClear=!!old.firstClear;defaults.stagesCleared=clamp(Math.floor(Number(old.stagesCleared)||0),0,NEMO_STAGES.length);for(const k of Object.keys(defaults.upgrades))defaults.upgrades[k]=clamp(Math.floor(Number(old.upgrades?.[k])||0),0,DATA.economy.upgrades[k][2]);defaults.unlocked=old.unlocked||[];const owned=Array.isArray(old.costumesOwned)?old.costumesOwned.filter(id=>COSTUMES.some(item=>item.id===id)):[];defaults.costumesOwned=[...new Set(['default',...owned])];defaults.costumeEquipped=defaults.costumesOwned.includes(old.costumeEquipped)?old.costumeEquipped:'default';defaults.stats={plays:Number(old.stats?.plays)||0,wins:Number(old.stats?.wins)||0};
+function readSave(){let defaults={version:DATA.version,gold:0,firstClear:false,stagesCleared:0,unlocks:[],costumesOwned:['default'],costumeEquipped:'default',victoryEquipped:null,upgrades:{attack:0,hp:0,speed:0,pickup:0,crit:0,reroll:0,tempo:0,guard:0},stats:{plays:0,wins:0}};
+ try{const old=JSON.parse(localStorage.getItem(DATA.saveKey)||'null');if(!old||!Number.isInteger(old.version))return defaults;defaults.gold=clamp(Number(old.gold)||0,0,99999999);defaults.firstClear=!!old.firstClear;defaults.stagesCleared=clamp(Math.floor(Number(old.stagesCleared)||0),0,NEMO_STAGES.length);for(const k of Object.keys(defaults.upgrades))defaults.upgrades[k]=clamp(Math.floor(Number(old.upgrades?.[k])||0),0,DATA.economy.upgrades[k][2]);defaults.unlocked=old.unlocked||[];const owned=Array.isArray(old.costumesOwned)?old.costumesOwned.filter(id=>COSTUMES.some(item=>item.id===id&&!item.place)):[];defaults.costumesOwned=[...new Set(['default',...owned])];defaults.costumeEquipped=defaults.costumesOwned.includes(old.costumeEquipped)?old.costumeEquipped:'default';defaults.victoryEquipped=VICTORY_COSTUMES.some(item=>item.id===old.victoryEquipped)?old.victoryEquipped:null;defaults.stats={plays:Number(old.stats?.plays)||0,wins:Number(old.stats?.wins)||0};
   if(Number(old.upgrades?.reroll)>=2){
    defaults.gold=Math.min(99999999,defaults.gold+340);
    try{localStorage.setItem(DATA.saveKey,JSON.stringify(defaults));}catch(_){}
@@ -1264,7 +1279,8 @@ function begin(stageId=0){
  const stage=typeof stageId==='number'&&stageId>0?NEMO_STAGES[stageId-1]:null;
  if(stageId>0&&(!stage||stageId>saved.stagesCleared+1))return;
  rngState=(Math.random()*0x100000000)>>>0;
- const outfit=costumeOf(saved.costumeEquipped);
+ const outfit=activeCostume();
+ loadCostumeAtlas(outfit);
  const hp=DATA.player.hp+saved.upgrades.hp*5+outfit.hp;
  g={stage,map:stage?CAMPAIGN_MAPS[stage.id-1]:null,t:0,bossTime:0,difficulty:difficultyKey,runCostume:outfit.id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.40,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*(stage?3:2)+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
   speed:DATA.player.speed*(1+saved.upgrades.speed*.02),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
@@ -1275,6 +1291,7 @@ function begin(stageId=0){
   metrics:{weaponDamage:{},weaponKills:{},cardPicks:{},aliveByMinute:[],firstEvolution:null,killsByType:{},skipped:0,invalidSpawns:0,bossSeconds:null},
   lastSample:0,magnetCount:0, healTimer:0, camera:{x:WORLD_CENTER,y:WORLD_CENTER},worldClock:0};
  g.metrics.aliveByMinute=[];
+ syncCostumeVisual();
  saved.stats.plays++;persist();
  g.deco=g.map?campaignDecor(g.map,stage.id):forestDecor();g.treeDecor=g.deco.trees;g.camera=calcCamera();setScreen('playing');
  const touchControls=matchMedia('(pointer: coarse)').matches;
@@ -2638,18 +2655,22 @@ function updateHUD(){
 // Cosmetic wardrobe: saved independently from online ranking.
 let shopSelected='default';
 function costumeOf(id){return COSTUMES.find(c=>c.id===id)||COSTUMES[0];}
-function costumeOwned(id){return Array.isArray(saved.costumesOwned)&&saved.costumesOwned.includes(id);}
+function costumeOwned(id){return costumeOf(id).place?victoryOutfit()?.id===id:saved.costumesOwned.includes(id);}
+function activeCostume(){
+ const reward=victoryOutfit();
+ return reward&&reward.id===saved.victoryEquipped?reward:costumeOf(saved.costumeEquipped);
+}
 function syncCostumeVisual(){
- const outfit=costumeOf(saved.costumeEquipped);
+ const outfit=g?.runCostume?costumeOf(g.runCostume):activeCostume();
  loadCostumeAtlas(COSTUMES[0]);
  if(outfit.id!=='default')loadCostumeAtlas(outfit);
  if(!sprites.nemo.src.endsWith(outfit.portrait.replace('./','/')))sprites.nemo.src=outfit.portrait;
  $('hero').src=outfit.portrait;
  $('portrait').src=outfit.portrait;
 }
-function shopOpen(){shopSelected=saved.costumeEquipped||'default';setScreen('costume-shop');shopRender();}
+function shopOpen(){shopSelected=activeCostume().id;setScreen('costume-shop');shopRender();void refreshVictoryPodium();}
 function shopRender(){
- const selected=costumeOf(shopSelected);const owned=costumeOwned(selected.id);
+ const selected=costumeOf(shopSelected),owned=costumeOwned(selected.id),equipped=activeCostume().id;
  $('shop-wallet').textContent='🪙 '+saved.gold.toLocaleString('ko-KR')+' G';
  const art=$('shop-feature-art');
  if(art.getAttribute('src')!==selected.portrait){
@@ -2662,12 +2683,12 @@ function shopRender(){
  $('shop-feature-bonus').textContent=selected.hp||selected.attack
   ?`장착 효과 · 최대 체력 +${selected.hp} · 공격력 +${selected.attack}`
   :'기본 능력치';
- $('shop-items').innerHTML=COSTUMES.map(item=>'<button type="button" class="nemo-shop-item '+(item.id===shopSelected?'selected ':'')+(item.id===saved.costumeEquipped?'equipped':'')+'" data-costume="'+item.id+'" aria-pressed="'+(item.id===shopSelected)+'" aria-label="'+item.name+'"><span class="shop-art" data-art-state="loading"><img src="'+item.portrait+'" alt=""><span class="shop-art-status" aria-hidden="true"></span></span><strong>'+item.name+'</strong><small>'+(item.id===saved.costumeEquipped?'장착 중':costumeOwned(item.id)?'보유 중':'🪙 '+item.price.toLocaleString('ko-KR')+' G')+'</small></button>').join('');
+ $('shop-items').innerHTML=COSTUMES.map(item=>'<button type="button" class="nemo-shop-item '+(item.id===shopSelected?'selected ':'')+(item.id===equipped?'equipped':'')+'" data-costume="'+item.id+'" aria-pressed="'+(item.id===shopSelected)+'" aria-label="'+item.name+'"><span class="shop-art" data-art-state="loading"><img src="'+item.portrait+'" alt=""><span class="shop-art-status" aria-hidden="true"></span></span><strong>'+item.name+'</strong><small>'+(item.id===equipped?'장착 중':item.place?(costumeOwned(item.id)?'이번 주 사용 가능':'주간 '+item.place+'위 보상'):costumeOwned(item.id)?'보유 중':'🪙 '+item.price.toLocaleString('ko-KR')+' G')+'</small></button>').join('');
  for(const img of $('shop-items').querySelectorAll('img'))updateShopArt(img);
- const shortfall=owned?0:Math.max(0,selected.price-saved.gold);
- $('shop-action').disabled=shortfall>0||(owned&&selected.id===saved.costumeEquipped);
- $('shop-action').textContent=owned?(selected.id===saved.costumeEquipped?'장착 중':'이 코스튬 장착하기'):'🪙 '+selected.price.toLocaleString('ko-KR')+' G 구매하기';
- $('shop-message').textContent=shortfall?`골드 ${shortfall.toLocaleString('ko-KR')} G 부족`:owned?'이미 보유하고 있는 코스튬이야.':'구매하면 영구 보유하고, 장착은 따로 선택할 수 있어.';
+ const shortfall=owned||selected.place?0:Math.max(0,selected.price-saved.gold);
+ $('shop-action').disabled=shortfall>0||selected.id===equipped||!!selected.place&&!owned;
+ $('shop-action').textContent=selected.id===equipped?'장착 중':owned?'이 코스튬 장착하기':selected.place?'주간 '+selected.place+'위 보상':'🪙 '+selected.price.toLocaleString('ko-KR')+' G 구매하기';
+ $('shop-message').textContent=selected.place?(owned?`${rankWeekLabel.format(rankWeek().end)} 22:00까지 사용 가능`:'지난 주 유저별 최고 기록 순위에 따라 지급돼요.'):shortfall?`골드 ${shortfall.toLocaleString('ko-KR')} G 부족`:owned?'이미 보유하고 있는 코스튬이야.':'구매하면 영구 보유하고, 장착은 따로 선택할 수 있어.';
 }
 function updateShopArt(img){
  if(!img?.matches('.shop-art img'))return;
@@ -2676,6 +2697,7 @@ function updateShopArt(img){
 for(const event of ['load','error'])$('costume-shop').addEventListener(event,e=>updateShopArt(e.target),true);
 function shopAction(){
  const selected=costumeOf(shopSelected);
+ if(selected.place&&!costumeOwned(selected.id))return;
  if(!costumeOwned(selected.id)){
   if(saved.gold<selected.price){$('shop-message').textContent='골드가 '+(selected.price-saved.gold).toLocaleString('ko-KR')+' G 부족해!';return;}
   saved.gold-=selected.price;
@@ -2683,7 +2705,10 @@ function shopAction(){
   persist();shopRender();$('shop-message').textContent='구매 완료! 이제 장착할 수 있어.';
   return;
  }
- if(saved.costumeEquipped!==selected.id){saved.costumeEquipped=selected.id;persist();syncCostumeVisual();shopRender();renderMenu();$('shop-message').textContent='장착 완료! 다음 모험에도 유지돼.';}
+ if(activeCostume().id!==selected.id){
+  saved.victoryEquipped=selected.place?selected.id:null;
+  if(!selected.place)saved.costumeEquipped=selected.id;
+  persist();syncCostumeVisual();shopRender();renderMenu();$('shop-message').textContent='장착 완료! 다음 모험에도 유지돼.';}
 }
 
 const SCHOOL_ICONS={
@@ -3534,7 +3559,7 @@ function rankLocalText(){let good=rankRuns.filter(r=>!r.debug_used&&!r.winner),b
 function rankDrawLocal(){$('rank-local').innerHTML=rankLocalText();}
 function rankOpen(){rankingReturn=['result','menu','pause'].includes(screen)?screen:'menu';
  $('rank-nickname').value=rankCfg.nickname||'';$('rank-url').value=rankCfg.url||'';$('rank-key').value=rankCfg.key||'';
- rankDrawLocal();setScreen('leaderboard');rankShowWeek(rankWeek());
+ rankDrawLocal();setScreen('leaderboard');rankShowWeek(rankWeek());showVictoryPodium();void refreshVictoryPodium();
  if(rankConfigured())void rankFetch();else{rankStatus('미연결 — URL과 publishable 키를 넣으면 공통 랭킹을 사용할 수 있어요.');rankEmpty('온라인 랭킹에 연결하는 중이에요. 잠시 후 새로고침할 수 있어요.');}}
 function rankClose(){clearTimeout(rankWeekTimer);rankRequestId++;setScreen(rankingReturn);if(rankingReturn==='menu')renderMenu();}
 function rankEmpty(s){$('rank-online').innerHTML=`<p class="nemo-rank-empty">${rankEsc(s)}</p>`;}
@@ -3552,6 +3577,63 @@ let rankLoaded=0,rankRequestId=0,rankWeekStart=null,rankWeekTimer=0;
 function rankWeek(now=Date.now()){
  const start=RANK_SUNDAY_22+Math.floor((now-RANK_SUNDAY_22)/RANK_WEEK_MS)*RANK_WEEK_MS;
  return {start,end:start+RANK_WEEK_MS};
+}
+const RANK_ORDER='survival_seconds.desc,kills.desc,created_at.asc,run_id.asc';
+let victoryWeek=null,victoryRows=[],victoryRequest=null,victoryTimer=0;
+function victoryOutfit(){
+ if(victoryWeek!==rankWeek().start)return null;
+ return VICTORY_COSTUMES[victoryRows.findIndex(row=>row.player_id===rankId)]??null;
+}
+function showVictoryPodium(){
+ const el=$('rank-podium');
+ if(victoryWeek!==rankWeek().start){el.textContent='지난 주 보상 순위 확인 중';return;}
+ if(!victoryRows.length){el.textContent='지난 주 코스튬 수상자 없음';return;}
+ el.innerHTML=victoryRows.map((row,i)=>`<span><img src="${VICTORY_COSTUMES[i].portrait}" alt=""><b>${i+1}위</b> ${rankEsc(row.nickname)}</span>`).join('');
+}
+async function fetchVictoryPodium(config,week){
+ const pageSize=100,seen=new Set(),winners=[];
+ const from=encodeURIComponent(new Date(week.start-RANK_WEEK_MS).toISOString()),until=encodeURIComponent(new Date(week.start).toISOString());
+ const base=config.url+'/rest/v1/nemo_forest_runs?select=player_id,nickname';
+ const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),8000);
+ try{
+  for(let offset=0;;offset+=pageSize){
+   const response=await fetch(`${base}&created_at=gte.${from}&created_at=lt.${until}&order=${RANK_ORDER}&limit=${pageSize}&offset=${offset}`,{
+    headers:{apikey:config.key,Accept:'application/json'},cache:'no-store',signal:controller.signal});
+   if(!response.ok)throw Error('Weekly prize lookup failed');
+   const rows=await response.json();
+   for(const row of rows)if(row.player_id&&!seen.has(row.player_id)){
+    seen.add(row.player_id);winners.push(row);
+    if(winners.length===VICTORY_COSTUMES.length)return winners;
+   }
+   if(rows.length<pageSize)return winners;
+  }
+ }finally{clearTimeout(timer);}
+}
+function refreshVictoryPodium(){
+ const week=rankWeek();
+ clearTimeout(victoryTimer);
+ victoryTimer=setTimeout(()=>{
+  if(screen==='leaderboard')showVictoryPodium();
+  if(screen==='costume-shop')shopRender();
+  if(screen==='menu')renderMenu();
+  void refreshVictoryPodium();
+ },Math.max(100,week.end-Date.now()+100));
+ if(!rankConfigured()||victoryWeek===week.start)return;
+ if(victoryRequest?.week===week.start&&victoryRequest.url===rankCfg.url)return victoryRequest.promise;
+ const config=rankCfg;
+ const promise=fetchVictoryPodium(config,week).then(rows=>{
+  if(rankWeek().start!==week.start||rankCfg.url!==config.url)return;
+  victoryWeek=week.start;victoryRows=rows;
+  if(screen==='leaderboard')showVictoryPodium();
+  if(screen==='costume-shop')shopRender();
+  if(screen==='menu')renderMenu();
+ }).catch(()=>{
+  if(screen==='leaderboard'&&victoryWeek!==week.start)$('rank-podium').textContent='지난 주 보상 순위를 불러오지 못했어요.';
+ }).finally(()=>{
+  if(victoryRequest?.promise===promise)victoryRequest=null;
+ });
+ victoryRequest={week:week.start,url:config.url,promise};
+ return promise;
 }
 function rankShowWeek(week){
  $('rank-week').textContent=`${rankWeekLabel.format(week.start)} 22:00 ~ ${rankWeekLabel.format(week.end)} 22:00 (한국시간)`;
@@ -3591,7 +3673,7 @@ async function rankFetch(append=false){
  try{
   const base=rankCfg.url+'/rest/v1/nemo_forest_runs?select=nickname,player_id,survival_seconds,kills,level';
   const from=encodeURIComponent(new Date(week.start).toISOString()),until=encodeURIComponent(new Date(week.end).toISOString());
-  const suffix=`&created_at=gte.${from}&created_at=lt.${until}&order=survival_seconds.desc,kills.desc,created_at.asc,run_id.asc&offset=${offset}&limit=${RANK_PAGE_SIZE+1}`;
+  const suffix=`&created_at=gte.${from}&created_at=lt.${until}&order=${RANK_ORDER}&offset=${offset}&limit=${RANK_PAGE_SIZE+1}`;
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),9000);
   const request=loadout=>fetch(base+(loadout?',loadout':'')+suffix,{headers:rankHeaders(),signal:controller.signal,cache:'no-store'});
   let res;
@@ -3666,7 +3748,10 @@ function confirmNickname(event){
 }
 function rankWire(){
  document.addEventListener('visibilitychange',()=>{
-  if(!document.hidden&&screen==='leaderboard'&&rankWeekStart!==rankWeek().start)void rankFetch();
+  if(!document.hidden){
+   if(screen==='leaderboard'&&rankWeekStart!==rankWeek().start)void rankFetch();
+   void refreshVictoryPodium();
+  }
  });
  $('nemo-name-form').addEventListener('submit',confirmNickname);
  $('nemo-name-change').onclick=()=>showNicknameSetup('menu');
@@ -3706,6 +3791,7 @@ async function rankAutoInit(){
       if(screen==='leaderboard')rankStatus('닉네임 저장됨 · 다음 기록부터 적용돼요.');
     });
     if(screen==='leaderboard')void rankFetch();
+    void refreshVictoryPodium();
     const pending=rankRuns.find(r=>!r.uploaded&&!r.debug_used);
     if(pending && nicknameConfirmed())void rankUpload(pending,false);
     if(screen==='menu')renderMenu();
@@ -3797,7 +3883,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.8.3';
+  const CURRENT='5.8.4';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
