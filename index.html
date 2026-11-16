@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.8.4" />
+</style><meta name="nemo-version" content="5.8.5" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -591,6 +591,23 @@
 </style>
 <script src="./assets/campaign-v573/stages.js?v=576"></script>
 <script src="./assets/campaign-v573/maps.js"></script>
+<style id="rare-card-art">
+#cards .choice-card[data-kind="rare"]{position:relative;isolation:isolate;background:#fdf4df!important;background-image:none!important;border:2px solid #926d31!important;box-shadow:0 3px #79563c,inset 0 0 0 3px #e6c377,0 0 12px #8b53a46b!important}
+#cards .choice-card[data-kind="rare"] .choice-identity{background:linear-gradient(125deg,#543765,#765184)!important;color:#fff8e5;border-bottom:2px solid #ca9e55}
+#cards .choice-card[data-kind="rare"] .choice-name{color:#fff8e5}
+#cards .choice-card[data-kind="rare"] .choice-type{display:inline-flex;align-items:center;gap:5px;width:max-content;padding:2px 7px;margin-bottom:4px;border:1px solid #e7c67b;border-radius:999px;background:#ffecb4;color:#4c3059}
+#cards .choice-card[data-kind="rare"] .choice-type::before{content:"";width:7px;height:7px;background:currentColor;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+#cards .choice-card[data-kind="rare"] .choice-effect,#cards .choice-card[data-kind="rare"] .choice-cta{background:#f1e4fa;border-color:#cdacd9;color:#533c66}
+#cards .choice-card[data-kind="rare"] .choice-icon{background:radial-gradient(circle,#f8df95 12%,#e2b6eb 48%,transparent 69%)}
+#cards .choice-card[data-kind="rare"] .rare-card-sparks{position:absolute;z-index:1;inset:5px;pointer-events:none;overflow:hidden;border-radius:inherit}
+#cards .choice-card[data-kind="rare"] .rare-card-sparks::before,#cards .choice-card[data-kind="rare"] .rare-card-sparks::after{content:"";position:absolute;width:16px;height:16px;background:#ffd978;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+#cards .choice-card[data-kind="rare"] .rare-card-sparks::before{top:7px;right:7px}
+#cards .choice-card[data-kind="rare"] .rare-card-sparks::after{bottom:8px;left:5px;width:10px;height:10px}
+@media(prefers-reduced-motion:no-preference){
+ #cards .choice-card[data-reveal="true"] .rare-card-sparks::before,#cards .choice-card[data-reveal="true"] .rare-card-sparks::after{animation:rare-spark-in .65s ease-out both}
+ @keyframes rare-spark-in{0%{opacity:.1;transform:scale(.35) rotate(-35deg)}45%{opacity:1;transform:scale(1.45) rotate(16deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+}
+</style>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
 <div class="hidden" id="hud">
@@ -689,6 +706,7 @@
    <div class="pause-heading-copy"><h2 id="pause-title">일시 정지</h2><p class="subtitle">준비되면 숲으로 돌아가세요.</p></div><img src="./assets/interface-art-v5620/pause-sprig.webp" alt="">
   </header>
   <div class="pause-gear"><h3 id="pause-loadout-title">장착 무기</h3><ul class="pause-loadout" id="pause-loadout" aria-labelledby="pause-loadout-title"></ul></div>
+  <div class="pause-gear" id="pause-rare-gear" hidden><h3>희귀 카드</h3><ul class="pause-loadout" id="pause-rare"></ul></div>
   <div class="pause-gear" id="pause-passive-gear" hidden><h3 id="pause-passives-title">보유 패시브</h3><ul class="pause-loadout" id="pause-passives" aria-labelledby="pause-passives-title"></ul></div>
   <div class="pause-actions">
    <button type="button" class="btn primary" id="resume"><img src="./assets/interface-art-v5620/resume-icon.webp" alt="">모험 계속하기</button>
@@ -1154,6 +1172,7 @@ function weaponNumbers(id){
 }
 function guideMetrics(id){return weaponNumbers(id).map(x=>`<div><b>${x.k}</b><strong>${x.v}</strong></div>`).join('');}
 function choiceDetail(c){
+ if(c.type==='rare')return {label:'획득 효과',effect:c.desc,copy:c.lore};
  const weapon=weaponGuide(c.id);
  if(c.type==='new')return {label:'전투 역할',effect:weapon.role,copy:weapon.desc,growth:W[c.id].up.map(([name])=>name).join(' · ')};
  const copy=c.type==='passive'?(PASSIVE_GUIDE[c.id]||PASSIVE_ROLE[c.id]):
@@ -1285,8 +1304,8 @@ function begin(stageId=0){
  g={stage,map:stage?CAMPAIGN_MAPS[stage.id-1]:null,t:0,bossTime:0,difficulty:difficultyKey,runCostume:outfit.id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.40,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*(stage?3:2)+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
   speed:DATA.player.speed*(1+saved.upgrades.speed*.02),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
   weapons:{star:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
-  enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0, waveIndex:0,
-  boss:null,bossEncounters:0,bossRestUntil:0,nextForestEvent:66,forestEventBag:[],lastForestEvent:null,frenzyStarts:0,frenzyUntil:0,freeCards:0, cardReason:'level',cards:[], cardOffers:[],rerolls:DATA.player.rerolls+saved.upgrades.reroll,
+  enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],bellEchoes:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0, waveIndex:0,
+  boss:null,bossEncounters:0,bossRestUntil:0,nextForestEvent:66,forestEventBag:[],lastForestEvent:null,frenzyStarts:0,frenzyUntil:0,freeCards:0, cardReason:'level',cards:[],rareCard:null, cardOffers:[],rerolls:DATA.player.rerolls+saved.upgrades.reroll,
   gold:0, achievedMinutes:0,eliteGold:0,bossGold:0, firstGold:0,done:false,blessings:{},milestones:{},rushUntil:0,rushFired:{}, totalKills:0, totalDamage:0, totalXP:0,earnedXP:0,hitCount:0,hitReasons:{},
   metrics:{weaponDamage:{},weaponKills:{},cardPicks:{},aliveByMinute:[],firstEvolution:null,killsByType:{},skipped:0,invalidSpawns:0,bossSeconds:null},
   lastSample:0,magnetCount:0, healTimer:0, camera:{x:WORLD_CENTER,y:WORLD_CENTER},worldClock:0};
@@ -1309,6 +1328,9 @@ function pause(){
  setScreen('pause');
 }
 function renderPausePassives(){
+ const rare=RARE_CARDS[g.rareCard];
+ $('pause-rare-gear').hidden=!rare;
+ $('pause-rare').innerHTML=rare?`<li>${skillIcon(rare.weapon,W[rare.weapon].icon)}<span>${rare.name}</span></li>`:'';
  const passives=Object.entries(g.passives).filter(([id,rank])=>DATA.passives[id]&&rank>0);
  $('pause-passive-gear').hidden=!passives.length;
  $('pause-passives').innerHTML=passives.map(([id,rank])=>{
@@ -1520,8 +1542,22 @@ function makeGrowth(id){let w=g.weapons[id],def=weaponRule(id);if(w.lv===3)retur
  const choices=[0,1,2].filter(i=>w.up[i]<2);
  if(!choices.length)return null;const i=choose(choices);
  return {type:'growth',id,up:i,name:def.up[i][0],ico:def.icon,desc:def.up[i][1],meta:`${def.name} · Lv.${w.lv} → ${w.lv+1} · 중첩 ${w.up[i]}/2`,feature:true};}
-function rollCards(){
- const out=[],owned=Object.keys(g.weapons);
+const RARE_CARDS={
+ starLegacy:{weapon:'star',name:'별의 유산',desc:'가운데 별이 첫 적을 관통 · 작은 별 2발로 갈라짐',lore:'작은 별은 각각 원래 탄환 피해의 40%를 주며 다시 갈라지지 않아요.'},
+ orbitBloom:{weapon:'orbit',name:'별자리 개화',desc:'회전 별 3회 적중 시 별꽃 폭발 · 회전 별 피해의 75%',lore:'세 번째로 맞은 적 주변에 폭발이 일어나요. 폭발 후 2초 뒤부터 다시 충전돼요.'},
+ cloudChain:{weapon:'cloud',name:'요정 번개',desc:'낙뢰가 다른 적에게 최대 2번 연결 · 50% → 30% 피해',lore:'이번 시전에서 주 낙뢰가 떨어진 적은 건너뛰어요.'},
+ cometEmbers:{weapon:'comet',name:'별불 파편',desc:'첫 운석이 잔불 3개를 흩뿌림 · 운석 피해의 45%',lore:'잔불은 떨어진 자리에서 터져요. 적 한 마리당 한 번만 잔불 피해를 받아요.'},
+ twinBell:{weapon:'bell',name:'달빛 쌍종',desc:'0.55초 뒤 같은 자리에 추가 울림 · 원래 피해의 50%',lore:'추가 울림은 적에게 피해를 줘요. 탄환 제거, 넉백, 둔화는 기존 울림에 적용돼요.'}
+};
+function rollRareCard(){
+ if(g.rareCard)return null;
+ const eligible=Object.entries(RARE_CARDS).filter(([,card])=>g.weapons[card.weapon]?.lv>=4);
+ if(!eligible.length||rand()>=(g.cardReason==='bonus'?.15:.05))return null;
+ const [id,card]=choose(eligible);
+ return {type:'rare',id,...card,ico:W[card.weapon].icon,meta:'모험당 희귀 카드 1장'};
+}
+function rollCards(rare){
+ const out=rare?[rare]:[],owned=Object.keys(g.weapons);
  const pool=[];
  if(owned.length<maxWeaponSlots())for(const id of weaponKeys){if(!g.weapons[id])pool.push({type:'new',id,name:W[id].name,ico:W[id].icon,desc:weaponGuide(id).role,meta:'무기 슬롯 사용 · Lv.1'});}
  const passiveOwned=pcount();for(const id of passiveKeys){if(getPassive(id)>=3)continue;if(!getPassive(id)&&passiveOwned>=maxPassiveSlots())continue;
@@ -1539,25 +1575,26 @@ function rollCards(){
  for(const reward of fallback){if(out.length>=3)break;if(!out.some(c=>c.id===reward.id))out.push(reward);}
 
  return out;}
-function openCards(){g.cards=rollCards();renderCards();setScreen('cards');}
+function openCards(){g.cards=rollCards(rollRareCard());renderCards(true);setScreen('cards');}
 function openForestChoice(stage){g.milestoneStage=stage;g.cardReason='milestone';g.cards=[
  {type:'blessing',id:'brave',name:'용기의 별빛',ico:'⭐',desc:'공격력 +12%',lore:'적이 거세지는 숲에서 별빛의 힘으로 맞서요.',meta:'숲의 축복 · 이번 판 한정'},
  {type:'blessing',id:'breeze',name:'숲의 산들바람',ico:'🍃',desc:'이동 속도 +10% · 주문 속도 +8%',lore:'산들바람의 힘으로 조금 더 빠르게 이동하고 마법을 써요.',meta:'숲의 축복 · 이번 판 한정'},
  {type:'blessing',id:'gather',name:'보석의 노래',ico:'🧲',desc:'경험치 획득 범위 +40% · 체력 20% 회복',lore:'숲의 보석들이 니모에게 더 쉽게 모여들어요.',meta:'숲의 축복 · 이번 판 한정'}];renderCards();setScreen('cards');}
 
-function renderCards(){
+function renderCards(revealRare=false){
  const milestone=g.cardReason==='milestone',bonus=g.cardReason==='bonus';
  $('cards-title').textContent=milestone?`숲의 축복 · ${fmt(g.t)}`:bonus?'엘리트 보상':`레벨 업 · Lv.${g.player.level}`;
  $('choice-description').textContent=milestone?'이번 모험에 적용할 축복을 고르세요.':bonus?'전투에서 얻은 보상을 고르세요.':'이번 모험에 더할 마법이나 강화를 고르세요.';
- const tags={new:'새로운 마법',growth:'무기 강화',break:'중간 돌파',evo:'최종 진화',passive:'공용 패시브',heal:'회복 보상',gold:'추가 골드',blessing:'숲의 축복'};
+ const tags={rare:'희귀 카드',new:'새로운 마법',growth:'무기 강화',break:'중간 돌파',evo:'최종 진화',passive:'공용 패시브',heal:'회복 보상',gold:'추가 골드',blessing:'숲의 축복'};
  const options=$('card-options');
  options.innerHTML=g.cards.map((c,i)=>{
   const {label,effect,copy,growth}=choiceDetail(c);
   const title=['growth','break','evo'].includes(c.type)?W[c.id].name:c.name;
   const effectLabel=c.type==='growth'?c.name:label;
   const meta=c.type==='passive'?`강화 단계 ${getPassive(c.id)}/3 → ${getPassive(c.id)+1}/3`:c.meta;
-  return `<button type="button" class="choice-card" data-kind="${c.type}" data-pick="${i}" aria-keyshortcuts="${i+1}">
-    <span class="choice-identity"><span class="choice-icon" aria-hidden="true">${skillIcon(c.id,c.ico)}</span><span><span class="choice-type">${tags[c.type]||'보상'}</span><strong class="choice-name">${title}</strong></span></span>
+  return `<button type="button" class="choice-card" data-kind="${c.type}" data-pick="${i}" aria-keyshortcuts="${i+1}"${c.type==='rare'&&revealRare?' data-reveal="true"':''}>
+    ${c.type==='rare'?'<span class="rare-card-sparks" aria-hidden="true"></span>':''}
+    <span class="choice-identity"><span class="choice-icon" aria-hidden="true">${skillIcon(c.weapon??c.id,c.ico)}</span><span><span class="choice-type">${tags[c.type]||'보상'}</span><strong class="choice-name">${title}</strong></span></span>
     <span class="choice-effect"><small>${effectLabel}</small><strong class="effect-lines">${effectLines(effect)}</strong></span>
     ${copy?`<span class="choice-copy">${copy}</span>`:''}
     ${growth?`<span class="choice-growth"><b>강화 방향</b> ${growth}</span>`:'' }
@@ -1570,13 +1607,17 @@ function renderCards(){
  $('reroll').hidden=milestone;
  $('reroll').disabled=g.rerolls<=0||milestone;
 }
-function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c)return;g.metrics.cardPicks[c.name]=(g.metrics.cardPicks[c.name]||0)+1;
+function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c||(c.type==='rare'&&g.rareCard))return;g.metrics.cardPicks[c.name]=(g.metrics.cardPicks[c.name]||0)+1;
  if(c.type==='new'){g.weapons[c.id]={lv:1,up:[0,0,0],break:false,evo:null,clock:.1};if(c.id==='orbit'){const p=g.player;p.castDuration=NEMO_CAST;p.castTimer=NEMO_CAST;p.castFacing=p.direction;g.weapons.orbit.orbitBirth=g.worldClock;g.weapons.orbit.orbitWand=wandOrigin(p);}}
  if(c.type==='growth'){const w=g.weapons[c.id];if(c.up!==undefined)w.up[c.up]++;w.lv++;}
  if(c.type==='break'){let w=g.weapons[c.id];w.break=true;w.lv=4;}
  if(c.type==='evo'){g.currentEvo=c.id;renderEvo(c.id);setScreen('evolution');return;}
  if(c.type==='passive'){g.passives[c.id]=(g.passives[c.id]||0)+1;
   if(c.id==='cloak'){let amt=DATA.player.hp*.15;g.player.hp+=amt;g.player.maxHp+=amt;}}
+ if(c.type==='rare'){
+  g.rareCard=c.id;
+  showToast(`${c.name} 획득!`);
+ }
  if(c.type==='heal')g.player.hp=Math.min(g.player.maxHp,g.player.hp+g.player.maxHp*.20);
  if(c.type==='gold')g.gold+=10;
  if(c.type==='blessing'){
@@ -1590,7 +1631,7 @@ function renderEvo(id){let d=weaponRule(id);$('evo-title').textContent=`${d.name
 function chooseEvo(i){if(screen!=='evolution'||!g.currentEvo)return;let w=g.weapons[g.currentEvo];w.evo=i;w.lv=7;g.metrics.cardPicks[weaponRule(g.currentEvo).evos[i][0]]=(g.metrics.cardPicks[weaponRule(g.currentEvo).evos[i][0]]||0)+1;
  if(!g.metrics.firstEvolution)g.metrics.firstEvolution=g.t;showToast(`🌟 ${weaponRule(g.currentEvo).evos[i][0]} 진화!`);g.currentEvo=null;afterCard();}
 function afterCard(){setScreen('playing');maybeCards();updateHUD();}
-function reroll(){if(screen!=='cards'||g.rerolls<=0||g.cardReason==='milestone')return;g.rerolls--;g.cards=rollCards();renderCards();}
+function reroll(){if(screen!=='cards'||g.rerolls<=0||g.cardReason==='milestone')return;g.rerolls--;g.cards=rollCards(g.cards.find(card=>card.type==='rare'));renderCards();}
 function calcCamera(){return {x:clamp(g.player.x,DATA.widthWorld/2,DATA.world-DATA.widthWorld/2),y:clamp(g.player.y,SCREEN_H/2,DATA.world-SCREEN_H/2)};}
 function visible(x,y,extra=2){if(!g)return true;return Math.abs(x-g.camera.x)<DATA.widthWorld/2+extra&&Math.abs(y-g.camera.y)<SCREEN_H/2+extra;}
 function targetNearest(x,y,r,exclude=new Set(),filter=null){let best=null,dd=r*r;for(const e of g.enemies){if(e.dead||e.retreat||exclude.has(e.id)||filter&&!filter(e))continue;let dx=e.x-x,dy=e.y-y,d=dx*dx+dy*dy;if(d<dd){dd=d;best=e;}}return best;}
@@ -2148,6 +2189,7 @@ function ringBell(p,w,d){
  }
  pulse(1,w.evo===1?Infinity:2);
  if(w.evo===0)schedule(.25,()=>pulse(.45,1));
+ if(g.rareCard==='twinBell')g.bellEchoes.push({x:p.x,y:p.y,r,damage:power*.50,remaining:.55});
  return true;
 }
 function fireWeapon(id){
@@ -2182,7 +2224,7 @@ function fireWeapon(id){
    const angle=a+(id==='star'?[0,-1,1][i]*.16*w.fanSide:(i-(count-1)/2)*.20);
    g.shots.push({kind:id,weapon:id,x:origin.x,y:origin.y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,
     speed,life,r:radius,damage:id==='star'&&i>0?damage*.70:damage,volleyHits,target:id==='bubble'||(id==='star'&&i===0)?t.id:null,
-    chains:id==='star'?([2,1][w.evo]??0):id==='frost'?(w.break?3:1):id==='feather'&&w.break?(w.evo===0?2:1):0,sub:false,returning:false,hit:new Set(),trail:[],dead:false});
+    splitOnHit:id==='star'&&i===0&&g.rareCard==='starLegacy',chains:id==='star'?([2,1][w.evo]??0):id==='frost'?(w.break?3:1):id==='feather'&&w.break?(w.evo===0?2:1):0,sub:false,returning:false,hit:new Set(),trail:[],dead:false});
   }
  }else if(id==='moon'){
   const angles=w.evo===0?[a-.13,a+.13]:[a];
@@ -2198,6 +2240,7 @@ function fireWeapon(id){
   const others=w.evo===1?nearbyTargets(p,d.range).filter(e=>e!==t).sort((a,b)=>b.hp-a.hp).slice(0,3):[];
   thunder(t,damage,origin);
   for(const e of others)thunder(e,damage*.75,origin);
+  if(g.rareCard==='cloudChain')chainFairyLightning(t,others,damage);
  }else if(id==='ribbon'){
   const swing=atan(p.x,p.y,t.x,t.y);
   doRibbon(swing,1);
@@ -2226,6 +2269,7 @@ function fireWeapon(id){
     for(const e of g.enemies){
      if(!e.dead&&distance(e.x,e.y,tx,ty)<=r+e.r)deal(e,damage,id);
     }
+    if(i===0&&g.rareCard==='cometEmbers'&&screen==='playing')scatterCometEmbers(tx,ty,a,r,damage);
     if(w.break)g.zones.push({kind:'comet',weapon:id,x:tx,y:ty,r:r*.74,remain:1.65,next:.45,damage:damage*.14,id:g.n++});
     burst(tx,ty,'#ffdb93',10);
    });
@@ -2233,6 +2277,22 @@ function fireWeapon(id){
  }
  burst(origin.x,origin.y,'#fff4b2',4);
  return true;
+}
+function scatterCometEmbers(x,y,angle,r,damage){
+ const hit=new Set(),radius=r*.54;
+ for(let i=0;i<3;i++){
+  const a=angle+i*TAU/3,tx=clamp(x+Math.cos(a)*r*1.08,.4,DATA.world-.4),ty=clamp(y+Math.sin(a)*r*1.08,.4,DATA.world-.4);
+  const delay=.26+i*.07;
+  g.effects.push({kind:'emberFlight',x,y,ex:tx,ey:ty,life:delay,max:delay});
+  schedule(delay,()=>{
+   g.effects.push({kind:'rareBloom',palette:'ember',x:tx,y:ty,r:radius,life:.42,max:.42});
+   for(const e of g.enemies){
+    if(e.dead||hit.has(e.id)||distance(e.x,e.y,tx,ty)>radius+e.r)continue;
+    hit.add(e.id);
+    deal(e,damage*.45,'comet',{critAllowed:false});
+   }
+  });
+ }
 }
 function beam(x,y,a,range,width,raw,id,coef){let ex=x+Math.cos(a)*range,ey=y+Math.sin(a)*range;
  g.effects.push({kind:'beam',x,y,ex,ey,width,life:.22,max:.22});
@@ -2244,6 +2304,18 @@ function beam(x,y,a,range,width,raw,id,coef){let ex=x+Math.cos(a)*range,ey=y+Mat
 function cloudPosition(p){
  const t=g.worldClock;
  return {x:p.x+1.48+Math.cos(t*1.6)*.19,y:p.y-1.48+Math.sin(t*2.0)*.17};
+}
+function chainFairyLightning(first,others,damage){
+ const hit=new Set([first.id,...others.map(e=>e.id)]);
+ let from=first;
+ for(const scale of [.50,.30]){
+  const next=targetNearest(from.x,from.y,3.2,hit);
+  if(!next)break;
+  g.effects.push({kind:'fairyLightning',x:from.x,y:from.y,ex:next.x,ey:next.y,life:.36,max:.36});
+  deal(next,damage*scale,'cloud',{critAllowed:false});
+  hit.add(next.id);
+  from=next;
+ }
 }
 function thunder(e,raw,origin=null){
  if(e.dead)return;
@@ -2282,7 +2354,16 @@ function wfrostSlow(){return g.weapons.frost?.evo===0?.49:.29;}
 function outsideWorld(x,y,pad=0){
  return x<-pad||x>DATA.world+pad||y<-pad||y>DATA.world+pad;
 }
-function updateShots(dt,hostiles=true){const step=dt*spellTravelRate();for(const s of g.shots){if(s.dead)continue;s.life-=dt;
+function splitStar(s,e,splitShots){
+ const angle=Math.atan2(s.vy,s.vx),speed=14;
+ g.effects.push({kind:'starSplit',x:s.x,y:s.y,angle,life:.28,max:.28});
+ for(const offset of [-.48,.48]){
+  const a=angle+offset;
+  splitShots.push({kind:'starShard',weapon:'star',x:s.x,y:s.y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,
+   speed,life:.39,r:.16,damage:s.damage*.40,hit:new Set([e.id]),trail:[],dead:false});
+ }
+}
+function updateShots(dt,hostiles=true){const splitShots=[],step=dt*spellTravelRate();for(const s of g.shots){if(s.dead)continue;s.life-=dt;
  if(s.kind==='feather'&&!s.returning&&(s.life<=0||outsideWorld(s.x,s.y))){
   s.returning=true;s.target=null;s.hit.clear();s.life=1.48;
   s.speed=g.weapons.feather.evo===1?18:13.5;
@@ -2306,9 +2387,17 @@ function updateShots(dt,hostiles=true){const step=dt*spellTravelRate();for(const
  if(s.life<=0||(outside&&s.kind!=='feather')){if(s.kind==='bubble')explodeBubble(s);else s.dead=true;continue;}
  for(const e of g.enemies){if(e.dead||s.hit.has(e.id)||distance(s.x,s.y,e.x,e.y)>s.r+e.r)continue;
   s.hit.add(e.id);if(s.kind==='bubble'){explodeBubble(s);break;}
-  if(s.kind==='star'){
+  if(s.kind==='starShard'){
+   deal(e,s.damage,'star',{critAllowed:false});
+   s.dead=true;
+  }else if(s.kind==='star'){
    deal(e,s.damage*(s.volleyHits.has(e.id)?.65:1),'star');
    s.volleyHits.add(e.id);
+   if(s.splitOnHit){
+    s.splitOnHit=false;
+    splitStar(s,e,splitShots);
+    s.chains=Math.max(1,s.chains);
+   }
    if(s.chains===0){s.dead=true;break;}
    s.chains--;
    s.damage*=.70;
@@ -2332,7 +2421,7 @@ function updateShots(dt,hostiles=true){const step=dt*spellTravelRate();for(const
   break;
  }
  }
- g.shots=g.shots.filter(s=>!s.dead);
+ g.shots=g.shots.filter(s=>!s.dead).concat(splitShots);
  if(!hostiles)return;
  for(const b of g.enemyShots){
   const oldX=b.x,oldY=b.y;
@@ -2348,6 +2437,18 @@ function orbitPosition(p,w,i,count,r){
  const t=clamp((g.worldClock-w.orbitBirth)/.48,0,1);
  return {x:w.orbitWand.x+(x-w.orbitWand.x)*t,y:w.orbitWand.y+(y-w.orbitWand.y)*t};
 }
+function chargeOrbitBloom(w,enemy,power){
+ if(g.worldClock<(w.bloomReadyAt??0))return;
+ w.bloomHits=(w.bloomHits??0)+1;
+ if(w.bloomHits<3)return;
+ w.bloomHits=0;
+ w.bloomReadyAt=g.worldClock+2;
+ const {x,y}=enemy,r=1.5*radiusMult();
+ g.effects.push({kind:'rareBloom',palette:'orbit',x,y,r,life:.47,max:.47});
+ for(const e of g.enemies){
+  if(!e.dead&&distance(e.x,e.y,x,y)<=r+e.r)deal(e,power*.75,'orbit',{critAllowed:false});
+ }
+}
 function updateOrbit(dt){
  const w=g.weapons.orbit;if(!w)return;
  const p=g.player,n=2+w.up[0]+(w.evo===0?2:0),r=weaponReach('orbit',w);
@@ -2362,6 +2463,7 @@ function updateOrbit(dt){
    if(e.dead||distance(x,y,e.x,e.y)>.28+e.r||g.worldClock-(hitTimes.get(e.id)??-100)<.36)continue;
    hitTimes.set(e.id,g.worldClock);
    deal(e,power,'orbit');if(w.break)slow(e,.20,1);
+   if(g.rareCard==='orbitBloom'&&screen==='playing')chargeOrbitBloom(w,e,power);
   }
  }
  if(hitTimes.size>240)for(const [id,time] of hitTimes)if(g.worldClock-time>2)hitTimes.delete(id);
@@ -2451,7 +2553,19 @@ function updateLoot(dt){
  }
  g.loot=g.loot.filter(l=>!l.dead&&l.ttl>0);
 }
-function updateWorldEffects(dt){for(const a of g.effects){a.life-=dt;if(a.kind==='event'&&a.life<=0){a.fn();}}g.effects=g.effects.filter(a=>a.life>0).slice(-100);
+function updateBellEchoes(dt){
+ for(const echo of g.bellEchoes){
+  echo.remaining-=dt;
+  if(echo.remaining>0)continue;
+  const {x,y,r,damage}=echo;
+  g.effects.push({kind:'bellWave',echo:true,x,y,r,life:.52,max:.52});
+  for(const e of g.enemies){
+   if(!e.dead&&distance(e.x,e.y,x,y)<=r+e.r)deal(e,damage,'bell',{critAllowed:false});
+  }
+ }
+ g.bellEchoes=g.bellEchoes.filter(echo=>echo.remaining>0);
+}
+function updateWorldEffects(dt){if(g.bellEchoes.length)updateBellEchoes(dt);for(const a of g.effects){a.life-=dt;if(a.kind==='event'&&a.life<=0){a.fn();}}g.effects=g.effects.filter(a=>a.life>0).slice(-100);
  for(const a of g.particles){a.x+=a.vx*dt;a.y+=a.vy*dt;a.vx*=.97;a.vy*=.97;a.life-=dt;}g.particles=g.particles.filter(a=>a.life>0);
  for(const a of g.numbers){a.ttl-=dt;a.y-=dt*.9;}g.numbers=g.numbers.filter(a=>a.ttl>0);}
 function terrainAt(x,y,r){
@@ -3094,6 +3208,7 @@ function drawGem(l){
  }else imageSprite('fx_coin',l.x,y,.56,.56);
 }
 const SPELL_EFFECT_PAINT={
+ rareStar:['#297773','#86d7c3','#e4fff5'],rareBell:['#7754a4','#c7a9ed','#ffefb4'],
  star:['#a46343','#edab60','#fff0ad','spark'],
  orbit:['#805b9d','#bd91d9','#fff1ad','spark'],
  moon:['#73668e','#bca9dc','#fff5dc','spark'],
@@ -3108,7 +3223,7 @@ const SPELL_EFFECT_PAINT={
  seed:['#647a52','#9db375','#f0e7ae','petal'],
  bell:['#916046','#d3a16b','#fff3bd','spark']
 };
-const PROJECTILE_SPELLS={star:'star',bubble:'bubble',fairy:'book',frost:'frost',feather:'feather'};
+const PROJECTILE_SPELLS={star:'star',starShard:'rareStar',bubble:'bubble',fairy:'book',frost:'frost',feather:'feather'};
 function drawSpellContact(e,f){
  const [edge,body,light,shape]=SPELL_EFFECT_PAINT[e.spell];
  const travel=(1-f)*(reducedMotion.matches?.35:1);
@@ -3162,6 +3277,7 @@ function drawProjectile(s){
   }
   star(s.x,s.y,s.r-.035,Math.atan2(s.vy,s.vx),fill,edge);
  }
+ if(s.kind==='starShard')star(s.x,s.y,s.r-.024,Math.atan2(s.vy,s.vx),'#d9fff4','#297773');
  if(s.kind==='bubble'){
   ellipse(s.x,s.y,s.r,s.r,'#7988bc',.86);
   ellipse(s.x,s.y,s.r*.81,s.r*.81,'#b7dcef',.83);
@@ -3246,12 +3362,45 @@ else if(e.kind==='beam'){
   line(x+.31,y-1.65,x+.68,y-1.21,'#f4d4dd',.058);
   star(x,y,.24,0,'#ffefb1','#a67bb3');
  }
+ else if(e.kind==='fairyLightning'){
+  const dx=e.ex-e.x,dy=e.ey-e.y,length=Math.hypot(dx,dy)||1;
+  const px=-dy/length,py=dx/length;
+  const points=[[e.x,e.y],[e.x+dx*.33+px*.19,e.y+dy*.33+py*.19],[e.x+dx*.65-px*.18,e.y+dy*.65-py*.18],[e.ex,e.ey]];
+  for(let i=1;i<points.length;i++){
+   const [x,y]=points[i-1],[ex,ey]=points[i];
+   line(x,y,ex,ey,'#744bbb',.17*f+.055);
+   line(x,y,ex,ey,'#f0dbff',.064);
+  }
+  star(e.ex,e.ey,.18,0,'#fff2c2','#744bbb');
+ }
+ else if(e.kind==='emberFlight'){
+  const t=1-f,x=e.x+(e.ex-e.x)*t,y=e.y+(e.ey-e.y)*t-.58*Math.sin(Math.PI*t);
+  star(x,y,.17,t*2,'#ffe781','#b25956');
+ }
+ else if(e.kind==='rareBloom'){
+  const orbit=e.palette==='orbit',[edge,fill]=orbit?['#62509c','#efd8ff']:['#b25956','#ffe38e'];
+  const r=e.r*(reducedMotion.matches?1:1-.58*f);
+  for(let i=0;i<(orbit?7:4);i++){
+   const a=i*TAU/(orbit?7:4);
+   star(e.x+Math.cos(a)*r,e.y+Math.sin(a)*r,.085+.13*f,a,fill,edge);
+  }
+  star(e.x,e.y,.18+.23*f,0,fill,edge);
+ }
+ else if(e.kind==='starSplit'){
+  const [edge,body,light]=SPELL_EFFECT_PAINT.rareStar;
+  for(const offset of [-.48,.48]){
+   const a=e.angle+offset,length=reducedMotion.matches?.38:.35+(1-f)*.42;
+   const x=e.x+Math.cos(a)*length,y=e.y+Math.sin(a)*length;
+   line(e.x,e.y,x,y,body,.085);
+   star(x,y,.12,a,light,edge);
+  }
+ }
  else if(e.kind==='bellWave'){
   const progress=1-f,r=e.r*(reducedMotion.matches?1:1-.64*f**2.8);
-  const [edge,body,light]=SPELL_EFFECT_PAINT.bell;
+  const [edge,body,light]=SPELL_EFFECT_PAINT[e.echo?'rareBell':'bell'];
   ctx.globalAlpha=Math.min(1,2*f);
   for(let i=0;i<6;i++){
-   const a=i*TAU/6+progress*.08;
+   const a=i*TAU/6+(e.echo?TAU/12:0)+progress*.08;
    ctx.beginPath();ctx.arc(e.x,e.y,r,a-.36,a+.36);
    ctx.lineCap='round';ctx.strokeStyle=edge;ctx.lineWidth=.22*f+.065;ctx.stroke();
    ctx.strokeStyle=body;ctx.lineWidth=.14*f+.039;ctx.stroke();
@@ -3883,7 +4032,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.8.4';
+  const CURRENT='5.8.5';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
