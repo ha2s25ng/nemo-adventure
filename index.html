@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.8.0" />
+</style><meta name="nemo-version" content="5.8.1" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -568,7 +568,6 @@
 #app #hud .survival-clock {
  display:grid;
  justify-items:center;
- gap:2px;
 }
 #app #hud .survival-status .survival-clock #survival-timer .timer-content {
  inset:29% 13% 17%;
@@ -577,20 +576,6 @@
  line-height:1;
  letter-spacing:0;
  font-variant-numeric:tabular-nums;
-}
-#app #hud .survival-clock #stage-hud:not(:empty) {
- margin:0;
- padding:3px 7px;
- border:1px solid #9eab80;
- border-radius:8px;
- background:#f7f0d9;
- color:#334b3c;
- font:700 clamp(10px,1vw,12px)/1.2 'Noto Sans KR',system-ui,sans-serif;
- font-variant-numeric:tabular-nums;
- white-space:nowrap;
-}
-#app #hud:not(.hidden):has(#stage-hud:not(:empty)) ~ #toast.toast {
- top:calc(clamp(5px,1.1vw,13px) + clamp(25px,2.55vw,32px) + 6px + clamp(58px,6.4vw,82px) + 33px);
 }
 #evo-options .evo-variant-name { display:block; margin-bottom:4px; }
 @media (max-width:650px) and (orientation:portrait) {
@@ -616,7 +601,6 @@
    </div>
    <div class="survival-clock">
     <div class="timer" id="survival-timer"><div class="timer-content"><div class="clock" id="time">00:00</div></div></div>
-    <div id="stage-hud"></div>
    </div>
    <div class="hud-right"><div class="survival-kills" role="group" aria-label="처치 수"><img src="./assets/spell-art-v5647/kills.png" alt=""><span id="kills-hud">0</span></div><div class="money"><img alt="골드" class="money-icon" src="./assets/pastel-ui-v5619/coin.webp"><span id="gold-hud">0</span></div><button aria-label="일시 정지" class="pause-btn" id="pause-btn" type="button"><img src="./assets/pastel-ui-v5619/pause.webp" alt=""></button></div>
   </div>
@@ -800,11 +784,11 @@ const DATA = Object.freeze({
  elites:{flower:{name:'꽃모자 버섯',hp:2070,dmg:16,speed:.98,xp:30,at:180,gold:30,r:.83},horn:{name:'별뿔 슬라임',hp:4480,dmg:18,speed:1.42,xp:50,at:360,gold:50,r:.83}},
  boss:{name:'왕관 슬라임',hp:38000,dmg:20,speed:.87,r:1.55,gold:100},
  economy:{costs:{
-  attack:[45,65,95,135,190,260,345,450,580,735],
-  hp:[40,60,90,130,180,245,325,425,540,680],
-  speed:[55,90,140,210,305],pickup:[50,80,120,175,245],
-  crit:[45,75,115,170,240],reroll:[145],
-  tempo:[80,125,180,255,350],guard:[75,120,175,245,335]
+  attack:[110,170,250,350,490,660,870,1120,1430,1800],
+  hp:[100,155,225,320,440,600,790,1020,1300,1640],
+  speed:[145,240,380,560,790],pickup:[115,190,300,450,640],
+  crit:[110,185,290,430,610],reroll:[420],
+  tempo:[190,320,500,735,1020],guard:[180,300,480,705,980]
  },
  upgrades:{attack:['공격력 강화','기본 공격력 +2 (스테이지 +3)',10],hp:['체력 강화','최대 체력 +5',10],speed:['빠른 발걸음','이동 속도 +1%',5],pickup:['보석 수집','경험치 보석 획득 범위 +10%',5],crit:['치명타 강화','치명타 확률 +1%p',5],reroll:['카드 다시 뽑기','모험당 1회 추가 · 최대 2회',1],tempo:['시전 훈련','스테이지 시전 속도 +3%',5],guard:['수호 훈련','스테이지 받는 피해 −3%',5]}}
 });
@@ -950,14 +934,14 @@ const sprites={};Object.keys(ASSET_DATA).forEach(k=>{let im=new Image();im.src=A
 const COSTUME_ART='./assets/nemo-wardrobe-v5631/';
 const COSTUMES=[
  ["default","기본 니모",0,"빨간 목도리와 작은 가방을 멘 니모.",0,0],
- ["forest","숲속 탐험가",160,"잎사귀 모자와 초록 조끼를 입은 숲길 탐험가.",4,1],
- ["rain","노란 우비",225,"꿀빛 우비와 물방울 단추로 빗속에서도 산뜻해요.",7,2],
- ["redhood","빨간망토 차차 니모",295,"빨간 후드를 쓰고 작은 바구니를 든 동화 속 니모.",5,4],
- ["student","마법학교 학생",385,"크림색 칼라와 리본 넥타이, 책가방을 갖춘 마법학교 교복.",3,6],
- ["halloween","할로윈 니모",475,"작은 호박 모자와 박쥐 날개 망토로 꾸민 니모.",7,5],
- ["starlight","별빛 마법사",590,"짙은 남색 망토에 금빛 별자리를 수놓은 밤하늘 마법사.",5,8],
- ["royal","왕관 니모",735,"보석 왕관과 포근한 털 장식 망토를 입은 숲의 왕.",14,5],
- ["legend","전설의 멍법사",920,"비취빛 예복과 잎사귀 관을 두른 전설 속 숲의 마법사.",11,10]
+ ["forest","숲속 탐험가",650,"잎사귀 모자와 초록 조끼를 입은 숲길 탐험가.",4,1],
+ ["rain","노란 우비",900,"꿀빛 우비와 물방울 단추로 빗속에서도 산뜻해요.",7,2],
+ ["redhood","빨간망토 차차 니모",1250,"빨간 후드를 쓰고 작은 바구니를 든 동화 속 니모.",5,4],
+ ["student","마법학교 학생",1650,"크림색 칼라와 리본 넥타이, 책가방을 갖춘 마법학교 교복.",3,6],
+ ["halloween","할로윈 니모",2100,"작은 호박 모자와 박쥐 날개 망토로 꾸민 니모.",7,5],
+ ["starlight","별빛 마법사",2700,"짙은 남색 망토에 금빛 별자리를 수놓은 밤하늘 마법사.",5,8],
+ ["royal","왕관 니모",3500,"보석 왕관과 포근한 털 장식 망토를 입은 숲의 왕.",14,5],
+ ["legend","전설의 멍법사",4600,"비취빛 예복과 잎사귀 관을 두른 전설 속 숲의 마법사.",11,10]
 ].map(([id,name,price,desc,hp,attack])=>({
  id,name,price,desc,hp,attack,
  atlas:COSTUME_ART+id+'/walk.png',
@@ -2572,10 +2556,6 @@ function updateHUD(){
  if(!g)return;
  const p=g.player,rush=g.rushUntil>g.t||forestFrenzied(),hpRatio=p.hp/p.maxHp,need=getLevelNeed();
  hudText('time',fmt(g.t));
- const bossNumber=g.boss?g.bossEncounters:Math.min(g.bossEncounters+1,3);
- const bossLabel=bossNumber===3?'최종 보스':`${bossNumber}차 보스`;
- const nextBossAt=g.stage?Math.max(stageBossTime(g.stage,g.bossEncounters),g.bossRestUntil):0;
- hudText('stage-hud',g.stage?`스테이지 ${g.stage.id} · ${bossLabel}${g.boss?'전':' '+fmt(Math.max(0,Math.ceil(nextBossAt-g.t)))}`:'');
  hudData($('survival-timer'),'rush',rush);
  hudText('hp',`${Math.ceil(p.hp)} / ${Math.ceil(p.maxHp)}`);
  hudFill('hp-fill',hpRatio);
@@ -3745,7 +3725,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.8.0';
+  const CURRENT='5.8.1';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
