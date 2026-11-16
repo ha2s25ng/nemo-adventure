@@ -1,5 +1,5 @@
 {
-  "version": "5.8.1",
+  "version": "5.8.2",
   "mode": "endless_survival_and_campaign",
-  "notes": "영구 강화와 코스튬 가격 조정 · 전투 보스 카운트다운 제거"
+  "notes": "희귀 아이템, 이동·경험치 패시브, 코스튬 보너스, 자동 일시 정지와 지형 가림 개선"
 }
