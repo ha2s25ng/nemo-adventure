@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.8.10" />
+</style><meta name="nemo-version" content="5.8.11" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -1212,6 +1212,11 @@ function weaponNumbers(id){
   seed:3+w.up[0]+extra,bell:w.evo===0?2:1
  }[id];
  const labels={star:'탄환 수',orbit:'회전 별',moon:'관통 달빛',bubble:'추적 방울',bloom:'꽃밭 수',cloud:'최대 낙뢰',ribbon:'리본 타격',book:'최대 종이 요정',comet:'유성',frost:'수정',feather:'깃털',vortex:'소용돌이',seed:'최대 설치 덫',bell:'충격파'};
+ if(id==='book'&&g?.rareCard==='bookFamiliar'){
+  return [{k:'정령 타격 피해',v:fmtN(bookFamiliarDamage(w))},
+   {k:'최소 타격 간격',v:fmtN(bookFamiliarInterval(w)/(rageRate()*moveCastRate()))+'초'},
+   {k:'동행 정령',v:'1마리'},{k:'탐색 거리',v:fmtN(d.range)}];
+ }
  const perHit=id==='moon'&&w.evo===0?.65:1;
  const raw=weaponPower(id,d.coef,w)*perHit;
  const radius=['orbit','ribbon','bloom','bubble','vortex','seed','bell','comet'].includes(id);
@@ -1239,11 +1244,13 @@ function closeCodex(){
 }
 function renderCodex(){
  $('codex-tabs').innerHTML=weaponKeys.map(id=>`<button type="button" class="codex-tab ${id===currentCodex?'on':''}" data-codex="${id}" aria-pressed="${id===currentCodex}"><span aria-hidden="true">${skillIcon(id,W[id].icon)}</span> ${W[id].name}${g?.weapons[id]?' · Lv.'+g.weapons[id].lv:''}</button>`).join('');
- const d=weaponRule(currentCodex),v=weaponGuide(currentCodex),w=g?.weapons[currentCodex];
+ const d=weaponRule(currentCodex),w=g?.weapons[currentCodex];
+ const v=d===FAMILIAR_BOOK?{role:'동행 정령 · 연속 추적',desc:RARE_CARDS.bookFamiliar.lore,pair:'탐색 거리 안에 적이 없으면 니모 곁으로 돌아와요.'}:weaponGuide(currentCodex);
  const growthList=d.steps
   ? Object.entries({...d.steps,4:['세 갈래 별',d.break]}).map(([lv,[name,desc]])=>`<div class="codex-up"><b>${name}</b><span class="effect-lines">${effectLines(desc)}</span><em>Lv.${lv}</em></div>`).join('')
   : d.up.map(([name,desc],i)=>`<div class="codex-up"><b>${name}</b><span class="effect-lines">${effectLines(friendlyEffect(desc))}</span><em>${w?w.up[i]:0}/2</em></div>`).join('')+`<h4>✦ Lv.4 중간 돌파</h4><p class="codex-text effect-lines">${effectLines(friendlyEffect(d.break))}</p>`;
  $('codex-details').innerHTML=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(currentCodex,d.icon)}</div><div class="codex-intro"><div class="codex-heading"><h3>${d.name}</h3><span>${w?'현재 Lv.'+w.lv:'기본 무기 Lv.1'}</span></div><p class="codex-role">${v.role}</p><p>${v.desc}</p><p class="codex-note">${v.pair}</p></div></div>
+ ${currentCodex==='book'?'<p class="codex-note">희귀 카드 · 꿈결 정령 — 무기 Lv.4부터 등장. 종이 요정 대신 정령 한 마리가 동행해요.</p>':''}
  <div class="codex-metrics">${guideMetrics(currentCodex)}</div><div class="codex-columns"><section><h4>✦ ${d.steps?'레벨별 강화':'일반 강화 (각 2회까지)'}</h4>${growthList}</section>
  <section><h4>🌟 Lv.7 최종 진화 — 둘 중 하나</h4><p class="codex-text">무기 Lv.6부터 후보에 등장. 스테이지 모험에서는 첫 중간 보스를 격파하면 열려요.</p>${d.evos.map((a,i)=>`<div class="codex-evo ${w?.evo===i?'chosen':''}"><b>${i===0?'①':'②'} ${a[0]}</b><span class="effect-lines">${effectLines(friendlyEffect(a[1]))}</span></div>`).join('')}</section></div>`;
  $('codex-details').scrollTop=0;
@@ -1592,6 +1599,7 @@ function makeGrowth(id){let w=g.weapons[id],def=weaponRule(id);if(w.lv===3)retur
  if(!choices.length)return null;const i=choose(choices);
  return {type:'growth',id,up:i,name:def.up[i][0],ico:def.icon,desc:def.up[i][1],meta:`${def.name} · Lv.${w.lv} → ${w.lv+1} · 중첩 ${w.up[i]}/2`,feature:true};}
 const RARE_CARDS={
+ bookFamiliar:{weapon:'book',name:'꿈결 정령',desc:'종이 요정을 대신하는 정령 1마리 · 적을 쫓아 반복 공격',lore:'정령이 적을 맞힌 뒤 다른 적을 우선 추적해요. 적이 한 마리면 잠시 돌아 나와 다시 공격해요.'},
  starLegacy:{weapon:'star',name:'별의 유산',desc:'가운데 별이 첫 적을 관통 · 작은 별 2발로 갈라짐',lore:'작은 별은 각각 원래 탄환 피해의 40%를 주며 다시 갈라지지 않아요.'},
  orbitBloom:{weapon:'orbit',name:'별자리 개화',desc:'회전 별 3회 적중 시 별꽃 폭발 · 회전 별 피해의 75%',lore:'세 번째로 맞은 적 주변에 폭발이 일어나요. 폭발 후 2초 뒤부터 다시 충전돼요.'},
  cloudChain:{weapon:'cloud',name:'요정 번개',desc:'낙뢰가 다른 적에게 최대 2번 연결 · 50% → 30% 피해',lore:'이번 시전에서 주 낙뢰가 떨어진 적은 건너뛰어요.'},
@@ -1665,6 +1673,11 @@ function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c||(c.typ
   if(c.id==='cloak'){let amt=DATA.player.hp*.15;g.player.hp+=amt;g.player.maxHp+=amt;}}
  if(c.type==='rare'){
   g.rareCard=c.id;
+  if(c.id==='bookFamiliar'){
+   g.shots=g.shots.filter(s=>s.weapon!=='book');
+   const {x,y}=wandOrigin(g.player);
+   g.bookFamiliar={x,y,target:null,lastHit:null,wait:0};
+  }
   showToast(`${c.name} 획득!`);
  }
  if(c.type==='heal')g.player.hp=Math.min(g.player.maxHp,g.player.hp+g.player.maxHp*.20);
@@ -2376,9 +2389,49 @@ function ringBell(p,w,d){
  if(g.rareCard==='twinBell')g.bellEchoes.push({x:p.x,y:p.y,r,damage:power*.50,remaining:.55});
  return true;
 }
+function bookFamiliarInterval(w){return cooldown('book',w)*(w.evo===0?.40:.46);}
+function bookFamiliarDamage(w){
+ // Convert extra-fairy upgrades into damage while keeping shared weapon and passive scaling.
+ const concentration=(1.65+.34*w.up[0])/.85**w.up[0];
+ return weaponPower('book',W.book.coef,w)*concentration*(w.evo===0?1.20:1);
+}
+function updateBookFamiliar(dt){
+ const f=g.bookFamiliar;
+ if(!f)return;
+ const p=g.player,w=g.weapons.book,reach=W.book.range;
+ f.wait=Math.max(0,f.wait-dt*rageRate()*moveCastRate());
+ const inReach=e=>distance(p.x,p.y,e.x,e.y)<reach;
+ let target=g.enemies.find(e=>e.id===f.target&&!e.dead&&!e.retreat&&inReach(e));
+ if(!target||target.id===f.lastHit){
+  target=targetNearest(f.x,f.y,reach*2,new Set([f.lastHit]),inReach)||
+   targetNearest(f.x,f.y,reach*2,new Set(),inReach);
+ }
+ f.target=target?.id??null;
+ let x=p.x-.74*p.face,y=p.y-.87+Math.sin(g.worldClock*4)*.12;
+ if(target){
+  x=target.x;y=target.y;
+  if(f.wait>0){
+   const angle=g.worldClock*5;
+   const radius=target.r+.78;
+   x+=Math.cos(angle)*radius;
+   y+=Math.sin(angle)*radius;
+  }
+ }
+ const gap=distance(f.x,f.y,x,y);
+ const speed=target?24*spellTravelRate():Math.max(3,p.speed+gap*2);
+ const t=gap>0?Math.min(1,dt*speed/gap):0;
+ f.x=clamp(f.x+(x-f.x)*t,0,DATA.world);
+ f.y=clamp(f.y+(y-f.y)*t,0,DATA.world);
+ if(target&&f.wait===0&&distance(f.x,f.y,target.x,target.y)<=target.r+.32){
+  f.lastHit=target.id;
+  f.target=null;
+  f.wait=bookFamiliarInterval(w);
+  deal(target,bookFamiliarDamage(w),'book');
+ }
+}
 function fireWeapon(id){
  const p=g.player,w=g.weapons[id],d=W[id];
- if(id==='orbit'||id==='vortex')return false;
+ if(id==='orbit'||id==='vortex'||(id==='book'&&g.bookFamiliar))return false;
  if(id==='seed')return placeSeedTrap(p,w,d);
  if(id==='bell')return ringBell(p,w,d);
  const width=id==='moon'?.87*1.25**w.up[2]*radiusMult()*(w.evo===1?1.5:1):0;
@@ -2670,7 +2723,14 @@ const STAGE_VORTEX_GUIDE={
  desc:'니모를 따라가는 바람이 반초마다 범위 안의 적을 느리게 하고 피해를 줍니다.',
  pair:'느려진 적을 블룸 가든에 오래 머물게 할 수 있어요.'
 };
-function weaponRule(id){return g?.stage&&id==='vortex'?STAGE_VORTEX:W[id];}
+const FAMILIAR_BOOK={...W.book,
+ up:[['정령의 힘','정령 타격 피해 증가'],...W.book.up.slice(1)],
+ evos:[['요정 도서관','정령 타격 간격 단축 · 정령 피해 +2%'],['금빛 동화책','정령 피해 +40% · 왕관 슬라임 피해 +20%']]
+};
+function weaponRule(id){
+ if(id==='book'&&g?.rareCard==='bookFamiliar')return FAMILIAR_BOOK;
+ return g?.stage&&id==='vortex'?STAGE_VORTEX:W[id];
+}
 function weaponGuide(id){return g?.stage&&id==='vortex'?STAGE_VORTEX_GUIDE:WEAPON_GUIDE[id];}
 function updateVortex(dt){
  const w=g.weapons.vortex;if(!w)return;
@@ -2865,7 +2925,7 @@ function update(dt){
  updateMovement(dt);
  if(!frozen&&!updateEncounters(dt))return;
  for(const id of Object.keys(g.weapons)){
-  if(id==='orbit'||id==='vortex')continue;
+  if(id==='orbit'||id==='vortex'||(id==='book'&&g.bookFamiliar))continue;
   const w=g.weapons[id];w.clock-=dt*rageRate()*moveCastRate();
   if(w.clock<=0){if(fireWeapon(id))w.clock=cooldown(id);else w.clock=0;}
  }
@@ -2875,6 +2935,7 @@ function update(dt){
  }
  if(screen!=='playing')return;
  updateShots(dt,!frozen);if(screen!=='playing')return;
+ updateBookFamiliar(dt);if(screen!=='playing')return;
  updateOrbit(dt);if(screen!=='playing')return;
  updateVortex(dt);updateTraps(dt);if(screen!=='playing')return;
  updateZones(dt);if(screen!=='playing')return;
@@ -3483,6 +3544,27 @@ function drawProjectile(s){
   imageSprite('ui_feather',0,0,diameter,diameter);ctx.restore();
  }
 }
+function drawBookFamiliar(){
+ const f=g.bookFamiliar;
+ if(!f||!visible(f.x,f.y,1))return;
+ const flutter=reducedMotion.matches?.9:.85+Math.sin(g.worldClock*25)*.15;
+ ctx.save();
+ ctx.translate(f.x,f.y);
+ ellipse(0,0,.53,.52,'#fff0c9',.40);
+ for(const side of [-1,1]){
+  ctx.save();
+  ctx.scale(side*flutter,1);
+  polygon([[.13,.05],[.51,-.24],[.50,-.01],[.36,.16],[.13,.19]],'#ffeaf3','#8c639a',.035);
+  line(.23,.07,.41,-.05,'#d4a2d9',.026);
+  ctx.restore();
+ }
+ ellipse(0,.01,.275,.30,'#8c639a');
+ ellipse(0,.01,.235,.26,'#fff1cf');
+ ellipse(-.069,.022,.027,.047,'#6a4a79');
+ ellipse(.069,.022,.027,.047,'#6a4a79');
+ star(0,-.26,.118,0,'#fff0a5','#a673a5');
+ ctx.restore();
+}
 function drawEffects(){for(const e of g.effects){if(e.kind==='event')continue;const f=clamp(e.life/e.max,0,1);
  ctx.save();ctx.globalAlpha=f;
  if(e.kind==='healingPickup'){
@@ -3788,6 +3870,7 @@ function drawBattle(){
  }
  drawOrbit();
  for(const s of g.shots)drawProjectile(s);
+ drawBookFamiliar();
  for(const b of g.enemyShots)drawEnemyBullet(b);
  drawEffects();
  for(const z of g.particles){if(!visible(z.x,z.y,1))continue;ellipse(z.x,z.y,z.r,z.r,z.color,Math.min(1,z.life/z.max));}
@@ -4226,7 +4309,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.8.10';
+  const CURRENT='5.8.11';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
