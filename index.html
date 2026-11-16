@@ -284,7 +284,7 @@
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
 #setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.8.16" />
+</style><meta name="nemo-version" content="5.8.17" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -593,20 +593,81 @@
 <script src="./assets/campaign-v573/stages.js?v=576"></script>
 <script src="./assets/campaign-v573/maps.js"></script>
 <style id="rare-card-art">
-#cards .choice-card[data-kind="rare"]{position:relative;isolation:isolate;background:#fdf4df!important;background-image:none!important;border:2px solid #926d31!important;box-shadow:0 3px #79563c,inset 0 0 0 3px #e6c377,0 0 12px #8b53a46b!important}
-#cards .choice-card[data-kind="rare"] .choice-identity{background:linear-gradient(125deg,#543765,#765184)!important;color:#fff8e5;border-bottom:2px solid #ca9e55}
-#cards .choice-card[data-kind="rare"] .choice-name{color:#fff8e5}
-#cards .choice-card[data-kind="rare"] .choice-type{display:inline-flex;align-items:center;gap:5px;width:max-content;padding:2px 7px;margin-bottom:4px;border:1px solid #e7c67b;border-radius:999px;background:#ffecb4;color:#4c3059}
-#cards .choice-card[data-kind="rare"] .choice-type::before{content:"";width:7px;height:7px;background:currentColor;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
-#cards .choice-card[data-kind="rare"] .choice-effect,#cards .choice-card[data-kind="rare"] .choice-cta{background:#f1e4fa;border-color:#cdacd9;color:#533c66}
-#cards .choice-card[data-kind="rare"] .choice-icon{background:radial-gradient(circle,#f8df95 12%,#e2b6eb 48%,transparent 69%)}
-#cards .choice-card[data-kind="rare"] .rare-card-sparks{position:absolute;z-index:1;inset:5px;pointer-events:none;overflow:hidden;border-radius:inherit}
-#cards .choice-card[data-kind="rare"] .rare-card-sparks::before,#cards .choice-card[data-kind="rare"] .rare-card-sparks::after{content:"";position:absolute;width:16px;height:16px;background:#ffd978;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
-#cards .choice-card[data-kind="rare"] .rare-card-sparks::before{top:7px;right:7px}
-#cards .choice-card[data-kind="rare"] .rare-card-sparks::after{bottom:8px;left:5px;width:10px;height:10px}
+#app #cards .choice-card[data-kind="rare"]{
+ --ink:#fff5e8;
+ --wash:#6b4785;
+ --edge:#bb97ce;
+ position:relative;
+ isolation:isolate;
+ color:var(--ink);
+ border:1px solid #d7aad9 !important;
+ border-radius:15px !important;
+ background:radial-gradient(ellipse at 12% 3%,#875a9e 0%,transparent 45%),
+            linear-gradient(155deg,#684378,#513463 59%,#3d2a56) !important;
+ box-shadow:0 3px #402a57,inset 0 0 0 2px #f3cd9b28,0 0 0 3px #b685c32e,0 8px 18px #50326838 !important;
+}
+#app #cards .choice-card[data-kind="rare"]::before{
+ content:"";
+ position:absolute;
+ z-index:-1;
+ inset:0;
+ pointer-events:none;
+ background:linear-gradient(116deg,transparent 26%,#fff3d124 46%,#f3d4ff3b 51%,transparent 71%);
+ transform:translateX(-120%);
+}
+#app #cards .choice-card[data-kind="rare"] .choice-identity{
+ background:transparent;
+ color:#fff5e8;
+ border-bottom:1px solid #efcbad54;
+}
+#app #cards .choice-card[data-kind="rare"] .choice-name{color:#fff5e8}
+#app #cards .choice-card[data-kind="rare"] .choice-type{
+ display:inline-flex;align-items:center;gap:5px;width:max-content;
+ padding:2px 7px;margin-bottom:4px;border:1px solid #f1cc83;border-radius:999px;
+ background:#ffecb4;color:#4c3059;
+}
+#app #cards .choice-card[data-kind="rare"] .choice-type::before{
+ content:"";width:7px;height:7px;background:currentColor;
+ clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);
+}
+#app #cards .choice-card[data-kind="rare"] .choice-effect{
+ background:#2f193d80;
+ border-color:#dfb6ec80;
+ color:#fff5eb;
+}
+#app #cards .choice-card[data-kind="rare"] .choice-effect small{color:#f8d9aa}
+#app #cards .choice-card[data-kind="rare"] .choice-copy{color:#f9ecfb}
+#app #cards .choice-card[data-kind="rare"] .choice-meta{color:#ebd6f7;border-color:#efdafa54}
+#app #cards .choice-card[data-kind="rare"] .choice-cta{
+ background:linear-gradient(180deg,#8655a1,#674180) !important;
+ border-color:#c198d7 !important;
+ color:#fff8ea !important;
+}
+#app #cards .choice-card[data-kind="rare"] .choice-cta kbd{
+ background:#503364 !important;
+ color:#fff8ea;
+ border-color:#bb97ce;
+}
+#app #cards .choice-card[data-kind="rare"] .choice-icon{
+ background:radial-gradient(circle,#f0c88e88 5%,#d8a4ee44 45%,transparent 70%);
+}
+#app #cards .choice-card[data-kind="rare"] .rare-card-sparks{
+ position:absolute;z-index:1;inset:3px;pointer-events:none;overflow:hidden;border-radius:inherit;
+}
+#app #cards .choice-card[data-kind="rare"] .rare-card-sparks::before,
+#app #cards .choice-card[data-kind="rare"] .rare-card-sparks::after{
+ content:"";position:absolute;width:15px;height:15px;background:#ffe4a6;
+ clip-path:polygon(50% 0,60% 39%,100% 50%,60% 61%,50% 100%,40% 61%,0 50%,40% 39%);
+}
+#app #cards .choice-card[data-kind="rare"] .rare-card-sparks::before{top:6px;right:5px}
+#app #cards .choice-card[data-kind="rare"] .rare-card-sparks::after{bottom:5px;left:3px;width:10px;height:10px}
 @media(prefers-reduced-motion:no-preference){
- #cards .choice-card[data-reveal="true"] .rare-card-sparks::before,#cards .choice-card[data-reveal="true"] .rare-card-sparks::after{animation:rare-spark-in .65s ease-out both}
- @keyframes rare-spark-in{0%{opacity:.1;transform:scale(.35) rotate(-35deg)}45%{opacity:1;transform:scale(1.45) rotate(16deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+ #app #cards .choice-card[data-kind="rare"]::before{animation:rare-sheen 4.8s ease-in-out infinite}
+ #app #cards .choice-card[data-kind="rare"] .rare-card-sparks::before{animation:rare-starlight 3.4s ease-in-out infinite}
+ #app #cards .choice-card[data-kind="rare"] .rare-card-sparks::after{animation:rare-starlight 3.4s 1.2s ease-in-out infinite}
+ #app #cards .choice-card[data-kind="rare"][data-reveal="true"]::before{animation-delay:-.25s}
+ @keyframes rare-sheen{0%{transform:translateX(-120%)}30%,100%{transform:translateX(120%)}}
+ @keyframes rare-starlight{0%,100%{opacity:.65;transform:scale(.8)}38%{opacity:1;transform:scale(1.2)}}
 }
 </style>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
@@ -4550,7 +4611,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.8.16';
+  const CURRENT='5.8.17';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
