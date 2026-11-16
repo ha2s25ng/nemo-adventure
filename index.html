@@ -283,7 +283,7 @@
 .nemo-leaderboard-board{width:92%;max-width:1340px;max-height:91%;overflow:auto;padding:22px 28px;border:5px solid #805596;border-radius:33px;background:linear-gradient(135deg,#fff9ed,#f9e8fb);box-shadow:0 12px 0 #624077aa,0 22px 48px #5f3e6b99;color:#604071}
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
-</style><meta name="nemo-version" content="5.7.4" />
+</style><meta name="nemo-version" content="5.7.5" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -563,7 +563,7 @@
  object-fit:contain; filter:drop-shadow(0 2px 2px #55644439); pointer-events:none;
 }
 </style>
-<link rel="stylesheet" href="./assets/campaign-v570/stages.css?v=5.7.4">
+<link rel="stylesheet" href="./assets/campaign-v570/stages.css?v=5.7.5">
 <script src="./assets/campaign-v573/stages.js"></script>
 <script src="./assets/campaign-v573/maps.js"></script>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
@@ -675,7 +675,7 @@
 <div class="codex-head"><div><p class="folio">마법 기록</p><h2 id="codex-title">니모의 마법 도감</h2><p>14종 마법의 공격 방식·강화·두 가지 최종 진화를 확인할 수 있어.</p></div><button class="btn codex-close" id="codex-back">✕ 닫기</button></div>
 <div class="codex-tabs" id="codex-tabs"></div><div class="codex-details" id="codex-details"></div>
 </div></div><div class="overlay hidden" id="leaderboard"><div class="nemo-leaderboard-board">
-  <div class="nemo-rank-top"><div><p class="folio">모험 기록</p><h2>숲의 명예의 전당</h2><p>무한 생존 · 모든 모험 시도를 생존 시간순으로 표시해요.</p></div><button type="button" id="leaderboard-close" class="btn">✕ 돌아가기</button></div>
+  <div class="nemo-rank-top"><div><p class="folio">모험 기록</p><h2>숲의 명예의 전당</h2><p>무한 생존 · 주간 랭킹 · 매주 일요일 22:00 초기화 (한국시간)</p></div><button type="button" id="leaderboard-close" class="btn">✕ 돌아가기</button></div>
   <div class="nemo-rank-layout"><section class="nemo-rank-left"><label for="rank-nickname">🐾 내 닉네임 (최대 16자)</label><input id="rank-nickname" maxlength="16" placeholder="예: 별빛 니모" autocomplete="nickname"/>
   <div class="nemo-rank-local" id="rank-local"></div>
   <div class="nemo-rank-setup"><h3>🌐 온라인 랭킹 연결</h3><p>공유 랭킹을 사용하려면 Supabase 프로젝트 URL과 공개용 publishable 키를 등록해 주세요.</p>
@@ -684,7 +684,8 @@
     <p class="nemo-rank-warning">⚠ 절대로 secret / service_role 키를 입력하지 마세요. 연결 정보는 현재 브라우저에만 저장돼요.</p>
     <div class="nemo-rank-actions"><button class="btn primary" id="rank-save">연결 정보 저장 · 확인</button><button class="btn" id="rank-submit">방금 기록 업로드</button></div>
     <div id="rank-status" role="status" class="nemo-rank-status">미연결 — 개인 기록만 표시 중</div></div></section>
-    <section class="nemo-rank-right"><div class="nemo-rank-table-title"><h3>전체 시도 기록</h3><button class="btn" id="rank-refresh">↻ 새로고침</button></div>
+    <section class="nemo-rank-right"><div class="nemo-rank-table-title"><h3>이번 주 시도 기록</h3><button class="btn" id="rank-refresh">↻ 새로고침</button></div>
+    <p id="rank-week" class="nemo-rank-foot"></p>
     <div class="nemo-rank-table-head"><span>순위 / 닉네임</span><span>생존 기록</span><span>사용 마법</span></div><div id="rank-online" class="nemo-rank-list"><p class="nemo-rank-empty">온라인 기록을 불러오는 중이에요.</p></div>
     <button class="btn rank-more" id="rank-more" type="button" hidden>기록 더 보기</button>
     <p class="nemo-rank-foot">온라인 연결이 끊겨도 이 기기의 개인 기록은 저장돼요.</p></section></div>
@@ -1630,11 +1631,11 @@ function waveWeights(survivalWeights){
 }
 function stageBossDefinition(stage){
  const templates={crown:DATA.boss,thorn:LATE_BOSSES[0],moon:LATE_BOSSES[1],owl:LATE_BOSSES[2],
-  boar:{art:'root-boar',hp:0,dmg:20,speed:1.0,r:1.65,tier:1,signature:'hedge'}};
+  boar:{art:'root-boar',hp:0,dmg:20,speed:1.0,r:1.65,tier:1,signature:'hedge',chargeWake:true}};
  const base=templates[stage.boss];
  return {...base,name:stage.title,hp:stage.hp,dmg:17+stage.id*.85,speed:base.speed*(.94+stage.id*.014),
   tier:Math.ceil(stage.id/3),barrage:1+(stage.id-1)/9,
-  patterns:stage.id===1?[...stage.patterns,'ring']:stage.patterns};
+  patterns:stage.id===1?[...stage.patterns,'ring']:stage.boss==='thorn'?[...new Set(['hedge',...stage.patterns])]:stage.patterns};
 }
 function nextBossEncounter(){
  const count=g.bossEncounters;
@@ -1705,11 +1706,11 @@ function bossCast(b,kind){
  }else if(kind==='dash'){
   const aim=atan(b.x,b.y,p.x,p.y),travel=Math.min(11.5,Math.max(5.5,distance(b.x,b.y,p.x,p.y)+1.3));
   // Explicit stationary wind-up, then visibly travel the warned path.
-  b.action={type:'dash-warn',timer:ph===2?.72:.94,aim,travel,tx:clamp(b.x+Math.cos(aim)*travel,b.r,DATA.world-b.r),ty:clamp(b.y+Math.sin(aim)*travel,b.r,DATA.world-b.r),remaining:ph===2?2:1};
+  b.action={type:'dash-warn',timer:ph===2?.72:.94,aim,travel,tx:clamp(b.x+Math.cos(aim)*travel,b.r,DATA.world-b.r),ty:clamp(b.y+Math.sin(aim)*travel,b.r,DATA.world-b.r),remaining:b.bossDef.chargeWake?(ph===2&&late?3:2):ph===2?2:1};
  }else if(kind==='ring'){
   b.action={type:'ring-warn',timer:.72,shotsLeft:(ph===0?1:2)+(late?1:0),rotation:rand()*TAU,gap:atan(b.x,b.y,p.x,p.y)};
  }else if(kind==='fan'){
-  b.action={type:'fan-warn',timer:.70,shotsLeft:ph+1+(late?1:0)};
+  b.action={type:'fan-warn',timer:.70,shotsLeft:ph+1+(late?1:0),aim:atan(b.x,b.y,p.x,p.y)};
  }else{
   b.action={type:'spiral-warn',timer:.78,shotsLeft:(ph===2?6:4)+(late?1:0),rotation:rand()*TAU};
  }
@@ -1726,9 +1727,10 @@ function bossRing(b,phase,rot,gap){
  }
  burst(b.x,b.y,'#ffb2da',9);
 }
-function bossFan(b,phase){
+function bossFan(b,phase,aim){
  const barrage=b.bossDef.barrage??0;
- const aim=atan(b.x,b.y,g.player.x,g.player.y),n=[5,7,9][phase]+2*Math.round(barrage);
+ if(!barrage)aim=atan(b.x,b.y,g.player.x,g.player.y);
+ const n=[5,7,9][phase]+2*Math.round(barrage);
  const spread=[.92,1.10,1.24][phase]+barrage*.13;
  for(let i=0;i<n;i++)enemyBullet(b.x,b.y,aim+(i-(n-1)/2)*spread/(n-1),[3.3,3.6,3.9][phase]+barrage*.24,10,4.7,b.bossDef.name+' 부채꼴탄','fan',b.id);
  burst(b.x,b.y,'#ff9fbc',6);
@@ -1741,8 +1743,9 @@ function bossSpiral(b,phase,rotation){
 function bossSignature(b,a,phase){
  const def=b.bossDef,tier=def.tier,damage=11+tier*1.5,label=def.name+' 탄막';
  if(def.signature==='hedge'){
-  const gap=(a.index*2+1)%5-2;
-  for(let lane=-3;lane<=3;lane++){
+  const wide=def.barrage>=1.55&&def.art==='thorn-guardian',width=wide?4:3;
+  const gap=(a.index*2+1)%(width*2-1)-(width-1);
+  for(let lane=-width;lane<=width;lane++){
    if(lane===gap||lane===gap+1)continue;
    const x=b.x-Math.sin(a.aim)*lane*.73,y=b.y+Math.cos(a.aim)*lane*.73;
    enemyBullet(x,y,a.aim,3.2+phase*.21,damage,5,label,'moth',b.id);
@@ -1753,7 +1756,7 @@ function bossSignature(b,a,phase){
    enemyBullet(b.x,b.y,angle+arm*TAU/4+offset,3.5+phase*.24,damage,5,label,'spiral',b.id);
   }
  }else{
-  const axis=a.aim+(a.index%2?Math.PI:.20),count=phase===2?11:9;
+  const axis=a.aim+(def.barrage?(a.index%2?.47:-.47):a.index%2?Math.PI:.20),count=phase===2?11:9;
   for(let i=0;i<count;i++){
    if(i===2||i===3)continue;
    enemyBullet(b.x,b.y,axis+(i/(count-1)-.5)*1.98,4.1+phase*.23,damage,4.5,label,'fan',b.id);
@@ -1794,6 +1797,10 @@ function bossUpdate(b,dt){
    a.left-=distance(oldX,oldY,b.x,b.y);
    bossDashCollision(b,oldX,oldY);
    if(a.left<.09||distance(oldX,oldY,b.x,b.y)<moved*.8){
+    if(b.bossDef.chargeWake){
+     for(const side of [-1,1])for(let i=-1;i<=1;i++)
+      enemyBullet(b.x,b.y,a.aim+side*Math.PI/2+i*.22,3.1+ph*.23,8,3.6,b.bossDef.name+' 돌진 여파','moth',b.id);
+    }
     a.remaining--;
     if(a.remaining>0){a.type='dash-warn';a.timer=.58;a.aim=atan(b.x,b.y,p.x,p.y);a.travel=clamp(distance(b.x,b.y,p.x,p.y)+.8,4.8,9);
      a.tx=clamp(b.x+Math.cos(a.aim)*a.travel,b.r,DATA.world-b.r);a.ty=clamp(b.y+Math.sin(a.aim)*a.travel,b.r,DATA.world-b.r);
@@ -1808,7 +1815,7 @@ function bossUpdate(b,dt){
    if(a.timer<=0){bossRing(b,ph,a.rotation,a.gap);a.shotsLeft--;a.rotation+=Math.PI/(ph===2?9:12);
     if(a.shotsLeft>0){a.type='ring-fire';a.timer=bossVolleyGap(b,.62);}else bossDone(b);}
   }else if(a.type==='fan-warn'||a.type==='fan-fire'){
-   if(a.timer<=0){bossFan(b,ph);a.shotsLeft--;
+   if(a.timer<=0){bossFan(b,ph,a.aim);a.shotsLeft--;
     if(a.shotsLeft>0){a.type='fan-fire';a.timer=bossVolleyGap(b,.55);}else bossDone(b);}
   }else if(a.type==='spiral-warn'||a.type==='spiral-fire'){
    if(a.timer<=0){bossSpiral(b,ph,a.rotation);a.shotsLeft--;a.rotation+=.32;
@@ -2801,7 +2808,7 @@ function drawEnemy(e){
   const glint=.19+Math.sin(g.worldClock*15)*.045;
   star(e.x,e.y-ht*.86,glint,0,'#fff0b6','#76526b');
   if(isboss&&g.stage&&(attack==='ring-warn'||attack==='fan-warn'||attack==='spiral-warn')){
-   const angle=attack==='ring-warn'?e.action.gap:atan(e.x,e.y,g.player.x,g.player.y);
+   const angle=attack==='ring-warn'?e.action.gap:attack==='fan-warn'?e.action.aim:atan(e.x,e.y,g.player.x,g.player.y);
    const start=attack==='ring-warn'?angle+.53:angle-.66;
    const end=attack==='ring-warn'?angle+TAU-.53:angle+.66;
    ctx.save();
@@ -3382,9 +3389,9 @@ function rankLocalText(){let good=rankRuns.filter(r=>!r.debug_used&&!r.winner),b
 function rankDrawLocal(){$('rank-local').innerHTML=rankLocalText();}
 function rankOpen(){rankingReturn=['result','menu','pause'].includes(screen)?screen:'menu';
  $('rank-nickname').value=rankCfg.nickname||'';$('rank-url').value=rankCfg.url||'';$('rank-key').value=rankCfg.key||'';
- rankDrawLocal();setScreen('leaderboard');
+ rankDrawLocal();setScreen('leaderboard');rankShowWeek(rankWeek());
  if(rankConfigured())void rankFetch();else{rankStatus('미연결 — URL과 publishable 키를 넣으면 공통 랭킹을 사용할 수 있어요.');rankEmpty('온라인 랭킹에 연결하는 중이에요. 잠시 후 새로고침할 수 있어요.');}}
-function rankClose(){setScreen(rankingReturn);if(rankingReturn==='menu')renderMenu();}
+function rankClose(){clearTimeout(rankWeekTimer);rankRequestId++;setScreen(rankingReturn);if(rankingReturn==='menu')renderMenu();}
 function rankEmpty(s){$('rank-online').innerHTML=`<p class="nemo-rank-empty">${rankEsc(s)}</p>`;}
 function rankPersist(){const name=rankSanitizeName($('rank-nickname').value);
  const url=String($('rank-url').value||'').trim().replace(/\/$/,'');const key=String($('rank-key').value||'').trim();
@@ -3394,7 +3401,20 @@ function rankPersist(){const name=rankSanitizeName($('rank-nickname').value);
  rankCfg={url,key,nickname:name};try{localStorage.setItem(RANK_CFG_KEY,JSON.stringify(rankCfg));}catch(_){}return true;
 }
 const RANK_PAGE_SIZE=30;
-let rankLoaded=0,rankRequestId=0;
+const RANK_WEEK_MS=604800000,RANK_SUNDAY_22=Date.UTC(1970,0,4,13);
+const rankWeekLabel=new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'long',day:'numeric'});
+let rankLoaded=0,rankRequestId=0,rankWeekStart=null,rankWeekTimer=0;
+function rankWeek(now=Date.now()){
+ const start=RANK_SUNDAY_22+Math.floor((now-RANK_SUNDAY_22)/RANK_WEEK_MS)*RANK_WEEK_MS;
+ return {start,end:start+RANK_WEEK_MS};
+}
+function rankShowWeek(week){
+ $('rank-week').textContent=`${rankWeekLabel.format(week.start)} 22:00 ~ ${rankWeekLabel.format(week.end)} 22:00 (한국시간)`;
+ clearTimeout(rankWeekTimer);
+ rankWeekTimer=setTimeout(()=>{
+  if(screen==='leaderboard')void rankFetch();
+ },Math.max(100,week.end-Date.now()+100));
+}
 function rankRow(r,index){
  const place=index+1,mine=r.player_id===rankId;
  const name=rankEsc(r.nickname),costume=rankLoadoutHTML(r.loadout,'costume'),spells=rankLoadoutHTML(r.loadout,'weapons');
@@ -3405,7 +3425,12 @@ function rankRow(r,index){
  </div>`;
 }
 async function rankFetch(append=false){
- const more=$('rank-more'),list=$('rank-online');
+ const more=$('rank-more'),list=$('rank-online'),week=rankWeek();
+ if(rankWeekStart!==week.start){
+  rankWeekStart=week.start;rankLoaded=0;append=false;
+  list.scrollTop=0;rankEmpty('이번 주 기록을 불러오는 중이에요.');
+ }
+ rankShowWeek(week);
  if(append&&more.disabled)return;
  const requestId=++rankRequestId,offset=append?rankLoaded:0;
  if(!rankConfigured()){
@@ -3420,7 +3445,8 @@ async function rankFetch(append=false){
  if(!append&&!list.querySelector('.nemo-rank-row'))rankEmpty('온라인 기록을 불러오는 중이에요.');
  try{
   const base=rankCfg.url+'/rest/v1/nemo_forest_runs?select=nickname,player_id,survival_seconds,kills,level';
-  const suffix=`&order=survival_seconds.desc,kills.desc,created_at.asc,run_id.asc&offset=${offset}&limit=${RANK_PAGE_SIZE+1}`;
+  const from=encodeURIComponent(new Date(week.start).toISOString()),until=encodeURIComponent(new Date(week.end).toISOString());
+  const suffix=`&created_at=gte.${from}&created_at=lt.${until}&order=survival_seconds.desc,kills.desc,created_at.asc,run_id.asc&offset=${offset}&limit=${RANK_PAGE_SIZE+1}`;
   const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),9000);
   const request=loadout=>fetch(base+(loadout?',loadout':'')+suffix,{headers:rankHeaders(),signal:controller.signal,cache:'no-store'});
   let res;
@@ -3428,10 +3454,11 @@ async function rankFetch(append=false){
   if(!res.ok)throw Error('서버 응답 '+res.status);
   const items=await res.json();if(!Array.isArray(items))throw Error('응답 데이터 형식 오류');
   if(requestId!==rankRequestId)return;
+  if(rankWeek().start!==week.start){void rankFetch();return;}
   const page=items.slice(0,RANK_PAGE_SIZE),html=page.map((row,i)=>rankRow(row,offset+i)).join('');
   if(append)list.insertAdjacentHTML('beforeend',html);
   else if(page.length)list.innerHTML=html;
-  else rankEmpty('아직 등록된 기록이 없어요. 첫 기록을 남겨 보세요!');
+  else rankEmpty('이번 주 첫 기록을 남겨 보세요!');
   rankLoaded=offset+page.length;
   more.hidden=items.length<=RANK_PAGE_SIZE;
   rankStatus(`서버 연결 성공 · 시도 ${rankLoaded}건 표시`);
@@ -3493,6 +3520,9 @@ function confirmNickname(event){
   }
 }
 function rankWire(){
+ document.addEventListener('visibilitychange',()=>{
+  if(!document.hidden&&screen==='leaderboard'&&rankWeekStart!==rankWeek().start)void rankFetch();
+ });
  $('nemo-name-form').addEventListener('submit',confirmNickname);
  $('nemo-name-change').onclick=()=>showNicknameSetup('menu');
  $('leaderboard-btn').onclick=rankOpen;$('result-rank-btn').onclick=rankOpen;$('leaderboard-close').onclick=rankClose;
@@ -3615,7 +3645,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.7.4';
+  const CURRENT='5.7.5';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
