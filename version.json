@@ -1,5 +1,5 @@
 {
-  "version": "5.7.8",
+  "version": "5.7.9",
   "mode": "endless_survival_and_campaign",
-  "notes": "스테이지 보스 탄속 증가와 연속 조준 보정"
+  "notes": "모험당 카드 다시 뽑기 기본 1회 및 영구 강화 1회 추가"
 }
