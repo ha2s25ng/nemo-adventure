@@ -284,7 +284,7 @@
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
 #setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.9.0" />
+</style><meta name="nemo-version" content="5.9.1" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -672,6 +672,7 @@
  @keyframes rare-starlight{0%,100%{opacity:.65;transform:scale(.8)}38%{opacity:1;transform:scale(1.2)}}
 }
 </style>
+<link rel="stylesheet" href="./assets/mobile-v591/game.css">
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
 <div class="hidden" id="hud">
@@ -714,7 +715,7 @@
         <button class="btn nemo-leaderboard-menu" id="leaderboard-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/crown.webp" alt="">숲의 랭킹</button>
       </div>
       <p class="menu-controls menu-controls-keyboard"><span><kbd>WASD</kbd> 이동</span><span>마법 자동 시전</span><span><kbd>Esc</kbd> 일시 정지</span></p>
-      <p class="menu-controls menu-controls-touch">조이스틱으로 이동 / 마법은 자동 시전</p>
+      <p class="menu-controls menu-controls-touch">전투 화면을 끌어 이동 / 마법은 자동 시전</p>
     </div>
     <div class="menu-art" aria-hidden="true">
       <div class="menu-art-mat"></div>
@@ -830,7 +831,7 @@
   <button type="button" class="btn primary" id="settings-back">← 돌아가기</button>
  </section>
 </div>
-<div class="toast hidden" id="toast" role="status"></div><div aria-label="터치 이동 조이스틱" class="touch-pad hidden" id="touch-pad"><div class="touch-knob" id="touch-knob"></div></div>
+<div class="toast hidden" id="toast" role="status"></div><div aria-hidden="true" class="touch-pad hidden" id="touch-pad"><div class="touch-knob" id="touch-knob"></div></div>
 </main><script>'use strict';
 // Values here are the initial design specification, not dynamic difficulty adjustments.
 const DATA = Object.freeze({
@@ -859,7 +860,7 @@ const DATA = Object.freeze({
   bell:{name:'달빛 종소리',icon:'🔔',coef:0.83,cd:2.8,range:2.65,up:[['넓은 울림','충격파 범위 +22%'],['맑은 종소리','충격파 피해 +25%'],['빠른 울림','공격 속도 +15%']],break:'충격파에 맞은 적을 1초간 둔화',evos:[["두 번 울리는 종","두 번째 충격파 · 더 강한 넉백"],["수호의 종","충격파 반경 +30% · 파동에 닿은 모든 적 탄환 제거"]]},
   feather:{name:'바람 깃털',icon:'🍃',coef:0.71,cd:1.55,range:10.5,up:[['깃털 하나 더','깃털 +1 · 개별 위력 소폭 감소'],['날카로운 깃털','깃털 피해 +25%'],['가벼운 바람','공격 속도 +15%']],break:'나가는 깃털이 다른 적에게 1회 연쇄',evos:[["춤추는 깃털","깃털 +2 · 개별 피해 −10% · 나가는 길에 최대 2회 연쇄"],["돌아오는 바람","돌아오는 길 피해 +65% · 복귀 속도 18"]]},
  },
- passives:{magic:['공격력 증가','✨','공격력 +9%'],quick:['빠른 주문','⏱','모든 공격 속도 +8%'],lucky:['행운의 리본','🎗','치명타 확률 +5%p'],big:['커다란 마법','💠','범위 공격의 크기 +8%'],cloak:['포근한 망토','💖','최대 체력 +15% · 증가량만큼 현재 체력 회복'],shoes:['가벼운 발걸음','👟','이동 속도 증가'],insight:['별빛 공부','📚','경험치 획득량 증가'],magnet:['보석 자석','🧲','경험치 획득 범위 +20%'],
+ passives:{magic:['공격력 증가','✨','공격력 +9%'],quick:['빠른 주문','⏱','모든 공격 속도 +8%'],lucky:['행운의 리본','🎗','치명타 확률 +5%p'],big:['커다란 마법','💠','범위 공격의 크기 +8%'],cloak:['포근한 망토','💖','최대 체력 +15% · 증가량만큼 현재 체력 회복'],shoes:['가벼운 발걸음','👟','이동 속도 증가'],insight:['별빛 공부','📚','경험치 획득량 증가'],magnet:['보석 자석','🧲','경험치 보석 획득 반경 +50%'],
   windstep:['바람 걸음','🪶','이동 중 공격 속도 +6%'],leafguard:['잎새 방패','🛡','적 탄환으로 받는 피해 8% 감소'],
   emberheart:['마지막 불씨','🔥','체력 절반 이하에서 공격력 +12%'],honeypouch:['꿀풀 주머니','🍯','뼈다귀와 간식 회복량 +25%']},
  monsters:{green:{name:'초록 슬라임',hp:45,dmg:8,speed:1.3,r:.48},blue:{name:'파랑 슬라임',hp:90,dmg:10,speed:1.7,r:.48},fat:{name:'통통 버섯',hp:150,dmg:12,speed:.9,r:.53},spore:{name:'포자 버섯',hp:100,dmg:8,speed:.8,r:.51},firefly:{name:'반딧불',hp:70,dmg:8,speed:2,r:.38},armor:{name:'밤송이 슬라임',hp:240,dmg:14,speed:.95,r:.57},spark:{name:'별빛 도깨비',hp:92,dmg:10,speed:3.10,r:.44},petal:{name:'소환 슬라임',hp:90,dmg:8,speed:1.3,r:.46},
@@ -902,7 +903,11 @@ Object.assign(ASSET_DATA,{ui_star:STORYBOOK_ART["icon_star"],ui_orbit:STORYBOOK_
 <script>(() => {
 'use strict';
 const $ = id => document.getElementById(id), canvas=$('canvas'),ctx=canvas.getContext('2d',{alpha:false});
-const VW=1600,VH=900,PPU=VW/DATA.widthWorld,SCREEN_H=VH/PPU, TAU=Math.PI*2;
+const TAU=Math.PI*2, desktopWidth=1600, desktopHeight=900;
+const touchDisplay=matchMedia('(any-pointer: coarse)');
+const tallTouchField=matchMedia('(max-width: 650px) and (orientation: portrait) and (any-pointer: coarse)');
+const compactTouchField=matchMedia('(max-width: 950px) and (any-pointer: coarse)');
+let VW=desktopWidth,VH=desktopHeight,SCREEN_W=DATA.widthWorld,PPU=VW/SCREEN_W,SCREEN_H=VH/PPU;
 const WORLD_CENTER=DATA.world/2;
 const forestPoint=(x,y)=>[WORLD_CENTER+x,WORLD_CENTER+y];
 const placeInForest=({x,y,...art})=>({...art,x:WORLD_CENTER+x,y:WORLD_CENTER+y});
@@ -958,7 +963,7 @@ const FOREST_WASHES=[
 const RAGE={unlock:45,chance:.006,dropLife:24,dropGap:60,healthCost:.42,duration:12,power:1.55,tempo:1.50,spell:1.40};
 const RARE_PICKUPS={
  timeSeal:{icon:'ui_quick',color:'#9fcfe5'},
- sweepStar:{icon:'ui_comet',color:'#ffd6a2'},
+ sweepStar:{icon:'pickupBroom',color:'#b7efdf'},
  magnet:{icon:'ui_magnet',color:'#d8b4ee'}
 };
 const RARE_PICKUP_KINDS=Object.keys(RARE_PICKUPS);
@@ -1052,6 +1057,7 @@ Object.assign(ASSET_DATA,{
  groundFull:FOREST_ART+'meadow.jpg'
 });
 ASSET_DATA.cloudFamiliar='./assets/forest-enemies-v5641/cloud-familiar.png';
+ASSET_DATA.pickupBroom='./assets/forest-pickups-v591/magic-broom.webp';
 ASSET_DATA.pickupCrystal='./assets/forest-pickups-v5637/xp-crystal.png';
 ASSET_DATA.pickupBone='./assets/forest-pickups-v5637/health-bone.png';
 ASSET_DATA.ui_gold='./assets/nemo-wardrobe-v5631/gold-pouch.png';
@@ -1391,6 +1397,7 @@ const GAME_SOUNDS={
  hit:[.19,[[0,300,195,.07,.047,'triangle']]],
  pickup:[.105,[[0,880,1175,.072,.040,'sine']]],
  reward:[.22,[[0,523,523,.12,.06,'triangle'],[.066,784,784,.18,.046,'sine']]],
+ sweep:[.7,[[0,580,152,.31,.092,'triangle'],[.05,110,63,.27,.09,'sine'],[.11,880,1055,.15,.040,'sine'],[.19,1240,1180,.19,.036,'sine']]],
  level:[.26,[[0,523,523,.15,.09,'triangle'],[.075,659,659,.18,.08,'triangle'],[.15,880,880,.27,.06,'sine']]],
  hurt:[.20,[[0,190,106,.17,.13,'triangle'],[0,131,75,.19,.045,'sine']]],
  boss:[.65,[[0,196,196,.28,.09,'triangle'],[.15,233,233,.34,.08,'triangle'],[.30,146,110,.45,.10,'sine']]],
@@ -1533,7 +1540,8 @@ function setScreen(s){
  $('hud').inert=s!=='playing';
  const focusTarget={menu:'start',stages:'stages-back',pause:'resume',codex:'codex-back',result:'retry',settings:'settings-title'}[s];
  if(focusTarget)$(focusTarget).focus({preventScroll:true});
- if(s==='playing'&&previous==='pause')$('pause-btn').focus({preventScroll:true});
+ resizePlayfield();
+ if(s==='playing'&&previous==='pause'&&!touchDisplay.matches)$('pause-btn').focus({preventScroll:true});
 }
 let toastTimer=0;function showToast(t,duration=2.5){$('toast').textContent=t;$('toast').classList.remove('hidden');toastTimer=duration;}
 // One continuous survival mode. Scales every real minute, not by a selected difficulty.
@@ -1652,8 +1660,8 @@ function begin(stageId=0){
  syncCostumeVisual();
  saved.stats.plays++;persist();
  g.deco=g.map?campaignDecor(g.map,stage.id):forestDecor();g.treeDecor=g.deco.trees;g.camera=calcCamera();setScreen('playing');
- const touchControls=matchMedia('(pointer: coarse)').matches;
- if(saved.stats.plays===1)showToast(touchControls?'조이스틱으로 이동하세요. 마법은 자동으로 시전돼요.':'WASD 또는 방향키로 이동하세요. 마법은 자동으로 시전돼요.',4.5);
+ const touchControls=touchDisplay.matches;
+ if(saved.stats.plays===1)showToast(touchControls?'전투 화면을 누른 채 끌어 이동하세요. 마법은 자동으로 시전돼요.':'WASD 또는 방향키로 이동하세요. 마법은 자동으로 시전돼요.',4.5);
  else if(stage)showToast(`스테이지 ${stage.id} · ${stage.name}`,2.6);
  else{toastTimer=0;$('toast').classList.add('hidden');}
  updateHUD();
@@ -1828,17 +1836,26 @@ function tryRarePickup(e){
  g.nextRareDrop=g.t+RARE_DROP.cooldown;
  loot(e.x,e.y,0,choose(RARE_PICKUP_KINDS));
 }
-function sweepNonBosses(){
+function sweepNonBosses(x,y){
+ const travel=.55, fade=.29, radius=Math.hypot(Math.abs(x-g.camera.x)+SCREEN_W*.5,
+  Math.abs(y-g.camera.y)+SCREEN_H*.5);
+ const targets=[];
+ let removed=0;
  for(const e of g.enemies){
   if(e.dead||e===g.boss||e.isBoss)continue;
-  e.hp=0;e.dead=true;g.totalKills++;
+  if(visible(e.x,e.y,1)){
+   targets.push({x:e.x,y:e.y,r:e.r,at:Math.min(1,distance(x,y,e.x,e.y)/radius)*travel,phase:e.phase});
+  }
+  e.hp=0;e.dead=true;g.totalKills++;removed++;
   g.metrics.killsByType[e.kind]=(g.metrics.killsByType[e.kind]||0)+1;
   kill(e,false);
  }
+ g.effects.push({kind:'pickupSweep',x,y,radius,targets,travel,fade,life:travel+fade,max:travel+fade});
+ return removed;
 }
 function timeIsSealed(){return !!g&&g.worldClock<(g.timeSealUntil??0);}
 function collect(item){if(item.dead)return;item.dead=true;
- playSound(item.kind==='xp'?'pickup':'reward');
+ playSound(item.kind==='xp'?'pickup':item.kind==='sweepStar'?'sweep':'reward');
  const p=g.player;if(item.kind==='xp'){
   p.xp=Math.round((p.xp+item.xp*(1+scaledPassive('insight')))*100)/100;g.totalXP+=item.xp;
  }else if(item.kind==='rage'){
@@ -1859,9 +1876,8 @@ function collect(item){if(item.dead)return;item.dead=true;
   burst(p.x,p.y,RARE_PICKUPS.timeSeal.color,18);
   showToast('시간 봉인 · 5초 동안 적과 탄환 정지',3);
  }else if(item.kind==='sweepStar'){
-  sweepNonBosses();
-  burst(p.x,p.y,RARE_PICKUPS.sweepStar.color,24);
-  showToast('쓸어버리는 별 · 일반 적 제거',2.7);
+  const removed=sweepNonBosses(p.x,p.y);
+  showToast(`마법 빗자루 · 일반 몬스터 ${removed}마리 제거`,2.7);
  }else if(item.kind==='magnet'){
   g.magnetCount++;
   for(const drop of g.loot){
@@ -1984,12 +2000,12 @@ function chooseEvo(i){if(screen!=='evolution'||!g.currentEvo)return;let w=g.weap
  if(!g.metrics.firstEvolution)g.metrics.firstEvolution=g.t;showToast(`🌟 ${weaponRule(g.currentEvo).evos[i][0]} 진화!`);g.currentEvo=null;afterCard();}
 function afterCard(){setScreen('playing');maybeCards();updateHUD();}
 function reroll(){if(screen!=='cards'||g.rerolls<=0||g.cardReason==='milestone')return;g.rerolls--;g.cards=rollCards(g.cards.find(card=>card.type==='rare'));renderCards();}
-function calcCamera(){return {x:clamp(g.player.x,DATA.widthWorld/2,DATA.world-DATA.widthWorld/2),y:clamp(g.player.y,SCREEN_H/2,DATA.world-SCREEN_H/2)};}
-function visible(x,y,extra=2){if(!g)return true;return Math.abs(x-g.camera.x)<DATA.widthWorld/2+extra&&Math.abs(y-g.camera.y)<SCREEN_H/2+extra;}
+function calcCamera(){return {x:clamp(g.player.x,SCREEN_W/2,DATA.world-SCREEN_W/2),y:clamp(g.player.y,SCREEN_H/2,DATA.world-SCREEN_H/2)};}
+function visible(x,y,extra=2){if(!g)return true;return Math.abs(x-g.camera.x)<SCREEN_W/2+extra&&Math.abs(y-g.camera.y)<SCREEN_H/2+extra;}
 function targetNearest(x,y,r,exclude=new Set(),filter=null){let best=null,dd=r*r;for(const e of g.enemies){if(e.dead||e.retreat||exclude.has(e.id)||filter&&!filter(e))continue;let dx=e.x-x,dy=e.y-y,d=dx*dx+dy*dy;if(d<dd){dd=d;best=e;}}return best;}
 function targetHighestHP(x,y,r){let found=null,max=-Infinity;for(const e of g.enemies){if(e.dead||e.retreat||distance(e.x,e.y,x,y)>r)continue;if(e.hp>max){max=e.hp;found=e;}}return found;}
 function spawnPoint(entry=null,r=.5){
- const c=g.camera,hw=DATA.widthWorld/2,hh=SCREEN_H/2,border=Math.max(.8,r);
+ const c=g.camera,hw=SCREEN_W/2,hh=SCREEN_H/2,border=Math.max(.8,r);
  for(let trial=0;trial<24;trial++){
   const formation=trial<7?entry:null;
   const side=formation?.side??Math.floor(rand()*4);
@@ -2123,7 +2139,7 @@ function updateForestEncounter(){
  }
  const moths=event==='moths';
  showToast(moths?'달가루 나방 떼가 다가와요!':'여러 방향에서 숲의 괴물들이 다가와요!',2.4);
- const c=g.camera,hw=DATA.widthWorld/2,hh=SCREEN_H/2;
+ const c=g.camera,hw=SCREEN_W/2,hh=SCREEN_H/2;
  const sides=[c.y-hh,DATA.world-c.y-hh,c.x-hw,DATA.world-c.x-hw]
   .flatMap((space,index)=>space>2.7?[index]:[]);
  const start=Math.floor(rand()*sides.length);
@@ -3499,7 +3515,7 @@ function isNearForestPath(x,y,pad,sections=PATH_SEGMENTS){
  });
 }
 function drawForestTrails(c,flecks,map){
- const left=c.x-DATA.widthWorld/2-2,right=c.x+DATA.widthWorld/2+2;
+ const left=c.x-SCREEN_W/2-2,right=c.x+SCREEN_W/2+2;
  const top=c.y-SCREEN_H/2-2,bottom=c.y+SCREEN_H/2+2;
  const routes=(map?.paths??FOREST_PATHS).filter(p=>p.minX<right&&p.maxX>left&&p.minY<bottom&&p.maxY>top);
  ctx.save();
@@ -3599,11 +3615,11 @@ function campaignDecor(map,id){
  return decor;
 }
 function visibleTerrain(x,y,c,pad=0){
- return Math.abs(x-c.x)<DATA.widthWorld/2+pad&&Math.abs(y-c.y)<SCREEN_H/2+pad;
+ return Math.abs(x-c.x)<SCREEN_W/2+pad&&Math.abs(y-c.y)<SCREEN_H/2+pad;
 }
 function drawWorldGround(c,deco){
- const left=c.x-DATA.widthWorld/2-1,top=c.y-SCREEN_H/2-1;
- const width=DATA.widthWorld+2,height=SCREEN_H+2;
+ const left=c.x-SCREEN_W/2-1,top=c.y-SCREEN_H/2-1;
+ const width=SCREEN_W+2,height=SCREEN_H+2;
  const map=deco.map;
  ctx.fillStyle=map?.ground??'#d9e5bd';ctx.fillRect(left,top,width,height);
  const ground=sprites[map?.texture??'groundFull'];
@@ -3619,8 +3635,11 @@ function drawWorldGround(c,deco){
    wash.addColorStop(0,map.fleck+'54');wash.addColorStop(1,map.fleck+'00');
    ctx.fillStyle=wash;ctx.fillRect(p.x-r,p.y-r,r*2,r*2);
   }
-  for(const p of deco.grain)if(visibleTerrain(p.x,p.y,c,.2))
-   ellipse(p.x,p.y,p.r,p.r*.42,map.fleck,p.a);
+  const step=touchDisplay.matches?3:1;
+  for(let i=0;i<deco.grain.length;i+=step){
+   const p=deco.grain[i];
+   if(visibleTerrain(p.x,p.y,c,.2))ellipse(p.x,p.y,p.r,p.r*.42,map.fleck,p.a);
+  }
  }
  for(const [relativeX,relativeY,r,color] of map?[]:FOREST_WASHES){
   const [x,y]=forestPoint(relativeX,relativeY);
@@ -3857,8 +3876,11 @@ function drawGem(l){
  }else if(RARE_PICKUPS[l.kind]){
   const reward=RARE_PICKUPS[l.kind];
   ellipse(l.x,y,.31,.31,reward.color,.45);
-  if(sprites[reward.icon]?.naturalWidth)drawPickup(reward.icon,l.x,y,.70);
-  else star(l.x,y,.22,0,reward.color,'#79526d');
+  if(sprites[reward.icon]?.naturalWidth)drawPickup(reward.icon,l.x,y,l.kind==='sweepStar'?.94:.70);
+  else if(l.kind==='sweepStar'){
+   line(l.x+.04,y-.30,l.x-.08,y+.09,'#725582',.11);
+   polygon([[l.x-.13,y-.05],[l.x+.07,y+.015],[l.x+.16,y+.29],[l.x-.32,y+.18]],'#8be1ca','#325966',.05);
+  }else star(l.x,y,.22,0,reward.color,'#79526d');
  }else imageSprite('fx_coin',l.x,y,.56,.56);
 }
 const SPELL_EFFECT_PAINT={
@@ -3970,9 +3992,51 @@ function drawBookFamiliar(){
  star(0,-.26,.118,0,'#fff0a5','#a673a5');
  ctx.restore();
 }
+function drawPickupSweep(e){
+ const elapsed=e.max-e.life, still=reducedMotion.matches;
+ const progress=clamp(elapsed/e.travel,0,1);
+ ctx.save();
+ if(!still&&progress<1){
+  const r=Math.max(.10,e.radius*progress);
+  ctx.globalAlpha=.75*(1-progress**2);
+  ctx.lineCap='round';
+  for(let i=0;i<5;i++){
+   const heading=i*TAU/5+progress*.50;
+   ctx.beginPath();
+   ctx.arc(e.x,e.y,r,heading,heading+.89);
+   ctx.lineWidth=.20;
+   ctx.strokeStyle='#327d81';
+   ctx.stroke();
+   ctx.lineWidth=.08;
+   ctx.strokeStyle='#d5fff1';
+   ctx.stroke();
+  }
+ }
+ const lift=still?0:progress*.63;
+ imageSprite('pickupBroom',e.x,e.y-.98-lift,1.08,1.08,1,1-progress);
+ for(const spot of e.targets){
+  const dissipate=(elapsed-(still?0:spot.at))/e.fade;
+  if(dissipate<0||dissipate>=1)continue;
+  ctx.globalAlpha=(1-dissipate)*.85;
+  const extent=spot.r*(still?1:.6+dissipate*.9);
+  ellipse(spot.x,spot.y,extent,extent*.60,'#b7efdf',.48);
+  if(!still&&opts.particles){
+   for(let i=0;i<3;i++){
+    const angle=spot.phase+i*TAU/3;
+    const x=spot.x+Math.cos(angle)*extent;
+    const y=spot.y+Math.sin(angle)*extent-dissipate*.26;
+    ellipse(x,y,.08,.055,i===0?'#fff0b5':'#ecfff5');
+   }
+  }
+ }
+ ctx.restore();
+}
 function drawEffects(){for(const e of g.effects){if(e.kind==='event')continue;const f=clamp(e.life/e.max,0,1);
  ctx.save();ctx.globalAlpha=f;
- if(e.kind==='healingPickup'){
+ if(e.kind==='pickupSweep'){
+  ctx.globalAlpha=1;
+  drawPickupSweep(e);
+ }else if(e.kind==='healingPickup'){
   const p=g.player,rise=reducedMotion.matches?0:(1-f)*.78;
   for(const [dx,dy,size] of [[.78,-.67,.18],[-.65,-.38,.13],[.37,-1.10,.10]]){
    const x=p.x+dx,y=p.y+dy-rise;
@@ -4231,13 +4295,13 @@ function drawForestFrenzy(){
  if(!forestFrenzied())return;
  const t=g.worldClock,p=g.player,c=g.camera;
  const fade=clamp(Math.min((t-g.frenzyStarts)/.58,(g.frenzyUntil-t)/.82),0,1);
- const veil=ctx.createRadialGradient(p.x,p.y,1.6,p.x,p.y,DATA.widthWorld*.62);
+ const veil=ctx.createRadialGradient(p.x,p.y,1.6,p.x,p.y,SCREEN_W*.62);
  veil.addColorStop(0,'#29203942');
  veil.addColorStop(.46,'#29203972');
  veil.addColorStop(1,'#201732b0');
  ctx.save();ctx.globalAlpha=fade;
  ctx.fillStyle=veil;
- ctx.fillRect(c.x-DATA.widthWorld/2-1,c.y-SCREEN_H/2-1,DATA.widthWorld+2,SCREEN_H+2);
+ ctx.fillRect(c.x-SCREEN_W/2-1,c.y-SCREEN_H/2-1,SCREEN_W+2,SCREEN_H+2);
  ctx.restore();
 }
 function drawBattle(){
@@ -4272,7 +4336,7 @@ function drawBattle(){
  drawForestFrenzy();
  if(timeIsSealed()){
   ctx.fillStyle='#b7dcf133';
-  ctx.fillRect(g.camera.x-DATA.widthWorld/2-1,g.camera.y-SCREEN_H/2-1,DATA.widthWorld+2,SCREEN_H+2);
+  ctx.fillRect(g.camera.x-SCREEN_W/2-1,g.camera.y-SCREEN_H/2-1,SCREEN_W+2,SCREEN_H+2);
  }
  if(g.stage&&g.boss&&g.enemyShots.length){
   const p=g.player,y=p.y+NEMO_HURT_Y;
@@ -4297,33 +4361,63 @@ function drawMenuWorld(){
  ctx.restore();
 }
 function draw(){ctx.fillStyle='#d9e5bd';ctx.fillRect(0,0,VW,VH);if(g)drawBattle();else drawMenuWorld();
- if(opts.particles && sprites.grain?.complete&&sprites.grain.naturalWidth){ctx.save();ctx.globalAlpha=.17;ctx.drawImage(sprites.grain,0,0,VW,VH);ctx.restore();}
+ if(opts.particles&&!touchDisplay.matches && sprites.grain?.complete&&sprites.grain.naturalWidth){ctx.save();ctx.globalAlpha=.17;ctx.drawImage(sprites.grain,0,0,VW,VH);ctx.restore();}
 }
 // --------- controls, fixed-step loop and saved upgrades ---------------
 const keys=new Set(),touch={active:false,x:0,y:0,id:null},pad=$('touch-pad'),knob=$('touch-knob');
-function joystick(e){
- const rect=pad.getBoundingClientRect();
- const x=e.clientX-rect.left-rect.width/2,y=e.clientY-rect.top-rect.height/2;
- const magnitude=Math.max(1,len(x,y)),strength=Math.min(1,magnitude/(rect.width*.33));
- touch.x=x/magnitude*strength;touch.y=y/magnitude*strength;
- knob.style.left=(50+touch.x*29)+'%';
- knob.style.top=(50+touch.y*29)+'%';
+const fieldScreens=new Set(['playing','intro','pause','cards','evolution']);
+function resizePlayfield(){
+ const mobile=touchDisplay.matches;
+ const expanded=compactTouchField.matches&&fieldScreens.has(screen);
+ const width=expanded?canvas.clientWidth:desktopWidth;
+ const height=expanded?canvas.clientHeight:desktopHeight;
+ if(!width||!height)return;
+ const scale=mobile?Math.min(expanded?Math.min(1.5,devicePixelRatio):.65,Math.sqrt(520000/(width*height))):1;
+ const nextWidth=Math.max(1,Math.round(width*scale)),nextHeight=Math.max(1,Math.round(height*scale));
+ const nextWorldWidth=expanded&&tallTouchField.matches?24:DATA.widthWorld;
+ if(VW===nextWidth&&VH===nextHeight&&SCREEN_W===nextWorldWidth)return;
+ clearTouch();
+ VW=canvas.width=nextWidth;VH=canvas.height=nextHeight;
+ SCREEN_W=nextWorldWidth;PPU=VW/SCREEN_W;SCREEN_H=VH/PPU;
+ if(g)g.camera=calcCamera();
+ needsDraw=true;
 }
-pad.addEventListener('pointerdown',e=>{
- if(screen!=='playing'||touch.active)return;
- e.preventDefault();
- touch.active=true;touch.id=e.pointerId;
- pad.setPointerCapture(e.pointerId);joystick(e);
+const viewportObserver=new ResizeObserver(resizePlayfield);
+viewportObserver.observe(canvas);
+touchDisplay.addEventListener('change',resizePlayfield);
+function joystick(event){
+ const dx=event.clientX-touch.originX,dy=event.clientY-touch.originY;
+ const distance=Math.hypot(dx,dy);
+ const strength=clamp((distance-5)/(touch.radius-5),0,1);
+ touch.x=distance?dx/distance*strength:0;
+ touch.y=distance?dy/distance*strength:0;
+ knob.style.setProperty('--knob-x',`${touch.x*touch.radius*.73}px`);
+ knob.style.setProperty('--knob-y',`${touch.y*touch.radius*.73}px`);
+}
+canvas.addEventListener('pointerdown',event=>{
+ if(screen!=='playing'||touch.active||!['touch','pen'].includes(event.pointerType))return;
+ event.preventDefault();
+ const app=canvas.parentElement, bounds=app.getBoundingClientRect(),field=canvas.getBoundingClientRect();
+ const radius=pad.offsetWidth*.40||35, edge=radius+8;
+ touch.active=true;touch.id=event.pointerId;
+ touch.originX=event.clientX;touch.originY=event.clientY;touch.radius=radius;
+ pad.style.setProperty('--stick-x',`${clamp(event.clientX,field.left+edge,field.right-edge)-bounds.left-app.clientLeft}px`);
+ pad.style.setProperty('--stick-y',`${clamp(event.clientY,field.top+edge,field.bottom-edge)-bounds.top-app.clientTop}px`);
+ pad.dataset.active='true';
+ canvas.setPointerCapture(event.pointerId);
+ joystick(event);
 });
-pad.addEventListener('pointermove',e=>{if(touch.active&&e.pointerId===touch.id)joystick(e);});
-function clearTouch(e){
- if(e&&e.pointerId!==touch.id)return;
+canvas.addEventListener('pointermove',event=>{if(touch.active&&event.pointerId===touch.id)joystick(event);});
+function clearTouch(event){
+ if(event&&event.pointerId!==touch.id)return;
  const id=touch.id;
  touch.active=false;touch.id=null;touch.x=touch.y=0;
- if(id!==null&&pad.hasPointerCapture(id))pad.releasePointerCapture(id);
- knob.style.left='50%';knob.style.top='50%';
+ if(id!==null&&canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);
+ delete pad.dataset.active;
+ knob.style.removeProperty('--knob-x');
+ knob.style.removeProperty('--knob-y');
 }
-for(const event of ['pointerup','pointercancel','lostpointercapture'])pad.addEventListener(event,clearTouch);
+for(const event of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(event,clearTouch);
 function frame(time){if(!last)last=time;let delta=clamp((time-last)/1000,0,.05);last=time;
  if(screen==='playing'||screen==='intro'){accumulator+=delta;let n=0;while(accumulator>=1/60&&n++<5){update(1/60);accumulator-=1/60;if(screen!=='playing'&&screen!=='intro'){accumulator=0;break;}}}else accumulator=0;
  menuArtTime+=delta;
@@ -4756,7 +4850,7 @@ rankWire();renderMenu();setScreen('menu');if(!nicknameConfirmed())showNicknameSe
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.9.0';
+  const CURRENT='5.9.1';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
