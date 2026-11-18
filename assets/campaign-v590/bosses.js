@@ -59,7 +59,7 @@ const NEMO_CAMPAIGN_BOSSES = (() => {
   }},
   'boar-fault':{name:'뿌리 지진',color:palettes.earth,warn:1.13,damage:12,build(a){
    const direction=a.aim+(a.index?.55:0);
-   return [ray(a,direction,9,.93),ray(a,direction-.64,7,.49),ray(a,direction+.64,7,.49)];
+   return [ray(a,direction,9,.78),ray(a,direction-.91,7,.32),ray(a,direction+.91,7,.32)];
   }},
   'owl-gust':{name:'교차 돌풍',color:palettes.sky,warn:1.06,damage:11,build(a){
    const angle=a.aim+(a.index?.88:.28);
@@ -93,8 +93,9 @@ const NEMO_CAMPAIGN_BOSSES = (() => {
    return [lane(a,height,.85,7.5),lane(a,height-1.33,.29,6.65)];
   }},
   'rain-pools':{name:'빗방울 웅덩이',color:palettes.water,warn:1.00,damage:12,build(a){
-   const offset=a.index%2?1.35:-1.22;
-   return burstPoints(a,[[-2.6,offset],[0,offset],[2.6,offset],[-1.3,-offset],[1.3,-offset]],1.13);
+   const offset=a.index%2?1.35:-1.15;
+   const droplets=burstPoints(a,[[-2.75,offset],[2.75,offset],[-1.65,-offset],[1.65,-offset]],.85);
+   return [circle(...point(a,0,offset),1.19),...droplets];
   }},
   'clock-blades':{name:'교차 톱니날',color:palettes.gear,warn:1.06,damage:14,build(a){
    const angle=a.aim+a.index*Math.PI/4;
@@ -120,13 +121,19 @@ const NEMO_CAMPAIGN_BOSSES = (() => {
    const [u,v]=[[0,0],[2.35,1.6],[-2.35,-1.6]][a.index];
    return burstPoints(a,[[u,v],[u-2.9,v+2.5],[u+2.9,v-2.5]],1.58);
   }},
-  constellation:{name:'별자리 광선',color:palettes.star,warn:1.10,damage:15,build(a){
+  constellation:{name:'별자리 광선',color:palettes.star,warn:1.19,damage:15,build(a){
    const angle=a.aim+a.index*Math.PI/5;
-   return [-1,0,1].map(i=>lane(a,0,.51,6.8,angle+i*Math.PI/3));
+   return [-1,0,1].map(i=>lane(a,0,.45,6.8,angle+i*Math.PI/3));
   }},
   eclipse:{name:'밤하늘 일식',color:palettes.void,warn:1.22,damage:16,build(a){
-   const [x,y]=point(a,a.index===2?2.40:0,0);
-   return a.index===1?[circle(x,y,1.70)]:[band(x,y,1.5,4.75)];
+   const {targetX:x,targetY:y}=a;
+   if(a.index===1)return [circle(x,y,1.70)];
+   if(a.index===2){
+    // The shifted safe zone moves inward toward the dragon, away from the arena edge.
+    const [cx,cy]=point(a,-1.90,0);
+    return [band(cx,cy,1.78,3.80)];
+   }
+   return [band(x,y,1.5,4.75)];
   }}
  };
  const repeated = new Set(['mirror-lanes','ember-trail','tide-surge','gear-sweep','starfall','eclipse']);
@@ -163,7 +170,8 @@ const NEMO_CAMPAIGN_BOSSES = (() => {
   const progress=(stage.id-1)/29;
   const advanced=Math.max(0,stage.id-10)/20;
   const threat=[.51,.73,1][wave];
-  const hpScale=[.23,.47,1][wave];
+  // Late scouts grow with campaign depth, but the final boss should remain the longest encounter.
+  const hpScale=[.23-.05*advanced,.47-.14*advanced,1][wave];
   return {...base,form,final,name:final?stage.title:profile.scout,
    cycles:[opening,main,late],
    hp:Math.round(stage.hp*hpScale),gold:final?0:Math.round(stage.reward*(wave===0?.15:.27)),
@@ -234,13 +242,12 @@ const NEMO_CAMPAIGN_BOSSES = (() => {
   ctx.stroke();
  }
 
- function draw(ctx,action){
-  if(!action||!action.hazards)return;
-  const winding=action.type==='campaign-warn';
+ function drawImpact(ctx,action){
+  if(action?.type!=='campaign-strike')return;
   ctx.save();
-  ctx.setLineDash(winding?[.27,.14]:[]);
-  ctx.lineWidth=winding?.083:.10;
-  ctx.fillStyle=action.rule.color+(winding?'42':'a9');
+  ctx.setLineDash([]);
+  ctx.lineWidth=.10;
+  ctx.fillStyle=action.rule.color+'a9';
   ctx.strokeStyle='#322541';
   for(const hazard of action.hazards)drawHazard(ctx,hazard);
   ctx.lineWidth=.046;
@@ -250,18 +257,5 @@ const NEMO_CAMPAIGN_BOSSES = (() => {
   ctx.restore();
  }
 
- function drawDash(ctx,boss,action){
-  if(action?.type!=='dash-warn')return;
-  const {x,y,r}=boss,{aim,travel}=action;
-  const d=line(x,y,x+Math.cos(aim)*travel,y+Math.sin(aim)*travel,r-.08);
-  ctx.save();
-  ctx.setLineDash([.3,.19]);
-  ctx.lineWidth=.075;
-  ctx.fillStyle='#ee917344';
-  ctx.strokeStyle='#512c3e';
-  drawHazard(ctx,d);
-  ctx.restore();
- }
-
- return {art,definition,start,advance,draw,drawDash};
+ return {art,definition,start,advance,drawImpact};
 })();

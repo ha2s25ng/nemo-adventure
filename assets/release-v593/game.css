@@ -1,0 +1,338 @@
+#app :is(#save-transfer,#pause-exit-confirm)[hidden] { display:none; }
+
+#app #save-transfer {
+  display:grid;
+  gap:8px;
+  margin-top:10px;
+  text-align:left;
+}
+#app #save-transfer textarea {
+  width:100%;
+  min-height:88px;
+  max-height:30dvh;
+  padding:8px;
+  border:1px solid #aab497;
+  border-radius:8px;
+  background:#fffdf4;
+  color:#344837;
+  font-size:16px;
+  resize:vertical;
+}
+#app #save-transfer button[hidden] { display:none !important; }
+#app #save-transfer .settings-actions { flex-wrap:wrap; }
+#app #save-transfer p { margin:0; line-height:1.45; }
+#app #save-preview { white-space:pre-line; }
+
+#app #pause-exit-confirm {
+  display:grid;
+  gap:8px;
+  padding:8px 0 0;
+}
+#app #pause-exit-confirm p { margin:0; }
+#app #pause-exit-confirm .pause-exit-actions {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+}
+#app #pause-exit-confirm button { min-height:44px; }
+
+#app #rank-submit[hidden] { display:none !important; }
+#app #toast { word-break:keep-all; text-wrap:balance; }
+
+#app #hud .hud-loadouts {
+  display:grid;
+  gap:4px;
+  min-width:0;
+}
+#app #hud #passive-slots {
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px;
+}
+#app #hud #passive-slots:empty { display:none; }
+#app #hud .passive-slot {
+  position:relative;
+  box-sizing:border-box;
+  display:grid;
+  place-items:center;
+  width:clamp(28px,3.4vw,40px);
+  aspect-ratio:1;
+  padding:2px 6px 5px;
+  border:1px solid #a692b2;
+  border-radius:8px;
+  background:linear-gradient(#fffaf0,#e9def1);
+  color:#453452;
+  box-shadow:0 1px #6d557c;
+}
+#app #hud .passive-slot > span {
+  position:absolute;
+  inset:2px 5px 10px;
+  display:grid;
+  place-items:center;
+  min-height:0;
+  font-size:16px;
+}
+#app #hud .passive-slot img {
+  display:block;
+  width:100% !important;
+  height:100% !important;
+  min-width:0 !important;
+  min-height:0 !important;
+  object-fit:contain;
+}
+#app #hud .passive-slot small {
+  position:absolute;
+  right:1px;
+  bottom:1px;
+  padding:1px 2px;
+  border-radius:3px;
+  background:#665075;
+  color:#fff8fa;
+  font-size:9px;
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+#app #pause .pause-loadout > li {
+  display:grid;
+  grid-template-columns:22px minmax(0,1fr) auto;
+  gap:6px;
+  min-height:32px;
+  text-align:left;
+}
+#app #pause .pause-loadout li > span {
+  white-space:nowrap;
+  overflow-wrap:normal;
+}
+#app #pause .pause-loadout img {
+  width:22px !important;
+  height:22px !important;
+  object-fit:contain;
+}
+#app #pause #pause-passives > li {
+  border-color:#b2a1b9;
+  background:#f6edf6;
+  color:#453452;
+}
+#app #pause #pause-passives small {
+  color:#50365f;
+  font-variant-numeric:tabular-nums;
+}
+@media (any-pointer:coarse) {
+  #app #cards .choice-card[data-kind="passive"] :is(.choice-name,.choice-effect,.choice-copy,.choice-meta) {
+    word-break:keep-all;
+    overflow-wrap:anywhere;
+  }
+}
+@media (max-width:490px) and (orientation:portrait) and (any-pointer:coarse) {
+  #app #pause .pause-loadout { grid-template-columns:minmax(0,1fr); }
+}
+#app #hud .survival-left #buffs:not(:empty) {
+  height:auto !important;
+  min-height:18px;
+  line-height:1.25;
+  padding:3px 6px;
+}
+#app:is([data-screen="pause"],[data-screen="cards"],[data-screen="evolution"]) #toast {
+  visibility:hidden;
+}
+@media (orientation:landscape) and (max-height:450px) and (any-pointer:coarse) {
+  #app #pause .pause-board { width:min(590px,94%) !important; }
+  #app #pause .pause-inventory {
+    display:grid;
+    grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);
+    gap:0 10px;
+    align-items:start;
+  }
+  #app #pause .pause-inventory .pause-gear:first-child { grid-area:1 / 1 / 3 / 2; }
+  #app #pause #pause-passive-gear { grid-area:1 / 2; }
+  #app #pause #pause-rare-gear { grid-area:2 / 2; }
+  #app #pause .pause-inventory .pause-loadout {
+    grid-template-columns:minmax(0,1fr);
+    margin-bottom:6px;
+  }
+  #app #pause .pause-inventory .pause-loadout > li {
+    grid-template-columns:19px minmax(0,1fr) auto;
+    min-height:25px;
+    padding:1px 5px;
+  }
+  #app #pause .pause-inventory .pause-loadout img { width:19px !important; height:19px !important; }
+}
+
+@media (max-width:1024px) and (any-pointer:coarse) {
+  #app #hud .hud-top {
+    inset:max(7px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) auto max(8px,env(safe-area-inset-left));
+    gap:5px;
+    --mobile-hud-paper:#fff9e9;
+    --mobile-hud-edge:#b5b99b;
+    --mobile-hud-ink:#344531;
+    --mobile-hud-height:44px;
+  }
+  #app #hud .survival-xp {
+    min-height:17px;
+    padding:0 !important;
+    border:1px solid var(--mobile-hud-edge) !important;
+    border-radius:7px !important;
+    background:#e0e7cd !important;
+    box-shadow:none !important;
+  }
+  #app #hud .survival-xp .xp-shell {
+    background:#e0e7cd !important;
+  }
+  #app #hud .survival-xp #level {
+    padding:0 7px;
+    border-color:var(--mobile-hud-edge);
+    background:var(--mobile-hud-paper);
+    font:800 11px/1 system-ui,sans-serif;
+    color:var(--mobile-hud-ink) !important;
+  }
+  #app #hud .survival-status {
+    grid-template-columns:minmax(98px,1fr) minmax(66px,.64fr) minmax(102px,1fr);
+    grid-template-areas:"health time counts" "gear gear gear";
+    align-items:stretch;
+    gap:5px 6px;
+  }
+  #app #hud .survival-status .survival-left { display:contents; }
+  #app #hud .survival-status .hud-player:has(#portrait),
+  #app #hud .survival-status #survival-timer,
+  #app #hud .survival-status .hud-right {
+    position:static !important;
+    align-self:stretch;
+    justify-self:stretch;
+    width:100% !important;
+    height:var(--mobile-hud-height) !important;
+    min-height:var(--mobile-hud-height) !important;
+    min-width:0;
+    max-width:none;
+    box-sizing:border-box;
+    border:1px solid var(--mobile-hud-edge) !important;
+    border-radius:9px !important;
+    background:var(--mobile-hud-paper) !important;
+    box-shadow:none !important;
+  }
+  #app #hud .survival-status .hud-player:has(#portrait) {
+    grid-area:health;
+    padding:4px 6px;
+    gap:5px;
+  }
+  #app #hud .survival-status .woodland-portrait { width:23px; flex:0 0 23px; }
+  #app #hud .survival-status .hud-player .woodland-heart { width:11px; height:11px; }
+  #app #hud .survival-status .hud-player .hud-health { min-width:0; gap:3px; }
+  #app #hud .survival-status .hud-player #hp {
+    font:800 11px/1.15 system-ui,sans-serif;
+    color:var(--mobile-hud-ink) !important;
+  }
+  #app #hud .survival-status .hud-player[data-health="low"] #hp { color:#922e42 !important; }
+  #app #hud .survival-status .hud-player .track { height:5px !important; min-height:5px; }
+  #app #hud .survival-status .survival-clock { grid-area:time; display:block; justify-self:stretch; }
+  #app #hud .survival-status #survival-timer {
+    display:grid;
+    place-items:center;
+    padding:0 3px;
+    text-align:center;
+    filter:none;
+  }
+  #app #hud .survival-status #survival-timer[data-rush="true"] {
+    border-color:#c28178 !important;
+    background:#fae3d7 !important;
+  }
+  #app #hud .survival-status #survival-timer .timer-content {
+    position:static !important;
+    inset:auto !important;
+    padding:0;
+  }
+  #app #hud .survival-status #survival-timer #time {
+    white-space:nowrap;
+    font:800 clamp(14px,4.4vw,17px)/1 system-ui,sans-serif !important;
+    font-variant-numeric:tabular-nums !important;
+    letter-spacing:0;
+    color:var(--mobile-hud-ink) !important;
+    text-shadow:none !important;
+  }
+  #app #hud .survival-status .hud-right {
+    grid-area:counts;
+    display:grid;
+    overflow:hidden;
+    grid-template:1fr 1fr / minmax(0,1fr) 44px;
+    gap:0;
+    align-items:center;
+    padding:0;
+  }
+  #app #hud .survival-status .hud-right :is(.survival-kills,.money) {
+    padding:0 4px;
+    justify-content:flex-start;
+    border:0 !important;
+    border-image:none !important;
+    border-radius:0;
+    background:none !important;
+    box-shadow:none !important;
+    gap:4px;
+    width:100%;
+    min-width:0;
+    color:var(--mobile-hud-ink) !important;
+    font-size:11px;
+    line-height:1;
+  }
+  #app #hud .survival-status .hud-right .money { grid-row:2; grid-column:1; }
+  #app #hud .survival-status .hud-right :is(.survival-kills img,.money-icon) {
+    width:11px !important;
+    height:11px !important;
+    flex:none;
+  }
+  #app #hud .survival-status .hud-right :is(#gold-hud,#kills-hud) { font:800 11px/1 system-ui,sans-serif; }
+  #app #hud .survival-status .hud-right #pause-btn {
+    grid-area:1 / 2 / 3 / 3;
+    margin:0;
+    align-self:center;
+    border:0 !important;
+    border-left:1px solid var(--mobile-hud-edge) !important;
+    border-radius:0 8px 8px 0 !important;
+    background:#edf0dc !important;
+    box-shadow:none !important;
+  }
+  #app #hud .survival-status .hud-right #pause-btn img {
+    width:24px !important;
+    height:24px !important;
+    margin:auto;
+  }
+  #app #hud .survival-status .survival-left .hud-loadouts {
+    grid-area:gear;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:8px;
+  }
+  #app #hud .survival-status .survival-left #weapon-slots {
+    position:static;
+    flex-wrap:nowrap;
+    gap:3px !important;
+  }
+  #app #hud .survival-status .survival-left #weapon-slots .slot:not(.slot-empty),
+  #app #hud .passive-slot {
+    width:29px !important;
+    height:29px !important;
+    min-width:29px;
+    min-height:29px;
+    box-shadow:none !important;
+    border-radius:7px !important;
+  }
+  #app #hud .survival-status .survival-left #weapon-slots .slot:not(.slot-empty) {
+    padding:1px 3px !important;
+    border:1px solid #b4a18e !important;
+    background:#fbefd9 !important;
+  }
+  #app #hud #passive-slots { flex-wrap:nowrap; margin-inline-start:auto; gap:3px; }
+  #app #hud .survival-status .survival-left #buffs {
+    position:fixed;
+    top:auto;
+    left:auto;
+    bottom:max(16px,env(safe-area-inset-bottom));
+    right:max(12px,env(safe-area-inset-right));
+    max-width:55%;
+  }
+}
+@media (max-width:650px) and (orientation:portrait) and (any-pointer:coarse) {
+  #app:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"],[data-screen="cards"],[data-screen="evolution"]) {
+    --field-top:calc(max(7px,env(safe-area-inset-top)) + 106px);
+  }
+}

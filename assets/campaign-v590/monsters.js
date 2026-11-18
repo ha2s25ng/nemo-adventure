@@ -64,7 +64,7 @@ function createCampaignMonsterBehavior({
  }
  function prepareCampaignMonsterAttack(e,rule,aim,dist){
   const p=getGame().player;
-  const a={type:'campaign-warn',t:rule.windup,max:rule.windup,aim,x:e.x,y:e.y,color:rule.tint,
+  const a={type:'campaign-warn',t:rule.windup,aim,x:e.x,y:e.y,color:rule.tint,
    lanes:[],circles:[],rays:[]};
   switch(e.kind){
   case 'crystal-crab':
@@ -74,22 +74,18 @@ function createCampaignMonsterBehavior({
   case 'prism-wisp':
    a.rays=[aim-.46,aim+.46];
    break;
-  case 'frost-hare':{
-   const reach=campaignMonsterTravel(e,aim,Math.min(dist+.35,5.1));
-   const land=campaignMonsterPoint(e.x,e.y,aim,reach);
-   a.circles.push({...land,r:1.03});
-   a.travel=reach;
+  case 'frost-hare':
+   a.travel=campaignMonsterTravel(e,aim,Math.min(dist+.35,5.1));
    break;
-  }
   case 'snow-moth':
    a.rays=Array.from({length:6},(_,i)=>aim+.24+i*TAU/6);
    break;
   case 'ember-beetle':
    a.circles.push({x:e.x,y:e.y,r:2.12});
+   a.rays=Array.from({length:6},(_,i)=>aim+(i+1)*TAU/8);
    break;
   case 'ash-viper':
    a.travel=campaignMonsterTravel(e,aim,Math.min(dist+1.5,7.2));
-   a.lanes.push(campaignMonsterLane(e.x,e.y,aim,a.travel,.82));
    break;
   case 'kelp-spirit':{
    const second=campaignMonsterPoint(p.x,p.y,aim+Math.PI/2*(e.id%2?1:-1),2.0);
@@ -97,10 +93,7 @@ function createCampaignMonsterBehavior({
    break;
   }
   case 'tide-ray':
-   for(const offset of [-1.48,0,1.48]){
-    const start=campaignMonsterPoint(e.x,e.y,aim+Math.PI/2,offset);
-    a.lanes.push(campaignMonsterLane(start.x,start.y,aim,7.5,.38));
-   }
+   a.emitters=[-1.48,0,1.48].map(offset=>campaignMonsterPoint(e.x,e.y,aim+Math.PI/2,offset));
    break;
   case 'clock-scarab':{
    const turn=Math.round(aim/(Math.PI/4))*Math.PI/4;
@@ -133,7 +126,7 @@ function createCampaignMonsterBehavior({
    for(const aim of a.rays)shot(aim,4.45,8,'prism-pulse');
    if(!a.echo){
     // The narrow delayed volley converges on the original line of sight.
-    e.attackState={...a,t:.46,max:.46,rays:[a.aim-.11,a.aim+.11],echo:true};
+    e.attackState={...a,t:.46,rays:[a.aim-.11,a.aim+.11],echo:true};
     return;
    }
    break;
@@ -141,33 +134,30 @@ function createCampaignMonsterBehavior({
   case 'ash-viper':{
    const hop=e.kind==='frost-hare';
    e.attackState={...a,type:hop?'campaign-leap':'campaign-dash',t:0,left:a.travel,
-    speed:hop?10.7:9.15,landing:hop?a.circles[0]:null};
+    speed:hop?10.7:9.15};
    return;
   }
   case 'snow-moth':
    for(const aim of a.rays)shot(aim,3.35,7,'snow-flake');
    if(!a.echo){
-    e.attackState={...a,type:'campaign-warn',t:.48,max:.48,rays:a.rays.map(angle=>angle+TAU/12),echo:true};
+    e.attackState={...a,type:'campaign-warn',t:.48,rays:a.rays.map(angle=>angle+TAU/12),echo:true};
     return;
    }
    break;
   case 'ember-beetle':
    campaignMonsterHazard(e,a.circles[0],a,11,.24);
-   for(let i=0;i<8;i++)if(i!==0&&i!==7)shot(a.aim+i*TAU/8,3.12,7,'ember-spark');
+   for(const aim of a.rays)shot(aim,3.12,7,'ember-spark');
    break;
   case 'kelp-spirit':
    for(const shape of a.circles)campaignMonsterHazard(e,shape,a,9,2.4);
    break;
   case 'tide-ray':
-   for(const lane of a.lanes){
-    campaignMonsterShot(e,lane.x,lane.y,a.aim,4.65,8,'tide-drop');
+   for(const start of a.emitters){
+    campaignMonsterShot(e,start.x,start.y,a.aim,4.65,8,'tide-drop');
    }
    if(!a.echo){
-    const lanes=[-2.22,-.74,.74,2.22].map(offset=>{
-     const start=campaignMonsterPoint(a.x,a.y,a.aim+Math.PI/2,offset);
-     return campaignMonsterLane(start.x,start.y,a.aim,7.5,.38);
-    });
-    e.attackState={...a,type:'campaign-warn',t:.51,max:.51,lanes,echo:true};
+    const emitters=[-2.22,-.74,.74,2.22].map(offset=>campaignMonsterPoint(a.x,a.y,a.aim+Math.PI/2,offset));
+    e.attackState={...a,type:'campaign-warn',t:.51,emitters,echo:true};
     return;
    }
    break;
@@ -178,7 +168,7 @@ function createCampaignMonsterBehavior({
    for(const aim of a.rays)shot(aim,3.46,9,'star-dust');
    if(!a.echo){
     const turn=(e.id%2?1:-1)*.58;
-    e.attackState={...a,type:'campaign-warn',t:.58,max:.58,rays:a.rays.map(angle=>angle+turn),echo:true};
+    e.attackState={...a,type:'campaign-warn',t:.58,rays:a.rays.map(angle=>angle+turn),echo:true};
     return;
    }
    break;
@@ -200,7 +190,7 @@ function createCampaignMonsterBehavior({
   }
   if(a.left<=.001||blocked){
    if(hop){
-    campaignMonsterHazard(e,{x:e.x,y:e.y,r:a.landing.r},a,12,.22);
+    campaignMonsterHazard(e,{x:e.x,y:e.y,r:1.03},a,12,.22);
    }
    e.attackState=null;
    e.halt=hop?.43:.56;
@@ -208,9 +198,7 @@ function createCampaignMonsterBehavior({
  }
  function updateCampaignMonster(e,dt){
   const g=getGame();
-  const rule=CAMPAIGN_MONSTERS[e.kind],p=g.player;
-  const d=distance(e.x,e.y,p.x,p.y),toward=atan(e.x,e.y,p.x,p.y);
-  const a=e.attackState;
+  const rule=CAMPAIGN_MONSTERS[e.kind],p=g.player,a=e.attackState;
   if(e.halt>0){
    e.halt-=dt;
   }else if(a?.type==='campaign-warn'){
@@ -219,9 +207,10 @@ function createCampaignMonsterBehavior({
   }else if(a){
    moveCampaignMonsterAttack(e,a,dt);
   }else{
+   const d=distance(e.x,e.y,p.x,p.y);
    if(d>rule.keep+.7)chase(e,dt);
    else if(d<rule.keep-.6)chase(e,dt,-.8);
-   else if(rule.flying)moveForestSpecial(e,toward+(e.id%2?1:-1)*Math.PI/2,dt,.78);
+   else if(rule.flying)moveForestSpecial(e,atan(e.x,e.y,p.x,p.y)+(e.id%2?1:-1)*Math.PI/2,dt,.78);
    e.patternTimer-=dt;
    if(e.patternTimer<=0&&d<=rule.range&&visible(e.x,e.y,-.2)){
     const attacking=g.enemies.filter(other=>!other.dead&&other.attackState?.type.startsWith('campaign-'));
@@ -229,7 +218,7 @@ function createCampaignMonsterBehavior({
      g.campaignMonsterHazards.filter(h=>h.label===CAMPAIGN_STRIKES['kelp-spirit']).length+
       attacking.filter(other=>other.kind==='kelp-spirit').length*2>2;
     if(attacking.length<(g.boss?1:3)&&!poolsFull){
-     e.attackState=prepareCampaignMonsterAttack(e,rule,toward,d);
+     e.attackState=prepareCampaignMonsterAttack(e,rule,atan(e.x,e.y,p.x,p.y),d);
      if(e.attackState.travel!==undefined){
       e.pushTime=0;e.pushX=0;e.pushY=0;
      }
@@ -246,16 +235,18 @@ function createCampaignMonsterBehavior({
  }
  function updateCampaignMonsterHazards(dt){
   const g=getGame();
+  if(!g.campaignMonsterHazards.length)return;
   for(const h of g.campaignMonsterHazards){
    if(h.warn>0){
     h.warn-=dt;
     if(h.warn>0)continue;
    }
    h.life-=dt;
+   if(h.life<=0||h.hit||g.player.invuln>0)continue;
    const hit=h.r===undefined
     ?pathHitsNemo(h.x,h.y,h.tx,h.ty,h.width*.5)
     :pathHitsNemo(h.x,h.y,h.x,h.y,h.r);
-   if(h.life>0&&!h.hit&&hit&&g.player.invuln<=0){
+   if(hit){
     h.hit=true;
     damagePlayer(h.damage*difficulty().damage,h.label);
     if(!isPlaying())return;
@@ -264,53 +255,32 @@ function createCampaignMonsterBehavior({
   g.campaignMonsterHazards=g.campaignMonsterHazards.filter(h=>h.life>0);
  }
 
- function drawCampaignMonsterMarker(shape,color,warning,alpha=1){
-  ctx.save();
-  ctx.globalAlpha=alpha;
-  ctx.lineCap='round';
-  ctx.beginPath();
-  if(shape.r===undefined){
-   ctx.moveTo(shape.x,shape.y);ctx.lineTo(shape.tx,shape.ty);
-   ctx.lineWidth=shape.width;
-   ctx.strokeStyle=warning?'#3a264464':color+'bc';
+ function drawCampaignMonsterHazards(){
+  for(const h of getGame().campaignMonsterHazards){
+   if(h.warn>0||h.life<=0)continue;
+   ctx.save();
+   ctx.globalAlpha=Math.min(1,.35+h.life/h.max);
+   ctx.lineCap='round';
+   ctx.beginPath();
+   if(h.r===undefined){
+    ctx.moveTo(h.x,h.y);ctx.lineTo(h.tx,h.ty);
+    ctx.lineWidth=h.width;
+    ctx.strokeStyle=h.color+'bc';
+    ctx.stroke();
+   }else{
+    ctx.arc(h.x,h.y,h.r,0,TAU);
+    ctx.fillStyle=h.color+'75';
+    ctx.fill();
+   }
+   ctx.lineWidth=.12;
+   ctx.strokeStyle='#402944';
    ctx.stroke();
-   if(warning)ctx.setLineDash([.24,.15]);
-  }else{
-   ctx.arc(shape.x,shape.y,shape.r,0,TAU);
-   ctx.fillStyle=warning?'#47334858':color+'75';
-   ctx.fill();
-   if(warning)ctx.setLineDash([.21,.14]);
-  }
-  ctx.lineWidth=warning?.14:.12;
-  ctx.strokeStyle='#402944';
-  ctx.stroke();
-  ctx.lineWidth=warning?.065:.068;
-  ctx.strokeStyle=color;
-  ctx.stroke();
-  ctx.restore();
- }
- function drawCampaignMonsterWarnings(){
-  const g=getGame();
-  for(const h of g.campaignMonsterHazards){
-   drawCampaignMonsterMarker(h,h.color,h.warn>0,h.warn>0?1:Math.min(1,.35+h.life/h.max));
-  }
-  for(const e of g.enemies){
-   const a=e.attackState;
-   if(e.dead||e.retreat||!a||!visible(e.x,e.y,2))continue;
-   if(a.type==='campaign-leap'){
-    drawCampaignMonsterMarker(a.landing,a.color,true);
-    continue;
-   }
-   if(a.type!=='campaign-warn')continue;
-   const intensity=1-.28*Math.max(0,a.t/a.max);
-   for(const lane of a.lanes)drawCampaignMonsterMarker(lane,a.color,true,intensity);
-   for(const circle of a.circles)drawCampaignMonsterMarker(circle,a.color,true,intensity);
-   for(const angle of a.rays){
-    const lane=campaignMonsterLane(a.x,a.y,angle,e.r+1.18,.13);
-    drawCampaignMonsterMarker(lane,a.color,true);
-   }
+   ctx.lineWidth=.068;
+   ctx.strokeStyle=h.color;
+   ctx.stroke();
+   ctx.restore();
   }
  }
 
- return {updateCampaignMonster,updateCampaignMonsterHazards,drawCampaignMonsterWarnings};
+ return {updateCampaignMonster,updateCampaignMonsterHazards,drawCampaignMonsterHazards};
 }
