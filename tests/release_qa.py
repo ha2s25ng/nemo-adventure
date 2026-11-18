@@ -17,7 +17,7 @@ OUT = ROOT / "qa-results"
 HOOK = """
 window.__QA={begin,menu,pause,resume,setScreen,renderCards,renderEvo,chooseEvo,
  selectCard,rollCards,makeGrowth,openForestChoice,finish,stageOpen,shopOpen,
- updateSchool,openCodex,rankOpen,showNicknameSetup,openSaveTransfer,updateHUD,
+ updateSchool,openCodex,rankOpen,showNicknameSetup,openSaveTransfer,updateHUD,showToast,
  get g(){return g},get saved(){return saved},get screen(){return screen},
  DATA,W,RARE_CARDS,COSTUMES,NEMO_STAGES};
 """
@@ -50,9 +50,9 @@ class TestServer(SimpleHTTPRequestHandler):
 GEOMETRY = """(mode)=>{
  const box=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,w:r.width,h:r.height,right:r.right,bottom:r.bottom}};
  const visible=e=>!!(e&&e.getClientRects().length&&getComputedStyle(e).visibility!=='hidden');
- const app=document.getElementById('app'),screen=document.getElementById(mode);
+ const app=document.getElementById('app'),screen=document.getElementById(mode==='playing'?'hud':mode);
  const cardMode=['cards','evolution'].includes(mode);
- const panel=cardMode?screen.querySelector(mode==='cards'?'.choice-board':'.card-wrap'):screen.firstElementChild;
+ const panel=cardMode?screen.querySelector(mode==='cards'?'.choice-board':'.card-wrap'):mode==='playing'?screen.querySelector('.hud-top'):screen.firstElementChild;
  const problems=[];const v={x:0,y:0,right:innerWidth,bottom:innerHeight};
  const inside=(a,b)=>a.x>=b.x-1&&a.y>=b.y-1&&a.right<=b.right+1&&a.bottom<=b.bottom+1;
  if(!visible(screen)||!visible(panel))problems.push('screen/panel invisible');
@@ -64,7 +64,8 @@ GEOMETRY = """(mode)=>{
    const r=box(c),cta=c.querySelector('.choice-cta,.card-select-label'),cr=box(cta);
    if(!inside(r,p)||!inside(r,v))problems.push('card '+i+' clipped');
    if(!inside(cr,r))problems.push('card '+i+' action outside card');
-   if(c.scrollWidth>c.clientWidth+2||c.scrollHeight>c.clientHeight+2)problems.push('card '+i+' content overflow');
+   // Rare cards intentionally clip an oversized decorative pseudo-element.
+   if(c.dataset.kind!=='rare'&&(c.scrollWidth>c.clientWidth+2||c.scrollHeight>c.clientHeight+2))problems.push('card '+i+' content overflow');
    for(const el of c.querySelectorAll('.choice-name,.choice-effect,.evo-variant-name,.evo-effect-copy,.choice-copy,.choice-meta')){
      if(!visible(el))continue;
      const range=document.createRange();range.selectNodeContents(el);
@@ -85,6 +86,24 @@ GEOMETRY = """(mode)=>{
  if(mode==='codex'){
    const detail=document.getElementById('codex-details');
    if(detail.clientHeight<72)problems.push('codex reading area too short: '+detail.clientHeight);
+ }
+ for(const [selector,parent] of [['.school-row strong','.school-row'],['.codex-heading h3','.codex-heading'],
+   ['.pause-loadout li > span','li'],['.settings-line > span','.settings-line'],
+   ['.result-stat b','.result-stat'],['.choice-heading h2','.choice-heading'],
+   ['.folio-title','.menu-board'],['#hp','.hud-health'],['#time','#survival-timer']]){
+   for(const el of screen.querySelectorAll(selector)){
+     const bound=el.closest(parent);if(!visible(el)||!visible(bound))continue;
+     const b=box(bound),range=document.createRange();range.selectNodeContents(el);
+     for(const r of range.getClientRects())if(r.left<b.x-1||r.right>b.right+1)problems.push('text exceeds container: '+selector);
+   }
+ }
+ if(mode==='playing'){
+   const toast=document.getElementById('toast');
+   if(visible(toast)){
+     const tr=box(toast),range=document.createRange();range.selectNodeContents(toast);
+     if(!inside(tr,v))problems.push('toast outside viewport');
+     for(const r of range.getClientRects())if(!inside(r,tr))problems.push('toast text outside bubble');
+   }
  }
  for(const el of screen.querySelectorAll('button,input,select,textarea')){
    if(!visible(el))continue;
@@ -116,6 +135,16 @@ SET_EVO = """id=>{const q=window.__QA;q.begin();q.g.debugUsed=true;
  q.g.weapons[id]={lv:6,up:[2,1,1],break:true,evo:null,clock:0};
  q.g.currentEvo=id;q.renderEvo(id);q.setScreen('evolution');}"""
 
+FRAMES = """n=>new Promise(done=>{
+ const step=()=>--n<=0?done():requestAnimationFrame(step);
+ requestAnimationFrame(step);
+})"""
+
+CHOICE_STATE = """()=>{const q=window.__QA,g=q.g;return {
+ screen:q.screen,t:g.t,worldClock:g.worldClock,level:g.player.level,
+ rerolls:g.rerolls,cards:g.cards.map(c=>[c.type,c.id]),
+ currentEvo:g.currentEvo??null,vortexLevel:g.weapons.vortex?.lv};}"""
+
 
 def run():
     parser = argparse.ArgumentParser()
@@ -139,27 +168,33 @@ def run():
         browser = getattr(pw, args.engine).launch()
         for label, width, height, touch in cases:
             context = browser.new_context(viewport={"width": width, "height": height},
-                is_mobile=touch, has_touch=touch, device_scale_factor=1,
+                is_mobile=touch, has_touch=touch, device_scale_factor=1, reduced_motion="reduce",
                 user_agent=(pw.devices["iPhone 13"]["user_agent"] if args.engine == "webkit" and touch
                             else pw.devices["Pixel 5"]["user_agent"] if touch else None))
-            context.route("**/*", lambda route: route.continue_() if route.request.url.startswith(url)
-                or route.request.url.startswith("data:") else route.abort())
+            context.route("**/*", lambda route: route.continue_() if route.request.url.startswith((url,
+                "data:", "https://fonts.googleapis.com/", "https://fonts.gstatic.com/")) else route.abort())
             page = context.new_page()
             errors = []
+            resource_errors = []
             page.on("pageerror", lambda error: errors.append(str(error)))
+            page.on("response", lambda response: resource_errors.append(f"{response.status} {response.url}")
+                if response.status >= 400 and response.url.startswith(url)
+                and response.request.resource_type in ("script", "stylesheet", "image") else None)
             page.goto(url, wait_until="load")
             page.wait_for_function("!!window.__QA")
             page.locator("#nemo-name-input").fill("가나다라마바사아자차카타파하니모")
             page.locator(".nemo-name-continue").click()
             page.wait_for_function("window.__QA.screen==='menu'")
-            page.evaluate("()=>{window.__QA.saved.stagesCleared=30;window.__QA.saved.gold=999999999;}")
+            page.evaluate("()=>{window.__QA.saved.stagesCleared=30;window.__QA.saved.gold=99999999;}")
 
             def inspect(name, mode, capture=False):
+                page.evaluate("()=>document.fonts.ready")
                 page.evaluate("()=>new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))")
                 data = page.evaluate(GEOMETRY, mode)
-                data.update(case=label, name=name, engine=args.engine)
+                data.update(case=label, name=name, engine=args.engine,
+                    jua_loaded=page.evaluate("document.fonts.check('16px Jua','니모')"))
                 results.append(data)
-                if data["problems"] or capture:
+                if data["problems"] or capture or (label in ("desktop", "phone-iphone", "landscape") and not name.startswith("evo-")):
                     path = OUT / f"{args.engine}-{label}-{name}.png"
                     page.screenshot(path=str(path), animations="disabled")
                     data["screenshot"] = path.name
@@ -172,6 +207,7 @@ def run():
                 ("codex", "q.menu();q.openCodex()"),
                 ("settings", "q.menu();document.getElementById('settings-btn').click()"),
                 ("leaderboard", "q.menu();q.rankOpen()"),
+                ("playing", "q.begin();q.g.debugUsed=true;q.g.totalKills=99999;q.g.t=9999;q.g.gold=99999;for(const id of Object.keys(q.W).slice(0,4))q.g.weapons[id]={lv:7,up:[2,2,1],break:true,evo:1,clock:0};for(const id of Object.keys(q.DATA.passives).slice(0,4))q.g.passives[id]=3;q.updateHUD();q.showToast('스테이지 30 · 솜사탕 소용돌이 최종 진화! 경험치 획득량이 증가하고 주변의 모든 적에게 강력한 마법 피해를 줘요.',30)"),
                 ("pause", "q.begin();q.g.debugUsed=true;for(const id of Object.keys(q.W).slice(0,4))q.g.weapons[id]={lv:7,up:[2,2,1],break:true,evo:1,clock:0};for(const id of Object.keys(q.DATA.passives).slice(0,4))q.g.passives[id]=3;q.updateHUD();q.pause()"),
                 ("result", "q.begin();q.g.debugUsed=true;q.g.t=9999;q.g.totalKills=99999;q.finish(false)"),
             ]:
@@ -200,11 +236,101 @@ def run():
                 box = page.locator("#evo-options .card-select-label").nth(i).bounding_box()
                 x,y=box["x"]+box["width"]/2,box["y"]+box["height"]/2
                 (page.touchscreen.tap if touch else page.mouse.click)(x,y)
-                ok=page.evaluate("window.__QA.screen==='playing'&&window.__QA.g.weapons.vortex.lv===7")
+                ok=page.evaluate("i=>window.__QA.screen==='playing'&&window.__QA.g.weapons.vortex.lv===7&&window.__QA.g.weapons.vortex.evo===i", i)
                 results.append(dict(engine=args.engine,case=label,name=f"evo-tap-{i}",problems=[] if ok else ["evolution tap did not select"]))
                 page.evaluate("window.__QA.pause()")
+
+            def check_action(name, action):
+                problems = []
+                try:
+                    action()
+                except Exception as error:
+                    problems.append(str(error) or type(error).__name__)
+                    page.screenshot(path=str(OUT / f"{args.engine}-{label}-{name}.png"))
+                results.append(dict(engine=args.engine,case=label,name=name,problems=problems))
+
+            def pause_controls():
+                page.evaluate("()=>{window.__QA.begin();window.__QA.g.player.invuln=60;}")
+                getattr(page.locator("#pause-btn"), "tap" if touch else "click")()
+                page.wait_for_function("window.__QA.screen==='pause'")
+                state="()=>{const g=window.__QA.g,p=g.player;return {t:g.t,clock:g.worldClock,x:p.x,y:p.y,hp:p.hp};}"
+                before=page.evaluate(state)
+                page.evaluate(FRAMES, 12)
+                assert page.evaluate(state)==before, "game advanced while paused"
+                getattr(page.locator("#resume"), "tap" if touch else "click")()
+                page.wait_for_function("t=>window.__QA.screen==='playing'&&window.__QA.g.t>t",arg=before["t"],timeout=3000)
+                if not touch:
+                    page.keyboard.press("Escape")
+                    assert page.evaluate("window.__QA.screen")=="pause"
+                    page.keyboard.press("Escape")
+                    assert page.evaluate("window.__QA.screen")=="playing"
+                page.evaluate("window.__QA.pause()")
+            check_action("pause-resume-controls", pause_controls)
+
+            if label == "desktop":
+                def keyboard_movement():
+                    page.evaluate("()=>{window.__QA.begin();window.__QA.g.player.invuln=60;document.activeElement?.blur();}")
+                    for key,axis,direction in [("d","x",1),("ArrowUp","y",-1)]:
+                        before=page.evaluate("window.__QA.g.player."+axis)
+                        page.keyboard.down(key)
+                        try:
+                            page.wait_for_function("a=>(window.__QA.g.player[a.axis]-a.before)*a.direction>.2",
+                                arg=dict(axis=axis,before=before,direction=direction),timeout=3000)
+                        finally:
+                            page.keyboard.up(key)
+                        page.wait_for_function("()=>{const p=window.__QA.g.player;return p.moveX===0&&p.moveY===0;}",timeout=3000)
+                        state="({x:window.__QA.g.player.x,y:window.__QA.g.player.y})"
+                        stopped=page.evaluate(state)
+                        page.evaluate(FRAMES,12)
+                        assert page.evaluate(state)==stopped, "movement continued after releasing key"
+                    page.evaluate("window.__QA.pause()")
+                check_action("keyboard-movement-release", keyboard_movement)
+
+            if args.engine == "chromium" and label == "phone-android":
+                def touch_movement():
+                    page.evaluate("()=>{window.__QA.begin();window.__QA.g.player.invuln=60;}")
+                    box=page.locator("#canvas").bounding_box()
+                    x,y=box["x"]+box["width"]*.4,box["y"]+box["height"]*.6
+                    assert page.evaluate("p=>document.elementFromPoint(p.x,p.y)?.id==='canvas'",dict(x=x,y=y)), "canvas touch blocked"
+                    before=page.evaluate("window.__QA.g.player.x")
+                    cdp=context.new_cdp_session(page)
+                    try:
+                        cdp.send("Input.dispatchTouchEvent",dict(type="touchStart",touchPoints=[dict(id=7,x=x,y=y)]))
+                        cdp.send("Input.dispatchTouchEvent",dict(type="touchMove",touchPoints=[dict(id=7,x=x+48,y=y)]))
+                        page.wait_for_function("before=>document.getElementById('touch-pad').dataset.active==='true'&&window.__QA.g.player.x>before+.2",arg=before,timeout=3000)
+                    finally:
+                        cdp.send("Input.dispatchTouchEvent",dict(type="touchEnd",touchPoints=[]))
+                        cdp.detach()
+                    page.wait_for_function("()=>{const p=window.__QA.g.player;return document.getElementById('touch-pad').dataset.active!=='true'&&p.moveX===0&&p.moveY===0;}",timeout=3000)
+                    page.evaluate("window.__QA.pause()")
+                check_action("native-touch-drag-release", touch_movement)
+
+            if label == "phone-iphone":
+                for mode,setup,value,selector in [("cards",SET_CARDS,"ordinary",".choice-card .choice-cta"),
+                    ("evolution",SET_EVO,"vortex","#evo-options .card-select-label")]:
+                    def rotate_choice():
+                        try:
+                            page.set_viewport_size(dict(width=390,height=844))
+                            page.evaluate(setup,value)
+                            before=page.evaluate(CHOICE_STATE)
+                            page.set_viewport_size(dict(width=844,height=390))
+                            inspect(mode+"-rotated",mode,True)
+                            assert page.evaluate(CHOICE_STATE)==before, "choice changed on rotation"
+                            page.set_viewport_size(dict(width=390,height=844))
+                            inspect(mode+"-rotated-back",mode,True)
+                            assert page.evaluate(CHOICE_STATE)==before, "choice changed on reverse rotation"
+                            box=page.locator(selector).nth(1).bounding_box()
+                            page.touchscreen.tap(box["x"]+box["width"]/2,box["y"]+box["height"]/2)
+                            assert page.evaluate("window.__QA.screen")=="playing", "rotated choice could not be selected"
+                            if mode=="evolution":
+                                assert page.evaluate("window.__QA.g.weapons.vortex.evo")==1
+                        finally:
+                            page.set_viewport_size(dict(width=width,height=height))
+                    check_action(mode+"-rotation-state-and-tap",rotate_choice)
             if errors:
                 results.append(dict(engine=args.engine,case=label,name="runtime-errors",problems=list(set(errors))))
+            if resource_errors:
+                results.append(dict(engine=args.engine,case=label,name="resource-errors",problems=list(set(resource_errors))))
             context.close()
         browser.close()
     server.shutdown()

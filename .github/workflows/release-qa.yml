@@ -27,8 +27,10 @@ jobs:
           sudo apt-get install -y fonts-noto-cjk
       - name: Exercise release screens and touch choices
         env:
-          NEMO_QA_STRICT: '0'
+          NEMO_QA_STRICT: '1'
         run: python tests/release_qa.py --engine ${{ matrix.engine }}
+      - name: Check deterministic gameplay invariants
+        run: node tests/logic/run.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:

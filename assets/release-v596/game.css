@@ -1,0 +1,25 @@
+/* Respect hidden reroll controls on forest blessing screens. */
+#app #cards #reroll[hidden] {
+  display: none !important;
+}
+
+#app #cards .choice-footer:has(> #reroll[hidden]):has(> #rerolls:empty) {
+  display: none;
+}
+
+/* Override the shared folio display rule in compact touch layouts. */
+@media (any-pointer: coarse) {
+  #app #evolution .card-wrap > .folio {
+    display: none !important;
+  }
+}
+
+/* Keep the tab grid from squeezing out the landscape reading pane. */
+@media (orientation: landscape) and (max-height: 450px) and (any-pointer: coarse) {
+  #app #codex #codex-tabs {
+    min-height: 0;
+    max-height: 132px;
+    overflow-y: auto;
+    align-content: start;
+  }
+}
