@@ -1,5 +1,5 @@
 {
-  "version": "5.9.3",
+  "version": "5.9.4",
   "mode": "endless_survival_and_campaign",
-  "notes": "고해상도 모바일 렌더링과 HUD 개선 · 성장 카드 무작위 · 공격 예고 간소화 · 출시 점검"
+  "notes": "무한 생존과 보스 강화 · 고속 몬스터 순차 등장 · 15분 이후 연마와 보급 · 모바일 시야 및 출시 UI 개선"
 }

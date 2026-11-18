@@ -284,7 +284,7 @@
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
 #setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.9.3" />
+</style><meta name="nemo-version" content="5.9.4" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -594,6 +594,8 @@
 <script src="./assets/campaign-v573/maps.js?v=5.9.0"></script>
 <script src="./assets/campaign-v590/bosses.js?v=5.9.3"></script>
 <script src="./assets/campaign-v590/monsters.js?v=5.9.3"></script>
+<script src="./assets/survival-v594/bosses.js"></script>
+<script src="./assets/survival-v594/drops.js"></script>
 <style id="rare-card-art">
 #app #cards .choice-card[data-kind="rare"]{
  --ink:#fff5e8;
@@ -675,6 +677,7 @@
 <link rel="stylesheet" href="./assets/mobile-v591/game.css">
 <link rel="stylesheet" href="./assets/mobile-v592/game.css">
 <link rel="stylesheet" href="./assets/release-v593/game.css">
+<link rel="stylesheet" href="./assets/release-v594/game.css">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="apple-touch-icon" href="./assets/mobile-v592/app-192.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -709,7 +712,7 @@
   <div class="menu-board">
     <div class="menu-main">
       <p class="menu-kicker">숲속 마법 생존</p>
-      <h1 class="folio-title">니모의<br>낯선 모험</h1>
+      <h1 class="folio-title">니모의<br> 낯선 모험</h1>
       <p class="menu-intro">별빛 지팡이 하나 들고, 낯선 숲으로.</p>
       <div class="menu-meta">
         <p class="menu-money" id="menu-gold"><img src="./assets/pastel-ui-v5619/coin.webp" alt=""><span id="menu-gold-value">0 골드</span></p>
@@ -745,10 +748,10 @@
     <div class="stage-grid" id="stage-options" aria-labelledby="stage-chapter-title"></div>
   </div>
 </div>
-<div class="overlay hidden" id="nickname-setup">
+<div class="overlay hidden" id="nickname-setup" role="dialog" aria-modal="true" aria-labelledby="nemo-name-title">
   <form class="small-board nemo-name-board" id="nemo-name-form" autocomplete="off">
     <p class="folio">숲 입구</p>
-    <h2>모험가의 이름</h2>
+    <h2 id="nemo-name-title">모험가의 이름</h2>
     <p class="subtitle">숲의 랭킹에 표시할 이름을 정해 주세요.</p>
     <label for="nemo-name-input">내 닉네임 (1~16자)</label>
     <input type="text" id="nemo-name-input" maxlength="16" placeholder="예: 별빛 니모" required />
@@ -757,9 +760,9 @@
     <p class="nemo-name-help">메인 화면에서 언제든지 바꿀 수 있어요.</p>
   </form>
 </div>
-<div class="overlay hidden" id="costume-shop">
+<div class="overlay hidden" id="costume-shop" role="dialog" aria-modal="true" aria-labelledby="shop-title">
   <div class="nemo-shop-board">
-    <header class="nemo-shop-header"><div><p class="folio">의상 보관함</p><h2>코스튬 상점</h2><p>장착한 코스튬의 체력·공격력 보너스가 모험에 적용돼요.</p></div>
+    <header class="nemo-shop-header"><div><p class="folio">의상 보관함</p><h2 id="shop-title" tabindex="-1">코스튬 상점</h2><p>장착한 코스튬의 체력·공격력 보너스가 모험에 적용돼요.</p></div>
       <div><strong id="shop-wallet">🪙 0 G</strong><button class="btn" id="shop-back">✕ 돌아가기</button></div>
     </header>
     <div class="nemo-shop-content">
@@ -768,15 +771,15 @@
     </div>
   </div>
 </div>
-<div class="overlay hidden" id="school"><div class="big-board"><p class="folio">영구 강화</p><h2>모험 강화</h2><div class="menu-money" id="school-gold"></div><p class="subtitle">골드로 강화한 능력은 다음 모험부터 계속 적용돼요.</p><div class="school-grid" id="school-upgrades"></div><button class="btn primary" id="school-back">← 숲 입구로</button></div></div>
+<div class="overlay hidden" id="school" role="dialog" aria-modal="true" aria-labelledby="school-title"><div class="big-board"><p class="folio">영구 강화</p><h2 id="school-title" tabindex="-1">모험 강화</h2><div class="menu-money" id="school-gold"></div><p class="subtitle">골드로 강화한 능력은 다음 모험부터 계속 적용돼요.</p><div class="school-grid" id="school-upgrades"></div><button class="btn primary" id="school-back">← 숲 입구로</button></div></div>
 <div class="overlay hidden" id="cards" role="dialog" aria-modal="true" aria-labelledby="cards-title">
  <div class="choice-board">
-  <header class="choice-heading"><h2 id="cards-title">레벨 업</h2><p id="choice-description">이번 모험에 더할 마법을 고르세요.</p></header>
+  <header class="choice-heading"><h2 id="cards-title" tabindex="-1">레벨 업</h2><p id="choice-description">이번 모험에 더할 마법을 고르세요.</p></header>
   <div id="card-options"></div>
   <footer class="choice-footer"><span id="rerolls"></span><button class="btn primary" id="reroll" type="button"><img src="./assets/interface-art-v5620/reroll.webp" alt="">카드 다시 뽑기</button></footer>
  </div>
 </div>
-<div class="overlay hidden" id="evolution" role="dialog" aria-modal="true" aria-labelledby="evo-title"><div class="card-wrap"><p class="folio">마법 성장</p><div class="ribbon" id="evo-title">🌟 최종 진화</div><p class="card-sub">기존 강화를 이어갈 진화 하나를 고르세요.</p><div class="evo-cards" id="evo-options"></div></div></div>
+<div class="overlay hidden" id="evolution" role="dialog" aria-modal="true" aria-labelledby="evo-title"><div class="card-wrap"><p class="folio">마법 성장</p><div class="ribbon" id="evo-title" tabindex="-1">🌟 최종 진화</div><p class="card-sub">기존 강화를 이어갈 진화 하나를 고르세요.</p><div class="evo-cards" id="evo-options"></div></div></div>
 <div class="overlay hidden" id="pause" role="dialog" aria-modal="true" aria-labelledby="pause-title">
  <section class="small-board pause-board">
   <header class="pause-heading">
@@ -806,8 +809,8 @@
 <div class="overlay hidden" id="codex" role="dialog" aria-modal="true" aria-labelledby="codex-title"><div class="codex-board">
 <div class="codex-head"><div><p class="folio">마법 기록</p><h2 id="codex-title">니모의 마법 도감</h2><p>14종 마법의 공격 방식·강화·두 가지 최종 진화를 확인할 수 있어.</p></div><button class="btn codex-close" id="codex-back">✕ 닫기</button></div>
 <div class="codex-tabs" id="codex-tabs"></div><div class="codex-details" id="codex-details"></div>
-</div></div><div class="overlay hidden" id="leaderboard"><div class="nemo-leaderboard-board">
-  <div class="nemo-rank-top"><div><p class="folio">모험 기록</p><h2>숲의 명예의 전당</h2><p>무한 생존 · 주간 랭킹 · 매주 일요일 22:00 초기화 (한국시간)</p></div><button type="button" id="leaderboard-close" class="btn">✕ 돌아가기</button></div>
+</div></div><div class="overlay hidden" id="leaderboard" role="dialog" aria-modal="true" aria-labelledby="leaderboard-title"><div class="nemo-leaderboard-board">
+  <div class="nemo-rank-top"><div><p class="folio">모험 기록</p><h2 id="leaderboard-title" tabindex="-1">숲의 명예의 전당</h2><p>무한 생존 · 주간 랭킹 · 매주 일요일 22:00 초기화 (한국시간)</p></div><button type="button" id="leaderboard-close" class="btn">✕ 돌아가기</button></div>
   <div class="nemo-rank-layout"><section class="nemo-rank-left"><label for="rank-nickname">🐾 내 닉네임 (최대 16자)</label><input id="rank-nickname" maxlength="16" placeholder="예: 별빛 니모" autocomplete="nickname"/>
   <div class="nemo-rank-local" id="rank-local"></div>
   <div class="nemo-rank-setup"><h3>🌐 온라인 랭킹 연결</h3><p>공유 랭킹을 사용하려면 Supabase 프로젝트 URL과 공개용 publishable 키를 등록해 주세요.</p>
@@ -939,7 +942,7 @@ Object.assign(ASSET_DATA,{ui_star:STORYBOOK_ART["icon_star"],ui_orbit:STORYBOOK_
 const $ = id => document.getElementById(id), canvas=$('canvas'),ctx=canvas.getContext('2d',{alpha:false});
 const TAU=Math.PI*2, desktopWidth=1600, desktopHeight=900;
 const touchDisplay=matchMedia('(any-pointer: coarse)');
-const tallTouchField=matchMedia('(max-width: 650px) and (orientation: portrait) and (any-pointer: coarse)');
+const tallTouchField=matchMedia('(orientation: portrait)');
 const compactTouchField=matchMedia('(max-width: 1024px) and (any-pointer: coarse)');
 const standaloneDisplay=matchMedia('(display-mode: standalone)');
 let VW=desktopWidth,VH=desktopHeight,SCREEN_W=DATA.widthWorld,SCREEN_H=desktopHeight*SCREEN_W/desktopWidth,PPU=VW/SCREEN_W;
@@ -1004,6 +1007,21 @@ const RARE_PICKUPS={
 const RARE_PICKUP_KINDS=Object.keys(RARE_PICKUPS);
 const RARE_DROP={chance:.0045,unlock:40,life:22,cooldown:55,freeze:5};
 const W=DATA.weapons,MD={...DATA.monsters,...CAMPAIGN_MONSTERS},passiveKeys=Object.keys(DATA.passives),weaponKeys=Object.keys(W);
+const SURVIVAL_RUNNERS={
+ spark:{at:75,weight:7,lateWeight:14},
+ firefly:{at:240,weight:8,lateWeight:15}
+};
+const SURVIVAL_RUNNER_PEAK=480;
+const handleLateSurvivalKill=createSurvivalDropBehavior({
+ getGame:()=>g,worldSize:DATA.world,legacyRareCooldown:RARE_DROP.cooldown,rareKinds:RARE_PICKUP_KINDS,
+ loot,rand,choose,blockedByTree,visible
+});
+const MASTERY_AT=900;
+const WEAPON_MASTERY={
+ power:{name:'위력 연마',effect:'이 무기의 모든 피해',limit:.36},
+ tempo:{name:'속도 연마',effect:'이 무기의 자동 공격 속도',limit:.32},
+ boss:{name:'보스 사냥 연마',effect:'이 무기의 보스 대상 피해',limit:.50}
+};
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)), sq=(x)=>x*x, len=(a,b)=>Math.hypot(a,b), distance=(a,b,c,d)=>Math.hypot(a-c,b-d), atan=(a,b,c,d)=>Math.atan2(d-b,c-a);
 const {updateCampaignMonster,updateCampaignMonsterHazards,drawCampaignMonsterHazards}=createCampaignMonsterBehavior({
  getGame:()=>g,isPlaying:()=>screen==='playing',DATA,TAU,MD,ctx,atan,blockedByTerrain,chase,damagePlayer,difficulty,
@@ -1376,6 +1394,7 @@ function weaponNumbers(id){
 function guideMetrics(id){return weaponNumbers(id).map(x=>`<div><b>${x.k}</b><strong>${x.v}</strong></div>`).join('');}
 function choiceDetail(c){
  if(c.type==='rare')return {label:'획득 효과',effect:c.desc,copy:c.lore};
+ if(c.type==='mastery')return {label:c.name,effect:c.desc};
  const weapon=weaponGuide(c.id);
  if(c.type==='new')return {label:'전투 역할',effect:weapon.role,copy:weapon.desc,growth:W[c.id].up.map(([name])=>name).join(' · ')};
  const copy=c.type==='passive'?(PASSIVE_GUIDE[c.id]||PASSIVE_ROLE[c.id]):
@@ -1603,7 +1622,11 @@ function setScreen(s){
  if(s==='menu'||s==='result'){toastTimer=0;$('toast').classList.add('hidden');}for(const id of ['menu','stages','nickname-setup','costume-shop','school','cards','evolution','pause','result','settings','codex','leaderboard'])$(id).classList.toggle('hidden',id!==s);
  $('hud').classList.toggle('hidden',!g || s==='menu'||s==='stages'||s==='costume-shop'||s==='school'||s==='settings'||s==='codex'||s==='leaderboard');$('touch-pad').classList.toggle('hidden',s!=='playing');
  $('hud').inert=s!=='playing';
- const focusTarget={menu:'start',stages:'stages-back',pause:'resume',codex:'codex-back',result:'retry',settings:'settings-title'}[s];
+ const focusTarget={
+  menu:'start',stages:'stages-back','costume-shop':'shop-title',school:'school-title',
+  cards:'cards-title',evolution:'evo-title',pause:'resume',codex:'codex-back',
+  result:'retry',settings:'settings-title',leaderboard:'leaderboard-title'
+ }[s];
  if(focusTarget)$(focusTarget).focus({preventScroll:true});
  resizePlayfield();
  if(s!==previous)setPauseExit(false);
@@ -1644,6 +1667,13 @@ function difficulty(){
   diff.damage=(1+(diff.damage-1)*.68)*(1+dangerRise*.36+.10*pressureTime);
   diff.speed*=1+dangerRise*.12+.055*pressureTime;
   diff.spawns*=1+dangerRise*.34+.04*pressureTime;
+ }else{
+  const openingRamp=clamp((g.t-55)/65,0,1);
+  // Let the starting spell still defeat a green slime in one hit.
+  diff.hp=1.30+(diff.hp*1.36-1.30)*openingRamp;
+  diff.contactDamage*=1.35;
+  diff.damage*=1.14;
+  diff.speed*=1.08;
  }
  return diff;
 }
@@ -1776,8 +1806,13 @@ function rageActive(){return !!g&&g.worldClock<(g.player.rageUntil||0);}
 function rageRate(){return rageActive()?RAGE.tempo:1;}
 function spellTravelRate(){return rageActive()?RAGE.spell:1;}
 function moveCastRate(){return g?.player.moving?1+.06*getPassive('windstep'):1;}
+function masteryBonus(w,branch,additionalRank=0){
+ const rank=(w?.mastery?.[branch]??0)+additionalRank;
+ return WEAPON_MASTERY[branch].limit*rank/(rank+4);
+}
 function clockMult(id,w=g?.weapons[id]){
- return 1+saved.upgrades.tempo*.03+.08*(g?.passives.quick||0)+.08*(g?.blessings?.breeze||0)+.15*(w?.up[SPEED_RANK[id]]||0);
+ const speed=1+saved.upgrades.tempo*.03+.08*(g?.passives.quick||0)+.08*(g?.blessings?.breeze||0)+.15*(w?.up[SPEED_RANK[id]]||0);
+ return speed*(1+masteryBonus(w,'tempo'));
 }
 function cooldown(id,w=g?.weapons[id]){
  return Math.max(.08,W[id].cd/clockMult(id,w)*(id==='moon'&&w?.evo===1?1.2:1));
@@ -1792,7 +1827,7 @@ function weaponPower(id,coefficient,w){
  const brave=1+.12*(g?.blessings?.brave||0);
  const power=id==='star'?starShotPower(w)
   :(1+.25*w.up[DAMAGE_RANK[id]])*(SPREAD_DAMAGE[id]??1)**w.up[0]*(EXTRA_DAMAGE[id]?.[w.evo]??1);
- return (g?.player.attack??DATA.player.attack)*coefficient*magic*brave*power*(rageActive()?RAGE.power:1);
+ return (g?.player.attack??DATA.player.attack)*coefficient*magic*brave*power*(rageActive()?RAGE.power:1)*(1+masteryBonus(w,'power'));
 }
 function wpBase(id,coefficient){return weaponPower(id,coefficient,g.weapons[id]);}
 function weaponReach(id,w=g?.weapons[id]){
@@ -1818,6 +1853,7 @@ function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
  }
  if(id==='book'&&g.weapons.book.evo===1&&e.kind==='boss')value*=1.2;
  if(id==='bubble'&&g.weapons.bubble.evo===1&&e.kind==='boss')value*=1.5;
+ if(e.isBoss)value*=1+masteryBonus(g.weapons[id],'boss');
  const crit=(settings.critAllowed!==false)&&rand()<wpCrit(id);
  if(crit)value*=id==='star'&&g.weapons.star.lv>=6?2:1.5;
  value=Math.round(value*100)/100;const actual=Math.min(e.hp,value);
@@ -1840,7 +1876,7 @@ function forestFrenzied(){
 function enemyPace(){return forestFrenzied()?1.30:1;}
 function damagePlayer(value,reason,projectile=false){const p=g.player;if(p.invuln>0||screen!=='playing')return;value=Math.round(value*(projectile?1-.08*getPassive('leafguard'):1)*(1-saved.upgrades.guard*.03)*(forestFrenzied()?1.20:1)*100)/100;p.hp=Math.max(0,p.hp-value);p.invuln=DATA.player.invuln;g.hitCount++;g.hitReasons[reason]=(g.hitReasons[reason]||0)+1;
  playSound('hurt');p.hurtTimer=.24;if(opts.numbers)g.numbers.push({x:p.x,y:p.y-.75,text:'-'+Math.round(value),ttl:.8,color:'#e84779'});if(opts.particles)burst(p.x,p.y,'#ff9fbd',13);if(p.hp<=0)finish(false);}
-function slow(e,amount,duration){if(e.kind==='boss'){amount=Math.min(amount,.2);duration=Math.min(duration,.6);}if(amount>e.slowAmount||e.slowUntil<g.worldClock){e.slowAmount=amount;e.slowUntil=g.worldClock+duration;}else if(e.slowUntil<g.worldClock+duration)e.slowUntil=g.worldClock+duration;}
+function slow(e,amount,duration){if(e.isBoss){amount=Math.min(amount,.2);duration=Math.min(duration,.6);}if(amount>e.slowAmount||e.slowUntil<g.worldClock){e.slowAmount=amount;e.slowUntil=g.worldClock+duration;}else if(e.slowUntil<g.worldClock+duration)e.slowUntil=g.worldClock+duration;}
 function burst(x,y,color,n=7){if(!opts.particles)return;for(let i=0;i<n&&g.particles.length<320;i++){let a=rand()*TAU,sp=range(.4,2.8),ttl=range(.20,.70);g.particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:ttl,max:ttl,color,r:range(.035,.12)});}}
 function statusReady(e){return enemyPace()*(e.slowUntil>g.worldClock?1-e.slowAmount:1);}
 function pushEnemy(e,dx,dy){
@@ -1861,7 +1897,7 @@ function knock(e,a,r){
  pushEnemy(e,Math.cos(a)*force,Math.sin(a)*force);
 }
 function schedule(delay,fn){g.effects.push({kind:'event',life:delay,fn});}
-function loot(x,y,xp,kind='xp',healAmount=0){if(kind==='xp')g.earnedXP+=xp;g.loot.push({x,y,xp,kind,healAmount,ttl:kind==='rage'?RAGE.dropLife:RARE_PICKUPS[kind]?RARE_DROP.life:95,r:kind==='xp'?.2:RARE_PICKUPS[kind]?.44:.33,phase:range(0,TAU)});}
+function loot(x,y,xp,kind='xp',healAmount=0,life){if(kind==='xp')g.earnedXP+=xp;g.loot.push({x,y,xp,kind,healAmount,ttl:life??(kind==='rage'?RAGE.dropLife:RARE_PICKUPS[kind]?RARE_DROP.life:95),r:kind==='xp'?.2:RARE_PICKUPS[kind]?.44:.33,phase:range(0,TAU)});}
 function kill(e,allowRareDrop=true){
  if(g.stage&&e===g.boss&&e.bossDef.final){finish(true);return;}
  if(e===g.boss){
@@ -1890,12 +1926,13 @@ function kill(e,allowRareDrop=true){
   const [common,uncommon,rare]=CAMPAIGN_MONSTERS[e.kind]?.xp??DATA.progression.xpDrops[e.kind];
   const roll=rand(),xp=roll<rare?8:roll<rare+uncommon?3:roll<rare+uncommon+common?1:0;
   if(xp)loot(e.x,e.y,xp);
-  if(e.kind!=='petal'&&rand()<.01&&g.loot.filter(z=>z.kind==='bone'&&!z.dead).length<3)loot(e.x+.2,e.y+.15,0,'bone',.10);
+  const lateSupport=handleLateSurvivalKill(e,allowRareDrop);
+  if(!lateSupport&&e.kind!=='petal'&&rand()<.01&&g.loot.filter(z=>z.kind==='bone'&&!z.dead).length<3)loot(e.x+.2,e.y+.15,0,'bone',.10);
   if(allowRareDrop&&e.kind!=='petal'&&g.t>=RAGE.unlock&&g.worldClock>=(g.nextRageDrop||0)&&!rageActive()&&rand()<RAGE.chance){
    g.nextRageDrop=g.worldClock+RAGE.dropGap;
    loot(e.x-.24,e.y+.16,0,'rage');
   }
-  if(allowRareDrop&&e.kind!=='petal')tryRarePickup(e);
+  if(!lateSupport&&allowRareDrop&&e.kind!=='petal')tryRarePickup(e);
  }
 }
 function tryRarePickup(e){
@@ -1986,6 +2023,15 @@ function rollRareCard(){
  const [id,card]=choose(eligible);
  return {type:'rare',id,...card,ico:W[card.weapon].icon,meta:'모험당 희귀 카드 1장'};
 }
+function makeMastery(id,w){
+ const branch=choose(W[id].cd>0?['power','tempo','boss']:['power','boss']);
+ const config=WEAPON_MASTERY[branch],rank=w.mastery?.[branch]??0;
+ const before=fmtN(100*masteryBonus(w,branch)),after=fmtN(100*masteryBonus(w,branch,1));
+ return {
+  type:'mastery',id,branch,name:config.name,ico:W[id].icon,
+  desc:`${config.effect} +${before}% → +${after}%`,meta:`연마 ${rank} → ${rank+1}`
+ };
+}
 function rollCards(rare){
  const out=rare?[rare]:[],owned=Object.keys(g.weapons);
  const pool=[];
@@ -1994,8 +2040,9 @@ function rollCards(rare){
   pool.push({type:'passive',id,name:DATA.passives[id][0],ico:DATA.passives[id][1],desc:passiveOffer(id),meta:`공용 패시브 · ${getPassive(id)}/3`});}
  // One entry per eligible weapon or passive, sampled without replacement.
  for(const id of owned){
-  if(!hasGrowth(id))continue;
-  const card=makeGrowth(id);
+  const w=g.weapons[id];
+  const mastered=!g.stage&&g.t>=MASTERY_AT&&w.evo!==null&&w.lv===7;
+  const card=hasGrowth(id)?makeGrowth(id):mastered?makeMastery(id,w):null;
   if(card)pool.push(card);
  }
  while(out.length<3&&pool.length)out.push(pool.splice(Math.floor(rand()*pool.length),1)[0]);
@@ -2015,11 +2062,11 @@ function renderCards(revealRare=false){
  const milestone=g.cardReason==='milestone',bonus=g.cardReason==='bonus';
  $('cards-title').textContent=milestone?`숲의 축복 · ${fmt(g.t)}`:bonus?'엘리트 보상':`레벨 업 · Lv.${g.player.level}`;
  $('choice-description').textContent=milestone?'이번 모험에 적용할 축복을 고르세요.':bonus?'전투에서 얻은 보상을 고르세요.':'이번 모험에 더할 마법이나 강화를 고르세요.';
- const tags={rare:'희귀 카드',new:'새로운 마법',growth:'무기 강화',break:'중간 돌파',evo:'최종 진화',passive:'공용 패시브',heal:'회복 보상',gold:'추가 골드',blessing:'숲의 축복'};
+ const tags={rare:'희귀 카드',new:'새로운 마법',growth:'무기 강화',break:'중간 돌파',evo:'최종 진화',mastery:'무기 연마',passive:'공용 패시브',heal:'회복 보상',gold:'추가 골드',blessing:'숲의 축복'};
  const options=$('card-options');
  options.innerHTML=g.cards.map((c,i)=>{
   const {label,effect,copy,growth}=choiceDetail(c);
-  const title=['growth','break','evo'].includes(c.type)?W[c.id].name:c.name;
+  const title=['growth','break','evo','mastery'].includes(c.type)?W[c.id].name:c.name;
   const effectLabel=c.type==='growth'?c.name:label;
   const passive=c.type==='passive';
   const kindLabel=passive?`패시브 · ${getPassive(c.id)}/3 → ${getPassive(c.id)+1}/3`:tags[c.type]||'보상';
@@ -2043,6 +2090,10 @@ function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c||(c.typ
  if(c.type==='growth'){const w=g.weapons[c.id];if(c.up!==undefined)w.up[c.up]++;w.lv++;}
  if(c.type==='break'){let w=g.weapons[c.id];w.break=true;w.lv=4;}
  if(c.type==='evo'){g.currentEvo=c.id;renderEvo(c.id);setScreen('evolution');return;}
+ if(c.type==='mastery'){
+  const ranks=g.weapons[c.id].mastery??={};
+  ranks[c.branch]=(ranks[c.branch]??0)+1;
+ }
  if(c.type==='passive'){g.passives[c.id]=(g.passives[c.id]||0)+1;
   if(c.id==='cloak'){let amt=DATA.player.hp*.15;g.player.hp+=amt;g.player.maxHp+=amt;}}
  if(c.type==='rare'){
@@ -2103,15 +2154,15 @@ function waveFormation(index,time,pack){
 }
 function spawn(type,pos=null,variant=null){if(!g)return null;const at=pos||spawnPoint();if(!at)return null;
  let cfg=variant||MD[type]||DATA.elites[type]||DATA.boss;if(!cfg)return null;
- const diff=difficulty(),isBoss=type==='boss',regular=Object.hasOwn(MD,type)&&type!=='petal';
+ const diff=difficulty(),isBoss=type==='boss'||!!cfg.endlessForm,regular=Object.hasOwn(MD,type)&&type!=='petal';
  const hpFactor=isBoss?1:regular?diff.hp:1+(diff.hp-1)*.62;
  const learningCurve=g.stage&&CAMPAIGN_MONSTERS[type]&&g.t<110
   ?1-(1-clamp(g.t/110,0,1))*(.53-Math.min(.30,(g.stage.id-1)*.026))
   :1;
  const hp=cfg.hp*hpFactor*learningCurve;
  let e={id:++g.n,kind:type,x:at.x,y:at.y,r:cfg.r,hp,maxHp:hp,dmg:cfg.dmg*(regular?diff.contactDamage:diff.damage),speed:cfg.speed*(type==='spark'?Math.min(diff.speed,1.22):type==='thief'?Math.min(diff.speed,1.25):diff.speed),flash:0,dead:false,slowAmount:0,slowUntil:0,vulnerableUntil:0,phase:rand()*TAU,
-  patternTimer:type==='spore'?2.8:type==='firefly'?4:type==='moth'?range(2.0,3.5):5,telegraph:null,attackState:null,dashDir:0,dashLeft:0,halt:0,orbitHit:{},isBoss:type==='boss'};
- if(type==='boss'){e.specialClock=cfg.barrage?2.4:3.5;e.patternIndex=0;e.action=null;e.summonClock=0;e.bossDef=cfg;}
+  patternTimer:type==='spore'?2.8:type==='firefly'?4:type==='moth'?range(2.0,3.5):5,telegraph:null,attackState:null,dashDir:0,dashLeft:0,halt:0,orbitHit:{},isBoss};
+ if(isBoss){e.specialClock=cfg.endlessForm?1.5:cfg.barrage?2.4:3.5;e.patternIndex=0;e.action=null;e.summonClock=0;e.bossDef=cfg;}
  if(ENDLESS_ENEMIES[type])e.patternTimer=range(2,4);
  if(CAMPAIGN_MONSTERS[type])e.patternTimer=range(2.2,4.6)+(1-learningCurve)*4;
  if(type==='thief')e.escapeAt=g.worldClock+12;
@@ -2135,7 +2186,15 @@ function arrangeBossEscort(boss){
   return distance(e.x,e.y,p.x,p.y)+(Math.cos(diff)>.82?11:0);
  }
  crowd.sort((a,b)=>positionScore(a)-positionScore(b));
- for(const e of crowd.slice(bossEscortLimit())){
+ const limit=bossEscortLimit(),runners=new Set();
+ let kept=0;
+ for(const e of crowd){
+  const runner=!g.stage&&Object.hasOwn(SURVIVAL_RUNNERS,e.kind);
+  if(kept<limit&&(!runner||!runners.has(e.kind))){
+   kept++;
+   if(runner)runners.add(e.kind);
+   continue;
+  }
   e.retreat=g.worldClock+6;e.attackState=null;e.halt=0;e.detour=null;
  }
 }
@@ -2145,32 +2204,38 @@ function spawnGroup(pace=wavePace()){
  g.enemies=g.enemies.filter(e=>!e.dead&&(e===g.boss||e.isBoss||DATA.elites[e.kind]||distance(e.x,e.y,p.x,p.y)<=activeRadius));
  const m=Math.max(0,(g.stage?Math.min(g.t,g.stage.bossAt):g.t)/60);
  const row=spawnRow();
- const enemyWeights=waveWeights(row[5]);
+ const roster=Object.entries(waveWeights(row[5]));
  const cap=g.boss?bossEscortLimit():Math.min(190,Math.round((row[4]+Math.floor(Math.max(0,m-24)*2))*pace.cap));
  const counts={spore:0,firefly:0,spark:0,moth:0,webcap:0,shardling:0,moonbloom:0};
- for(const kind of Object.keys(enemyWeights))if(CAMPAIGN_MONSTERS[kind])counts[kind]=0;
+ const runnerLimit=g.boss?2:g.t<SURVIVAL_RUNNERS.firefly.at?2:g.t<SURVIVAL_RUNNER_PEAK?4:7;
+ for(const [kind] of roster)if(CAMPAIGN_MONSTERS[kind])counts[kind]=0;
  let alive=0;
  for(const e of g.enemies){if(!isEscort(e))continue;alive++;if(e.kind in counts)counts[e.kind]++;}
  const pack=clamp(Math.round((row[3]+(g.stage&&forestFrenzied()?2:0)+(g.rushUntil>g.t?(g.t<480?1:2):0))*difficulty().spawns*pace.pack),1,22);
  const entries=waveFormation(g.waveIndex++,g.t,pack);
  for(let i=0;i<pack;i++){
   if(alive>=cap){g.metrics.skipped+=pack-i;break;}
-  const pool=Object.entries(enemyWeights).filter(([k])=>counts[k]===undefined||counts[k]<(
-   CAMPAIGN_MONSTERS[k]?(g.boss?1:CAMPAIGN_MONSTERS[k].cap+Math.floor(g.stage.id/8))
-   :ENDLESS_ENEMIES[k]?(g.boss?1:ENDLESS_ENEMIES[k].cap):k==='spark'?Math.min(6,2+Math.floor(m/2)):k==='moth'?Math.min(8,2+Math.floor(m/3)):Math.min(15,6+Math.floor(m/4))));
+  const pool=roster.filter(([kind])=>{
+   if(!g.stage&&SURVIVAL_RUNNERS[kind]){
+    return counts.spark+counts.firefly<runnerLimit&&(!g.boss||counts[kind]<1);
+   }
+   return counts[kind]===undefined||counts[kind]<(
+    CAMPAIGN_MONSTERS[kind]?(g.boss?1:CAMPAIGN_MONSTERS[kind].cap+Math.floor(g.stage.id/8))
+    :ENDLESS_ENEMIES[kind]?(g.boss?1:ENDLESS_ENEMIES[kind].cap):kind==='spark'?Math.min(6,2+Math.floor(m/2)):kind==='moth'?Math.min(8,2+Math.floor(m/3)):Math.min(15,6+Math.floor(m/4)));
+  });
   if(!pool.length)break;
   let total=pool.reduce((a,p)=>a+p[1],0),r=rand()*total,type=pool[pool.length-1][0];
   for(const [name,weight] of pool){r-=weight;if(r<0){type=name;break;}}
-  const newcomer=!g.stage&&!g.boss&&pool.find(([kind])=>ENDLESS_ENEMIES[kind]&&!g.endlessIntroduced.has(kind));
+  const newcomer=!g.stage&&!g.boss&&pool.find(([kind])=>(ENDLESS_ENEMIES[kind]||SURVIVAL_RUNNERS[kind])&&!g.endlessIntroduced.has(kind));
   if(newcomer)type=newcomer[0];
   const at=spawnPoint(entries[i],g.stage?MD[type].r:.5);
   if(!at)continue;
   const e=spawn(type,at);
   if(e){
    alive++;if(type in counts)counts[type]++;
-   if(ENDLESS_ENEMIES[type]&&!g.endlessIntroduced.has(type)){
+   if(!g.stage&&(ENDLESS_ENEMIES[type]||SURVIVAL_RUNNERS[type])&&!g.endlessIntroduced.has(type)){
     g.endlessIntroduced.add(type);
-    showToast(`새 몬스터 · ${MD[type].name}`,2.8);
+    showToast(`${SURVIVAL_RUNNERS[type]?'빠른 몬스터':'새 몬스터'} · ${MD[type].name}`,2.8);
    }
   }
  }
@@ -2240,15 +2305,26 @@ function encounterTime(run){
  // Keep campaign wave pressure steady once the final duel is scheduled.
  return run.stage?Math.min(run.t,run.stage.bossAt)*1.24:run.t;
 }
+const SURVIVAL_SPAWNS=[
+ [0,24,1.39,3,64,{green:77,blue:16,bramble:7}],
+ [24,48,1.37,3,64,{green:68,blue:20,bramble:12}],
+ ...DATA.spawns.slice(2)
+];
 function spawnRow(){
  const time=encounterTime(g);
- return DATA.spawns.find(entry=>time>=entry[0]&&time<entry[1])||DATA.spawns.at(-1);
+ const rows=g.stage?DATA.spawns:SURVIVAL_SPAWNS;
+ return rows.find(entry=>time>=entry[0]&&time<entry[1])||rows.at(-1);
 }
 function waveWeights(survivalWeights){
  const stage=g.stage;
  if(!stage){
-  if(g.t<ENDLESS_ENEMIES.webcap.at)return survivalWeights;
   const weights={...survivalWeights};
+  for(const [kind,runner] of Object.entries(SURVIVAL_RUNNERS)){
+   if(g.t<runner.at){delete weights[kind];continue;}
+   const ramp=clamp((g.t-runner.at)/(SURVIVAL_RUNNER_PEAK-runner.at),0,1);
+   weights[kind]=runner.weight+(runner.lateWeight-runner.weight)*ramp;
+  }
+  if(g.t<ENDLESS_ENEMIES.webcap.at)return weights;
   // Shift part of the late roster toward the new monsters while keeping early mobs in rotation.
   if(weights.green)weights.green*=.65;
   if(weights.blue)weights.blue*=.75;
@@ -2269,13 +2345,11 @@ function stageBossTime(stage,index){
 function nextBossEncounter(){
  const count=g.bossEncounters;
  if(g.stage)return ['boss',stageBossTime(g.stage,count),stageBossDefinition(g.stage,Math.min(count,2))];
- if(count===0)return ['flower',DATA.elites.flower.at,DATA.elites.flower];
- if(count===1)return ['horn',DATA.elites.horn.at,DATA.elites.horn];
- const base=count===2?DATA.boss:LATE_BOSSES[(count-3)%LATE_BOSSES.length];
- const tier=base.tier??0;
- return ['boss',count===2?480:660+(count-3)*180,{
-  ...base,endless:true,renderArt:base.art==='thorn-guardian'?'endless-thorn-guardian':base.art,projectileTempo:1.42+.06*tier,projectileDamage:1.40+.09*tier
- }];
+ const {flower,horn}=DATA.elites;
+ const def=NEMO_SURVIVAL_BOSSES.definition(count,{flower,horn,crown:DATA.boss,thorn:LATE_BOSSES[0],moon:LATE_BOSSES[1],owl:LATE_BOSSES[2]});
+ if(count===0)return ['flower',flower.at,def];
+ if(count===1)return ['horn',horn.at,def];
+ return ['boss',count===2?480:660+(count-3)*180,def];
 }
 function updateBossEncounter(dt){
  if(g.boss){
@@ -2296,12 +2370,6 @@ function updateBossEncounter(dt){
  if(!entry)return;
  const boss=spawn(kind,entry,def);
  if(!boss)return;
- if(kind==='boss'&&count>=6){
-  const round=count-5,hardest=LATE_BOSSES.at(-1),diff=difficulty();
-  boss.hp=boss.maxHp=Math.round(Math.max(boss.maxHp,hardest.hp)*(1+.13*round));
-  boss.dmg=Math.max(boss.dmg,hardest.dmg*diff.damage)*(1+.045*round);
-  boss.speed=Math.max(boss.speed,hardest.speed*diff.speed)*(1+Math.min(.16,.025*round));
- }
  g.boss=boss;
  if(g.stage){
   g.enemyShots=[];
@@ -2334,7 +2402,7 @@ function bossDone(b){
  b.action=null;
  const phase=bossPhase(b),barrage=b.bossDef.barrage;
  const gap=Math.max(1.12,BOSS_GAP[phase]-.12*(b.bossDef.tier||0));
- b.specialClock=b.bossDef.endless?gap*.74:barrage?Math.max(1.2,gap*(.98-.11*barrage)):gap;
+ b.specialClock=b.bossDef.endless?Math.max(.72,gap*.58):barrage?Math.max(1.2,gap*(.98-.11*barrage)):gap;
 }
 function bossVolleyGap(b,normal){
  if(b.bossDef.endless)return normal*.82;
@@ -2352,7 +2420,7 @@ function campaignDashTravel(b,aim,reach){
 }
 function bossCast(b,kind){
  const ph=bossPhase(b),p=g.player,late=b.bossDef.barrage>=1.55,endless=b.bossDef.endless;
- const special=g.stage&&NEMO_CAMPAIGN_BOSSES.start(kind,b,p,ph,NEMO_HURT_Y);
+ const special=g.stage?NEMO_CAMPAIGN_BOSSES.start(kind,b,p,ph,NEMO_HURT_Y):NEMO_SURVIVAL_BOSSES.start(kind,b,p,ph);
  if(special){b.action=special;return;}
  if(kind==='thorn-barrage'){
   const rule=THORN_BARRAGES[ph];
@@ -2460,7 +2528,7 @@ function pathHitsNemo(oldX,oldY,x,y,radius){
 }
 function bossDashCollision(b,oldX,oldY){
  if(!pathHitsNemo(oldX,oldY,b.x,b.y,b.r-.08))return;
- const damage=g.stage?Math.min(g.player.maxHp*.40,b.bossDef.dmg*1.08*difficulty().damage):22+(b.bossDef.tier||0)*2;
+ const damage=g.stage?Math.min(g.player.maxHp*.40,b.bossDef.dmg*1.08*difficulty().damage):Math.min(g.player.maxHp*.46,b.dmg*1.35);
  damagePlayer(damage,b.bossDef.name+' 돌진');
 }
 function bossUpdate(b,dt){
@@ -2483,6 +2551,10 @@ function bossUpdate(b,dt){
    NEMO_CAMPAIGN_BOSSES.advance(a,dt,p,NEMO_HURT_Y,NEMO_HURT_RADIUS,
     (damage,name)=>damagePlayer(damage*b.bossDef.projectileDamage*difficulty().damage,b.bossDef.name+' · '+name,true),
     ()=>bossDone(b));
+   return;
+  }
+  if(a.type==='survival-warn'||a.type==='survival-fire'){
+   NEMO_SURVIVAL_BOSSES.advance(a,dt,(...args)=>enemyBullet(...args,b.id),()=>bossDone(b));
    return;
   }
   a.timer-=dt;
@@ -2548,7 +2620,7 @@ function bossUpdate(b,dt){
    const thorn=b.bossDef.endless&&b.bossDef.art==='thorn-guardian';
    const cycle=b.bossDef.cycles?.[ph]??(thorn?['thorn-barrage','dash']
     :b.bossDef.signature?[b.bossDef.signature,...BOSS_PATTERN_CYCLE[ph]]:BOSS_PATTERN_CYCLE[ph]);
-   if(g.stage&&b.patternPhase!==ph){b.patternPhase=ph;b.patternIndex=0;}
+   if(b.bossDef.cycles&&b.patternPhase!==ph){b.patternPhase=ph;b.patternIndex=0;}
    bossCast(b,cycle[b.patternIndex++%cycle.length]);
   }
  }
@@ -2637,7 +2709,7 @@ function updateMonster(e,dt){
   const p=g.player,away=atan(p.x,p.y,e.x,e.y),weave=Math.sin(g.worldClock*2.4+e.phase)*.64;
   moveForestSpecial(e,away+weave,dt);return;
  }
- if(e.kind==='boss'){bossUpdate(e,dt);return;}
+ if(e.isBoss){bossUpdate(e,dt);return;}
  if(CAMPAIGN_MONSTERS[e.kind]){updateCampaignMonster(e,dt);return;}
  if(e.halt>0){e.halt-=dt;}
  else if(e.attackState){let a=e.attackState;a.t-=dt;
@@ -2697,13 +2769,18 @@ function updateMonster(e,dt){
    moveForestSpecial(e,toward+sway,dt,sprinting?1.40:.64);
   }else chase(e,dt);
   e.patternTimer-=dt;
-  if((e.kind==='firefly'||e.kind==='horn')&&e.patternTimer<=0&&(!g.stage||(visible(e.x,e.y,0)&&distance(e.x,e.y,g.player.x,g.player.y)<8))){e.patternTimer=e.kind==='firefly'?4:5;e.attackState={type:'dash-warn',t:e.kind==='firefly'?.8:1,aim:atan(e.x,e.y,g.player.x,g.player.y)};}
+  if((e.kind==='firefly'||e.kind==='horn')&&e.patternTimer<=0&&visible(e.x,e.y,0)&&distance(e.x,e.y,g.player.x,g.player.y)<8){
+   e.patternTimer=e.kind==='firefly'?4:5;
+   e.attackState={type:'dash-warn',t:e.kind==='firefly'?.8:1,aim:atan(e.x,e.y,g.player.x,g.player.y)};
+  }
   if(e.kind==='flower'&&e.patternTimer<=0){e.patternTimer=4.6;e.attackState={type:'flower',t:.92,aim:atan(e.x,e.y,g.player.x,g.player.y)};}
  }
  const collision=pathHitsNemo(e.x,e.y,e.x,e.y,e.r-.1);
  if(collision){let amount=e.dmg;
   if(ENEMY_MOTION_KINDS.has(e.kind)&&g.player.invuln<=0)e.attackArtUntil=g.worldClock+.18;
-  if(e.attackState?.type==='dashing')amount=e.kind==='horn'?21:12;
+  if(e.attackState?.type==='dashing'){
+   amount=e.kind==='firefly'&&!g.stage?Math.min(g.player.maxHp*.60,e.dmg*1.25):e.kind==='horn'?21:12;
+  }
   damagePlayer(amount,`${e.kind} 접촉`);
  }
 }
@@ -3339,7 +3416,8 @@ function updateEncounters(dt){
  const row=spawnRow();
  const pace=wavePace();
  const time=g.stage?Math.min(g.t,g.stage.bossAt):g.t;
- const baseInterval=Math.max(.48,row[2]*pace.interval/(1+Math.min(30,time/60)*.010));
+ const modeInterval=g.stage?1:.88;
+ const baseInterval=Math.max(.48,row[2]*pace.interval*modeInterval/(1+Math.min(30,time/60)*.010));
  const spacing=[.86,.82,1.12,1.20];
  let interval=Math.max(.45,baseInterval*spacing[g.waveIndex%spacing.length]);
  g.spawnClock+=dt;
@@ -3364,6 +3442,10 @@ function updateEncounters(dt){
  }
  const lateWave=Math.floor(Math.max(0,g.t-480)/90);
  if(!g.stage&&lateWave>(g.lateWave||0)){g.lateWave=lateWave;g.rushUntil=g.t+20;showToast('🌑 숲이 더욱 위험해졌어! 살아남아!');}
+ if(!g.stage&&g.t>=MASTERY_AT&&!g.milestones.mastery){
+  g.milestones.mastery=true;
+  showToast('15분 돌파 · 최종 진화 무기 연마 해금',3.2);
+ }
  const full=Math.floor((g.stage?Math.min(g.t,g.stage.bossAt):g.t)/60);if(full>g.achievedMinutes)g.achievedMinutes=full;
  return true;
 }
@@ -3420,7 +3502,7 @@ function finish(victory){
  $('result-money').textContent=`+${g.gold.toLocaleString('ko-KR')} G`;
  const best=Object.entries(g.metrics.weaponDamage).sort((a,b)=>b[1]-a[1])[0];
  const a=[[stage?'탐험 지역':'최종 위험도',stage?.chapter??difficulty().label],['레벨','Lv.'+g.player.level],
- ['처치 수',g.totalKills+'마리'],['총 피해',Math.round(g.totalDamage).toLocaleString('ko-KR')],
+ ['처치 수',g.totalKills.toLocaleString('ko-KR')+'마리'],['총 피해',Math.round(g.totalDamage).toLocaleString('ko-KR')],
  ['보석 회수율',rate+'%'],['피격',g.hitCount+'회'],['첫 진화',g.metrics.firstEvolution===null?'없음':fmt(g.metrics.firstEvolution)],
  ['최고 피해 무기',best?W[best[0]].name:'스타 샷']];
  $('result-grid').innerHTML=a.map(([k,v])=>`<div class="result-stat"><small>${k}</small><b>${v}</b></div>`).join('');
@@ -3459,11 +3541,15 @@ function updateHUD(){
  const xpBar=$('xp-progress'),xpPercent=String(Math.round(xpProgress*100));
  if(xpBar.getAttribute('aria-valuenow')!==xpPercent)xpBar.setAttribute('aria-valuenow',xpPercent);
  const weapons=Object.entries(g.weapons);
- const loadout=weapons.map(([id,w])=>`${id}:${w.lv}:${w.evo}`).join('|');
+ const loadout=weapons.map(([id,w])=>`${id}:${w.lv}:${w.evo}:${Object.values(w.mastery??{}).join(',')}`).join('|');
  if(loadout!==shownLoadout){
   shownLoadout=loadout;
   $('weapon-slots').innerHTML=weapons.map(([id,w])=>`<div class="slot" title="${W[id].name} · Lv.${w.lv}"><span class="ico">${skillIcon(id,W[id].icon)}</span><small>Lv.${w.lv}${w.evo!==null?'★':''}</small></div>`).join('');
-  $('pause-loadout').innerHTML=weapons.map(([id,w])=>`<li>${skillIcon(id,W[id].icon)}<span>${W[id].name}</span><small>Lv.${w.lv}${w.evo!==null?'★':''}</small></li>`).join('');
+  $('pause-loadout').innerHTML=weapons.map(([id,w])=>{
+   const ranks=Object.values(w.mastery??{}).reduce((total,rank)=>total+rank,0);
+   const level=`Lv.${w.lv}${w.evo!==null?'★':''}`;
+   return `<li>${skillIcon(id,W[id].icon)}<span>${W[id].name}</span><small>${level}${ranks?` +${ranks}`:''}</small></li>`;
+  }).join('');
  }
  const passives=ownedPassives();
  const passiveLoadout=passives.map(([id,rank])=>`${id}:${rank}`).join('|');
@@ -3845,7 +3931,7 @@ function drawEnemy(e){
  if(winding){
   const glint=.19+Math.sin(g.worldClock*15)*.045;
   const tone=attack==='thorn-warn'?ENEMY_BOLT_COLORS[THORN_BARRAGES[e.action.phase].color]:null;
-  star(e.x,e.y-ht*.86,glint,0,tone?.[1]??'#fff0b6',tone?.[0]??CAMPAIGN_MONSTERS[e.kind]?.tint??ENDLESS_ENEMIES[e.kind]?.color??'#76526b');
+  star(e.x,e.y-ht*.86,glint,0,e.action?.color??tone?.[1]??'#fff0b6',tone?.[0]??CAMPAIGN_MONSTERS[e.kind]?.tint??ENDLESS_ENEMIES[e.kind]?.color??'#76526b');
 
  }
  if(!e.retreat&&!isboss&&!iselite&&e.hp<e.maxHp){
@@ -4438,10 +4524,8 @@ function drawBattle(){
   ctx.fillStyle='#b7dcf133';
   ctx.fillRect(g.camera.x-SCREEN_W/2-1,g.camera.y-SCREEN_H/2-1,SCREEN_W+2,SCREEN_H+2);
  }
- if(g.stage){
-  drawCampaignImpacts();
-  drawOffscreenBoss();
- }
+ if(g.stage)drawCampaignImpacts();
+ if(g.stage||SCREEN_W<DATA.widthWorld)drawOffscreenBoss();
  if(g.stage&&g.boss&&g.enemyShots.length){
   const p=g.player,y=p.y+NEMO_HURT_Y;
   ellipse(p.x,y,.078,.078,'#55443d',.92);
@@ -4506,7 +4590,7 @@ function resizePlayfield(){
  const quality=MOBILE_RENDER_QUALITY[renderTier];
  const scale=mobile?Math.min(devicePixelRatio,quality.scale,Math.sqrt(quality.pixels/(width*height))):1;
  const nextWidth=Math.max(1,Math.round(width*scale)),nextHeight=Math.max(1,Math.round(height*scale));
- const nextWorldWidth=expanded&&tallTouchField.matches?24:DATA.widthWorld;
+ const nextWorldWidth=expanded&&mobile?(tallTouchField.matches?20:25):DATA.widthWorld;
  const layoutChanged=width!==fieldLayoutWidth||height!==fieldLayoutHeight||SCREEN_W!==nextWorldWidth;
  if(!layoutChanged&&VW===nextWidth&&VH===nextHeight)return;
  if(layoutChanged){
@@ -4937,13 +5021,19 @@ window.addEventListener('keydown',e=>{
  if(e.defaultPrevented||e.isComposing)return;
  const modal=$(screen);
  if(e.key==='Tab'&&modal?.getAttribute('aria-modal')==='true'){
-  const controls=[...modal.querySelectorAll('button:not(:disabled),input:not(:disabled),[href]')].filter(el=>el.getClientRects().length);
+  const controls=[...modal.querySelectorAll('button,input,textarea,select,a[href],[tabindex]')]
+   .filter(el=>el.tabIndex>=0&&!el.matches(':disabled')&&el.getClientRects().length);
   if(controls.length){
    const first=controls[0],lastControl=controls.at(-1),active=document.activeElement;
    if(!controls.includes(active)||(e.shiftKey?active===first:active===lastControl)){
     e.preventDefault();(e.shiftKey?lastControl:first).focus();
    }
   }
+  return;
+ }
+ if(e.code==='Escape'&&screen==='settings'){
+  if(!$('save-transfer').hidden)closeSaveTransfer();
+  else $('settings-back').click();
   return;
  }
  if(e.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return;
@@ -5135,15 +5225,14 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.9.3';
+  const CURRENT='5.9.4';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
-  banner.setAttribute('role','status');
-  banner.innerHTML='<span>✨ 새 패치 준비됨</span><button type="button">업데이트 적용</button>';
-  banner.style.cssText='display:none;position:fixed;z-index:99999;top:12px;left:50%;transform:translateX(-50%);background:linear-gradient(120deg,#fff6d8,#f6e4ff);border:3px solid #83559c;border-radius:18px;box-shadow:0 6px 0 #674b7d55,0 12px 28px #32253c44;color:#643e78;font-weight:900;padding:10px 12px;align-items:center;gap:12px;font-family:system-ui,sans-serif;font-size:15px';
-  banner.querySelector('button').style.cssText='background:#ffdb88;border:2px solid #83559c;color:#56376d;padding:8px 12px;border-radius:12px;font-weight:900;cursor:pointer';
+  banner.hidden=true;
+  banner.innerHTML='<span role="status">새 패치 준비됨</span><button type="button">업데이트 적용</button>';
   document.body.append(banner);
+  const app=document.getElementById('app');
   const updateButton=banner.querySelector('button'),updateStatus=banner.querySelector('span');
   function updateTo(v,retry=false){
     const u=new URL(location.href);
@@ -5158,10 +5247,12 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
     return true;
   }
   function showAvailableUpdate(){
-    const available=window.__NEMO_CAN_APPLY_UPDATE__?.();
+    const available=Boolean(window.__NEMO_CAN_APPLY_UPDATE__?.());
+    banner.dataset.activeRun=String(!available);
+    updateButton.hidden=!available;
     updateButton.disabled=!available;
     updateStatus.textContent=available?'새 패치 준비됨':'모험을 마치면 업데이트할 수 있어요.';
-    banner.style.display='flex';
+    banner.hidden=!available&&!['playing','intro'].includes(app.dataset.screen);
   }
   updateButton.addEventListener('click',()=>{
     if(lastVersion&&window.__NEMO_CAN_APPLY_UPDATE__?.())updateTo(lastVersion,true);
@@ -5179,7 +5270,7 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
         showAvailableUpdate();
       }else if(info.version===CURRENT){
         lastVersion='';
-        banner.style.display='none';
+        banner.hidden=true;
       }
     }catch(_){/* Game remains playable during intermittent connectivity. */}
     finally{busy=false;}
@@ -5188,7 +5279,7 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
     if(!lastVersion)return;
     if(window.__NEMO_SAFE_UPDATE__?.()&&updateTo(lastVersion))return;
     showAvailableUpdate();
-  }).observe(document.getElementById('app'),{attributes:true,attributeFilter:['data-screen']});
+  }).observe(app,{attributes:true,attributeFilter:['data-screen']});
   // Only live web versions will fetch; file:// offline runs do not.
   if(location.protocol==='https:'||location.protocol==='http:'){
     setTimeout(check,3000);

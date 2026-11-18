@@ -1,0 +1,171 @@
+#app #cards .choice-card[data-kind="mastery"] {
+  --ink:#523a69;
+  --banner:#6e5687;
+  --shadow:#48335f;
+  --wash:#eee5f1;
+  --edge:#c2abd4;
+}
+
+#app #school .school-grid {
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));
+}
+#app #school .school-row > div:first-child {
+  min-width:0;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+}
+#app #settings .settings-line input[type="range"] {
+  flex:0 1 42%;
+  width:42%;
+  min-width:72px;
+  height:26px;
+}
+#app #stages .stage-card small,
+#app #pause #pause-exit-message,
+#app #codex .codex-details,
+#app #settings :is(.settings-line,#save-preview),
+#app #toast {
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+}
+#app #toast.toast {
+  padding:9px 25px 9px 31px;
+}
+#app #result-grid .result-stat b {
+  font-size:clamp(13px,2.7vmin,18px) !important;
+  font-variant-numeric:tabular-nums;
+  word-break:keep-all;
+}
+#nemo-live-patch {
+  position:fixed;
+  z-index:99999;
+  top:max(12px,env(safe-area-inset-top));
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  width:max-content;
+  max-width:min(520px,calc(100vw - 24px));
+  align-items:center;
+  gap:8px;
+  padding:7px 11px;
+  border:2px solid #a892b2;
+  border-radius:12px;
+  background:#fff5e7;
+  box-shadow:0 3px 9px #32253c44;
+  color:#513b60;
+  font:700 13px/1.4 system-ui,sans-serif;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+}
+#nemo-live-patch[hidden] { display:none; }
+#nemo-live-patch[data-active-run="true"] {
+  top:auto;
+  bottom:max(10px,env(safe-area-inset-bottom));
+  pointer-events:none;
+}
+#nemo-live-patch button {
+  min-height:36px;
+  padding:5px 8px;
+  border:1px solid #a892b2;
+  border-radius:7px;
+  background:#ffe5a3;
+  color:inherit;
+}
+
+@media (any-pointer:coarse) {
+  #app #cards .choice-card {
+    --card-gutter:10px;
+    padding-inline:var(--card-gutter);
+  }
+  #app #cards .choice-identity {
+    margin-inline:calc(-1 * var(--card-gutter));
+    padding-inline:calc(var(--card-gutter) + 3px);
+  }
+  #app #cards :is(.choice-name,.choice-effect,.choice-copy,.choice-growth,.choice-meta) {
+    min-width:0;
+    white-space:normal;
+    word-break:keep-all;
+    overflow-wrap:anywhere;
+  }
+  #app #cards :is(.choice-effect,.choice-copy,.choice-growth,.choice-meta) {
+    padding-inline:8px;
+  }
+  #app #evolution :is(.card-desc,.card-meta) {
+    max-width:100%;
+    min-width:0;
+    padding-inline:4px;
+    white-space:normal;
+    word-break:keep-all;
+    overflow-wrap:anywhere;
+  }
+  #app #evolution .card-sub {
+    word-break:keep-all;
+    text-wrap:balance;
+  }
+}
+
+@media (max-width:650px) and (orientation:portrait) and (any-pointer:coarse) {
+  #app #hud .survival-status .survival-left #weapon-slots .slot small {
+    align-self:center;
+    padding-inline:0;
+    font-size:9px;
+  }
+}
+
+@media (max-width:1024px) and (orientation:landscape) and (any-pointer:coarse) {
+  #app:is([data-screen="menu"],[data-screen="nickname-setup"],[data-screen="stages"],[data-screen="costume-shop"],
+    [data-screen="school"],[data-screen="settings"],[data-screen="codex"],[data-screen="leaderboard"],[data-screen="result"]) {
+    width:100%;
+    height:var(--nemo-visible-height,100dvh);
+    max-height:var(--nemo-visible-height,100dvh);
+    aspect-ratio:auto;
+    border:0 !important;
+    border-radius:0 !important;
+  }
+  #app:not(:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"],
+    [data-screen="cards"],[data-screen="evolution"])) > #canvas {
+    object-fit:cover;
+  }
+  #app > :is(#menu,#nickname-setup,#stages,#costume-shop,#school,#settings,#codex,#leaderboard,#result) {
+    padding-inline:max(8px,env(safe-area-inset-left)) max(8px,env(safe-area-inset-right));
+  }
+}
+
+@media (max-height:450px) and (orientation:landscape) and (any-pointer:coarse) {
+  #app #menu .menu-board {
+    width:min(760px,97%) !important;
+    grid-template-columns:minmax(0,1fr) minmax(100px,30%);
+    align-items:start;
+    gap:14px;
+    padding:12px 20px !important;
+  }
+  #app #menu .menu-art { display:grid; align-self:start; }
+  #app #menu .folio-title { font-size:clamp(23px,5.8vmin,30px) !important; }
+  #app #menu .folio-title br { display:none; }
+  #app #menu .menu-kicker { margin-bottom:2px; }
+  #app #menu .menu-intro { margin-bottom:6px; font-size:13px; }
+  #app #menu .buttons { margin-block:7px; }
+  #app #nickname-setup .nemo-name-board { padding:10px 18px; }
+  #app #nickname-setup :is(.subtitle,.nemo-name-help) { margin-block:4px; }
+  #app #nickname-setup label { margin-block:5px; }
+  #app #nickname-setup input { padding-block:7px; }
+  #app #nickname-setup .nemo-name-continue { margin-top:7px; }
+  #app #nickname-setup .nemo-name-error:empty { min-height:0; margin:0; }
+}
+
+@media (max-height:280px) and (orientation:landscape) and (any-pointer:coarse) {
+  #app #menu .menu-board { padding-block:8px !important; }
+  #app #menu .menu-intro { margin-bottom:3px; }
+  #app #menu .buttons { margin-block:4px; }
+}
+
+@media (orientation:landscape) and (any-pointer:coarse) {
+  #app #cards .choice-effect strong {
+    font-size:12px;
+  }
+  #app #evolution :is(.evo-variant-name,.card-desc > span) {
+    max-width:100%;
+    min-width:0;
+    padding-inline:4px;
+  }
+}
