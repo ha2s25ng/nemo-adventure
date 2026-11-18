@@ -19,6 +19,14 @@
   flex-shrink: 0;
 }
 
+/* Five-column and four-column grids need their own scroll region. */
+@media (max-width: 880px) {
+  #app #codex #codex-tabs {
+    max-height: 132px;
+    overflow-y: auto;
+  }
+}
+
 /* Keep the tab grid from squeezing out the landscape reading pane. */
 @media (orientation: landscape) and (max-height: 450px) {
   #app #codex #codex-tabs {
