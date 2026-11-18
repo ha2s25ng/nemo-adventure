@@ -1,5 +1,5 @@
 {
-  "version": "5.9.1",
+  "version": "5.9.2",
   "mode": "endless_survival_and_campaign",
-  "notes": "모바일 전투 화면과 터치 조작 개선 · 마법 빗자루 연출 추가 · 보석 자석 설명 정정"
+  "notes": "홈 화면 웹 앱과 전체 화면 지원 · 모바일 가로 레벨업·진화 선택 화면 개선"
 }

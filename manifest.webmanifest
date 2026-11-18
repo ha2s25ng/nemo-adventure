@@ -1,0 +1,15 @@
+{
+  "id": "./",
+  "name": "니모의 낯선 모험",
+  "short_name": "니모의 모험",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#e5edcf",
+  "theme_color": "#e5edcf",
+  "icons": [
+    { "src": "./assets/mobile-v592/app-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "./assets/mobile-v592/app-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

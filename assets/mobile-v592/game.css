@@ -1,0 +1,119 @@
+#app[data-immersive="true"] {
+  width:100%;
+  height:var(--nemo-visible-height,100dvh);
+  max-height:var(--nemo-visible-height,100dvh);
+  aspect-ratio:auto;
+  border:0 !important;
+  border-radius:0 !important;
+}
+#app[data-immersive="true"] #canvas {
+  object-fit:fill;
+}
+#settings .fullscreen-help { margin:0; line-height:1.5; }
+#settings .fullscreen-help:empty { display:none; }
+#app #settings-fullscreen { min-height:44px; }
+#app #settings-fullscreen[hidden] { display:none !important; }
+
+@media (any-pointer:coarse) {
+  html body { height:var(--nemo-visible-height,100dvh); }
+  #app:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"],[data-screen="cards"],[data-screen="evolution"],[data-immersive="true"]) {
+    max-height:var(--nemo-visible-height,100dvh);
+  }
+}
+@media (any-pointer:coarse) and (max-width:1024px) {
+  #app:is([data-screen="playing"],[data-screen="intro"],[data-screen="pause"],[data-screen="cards"],[data-screen="evolution"]) {
+    width:100%;
+    height:var(--nemo-visible-height,100dvh);
+    border:0 !important;
+    border-radius:0 !important;
+    aspect-ratio:auto;
+  }
+}
+@media (orientation:landscape) and (any-pointer:coarse) {
+  #app #hud .hud-top {
+    left:max(8px,env(safe-area-inset-left));
+    right:max(8px,env(safe-area-inset-right));
+    top:max(6px,env(safe-area-inset-top));
+  }
+  #app :is(#cards,#evolution) {
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    background:#182c1d56 !important;
+  }
+  #app :is(#cards .choice-board,#evolution .card-wrap) {
+    width:min(91%,820px) !important;
+    max-height:88%;
+    padding:8px 12px !important;
+    overflow:auto;
+  }
+  #app #cards .choice-heading { padding:0 0 5px; }
+  #app #cards .choice-heading h2 { font-size:19px; }
+  #app #cards .choice-heading p { display:none; }
+  #app #cards #card-options { gap:7px; }
+  #app #cards .choice-card { gap:4px; min-height:0; padding:0 6px 5px; }
+  #app #cards .choice-identity { padding:4px; gap:5px; }
+  #app #cards .choice-icon { width:26px; height:26px; min-height:0; }
+  #app #cards .choice-name { font-size:14px; line-height:1.15; }
+  #app #cards :is(.choice-effect,.choice-copy,.choice-growth,.choice-meta) {
+    padding-block:2px;
+    font-size:11px;
+    line-height:1.22;
+  }
+  #app #cards .choice-cta { min-height:25px; padding-block:2px; font-size:11px; }
+  #app #cards .choice-footer { margin:4px 0 0; padding:0; }
+  #app #cards #reroll { min-height:36px; padding-block:3px; }
+  #app #evolution .card-wrap > .folio,
+  #app #evolution .card-wrap > .card-sub { display:none; }
+  #app #evolution .card-wrap > .ribbon { margin:0 auto; padding:3px 14px; font-size:19px !important; }
+  #app #evolution #evo-options { margin:6px auto 2px; gap:8px; }
+  #app #evolution #evo-options .skill-card {
+    min-height:0 !important;
+    max-height:none;
+    gap:4px;
+    padding:6px 8px !important;
+    overflow:visible;
+  }
+  #app #evolution .skill-card .card-icon {
+    width:32px !important;
+    height:32px !important;
+    min-height:32px !important;
+  }
+  #app #evolution .skill-card .card-icon img { width:100% !important; height:100% !important; }
+  #app #evolution .card-select-label { min-height:22px; }
+  #app #cards .choice-board {
+    display:grid;
+    grid-template-rows:auto minmax(0,1fr) auto;
+    overflow:hidden;
+  }
+  #app #cards #card-options {
+    grid-auto-rows:max-content;
+    align-content:start;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    touch-action:pan-y;
+    margin:0;
+  }
+  #app #cards .choice-card {
+    justify-content:start;
+  }
+  #app #cards .choice-identity { order:0; }
+  #app #cards .choice-cta { order:1; align-self:stretch; }
+  #app #cards .choice-effect { order:2; }
+  #app #cards .choice-copy { order:3; }
+  #app #cards .choice-growth { order:4; }
+  #app #cards .choice-meta { order:5; }
+
+  #app #evolution #evo-options .skill-card {
+    display:flex !important;
+    flex-direction:column;
+    justify-content:flex-start;
+  }
+  #app #evolution .card-topping { order:0; }
+  #app #evolution .card-icon { order:1; }
+  #app #evolution .card-title { display:none; }
+  #app #evolution .card-desc { display:contents; }
+  #app #evolution .evo-variant-name { order:2; font-size:13px; }
+  #app #evolution .card-select-label { order:3; }
+  #app #evolution .card-desc > span { order:4; font-size:12px; line-height:1.26; }
+  #app #evolution .card-meta { order:5; }
+}
