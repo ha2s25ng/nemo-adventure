@@ -14,10 +14,14 @@
   }
 }
 
+/* Keep at least one complete tab row visible before scrolling. */
+#app #codex #codex-tabs {
+  flex-shrink: 0;
+}
+
 /* Keep the tab grid from squeezing out the landscape reading pane. */
 @media (orientation: landscape) and (max-height: 450px) {
   #app #codex #codex-tabs {
-    flex-shrink: 0;
     min-height: 0;
     max-height: 96px;
     overflow-y: auto;
