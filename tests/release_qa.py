@@ -87,6 +87,9 @@ GEOMETRY = """(mode)=>{
  if(mode==='codex'){
    const detail=document.getElementById('codex-details');
    if(detail.clientHeight<72)problems.push('codex reading area too short: '+detail.clientHeight);
+   const tabs=document.getElementById('codex-tabs');
+   const first=tabs.querySelector('.codex-tab');
+   if(first&&first.getBoundingClientRect().height>tabs.clientHeight+1)problems.push('codex tab taller than its scroll area');
  }
  for(const [selector,parent] of [['.school-row strong','.school-row'],['.codex-heading h3','.codex-heading'],
    ['.pause-loadout li > span','li'],['.settings-line > span','.settings-line'],
@@ -114,7 +117,11 @@ GEOMETRY = """(mode)=>{
    if(r.x<p.x-2||r.right>p.right+2)problems.push('control extends horizontally: '+(el.id||el.innerText.slice(0,30)));
  }
  return {mode,viewport:[innerWidth,innerHeight],coarse:matchMedia('(any-pointer:coarse)').matches,
-  panel:p,scroll:[panel.scrollHeight,panel.clientHeight],problems:[...new Set(problems)],cards:details};
+  panel:p,scroll:[panel.scrollHeight,panel.clientHeight],
+  codex:mode==='codex'?{readingHeight:document.getElementById('codex-details').clientHeight,
+    tabsHeight:document.getElementById('codex-tabs').clientHeight,
+    tabHeight:screen.querySelector('.codex-tab').getBoundingClientRect().height}:null,
+  problems:[...new Set(problems)],cards:details};
 }"""
 
 SET_CARDS = """kind=>{
@@ -223,6 +230,9 @@ def run():
                     page.evaluate("()=>{const q=window.__QA;" + js + ";}")
                     mode = "settings" if name.startswith("settings-") else "leaderboard" if name.startswith("leaderboard-") else name
                     inspect(name, mode, name == "codex" and height < 300)
+                    if name in ("settings-import", "settings-export"):
+                        getattr(page.locator("#save-transfer-close"), "tap" if touch else "click")()
+                        assert page.locator("#save-transfer").is_hidden(), "save transfer close did not dismiss"
                 except Exception as error:
                     results.append(dict(engine=args.engine,case=label,name=name,problems=[str(error)]))
 
