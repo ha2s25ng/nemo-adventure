@@ -15,7 +15,7 @@
 }
 
 /* Keep the tab grid from squeezing out the landscape reading pane. */
-@media (orientation: landscape) and (max-height: 450px) and (any-pointer: coarse) {
+@media (orientation: landscape) and (max-height: 450px) {
   #app #codex #codex-tabs {
     min-height: 0;
     max-height: 132px;

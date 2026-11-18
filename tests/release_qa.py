@@ -17,7 +17,7 @@ OUT = ROOT / "qa-results"
 HOOK = """
 window.__QA={begin,menu,pause,resume,setScreen,renderCards,renderEvo,chooseEvo,
  selectCard,rollCards,makeGrowth,openForestChoice,finish,stageOpen,shopOpen,
- updateSchool,openCodex,rankOpen,showNicknameSetup,openSaveTransfer,updateHUD,showToast,
+ updateSchool,openCodex,rankOpen,rankRow,showNicknameSetup,openSaveTransfer,updateHUD,showToast,
  get g(){return g},get saved(){return saved},get screen(){return screen},
  DATA,W,RARE_CARDS,COSTUMES,NEMO_STAGES};
 """
@@ -56,6 +56,7 @@ GEOMETRY = """(mode)=>{
  const problems=[];const v={x:0,y:0,right:innerWidth,bottom:innerHeight};
  const inside=(a,b)=>a.x>=b.x-1&&a.y>=b.y-1&&a.right<=b.right+1&&a.bottom<=b.bottom+1;
  if(!visible(screen)||!visible(panel))problems.push('screen/panel invisible');
+ for(const el of screen.querySelectorAll('[hidden]'))if(visible(el))problems.push('hidden element visible: '+el.id);
  const p=box(panel),a=box(app);
  if(!inside(p,v)||!inside(p,a))problems.push('panel outside viewport/app');
  if(panel.scrollWidth>panel.clientWidth+2)problems.push('panel horizontal overflow');
@@ -90,7 +91,9 @@ GEOMETRY = """(mode)=>{
  for(const [selector,parent] of [['.school-row strong','.school-row'],['.codex-heading h3','.codex-heading'],
    ['.pause-loadout li > span','li'],['.settings-line > span','.settings-line'],
    ['.result-stat b','.result-stat'],['.choice-heading h2','.choice-heading'],
-   ['.folio-title','.menu-board'],['#hp','.hud-health'],['#time','#survival-timer']]){
+   ['.folio-title','.menu-board'],['#hp','.hud-health'],['#time','#survival-timer'],
+   ['.rank-name','.rank-identity'],['.rank-spell > span','.rank-spell'],
+   ['.rank-time','.rank-record'],['.rank-stats','.rank-record']]){
    for(const el of screen.querySelectorAll(selector)){
      const bound=el.closest(parent);if(!visible(el)||!visible(bound))continue;
      const b=box(bound),range=document.createRange();range.selectNodeContents(el);
@@ -166,6 +169,7 @@ def run():
         cases = [cases[i] for i in (0, 2, 4, 6, 7, 8)]
     with sync_playwright() as pw:
         browser = getattr(pw, args.engine).launch()
+        print(f"QA_BROWSER {args.engine} {browser.version}",flush=True)
         for label, width, height, touch in cases:
             context = browser.new_context(viewport={"width": width, "height": height},
                 is_mobile=touch, has_touch=touch, device_scale_factor=1, reduced_motion="reduce",
@@ -206,14 +210,18 @@ def run():
                 ("school", "q.menu();q.updateSchool();q.setScreen('school')"),
                 ("codex", "q.menu();q.openCodex()"),
                 ("settings", "q.menu();document.getElementById('settings-btn').click()"),
+                ("settings-import", "q.menu();document.getElementById('settings-btn').click();q.openSaveTransfer('import')"),
+                ("settings-export", "q.menu();document.getElementById('settings-btn').click();q.openSaveTransfer('export')"),
                 ("leaderboard", "q.menu();q.rankOpen()"),
+                ("leaderboard-populated", "q.menu();q.rankOpen();document.getElementById('rank-online').innerHTML=['가나다라마바사아자차카타파하니모','ABCDEFGHIJKLMNOP','숲속의니모'].map((nickname,i)=>q.rankRow({nickname,player_id:'qa-'+i,survival_seconds:5999-i,kills:99999,level:99,loadout:{costume:q.COSTUMES[0].id,weapons:['vortex','book','comet','feather'].map(id=>({id,level:7}))}},i)).join('')"),
                 ("playing", "q.begin();q.g.debugUsed=true;q.g.totalKills=99999;q.g.t=9999;q.g.gold=99999;for(const id of Object.keys(q.W).slice(0,4))q.g.weapons[id]={lv:7,up:[2,2,1],break:true,evo:1,clock:0};for(const id of Object.keys(q.DATA.passives).slice(0,4))q.g.passives[id]=3;q.updateHUD();q.showToast('스테이지 30 · 솜사탕 소용돌이 최종 진화! 경험치 획득량이 증가하고 주변의 모든 적에게 강력한 마법 피해를 줘요.',30)"),
                 ("pause", "q.begin();q.g.debugUsed=true;for(const id of Object.keys(q.W).slice(0,4))q.g.weapons[id]={lv:7,up:[2,2,1],break:true,evo:1,clock:0};for(const id of Object.keys(q.DATA.passives).slice(0,4))q.g.passives[id]=3;q.updateHUD();q.pause()"),
                 ("result", "q.begin();q.g.debugUsed=true;q.g.t=9999;q.g.totalKills=99999;q.finish(false)"),
             ]:
                 try:
                     page.evaluate("()=>{const q=window.__QA;" + js + ";}")
-                    inspect(name, name, name == "codex" and height < 300)
+                    mode = "settings" if name.startswith("settings-") else "leaderboard" if name.startswith("leaderboard-") else name
+                    inspect(name, mode, name == "codex" and height < 300)
                 except Exception as error:
                     results.append(dict(engine=args.engine,case=label,name=name,problems=[str(error)]))
 
@@ -285,6 +293,14 @@ def run():
                         assert page.evaluate(state)==stopped, "movement continued after releasing key"
                     page.evaluate("window.__QA.pause()")
                 check_action("keyboard-movement-release", keyboard_movement)
+                def compact_desktop_codex():
+                    try:
+                        page.set_viewport_size(dict(width=844,height=390))
+                        page.evaluate("()=>{window.__QA.menu();window.__QA.openCodex();}")
+                        inspect("codex-compact-desktop","codex",True)
+                    finally:
+                        page.set_viewport_size(dict(width=width,height=height))
+                check_action("codex-compact-desktop-open",compact_desktop_codex)
 
             if args.engine == "chromium" and label == "phone-android":
                 def touch_movement():
