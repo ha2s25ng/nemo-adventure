@@ -1,5 +1,5 @@
 {
-  "version": "5.9.7",
+  "version": "5.9.8",
   "mode": "endless_survival_and_campaign",
-  "notes": "동화풍 몬스터·보스 에셋 재작업, 즉시 타격 제거, 정면 탄막과 보스 패턴 조합"
+  "notes": "초반 경험치 곡선 완화 및 보스 보상 연속 레벨업 감소"
 }
