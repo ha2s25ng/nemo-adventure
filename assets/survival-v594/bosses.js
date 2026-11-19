@@ -61,15 +61,17 @@ const NEMO_SURVIVAL_BOSSES = (() => {
  function spray(action,fire,angles,speed,offset=0){
   const {aim,x,y,rule}=action;
   const ox=x-Math.sin(aim)*offset,oy=y+Math.cos(aim)*offset;
-  for(const angle of angles)fire(ox,oy,angle,speed,rule.damage,4.7,rule.name,rule.paint);
+  for(const angle of angles){
+   const forward=Math.cos(angle-aim);
+   if(forward<=.12)continue;
+   fire(ox,oy,angle,speed,rule.damage,4.7,rule.name,rule.paint);
+  }
  }
  function prongs(angle,count,spacing){
   return Array.from({length:count},(_,i)=>angle+(i-(count-1)/2)*spacing);
  }
  function openWheel(angle,count,open){
-  return Array.from({length:count},(_,i)=>i)
-   .filter(i=>i>open&&i<count-open)
-   .map(i=>angle+i*TAU/count);
+  return Array.from({length:count-open*2},(_,i)=>angle-1.28+i*2.56/(count-open*2-1));
  }
 
  const patterns={
@@ -164,7 +166,7 @@ const NEMO_SURVIVAL_BOSSES = (() => {
    fire(a,shot){
     const bearing=a.aim+(a.index%2?.79:-.79);
     spray(a,shot,prongs(bearing,5,.25),3.12+.16*a.phase);
-    spray(a,shot,prongs(bearing+Math.PI,4,.33),2.84+.16*a.phase);
+    spray(a,shot,prongs(a.aim-(a.index%2?.48:-.48),3,.26),2.84+.16*a.phase);
    }
   },
   'lunar-lanes':{
@@ -185,7 +187,7 @@ const NEMO_SURVIVAL_BOSSES = (() => {
   const dx=player.x-boss.x,dy=player.y-boss.y;
   return {
    type:'survival-warn',kind,rule,phase,x:boss.x,y:boss.y,
-   aim:Math.atan2(dy,dx),color:rule.color,index:0,timer:rule.windup-.10-.045*phase
+   aim:Math.atan2(dy,dx),color:rule.color,index:0,timer:Math.max(.75,rule.windup-.045*phase)
   };
  }
 

@@ -68,7 +68,7 @@ function createCampaignMonsterBehavior({
    lanes:[],circles:[],rays:[]};
   switch(e.kind){
   case 'crystal-crab':
-   // A narrow instant strike and no projectiles. Staying sideways avoids it.
+   // The claw sweep is represented by travelling crystal projectiles.
    a.lanes.push(campaignMonsterLane(e.x,e.y,aim,5.35,.54));
    break;
   case 'prism-wisp':
@@ -114,13 +114,13 @@ function createCampaignMonsterBehavior({
  }
  function campaignMonsterHazard(e,shape,attack,damage,life,delay=0){
   getGame().campaignMonsterHazards.push({...shape,color:attack.color,damage,
-   warn:delay,life,max:life,hit:false,label:CAMPAIGN_STRIKES[e.kind]});
+   warn:Math.max(.65,delay),life,max:life,hit:false,label:CAMPAIGN_STRIKES[e.kind]});
  }
  function castCampaignMonsterAttack(e,a){
   const shot=(aim,speed,damage,paint)=>campaignMonsterShot(e,a.x,a.y,aim,speed,damage,paint);
   switch(e.kind){
   case 'crystal-crab':
-   campaignMonsterHazard(e,a.lanes[0],a,10,.20);
+   for(const offset of [-.14,0,.14])shot(a.aim+offset,4.1,8,'prism-pulse');
    break;
   case 'prism-wisp':
    for(const aim of a.rays)shot(aim,4.45,8,'prism-pulse');
@@ -162,7 +162,7 @@ function createCampaignMonsterBehavior({
    }
    break;
   case 'clock-scarab':
-   a.lanes.forEach((lane,index)=>campaignMonsterHazard(e,lane,a,11,.23,index*.25));
+   for(const offset of [-.48,-.24,0,.24,.48])shot(a.aim+offset,3.8,8,'star-dust');
    break;
   case 'star-jelly':
    for(const aim of a.rays)shot(aim,3.46,9,'star-dust');
@@ -257,9 +257,9 @@ function createCampaignMonsterBehavior({
 
  function drawCampaignMonsterHazards(){
   for(const h of getGame().campaignMonsterHazards){
-   if(h.warn>0||h.life<=0)continue;
+   if(h.life<=0)continue;
    ctx.save();
-   ctx.globalAlpha=Math.min(1,.35+h.life/h.max);
+   ctx.globalAlpha=h.warn>0?.28:Math.min(1,.35+h.life/h.max);
    ctx.lineCap='round';
    ctx.beginPath();
    if(h.r===undefined){

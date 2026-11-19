@@ -284,7 +284,7 @@
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
 #setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.9.6" />
+</style><meta name="nemo-version" content="5.9.7" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -593,8 +593,8 @@
 <script src="./assets/campaign-v573/stages.js?v=5.9.3"></script>
 <script src="./assets/campaign-v573/maps.js?v=5.9.0"></script>
 <script src="./assets/campaign-v590/bosses.js?v=5.9.3"></script>
-<script src="./assets/campaign-v590/monsters.js?v=5.9.3"></script>
-<script src="./assets/survival-v594/bosses.js"></script>
+<script src="./assets/campaign-v590/monsters.js?v=5.9.7"></script>
+<script src="./assets/survival-v594/bosses.js?v=5.9.7"></script>
 <script src="./assets/survival-v594/drops.js"></script>
 <style id="rare-card-art">
 #app #cards .choice-card[data-kind="rare"]{
@@ -1140,7 +1140,7 @@ for(const [id,art] of Object.entries(CAMPAIGN_CREATURE_ART)){
  if(art.flying)FLYING_ENEMIES.add(id);
 }
 function loadCampaignCreature(id){
- return loadSprite('campaign-creature-'+id,'./assets/campaign-v590/creatures/'+id+'.webp');
+ return loadSprite('campaign-creature-'+id,'./assets/creature-storybook-v597/'+id+'.png');
 }
 function loadCampaignMap(map){
  loadSprite(map.key,ASSET_DATA[map.key]);
@@ -2309,6 +2309,10 @@ function updateForestEncounter(){
 }
 function enemyBullet(x,y,angle,speed,damage,life=4,label='적 탄환',pattern='normal',sourceId=null){
  const bossDef=sourceId!==null&&sourceId===g.boss?.id?g.boss.bossDef:null;
+ if(bossDef){
+  const aim=g.boss.action?.aim??atan(g.boss.x,g.boss.y,g.player.x,g.player.y);
+  if(Math.cos(angle-aim)<=.12)return;
+ }
  const campaignBoss=g.stage&&bossDef;
  const tempo=bossDef?.projectileTempo??1;
  const velocity=speed*tempo;
@@ -2450,11 +2454,11 @@ function bossCast(b,kind){
   const timer=endless?(ph===2?.52:.64):travel<reach-.20?1.10:ph===2?.79:1.01;
   b.action={type:'dash-warn',timer,aim,travel,remaining:b.bossDef.chargeWake?(ph===2&&late?3:2):ph===2?2:1};
  }else if(kind==='ring'){
-  b.action={type:'ring-warn',timer:endless?.46:.72,shotsLeft:(endless||ph!==0?2:1)+(late?1:0),rotation:rand()*TAU,gap:atan(b.x,b.y,p.x,p.y)};
+  b.action={type:'ring-warn',timer:.75,shotsLeft:(endless||ph!==0?2:1)+(late?1:0),rotation:rand()*TAU,aim:atan(b.x,b.y,p.x,p.y),gap:atan(b.x,b.y,p.x,p.y)};
  }else if(kind==='fan'){
-  b.action={type:'fan-warn',timer:endless?.43:.70,shotsLeft:ph+1+(endless||late?1:0),aim:atan(b.x,b.y,p.x,p.y)};
+  b.action={type:'fan-warn',timer:.75,shotsLeft:ph+1+(endless||late?1:0),aim:atan(b.x,b.y,p.x,p.y)};
  }else{
-  b.action={type:'spiral-warn',timer:endless?.49:.78,shotsLeft:(ph===2?6:4)+(late?1:0),rotation:rand()*TAU};
+  b.action={type:'spiral-warn',timer:.78,shotsLeft:(ph===2?6:4)+(late?1:0),aim:atan(b.x,b.y,p.x,p.y),rotation:rand()*TAU};
  }
 }
 function bossRing(b,phase,rot,gap){
@@ -2637,7 +2641,15 @@ function bossUpdate(b,dt){
    const cycle=b.bossDef.cycles?.[ph]??(thorn?['thorn-barrage','dash']
     :b.bossDef.signature?[b.bossDef.signature,...BOSS_PATTERN_CYCLE[ph]]:BOSS_PATTERN_CYCLE[ph]);
    if(b.bossDef.cycles&&b.patternPhase!==ph){b.patternPhase=ph;b.patternIndex=0;}
-   bossCast(b,cycle[b.patternIndex++%cycle.length]);
+   if(b.patternBagPhase!==ph||!b.patternBag?.length){
+    b.patternBag=[...cycle];
+    b.patternBagPhase=ph;
+   }
+   const candidates=b.patternBag.filter(kind=>kind!==b.previousPattern);
+   const next=choose(candidates.length?candidates:b.patternBag);
+   b.patternBag.splice(b.patternBag.indexOf(next),1);
+   b.previousPattern=next;
+   bossCast(b,next);
   }
  }
  // Chase between patterns; avoid moving the caster during special attacks.
@@ -2765,11 +2777,11 @@ function updateMonster(e,dt){
   const angle=d>7?toward+.28:d<4.6?toward+Math.PI:toward+(e.id%2?1:-1)*Math.PI/2;
   moveForestSpecial(e,angle,dt);
   e.patternTimer-=dt;
-  if(e.patternTimer<=0&&d<=9){e.patternTimer=range(3.3,4.0);e.attackState={type:'moth-warn',t:.60,aim:toward};}
+  if(e.patternTimer<=0&&d<=9&&visible(e.x,e.y,-.3)){e.patternTimer=range(3.3,4.0);e.attackState={type:'moth-warn',t:.60,aim:toward};}
  }else if(e.kind==='spore'){
   let d=distance(e.x,e.y,g.player.x,g.player.y);
   if(d>6)chase(e,dt);else if(d<4)chase(e,dt,-1);e.patternTimer-=dt;
-  if(e.patternTimer<=0&&(!g.stage||(d<=9&&visible(e.x,e.y,0)))){
+  if(e.patternTimer<=0&&d<=9&&visible(e.x,e.y,-.3)){
    e.patternTimer=2.8;e.attackState={type:'spore',t:.6,aim:atan(e.x,e.y,g.player.x,g.player.y)};
   }
  }else{
@@ -3861,17 +3873,18 @@ function drawWorldGround(c,deco){
 function imageSprite(key,x,y,w,h,face=1,alpha=1){let im=sprites[key];if(!im?.complete||!im.naturalWidth)return;ctx.save();ctx.translate(x,y);ctx.scale(face,1);ctx.globalAlpha=alpha;ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();}
 // Fit the padded source without stretching and keep its baseline at the actor's feet.
 function drawEnemyArt(kind,x,baseline,maxWidth,maxHeight,pose){
- if(g.stage&&CAMPAIGN_CREATURE_ART[kind]){
-  const atlas=loadCampaignCreature(kind),tile=ENEMY_DIRECTION_FRAME;
+ if(kind==='endless-thorn-guardian')kind='thorn-guardian';
+ if(CAMPAIGN_CREATURE_ART[kind]){
+  const atlas=loadCampaignCreature(kind),tile=atlas.naturalWidth/4;
   const direction=Math.max(0,DIRECTIONS.indexOf(pose.direction));
   const size=Math.max(maxWidth,maxHeight)*(pose.boss&&pose.flying?1.34:1.12);
-  if(atlas.complete&&atlas.naturalWidth===tile*4&&atlas.naturalHeight===tile*8){
+  if(atlas.complete&&tile>0&&Math.abs(atlas.naturalHeight-tile*8)<=8){
    ctx.save();
    ctx.translate(x,baseline);ctx.rotate(pose.lean);
    ctx.scale(pose.widthScale,pose.stretch);
    ctx.globalAlpha=pose.opacity;
    ctx.drawImage(atlas,pose.cell*tile,direction*tile,tile,tile,
-    -size/2,-size*(pose.flying?98/tile:122/tile),size,size);
+    -size/2,-size*(pose.flying?98/144:122/144),size,size);
    ctx.restore();
    return;
   }
@@ -3944,7 +3957,7 @@ function drawEnemy(e){
  ellipse(e.x,e.y+e.r*.64,e.r*1.03,e.r*.27,'#657c70',.20*opacity);
  drawEnemyArt(e.bossDef?.renderArt||art,e.x,e.y+ht*.30+bob,wd,ht,{frame,direction,face,flying,boss:isboss,stretch,widthScale,lean,opacity,cell});
  if(e.flash>0)ellipse(e.x,e.y-ht*.23,e.r*.84,e.r*.68,'#ffffff',e.flash*2.4);
- if(winding){
+ if(winding||['spore','flower'].includes(attack)){
   const glint=.19+Math.sin(g.worldClock*15)*.045;
   const tone=attack==='thorn-warn'?ENEMY_BOLT_COLORS[THORN_BARRAGES[e.action.phase].color]:null;
   star(e.x,e.y-ht*.86,glint,0,e.action?.color??tone?.[1]??'#fff0b6',tone?.[0]??CAMPAIGN_MONSTERS[e.kind]?.tint??ENDLESS_ENEMIES[e.kind]?.color??'#76526b');
@@ -5241,7 +5254,7 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.9.6';
+  const CURRENT='5.9.7';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
