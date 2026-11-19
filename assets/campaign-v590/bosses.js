@@ -23,122 +23,188 @@ const NEMO_CAMPAIGN_BOSSES = (() => {
   'void-fox':{scout:'공허 숲길의 전령',speed:1.17,r:1.48,opening:['fox-echo','fan'],main:['fox-echo','void-pockets','dash'],late:['void-pockets','fox-echo','ring']},
   'astral-dragon':{scout:'별문의 전령',speed:1.10,r:1.74,opening:['starfall','ring'],main:['starfall','constellation','dash'],late:['eclipse','constellation','starfall','spiral']}
  };
- const palettes = {
-  crystal:'#83f1f9',leaf:'#d9f288',moon:'#e2a8ff',earth:'#ffcf83',sky:'#a1dfff',
-  frost:'#91e9ff',fire:'#ff9e70',water:'#75e7dc',gear:'#ffe385',void:'#f3a0f6',star:'#ffe29e'
- };
- function circle(x,y,r){ return {x,y,r}; }
- function line(x,y,ex,ey,r){ return {x,y,ex,ey,r}; }
- function band(x,y,inner,r){ return {x,y,inner,r}; }
- function point(a,u,v,angle=a.aim){
-  const x=Math.cos(angle),y=Math.sin(angle);
-  return [a.targetX+x*u-y*v,a.targetY+y*u+x*v];
- }
- function lane(a,v,r,length,angle=a.aim){
-  const [x,y]=point(a,-length,v,angle);
-  const [ex,ey]=point(a,length,v,angle);
-  return line(x,y,ex,ey,r);
- }
- function ray(a,angle,length,r){
-  return line(a.x,a.y,a.x+Math.cos(angle)*length,a.y+Math.sin(angle)*length,r);
- }
- function burstPoints(a,spots,r){
-  return spots.map(([u,v])=>circle(...point(a,u,v),r));
- }
- const patterns = {
-  'crown-gems':{name:'왕관 보석 낙하',color:palettes.star,warn:1.10,damage:10,build(a){
-   const offset=a.index%2?1.7:0;
-   return burstPoints(a,[[0,offset],[-2,-1.55],[2,1.55],[2,-1.55]],1.05);
-  }},
-  'root-bars':{name:'뿌리 장벽',color:palettes.leaf,warn:1.05,damage:11,build(a){
-   const gap=a.index===0?1:-1;
-   return [-3,-1,1,3].filter(v=>v!==gap).map(v=>lane(a,v,.39,5.0));
-  }},
-  'moon-halo':{name:'달무리',color:palettes.moon,warn:1.08,damage:11,build(a){
-   return [band(...point(a,0,a.index*.7),1.3,3.8)];
-  }},
-  'boar-fault':{name:'뿌리 지진',color:palettes.earth,warn:1.13,damage:12,build(a){
-   const direction=a.aim+(a.index?.55:0);
-   return [ray(a,direction,9,.78),ray(a,direction-.91,7,.32),ray(a,direction+.91,7,.32)];
-  }},
-  'owl-gust':{name:'교차 돌풍',color:palettes.sky,warn:1.06,damage:11,build(a){
-   const angle=a.aim+(a.index?.88:.28);
-   return [lane(a,-.7,.59,5.6,angle),lane(a,.66,.59,5.6,angle+Math.PI/2)];
-  }},
-  'mirror-lanes':{name:'거울 회랑',color:palettes.crystal,warn:1.03,damage:12,build(a){
-   const gap=a.index%2?0:(a.phase===2?1:-1);
-   return [-2,-1,0,1,2].filter(v=>v!==gap).map(v=>lane(a,v*1.65,.47,5.9));
-  }},
-  'mirror-echo':{name:'마주 보는 잔상',color:palettes.crystal,warn:1.02,damage:12,build(a){
-   const spots=a.index?[[0,0],[-2.2,-2.85],[2.2,2.85]]:[[-2.1,0],[2.1,0],[0,-2.65],[0,2.65]];
-   return burstPoints(a,spots,1.22);
-  }},
-  'ice-paws':{name:'서리 발자국',color:palettes.frost,warn:1.12,damage:14,build(a){
-   const offset=a.index*2.35;
-   return burstPoints(a,[[offset,0],[offset-2.1,-1.38],[offset+2.1,1.38]],1.49);
-  }},
-  'frost-ring':{name:'갈라지는 얼음 고리',color:palettes.frost,warn:1.12,damage:13,build(a){
-   return a.index===0?[band(a.targetX,a.targetY,1.45,4.05)]:[circle(a.targetX,a.targetY,1.57)];
-  }},
-  'ember-trail':{name:'잿불 능선',color:palettes.fire,warn:1.05,damage:13,build(a){
-   const from=-3.15+a.index*2.85;
-   return burstPoints(a,[[from,-.76],[from+1.05,0],[from+2.1,.76]],1.16);
-  }},
-  'cinder-rays':{name:'용암 삼지창',color:palettes.fire,warn:1.08,damage:13,build(a){
-   const angle=a.aim+(a.index?.37:-.16);
-   return [-.54,0,.54].map(offset=>ray(a,angle+offset,10.2,.54));
-  }},
-  'tide-surge':{name:'밀려오는 파도',color:palettes.water,warn:1.12,damage:14,build(a){
-   const height=-2.65+a.index*2.65;
-   return [lane(a,height,.85,7.5),lane(a,height-1.33,.29,6.65)];
-  }},
-  'rain-pools':{name:'빗방울 웅덩이',color:palettes.water,warn:1.00,damage:12,build(a){
-   const offset=a.index%2?1.35:-1.15;
-   const droplets=burstPoints(a,[[-2.75,offset],[2.75,offset],[-1.65,-offset],[1.65,-offset]],.85);
-   return [circle(...point(a,0,offset),1.19),...droplets];
-  }},
-  'clock-blades':{name:'교차 톱니날',color:palettes.gear,warn:1.06,damage:14,build(a){
-   const angle=a.aim+a.index*Math.PI/4;
-   return [lane(a,0,.52,6.4,angle),lane(a,0,.52,6.4,angle+Math.PI/2)];
-  }},
-  'gear-sweep':{name:'회전 절단날',color:palettes.gear,warn:1.00,damage:14,build(a){
-   const angle=a.aim+a.index*Math.PI/5;
-   return [0,turn/3,turn*2/3].map(offset=>ray(a,angle+offset,8.25,.68));
-  }},
-  'fox-echo':{name:'여우 그림자 협공',color:palettes.void,warn:1.02,damage:14,build(a){
-   const swipe=a.index%2?1:-1;
-   const [x,y]=point(a,-4,swipe*3.65);
-   const [ex,ey]=point(a,4,-swipe*1.9);
-   const [xx,yy]=point(a,-4,-swipe*3.65);
-   const [eex,eey]=point(a,4,swipe*1.9);
-   return [line(x,y,ex,ey,.66),line(xx,yy,eex,eey,.55)];
-  }},
-  'void-pockets':{name:'공허에 열린 구멍',color:palettes.void,warn:1.10,damage:15,build(a){
-   const shift=a.index%2?.9:-.9;
-   return burstPoints(a,[[0,shift],[-2.5,shift-1.85],[2.5,shift+1.85],[-2.5,shift+1.85],[2.5,shift-1.85]],1.40);
-  }},
-  starfall:{name:'별똥별 소나기',color:palettes.star,warn:1.13,damage:15,build(a){
-   const [u,v]=[[0,0],[2.35,1.6],[-2.35,-1.6]][a.index];
-   return burstPoints(a,[[u,v],[u-2.9,v+2.5],[u+2.9,v-2.5]],1.58);
-  }},
-  constellation:{name:'별자리 광선',color:palettes.star,warn:1.19,damage:15,build(a){
-   const angle=a.aim+a.index*Math.PI/5;
-   return [-1,0,1].map(i=>lane(a,0,.45,6.8,angle+i*Math.PI/3));
-  }},
-  eclipse:{name:'밤하늘 일식',color:palettes.void,warn:1.22,damage:16,build(a){
-   const {targetX:x,targetY:y}=a;
-   if(a.index===1)return [circle(x,y,1.70)];
-   if(a.index===2){
-    // The shifted safe zone moves inward toward the dragon, away from the arena edge.
-    const [cx,cy]=point(a,-1.90,0);
-    return [band(cx,cy,1.78,3.80)];
-   }
-   return [band(x,y,1.5,4.75)];
-  }}
- };
- const repeated = new Set(['mirror-lanes','ember-trail','tide-surge','gear-sweep','starfall','eclipse']);
- const echoes = new Set(['crown-gems','root-bars','moon-halo','owl-gust','boar-fault','mirror-echo','ice-paws',
-  'frost-ring','cinder-rays','rain-pools','clock-blades','fox-echo','void-pockets','constellation']);
+ const patterns={
+  "crown-gems": {
+    "name": "왕관 보석 연사",
+    "shape": "fan",
+    "count": 5,
+    "spread": 1.05,
+    "speed": 3.4,
+    "damage": 10,
+    "paint": "ring"
+  },
+  "root-bars": {
+    "name": "뿌리 탄막벽",
+    "shape": "lanes",
+    "count": 6,
+    "spread": 1,
+    "speed": 3.2,
+    "damage": 11,
+    "paint": "thorn-wall"
+  },
+  "moon-halo": {
+    "name": "초승달 파상탄",
+    "shape": "sweep",
+    "count": 7,
+    "spread": 1.4,
+    "speed": 3.4,
+    "damage": 11,
+    "paint": "petal"
+  },
+  "boar-fault": {
+    "name": "뿌리 삼지창",
+    "shape": "split",
+    "count": 6,
+    "spread": 1.2,
+    "speed": 3.6,
+    "damage": 12,
+    "paint": "fan"
+  },
+  "owl-gust": {
+    "name": "바람 칼날",
+    "shape": "lanes",
+    "count": 6,
+    "spread": 1,
+    "speed": 3.7,
+    "damage": 11,
+    "paint": "shard"
+  },
+  "mirror-lanes": {
+    "name": "거울 평행탄",
+    "shape": "lanes",
+    "count": 6,
+    "spread": 1,
+    "speed": 3.6,
+    "damage": 12,
+    "paint": "shard"
+  },
+  "mirror-echo": {
+    "name": "거울 쌍갈래",
+    "shape": "split",
+    "count": 6,
+    "spread": 1.3,
+    "speed": 3.6,
+    "damage": 12,
+    "paint": "ring"
+  },
+  "ice-paws": {
+    "name": "서리 눈보라",
+    "shape": "fan",
+    "count": 7,
+    "spread": 1.5,
+    "speed": 3.4,
+    "damage": 14,
+    "paint": "spiral"
+  },
+  "frost-ring": {
+    "name": "엇갈린 얼음탄",
+    "shape": "sweep",
+    "count": 7,
+    "spread": 1.5,
+    "speed": 3.4,
+    "damage": 13,
+    "paint": "spiral"
+  },
+  "ember-trail": {
+    "name": "잿불 파상탄",
+    "shape": "sweep",
+    "count": 5,
+    "spread": 1.3,
+    "speed": 3.8,
+    "damage": 13,
+    "paint": "fan"
+  },
+  "cinder-rays": {
+    "name": "용암 삼지창",
+    "shape": "split",
+    "count": 6,
+    "spread": 1.2,
+    "speed": 3.8,
+    "damage": 13,
+    "paint": "fan"
+  },
+  "tide-surge": {
+    "name": "밀려오는 물결탄",
+    "shape": "lanes",
+    "count": 8,
+    "spread": 1,
+    "speed": 3.4,
+    "damage": 14,
+    "paint": "moth"
+  },
+  "rain-pools": {
+    "name": "빗방울 부채탄",
+    "shape": "fan",
+    "count": 7,
+    "spread": 1.4,
+    "speed": 3.6,
+    "damage": 12,
+    "paint": "moth"
+  },
+  "clock-blades": {
+    "name": "톱니 쌍갈래탄",
+    "shape": "split",
+    "count": 8,
+    "spread": 1.3,
+    "speed": 3.8,
+    "damage": 14,
+    "paint": "shard"
+  },
+  "gear-sweep": {
+    "name": "회전 톱니탄",
+    "shape": "sweep",
+    "count": 7,
+    "spread": 1.4,
+    "speed": 3.8,
+    "damage": 14,
+    "paint": "shard"
+  },
+  "fox-echo": {
+    "name": "여우 엇박탄",
+    "shape": "split",
+    "count": 6,
+    "spread": 1.3,
+    "speed": 3.9,
+    "damage": 14,
+    "paint": "petal"
+  },
+  "void-pockets": {
+    "name": "공허 파상탄",
+    "shape": "sweep",
+    "count": 7,
+    "spread": 1.5,
+    "speed": 3.7,
+    "damage": 15,
+    "paint": "petal"
+  },
+  "starfall": {
+    "name": "별빛 연사",
+    "shape": "fan",
+    "count": 9,
+    "spread": 1.6,
+    "speed": 3.7,
+    "damage": 15,
+    "paint": "ring"
+  },
+  "constellation": {
+    "name": "별자리 협공탄",
+    "shape": "split",
+    "count": 8,
+    "spread": 1.4,
+    "speed": 3.9,
+    "damage": 15,
+    "paint": "ring"
+  },
+  "eclipse": {
+    "name": "일식 물결탄",
+    "shape": "sweep",
+    "count": 9,
+    "spread": 1.7,
+    "speed": 3.8,
+    "damage": 16,
+    "paint": "spiral"
+  }
+};
 
  const escortRegions = [
   [5,['crown','thorn','boar','moon']],
@@ -183,79 +249,46 @@ const NEMO_CAMPAIGN_BOSSES = (() => {
   };
  }
 
- function start(kind,boss,player,phase,hurtY){
+
+ function start(kind,boss,player,phase,hurtY,pressure=1){
   const rule=patterns[kind];
   if(!rule)return null;
-  const dx=player.x-boss.x,dy=player.y+hurtY-boss.y;
-  const aim=Math.atan2(dy,dx);
-  const warned=Math.max(.84,rule.warn+.10*(boss.bossDef.final?0:1)-.08*phase-.07*boss.bossDef.advanced);
-  const volleys=repeated.has(kind)?(phase===0?2:3):echoes.has(kind)?(phase===0?1:2):1;
-  const action={type:'campaign-warn',kind,phase,rule,aim,volleys,warned,timer:warned,index:0,
-   x:boss.x,y:boss.y,targetX:player.x,targetY:player.y+hurtY};
-  action.hazards=rule.build(action);
-  return action;
+  return {
+   type:'campaign-warn',kind,rule,phase,index:0,x:boss.x,y:boss.y,
+   aim:Math.atan2(player.y+hurtY-boss.y,player.x-boss.x),
+   timer:Math.max(.75,.96-phase*.06),pressure,
+   volleys:2+phase+Math.floor((pressure-1)*3)
+  };
  }
-
- function overlaps(hazard,x,y,radius){
-  if(hazard.ex===undefined){
-   const d=Math.hypot(x-hazard.x,y-hazard.y);
-   return d<hazard.r+radius&&(hazard.inner===undefined||d+radius>hazard.inner);
+ function fireVolley(action,fire){
+  const {rule,phase,index,aim,x,y,pressure}=action;
+  const count=rule.count+phase*2+2*Math.floor((pressure-1)*2);
+  for(let i=0;i<count;i++){
+   const unit=i/(count-1)-.5;
+   let angle=aim+unit*rule.spread,offset=0;
+   if(rule.shape==='lanes'){
+    angle=aim;
+    offset=(i-(count-1)/2)*.68+(index%2?.25:-.25);
+   }else if(rule.shape==='split'){
+    const side=i%2?1:-1;
+    angle=aim+side*(.26+Math.floor(i/2)*.15)+(index%2?.12:-.12);
+    offset=side*.60;
+   }else if(rule.shape==='sweep'){
+    angle+=Math.sin(index*1.3)*.30;
+   }
+   if(Math.cos(angle-aim)<=.12)continue;
+   fire(x-Math.sin(aim)*offset,y+Math.cos(aim)*offset,angle,
+    rule.speed*(1+phase*.055),rule.damage,4.5,rule.name,rule.paint);
   }
-  const dx=hazard.ex-hazard.x,dy=hazard.ey-hazard.y;
-  const along=Math.max(0,Math.min(1,((x-hazard.x)*dx+(y-hazard.y)*dy)/(dx*dx+dy*dy||1)));
-  return Math.hypot(x-hazard.x-along*dx,y-hazard.y-along*dy)<hazard.r+radius;
  }
-
- function advance(action,dt,player,hurtY,hurtRadius,onHit,onComplete){
+ function advance(action,dt,fire,onComplete){
   action.timer-=dt;
   if(action.timer>0)return;
-  if(action.type==='campaign-warn'){
-   if(action.hazards.some(hazard=>overlaps(hazard,player.x,player.y+hurtY,hurtRadius)))
-    onHit(action.rule.damage,action.rule.name);
-   action.type='campaign-strike';
-   action.timer=.23;
-   return;
-  }
+  fireVolley(action,fire);
   action.index++;
   if(action.index>=action.volleys){onComplete();return;}
-  action.type='campaign-warn';
-  action.timer=Math.max(.72,action.warned*.83);
-  action.hazards=action.rule.build(action);
+  action.type='campaign-fire';
+  action.timer=Math.max(.22,(.61-action.phase*.05)/action.pressure);
  }
-
- function drawHazard(ctx,hazard){
-  const {x,y,r,inner,ex,ey}=hazard;
-  ctx.beginPath();
-  if(ex!==undefined){
-   const dx=ex-x,dy=ey-y,side=Math.atan2(dy,dx)+Math.PI/2;
-   ctx.arc(x,y,r,side,side+Math.PI);
-   ctx.arc(ex,ey,r,side+Math.PI,side+turn);
-  }else{
-   ctx.arc(x,y,r,0,turn);
-   if(inner!==undefined){
-    ctx.moveTo(x+inner,y);
-    ctx.arc(x,y,inner,turn,0,true);
-   }
-  }
-  ctx.closePath();
-  ctx.fill();
-  ctx.stroke();
- }
-
- function drawImpact(ctx,action){
-  if(action?.type!=='campaign-strike')return;
-  ctx.save();
-  ctx.setLineDash([]);
-  ctx.lineWidth=.10;
-  ctx.fillStyle=action.rule.color+'a9';
-  ctx.strokeStyle='#322541';
-  for(const hazard of action.hazards)drawHazard(ctx,hazard);
-  ctx.lineWidth=.046;
-  ctx.strokeStyle=action.rule.color;
-  ctx.fillStyle='#00000000';
-  for(const hazard of action.hazards)drawHazard(ctx,hazard);
-  ctx.restore();
- }
-
- return {art,definition,start,advance,drawImpact};
+ return {art,definition,start,advance};
 })();

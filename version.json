@@ -1,5 +1,5 @@
 {
-  "version": "5.9.8",
+  "version": "5.9.9",
   "mode": "endless_survival_and_campaign",
-  "notes": "초반 경험치 곡선 완화 및 보스 보상 연속 레벨업 감소"
+  "notes": "보스 공격을 탄환·돌진으로 통일, 시간에 따라 탄막 강화 및 초반 성장 속도 조정"
 }

@@ -93,7 +93,7 @@ const NEMO_SURVIVAL_BOSSES = (() => {
   'horn-skewer':{
    name:'별뿔 슬라임 별뿔 협공',color:'#ffd187',paint:'fan',windup:.78,interval:.53,volleys:[2,3,3],damage:9,
    fire(a,shot){
-    const spread=[.52,.36,.69][a.index];
+    const spread=[.52,.36,.69][a.index%3];
     for(const side of [-1,1]){
      const angles=prongs(a.aim-side*spread,3,.22);
      spray(a,shot,angles,3.02+.18*a.phase,side*1.12);
@@ -146,7 +146,7 @@ const NEMO_SURVIVAL_BOSSES = (() => {
   'split-vine':{
    name:'가시숲 수호자 갈라진 가시벽',color:'#bfe891',paint:'thorn-wall',windup:.92,interval:.62,volleys:[2,3,3],damage:8,
    fire(a,shot){
-    const safe=[-2,2,0][a.index];
+    const safe=[-2,2,0][a.index%3];
     for(let lane=-4;lane<=4;lane++){
      if(Math.abs(lane-safe)<=1)continue;
      spray(a,shot,[a.aim],2.90+.12*a.phase,lane*.91);
@@ -181,12 +181,12 @@ const NEMO_SURVIVAL_BOSSES = (() => {
   }
  };
 
- function start(kind,boss,player,phase){
+ function start(kind,boss,player,phase,pressure=1){
   const rule=patterns[kind];
   if(!rule)return null;
   const dx=player.x-boss.x,dy=player.y-boss.y;
   return {
-   type:'survival-warn',kind,rule,phase,x:boss.x,y:boss.y,
+   type:'survival-warn',kind,rule,phase,pressure,volleys:rule.volleys[phase]+Math.floor((pressure-1)*3),x:boss.x,y:boss.y,
    aim:Math.atan2(dy,dx),color:rule.color,index:0,timer:Math.max(.75,rule.windup-.045*phase)
   };
  }
@@ -196,12 +196,12 @@ const NEMO_SURVIVAL_BOSSES = (() => {
   if(action.timer>0)return;
   action.rule.fire(action,fire);
   action.index++;
-  if(action.index>=action.rule.volleys[action.phase]){
+  if(action.index>=action.volleys){
    onDone();
    return;
   }
   action.type='survival-fire';
-  action.timer=action.rule.interval-.04*action.phase;
+  action.timer=Math.max(.20,(action.rule.interval-.04*action.phase)/action.pressure);
  }
 
  return {definition,start,advance};
