@@ -1,5 +1,5 @@
 {
-  "version": "5.9.17",
+  "version": "5.9.18",
   "mode": "endless_survival_and_campaign",
-  "notes": "캡슐 뽑기 좌우 패널 너비·높이와 하단 버튼 기준선 정렬"
+  "notes": "캡슐 좌우 패널·버튼 정렬 및 사진첩 넘김 잔상·재표시 제거"
 }
