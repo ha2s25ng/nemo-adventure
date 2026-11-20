@@ -284,7 +284,7 @@
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
 #setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.9.9" />
+</style><meta name="nemo-version" content="5.9.10" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -592,9 +592,9 @@
 </style>
 <script src="./assets/campaign-v573/stages.js?v=5.9.3"></script>
 <script src="./assets/campaign-v573/maps.js?v=5.9.0"></script>
-<script src="./assets/campaign-v590/bosses.js?v=5.9.9"></script>
+<script src="./assets/campaign-v590/bosses.js?v=5.9.10"></script>
 <script src="./assets/campaign-v590/monsters.js?v=5.9.7"></script>
-<script src="./assets/survival-v594/bosses.js?v=5.9.9"></script>
+<script src="./assets/survival-v594/bosses.js?v=5.9.10"></script>
 <script src="./assets/survival-v594/drops.js"></script>
 <style id="rare-card-art">
 #app #cards .choice-card[data-kind="rare"]{
@@ -686,6 +686,34 @@
 <meta name="apple-mobile-web-app-title" content="니모의 모험">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#e5edcf">
+<style id="lucky-draw-style">
+#lucky-draw .draw-board{width:min(870px,96%);max-height:94%;overflow:auto;padding:clamp(12px,2.4vw,28px)}
+.draw-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.draw-heading h2{font-size:clamp(20px,2.8vw,33px)}
+.draw-heading small{display:block;margin-top:3px;font-size:13px}
+.draw-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.draw-reward{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;min-height:270px;padding:14px;background:#fff6e5;border:2px solid #c6ac80;border-radius:20px;text-align:center}
+.draw-reward[data-tier="costume"]{background:linear-gradient(140deg,#f0e1fb,#fff1cb);border-color:#a67aaf}
+.draw-reward-art{height:clamp(120px,22vh,230px);max-width:100%;object-fit:contain;border-radius:10px}
+.draw-reward h3{font-size:clamp(17px,2vw,24px)}
+.draw-reward p{font-size:13px;line-height:1.5}
+.draw-controls{display:flex;align-items:center;flex-direction:column;gap:8px;margin-top:12px}
+.draw-controls .btn{width:100%}
+.draw-controls p{min-height:1.4em;font-size:12px}
+.draw-collection h3{margin:0 0 8px}
+.draw-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.draw-photo{display:grid;align-content:start;gap:4px;padding:5px;border:1px solid #c5b3c7;background:#fff9ee;border-radius:9px;min-width:0;font:inherit;font-size:11px;color:inherit}
+.draw-photo img,.draw-photo span:first-child{width:100%;aspect-ratio:1;object-fit:contain;display:grid;place-items:center;border-radius:5px;background:#f0e6ee}
+.draw-photo[disabled]{opacity:1;filter:none;cursor:default}
+.draw-rates{margin-top:14px;font-size:12px;line-height:1.6}
+.draw-rates summary{cursor:pointer;font-weight:800}
+.draw-rates ul{padding-left:18px;margin:6px 0}
+.draw-costumes-link{width:100%;margin-top:12px}
+#app .menu-board .buttons #draw-btn{grid-column:1/-1;min-height:38px!important;height:38px!important}
+@media(max-width:600px){.draw-layout{grid-template-columns:1fr}.draw-reward{min-height:200px}.draw-reward-art{height:150px}.draw-photo-grid{max-width:330px;margin:auto}}
+@media(prefers-reduced-motion:no-preference){.draw-reward[data-reveal="true"] .draw-reward-art{animation:draw-reveal .5s ease-out}@keyframes draw-reveal{from{opacity:.2;transform:translateY(9px) scale(.84)}to{opacity:1;transform:none}}}
+</style>
+<script src="./assets/lucky-draw-v5910/draw.js"></script>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
 <div class="hidden" id="hud">
@@ -725,6 +753,7 @@
         <button class="btn primary" id="start"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/paw.webp" alt="">스테이지 모험</button>
         <button class="btn" id="survival-start">무한 생존</button>
         <button class="btn" id="school-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/wand.webp" alt="">모험 강화</button>
+        <button class="btn" id="draw-btn" type="button"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/bag.webp" alt="">행운의 뽑기 · 100 골드</button>
         <button class="btn nemo-shop-entry" id="shop-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/bag.webp" alt="">코스튬 상점</button>
         <button class="btn" id="codex-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/book.webp" alt="">마법 도감</button>
         <button class="btn" id="settings-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/settings.webp" alt="">설정</button>
@@ -772,6 +801,20 @@
       <section class="nemo-shop-grid" id="shop-items"></section>
     </div>
   </div>
+</div>
+<div class="overlay hidden" id="lucky-draw" role="dialog" aria-modal="true" aria-labelledby="draw-title">
+ <section class="big-board draw-board">
+  <header class="draw-heading"><div><h2 id="draw-title" tabindex="-1">니모의 행운 상자</h2><small id="draw-wallet"></small></div><button class="btn" id="draw-back" type="button">숲 입구</button></header>
+  <div class="draw-layout">
+   <div><section class="draw-reward" id="draw-reward" aria-live="polite" aria-atomic="true"></section>
+    <div class="draw-controls"><button class="btn primary" id="draw-buy" type="button">한 번 뽑기 · 100 골드</button><p id="draw-status" role="status"></p></div>
+   </div>
+   <section class="draw-collection"><h3 id="draw-photo-count">니모 사진첩</h3><div class="draw-photo-grid" id="draw-photos"></div>
+    <button class="btn draw-costumes-link" id="draw-costumes" type="button">코스튬 보관함</button>
+    <details class="draw-rates"><summary>보상과 획득 확률</summary><p>사진 95% · 상점 코스튬 5%</p><p>중복 사진은 25골드, 중복 코스튬은 50골드로 바뀌어요.</p><ul id="draw-rates"></ul></details>
+   </section>
+  </div>
+ </section>
 </div>
 <div class="overlay hidden" id="school" role="dialog" aria-modal="true" aria-labelledby="school-title"><div class="big-board"><p class="folio">영구 강화</p><h2 id="school-title" tabindex="-1">모험 강화</h2><div class="menu-money" id="school-gold"></div><p class="subtitle">골드로 강화한 능력은 다음 모험부터 계속 적용돼요.</p><div class="school-grid" id="school-upgrades"></div><button class="btn primary" id="school-back">← 숲 입구로</button></div></div>
 <div class="overlay hidden" id="cards" role="dialog" aria-modal="true" aria-labelledby="cards-title">
@@ -1170,6 +1213,11 @@ const VICTORY_COSTUMES=[
  atlas:'./assets/victory-v584/'+outfit.id+'-walk.png',
  desc:'지난 주 무한 생존 순위 보상. 이번 주에 입을 수 있어요.'}));
 COSTUMES.push(...VICTORY_COSTUMES);
+const DRAW_PHOTOS=[
+ {id:'nap',name:'낮잠 자는 니모',art:'./assets/lucky-draw-v5910/nap.jpg'},
+ {id:'smile',name:'방긋 웃는 니모',art:'./assets/lucky-draw-v5910/smile.jpg'},
+ {id:'chair',name:'의자 위의 니모',art:'./assets/lucky-draw-v5910/chair.jpg'}
+];
 const costumeAtlases={};
 function loadCostumeAtlas(outfit){
  if(costumeAtlases[outfit.id])return;
@@ -1452,6 +1500,8 @@ function normalizeSave(old){
   unlocks:Array.isArray(old?.unlocks)?old.unlocks:[],
   unlocked:Array.isArray(old?.unlocked)?old.unlocked:[],
   costumesOwned:[...new Set(costumesOwned)],
+  photosOwned:DRAW_PHOTOS.filter(photo=>Array.isArray(old?.photosOwned)&&old.photosOwned.includes(photo.id)).map(photo=>photo.id),
+  drawCount:boundedSaveNumber(old?.drawCount,Number.MAX_SAFE_INTEGER,true),
   costumeEquipped:costumesOwned.includes(old?.costumeEquipped)?old.costumeEquipped:'default',
   victoryEquipped:VICTORY_COSTUMES.some(item=>item.id===old?.victoryEquipped)?old.victoryEquipped:null,
   upgrades,
@@ -1621,11 +1671,11 @@ function setScreen(s){
  if(s!=='playing'||screen!=='playing'){keys.clear();clearTouch();}
  const previous=screen;
  screen=s;needsDraw=true;$('app').dataset.screen=s;
- if(s==='menu'||s==='result'){toastTimer=0;$('toast').classList.add('hidden');}for(const id of ['menu','stages','nickname-setup','costume-shop','school','cards','evolution','pause','result','settings','codex','leaderboard'])$(id).classList.toggle('hidden',id!==s);
- $('hud').classList.toggle('hidden',!g || s==='menu'||s==='stages'||s==='costume-shop'||s==='school'||s==='settings'||s==='codex'||s==='leaderboard');$('touch-pad').classList.toggle('hidden',s!=='playing');
+ if(s==='menu'||s==='result'){toastTimer=0;$('toast').classList.add('hidden');}for(const id of ['menu','stages','nickname-setup','costume-shop','school','lucky-draw','cards','evolution','pause','result','settings','codex','leaderboard'])$(id).classList.toggle('hidden',id!==s);
+ $('hud').classList.toggle('hidden',!g || s==='menu'||s==='stages'||s==='costume-shop'||s==='school'||s==='lucky-draw'||s==='settings'||s==='codex'||s==='leaderboard');$('touch-pad').classList.toggle('hidden',s!=='playing');
  $('hud').inert=s!=='playing';
  const focusTarget={
-  menu:'start',stages:'stages-back','costume-shop':'shop-title',school:'school-title',
+  menu:'start',stages:'stages-back','lucky-draw':'draw-title','costume-shop':'shop-title',school:'school-title',
   cards:'cards-title',evolution:'evo-title',pause:'resume',codex:'codex-back',
   result:'retry',settings:'settings-title',leaderboard:'leaderboard-title'
  }[s];
@@ -3601,6 +3651,80 @@ function syncCostumeVisual(){
  $('hero').src=outfit.portrait;
  $('portrait').src=outfit.portrait;
 }
+let drawBusy=false;
+function drawCostumes(){return COSTUMES.filter(item=>item.price>0&&!item.place);}
+function updateDrawWallet(){
+ $('draw-wallet').textContent=`보유 ${saved.gold.toLocaleString('ko-KR')} 골드`;
+ $('draw-buy').disabled=drawBusy||saved.gold<NEMO_DRAW.cost;
+ $('draw-status').textContent=drawBusy?'상자를 열고 있어요.':saved.gold<NEMO_DRAW.cost
+  ?`${NEMO_DRAW.cost-saved.gold} 골드가 부족해요.`:'';
+}
+function renderDrawCollection(){
+ $('draw-photo-count').textContent=`니모 사진첩 · ${saved.photosOwned.length}/${DRAW_PHOTOS.length}`;
+ $('draw-photos').innerHTML=DRAW_PHOTOS.map(photo=>saved.photosOwned.includes(photo.id)
+  ?`<button type="button" class="draw-photo" data-photo="${photo.id}" aria-label="${photo.name} 크게 보기"><img src="${photo.art}" alt=""><span>${photo.name}</span></button>`
+  :'<button type="button" class="draw-photo" disabled><span>미수집</span><span>니모 사진</span></button>').join('');
+}
+function showDrawReward(reward){
+ const panel=$('draw-reward');
+ panel.dataset.reveal='false';
+ if(!reward){
+  panel.dataset.tier='photo';
+  panel.innerHTML='<img class="draw-reward-art" src="./assets/lobby-icons-v5618/bag.webp" alt=""><h3>어떤 선물이 들어 있을까요?</h3><p>니모 사진과 코스튬을 모아 보세요.</p>';
+  return;
+ }
+ const {item,type,duplicate,refund,preview}=reward;
+ panel.dataset.tier=type;
+ const caption=preview?'사진첩':duplicate?`중복 보상 · ${refund} 골드 환급`:type==='costume'?'새 코스튬 획득!':'새 사진 획득!';
+ panel.innerHTML=`<img class="draw-reward-art" src="${type==='costume'?item.portrait:item.art}" alt="${item.name}"><h3>${item.name}</h3><p>${caption}</p>${type==='costume'?'<p>코스튬 보관함에서 장착할 수 있어요.</p>':''}`;
+ if(!preview)panel.dataset.reveal='true';
+}
+function openLuckyDraw(){
+ saved=readSave();
+ showDrawReward(null);
+ renderDrawCollection();
+ updateDrawWallet();
+ const costumes=drawCostumes();
+ const percent=value=>value.toLocaleString('ko-KR',{maximumFractionDigits:3})+'%';
+ $('draw-rates').innerHTML=[
+  ...DRAW_PHOTOS.map(item=>`<li>${item.name} · 약 ${percent(95/DRAW_PHOTOS.length)}</li>`),
+  ...costumes.map(item=>`<li>${item.name} · ${percent(5/costumes.length)}</li>`)
+ ].join('');
+ setScreen('lucky-draw');
+}
+function closeLuckyDraw(){menu();$('draw-btn').focus({preventScroll:true});}
+async function buyLuckyDraw(){
+ if(screen!=='lucky-draw'||drawBusy)return;
+ drawBusy=true;
+ updateDrawWallet();
+ const purchase=()=>{
+  if(screen!=='lucky-draw')return;
+  const previous=readSave();
+  const result=NEMO_DRAW.purchase(previous,DRAW_PHOTOS,drawCostumes());
+  saved=previous;
+  if(!result)return;
+  saved=result.save;
+  if(!persist()){saved=previous;return;}
+  showDrawReward(result.reward);
+  renderDrawCollection();
+  playSound('reward');
+ };
+ try{
+  if(navigator.locks)await navigator.locks.request(DATA.saveKey+'-draw',purchase);
+  else purchase();
+ }catch(_){
+  showToast('상자를 열지 못했어요. 다시 시도해 주세요.');
+ }finally{
+  drawBusy=false;
+  updateDrawWallet();
+ }
+}
+window.addEventListener('storage',event=>{
+ if(event.key!==DATA.saveKey||screen!=='lucky-draw'||drawBusy)return;
+ saved=readSave();
+ renderDrawCollection();
+ updateDrawWallet();
+});
 function shopOpen(){shopSelected=activeCostume().id;setScreen('costume-shop');shopRender();void refreshVictoryPodium();}
 function shopRender(){
  const selected=costumeOf(shopSelected),owned=costumeOwned(selected.id),equipped=activeCostume().id;
@@ -3968,8 +4092,32 @@ function drawRageEyes(view,frame){
   ellipse(x+.014,y-.019,.010,.010,'#ffe2c3');
  }
 }
+function drawLastEmber(p){
+ if(p.hp<=0||!getPassive('emberheart')||p.hp>p.maxHp*.5)return;
+ const animated=opts.particles&&!reducedMotion.matches;
+ const count=animated?6:3;
+ ctx.save();
+ for(let i=0;i<count;i++){
+  const phase=animated?(g.worldClock*.58+i/count)%1:(i+1)/(count+1);
+  const side=i%2?1:-1;
+  const x=p.x+side*(.22+phase*.24)+Math.sin(phase*5+i)*.10;
+  const y=p.y+.08-phase*1.65;
+  const radius=.14+phase*.22;
+  const smoke=ctx.createRadialGradient(x,y,0,x,y,radius);
+  smoke.addColorStop(0,'#e76b65');
+  smoke.addColorStop(.46,'#b63748');
+  smoke.addColorStop(1,'#96304000');
+  ctx.globalAlpha=Math.sin(phase*Math.PI)*.62;
+  ctx.fillStyle=smoke;
+  ctx.beginPath();
+  ctx.ellipse(x,y,radius*.85,radius,side*.25,0,TAU);
+  ctx.fill();
+ }
+ ctx.restore();
+}
 function drawPlayer(p){
  if(!p)return;
+ drawLastEmber(p);
  ellipse(p.x,p.y+.29,.46,.14,'#67617a',.16);
  ellipse(p.x,p.y+.30,.30,.08,'#50425e',.11);
  const q=motionPose(p),raging=rageActive();
@@ -5070,6 +5218,7 @@ window.addEventListener('keydown',e=>{
    if(!$('pause-exit-confirm').hidden)$('pause-exit-cancel').click();
    else resume();
   }
+  else if(screen==='lucky-draw'){closeLuckyDraw();}
   else if(screen==='stages'){menu();$('start').focus();}
   return;
  }
@@ -5107,6 +5256,15 @@ $('stage-chapters').addEventListener('click',event=>{
 $('stage-options').addEventListener('click',event=>{
  const button=event.target.closest('[data-stage]');
  if(button&&!button.disabled)begin(Number(button.dataset.stage));
+});
+$('draw-btn').onclick=openLuckyDraw;
+$('draw-back').onclick=closeLuckyDraw;
+$('draw-buy').onclick=buyLuckyDraw;
+$('draw-costumes').onclick=shopOpen;
+$('draw-photos').addEventListener('click',event=>{
+ const button=event.target.closest('[data-photo]');
+ const photo=DRAW_PHOTOS.find(item=>item.id===button?.dataset.photo);
+ if(photo&&saved.photosOwned.includes(photo.id))showDrawReward({type:'photo',item:photo,preview:true});
 });
 $('shop-btn').onclick=shopOpen;
 $('shop-back').onclick=()=>{setScreen('menu');renderMenu();};
@@ -5245,7 +5403,7 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.9.9';
+  const CURRENT='5.9.10';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
