@@ -7,9 +7,9 @@ const NEMO_DRAW = Object.freeze({
   if(save.gold<this.cost||!photos.length||!costumes.length)return null;
   const type=random()<this.costumeChance?'costume':'photo';
   const pool=type==='costume'?costumes:photos;
-  const total=pool.reduce((sum,item)=>sum+(type==='photo'?(item.weight||1):1),0);
+  const total=pool.reduce((sum,item)=>sum+(type==='photo'?(item.weight||1):(item.drawWeight||1)),0);
   let cursor=Math.max(0,Math.min(.999999999,random()))*total;
-  const item=pool.find(item=>{cursor-=type==='photo'?(item.weight||1):1;return cursor<0;})||pool.at(-1);
+  const item=pool.find(item=>{cursor-=type==='photo'?(item.weight||1):(item.drawWeight||1);return cursor<0;})||pool.at(-1);
   const field=type==='costume'?'costumesOwned':'photosOwned';
   const owned=save[field]??[];
   const duplicate=owned.includes(item.id);
