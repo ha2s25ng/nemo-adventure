@@ -809,7 +809,7 @@
   <header class="draw-heading"><div><h2 id="draw-title" tabindex="-1">니모의 캡슐 뽑기</h2><small id="draw-wallet"></small></div><button class="btn" id="draw-back" type="button">숲 입구</button></header>
   <div class="draw-layout">
    <div class="draw-main"><div class="capsule-stage" id="capsule-stage" data-phase="idle">
-     <div class="capsule-machine"><img class="machine-art" src="./assets/capsule-v5912/machine.png" alt="니모와 꽃으로 장식한 파스텔 캡슐 뽑기 기계"><span class="machine-crank" aria-hidden="true"></span><span class="machine-coin" aria-hidden="true">N</span></div>
+     <div class="capsule-machine"><img loading="lazy" decoding="async" class="machine-art" src="./assets/capsule-v5912/machine.png" alt="니모와 꽃으로 장식한 파스텔 캡슐 뽑기 기계"><span class="machine-crank" aria-hidden="true"></span><span class="machine-coin" aria-hidden="true">N</span></div>
      <button id="capsule-open" class="capsule-open" type="button" aria-label="캡슐을 눌러 선물 열기" hidden disabled><span class="capsule-halo"></span><span class="capsule-half capsule-top"></span><span class="capsule-half capsule-bottom"></span><span class="capsule-star" aria-hidden="true">✦</span></button>
      <p id="capsule-hint" class="capsule-hint">작은 캡슐 속, 니모의 선물</p>
     </div><section class="draw-reward" id="draw-reward" aria-live="polite" aria-atomic="true" hidden></section>
@@ -3683,9 +3683,8 @@ function updateDrawWallet(){
 }
 function renderDrawCollection(){
  $('draw-photo-count').textContent=`니모 사진첩 · ${saved.photosOwned.length}/${DRAW_PHOTOS.length}`;
- $('draw-photos').innerHTML=DRAW_PHOTOS.map(photo=>saved.photosOwned.includes(photo.id)
-  ?`<button type="button" class="draw-photo" data-photo="${photo.id}" aria-label="${photo.name} 크게 보기"><img src="${photo.art}" alt=""><span>${photo.name}</span></button>`
-  :'<button type="button" class="draw-photo" disabled><span>미수집</span><span>니모 사진</span></button>').join('');
+ // Photos are requested only for the current album spread.
+ $('draw-photos').replaceChildren();
 }
 function showDrawReward(reward){
  const panel=$('draw-reward');
