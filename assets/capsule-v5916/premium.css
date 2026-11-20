@@ -68,3 +68,30 @@
 #lucky-draw .album-dialog>footer{padding:7px 12px}#lucky-draw .album-dialog>footer .btn{border-radius:30px;min-width:90px}
 @media(max-width:600px){#app #menu .menu-board .buttons{gap:6px!important}#app #menu .menu-board .buttons>.btn{font-size:11px!important;padding:7px 3px!important}#app #menu .menu-board .buttons .menu-button-icon{width:19px!important;height:22px!important}#lucky-draw .capsule-stage{min-height:390px}#lucky-draw .capsule-machine{width:235px}#lucky-draw .book-page{padding:18px 10px 24px;gap:7px}#lucky-draw .book-pages{height:clamp(290px,47vh,400px)}#lucky-draw .book-photo{padding:6px 6px 13px}#lucky-draw .book-photo img{height:clamp(105px,23vh,195px)}.draw-exclusive img{width:110px;height:120px}.draw-exclusive{padding:12px}.album-entry-art{height:55px;width:42px}}
 @media(prefers-reduced-motion:reduce){#lucky-draw .book-cover{transition:none!important}#lucky-draw .capsule-stage[data-phase=ready] .capsule-open{animation:none!important;transform:translateY(-50px) scale(1.2)}#lucky-draw .book-flip{display:none!important}#lucky-draw .is-open .book-cover{visibility:hidden}}
+
+/* Match the two content panels and the actions below them to common baselines. */
+#lucky-draw .draw-layout{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:22px}
+#lucky-draw .draw-main,#lucky-draw .draw-collection{min-width:0}
+#lucky-draw .capsule-stage,#lucky-draw .capsule-stage[data-phase=revealed]{box-sizing:border-box;height:380px;min-height:380px;margin:0;padding-bottom:28px}
+#lucky-draw .capsule-machine{width:235px}
+#lucky-draw .draw-exclusive{box-sizing:border-box;height:380px;min-height:380px;margin:0;padding:20px 16px;justify-content:center;gap:10px}
+#lucky-draw .draw-exclusive img{width:200px;height:225px}
+#lucky-draw .draw-exclusive strong{font-size:20px}
+#lucky-draw .draw-exclusive p{margin:0}
+#lucky-draw .draw-controls{margin-top:14px;gap:7px}
+#lucky-draw .draw-controls .btn{box-sizing:border-box;min-height:58px;height:58px}
+#lucky-draw .draw-controls p{margin:0;min-height:0;line-height:1.5}
+#lucky-draw .draw-controls p:empty{display:none}
+#lucky-draw .draw-links{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:stretch;gap:10px;margin-top:14px}
+#lucky-draw .draw-links .album-entry,#lucky-draw .draw-links .draw-costumes-link{box-sizing:border-box;min-width:0;width:100%;height:58px;min-height:58px;margin:0;border-radius:12px}
+#lucky-draw .draw-links .album-entry{grid-template-columns:30px minmax(0,1fr);grid-template-rows:1fr 1fr;gap:0 7px;padding:7px 8px}
+#lucky-draw .draw-links .album-entry-art{width:30px;height:40px;grid-row:span 2}
+#lucky-draw .draw-links .album-entry strong{align-self:end;font-size:13px;white-space:nowrap}
+#lucky-draw .draw-links .album-entry>span{align-self:start;font-size:10px;white-space:nowrap}
+#lucky-draw .draw-links .album-entry>small{display:none}
+#lucky-draw .draw-links .draw-costumes-link{padding:8px 5px;font-size:13px;white-space:nowrap}
+#lucky-draw .draw-board>.draw-rates{margin:18px 0 0;padding-top:12px;border-top:1px solid #82957255;text-align:center}
+#lucky-draw .draw-board>.draw-rates[open]{text-align:left}
+#lucky-draw .draw-board>.draw-reward{margin-top:18px}
+#lucky-draw .capsule-stage[data-phase=revealed] .capsule-machine{width:165px}
+@media(max-width:620px){#lucky-draw .draw-layout{grid-template-columns:1fr;gap:20px}#lucky-draw .capsule-stage,#lucky-draw .capsule-stage[data-phase=revealed]{height:355px;min-height:355px}#lucky-draw .capsule-machine{width:220px}#lucky-draw .draw-exclusive{height:220px;min-height:220px;display:grid;grid-template-columns:130px 1fr;column-gap:12px;row-gap:5px;align-content:center}#lucky-draw .draw-exclusive img{width:130px;height:170px;grid-column:1;grid-row:1/4}#lucky-draw .draw-exclusive small,#lucky-draw .draw-exclusive strong,#lucky-draw .draw-exclusive p{grid-column:2}#lucky-draw .draw-exclusive strong{font-size:16px}#lucky-draw .draw-exclusive p{font-size:11px}#lucky-draw .draw-controls .btn{height:54px;min-height:54px}}
