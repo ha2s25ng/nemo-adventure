@@ -1,5 +1,5 @@
 {
-  "version": "5.9.13",
+  "version": "5.9.14",
   "mode": "endless_survival_and_campaign",
-  "notes": "니모 사진 91장 추가·최적화, 총 94장 등급별 캡슐 수집과 동화책 사진첩"
+  "notes": "사진첩 보유 사진 우선 정렬, 등급·최근 획득순, 최초 획득일 기록"
 }

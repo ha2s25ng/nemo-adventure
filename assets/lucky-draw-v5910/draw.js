@@ -3,7 +3,7 @@ const NEMO_DRAW = Object.freeze({
  costumeChance:.05,
  photoRefund:25,
  costumeRefund:50,
- purchase(save,photos,costumes,random=Math.random){
+ purchase(save,photos,costumes,random=Math.random,now=Date.now()){
   if(save.gold<this.cost||!photos.length||!costumes.length)return null;
   const type=random()<this.costumeChance?'costume':'photo';
   const pool=type==='costume'?costumes:photos;
@@ -16,7 +16,8 @@ const NEMO_DRAW = Object.freeze({
   const refund=duplicate?(type==='costume'?this.costumeRefund:this.photoRefund):0;
   return {
    save:{...save,gold:save.gold-this.cost+refund,drawCount:(save.drawCount??0)+1,
-    [field]:duplicate?[...owned]:[...owned,item.id]},
+    [field]:duplicate?[...owned]:[...owned,item.id],
+    photosObtainedAt:type==='photo'&&!duplicate?{...save.photosObtainedAt,[item.id]:now}:{...save.photosObtainedAt}},
    reward:{type,item,duplicate,refund}
   };
  }
