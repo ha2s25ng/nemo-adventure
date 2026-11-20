@@ -12,9 +12,9 @@ function createNemoCapsule(doc){
  const $=id=>doc.getElementById(id),stage=$('capsule-stage'),capsule=$('capsule-open');
  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
  const wait=ms=>new Promise(resolve=>setTimeout(resolve,reduced()?20:ms));
- let page=0,photos=[],allPhotos=[],owned=[],dates={},turning=false,albumExit=null,albumSession=0;
+ let page=0,photos=[],allPhotos=[],owned=[],dates={},turning=false,albumExit=null,albumSession=0,bookReady=false;
  const phase=value=>{stage.dataset.phase=value;};
- function syncAlbumControls(){const count=Math.max(1,Math.ceil(photos.length/2));$('album-sort').disabled=turning;$('album-prev').disabled=page===0||turning;$('album-next').disabled=page===count-1||turning;$('album-page-count').textContent=`${page+1} / ${count}`;}
+ function syncAlbumControls(){const count=Math.max(1,Math.ceil(photos.length/2));$('album-sort').disabled=turning||!bookReady;$('album-prev').disabled=page===0||turning||!bookReady;$('album-next').disabled=page===count-1||turning||!bookReady;$('album-page-count').textContent=`${page+1} / ${count}`;}
  const rank=photo=>photo.rank||'R';
  const dateLabel=id=>dates[id]?'획득일 '+new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(dates[id]):'획득일 기록 없음';
  function reset(){phase('idle');capsule.hidden=true;capsule.disabled=true;$('draw-reward').hidden=true;$('capsule-hint').textContent='작은 캡슐 속, 니모의 선물';}
@@ -25,16 +25,28 @@ function createNemoCapsule(doc){
   const count=Math.max(1,Math.ceil(photos.length/2));page=Math.max(0,Math.min(count-1,page));
   $('album-pages').innerHTML=[0,1].map(offset=>{const photo=photos[page*2+offset];if(!photo)return '<section class="book-page book-blank"><span>다음 추억을 기다리며</span></section>';
    const collected=owned.includes(photo.id);
-   return `<section class="book-page"><span class="photo-grade" data-rank="${rank(photo)}">${rank(photo)}</span>${collected?`<button type="button" class="book-photo" data-album-photo="${photo.id}" aria-label="${photo.name} 크게 보기"><img src="${photo.thumb||photo.art}" alt="${photo.name}" loading="lazy" decoding="async"><span>눌러서 크게 보기</span></button>`:'<div class="book-photo book-locked"><b>?</b><span>아직 만나지 못한 순간</span></div>'}<h3>${collected?photo.name:'미수집 사진'}</h3>${collected?`<span class="photo-date">${dateLabel(photo.id)}</span>`:''}<small>${String(page*2+offset+1).padStart(2,'0')}</small></section>`;
+   return `<section class="book-page"><span class="photo-grade" data-rank="${rank(photo)}">${rank(photo)}</span>${collected?`<button type="button" class="book-photo" data-album-photo="${photo.id}" aria-label="${photo.name} 크게 보기"><img src="${photo.thumb||photo.art}" alt="${photo.name}" loading="eager" decoding="async"><span>눌러서 크게 보기</span></button>`:'<div class="book-photo book-locked"><b>?</b><span>아직 만나지 못한 순간</span></div>'}<h3>${collected?photo.name:'미수집 사진'}</h3>${collected?`<span class="photo-date">${dateLabel(photo.id)}</span>`:''}<small>${String(page*2+offset+1).padStart(2,'0')}</small></section>`;
   }).join('');
   syncAlbumControls();
  }
  function sort(order){if(turning)return;photos=nemoAlbumOrder(allPhotos,owned,dates,order);page=0;render();}
- function openAlbum(list,collection,obtained={},onClose=null){albumExit=onClose;albumSession++;allPhotos=list;owned=collection;dates=obtained||{};photos=nemoAlbumOrder(list,owned,dates,'owned');$('album-sort').value='owned';$('album-owned-count').textContent=`수집 ${owned.length} / ${list.length}`;page=0;turning=false;$('draw-album').hidden=false;$('album-book').classList.remove('is-open');render();requestAnimationFrame(()=>requestAnimationFrame(()=>$('album-book').classList.add('is-open')));$('album-close').focus({preventScroll:true});}
- function closeAlbum(){if($('draw-album').hidden)return false;albumSession++;closePhoto(false);$('draw-album').hidden=true;$('album-book').classList.remove('is-open');$('album-flip').replaceChildren();turning=false;const exit=albumExit;albumExit=null;if(exit)exit();else $('draw-album-open').focus({preventScroll:true});return true;}
+ function openAlbum(list,collection,obtained={},onClose=null){
+  albumExit=onClose;const session=++albumSession;bookReady=false;
+  allPhotos=list;owned=collection;dates=obtained||{};photos=nemoAlbumOrder(list,owned,dates,'owned');
+  $('album-sort').value='owned';$('album-owned-count').textContent=`수집 ${owned.length} / ${list.length}`;page=0;turning=false;
+  const book=$('album-book');book.classList.remove('is-open','is-ready');$('draw-album').hidden=false;render();
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+   if(session!==albumSession)return;
+   book.classList.add('is-open');
+   wait(1320).then(()=>{if(session!==albumSession||$('draw-album').hidden)return;bookReady=true;book.classList.add('is-ready');syncAlbumControls();});
+  }));
+  $('album-close').focus({preventScroll:true});
+ }
+
+ function closeAlbum(){if($('draw-album').hidden)return false;albumSession++;bookReady=false;closePhoto(false);$('draw-album').hidden=true;$('album-book').classList.remove('is-open','is-ready');$('album-flip').replaceChildren();turning=false;const exit=albumExit;albumExit=null;if(exit)exit();else $('draw-album-open').focus({preventScroll:true});return true;}
  // Each strip follows a continuous curved sheet, with its own front and back.
  async function turn(direction){
-  if(turning||page+direction<0||page+direction>=Math.ceil(photos.length/2))return;
+  if(!bookReady||turning||page+direction<0||page+direction>=Math.ceil(photos.length/2))return;
   turning=true;const session=albumSession,panels=$('album-pages'),flip=$('album-flip');
   const old=[...panels.children].map(el=>el.outerHTML),next=page+direction;
   page=next;render();
@@ -74,7 +86,7 @@ function createNemoCapsule(doc){
   flip.classList.remove('curved-turn');flip.replaceChildren();turning=false;syncAlbumControls();
  }
 
- function photo(id){if(turning)return;const item=photos.find(p=>p.id===id);if(!item||!owned.includes(id))return;$('photo-full').src=item.full||item.art;$('photo-full').alt=item.name;$('photo-title').textContent=item.name;$('photo-date').textContent=dateLabel(item.id);$('photo-rank').textContent=rank(item);$('photo-rank').className='photo-grade';$('photo-rank').dataset.rank=rank(item);$('photo-scroll').classList.remove('zoomed');$('photo-zoom').textContent='확대하기';$('photo-lightbox').hidden=false;$('photo-close').focus({preventScroll:true});}
+ function photo(id){if(!bookReady||turning)return;const item=photos.find(p=>p.id===id);if(!item||!owned.includes(id))return;$('photo-full').src=item.full||item.art;$('photo-full').alt=item.name;$('photo-title').textContent=item.name;$('photo-date').textContent=dateLabel(item.id);$('photo-rank').textContent=rank(item);$('photo-rank').className='photo-grade';$('photo-rank').dataset.rank=rank(item);$('photo-scroll').classList.remove('zoomed');$('photo-zoom').textContent='확대하기';$('photo-lightbox').hidden=false;$('photo-close').focus({preventScroll:true});}
  function closePhoto(focus=true){if($('photo-lightbox').hidden)return false;$('photo-lightbox').hidden=true;$('photo-full').removeAttribute('src');if(focus)$('album-close').focus({preventScroll:true});return true;}
  function zoom(){const active=$('photo-scroll').classList.toggle('zoomed');$('photo-zoom').textContent=active?'전체 보기':'확대하기';}
  // Keep nested dialogs keyboard accessible, independently of the game's screen trap.

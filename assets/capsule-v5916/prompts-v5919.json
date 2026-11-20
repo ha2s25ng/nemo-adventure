@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen.imagegen",
+  "transparent_background": true,
+  "references": [
+    "../nemo-wardrobe-v5631/legend/portrait.png",
+    "../nemo-wardrobe-v5631/legend/walk.png"
+  ],
+  "prompts": {
+    "portrait": "Use case: precise-object-edit. Image 1 is the EDIT TARGET. Keep this EXACT same chibi Chihuahua face, body, head size, big simple brown eyes, large upright ears, white forehead blaze, short muzzle, smiling expression, big fluffy white tail, tiny paws, three-quarter-right pose, and thick smooth warm-brown outline. Match the original flat/simple soft pastel game icon painting EXACTLY; no realistic fur strands or detailed anatomy. Change CLOTHING ONLY: replace green leaf outfit and leaf circlet with Dreamstar Guardian costume: simple ivory cape with pastel lavender lining, small gold star clasp, pearl blue tunic, two SMALL rounded translucent lavender winglets behind shoulders, tiny crescent moon circlet. Keep accessories clean and simple, same visual density as original. Same transparent background, no text, no border, no ground shadow, no additional characters. Character occupies same bounds and scale as original.",
+    "atlas": "Use case: precise-object-edit. Image 1 is the EDIT TARGET: existing 4-column by 5-row chibi Chihuahua walking atlas. Image 2 is supporting exact style/identity reference. Preserve the original 20 cell positions, grid, every pose and walking leg position, dog anatomy, large head/tiny body proportions, ear shapes, big round brown eyes, white forehead blaze, fluffy white tail, and thick clean brown outline. Change CLOTHING ONLY in all 20 cells, consistently: Dreamstar Guardian outfit, ivory cape with lavender lining, simple pearl blue tunic, small gold star clasp, tiny crescent moon circlet instead of leaves, two SMALL rounded translucent lavender winglets behind shoulders. Maintain simple clean pastel cartoon game sprite style of original, no detailed or realistic fur, no extra shading or texture. Exact grid4columns5rows. Rows front, down-right, right, up-right, back. Full transparency between sprites, no white background, no text or labels, same creature scale per cell. Do not redesign the dog or add a realistic face."
+  }
+}

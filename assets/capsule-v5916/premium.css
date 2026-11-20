@@ -5,8 +5,8 @@
 #app #menu .menu-board .buttons #school-btn,#app #menu .menu-board .buttons #shop-btn,#app #menu .menu-board .buttons #codex-btn{grid-column:span 2!important;min-height:43px!important}
 #app #menu .menu-board .buttons .menu-button-icon{width:24px!important;height:26px!important;object-fit:contain!important;flex:none}
 #app #menu .menu-board .buttons #draw-btn .menu-button-icon,#app #menu .menu-board .buttons #album-btn .menu-button-icon{width:30px!important;height:32px!important}
-#app #menu .menu-board .buttons #draw-btn{background:linear-gradient(#fff6e7,#f7e0dc)!important}
-#app #menu .menu-board .buttons #album-btn{background:linear-gradient(#f4f4e4,#e3e8cf)!important}
+#app #menu .menu-board .buttons #draw-btn{background:transparent!important}
+#app #menu .menu-board .buttons #album-btn{background:transparent!important}
 #lucky-draw.album-only>.draw-board{display:none!important}
 /* Hand-painted capsule: split the real illustration along its seam. */
 #lucky-draw .capsule-stage{min-height:430px;background:radial-gradient(ellipse at 50% 70%,#f9e5bccc,transparent 66%)}
@@ -95,3 +95,10 @@
 #lucky-draw .draw-board>.draw-reward{margin-top:18px}
 #lucky-draw .capsule-stage[data-phase=revealed] .capsule-machine{width:165px}
 @media(max-width:620px){#lucky-draw .draw-layout{grid-template-columns:1fr;gap:20px}#lucky-draw .capsule-stage,#lucky-draw .capsule-stage[data-phase=revealed]{height:355px;min-height:355px}#lucky-draw .capsule-machine{width:220px}#lucky-draw .draw-exclusive{height:220px;min-height:220px;display:grid;grid-template-columns:130px 1fr;column-gap:12px;row-gap:5px;align-content:center}#lucky-draw .draw-exclusive img{width:130px;height:170px;grid-column:1;grid-row:1/4}#lucky-draw .draw-exclusive small,#lucky-draw .draw-exclusive strong,#lucky-draw .draw-exclusive p{grid-column:2}#lucky-draw .draw-exclusive strong{font-size:16px}#lucky-draw .draw-exclusive p{font-size:11px}#lucky-draw .draw-controls .btn{height:54px;min-height:54px}}
+
+/* Never expose photo pages before the cover has finished opening. */
+#lucky-draw .storybook .book-pages{visibility:hidden;opacity:0;transition:opacity .18s ease-out}
+#lucky-draw .storybook.is-ready .book-pages{visibility:visible;opacity:1}
+#lucky-draw .storybook:not(.is-open) .book-cover{transform:translateX(-50%) rotateY(0deg)}
+#app #menu .menu-board .buttons #draw-btn:hover,#app #menu .menu-board .buttons #album-btn:hover{background:transparent!important}
+@media(prefers-reduced-motion:reduce){#lucky-draw .storybook .book-pages{transition:none}}
