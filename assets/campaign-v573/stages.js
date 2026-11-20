@@ -76,6 +76,6 @@ const NEMO_STAGES = [
     minuteGold:21+id*2,
     replayGold:Math.round(reward*.36),
     recommended:id<=3?'기본 장비':id<=6?'공격력 · 체력 강화 권장':id<=13?'공격력 · 수호 훈련 권장':'시전 · 체력 · 수호 훈련 권장',
-    weaponSlots:id>=6?5:4
+    weaponSlots:5
   });
 });
