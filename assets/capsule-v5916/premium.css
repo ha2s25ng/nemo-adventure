@@ -105,7 +105,7 @@
 
 /* A single unprinted leaf prevents old photos from persisting above the new spread. */
 #lucky-draw .storybook.is-ready.is-turning .book-pages{opacity:0;visibility:hidden;pointer-events:none}
-.book-flip.paper-turn{display:block;position:absolute;inset:0;pointer-events:none;perspective:1500px;z-index:8}
+#lucky-draw .book-flip.paper-turn{display:block;position:absolute;inset:10px 9px 13px;pointer-events:none;perspective:1500px;z-index:9}
 .paper-leaf{position:absolute;left:50%;top:0;width:50%;height:100%;transform-origin:left center;transform-style:preserve-3d;animation:paper-next .57s cubic-bezier(.32,.1,.25,1) both}
 .paper-leaf i,.paper-leaf b{position:absolute;inset:0;border:1px solid #cbbb91;border-radius:0 10px 10px 0;background:linear-gradient(90deg,#d6c69f,#fff9e9 12%,#faf1da 88%,#d4c29a);backface-visibility:hidden;box-shadow:6px 8px 14px #342a1933}
 .paper-leaf b{transform:rotateY(180deg);border-radius:10px 0 0 10px;background:linear-gradient(90deg,#f9efdb,#fffaed 80%,#dacba9)}
@@ -128,3 +128,5 @@
 #lucky-draw .exclusive-costumes span{font-size:10px;color:#9b743a}
 #lucky-draw .draw-exclusive-gallery>p{font-size:11px}
 @media(max-width:620px){#lucky-draw .draw-exclusive-gallery{height:auto;min-height:280px;padding:14px 10px}#lucky-draw .exclusive-costumes img{height:100px}#lucky-draw .exclusive-costumes strong{font-size:11px}}
+
+#lucky-draw .storybook.is-turning:after{content:'';position:absolute;inset:10px 9px 13px;border-radius:4px 9px 9px 4px;background:linear-gradient(90deg,#fff8e8 45%,#d1c2a0 50%,#fff8e8 55%);z-index:1;pointer-events:none}
