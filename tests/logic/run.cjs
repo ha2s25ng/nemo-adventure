@@ -5,7 +5,8 @@
 const suites = [
   ['Engine invariants', './checks.cjs'],
   ['Boss definitions', './boss-checks.cjs'],
-  ['Rare/evolution combinations', './rare-checks.cjs']
+  ['Rare/evolution combinations', './rare-checks.cjs'],
+  ['Drop/economy remake', './remake-checks.cjs']
 ];
 let failed = 0;
 for (const [name, modulePath] of suites) {

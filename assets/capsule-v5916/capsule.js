@@ -34,7 +34,7 @@ function createNemoCapsule(doc){
   albumExit=onClose;const session=++albumSession;bookReady=false;
   allPhotos=list;owned=collection;dates=obtained||{};photos=nemoAlbumOrder(list,owned,dates,'owned');
   $('album-sort').value='owned';$('album-owned-count').textContent=`수집 ${owned.length} / ${list.length}`;page=0;turning=false;
-  const book=$('album-book');book.classList.remove('is-open','is-ready');$('draw-album').hidden=false;render();
+  const book=$('album-book');book.classList.remove('is-open','is-ready','is-turning');$('draw-album').hidden=false;render();
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
    if(session!==albumSession)return;
    book.classList.add('is-open');
@@ -43,47 +43,22 @@ function createNemoCapsule(doc){
   $('album-close').focus({preventScroll:true});
  }
 
- function closeAlbum(){if($('draw-album').hidden)return false;albumSession++;bookReady=false;closePhoto(false);$('draw-album').hidden=true;$('album-book').classList.remove('is-open','is-ready');$('album-flip').replaceChildren();turning=false;const exit=albumExit;albumExit=null;if(exit)exit();else $('draw-album-open').focus({preventScroll:true});return true;}
- // Each strip follows a continuous curved sheet, with its own front and back.
+ function closeAlbum(){if($('draw-album').hidden)return false;albumSession++;bookReady=false;closePhoto(false);$('draw-album').hidden=true;$('album-book').classList.remove('is-open','is-ready','is-turning');$('album-flip').classList.remove('paper-turn');$('album-flip').replaceChildren();turning=false;const exit=albumExit;albumExit=null;if(exit)exit();else $('draw-album-open').focus({preventScroll:true});return true;}
+ // Animate paper only; photo DOM is never cloned into a second layer.
  async function turn(direction){
   if(!bookReady||turning||page+direction<0||page+direction>=Math.ceil(photos.length/2))return;
-  turning=true;const session=albumSession,panels=$('album-pages'),flip=$('album-flip');
-  const old=[...panels.children].map(el=>el.outerHTML),next=page+direction;
-  page=next;render();
-  if(reduced()){turning=false;syncAlbumControls();return;}
-  const newer=[...panels.children].map(el=>el.outerHTML),width=panels.getBoundingClientRect().width/2,height=panels.getBoundingClientRect().height;
-  const forward=direction>0,front=old[forward?1:0],back=newer[forward?0:1];
-  const strips=width<250?12:20,step=width/strips;
-  flip.dataset.direction=forward?'next':'prev';flip.classList.add('curved-turn');flip.style.setProperty('--leaf-height',height+'px');
-  flip.innerHTML='<div class="leaf-shadow"></div>';
-  const pieces=[];
-  for(let i=0;i<strips;i++){
-   const slice=doc.createElement('div');slice.className='leaf-slice';slice.style.width=(step+.35)+'px';slice.style.height=height+'px';slice.style.transformOrigin=forward?'0 50%':'100% 50%';
-   const frontIndex=forward?i:strips-1-i,backIndex=strips-1-frontIndex;
-   slice.innerHTML='<div class="leaf-face leaf-front"><div class="leaf-content" style="width:'+width+'px;height:'+height+'px;left:'+(-frontIndex*step)+'px">'+front+'</div></div><div class="leaf-face leaf-back"><div class="leaf-content" style="width:'+width+'px;height:'+height+'px;left:'+(-backIndex*step)+'px">'+back+'</div></div>';
-   for(const button of slice.querySelectorAll('button'))button.tabIndex=-1;
-   flip.appendChild(slice);pieces.push(slice);
-  }
-  const shadow=flip.querySelector('.leaf-shadow');
-  await new Promise(resolve=>{
-   const begin=performance.now();
-   function frame(now){
-    if(session!==albumSession){resolve();return;}
-    const t=Math.min(1,(now-begin)/900),ease=t*t*(3-2*t),theta=Math.PI*ease,bend=.58*Math.sin(Math.PI*ease);
-    let x=0,z=0;
-    for(let i=0;i<strips;i++){
-     const angle=(forward?-1:1)*(theta+bend*(i/(strips-1)-.5)),deg=angle*180/Math.PI;
-     pieces[i].style.transform='translate3d('+(width+x-(forward?0:step))+'px,0,'+z+'px) rotateY('+deg+'deg)';
-     pieces[i].style.filter='brightness('+(1-.14*Math.sin(theta)*Math.abs(i/strips-.35))+')';
-     const distance=(forward?1:-1)*step;x+=distance*Math.cos(angle);z-=distance*Math.sin(angle);
-    }
-    shadow.style.opacity=String(.38*Math.sin(theta));shadow.style.transform='translateX('+(forward?-ease*30:ease*30)+'%) scaleX('+(1+.4*Math.sin(theta))+')';
-    if(t<1)requestAnimationFrame(frame);else resolve();
-   }
-   requestAnimationFrame(frame);
-  });
-  if(session!==albumSession)return;
-  flip.classList.remove('curved-turn');flip.replaceChildren();turning=false;syncAlbumControls();
+  turning=true;syncAlbumControls();const session=albumSession,book=$('album-book'),flip=$('album-flip');
+  if(reduced()){page+=direction;render();turning=false;syncAlbumControls();return;}
+  book.classList.add('is-turning');
+  await wait(150);if(session!==albumSession)return;
+  flip.dataset.direction=direction>0?'next':'prev';
+  flip.innerHTML='<div class="paper-leaf" aria-hidden="true"><i></i><b></b></div>';
+  flip.classList.add('paper-turn');
+  await wait(270);if(session!==albumSession)return;
+  page+=direction;render();
+  await wait(300);if(session!==albumSession)return;
+  flip.classList.remove('paper-turn');flip.replaceChildren();book.classList.remove('is-turning');
+  turning=false;syncAlbumControls();
  }
 
  function photo(id){if(!bookReady||turning)return;const item=photos.find(p=>p.id===id);if(!item||!owned.includes(id))return;$('photo-full').src=item.full||item.art;$('photo-full').alt=item.name;$('photo-title').textContent=item.name;$('photo-date').textContent=dateLabel(item.id);$('photo-rank').textContent=rank(item);$('photo-rank').className='photo-grade';$('photo-rank').dataset.rank=rank(item);$('photo-scroll').classList.remove('zoomed');$('photo-zoom').textContent='확대하기';$('photo-lightbox').hidden=false;$('photo-close').focus({preventScroll:true});}

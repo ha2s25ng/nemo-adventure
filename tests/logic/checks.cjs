@@ -61,6 +61,7 @@ module.exports = function engineChecks() {
     for (const id of weaponIds) for (const evolution of [0, 1]) {
       game.begin();
       game.g.weapons = { [id]: { lv: 1, up: [0, 0, 0], break: false, evo: null, clock: 0 } };
+      game.g.bossEncounters = 1;
       for (let level = 1; level < 7; level++) {
         assert(game.hasGrowth(id), `${id} has no growth at level ${level}`);
         const card = game.makeGrowth(id);
@@ -84,10 +85,10 @@ module.exports = function engineChecks() {
 
   check('passive/weapon cards respect slot and rank caps', () => {
     game.begin();
-    game.g.weapons = Object.fromEntries(['star', 'orbit', 'moon', 'book'].map(id => [
+    game.g.weapons = Object.fromEntries(['star', 'orbit', 'moon', 'book', 'bell'].map(id => [
       id, { lv: 7, up: [2, 2, 0], break: true, evo: 0, clock: 0 }
     ]));
-    game.g.passives = { magic: 3, quick: 3, lucky: 3 };
+    game.g.passives = { magic: 3, quick: 3, lucky: 3, shoes: 3, insight: 3 };
     for (let draw = 0; draw < 100; draw++) {
       const cards = game.rollCards(null);
       assert.equal(cards.length, 2);
@@ -100,10 +101,16 @@ module.exports = function engineChecks() {
     game.begin();
     game.g.player.xp = 100;
     game.g.freeCards = 2;
+    let expectedLevel=1,remainder=100;
+    while(remainder>=game.getLevelNeed()){
+      remainder-=game.getLevelNeed();game.g.player.level++;expectedLevel++;
+    }
+    game.g.player.level=1;
     for (let frame = 0; frame < 40 && (
-      game.g.player.xp >= 10 || game.g.freeCards || ['cards', 'evolution'].includes(game.screen)
+      game.g.player.xp >= game.getLevelNeed() || game.g.freeCards || ['cards', 'evolution'].includes(game.screen)
     ); frame++) runFrame(game);
-    assert.equal(game.g.player.level, 7);
+    assert.equal(game.g.player.level, expectedLevel);
+    assert.equal(game.g.player.xp,remainder);
     assert.equal(game.g.freeCards, 0);
     assert.equal(game.screen, 'playing');
   });

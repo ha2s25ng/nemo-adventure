@@ -102,3 +102,29 @@
 #lucky-draw .storybook:not(.is-open) .book-cover{transform:translateX(-50%) rotateY(0deg)}
 #app #menu .menu-board .buttons #draw-btn:hover,#app #menu .menu-board .buttons #album-btn:hover{background:transparent!important}
 @media(prefers-reduced-motion:reduce){#lucky-draw .storybook .book-pages{transition:none}}
+
+/* A single unprinted leaf prevents old photos from persisting above the new spread. */
+#lucky-draw .storybook.is-ready.is-turning .book-pages{opacity:0;visibility:hidden;pointer-events:none}
+.book-flip.paper-turn{display:block;position:absolute;inset:0;pointer-events:none;perspective:1500px;z-index:8}
+.paper-leaf{position:absolute;left:50%;top:0;width:50%;height:100%;transform-origin:left center;transform-style:preserve-3d;animation:paper-next .57s cubic-bezier(.32,.1,.25,1) both}
+.paper-leaf i,.paper-leaf b{position:absolute;inset:0;border:1px solid #cbbb91;border-radius:0 10px 10px 0;background:linear-gradient(90deg,#d6c69f,#fff9e9 12%,#faf1da 88%,#d4c29a);backface-visibility:hidden;box-shadow:6px 8px 14px #342a1933}
+.paper-leaf b{transform:rotateY(180deg);border-radius:10px 0 0 10px;background:linear-gradient(90deg,#f9efdb,#fffaed 80%,#dacba9)}
+.paper-turn[data-direction=prev] .paper-leaf{left:0;transform-origin:right center;animation-name:paper-prev}
+@keyframes paper-next{from{transform:rotateY(0) rotateZ(0)}50%{transform:rotateY(-90deg) rotateZ(-1deg)}to{transform:rotateY(-180deg) rotateZ(0)}}
+@keyframes paper-prev{from{transform:rotateY(0)}50%{transform:rotateY(90deg) rotateZ(1deg)}to{transform:rotateY(180deg)}}
+
+.choice-card[data-kind=blessing]{border:2px solid #ba954e!important;background:linear-gradient(150deg,#fff9dd,#edf2de)!important}
+.choice-card[data-kind=blessing] .choice-icon{border-radius:50%;background:#fff7d5;border:2px solid #d0b46d;box-shadow:0 0 0 4px #ead8a044}
+.choice-card[data-kind=blessing] .choice-type{color:#8c6b28}.choice-card[data-kind=blessing] .choice-type:before{content:'축복 · '}
+#boss-deadline{display:block;font-size:10px;line-height:1.4;color:#9a4a3b;order:2}#boss-deadline[hidden]{display:none}
+#pickup-status{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);padding:7px 14px;border:1px solid #b9a267;border-radius:16px;background:#fff9e8e8;color:#614830;font-size:12px;pointer-events:none;z-index:12;white-space:nowrap}
+
+#lucky-draw .draw-exclusive-gallery{display:flex;flex-direction:column;gap:14px}
+#lucky-draw .exclusive-costumes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:8px}
+#lucky-draw .exclusive-costumes figure{margin:0;min-width:0;padding:10px 4px;border:1px solid #dbc49b;background:#fff9e3;border-radius:12px}
+#lucky-draw .exclusive-costumes img{width:100%;height:140px;object-fit:contain}
+#lucky-draw .exclusive-costumes strong{display:block;min-height:34px;font-size:12px;line-height:1.4;word-break:keep-all}
+#lucky-draw .exclusive-costumes p{font-size:11px;line-height:1.6;margin:5px 0}
+#lucky-draw .exclusive-costumes span{font-size:10px;color:#9b743a}
+#lucky-draw .draw-exclusive-gallery>p{font-size:11px}
+@media(max-width:620px){#lucky-draw .draw-exclusive-gallery{height:auto;min-height:280px;padding:14px 10px}#lucky-draw .exclusive-costumes img{height:100px}#lucky-draw .exclusive-costumes strong{font-size:11px}}
