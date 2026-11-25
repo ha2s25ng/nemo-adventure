@@ -3031,7 +3031,7 @@ function ringBell(p,w,d){
  const bulletNear=g.enemyShots.some(b=>!b.dead&&distance(b.x,b.y,p.x,p.y)<=r+b.r);
  if(!enemyNear&&!bulletNear)return false;
  function pulse(scale,limit){
-  g.effects.push({kind:'bellWave',x:p.x,y:p.y,r,life:.48,max:.48});
+  g.effects.push({kind:'bellWave',x:p.x,y:p.y,r,life:.68,max:.68});
   for(const e of g.enemies){
    if(e.dead||distance(e.x,e.y,p.x,p.y)>r+e.r)continue;
    deal(e,power*scale,'bell');knock(e,atan(p.x,p.y,e.x,e.y),w.evo===0?1.02:.73);
@@ -3508,7 +3508,7 @@ function updateBellEchoes(dt){
   echo.remaining-=dt;
   if(echo.remaining>0)continue;
   const {x,y,r,damage}=echo;
-  g.effects.push({kind:'bellWave',echo:true,x,y,r,life:.52,max:.52});
+  g.effects.push({kind:'bellWave',echo:true,x,y,r,life:.72,max:.72});
   for(const e of g.enemies){
    if(!e.dead&&distance(e.x,e.y,x,y)<=r+e.r)deal(e,damage,'bell',{critAllowed:false});
   }
@@ -4697,18 +4697,24 @@ else if(e.kind==='beam'){
   }
  }
  else if(e.kind==='bellWave'){
-  const progress=1-f,r=e.r*(reducedMotion.matches?1:1-.64*f**2.8);
+  const progress=clamp((e.max-e.life)/.48,0,1),r=e.r*(reducedMotion.matches?1:1-.64*(1-progress)**2.8);
+  const visibility=clamp(e.life/.20,0,1);
   const [edge,body,light]=SPELL_EFFECT_PAINT[e.echo?'rareBell':'bell'];
+  ctx.globalAlpha=visibility;
+  ctx.shadowColor='#806278';ctx.shadowBlur=2;
   for(let i=0;i<8;i++){
    const a=i*TAU/8+(e.echo?TAU/16:0),x=e.x+Math.cos(a)*r,y=e.y+Math.sin(a)*r;
-   if(i%2===0)spellStamp('bell',x,y,.29+.08*f,.12*Math.sin(a+progress*3),f);
+   if(i%2===0)spellStamp('bell',x,y,.45+.10*f,.12*Math.sin(a+progress*3));
    else{
-    ellipse(x,y,.065,.045,body,.85*f);
-    line(x+.04,y,x+.04,y-.18,body,.035);
-    line(x+.04,y-.18,x+.14,y-.13,body,.035);
+    ellipse(x,y,.092,.065,edge,.95);
+    ellipse(x,y,.069,.043,light);
+    for(const [color,width] of [[edge,.082],[light,.047]]){
+     line(x+.05,y,x+.05,y-.24,color,width);
+     line(x+.05,y-.24,x+.18,y-.17,color,width);
+    }
    }
   }
-  spellStamp('bell',e.x,e.y-.82,.64,reducedMotion.matches?0:Math.sin(progress*13)*.18,f);
+  spellStamp('bell',e.x,e.y-.88,.88,reducedMotion.matches?0:Math.sin(progress*13)*.18);
  }
  else if(e.kind==='seedPlace'||e.kind==='seedBurst'){
   const r=e.r*(e.kind==='seedBurst'?(1-.45*f):.40);
