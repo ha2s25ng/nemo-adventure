@@ -21,6 +21,7 @@ globalThis.__logicGame = {
   drawCostumes, COSTUMES, DRAW_PHOTOS, RARE_PICKUP_KINDS, getLevelNeed, rageActive, updateHUD,
   selectCharacter, activeCharacter, activeCostume, costumeForCharacter, fireWeapon, impactCannon, updateShots, weaponPower, cooldown, normalizeRankLoadout, NEMO_CHARACTERS,
   updateOrbit, orbitPosition, updateVortex, updateMonster, updateEndlessMonster, castEndlessAttack, updateCampaignMonster, drawBattle,
+  drawProjectile, drawBookFamiliar, updateBookFamiliar, drawEffects,
   get g() { return g; },
   get screen() { return screen; },
   get saved() { return saved; },
@@ -87,7 +88,7 @@ function createHarness(seed = 0x4e454d4f, captureDraws = false, reduceMotion = f
     elements.set(id, node);
     return node;
   }
-  const drawCalls = [];
+  const drawCalls = [], vectorCalls = [];
   const drawing = new Proxy({
     globalAlpha: 1,
     drawImage: (source, ...args) => { if (captureDraws) drawCalls.push({ src: source?.src, args }); },
@@ -95,7 +96,8 @@ function createHarness(seed = 0x4e454d4f, captureDraws = false, reduceMotion = f
     createLinearGradient: () => ({ addColorStop: noop }),
     createRadialGradient: () => ({ addColorStop: noop })
   }, {
-    get: (target, key) => key in target ? target[key] : noop,
+    get: (target, key) => key in target ? target[key] : ['rotate','moveTo','lineTo','quadraticCurveTo','closePath','fill','stroke'].includes(key)
+      ? (...args) => { if (captureDraws) vectorCalls.push({ kind:key, args }); } : noop,
     set: (target, key, value) => { target[key] = value; return true; }
   });
   element('canvas').getContext = () => drawing;
@@ -146,7 +148,7 @@ function createHarness(seed = 0x4e454d4f, captureDraws = false, reduceMotion = f
     vm.runInContext(script.code, context, { filename: script.filename, timeout: 10000 });
   }
   if (!context.__logicGame) throw new Error('VM game hooks were not initialized.');
-  return { game: context.__logicGame, storage, drawCalls };
+  return { game: context.__logicGame, storage, drawCalls, vectorCalls };
 }
 
 function runFrame(game) {
