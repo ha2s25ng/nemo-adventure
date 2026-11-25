@@ -54,3 +54,5 @@
 .collection-card[data-character=dori] .collection-card-back b{color:#705440}
 @media(max-width:600px){#lucky-draw #draw-album .album-toolbar{align-items:flex-start;gap:10px;flex-direction:column}.album-filters{width:100%;justify-content:space-between;gap:10px}.album-filters label{font-size:11px}.album-filters select{max-width:125px}}
 @media(max-width:480px){.album-heading{gap:8px}.album-mascots img{height:46px;width:35px}#lucky-draw #draw-album .album-dialog h2{font-size:19px}.album-heading small{font-size:9px!important}}
+
+.album-character-tabs{display:flex;gap:5px;padding:4px;border:1px solid #b5bd9d;border-radius:13px;background:#ececd8}.album-character-tabs button{font:inherit;font-size:14px;min-width:85px;padding:9px 17px;border:1px solid transparent;border-radius:9px;background:transparent;color:#69725b;cursor:pointer}.album-character-tabs button[aria-pressed=true]{background:#fffbec;border-color:#96ab7f;color:#354e3f;box-shadow:0 2px 3px #50674322}.album-character-tabs button:focus-visible{outline:3px solid #d5aa62;outline-offset:2px}

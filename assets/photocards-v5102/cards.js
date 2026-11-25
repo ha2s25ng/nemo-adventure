@@ -13,7 +13,7 @@ function createNemoCapsule(doc){
  const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
  const wait=ms=>new Promise(resolve=>setTimeout(resolve,reduced()?20:ms));
  const escape=value=>String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- let page=0,photos=[],allPhotos=[],owned=[],dates={},albumExit=null,selected=null,returnCard=null,characterFilter='all';
+ let page=0,photos=[],allPhotos=[],owned=[],dates={},albumExit=null,selected=null,returnCard=null,characterFilter='nemo';
  const phase=value=>{stage.dataset.phase=value;};
  const rank=photo=>photo.rank||'R';
  const dateLabel=id=>dates[id]?'획득일 '+new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(dates[id]):'획득일 기록 없음';
@@ -22,6 +22,8 @@ function createNemoCapsule(doc){
  async function dispense(){reset();phase('coin');$('capsule-hint').textContent='코인을 넣고…';await wait(620);phase('turn');$('capsule-hint').textContent='손잡이를 돌리면…';await wait(1050);phase('drop');capsule.hidden=false;$('capsule-hint').textContent='선물이 나왔어요!';await wait(720);ready();}
  async function reveal(tier){if(stage.dataset.phase!=='ready')return;capsule.disabled=true;stage.dataset.tier=tier;phase('opening');$('capsule-hint').textContent='반짝, 어떤 선물일까요?';await wait(650);phase('revealed');$('capsule-hint').textContent=tier==='costume'?'특별한 코스튬을 발견했어요!':'포토카드를 발견했어요!';}
  function render(){
+  for(const button of $('album-character').querySelectorAll('[data-album-character]'))button.setAttribute('aria-pressed',String(button.dataset.albumCharacter===characterFilter));
+  $('album-title').textContent='포토카드';
   const filtered=allPhotos.filter(photo=>characterFilter==='all'||(photo.character||'nemo')===characterFilter);
   $('album-owned-count').textContent=`수집 ${filtered.filter(item=>owned.includes(item.id)).length} / ${filtered.length}`;
   const count=Math.max(1,Math.ceil(photos.length/PAGE_SIZE));page=Math.max(0,Math.min(count-1,page));
@@ -33,10 +35,10 @@ function createNemoCapsule(doc){
   $('album-page-count').textContent=`${page+1} / ${count}`;$('album-pages').scrollTop=0;
  }
  function sort(order){photos=nemoAlbumOrder(allPhotos.filter(photo=>characterFilter==='all'||(photo.character||'nemo')===characterFilter),owned,dates,order);page=0;render();}
- function filter(character){characterFilter=['nemo','dori'].includes(character)?character:'all';$('album-character').value=characterFilter;sort($('album-sort').value||'owned');}
+ function filter(character){closePhoto(false);characterFilter=character==='dori'?'dori':'nemo';sort($('album-sort').value||'owned');}
  function openAlbum(list,collection,obtained={},onClose=null){
   closePhoto(false);albumExit=onClose;allPhotos=list;owned=collection;dates=obtained||{};
-  characterFilter='all';$('album-character').value='all';photos=nemoAlbumOrder(list,collection,dates,'owned');page=0;$('album-sort').value='owned';
+  characterFilter='nemo';photos=nemoAlbumOrder(list.filter(photo=>(photo.character||'nemo')==='nemo'),collection,dates,'owned');page=0;$('album-sort').value='owned';
   $('album-owned-count').textContent=`수집 ${list.filter(item=>owned.includes(item.id)).length} / ${list.length}`;
   render();$('draw-album').hidden=false;$('album-close').focus({preventScroll:true});
  }
@@ -59,7 +61,7 @@ function createNemoCapsule(doc){
   $('photo-title').textContent=item.name;$('photo-caption').textContent=item.name;$('photo-back-title').textContent=item.name;
   $('photo-date').textContent=dateLabel(item.id);$('photo-number').textContent=(item.characterName||'니모')+' · No. '+String(item.number||allPhotos.indexOf(item)+1).padStart(3,'0');
   $('photo-brand').textContent=item.character==='dori'?'DORI MEMORIES':'NEMO MEMORIES';
-  $('photo-character-art').src=item.characterArt||'./assets/nemo-basic-v5111/portrait.webp';
+  $('photo-character-art').src=item.characterArt||'./assets/wardrobe-rig-v5121/nemo-default-portrait.webp';
   $('photo-memory').textContent=(item.characterName||'니모')+'와 함께한 작은 순간';
   for(const id of ['photo-rank','photo-back-rank']){$(id).textContent=rank(item);$(id).className='photo-grade';$(id).dataset.rank=rank(item);}
   $('photocard-detail').dataset.rank=rank(item);$('photo-scroll').classList.remove('zoomed');$('photo-zoom').textContent='크게 보기';

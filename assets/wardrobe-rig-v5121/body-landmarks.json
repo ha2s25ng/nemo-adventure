@@ -1,0 +1,129 @@
+{
+  "description": "Eye-line registration measured on enlarged neutral frames before scale calibration. Values are in the 96px common frame; hat tips and tails do not define body scale.",
+  "targetEyeY": 40,
+  "footY": 89,
+  "nemo": {
+    "default": [
+      36,
+      36.5
+    ],
+    "forest": [
+      38,
+      38
+    ],
+    "rain": [
+      39,
+      35
+    ],
+    "redhood": [
+      39.5,
+      37.5
+    ],
+    "student": [
+      39,
+      37
+    ],
+    "halloween": [
+      41,
+      36
+    ],
+    "starlight": [
+      42,
+      44
+    ],
+    "royal": [
+      39,
+      40
+    ],
+    "legend": [
+      40,
+      37.5
+    ],
+    "patisserie": [
+      39.5,
+      43.5
+    ],
+    "captain": [
+      40,
+      39
+    ],
+    "dreamstar": [
+      39.5,
+      36
+    ],
+    "victory-gold": [
+      40,
+      38
+    ],
+    "victory-silver": [
+      40,
+      40
+    ],
+    "victory-bronze": [
+      38.5,
+      37
+    ]
+  },
+  "dori": {
+    "default": [
+      35.5,
+      37.5
+    ],
+    "forest": [
+      39.5,
+      37
+    ],
+    "rain": [
+      41,
+      37
+    ],
+    "redhood": [
+      39.5,
+      39
+    ],
+    "student": [
+      42,
+      38.5
+    ],
+    "halloween": [
+      42,
+      38
+    ],
+    "starlight": [
+      42.5,
+      45
+    ],
+    "royal": [
+      41,
+      39.5
+    ],
+    "legend": [
+      40.5,
+      37.5
+    ],
+    "patisserie": [
+      41,
+      41.5
+    ],
+    "captain": [
+      42.5,
+      39.5
+    ],
+    "dreamstar": [
+      41,
+      37.5
+    ],
+    "victory-gold": [
+      41,
+      39
+    ],
+    "victory-silver": [
+      42,
+      39.5
+    ],
+    "victory-bronze": [
+      40.5,
+      37
+    ]
+  }
+}

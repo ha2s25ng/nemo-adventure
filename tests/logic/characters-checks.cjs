@@ -17,7 +17,8 @@ module.exports=function(){
  });
  check('all costumes share IDs and bonuses but resolve to separate Dori art',({game})=>{
   for(const outfit of game.COSTUMES){const dori=game.costumeForCharacter(outfit,'dori');assert.equal(dori.id,outfit.id);assert.equal(dori.hp,outfit.hp);assert.equal(dori.attack,outfit.attack);assert.notEqual(dori.portrait,outfit.portrait);assert.notEqual(dori.atlas,outfit.atlas);
-   for(const file of [dori.atlas,dori.portrait])assert(fs.existsSync(path.resolve(__dirname,'../..',file)),file);
+   for(const file of [outfit.atlas,outfit.portrait,dori.atlas,dori.portrait])assert(fs.existsSync(path.resolve(__dirname,'../..',file)),file);
+   for(const atlas of [outfit.atlas,dori.atlas]){const png=fs.readFileSync(path.resolve(__dirname,'../..',atlas));assert.equal(png.readUInt32BE(16),384,atlas);assert.equal(png.readUInt32BE(20),480,atlas);}
    if(outfit.id!=='default')assert(!outfit.name.includes('니모'));
   }
  });
