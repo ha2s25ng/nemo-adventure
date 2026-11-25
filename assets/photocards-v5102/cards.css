@@ -43,3 +43,8 @@
 @media(max-width:480px){#lucky-draw #draw-album{padding:12px 4px}.photocard-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:7px 9px 15px}.collection-card>strong{font-size:12px}.photocard-view{gap:10px}.photocard-face{padding:10px}.photocard-stage{padding:7px 5px 12px;height:min(62dvh,600px)}.photocard-view>footer .btn{font-size:12px;min-width:105px}.photocard-back{gap:10px}}
 @media(prefers-reduced-motion:reduce){.photocard-view,.photocard-detail,.collection-card{animation:none!important;transition:none!important}}
 #app #menu #album-btn .menu-button-icon,#lucky-draw .album-entry-art{box-sizing:border-box;border:2px solid #b5bd9d;border-radius:4px;background:#fff8e6;padding:2px;object-fit:contain;box-shadow:2px 2px 0 #b7ad8b66}
+/* Collection dialogs use the viewport even when the battlefield is letterboxed. */
+#app:has(#draw-album:not([hidden])){overflow:visible!important}
+#app #lucky-draw:has(#draw-album:not([hidden])){overflow:visible!important}
+#lucky-draw #draw-album,#lucky-draw #photo-lightbox{box-sizing:border-box;inset:auto;top:50%;left:50%;width:100vw;height:100dvh;transform:translate(-50%,-50%)}
+#app #photo-lightbox .photocard-view h3{color:#fff6e3!important;text-shadow:none!important}
