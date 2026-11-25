@@ -15,7 +15,7 @@ const TEST_EXPORTS = `
 globalThis.__logicGame = {
   DATA, W, ASSET_DATA, RARE_CARDS, NEMO_STAGES, NEMO_DRAW, weaponAvailableForCharacter,
   begin, menu, pause, resume, setScreen, openCodex, closeCodex, update, finish,
-  hasGrowth, makeGrowth, rollCards, selectCard, chooseEvo, weaponNumbers,
+  hasGrowth, makeGrowth, rollCards, renderCards, selectCard, chooseEvo, weaponNumbers,
   parseImportedSave, normalizeSave, readSave, spawn,
   nextBossEncounter, bossCast, bossUpdate, updateBossEncounter, kill, collect, awardGold,
   drawCostumes, COSTUMES, DRAW_PHOTOS, RARE_PICKUP_KINDS, getLevelNeed, rageActive, updateHUD,

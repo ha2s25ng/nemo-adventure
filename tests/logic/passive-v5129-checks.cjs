@@ -63,5 +63,19 @@ module.exports=function(){
    const html=element(id).innerHTML;assert(html.includes('5/5'),id);assert(html.includes('4/5'),id);assert(html.includes('3/5'),id);assert(!html.includes('/3'),id);
   }
  });
- const failures=results.filter(r=>!r.pass);return {total:results.length,passed:results.length-failures.length,failures,detail:'12 Lv.5 caps, 60 selections, max-rank exclusion, combat/recovery formulas and labels'};
+ check('passive conditions and number transitions are separate; weapon growth-direction row is removed',()=>{
+  const {game:other,element}=createHarness();other.begin();
+  for(const id of Object.keys(caps))for(const rank of [0,4]){
+   other.g.passives[id]=rank;
+   other.g.cards=[{type:'passive',id,name:other.DATA.passives[id][0],desc:other.passiveOffer(id)}];other.renderCards();
+   const html=element('card-options').innerHTML;
+   assert(html.includes('class="passive-effect-values"'),id);
+   assert(!html.includes('class="effect-line"'),id);
+   if(id==='emberheart')assert(html.includes('(체력 50% 이하)'));
+   if(id==='windstep')assert(html.includes('(이동 중)'));
+  }
+  other.g.cards=[{type:'new',id:'orbit',name:other.W.orbit.name,ico:other.W.orbit.icon,desc:'회전 공격',meta:'무기 슬롯'}];other.renderCards();
+  const html=element('card-options').innerHTML;assert(!html.includes('강화 방향'));assert(!html.includes('choice-growth'));
+ });
+ const failures=results.filter(r=>!r.pass);return {total:results.length,passed:results.length-failures.length,failures,detail:'12 Lv.5 caps, 60 selections, max-rank exclusion, combat/recovery formulas and card labels'};
 };
