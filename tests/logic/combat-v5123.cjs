@@ -68,6 +68,35 @@ module.exports=function(){
  check('battle rendering has no stale removed hazard callbacks',game=>{
   for(const stage of [0,1]){game.menu();game.begin(stage);game.drawBattle();}
  });
+ check('cute orbit preserves contact radius and .36 second per-enemy cooldown',game=>{
+  game.begin();const g=game.g,p=g.player;p.crit=0;
+  const w=g.weapons.orbit={lv:1,up:[0,0,0],evo:null,break:false,angle:0};
+  const pos=game.orbitPosition(p,w,0,2,game.W.orbit.range);
+  const near=game.spawn('green',{x:pos.x+.48+.27,y:pos.y});near.hp=near.maxHp=10000;
+  const far=game.spawn('green',{x:pos.x+.48+.29,y:pos.y});far.hp=far.maxHp=10000;
+  game.updateOrbit(0);assert(near.hp<10000);assert.equal(far.hp,10000);assert(w.popUntil[0]>0);
+  const damage=10000-near.hp;g.worldClock=.35;game.updateOrbit(0);assert.equal(10000-near.hp,damage);
+  g.worldClock=.36;game.updateOrbit(0);assert(Math.abs(10000-near.hp-damage*2)<1e-6);
+ });
+ check('orbit evolutions and matching effects render; guardian retains .8 second block cooldown',game=>{
+  for(const evo of [null,0,1]){
+   game.menu();game.begin();const g=game.g,p=g.player;
+   g.weapons.orbit={lv:7,up:[2,2,2],evo,break:true,angle:0};
+   game.updateOrbit(.016);game.drawBattle();
+   if(evo===1){
+    g.enemyShots=[{x:p.x+.8,y:p.y,dead:false},{x:p.x+.9,y:p.y,dead:false}];
+    game.updateOrbit(0);assert.equal(g.enemyShots.filter(b=>b.dead).length,1);
+    assert(g.effects.some(e=>e.kind==='orbitBlock'));game.drawBattle();
+    game.updateOrbit(.79);assert.equal(g.enemyShots.filter(b=>b.dead).length,1);
+    game.updateOrbit(.02);assert.equal(g.enemyShots.filter(b=>b.dead).length,2);
+   }
+   for(const life of [.47,.23,.01]){
+    g.effects=[{kind:'rareBloom',palette:'orbit',x:p.x+2,y:p.y,r:1.5,life,max:.47},
+     {kind:'spellContact',spell:'orbit',x:p.x+1,y:p.y,life:Math.min(.23,life),max:.23}];
+    game.drawBattle();
+   }
+  }
+ });
  const failures=results.filter(r=>!r.pass);
  return {passed:results.length-failures.length,total:results.length,failures,detail:'nearest target, no pull, visible wind-up, locked aim, no monster floor hazards'};
 };

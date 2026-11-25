@@ -20,7 +20,7 @@ globalThis.__logicGame = {
   nextBossEncounter, bossCast, bossUpdate, updateBossEncounter, kill, collect, awardGold,
   drawCostumes, COSTUMES, DRAW_PHOTOS, RARE_PICKUP_KINDS, getLevelNeed, rageActive, updateHUD,
   selectCharacter, activeCharacter, activeCostume, costumeForCharacter, fireWeapon, impactCannon, updateShots, weaponPower, cooldown, normalizeRankLoadout, NEMO_CHARACTERS,
-  updateVortex, updateMonster, updateEndlessMonster, castEndlessAttack, updateCampaignMonster, drawBattle,
+  updateOrbit, orbitPosition, updateVortex, updateMonster, updateEndlessMonster, castEndlessAttack, updateCampaignMonster, drawBattle,
   get g() { return g; },
   get screen() { return screen; },
   get saved() { return saved; },

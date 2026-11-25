@@ -1,0 +1,8 @@
+{
+  "mode": "built-in imagegen",
+  "intent": "stylized-concept",
+  "prompt": "Create ONE isolated cute star companion game sprite on genuine transparent alpha. Match reference image's soft storybook pastel toy rendering, warm brown clean hand drawn outline and gentle watercolor shading. A symmetrical FIVE POINT puffy butter-yellow star, rounded tips like a tiny plush star toy. Front-facing, two tiny brown oval eyes and a very small happy mouth, subtle peach cheeks, cream highlight upper left. No limbs, hat, accessories, text, orbit ring, background, shadow or extra sparkles. Silhouette must be obvious at 24 pixels, bold outline, simple face. Centered, occupying 85 percent of square. Native 1024 square. Used as physical rotating star that touches enemies in a cute Chihuahua fantasy game, not UI badge.",
+  "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-ebf717bc-adf4-4550-ab7b-d28065e63b7f.png",
+  "output": "star.webp",
+  "processing": "Alpha bounding box crop, downsample and centered transparent padding only."
+}
