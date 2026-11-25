@@ -1,0 +1,134 @@
+{
+  "star": {
+    "nativeSize": [
+      1230,
+      1198
+    ],
+    "packedSize": [
+      376,
+      366
+    ],
+    "bytes": 82330
+  },
+  "moon": {
+    "nativeSize": [
+      1234,
+      1181
+    ],
+    "packedSize": [
+      376,
+      360
+    ],
+    "bytes": 67262
+  },
+  "bubble": {
+    "nativeSize": [
+      1253,
+      1225
+    ],
+    "packedSize": [
+      376,
+      368
+    ],
+    "bytes": 91546
+  },
+  "bloom": {
+    "nativeSize": [
+      1240,
+      1254
+    ],
+    "packedSize": [
+      372,
+      376
+    ],
+    "bytes": 91870
+  },
+  "cloud": {
+    "nativeSize": [
+      1240,
+      1231
+    ],
+    "packedSize": [
+      376,
+      373
+    ],
+    "bytes": 69926
+  },
+  "ribbon": {
+    "nativeSize": [
+      1232,
+      1231
+    ],
+    "packedSize": [
+      376,
+      376
+    ],
+    "bytes": 81072
+  },
+  "book": {
+    "nativeSize": [
+      1254,
+      1254
+    ],
+    "packedSize": [
+      376,
+      376
+    ],
+    "bytes": 98658
+  },
+  "comet": {
+    "nativeSize": [
+      1198,
+      1133
+    ],
+    "packedSize": [
+      376,
+      356
+    ],
+    "bytes": 82594
+  },
+  "frost": {
+    "nativeSize": [
+      1238,
+      1236
+    ],
+    "packedSize": [
+      376,
+      375
+    ],
+    "bytes": 75688
+  },
+  "feather": {
+    "nativeSize": [
+      1222,
+      1205
+    ],
+    "packedSize": [
+      376,
+      371
+    ],
+    "bytes": 63766
+  },
+  "vortex": {
+    "nativeSize": [
+      1248,
+      1221
+    ],
+    "packedSize": [
+      376,
+      368
+    ],
+    "bytes": 69354
+  },
+  "bell": {
+    "nativeSize": [
+      1238,
+      1221
+    ],
+    "packedSize": [
+      376,
+      371
+    ],
+    "bytes": 81150
+  }
+}

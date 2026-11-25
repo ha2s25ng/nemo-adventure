@@ -9,7 +9,8 @@ const suites = [
   ['Drop/economy remake', './remake-checks.cjs'],
   ['Photocard collection', './photo-cards.cjs'],
   ['Playable characters', './characters-checks.cjs'],
-  ['Fair monster attacks and targeting', './combat-v5123.cjs']
+  ['Fair monster attacks and targeting', './combat-v5123.cjs'],
+  ['Unified skill art', './skill-art-checks.cjs']
 ];
 let failed = 0;
 for (const [name, modulePath] of suites) {

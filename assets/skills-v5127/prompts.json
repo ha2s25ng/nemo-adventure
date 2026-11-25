@@ -1,0 +1,66 @@
+{
+  "mode": "built-in imagegen",
+  "processing": "Alpha bounding box crop, downsample and transparent centering only",
+  "assets": [
+    {
+      "id": "star",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-355989b2-1957-4a1a-abea-9c86728e86cc.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single puffy FIVE POINT peach-gold shooting star with two tiny oval eyes, small smile and peach cheeks. NO tail; star alone, symmetric compact silhouette. Different from reference yellow orbit star: peach gold body, small ivory center sparkle."
+    },
+    {
+      "id": "moon",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-ef2a4393-5a05-4397-b369-4568851cba9e.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single chunky crescent moon charm, lavender shaded cream moon, sleeping tiny face on lower crescent, two tiny peach cheeks. Tips rounded, crescent opens RIGHT. No stars around it."
+    },
+    {
+      "id": "bubble",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-9258ffc6-64b2-4375-a1e1-0d1370391ba4.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single ROUND translucent sky-blue soap bubble with opalescent mint and rose rim, tiny cream gleams, two tiny eyes and small happy mouth low in front. Clear blue readable filled body, not invisible glass."
+    },
+    {
+      "id": "bloom",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-b9101ea7-3fad-47ab-b956-28d6d2c0eba3.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single five round petal blush-pink flower with warm cream center, two tiny brown eyes and smile, two small sage leaves. Front view compact rounded silhouette."
+    },
+    {
+      "id": "cloud",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-95607497-8b77-4ec5-b89e-a55cc9ea0a47.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single fluffy lavender cloud with two tiny eyes and smile, peach cheeks, and ONE chunky butter-yellow lightning bolt below it. Soft plush silhouette, NOT realistic sky."
+    },
+    {
+      "id": "ribbon",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-7c1b8556-ff98-4339-b191-29ff89e2f35f.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single coral-pink satin bow ribbon with two plump loops and two short curling tails, small gold center clasp. Cute toy-like soft shading. No face."
+    },
+    {
+      "id": "book",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-869ef293-1345-4f21-92ae-a597181b70ef.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single OPEN small lavender storybook, cream pages, pink cover edges, tiny gold star printed on right page, gently wing-shaped pages. No letters. Three-quarter front view."
+    },
+    {
+      "id": "comet",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-7fbcf0eb-af16-4b64-823e-b5f9c730b2b5.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single plump peach-gold meteor with friendly tiny eyes and THREE rounded coral/rose flame lobes behind it pointing UPPER LEFT, meteor head LOWER RIGHT. Soft magical starfire NOT realistic rock or violent fire."
+    },
+    {
+      "id": "frost",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-9f1266a1-12a7-4b3c-9fc4-7d548bce38ce.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single compact cluster of THREE rounded ice crystals, tallest middle, pastel sky-blue/lavender with cream reflections, brownish blue outline. Cute toy crystals, no sharp needles."
+    },
+    {
+      "id": "feather",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-7c6d846f-b955-49fd-b8b9-cf395813bf56.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single soft sage-mint feather angled lower-left to upper-right, cream shaft, blush tip, rounded barbs. Storybook feather, no harsh detail, no face."
+    },
+    {
+      "id": "vortex",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-b6289f23-0d2a-4808-8a5c-ac0b633aac50.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single compact swirl of cotton-candy wind: three soft pastel lavender and blush spiral lobes tapering downward, cream highlights and tiny happy face on top lobe. Not a cloud with lightning, no ground."
+    },
+    {
+      "id": "bell",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-42ffda06-532c-4fd1-893f-535928a9d066.png",
+      "prompt": "Use reference ONLY for illustration style: soft pastel hand-painted storybook toy asset, warm brown clean smooth outline, subtle watercolor texture, chunky simple readable shapes matching cute Chihuahua game. ONE centered isolated object, native square high resolution, genuine transparent alpha background, no ground shadow, no frame, no text, no surrounding specks, no other objects. Occupy 84 percent of canvas. Readable at 24px; bold outline, restrained cream highlights, no photorealism or 3D plastic. A single small butter-gold handbell charm with a lavender bow above it and a tiny cream star embossed on front, flared round rim and peach clapper. Upright, compact, no handle extending far."
+    }
+  ]
+}

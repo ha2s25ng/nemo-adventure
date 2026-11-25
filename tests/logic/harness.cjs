@@ -13,7 +13,7 @@ const ENGINE_MARKER = 'const $ = id => document.getElementById(id)';
 const STARTUP_MARKER = 'rankWire();renderMenu();syncFullscreen();setScreen';
 const TEST_EXPORTS = `
 globalThis.__logicGame = {
-  DATA, W, RARE_CARDS, NEMO_STAGES, NEMO_DRAW, weaponAvailableForCharacter,
+  DATA, W, ASSET_DATA, RARE_CARDS, NEMO_STAGES, NEMO_DRAW, weaponAvailableForCharacter,
   begin, menu, pause, resume, setScreen, openCodex, closeCodex, update, finish,
   hasGrowth, makeGrowth, rollCards, selectCard, chooseEvo, weaponNumbers,
   parseImportedSave, normalizeSave, readSave, spawn,
@@ -62,7 +62,7 @@ function repositoryScripts() {
   throw new Error('Game engine script was not found in index.html.');
 }
 
-function createHarness(seed = 0x4e454d4f) {
+function createHarness(seed = 0x4e454d4f, captureDraws = false, reduceMotion = false) {
   const noop = () => {};
   const elements = new Map();
   function element(id = '') {
@@ -87,7 +87,10 @@ function createHarness(seed = 0x4e454d4f) {
     elements.set(id, node);
     return node;
   }
+  const drawCalls = [];
   const drawing = new Proxy({
+    globalAlpha: 1,
+    drawImage: (source, ...args) => { if (captureDraws) drawCalls.push({ src: source?.src, args }); },
     measureText: value => ({ width: String(value).length * 8 }),
     createLinearGradient: () => ({ addColorStop: noop }),
     createRadialGradient: () => ({ addColorStop: noop })
@@ -113,7 +116,7 @@ function createHarness(seed = 0x4e454d4f) {
     navigator: { userAgent: 'nemo-logic-test' }, location: { protocol: 'file:', href: 'file:///index.html' },
     requestAnimationFrame: noop, cancelAnimationFrame: noop,
     setInterval: () => 0, clearInterval: noop, setTimeout: () => 0, clearTimeout: noop,
-    addEventListener: noop, matchMedia: () => ({ matches: false, addEventListener: noop }),
+    addEventListener: noop, matchMedia: query => ({ matches: reduceMotion && query.includes('prefers-reduced-motion'), addEventListener: noop }),
     ResizeObserver: class { observe() {} }, MutationObserver: class { observe() {} },
     Image: class {
       constructor() {
@@ -143,7 +146,7 @@ function createHarness(seed = 0x4e454d4f) {
     vm.runInContext(script.code, context, { filename: script.filename, timeout: 10000 });
   }
   if (!context.__logicGame) throw new Error('VM game hooks were not initialized.');
-  return { game: context.__logicGame, storage };
+  return { game: context.__logicGame, storage, drawCalls };
 }
 
 function runFrame(game) {
