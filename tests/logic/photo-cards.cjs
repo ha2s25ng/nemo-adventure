@@ -32,6 +32,15 @@ module.exports=function(){
   const image=node('photo-full'),oldLoad=image.onload;ui.photo('card13');oldLoad();assert.equal(image.style.visibility,'hidden');image.onload();assert.equal(image.style.visibility,'visible');
   ui.closePhoto();assert(!image.src);assert.equal(image.onload,null);assert.equal(image.onerror,null);
  });
+ check('character filter keeps separate counts and the correct card-back identity',()=>{
+  const dori=photos[24];Object.assign(dori,{character:'dori',characterName:'도리',characterArt:'dori-portrait.webp',number:1});
+  ui.filter('dori');assert.equal(node('album-owned-count').textContent,'수집 0 / 1');assert.equal(node('album-page-count').textContent,'1 / 1');
+  assert(node('album-pages').innerHTML.includes('DORI'));assert.equal((node('album-pages').innerHTML.match(/<img /g)||[]).length,0);
+  ui.photo('card24');assert(node('photo-lightbox').hidden);
+  owned.push('card24');ui.filter('dori');assert.equal(node('album-owned-count').textContent,'수집 1 / 1');ui.photo('card24');
+  assert.equal(node('photo-brand').textContent,'DORI MEMORIES');assert.equal(node('photo-character-art').src,'dori-portrait.webp');assert.equal(node('photo-number').textContent,'도리 · No. 001');ui.closePhoto();
+  ui.filter('nemo');assert.equal(node('album-owned-count').textContent,'수집 3 / 24');ui.filter('all');assert.equal(node('album-owned-count').textContent,'수집 4 / 25');
+ });
  check('Escape closes detail first, then collection; callback fires once',()=>{
   let exits=0;ui.openAlbum(photos,owned,dates,()=>exits++);ui.photo('card0');
   const event={key:'Escape',preventDefault(){},stopImmediatePropagation(){}};listeners.keydown(event);assert(node('photo-lightbox').hidden);assert(!node('draw-album').hidden);listeners.keydown(event);assert(node('draw-album').hidden);assert.equal(exits,1);ui.closeAlbum();assert.equal(exits,1);

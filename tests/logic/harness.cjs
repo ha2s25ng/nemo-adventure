@@ -18,7 +18,7 @@ globalThis.__logicGame = {
   hasGrowth, makeGrowth, rollCards, selectCard, chooseEvo, weaponNumbers,
   parseImportedSave, normalizeSave, readSave, spawn,
   nextBossEncounter, bossCast, bossUpdate, updateBossEncounter, kill, collect, awardGold,
-  drawCostumes, COSTUMES, RARE_PICKUP_KINDS, getLevelNeed, rageActive, updateHUD,
+  drawCostumes, COSTUMES, DRAW_PHOTOS, RARE_PICKUP_KINDS, getLevelNeed, rageActive, updateHUD,
   get g() { return g; },
   get screen() { return screen; },
   get saved() { return saved; },

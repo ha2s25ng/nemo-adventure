@@ -13,6 +13,14 @@ module.exports=function(){
   const save=game.normalizeSave({...game.saved,costumesOwned:owned,costumeEquipped:'captain'});
   assert.deepEqual(Array.from(save.costumesOwned),owned);assert.equal(save.costumeEquipped,'captain');
  });
+ check('combined collection has unique stable IDs and keeps photo tier odds',()=>{
+  const photos=game.DRAW_PHOTOS;assert.equal(photos.length,183);assert.equal(photos.filter(p=>p.character==='dori').length,89);
+  assert.equal(new Set(photos.map(p=>p.id)).size,photos.length);
+  for(const [rank,target] of Object.entries({R:65,SR:28,SSR:7}))assert(Math.abs(photos.filter(p=>p.rank===rank).reduce((sum,p)=>sum+p.weight,0)-target)<1e-8);
+  const dori=photos.find(p=>p.character==='dori').id;
+  const save=game.normalizeSave({...game.saved,photosOwned:['nap',dori],photosObtainedAt:{nap:Date.now(),[dori]:Date.now()}});
+  assert(save.photosOwned.includes('nap'));assert(save.photosOwned.includes(dori));assert(save.photosObtainedAt[dori]);
+ });
  check('thief reward scales, heals 10%, and cannot be awarded twice',()=>{
   game.begin();const e=game.spawn('thief',{x:game.g.player.x,y:game.g.player.y});
   game.kill(e);assert.equal(game.g.gold,40);game.kill(e);assert.equal(game.g.gold,40);
