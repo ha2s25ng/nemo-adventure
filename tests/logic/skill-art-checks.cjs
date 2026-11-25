@@ -26,7 +26,7 @@ module.exports=function(){
     for(const entity of [...g.shots,...g.zones,...g.effects])for(const key of ['x','y','r','life'])
      if(entity[key]!==undefined)assert(Number.isFinite(entity[key]),id+': '+key);
    }
-   if(id==='book'||id==='moon')assert(vectorCalls.some(call=>call.kind==='quadraticCurveTo'||call.kind==='lineTo'),`${id}: no vector effect`);
+   if(id==='book')assert(vectorCalls.some(call=>call.kind==='quadraticCurveTo'||call.kind==='lineTo'),`${id}: no vector effect`);
    else assert(drawCalls.some(call=>call.src===game.ASSET_DATA['ui_'+id]),`${id}: no matching battle art; evo ${evo}; stage ${stage}`);
    for(const call of drawCalls)assert(call.args.every(Number.isFinite),`${id}: non-finite drawing coordinates`);
   }
@@ -51,7 +51,7 @@ module.exports=function(){
    const e=game.spawn('armor',{x:p.x+1.7,y:p.y});e.hp=e.maxHp=1e7;
    drawCalls.length=0;vectorCalls.length=0;
    for(let frame=0;frame<65;frame++){game.update(.025);game.drawBattle();}
-   if(id==='book'||id==='moon')assert(vectorCalls.length>0,id);
+   if(id==='book')assert(vectorCalls.length>0,id);
    else assert(drawCalls.some(call=>call.src===game.ASSET_DATA['ui_'+id]),id);
   }
  });

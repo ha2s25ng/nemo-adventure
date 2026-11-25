@@ -1,0 +1,9 @@
+{
+  "mode": "built-in image_gen",
+  "intent": "generate",
+  "prompt": "Create ONE magical dog FRISBEE game sprite on genuine transparent alpha background. It must look clearly DIFFERENT from a round pink squeaky ball. A FLAT, shallow oval flying disc seen in gentle top-down three-quarter view, wide horizontal ellipse with width:height about 1.65:1. Sage mint and soft sky-blue thin raised rim, cream flat center with one simple pale lavender swirl/wave marking. Warm mauve-brown clean smooth outline, soft pastel storybook game shading, chunky readable at 32 pixels. Thin visible underside lip to read as a frisbee, NOT a ball, plate of food, bowl, doughnut or thick button. No paw print, face, star, wings, trailing motion, glow, shadow, letters or extra objects. Centered with generous transparent margin, square native high resolution. Match only the attached reference illustration's soft pastel outlines; change object, silhouette, colors and emblem completely.",
+  "reference": "assets/squeaky-v5124/ball.webp (style reference only; deliberately different object and silhouette)",
+  "source": "exec-655f196e-5176-40ff-aa7b-d106dd68641a.png",
+  "output": "frisbee.webp",
+  "processing": "Crop to alpha >5 bounding box, remove near-transparent export speckles (alpha <=5), and downsample to 512 x 262. Preserve remaining generated alpha and colors."
+}

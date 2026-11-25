@@ -27,32 +27,55 @@ module.exports=function(){
   assert(!drawCalls.some(call=>call.src===game.ASSET_DATA.ui_book));
   assert.equal(vectorCalls.find(call=>call.kind==='rotate').args[0],g.bookFamiliar.artAngle);
  });
- check('moon beam has one advancing crescent, with no repeated moon icons',()=>{
-  const {game,drawCalls,vectorCalls}=createHarness(123,true);game.begin();const g=game.g,p=g.player;
-  g.weapons.moon={lv:1,up:[0,0,0],break:false,evo:null,clock:0};
-  let previous=-Infinity;
-  for(const progress of [0,.2,.4,.6,.8]){
-   g.effects=[{kind:'beam',x:p.x,y:p.y,ex:p.x+10,ey:p.y,width:.87,life:.44*(1-progress),max:.44}];
-   drawCalls.length=0;vectorCalls.length=0;game.drawEffects();
-   assert.equal(drawCalls.filter(call=>call.src===game.ASSET_DATA.ui_moon).length,0);
-   const curves=vectorCalls.filter(call=>call.kind==='arc');assert.equal(curves.length,3);
-   const head=curves[0].args[0];assert(head>=previous);previous=head;
-   assert.equal(curves[1].args[5],true,'inner cutout must curve back to the top tip');
-   assert(curves.every(call=>call.args.slice(0,5).every(Number.isFinite)));
-   assert(!vectorCalls.some(call=>call.kind==='lineTo'),'moon must not contain an arrow shaft');
+ check('frisbee uses a flat mint sprite in all directions and reduced motion',()=>{
+  for(const reduced of [false,true])for(let i=0;i<8;i++){
+   const {game,drawCalls,vectorCalls}=createHarness(123,true,reduced);game.begin();const p=game.g.player;
+   game.beam(p.x,p.y,i*Math.PI/4,14,.87,108,'moon',1);
+   const s=game.g.shots[0];game.drawProjectile(s);
+   const art=drawCalls.find(c=>c.src===game.ASSET_DATA.spell_moon);assert(art);
+   assert.notEqual(art.src,game.ASSET_DATA.cannonProjectile);
+   assert(art.args[2]/art.args[3]>1.9,'flat disc must not become a ball');
+   assert.equal(art.args[2],s.longR*2);assert.equal(art.args[3],s.r*2);
+   assert.equal(vectorCalls.find(c=>c.kind==='rotate').args[0],Math.atan2(s.vy,s.vx));
+   assert(!game.g.effects.some(e=>e.kind==='beam'));
   }
  });
- check('moon stays fully visible after .20 seconds while damage, width and reach are unchanged',()=>{
-  const {game,vectorCalls}=createHarness(123,true);game.begin();const g=game.g,p=g.player;p.crit=0;
-  g.weapons.moon={lv:1,up:[0,0,0],break:false,evo:null,clock:0};
-  const inside=game.spawn('green',{x:p.x+4,y:p.y+.8}),outside=game.spawn('green',{x:p.x+4,y:p.y+1.1}),far=game.spawn('green',{x:p.x+14.6,y:p.y});
-  for(const e of [inside,outside,far])e.hp=e.maxHp=10000;
+ function setup(back=false){
+  const {game}=createHarness(123);game.begin();const g=game.g,p=g.player;p.crit=0;
+  g.weapons.moon={lv:1,up:[0,0,0],break:back,evo:null,clock:0};
+  return {game,g,p,enemy:(dx,dy=0)=>{const e=game.spawn('green',{x:p.x+dx,y:p.y+dy});e.hp=e.maxHp=10000;return e;}};
+ }
+ check('frisbee deals no instant damage, then pierces each touched enemy once',()=>{
+  const {game,g,p,enemy}=setup();const near=enemy(4,.8),next=enemy(7),miss=enemy(4,1.1),far=enemy(16);
   game.beam(p.x,p.y,0,14,.87,108,'moon',1);
-  assert.equal(inside.hp,9892);assert.equal(outside.hp,10000);assert.equal(far.hp,10000);
-  const fx=g.effects.find(e=>e.kind==='beam');assert.equal(fx.max,.44);assert.equal(fx.width,.87);
-  g.effects=[{...fx,life:.24}];vectorCalls.length=0;game.drawEffects();
-  assert.equal(vectorCalls.find(call=>call.kind==='fill').alpha,1);
-  assert.equal(game.cooldown('moon'),1.58);
+  assert.equal(near.hp,10000);assert.equal(next.hp,10000);
+  game.updateShots(.20,false);assert.equal(near.hp,10000);assert.equal(next.hp,10000);
+  for(let frame=0;frame<20;frame++)game.updateShots(.10,false);
+  assert.equal(near.hp,9892);assert.equal(next.hp,9892);assert.equal(miss.hp,10000);assert.equal(far.hp,10000);
+  assert.equal(g.shots.length,0);assert.equal(game.cooldown('moon'),1.58);
  });
- const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'48 plane cases, single visible moon wave, unchanged moon damage and hit area'};
+ check('frisbee sweep cannot skip targets during a large movement step',()=>{
+  const {game,p,enemy}=setup();const e=enemy(3);
+  game.beam(p.x,p.y,0,14,.87,108,'moon',1);game.updateShots(.9,false);
+  assert.equal(e.hp,9892);game.updateShots(.1,false);assert.equal(e.hp,9892);
+ });
+ check('return starts at range end and hits once for half damage on a fixed line',()=>{
+  const {game,g,p,enemy}=setup(true);const e=enemy(4);const start={x:p.x,y:p.y};
+  game.beam(p.x,p.y,0,14,.87,108,'moon',1);
+  for(let i=0;i<16;i++)game.updateShots(.1,false);
+  assert.equal(e.hp,9892);assert.equal(g.shots[0].returning,false);
+  game.updateShots(.1,false);assert.equal(g.shots[0].returning,true);
+  assert(Math.abs(g.shots[0].x-start.x-14)<1e-9);p.y+=5;
+  for(let i=0;i<18;i++)game.updateShots(.1,false);
+  assert.equal(e.hp,9838);assert.equal(g.shots.length,0);
+ });
+ check('both evolution variants retain their damage, widths and firing cadence',()=>{
+  for(const evo of [0,1]){
+   const {game,g,enemy}=setup();g.weapons.moon.evo=evo;enemy(5);game.fireWeapon('moon');
+   assert.equal(g.shots.length,evo===0?2:1);
+   for(const s of g.shots){assert(Math.abs(s.damage-108*(evo===0?.65:1.6))<1e-8);assert.equal(s.r,.435*(evo===1?1.5:1));}
+   assert.equal(game.cooldown('moon'),1.58*(evo===1?1.2:1));
+  }
+ });
+ const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'48 plane cases, 16 frisbee directions, swept piercing, delayed impact, return pass and evolution balance'};
 };

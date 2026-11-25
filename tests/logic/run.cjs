@@ -11,7 +11,7 @@ const suites = [
   ['Playable characters', './characters-checks.cjs'],
   ['Fair monster attacks and targeting', './combat-v5123.cjs'],
   ['Unified skill art', './skill-art-checks.cjs'],
-  ['Paper planes and moon wave', './paper-moon-checks.cjs'],
+  ['Paper planes and magic frisbee', './paper-moon-checks.cjs'],
   ['Five-rank passives', './passive-v5129-checks.cjs']
 ];
 let failed = 0;
