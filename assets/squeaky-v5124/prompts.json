@@ -1,0 +1,8 @@
+{
+  "mode": "built-in imagegen",
+  "intent": "stylized-concept",
+  "prompt": "Create one isolated squeaky DOG TOY BALL game asset. Style reference is only the attached bone icon: match its warm brown hand drawn outline, soft pastel shading and cute storybook fantasy game tone. Single perfectly round plump CORAL PINK rubber dog ball, pale cream paw-print emblem on front, small mint-green curved accent seam. Clear simple silhouette readable at 24px. Three-quarter softly shaded sphere, bold clean outline, friendly squashable rubber, no face, no dog, no weapon, no bottle, no letters, no extra objects, no ground shadow, no sparkles outside ball. Ball alone centered occupying about 80 percent of square. Genuine transparent background and alpha. Native 1024 square. This exact image will be used as a projectile and inventory icon.",
+  "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-fdca4d17-8335-48ca-880d-f7970da316da.png",
+  "output": "ball.webp",
+  "processing": "Alpha bounding box crop, downsample, centered transparent padding; no painted edits."
+}

@@ -54,5 +54,22 @@ module.exports=function(){
    }
   }
  });
+ check('squeaky ball preserves old cannon saves and renders every costume and direction',({game})=>{
+  game.saved.gold=2000;game.selectCharacter('dori');game.begin();
+  assert.equal(game.W.cannon.name,'삑삑이 공');
+  const old=game.normalizeRankLoadout({character:'dori',weapons:[{id:'cannon',level:7}]});
+  assert.equal(game.W[old.weapons[0].id].name,'삑삑이 공');
+  const g=game.g,p=g.player,e=game.spawn('green',{x:p.x+4,y:p.y});e.hp=e.maxHp=100000;
+  for(const outfit of game.COSTUMES)for(const dir of ['down','down-right','right','up-right','up','up-left','left','down-left']){
+   g.runCostume=outfit.id;p.direction=dir;p.castFacing=dir;p.castTimer=0;p.cannonRecoil=0;
+   game.drawBattle();game.fireWeapon('cannon');game.impactCannon(g.shots[g.shots.length-1],e);
+   for(const progress of [0,.08,.18,.30,.41]){
+    p.cannonRecoil=Math.max(0,.18-progress);
+    for(const effect of g.effects)if(effect.kind==='cannonBlast')effect.life=.42-progress;
+    game.drawBattle();
+   }
+   g.effects.length=0;g.shots.length=0;
+  }
+ });
  const failures=results.filter(x=>!x.pass);return {total:results.length,passed:results.length-failures.length,failures,detail:'2000G unlock, persistence rollback, shared costumes, starter combat and rankings'};
 };
