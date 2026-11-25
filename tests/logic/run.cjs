@@ -8,7 +8,8 @@ const suites = [
   ['Rare/evolution combinations', './rare-checks.cjs'],
   ['Drop/economy remake', './remake-checks.cjs'],
   ['Photocard collection', './photo-cards.cjs'],
-  ['Playable characters', './characters-checks.cjs']
+  ['Playable characters', './characters-checks.cjs'],
+  ['Fair monster attacks and targeting', './combat-v5123.cjs']
 ];
 let failed = 0;
 for (const [name, modulePath] of suites) {

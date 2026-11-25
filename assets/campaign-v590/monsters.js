@@ -38,7 +38,7 @@ function createCampaignMonsterBehavior({
   'frost-hare':'서리 착지',
   'ember-beetle':'불씨 폭발',
   'ash-viper':'잿결 돌진',
-  'kelp-spirit':'해초 웅덩이',
+  'kelp-spirit':'해초 씨앗탄',
   'clock-scarab':'태엽 십자'
  };
 
@@ -81,17 +81,14 @@ function createCampaignMonsterBehavior({
    a.rays=Array.from({length:6},(_,i)=>aim+.24+i*TAU/6);
    break;
   case 'ember-beetle':
-   a.circles.push({x:e.x,y:e.y,r:2.12});
    a.rays=Array.from({length:6},(_,i)=>aim+(i+1)*TAU/8);
    break;
   case 'ash-viper':
    a.travel=campaignMonsterTravel(e,aim,Math.min(dist+1.5,7.2));
    break;
-  case 'kelp-spirit':{
-   const second=campaignMonsterPoint(p.x,p.y,aim+Math.PI/2*(e.id%2?1:-1),2.0);
-   a.circles.push({x:p.x,y:p.y,r:1.03},{...second,r:.84});
+  case 'kelp-spirit':
+   a.rays=[aim-.36,aim,aim+.36];
    break;
-  }
   case 'tide-ray':
    a.emitters=[-1.48,0,1.48].map(offset=>campaignMonsterPoint(e.x,e.y,aim+Math.PI/2,offset));
    break;
@@ -111,10 +108,6 @@ function createCampaignMonsterBehavior({
  }
  function campaignMonsterShot(e,x,y,aim,speed,damage,paint,life=3.7){
   enemyBullet(x,y,aim,speed,damage,life,MD[e.kind].name+' 탄환',paint,e.id);
- }
- function campaignMonsterHazard(e,shape,attack,damage,life,delay=0){
-  getGame().campaignMonsterHazards.push({...shape,color:attack.color,damage,
-   warn:Math.max(.65,delay),life,max:life,hit:false,label:CAMPAIGN_STRIKES[e.kind]});
  }
  function castCampaignMonsterAttack(e,a){
   const shot=(aim,speed,damage,paint)=>campaignMonsterShot(e,a.x,a.y,aim,speed,damage,paint);
@@ -145,11 +138,11 @@ function createCampaignMonsterBehavior({
    }
    break;
   case 'ember-beetle':
-   campaignMonsterHazard(e,a.circles[0],a,11,.24);
    for(const aim of a.rays)shot(aim,3.12,7,'ember-spark');
    break;
   case 'kelp-spirit':
-   for(const shape of a.circles)campaignMonsterHazard(e,shape,a,9,2.4);
+   if(distance(e.x,e.y,getGame().player.x,getGame().player.y)>=2.4)
+    for(const aim of a.rays)shot(aim,3.1,8,'tide-drop');
    break;
   case 'tide-ray':
    for(const start of a.emitters){
@@ -190,7 +183,10 @@ function createCampaignMonsterBehavior({
   }
   if(a.left<=.001||blocked){
    if(hop){
-    campaignMonsterHazard(e,{x:e.x,y:e.y,r:1.03},a,12,.22);
+    // The leap already telegraphs its direction. Shards travel from the landing,
+    // with no invisible landing explosion or unavoidable point-blank volley.
+    if(distance(e.x,e.y,getGame().player.x,getGame().player.y)>=2.4)
+     for(const offset of [-.32,0,.32])campaignMonsterShot(e,e.x,e.y,a.aim+offset,2.8,7,'snow-flake',3.2);
    }
    e.attackState=null;
    e.halt=hop?.43:.56;
@@ -214,10 +210,7 @@ function createCampaignMonsterBehavior({
    e.patternTimer-=dt;
    if(e.patternTimer<=0&&d<=rule.range&&visible(e.x,e.y,-.2)){
     const attacking=g.enemies.filter(other=>!other.dead&&other.attackState?.type.startsWith('campaign-'));
-    const poolsFull=e.kind==='kelp-spirit'&&
-     g.campaignMonsterHazards.filter(h=>h.label===CAMPAIGN_STRIKES['kelp-spirit']).length+
-      attacking.filter(other=>other.kind==='kelp-spirit').length*2>2;
-    if(attacking.length<(g.boss?1:3)&&!poolsFull){
+    if(attacking.length<(g.boss?1:3)&&!(e.kind==='kelp-spirit'&&d<2.4)){
      e.attackState=prepareCampaignMonsterAttack(e,rule,atan(e.x,e.y,p.x,p.y),d);
      if(e.attackState.travel!==undefined){
       e.pushTime=0;e.pushX=0;e.pushY=0;
@@ -233,54 +226,5 @@ function createCampaignMonsterBehavior({
    damagePlayer(e.dmg,rule.name+' 접촉');
   }
  }
- function updateCampaignMonsterHazards(dt){
-  const g=getGame();
-  if(!g.campaignMonsterHazards.length)return;
-  for(const h of g.campaignMonsterHazards){
-   if(h.warn>0){
-    h.warn-=dt;
-    if(h.warn>0)continue;
-   }
-   h.life-=dt;
-   if(h.life<=0||h.hit||g.player.invuln>0)continue;
-   const hit=h.r===undefined
-    ?pathHitsNemo(h.x,h.y,h.tx,h.ty,h.width*.5)
-    :pathHitsNemo(h.x,h.y,h.x,h.y,h.r);
-   if(hit){
-    h.hit=true;
-    damagePlayer(h.damage*difficulty().damage,h.label);
-    if(!isPlaying())return;
-   }
-  }
-  g.campaignMonsterHazards=g.campaignMonsterHazards.filter(h=>h.life>0);
- }
-
- function drawCampaignMonsterHazards(){
-  for(const h of getGame().campaignMonsterHazards){
-   if(h.life<=0)continue;
-   ctx.save();
-   ctx.globalAlpha=h.warn>0?.28:Math.min(1,.35+h.life/h.max);
-   ctx.lineCap='round';
-   ctx.beginPath();
-   if(h.r===undefined){
-    ctx.moveTo(h.x,h.y);ctx.lineTo(h.tx,h.ty);
-    ctx.lineWidth=h.width;
-    ctx.strokeStyle=h.color+'bc';
-    ctx.stroke();
-   }else{
-    ctx.arc(h.x,h.y,h.r,0,TAU);
-    ctx.fillStyle=h.color+'75';
-    ctx.fill();
-   }
-   ctx.lineWidth=.12;
-   ctx.strokeStyle='#402944';
-   ctx.stroke();
-   ctx.lineWidth=.068;
-   ctx.strokeStyle=h.color;
-   ctx.stroke();
-   ctx.restore();
-  }
- }
-
- return {updateCampaignMonster,updateCampaignMonsterHazards,drawCampaignMonsterHazards};
+ return {updateCampaignMonster};
 }

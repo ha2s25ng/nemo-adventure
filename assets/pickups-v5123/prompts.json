@@ -1,0 +1,8 @@
+{
+  "mode": "precise-object-edit",
+  "tool": "built-in imagegen",
+  "prompt": "Use case: precise-object-edit. Replace the potion icon in reference image1 with an entirely different fantasy BERSERK pickup icon, matching the simple pastel game rendering of reference2. A single large curved RUBY-RED CANINE FANG charm, pointed down, with a small dark-gold collar at its blunt upper end and two short coral-red lightning accents beside it. The upper collar has a tiny cream paw mark. Read immediately as dangerous canine rage/temporary berserk, clearly different from healing bones and magic potions. NO bottle, flask, cork, liquid, vial, cup, container, gore or realistic tooth. Friendly dark crimson/coral/soft ivory/gold palette, warm brown bold smooth outlines, simple clean flat pastel shading matching the Chihuahua game. Compact chunky silhouette readable at 24-32 pixels. One centered isolated icon with generous margin. Native high-resolution square 1024x1024. Genuine transparent alpha, no background, ground shadow, text, border, glowing fog or extra scattered specks.",
+  "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-22463142-9f62-4991-8f19-0f8009515ec1.png",
+  "output": "rage-fang.webp",
+  "processing": "Alpha bounding box crop, downsample and centered transparent padding only."
+}
