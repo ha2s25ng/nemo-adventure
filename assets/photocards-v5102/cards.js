@@ -17,10 +17,10 @@ function createNemoCapsule(doc){
  const phase=value=>{stage.dataset.phase=value;};
  const rank=photo=>photo.rank||'R';
  const dateLabel=id=>dates[id]?'획득일 '+new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(dates[id]):'획득일 기록 없음';
- function reset(){phase('idle');capsule.hidden=true;capsule.disabled=true;$('draw-reward').hidden=true;$('capsule-hint').textContent='작은 캡슐 속, 니모의 선물';}
+ function reset(){phase('idle');capsule.hidden=true;capsule.disabled=true;$('draw-reward').hidden=true;$('capsule-hint').textContent='작은 캡슐 속, 우리들의 선물';}
  function ready(){phase('ready');capsule.hidden=false;capsule.disabled=false;$('capsule-hint').textContent='캡슐을 눌러 열어 보세요';capsule.focus({preventScroll:true});}
  async function dispense(){reset();phase('coin');$('capsule-hint').textContent='코인을 넣고…';await wait(620);phase('turn');$('capsule-hint').textContent='손잡이를 돌리면…';await wait(1050);phase('drop');capsule.hidden=false;$('capsule-hint').textContent='선물이 나왔어요!';await wait(720);ready();}
- async function reveal(tier){if(stage.dataset.phase!=='ready')return;capsule.disabled=true;stage.dataset.tier=tier;phase('opening');$('capsule-hint').textContent='반짝, 어떤 선물일까요?';await wait(650);phase('revealed');$('capsule-hint').textContent=tier==='costume'?'특별한 코스튬을 발견했어요!':'니모의 포토카드를 발견했어요!';}
+ async function reveal(tier){if(stage.dataset.phase!=='ready')return;capsule.disabled=true;stage.dataset.tier=tier;phase('opening');$('capsule-hint').textContent='반짝, 어떤 선물일까요?';await wait(650);phase('revealed');$('capsule-hint').textContent=tier==='costume'?'특별한 코스튬을 발견했어요!':'포토카드를 발견했어요!';}
  function render(){
   const filtered=allPhotos.filter(photo=>characterFilter==='all'||(photo.character||'nemo')===characterFilter);
   $('album-owned-count').textContent=`수집 ${filtered.filter(item=>owned.includes(item.id)).length} / ${filtered.length}`;
@@ -59,7 +59,7 @@ function createNemoCapsule(doc){
   $('photo-title').textContent=item.name;$('photo-caption').textContent=item.name;$('photo-back-title').textContent=item.name;
   $('photo-date').textContent=dateLabel(item.id);$('photo-number').textContent=(item.characterName||'니모')+' · No. '+String(item.number||allPhotos.indexOf(item)+1).padStart(3,'0');
   $('photo-brand').textContent=item.character==='dori'?'DORI MEMORIES':'NEMO MEMORIES';
-  $('photo-character-art').src=item.characterArt||'./assets/adventure-v5100/dreamstar-portrait.webp';
+  $('photo-character-art').src=item.characterArt||'./assets/nemo-basic-v5111/portrait.webp';
   $('photo-memory').textContent=(item.characterName||'니모')+'와 함께한 작은 순간';
   for(const id of ['photo-rank','photo-back-rank']){$(id).textContent=rank(item);$(id).className='photo-grade';$(id).dataset.rank=rank(item);}
   $('photocard-detail').dataset.rank=rank(item);$('photo-scroll').classList.remove('zoomed');$('photo-zoom').textContent='크게 보기';

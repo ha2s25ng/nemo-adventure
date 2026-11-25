@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/><meta content="light" name="color-scheme"/><title>니모의 낯선 모험</title>
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/><meta content="light" name="color-scheme"/><title>니모와 도리의 낯선 모험</title>
 <style>:root{font-family:'Trebuchet MS','Apple SD Gothic Neo','Malgun Gothic',system-ui,sans-serif;color:#5a3d70;background:#a8c987;font-synthesis:none;font-weight:700}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}body{display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 45% 23%,#e8f4ce,#95b477)}button{font:inherit;cursor:pointer;touch-action:manipulation}button:disabled{filter:saturate(.4);opacity:.5;cursor:not-allowed}.hidden{display:none!important}#app{position:relative;width:min(100vw,177.7778vh);height:min(100vh,56.25vw);aspect-ratio:16/9;isolation:isolate;overflow:hidden;border:2px solid #766282;background:#d9e899;box-shadow:0 10px 70px #4b605aa6}canvas{width:100%;height:100%;display:block}#glaze{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 48%,transparent 47%,#f7dae51e 80%,#553a5b14 100%);z-index:2}h1,h2,h3,p{margin:0}button:focus-visible{outline:4px solid #f7cc69;outline-offset:2px}#hud{position:absolute;inset:0;pointer-events:none;z-index:4}.panel{border:3px solid #705184;border-radius:20px;background:linear-gradient(145deg,#fff8e9f5,#f4dcefef);box-shadow:0 5px 0 #8868a0a9,inset 0 2px 0 #fffef0a9,0 8px 20px #57426a25}.hud-player{position:absolute;top:1.4%;left:1.4%;width:20%;height:12%;display:flex;align-items:center;padding:.5% 1%;gap:5px;background:linear-gradient(100deg,#e8c7ebee,#fff0e4dd)}.portrait{width:26%;aspect-ratio:1;border-radius:50%;border:3px solid #755087;background:#fae4ec;object-fit:cover;object-position:center;box-shadow:inset 0 -4px #d19ed1}.stats{flex:1;min-width:0}.player-name{font-size:clamp(12px,1.35vw,21px);color:#4f3264}.hearts{font-size:clamp(10px,1.35vw,22px);letter-spacing:1px;white-space:nowrap;color:#ed7798;text-shadow:-1px -1px #77518d,1px 1px #77518d}.health-txt{font-size:clamp(10px,.92vw,15px);text-align:right}.track{height:12px;border-radius:20px;background:#806b9d;border:2px solid #6b4d83;overflow:hidden;box-shadow:inset 0 2px 3px #593e694f}.track>i{display:block;height:100%;width:100%;border-radius:20px;transition:width .08s linear;background:linear-gradient(90deg,#ff91af,#fce0ab);box-shadow:inset 0 2px #fff8}.timer{position:absolute;left:37.2%;top:1.4%;width:25.6%;min-height:8%;text-align:center;padding:.3% .7%;background:#6b4b88ea;color:#fff3df;border:3px solid #f8dce9;border-radius:29px;box-shadow:0 4px #6847798c}.clock{font-size:clamp(14px,2.1vw,33px);letter-spacing:1px;text-shadow:0 2px #4e2e6e}.timer-note{font-size:clamp(10px,.85vw,15px);background:#ffffff1c;border-radius:12px;padding:2px}.hud-right{position:absolute;top:1.4%;right:1.3%;display:flex;align-items:center;gap:8px}.money{padding:7px 12px;background:#705088e9;border:2px solid #eacee7;border-radius:30px;color:#ffdf83;font-size:clamp(13px,1.3vw,22px);box-shadow:0 3px #614580}.pause-btn{pointer-events:auto;width:46px;height:46px;border-radius:13px;border:3px solid #72518b;background:#fff4ed;color:#704e8f;font-size:26px;box-shadow:0 4px #ad87b5}.boss-hud{position:absolute;top:12%;left:28%;width:44%;background:#70508bcf;border:3px solid #fff0d4;border-radius:28px;padding:4px 13px;color:white;text-align:center;text-shadow:0 2px #533970}.boss-name{font-size:clamp(11px,1.1vw,17px)}.boss-hp{height:15px;border:2px solid #513b68;border-radius:9px;overflow:hidden;background:#54366a}.boss-hp>i{display:block;height:100%;background:linear-gradient(90deg,#ff8bad,#fa557e);width:100%}.boss-text{font-size:12px}.bottom{position:absolute;bottom:1%;left:22%;right:21%;height:12%;display:flex;flex-direction:column;justify-content:flex-end;gap:4px}.slots{display:flex;align-items:center;justify-content:center;gap:5px}.slot{min-width:18%;height:42px;display:flex;align-items:center;justify-content:center;gap:5px;border:2px solid #81639b;background:linear-gradient(#fffcf3e8,#efdbefdd);border-radius:11px;color:#5d4272;box-shadow:0 2px #72518b;font-size:clamp(10px,.92vw,16px)}.slot .ico{font-size:clamp(16px,1.7vw,26px)}.slot small{font-size:clamp(9px,.7vw,11px);color:#8b6b97}.xp-shell{border-radius:11px;border:3px solid #805d95;background:#6a4882;height:20px;overflow:hidden;position:relative;box-shadow:0 2px #fff0e2}.xp-fill{height:100%;background:linear-gradient(90deg,#ffee9c,#f8c261);width:0%;box-shadow:inset 0 2px #fff9;transition:width .12s}.xp-caption{position:absolute;inset:0;text-align:center;font-size:11px;color:#513868;text-shadow:0 1px #fff}.buff-line{position:absolute;bottom:4.5%;right:1.2%;max-width:20%;text-align:right;background:#fff6e9c7;border:2px solid #755889;border-radius:16px;padding:6px 9px;font-size:clamp(9px,.8vw,13px)}.overlay{position:absolute;inset:0;z-index:9;display:flex;justify-content:center;align-items:center;background:#3f28587e;backdrop-filter:blur(2px)}.menu-overlay{background:linear-gradient(90deg,#4532608c,#66527f32)}.menu-board{width:min(610px,62%);max-height:95%;overflow:auto;background:linear-gradient(145deg,#fff6e8ef,#fae3ecf4);padding:25px 32px 21px;text-align:center;position:relative;border:5px solid #785492;border-radius:34px;box-shadow:0 10px #73508b,0 20px 80px #3c28567d,inset 0 0 0 7px #ffffff77}.menu-hero{height:130px;display:flex;justify-content:center;align-items:center}.menu-hero img{height:138px;width:166px;object-fit:contain;filter:drop-shadow(0 5px #9e7ba259)}.eyebrow{color:#b68a9d;font-size:12px;letter-spacing:3px}.menu-board h1{color:#6b4285;font-size:clamp(24px,3.3vw,50px);margin:5px 0;text-shadow:2px 3px #f2cbdc;white-space:nowrap}.subtitle{font-size:clamp(11px,1.08vw,16px);color:#916d9b;margin-bottom:17px}.buttons{display:flex;flex-direction:column;gap:9px;max-width:355px;margin:auto}.btn{border:3px solid #79558f;border-radius:17px;padding:10px 18px;color:#674681;box-shadow:0 4px #a582b1;background:#fff8e8;min-height:43px;transition:transform .1s}.btn:hover:not(:disabled){transform:translateY(-2px);filter:brightness(1.03)}.btn:active:not(:disabled){transform:translateY(2px);box-shadow:0 2px #79558f}.btn.primary{background:linear-gradient(#fff1ae,#ffd67f);color:#684477}.btn.magenta{background:linear-gradient(#e6b6e7,#c893d8);color:#fff8ed}.hint{font-size:11px;color:#95799c;line-height:1.5;margin-top:12px}kbd{border:1px solid #b7a0be;border-radius:4px;padding:1px 3px;background:#fff}.menu-money{display:inline-block;border-radius:20px;color:#866395;background:#f8e2bf;padding:4px 16px;margin-bottom:9px}.small-board,.big-board{max-height:93%;overflow-y:auto;background:linear-gradient(150deg,#fff8ee,#f8e2ee);padding:22px 26px;border:5px solid #77558e;border-radius:32px;box-shadow:0 8px #74508a,0 20px 65px #3b295b78;text-align:center}.small-board{width:min(455px,80%)}.small-board h2,.big-board h2{font-size:clamp(20px,2.3vw,34px);margin-bottom:10px;color:#704888}.small-board p{margin:10px 0 16px;color:#846b93}.stack-btns{display:flex;flex-direction:column;gap:9px}.big-board{width:min(1000px,92%)}.ribbon{display:inline-block;font-size:clamp(19px,2.5vw,39px);font-weight:900;padding:8px 36px 10px;border-radius:50% 50% 18px 18px;border:5px solid #7f5994;color:#69457b;background:linear-gradient(110deg,#fad4e3,#fff6df,#f2c5e7);box-shadow:0 4px #9a73a5;text-align:center;text-shadow:0 1px white}.card-wrap{width:min(1030px,95%);max-height:94%;overflow-y:auto;text-align:center}.card-sub{color:#fff8e8;text-shadow:0 2px 3px #5f4678;font-size:clamp(11px,1.2vw,17px);margin:12px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin:18px 0 12px}.skill-card{min-height:238px;border:5px solid #8c66a2;border-radius:26px;box-shadow:0 8px #5a4275,0 14px 30px #4c355b42;background:linear-gradient(160deg,#fffaf0,#f4dbed);text-align:center;color:#62467a;padding:14px 10px;display:flex;align-items:center;flex-direction:column;gap:9px;transition:transform .12s}.skill-card:hover{transform:translateY(-6px);border-color:#f5c660;background:linear-gradient(140deg,#fff7da,#fff9ee)}.skill-card.featured{border-color:#fbd16b;box-shadow:0 8px #ab7a78,0 14px 35px #fff1bb88}.card-icon{font-size:50px;filter:drop-shadow(0 3px #a88eab55)}.card-title{font-size:clamp(15px,1.75vw,27px);font-weight:900}.card-desc{font-size:clamp(10px,.9vw,14px);min-height:43px;line-height:1.5}.card-meta{font-size:clamp(10px,.9vw,13px);color:#9c7195;background:#eecfe5;border-radius:16px;padding:4px 10px}.card-footer{display:flex;align-items:center;justify-content:center;gap:20px;color:white;text-shadow:0 2px #654a71;font-size:13px}.card-footer .btn{min-height:36px;padding:6px 16px}.evo-cards{display:grid;grid-template-columns:1fr 1fr;gap:20px}.evo-cards .skill-card{min-height:255px}.evo-cards .card-icon{font-size:58px}.school-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0}.school-row{border:3px solid #a27eb0;border-radius:17px;background:#fffdf0;padding:11px;text-align:left;display:flex;align-items:center;justify-content:space-between;gap:8px}.school-row strong{font-size:16px}.school-desc{color:#9c799d;font-size:12px;margin-top:3px}.school-level{font-size:12px;color:#7c588b}.school-row .btn{padding:6px 12px;min-width:88px;font-size:12px;min-height:30px}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0}.result-stat{background:#fff9e7;border:2px solid #c9a7c8;border-radius:16px;padding:8px}.result-stat b{display:block;color:#704888;font-size:21px}.result-stat small{font-size:12px;color:#9d779e}.reward{font-size:26px;color:#bc803e;margin:8px}.settings-line{display:flex;justify-content:space-between;padding:12px;border-bottom:1px dashed #c6a2c8}.settings-line input{accent-color:#9a6dc1}.toast{position:absolute;z-index:12;top:19%;left:50%;transform:translateX(-50%);background:#fff6e9ed;padding:9px 24px;border-radius:30px;border:3px solid #a77baf;box-shadow:0 4px #6e4e80;color:#795292;pointer-events:none;font-size:15px;text-align:center}.debug{position:absolute;z-index:11;right:10px;top:14%;font:12px/1.4 monospace;white-space:pre-wrap;background:#1f1935c9;border:1px solid white;color:#dcffc4;padding:8px;max-width:355px;max-height:72%;overflow:auto;pointer-events:none}.touch-pad{display:none;position:absolute;z-index:5;bottom:10%;left:3%;width:135px;height:135px;border-radius:50%;background:#b595d188;border:4px solid #fff9d4aa;pointer-events:auto;touch-action:none}.touch-knob{position:absolute;left:42px;top:42px;width:46px;height:46px;border-radius:50%;background:#fff2ebcc;border:3px solid #8a69ae}.touch-pause{display:none}#vignette{position:absolute;inset:0;pointer-events:none;z-index:3;box-shadow:inset 0 0 38px #ffffff22} @media(pointer:coarse){.touch-pad{display:block}.menu-board{max-height:95%;padding:10px 16px}.menu-hero{height:75px}.menu-hero img{height:90px}.buttons{gap:4px}.btn{padding:5px 10px;min-height:32px}.menu-board h1{font-size:25px}.hint{font-size:10px}.hud-player{width:23%}.bottom{bottom:1%;left:27%;right:15%}.slot{height:32px}.pause-btn{width:34px;height:34px;font-size:19px}.skill-card{min-height:145px;padding:6px;gap:4px}.card-icon{font-size:26px}.cards{margin:10px 0 8px;gap:7px}.card-footer{font-size:10px}.menu-money{margin-bottom:4px}.school-row{padding:6px}.big-board{padding:12px}.school-grid{gap:5px;margin:8px 0}}
 @media(max-height:620px){.menu-board{padding:12px}.menu-hero{height:75px}.menu-hero img{height:90px}.skill-card{min-height:145px;padding:7px;gap:3px}.card-icon{font-size:31px}.card-sub{margin:4px}.cards{margin:9px 0}.small-board{padding:12px}.ribbon{padding:3px 20px}.school-grid{margin:8px 0}.school-row{padding:5px}}
 
@@ -284,7 +284,7 @@
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
 #setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.11.0" />
+</style><meta name="nemo-version" content="5.12.0" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -590,11 +590,11 @@
 #app .rank-podium img { width:23px; height:23px; object-fit:contain; }
 #app .nemo-shop-item[data-costume^="victory-"] { border-color:#997a4d; }
 </style>
-<script src="./assets/campaign-v573/stages.js?v=5.11.0"></script>
+<script src="./assets/campaign-v573/stages.js?v=5.12.0"></script>
 <script src="./assets/campaign-v573/maps.js?v=5.9.0"></script>
-<script src="./assets/campaign-v590/bosses.js?v=5.11.0"></script>
+<script src="./assets/campaign-v590/bosses.js?v=5.12.0"></script>
 <script src="./assets/campaign-v590/monsters.js?v=5.9.7"></script>
-<script src="./assets/survival-v594/bosses.js?v=5.11.0"></script>
+<script src="./assets/survival-v594/bosses.js?v=5.12.0"></script>
 <script src="./assets/survival-v594/drops.js"></script>
 <style id="rare-card-art">
 #app #cards .choice-card[data-kind="rare"]{
@@ -713,12 +713,14 @@
 @media(max-width:600px){.draw-layout{grid-template-columns:1fr}.draw-reward{min-height:200px}.draw-reward-art{height:150px}.draw-photo-grid{max-width:330px;margin:auto}}
 @media(prefers-reduced-motion:no-preference){.draw-reward[data-reveal="true"] .draw-reward-art{animation:draw-reveal .5s ease-out}@keyframes draw-reveal{from{opacity:.2;transform:translateY(9px) scale(.84)}to{opacity:1;transform:none}}}
 </style>
-<link rel="stylesheet" href="./assets/capsule-v5912/capsule.css?v=5.11.0">
-<script src="./assets/lucky-draw-v5910/draw.js?v=5.11.0"></script>
-<link rel="stylesheet" href="./assets/capsule-v5916/premium.css?v=5.11.0">
-<link rel="stylesheet" href="./assets/photocards-v5102/cards.css?v=5.11.0">
-<script src="./assets/photocards-v5102/cards.js?v=5.11.0"></script>
-<script src="./assets/dori-v5110/photos.js?v=5.11.0"></script>
+<link rel="stylesheet" href="./assets/capsule-v5912/capsule.css?v=5.12.0">
+<script src="./assets/lucky-draw-v5910/draw.js?v=5.12.0"></script>
+<link rel="stylesheet" href="./assets/capsule-v5916/premium.css?v=5.12.0">
+<link rel="stylesheet" href="./assets/photocards-v5102/cards.css?v=5.12.0">
+<link rel="stylesheet" href="./assets/characters-v5120/characters.css?v=5.12.0">
+<script src="./assets/characters-v5120/characters.js?v=5.12.0"></script>
+<script src="./assets/photocards-v5102/cards.js?v=5.12.0"></script>
+<script src="./assets/dori-v5110/photos.js?v=5.12.0"></script>
 <script src="./assets/nemo-album-v5913/photos.js"></script>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
@@ -748,13 +750,14 @@
   <div class="menu-board">
     <div class="menu-main">
       <p class="menu-kicker">숲속 마법 생존</p>
-      <h1 class="folio-title">니모의<br> 낯선 모험</h1>
-      <p class="menu-intro">별빛 지팡이 하나 들고, 낯선 숲으로.</p>
+      <h1 class="folio-title">니모와 도리<br>낯선 모험</h1>
+      <p class="menu-intro" id="menu-intro">별빛 지팡이 하나 들고, 낯선 숲으로.</p>
       <div class="menu-meta">
         <p class="menu-money" id="menu-gold"><img src="./assets/pastel-ui-v5619/coin.webp" alt=""><span id="menu-gold-value">0 골드</span></p>
         <span id="total-plays"></span>
         <button class="btn" type="button" id="nemo-name-change"><span id="menu-profile-name">닉네임</span><span class="profile-edit">변경</span></button>
       </div>
+      <section class="character-select" id="character-select" aria-label="모험 캐릭터 선택"></section>
       <div class="buttons">
         <button class="btn primary" id="start"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/paw.webp" alt="">스테이지 모험</button>
         <button class="btn" id="survival-start">무한 생존</button>
@@ -763,7 +766,7 @@
         <button class="btn nemo-shop-entry" id="shop-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/bag.webp" alt="">코스튬 상점</button>
         <button class="btn" id="codex-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/book.webp" alt="">마법 도감</button>
         <button class="btn menu-collect" id="draw-btn" type="button"><img class="menu-button-icon" src="./assets/capsule-v5916/capsule.webp" alt="">행운의 뽑기</button>
-        <button class="btn menu-collect" id="album-btn" type="button"><img class="menu-button-icon" src="./assets/adventure-v5100/dreamstar-portrait.webp" alt="">니모·도리 포토카드</button>
+        <button class="btn menu-collect" id="album-btn" type="button"><img class="menu-button-icon" src="./assets/nemo-basic-v5111/portrait.webp" alt="">니모·도리 포토카드</button>
         <button class="btn" id="settings-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/settings.webp" alt="">설정</button>
         <button class="btn nemo-leaderboard-menu" id="leaderboard-btn"><img class="menu-button-icon" src="./assets/lobby-icons-v5618/crown.webp" alt="">숲의 랭킹</button>
       </div>
@@ -801,36 +804,36 @@
 </div>
 <div class="overlay hidden" id="costume-shop" role="dialog" aria-modal="true" aria-labelledby="shop-title">
   <div class="nemo-shop-board">
-    <header class="nemo-shop-header"><div><p class="folio">의상 보관함</p><h2 id="shop-title" tabindex="-1">코스튬 상점</h2><p>장착한 코스튬의 체력·공격력 보너스가 모험에 적용돼요.</p></div>
+    <header class="nemo-shop-header"><div><p class="folio">의상 보관함</p><h2 id="shop-title" tabindex="-1">코스튬 상점</h2><label class="costume-character-switch" for="shop-character">착용 미리보기 <select id="shop-character"><option value="nemo">니모</option><option value="dori">도리</option></select></label><p>장착한 코스튬의 체력·공격력 보너스가 모험에 적용돼요.</p></div>
       <div><strong id="shop-wallet">🪙 0 G</strong><button class="btn" id="shop-back">✕ 돌아가기</button></div>
     </header>
     <div class="nemo-shop-content">
-      <section class="nemo-shop-feature"><div class="shop-art" data-art-state="loading"><img id="shop-feature-art" alt="선택한 코스튬 미리보기" src="./assets/nemo-default-v5627/portrait.png"><span class="shop-art-status" aria-hidden="true"></span></div><h3 id="shop-feature-name">기본 니모</h3><p id="shop-feature-desc"></p><p class="shop-feature-bonus" id="shop-feature-bonus"></p><button class="btn primary" id="shop-action"></button><p class="shop-hint" id="shop-message">옷을 선택해 미리 입어 보세요.</p></section>
+      <section class="nemo-shop-feature"><div class="shop-art" data-art-state="loading"><img id="shop-feature-art" alt="선택한 코스튬 미리보기" src="./assets/nemo-basic-v5111/portrait.webp"><span class="shop-art-status" aria-hidden="true"></span></div><h3 id="shop-feature-name">기본 니모</h3><p id="shop-feature-desc"></p><p class="shop-feature-bonus" id="shop-feature-bonus"></p><button class="btn primary" id="shop-action"></button><p class="shop-hint" id="shop-message">옷을 선택해 미리 입어 보세요.</p></section>
       <section class="nemo-shop-grid" id="shop-items"></section>
     </div>
   </div>
 </div>
 <div class="overlay hidden" id="lucky-draw" role="dialog" aria-modal="true" aria-labelledby="draw-title">
  <section class="big-board draw-board">
-  <header class="draw-heading"><div><h2 id="draw-title" tabindex="-1">니모의 캡슐 뽑기</h2><small id="draw-wallet"></small></div><button class="btn" id="draw-back" type="button">숲 입구</button></header>
+  <header class="draw-heading"><div><h2 id="draw-title" tabindex="-1">행운의 캡슐 뽑기</h2><small id="draw-wallet"></small></div><button class="btn" id="draw-back" type="button">숲 입구</button></header>
   <div class="draw-layout">
    <div class="draw-main"><div class="capsule-stage" id="capsule-stage" data-phase="idle">
      <div class="capsule-machine"><img loading="lazy" decoding="async" class="machine-art" src="./assets/capsule-v5912/machine.webp" alt="니모와 꽃으로 장식한 파스텔 캡슐 뽑기 기계"><span class="machine-crank" aria-hidden="true"></span><span class="machine-coin" aria-hidden="true">N</span></div>
      <button id="capsule-open" class="capsule-open" type="button" aria-label="캡슐을 눌러 선물 열기" hidden disabled><span class="capsule-halo"></span><span class="capsule-half capsule-top"><img src="./assets/capsule-v5916/capsule.webp" alt=""></span><span class="capsule-half capsule-bottom"><img src="./assets/capsule-v5916/capsule.webp" alt=""></span><span class="capsule-sparkles" aria-hidden="true"></span></button>
-     <p id="capsule-hint" class="capsule-hint">작은 캡슐 속, 니모의 선물</p>
+     <p id="capsule-hint" class="capsule-hint">작은 캡슐 속, 우리들의 선물</p>
     </div>
     <div class="draw-controls"><button class="btn primary" id="draw-buy" type="button">한 번 뽑기 · 100 골드</button><p id="draw-status" role="status"></p></div>
    </div>
-   <section class="draw-collection"><div class="draw-exclusive draw-exclusive-gallery"><small>행운의 뽑기 전용 · 각각 0.5%</small><div class="exclusive-costumes"><figure><img loading="lazy" src="./assets/adventure-v5100/dreamstar-portrait.webp" alt="꿈별 수호자 니모"><figcaption><strong>꿈별 수호자 니모</strong><p>체력 +28<br>공격력 +18</p><span>획득 확률 0.5%</span></figcaption></figure><figure><img loading="lazy" src="./assets/adventure-v5100/patisserie-portrait.webp" alt="딸기 파티시에 니모"><figcaption><strong>딸기 파티시에 니모</strong><p>체력 +32<br>공격력 +16</p><span>획득 확률 0.5%</span></figcaption></figure><figure><img loading="lazy" src="./assets/adventure-v5100/captain-portrait.webp" alt="별바다 선장 니모"><figcaption><strong>별바다 선장 니모</strong><p>체력 +22<br>공격력 +20</p><span>획득 확률 0.5%</span></figcaption></figure></div><p>사진과 함께 세 가지 특별한 의상을 만나 보세요.</p></div><div class="draw-links"><button type="button" id="draw-album-open" class="album-entry"><img class="album-entry-art" src="./assets/adventure-v5100/dreamstar-portrait.webp" alt=""><strong>니모·도리 포토카드</strong><span id="draw-photo-count"></span><small>카드에 담긴 추억을 모아 보세요</small></button><div class="draw-photo-grid" id="draw-photos" hidden></div>
+   <section class="draw-collection"><div class="draw-exclusive draw-exclusive-gallery"><small>행운의 뽑기 전용 · 각각 0.5%</small><label class="costume-character-switch" for="draw-character">착용 미리보기 <select id="draw-character"><option value="nemo">니모</option><option value="dori">도리</option></select></label><div class="exclusive-costumes" id="draw-exclusive-items"></div><p>사진과 함께 세 가지 특별한 의상을 만나 보세요.</p></div><div class="draw-links"><button type="button" id="draw-album-open" class="album-entry"><img class="album-entry-art" src="./assets/adventure-v5100/dreamstar-portrait.webp" alt=""><strong>니모·도리 포토카드</strong><span id="draw-photo-count"></span><small>카드에 담긴 추억을 모아 보세요</small></button><div class="draw-photo-grid" id="draw-photos" hidden></div>
     <button class="btn draw-costumes-link" id="draw-costumes" type="button">코스튬 보관함</button></div>
 
    </section>
   </div>
   <section class="draw-reward" id="draw-reward" aria-live="polite" aria-atomic="true" hidden></section>
-  <details class="draw-rates"><summary>보상과 획득 확률</summary><p>사진 95% · 코스튬 5%</p><p>뽑기 전용 · 꿈별 수호자 니모 0.5%<br>딸기 파티시에 니모 0.5% · 별바다 선장 니모 0.5%<br>상점 코스튬은 각각 0.4375%</p><p>사진 등급: R 65% · SR 28% · SSR 7%<br>등급 확률은 사진 당첨 시 기준이며, 같은 등급 사진은 같은 확률이에요.</p><p>중복 사진은 25골드, 중복 코스튬은 50골드로 바뀌어요.</p><ul id="draw-rates"></ul></details>
+  <details class="draw-rates"><summary>보상과 획득 확률</summary><p>사진 95% · 코스튬 5%</p><p>뽑기 전용 · 꿈별 수호자 코스튬 0.5%<br>딸기 파티시에 코스튬 0.5% · 별바다 선장 코스튬 0.5%<br>상점 코스튬은 각각 0.4375%</p><p>사진 등급: R 65% · SR 28% · SSR 7%<br>등급 확률은 사진 당첨 시 기준이며, 같은 등급 사진은 같은 확률이에요.</p><p>중복 사진은 25골드, 중복 코스튬은 50골드로 바뀌어요.</p><ul id="draw-rates"></ul></details>
  </section>
  <div class="album-overlay" id="draw-album" role="dialog" aria-modal="true" aria-labelledby="album-title" hidden>
-  <div class="album-dialog"><header><div class="album-heading"><div class="album-mascots" aria-hidden="true"><img src="./assets/nemo-default-v5627/portrait.png" alt=""><img src="./assets/dori-v5110/portrait.webp" alt=""></div><div><small>니모와 도리의 작은 순간</small><h2 id="album-title">니모·도리 포토카드</h2></div></div><button class="btn" id="album-close" type="button">닫기</button></header>
+  <div class="album-dialog"><header><div class="album-heading"><div class="album-mascots" aria-hidden="true"><img src="./assets/nemo-basic-v5111/portrait.webp" alt=""><img src="./assets/dori-v5111/portrait.webp" alt=""></div><div><small>니모와 도리의 작은 순간</small><h2 id="album-title">니모·도리 포토카드</h2></div></div><button class="btn" id="album-close" type="button">닫기</button></header>
   <div class="album-toolbar"><span id="album-owned-count"></span><div class="album-filters"><label for="album-character">사진 <select id="album-character"><option value="all">전체</option><option value="nemo">니모</option><option value="dori">도리</option></select></label><label for="album-sort">정렬 <select id="album-sort"><option value="owned">보유순</option><option value="rank">등급순</option><option value="date">최근 획득순</option></select></label></div></div>
   <div class="photocard-grid" id="album-pages" aria-label="니모·도리 포토카드 목록"></div>
   <footer><button class="btn" id="album-prev" type="button" aria-label="이전 페이지">← 이전</button><span id="album-page-count" role="status"></span><button class="btn" id="album-next" type="button" aria-label="다음 페이지">다음 →</button></footer></div>
@@ -839,7 +842,7 @@
   <div class="photocard-view"><header><div><h3 id="photo-title"></h3><span id="photo-rank"></span></div><button class="btn" id="photo-close" type="button">닫기</button></header>
   <div class="photocard-stage" id="photo-scroll"><div class="photocard-detail" id="photocard-detail">
    <section class="photocard-face photocard-front" id="photocard-front"><img id="photo-full" alt=""><strong id="photo-caption"></strong></section>
-   <section class="photocard-face photocard-back" id="photocard-back" aria-hidden="true" inert><span class="card-brand" id="photo-brand">NEMO MEMORIES</span><img id="photo-character-art" src="./assets/adventure-v5100/dreamstar-portrait.webp" alt=""><h4 id="photo-back-title"></h4><span id="photo-back-rank"></span><span id="photo-date" class="photo-date"></span><span id="photo-number"></span><span class="card-memory" id="photo-memory">니모와 함께한 작은 순간</span></section>
+   <section class="photocard-face photocard-back" id="photocard-back" aria-hidden="true" inert><span class="card-brand" id="photo-brand">NEMO MEMORIES</span><img id="photo-character-art" src="./assets/nemo-basic-v5111/portrait.webp" alt=""><h4 id="photo-back-title"></h4><span id="photo-back-rank"></span><span id="photo-date" class="photo-date"></span><span id="photo-number"></span><span class="card-memory" id="photo-memory">니모와 함께한 작은 순간</span></section>
   </div></div><footer><button class="btn" id="photo-flip" type="button" aria-pressed="false">뒷면 보기</button><button class="btn" id="photo-zoom" type="button">크게 보기</button></footer></div>
  </div>
 </div>
@@ -879,7 +882,7 @@
 </div>
 <div class="overlay hidden" id="result" role="dialog" aria-modal="true" aria-labelledby="result-title"><div class="big-board"><p class="folio">모험 일지</p><h2 id="result-title">모험 결과</h2><p class="subtitle" id="result-desc"></p><div class="result-summary"><div><small>생존 시간</small><strong id="result-time">00:00</strong></div><div class="reward"><small>획득 골드</small><strong id="result-money">+0 G</strong></div></div><div class="result-grid" id="result-grid"></div><div class="stack-btns" style="max-width:390px;margin:auto"><button class="btn primary hidden" id="next-stage">다음 스테이지</button><button class="btn primary" id="retry">다시 도전</button><button class="btn" id="result-menu">숲 입구로</button><button class="btn nemo-rank-result" id="result-rank-btn">내 기록과 랭킹</button></div></div></div>
 <div class="overlay hidden" id="codex" role="dialog" aria-modal="true" aria-labelledby="codex-title"><div class="codex-board">
-<div class="codex-head"><div><p class="folio">마법 기록</p><h2 id="codex-title">니모의 마법 도감</h2><p>14종 마법의 공격 방식·강화·두 가지 최종 진화를 확인할 수 있어.</p></div><button class="btn codex-close" id="codex-back">✕ 닫기</button></div>
+<div class="codex-head"><div><p class="folio">마법 기록</p><h2 id="codex-title">마법 도감</h2><p>15종 마법의 공격 방식·강화·두 가지 최종 진화를 확인할 수 있어.</p></div><button class="btn codex-close" id="codex-back">✕ 닫기</button></div>
 <div class="codex-tabs" id="codex-tabs"></div><div class="codex-details" id="codex-details"></div>
 </div></div><div class="overlay hidden" id="leaderboard" role="dialog" aria-modal="true" aria-labelledby="leaderboard-title"><div class="nemo-leaderboard-board">
   <div class="nemo-rank-top"><div><p class="folio">모험 기록</p><h2 id="leaderboard-title" tabindex="-1">숲의 명예의 전당</h2><p>무한 생존 · 주간 랭킹 · 매주 일요일 22:00 초기화 (한국시간)</p></div><button type="button" id="leaderboard-close" class="btn">✕ 돌아가기</button></div>
@@ -1005,7 +1008,7 @@ const DATA = Object.freeze({
  },
  upgrades:{attack:['공격력 강화','공격력 +2 (스테이지 +3)',10],hp:['체력 강화','최대 체력 +5',10],speed:['빠른 발걸음','이동 속도 +2%',5],pickup:['보석 수집','경험치 보석 획득 범위 +10%',5],crit:['치명타 강화','치명타 확률 +1%p',5],reroll:['카드 다시 뽑기','모험당 1회 추가 · 최대 2회',1],tempo:['시전 훈련','자동 공격 속도 +3%',5],guard:['수호 훈련','적에게 받는 피해 3% 감소',5]}}
 });
-</script><script>const ASSET_DATA={"nemo":"./assets/nemo-default-v5627/portrait.png","windmill":"./assets/windmill.png","ribbonIcon":"./assets/ribbonIcon.png","magnetIcon":"./assets/magnetIcon.png","groundFull":"./assets/groundFull.jpg","tree_pink":"./assets/tree_pink.png","tree_green":"./assets/tree_green.png","pond":"./assets/pond.png","grain":"./assets/grain.jpg","nemoAnim":"./assets/v550/nemo_default_32.webp","nemoWand":"./assets/nemo-polish/star-wand.webp","ui_star":"./assets/ui_star.svg","ui_orbit":"./assets/ui_orbit.svg","ui_moon":"./assets/ui_moon.svg","ui_bubble":"./assets/ui_bubble.svg","ui_bloom":"./assets/ui_bloom.svg","ui_cloud":"./assets/ui_cloud.svg","ui_ribbon":"./assets/ui_ribbon.svg","ui_book":"./assets/ui_book.svg","ui_comet":"./assets/ui_comet.svg","ui_frost":"./assets/ui_frost.svg","ui_feather":"./assets/ui_feather.svg","ui_magnet":"./assets/ui_magnet.svg","ui_magic":"./assets/ui_magic.svg","ui_quick":"./assets/ui_quick.svg","ui_lucky":"./assets/ui_lucky.svg","ui_big":"./assets/ui_big.svg","ui_cloak":"./assets/ui_cloak.svg","ui_shoes":"./assets/ui_shoes.svg","ui_vortex":"./assets/ui_vortex.svg","ui_seed":"./assets/ui_seed.svg","ui_bell":"./assets/ui_bell.svg"};</script><script>
+</script><script>const ASSET_DATA={"nemo":"./assets/nemo-basic-v5111/portrait.webp","windmill":"./assets/windmill.png","ribbonIcon":"./assets/ribbonIcon.png","magnetIcon":"./assets/magnetIcon.png","groundFull":"./assets/groundFull.jpg","tree_pink":"./assets/tree_pink.png","tree_green":"./assets/tree_green.png","pond":"./assets/pond.png","grain":"./assets/grain.jpg","nemoAnim":"./assets/v550/nemo_default_32.webp","nemoWand":"./assets/nemo-polish/star-wand.webp","ui_star":"./assets/ui_star.svg","ui_orbit":"./assets/ui_orbit.svg","ui_moon":"./assets/ui_moon.svg","ui_bubble":"./assets/ui_bubble.svg","ui_bloom":"./assets/ui_bloom.svg","ui_cloud":"./assets/ui_cloud.svg","ui_ribbon":"./assets/ui_ribbon.svg","ui_book":"./assets/ui_book.svg","ui_comet":"./assets/ui_comet.svg","ui_frost":"./assets/ui_frost.svg","ui_feather":"./assets/ui_feather.svg","ui_magnet":"./assets/ui_magnet.svg","ui_magic":"./assets/ui_magic.svg","ui_quick":"./assets/ui_quick.svg","ui_lucky":"./assets/ui_lucky.svg","ui_big":"./assets/ui_big.svg","ui_cloak":"./assets/ui_cloak.svg","ui_shoes":"./assets/ui_shoes.svg","ui_vortex":"./assets/ui_vortex.svg","ui_seed":"./assets/ui_seed.svg","ui_bell":"./assets/ui_bell.svg"};</script><script>
 const STORYBOOK_ART={"logo":"./assets/logo.png","button_start":"./assets/button_start.png","button_school":"./assets/button_school.png","button_settings":"./assets/button_settings.png","button_codex":"./assets/button_codex.png","button_normal":"./assets/button_normal.png","button_hard":"./assets/button_hard.png","button_hell":"./assets/button_hell.png","button_pause":"./assets/button_pause.png","title_ribbon":"./assets/title_ribbon.png","result_panel":"./assets/result_panel.png","card_blank_gold":"./assets/card_blank_gold.png","card_blank_lavender":"./assets/card_blank_lavender.png","card_blank_sun":"./assets/card_blank_sun.png","icon_star":"./assets/v550/fx_star.webp","icon_orbit":"./assets/icon_orbit.webp","icon_moon":"./assets/icon_moon.webp","icon_bubble":"./assets/icon_bubble.webp","icon_bloom":"./assets/icon_bloom.webp","icon_cloud":"./assets/v550/fx_cloud.webp","icon_ribbon":"./assets/icon_ribbon.webp","icon_book":"./assets/icon_book.webp","icon_comet":"./assets/v550/fx_fire.webp","icon_frost":"./assets/v550/fx_ice.webp","icon_feather":"./assets/icon_feather.webp","icon_vortex":"./assets/v550/fx_vortex.webp","icon_seed":"./assets/icon_seed.webp","icon_bell":"./assets/icon_bell.webp","icon_magic":"./assets/v550/fx_wand.webp","icon_quick":"./assets/icon_quick.png","icon_lucky":"./assets/icon_lucky.png","icon_area":"./assets/v550/fx_burst.webp","icon_cloak":"./assets/v550/fx_heart.webp","icon_shoes":"./assets/icon_shoes.png","icon_magnet":"./assets/v550/fx_magnet.webp","icon_heart":"./assets/v550/fx_heart.webp","icon_coin":"./assets/v550/fx_coin.webp","icon_gem":"./assets/icon_gem.png","icon_exp":"./assets/icon_exp.png","icon_paw":"./assets/icon_paw.png","icon_flower":"./assets/icon_flower.png","icon_crown":"./assets/icon_crown.png","icon_bone":"./assets/icon_bone.png","enemy_green":"./assets/enemy_green.png","enemy_blue":"./assets/enemy_blue.png","enemy_mush":"./assets/enemy_mush.png","enemy_firefly":"./assets/enemy_firefly.png","enemy_boss":"./assets/enemy_boss.png","item_gem":"./assets/item_gem.png","item_gold":"./assets/item_gold.png","item_bone":"./assets/item_bone.png","item_potion":"./assets/item_potion.png","item_magnet":"./assets/item_magnet.png","item_bag":"./assets/item_bag.png","item_chest":"./assets/item_chest.png","decor_tree_crown":"./assets/decor_tree_crown.png","decor_tree_trunk":"./assets/decor_tree_trunk.png","decor_tree_front":"./assets/decor_tree_front.png","decor_pond":"./assets/decor_pond.png","decor_windmill":"./assets/decor_windmill.png","decor_fence":"./assets/decor_fence.png","decor_rock":"./assets/decor_rock.png","decor_stump":"./assets/decor_stump.png","decor_flowers":"./assets/decor_flowers.png"};
 Object.assign(ASSET_DATA,{ui_star:STORYBOOK_ART["icon_star"],ui_orbit:STORYBOOK_ART["icon_orbit"],ui_moon:STORYBOOK_ART["icon_moon"],ui_bubble:STORYBOOK_ART["icon_bubble"],ui_bloom:STORYBOOK_ART["icon_bloom"],ui_cloud:STORYBOOK_ART["icon_cloud"],ui_ribbon:STORYBOOK_ART["icon_ribbon"],ui_book:STORYBOOK_ART["icon_book"],ui_comet:STORYBOOK_ART["icon_comet"],ui_frost:STORYBOOK_ART["icon_frost"],ui_feather:STORYBOOK_ART["icon_feather"],ui_vortex:STORYBOOK_ART["icon_vortex"],ui_seed:STORYBOOK_ART["icon_seed"],ui_bell:STORYBOOK_ART["icon_bell"],ui_magic:STORYBOOK_ART["icon_magic"],ui_quick:STORYBOOK_ART["icon_quick"],ui_lucky:STORYBOOK_ART["icon_lucky"],ui_area:STORYBOOK_ART["icon_area"],ui_cloak:STORYBOOK_ART["icon_cloak"],ui_shoes:STORYBOOK_ART["icon_shoes"],ui_magnet:STORYBOOK_ART["icon_magnet"]});
 </script>
@@ -1081,6 +1084,7 @@ const RARE_PICKUPS={
 };
 const RARE_PICKUP_KINDS=Object.keys(RARE_PICKUPS);
 const RARE_DROP={chance:.0045,unlock:40,life:22,cooldown:55,freeze:5};
+DATA.weapons.cannon=DORI_CANNON;
 const W=DATA.weapons,MD={...DATA.monsters,...CAMPAIGN_MONSTERS},passiveKeys=Object.keys(DATA.passives),weaponKeys=Object.keys(W);
 const SURVIVAL_RUNNERS={
  spark:{at:75,weight:7,lateWeight:14},
@@ -1202,6 +1206,10 @@ function loadSprite(key,url){
  return sprites[key];
 }
 for(const [key,file] of Object.entries({pickupBone:'bone',pickupRage:'rage',pickupTimeSeal:'time',pickupSweep:'sweep',pickupMagnet:'magnet',pickupGold:'gold',pickupWard:'ward',pickupFortune:'fortune',pickupHorn:'horn',ui_brave:'brave',ui_breeze:'breeze',ui_gather:'gather'}))ASSET_DATA[key]='./assets/adventure-v5100/'+file+'.webp';
+ASSET_DATA.pickupGold='./assets/pastel-ui-v5619/coin.webp';
+ASSET_DATA.ui_cannon='./assets/characters-v5120/cannon-icon.webp';
+ASSET_DATA.cannonProjectile='./assets/characters-v5120/cannon-projectile.webp';
+ASSET_DATA.cannonBurst='./assets/characters-v5120/cannon-burst.png';
 for(const [key,url] of Object.entries(ASSET_DATA)){
  if(!key.startsWith('stageLandmark'))loadSprite(key,url);
 }
@@ -1233,8 +1241,8 @@ const COSTUMES=[
  ["legend","전설의 멍법사",4600,"비취빛 예복과 잎사귀 관을 두른 전설 속 숲의 마법사.",16,12]
 ].map(([id,name,price,desc,hp,attack])=>({
  id,name,price,desc,hp,attack,
- atlas:COSTUME_ART+id+'/walk.png',
- portrait:id==='default'?'./assets/nemo-default-v5627/portrait.png':COSTUME_ART+id+'/portrait.png'
+ atlas:id==='default'?'./assets/nemo-basic-v5111/walk.png':COSTUME_ART+id+'/walk.png',
+ portrait:id==='default'?'./assets/nemo-basic-v5111/portrait.webp':COSTUME_ART+id+'/portrait.png'
 }));
 for(const [id,name,hp,attack,desc] of [
  ['patisserie','딸기 파티시에 니모',32,16,'딸기 베레모와 앞치마를 입은 숲속 파티시에.'],
@@ -1250,6 +1258,11 @@ const VICTORY_COSTUMES=[
  atlas:'./assets/victory-v584/'+outfit.id+'-walk.png',
  desc:'지난 주 무한 생존 순위 보상. 이번 주에 입을 수 있어요.'}));
 COSTUMES.push(...VICTORY_COSTUMES);
+for(const outfit of COSTUMES){
+ if(outfit.id==='default')continue;
+ if(outfit.place){outfit.name='승리의 코스튬 · '+({1:'황금',2:'백은',3:'청동'}[outfit.place]);continue;}
+ outfit.name=outfit.name.replace(/\s*니모/g,'')+' 코스튬';
+}
 const DRAW_PHOTOS=[
  {id:'nap',rank:'R',name:'낮잠 자는 니모',art:'./assets/lucky-draw-v5910/nap.jpg'},
  {id:'smile',rank:'SR',name:'방긋 웃는 니모',art:'./assets/lucky-draw-v5910/smile.jpg'},
@@ -1259,9 +1272,10 @@ const DRAW_PHOTOS=[
 ].map((photo,_,all)=>({...photo,weight:({R:65,SR:28,SSR:7}[photo.rank]||65)/all.filter(p=>p.rank===photo.rank).length}));
 const costumeAtlases={};
 function loadCostumeAtlas(outfit){
- if(costumeAtlases[outfit.id])return;
+ const key=outfit.artKey||outfit.id;
+ if(costumeAtlases[key])return;
  const image=new Image();
- costumeAtlases[outfit.id]=image;
+ costumeAtlases[key]=image;
  image.addEventListener('load',()=>{needsDraw=true;});
  image.src=outfit.atlas;
 }
@@ -1292,7 +1306,7 @@ function nemoWalkView(q,atlas){
  const directional=atlas.naturalHeight===NEMO_WALK_FRAME*5;
  const flip=q.dir.includes('left')?-1:1;
  if(directional){
-  const frame=atlas.naturalWidth===NEMO_WALK_FRAME*4?q.walkFrame:q.defaultFrame;
+  const frame=atlas.naturalWidth===NEMO_WALK_FRAME*8?(q.walking?Math.floor((q.phase/Math.PI%2)*4)%8:0):atlas.naturalWidth===NEMO_WALK_FRAME*4?q.walkFrame:q.defaultFrame;
   return {row:DIRECTION_ART_INDEX[q.dir]??0,flip,frame,directional};
  }
  const row=q.dir.startsWith('up')?2:q.dir==='down'?0:1;
@@ -1311,12 +1325,14 @@ const NEMO_PAINTED_WAND_TIPS=[
  [[30,55],[129,45],[130,45],[30,82],[130,73],[32,77],[114,89],[132,62]]
 ];
 function nemoAtlas(){
- const outfit=costumeAtlases[g?.runCostume??activeCostume().id];
- const base=costumeAtlases.default;
+ const character=g?.runCharacter??activeCharacter().id;
+ const art=costumeForCharacter(costumeOf(g?.runCostume??activeCostume().id),character);
+ const outfit=costumeAtlases[art.artKey||art.id];
+ const base=costumeAtlases[character==='dori'?'dori:default':'default'];
  for(const atlas of [outfit,base]){
   if(!atlas?.complete)continue;
   const columns=atlas.naturalWidth/NEMO_WALK_FRAME,rows=atlas.naturalHeight/NEMO_WALK_FRAME;
-  if((rows===5&&(columns===3||columns===4))||(rows===3&&columns===4))return atlas;
+  if((rows===5&&(columns===3||columns===4||columns===8))||(rows===3&&columns===4))return atlas;
  }
  return sprites.nemoAnim;
 }
@@ -1351,7 +1367,7 @@ const NEMO_DIRECTIONAL_GRIPS=[[60,62],[65,63],[67,63],[65,63],[64,64]];
 const VICTORY_GRIPS=[[65,65],[69,65],[72,65],[72,65],[71,66]];
 function hasVictoryPaws(atlas){
  const id=g?.runCostume??activeCostume().id;
- return id.startsWith('victory-')&&atlas===costumeAtlases[id];
+ return id.startsWith('victory-')&&atlas===costumeAtlases[(g?.runCharacter==='dori'?'dori:':'')+id];
 }
 function nemoWandPose(q,view,victoryPaws=false){
  const grips=victoryPaws?VICTORY_GRIPS:view.directional?NEMO_DIRECTIONAL_GRIPS:(NEMO_GRIPS[g?.runCostume??activeCostume().id]||NEMO_GRIPS.default);
@@ -1361,6 +1377,7 @@ function nemoWandPose(q,view,victoryPaws=false){
          side,angle:side*(.27+flick)};
 }
 function nemoWandTip(v){
+ if(g?.runCharacter==='dori'){const c=Math.cos(v.angle*.2),sn=Math.sin(v.angle*.2),dx=.474*v.side,dy=-.282;return {x:v.x+c*dx-sn*dy,y:v.y+sn*dx+c*dy};}
  const art=NEMO_WAND_ART;
  const dx=(art.starX-art.gripX)*art.width*v.side;
  const dy=(art.starY-art.gripY)*art.height;
@@ -1377,6 +1394,7 @@ function wandOrigin(p){
  return {x:p.x+x*c-y*sn,y:body.footY+x*sn+y*c};
 }
 function drawNemoWand(v){
+ if(g?.runCharacter==='dori'&&sprites.ui_cannon?.naturalWidth){ctx.save();ctx.translate(v.x,v.y);ctx.rotate(v.angle*.2);ctx.scale(v.side,1);ctx.drawImage(sprites.ui_cannon,-.128,-.461,.64,.64);ctx.restore();return;}
  const img=sprites.nemoWand;
  if(!img?.complete||!img.naturalWidth)return;
  const art=NEMO_WAND_ART;
@@ -1445,6 +1463,7 @@ const PASSIVE_GUIDE={magnet:'경험치 획득 반경이 커져서 더 먼 보석
  honeypouch:'바닥에서 주운 회복 아이템의 효과가 커져요.',
  insight:'모은 보석에서 얻는 경험치가 더 많아져요.'
 };
+WEAPON_GUIDE.cannon={role:'도리 전용 · 직격과 범위 폭발',desc:'묵직한 달빛탄을 발사해 직격 피해를 주고 주변 적에게 35% 피해와 밀침을 줍니다.',pair:'한 번의 포격에서 같은 적은 폭발 피해를 한 번만 받아요. 탄환이 느려 계속 이동하며 적을 모으면 좋아요.'};
 const PASSIVE_ROLE={magic:'장착한 모든 무기가 더 강해져요',quick:'마법을 더욱 빠르게 사용해요',lucky:'행운의 한 방이 더 자주 터져요',big:'마법이 더 넓게 퍼져요',cloak:'더욱 튼튼해져요',shoes:'조금 더 빠르게 움직여요',magnet:'경험치 보석을 더 멀리서 모아요'};
 function skillIcon(id,fallback){const alias={insight:'book'};const src=ASSET_DATA['ui_'+(alias[id]||id)];return src?`<img class="new-magic-icon" src="${src}" alt="${W[id]?.name||DATA.passives[id]?.[0]||(id==='gold'?'반짝이는 주머니':id==='heal'?'달콤한 간식':'스킬 아이콘')}">`:fallback;}
 function friendlyEffect(text){return text.replaceAll('×0.85','(별 하나의 위력 소폭 감소)').replaceAll('×0.8','(방울 하나의 위력 소폭 감소)').replaceAll('×0.75','(발사체 하나의 위력 소폭 감소)').replaceAll('×1.15','+15%').replaceAll('×1.25','+25%').replace(/×1\.2(?!\d)/g,'+20%').replaceAll('×1.3','+30%').replaceAll('×1.4','+40%').replaceAll('×1.5','+50%').replaceAll('×1.6','+60%').replaceAll('50%p','50%p');}
@@ -1462,12 +1481,12 @@ function weaponNumbers(id){
  const d=W[id],w=g?.weapons[id]||{lv:1,up:[0,0,0],break:false,evo:null};
  const extra=w.evo===0?2:0;
  const count={
-  star:starShotCount(w),orbit:2+w.up[0]+extra,moon:w.evo===0?2:1,bubble:1+w.up[0],
+  star:starShotCount(w),cannon:starShotCount(w),orbit:2+w.up[0]+extra,moon:w.evo===0?2:1,bubble:1+w.up[0],
   bloom:1,cloud:w.evo===1?4:w.evo===0?2:1,ribbon:w.break?2:1,book:2+w.up[0]+extra,
   comet:1+w.up[0]+extra,frost:1+w.up[0]+extra,feather:1+w.up[0]+extra,vortex:1,
   seed:3+w.up[0]+extra,bell:w.evo===0?2:1
  }[id];
- const labels={star:'탄환 수',orbit:'회전 별',moon:'관통 달빛',bubble:'추적 방울',bloom:'꽃밭 수',cloud:'최대 낙뢰',ribbon:'리본 타격',book:'최대 종이 요정',comet:'유성',frost:'수정',feather:'깃털',vortex:'소용돌이',seed:'최대 설치 덫',bell:'충격파'};
+ const labels={cannon:'달빛탄 수',star:'탄환 수',orbit:'회전 별',moon:'관통 달빛',bubble:'추적 방울',bloom:'꽃밭 수',cloud:'최대 낙뢰',ribbon:'리본 타격',book:'최대 종이 요정',comet:'유성',frost:'수정',feather:'깃털',vortex:'소용돌이',seed:'최대 설치 덫',bell:'충격파'};
  if(id==='book'&&g?.rareCard==='bookFamiliar'){
   return [{k:'정령 타격 피해',v:fmtN(bookFamiliarDamage(w))},
    {k:'최소 타격 간격',v:fmtN(bookFamiliarInterval(w)/(rageRate()*moveCastRate()))+'초'},
@@ -1475,7 +1494,7 @@ function weaponNumbers(id){
  }
  const perHit=id==='moon'&&w.evo===0?.65:1;
  const raw=weaponPower(id,d.coef,w)*perHit;
- const radius=['orbit','ribbon','bloom','bubble','vortex','seed','bell','comet'].includes(id);
+ const radius=['cannon','orbit','ribbon','bloom','bubble','vortex','seed','bell','comet'].includes(id);
  return [{k:id==='bloom'||id==='vortex'?'지속 피해 1회':'기본 타격 피해',v:fmtN(raw)},
   {k:'공격 주기',v:d.cd?fmtN(cooldown(id,w)/(rageRate()*moveCastRate()))+'초':'상시'},{k:labels[id],v:count+'개'},
   {k:radius?'공격 반경':'사거리',v:fmtN(weaponReach(id,w))}];
@@ -1533,6 +1552,8 @@ function normalizeSave(old){
  const refund=boundedSaveNumber(old?.upgrades?.reroll,2)>=2?340:0;
  return {
   version:DATA.version,
+  charactersOwned:['nemo',...(Array.isArray(old?.charactersOwned)&&old.charactersOwned.includes('dori')?['dori']:[])],
+  characterEquipped:old?.characterEquipped==='dori'&&Array.isArray(old?.charactersOwned)&&old.charactersOwned.includes('dori')?'dori':'nemo',
   gold:Math.min(99999999,boundedSaveNumber(old?.gold,99999999)+refund),
   firstClear:!!old?.firstClear,
   stagesCleared:boundedSaveNumber(old?.stagesCleared,NEMO_STAGES.length,true),
@@ -1568,6 +1589,7 @@ let audioContext=null,audioGain=null,musicGain=null,musicSession=null;
 const soundTimes={};
 // Each note is delay, starting pitch, ending pitch, length, gain and waveform.
 const GAME_SOUNDS={
+ cannon:[.18,[[0,230,92,.13,.06,'triangle'],[.026,790,340,.12,.025,'sine']]],
  tap:[.07,[[0,620,500,.048,.065,'triangle']]],
  cast:[.14,[[0,420,730,.065,.040,'sine'],[.028,920,810,.077,.023,'triangle']]],
  hit:[.19,[[0,300,195,.07,.047,'triangle']]],
@@ -1831,9 +1853,9 @@ function begin(stageId=0){
  const outfit=activeCostume();
  loadCostumeAtlas(outfit);
  const hp=DATA.player.hp+saved.upgrades.hp*5+outfit.hp;
- g={stage,endlessIntroduced:new Set(),sporePatches:[],map:stage?CAMPAIGN_MAPS[stage.id-1]:null,t:0,bossTime:0,runCostume:outfit.id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.40,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*(stage?3:2)+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
+ g={stage,endlessIntroduced:new Set(),sporePatches:[],map:stage?CAMPAIGN_MAPS[stage.id-1]:null,t:0,bossTime:0,runCostume:outfit.id,runCharacter:activeCharacter().id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.40,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*(stage?3:2)+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
   speed:DATA.player.speed*(1+saved.upgrades.speed*.02),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
-  weapons:{star:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
+  weapons:{[activeCharacter().starter]:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
   enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],bellEchoes:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0, waveIndex:0,
   boss:null,bossEncounters:0,bossRestUntil:0,nextForestEvent:66,forestEventBag:[],lastForestEvent:null,frenzyStarts:0,frenzyUntil:0,freeCards:0, cardReason:'level',cards:[],rareCard:null, cardOffers:[],rerolls:DATA.player.rerolls+saved.upgrades.reroll,
   gold:0, achievedMinutes:0,eliteGold:0,bossGold:0, firstGold:0,done:false,blessings:{},milestones:{},rushUntil:0,rushFired:{}, totalKills:0, totalDamage:0, totalXP:0,earnedXP:0,hitCount:0,hitReasons:{},
@@ -1929,7 +1951,7 @@ function weaponPower(id,coefficient,w){
  const low=!!g&&g.player.hp<=g.player.maxHp*.5;
  const magic=1+.09*(g?.passives.magic||0)+(low?.12*(g.passives.emberheart||0):0);
  const brave=1+.12*(g?.blessings?.brave||0);
- const power=id==='star'?starShotPower(w)
+ const power=(id==='star'||id==='cannon')?starShotPower(w)
   :(1+.25*w.up[DAMAGE_RANK[id]])*(SPREAD_DAMAGE[id]??1)**w.up[0]*(EXTRA_DAMAGE[id]?.[w.evo]??1);
  return (g?.player.attack??DATA.player.attack)*coefficient*magic*brave*power*(rageActive()?RAGE.power:1)*(1+masteryBonus(w,'power'));
 }
@@ -1937,6 +1959,7 @@ function wpBase(id,coefficient){return weaponPower(id,coefficient,g.weapons[id])
 function weaponReach(id,w=g?.weapons[id]){
  const rm=1+.08*(g?.passives.big||0),d=W[id];
  switch(id){
+  case 'cannon':return .95*rm*(w.evo===1?1.25:w.evo===0?1.15:1);
   case 'ribbon':return d.range*1.2**w.up[1]*rm;
   case 'bell':return d.range*1.22**w.up[0]*rm*(w.evo===1?1.3:1);
   case 'orbit':return d.range*1.15**w.up[2]*rm;
@@ -1948,7 +1971,7 @@ function weaponReach(id,w=g?.weapons[id]){
   default:return d.range;
  }
 }
-function wpCrit(id){let chance=g.player.crit+.05*getPassive('lucky');if(id==='star')chance+=(g.weapons.star.lv>=5?.15:0)+(g.weapons.star.evo===1?.10:0);if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
+function wpCrit(id){let chance=g.player.crit+.05*getPassive('lucky');if(id==='star'||id==='cannon')chance+=(g.weapons[id].lv>=5?.15:0)+(g.weapons[id].evo===1?.10:0);if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
 function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
  let value=raw;if(e.vulnerableUntil>g.worldClock)value*=1.15;
  if(e.kind==='bramble'&&g.worldClock>=(e.guardUntil||0)){
@@ -1959,7 +1982,7 @@ function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
  if(id==='bubble'&&g.weapons.bubble.evo===1&&e.kind==='boss')value*=1.5;
  if(e.isBoss)value*=1+masteryBonus(g.weapons[id],'boss');
  const crit=(settings.critAllowed!==false)&&rand()<wpCrit(id);
- if(crit)value*=id==='star'&&g.weapons.star.lv>=6?2:1.5;
+ if(crit)value*=(id==='star'||id==='cannon')&&g.weapons[id].lv>=6?2:1.5;
  value=Math.round(value*100)/100;const actual=Math.min(e.hp,value);
  e.hp-=value;e.flash=.13;e.hitLast=g.worldClock;
  if(visible(e.x,e.y,0))playSound('hit');
@@ -2161,7 +2184,7 @@ function makeMastery(id,w){
 function rollCards(rare){
  const out=rare?[rare]:[],owned=Object.keys(g.weapons);
  const pool=[];
- if(owned.length<maxWeaponSlots())for(const id of weaponKeys){if(!g.weapons[id])pool.push({type:'new',id,name:W[id].name,ico:W[id].icon,desc:weaponGuide(id).role,meta:'무기 슬롯 사용 · Lv.1'});}
+ if(owned.length<maxWeaponSlots())for(const id of weaponKeys){if(id==='cannon'&&g.runCharacter!=='dori')continue;if(!g.weapons[id])pool.push({type:'new',id,name:W[id].name,ico:W[id].icon,desc:weaponGuide(id).role,meta:'무기 슬롯 사용 · Lv.1'});}
  const passiveOwned=pcount();for(const id of passiveKeys){if(getPassive(id)>=3)continue;if(!getPassive(id)&&passiveOwned>=maxPassiveSlots())continue;
   pool.push({type:'passive',id,name:DATA.passives[id][0],ico:DATA.passives[id][1],desc:passiveOffer(id),meta:`공용 패시브 · ${getPassive(id)}/3`});}
  // One entry per eligible weapon or passive, sampled without replacement.
@@ -3077,8 +3100,31 @@ function updateBookFamiliar(dt){
   deal(target,bookFamiliarDamage(w),'book');
  }
 }
+function fireCannon(p,w,d){
+ const target=crowdedTarget(p,d.range,weaponReach('cannon',w));if(!target)return false;
+ const origin=castFromWand(p,atan(p.x,p.y,target.x,target.y)),aim=atan(origin.x,origin.y,target.x,target.y);
+ const count=starShotCount(w),damage=wpBase('cannon',d.coef),volleyHits=new Set(),splashHits=new Set();
+ for(let i=0;i<count;i++){
+  const angle=aim+[0,-.16,.16][i];
+  g.shots.push({kind:'cannon',weapon:'cannon',x:origin.x,y:origin.y,vx:Math.cos(angle)*12,vy:Math.sin(angle)*12,speed:12,life:1.3,r:.26,
+   damage:damage*(i?.70:1),chains:w.evo===0?1:0,volleyHits,splashHits,hit:new Set(),trail:[],dead:false});
+ }
+ g.effects.push({kind:'cannonMuzzle',x:origin.x,y:origin.y,life:.16,max:.16});playSound('cannon');return true;
+}
+function impactCannon(shot,target){
+ const w=g.weapons.cannon,r=weaponReach('cannon',w);
+ deal(target,shot.damage*(shot.volleyHits.has(target.id)?.65:1),'cannon');shot.volleyHits.add(target.id);shot.splashHits.add(target.id);
+ g.effects.push({kind:'cannonBlast',x:target.x,y:target.y,r,life:.42,max:.42});
+ knock(target,Math.atan2(shot.vy,shot.vx),.7);
+ for(const enemy of g.enemies){
+  if(enemy.dead||shot.splashHits.has(enemy.id)||distance(enemy.x,enemy.y,target.x,target.y)>r+enemy.r)continue;
+  shot.splashHits.add(enemy.id);deal(enemy,shot.damage*(w.evo===1?.55:.35),'cannon',{critAllowed:false});
+  knock(enemy,atan(target.x,target.y,enemy.x,enemy.y),.65);
+ }
+}
 function fireWeapon(id){
  const p=g.player,w=g.weapons[id],d=W[id];
+ if(id==='cannon')return fireCannon(p,w,d);
  if(id==='orbit'||id==='vortex'||(id==='book'&&g.bookFamiliar))return false;
  if(id==='seed')return placeSeedTrap(p,w,d);
  if(id==='bell')return ringBell(p,w,d);
@@ -3272,7 +3318,11 @@ function updateShots(dt,hostiles=true){const splitShots=[],step=dt*spellTravelRa
  if(s.life<=0||(outside&&s.kind!=='feather')){if(s.kind==='bubble')explodeBubble(s);else s.dead=true;continue;}
  for(const e of g.enemies){if(e.dead||s.hit.has(e.id)||distance(s.x,s.y,e.x,e.y)>s.r+e.r)continue;
   s.hit.add(e.id);if(s.kind==='bubble'){explodeBubble(s);break;}
-  if(s.kind==='starShard'){
+  if(s.kind==='cannon'){
+   impactCannon(s,e);
+   if(s.chains>0){s.chains--;s.damage*=.65;continue;}
+   s.dead=true;break;
+  }else if(s.kind==='starShard'){
    deal(e,s.damage,'star',{critAllowed:false});
    s.dead=true;
   }else if(s.kind==='star'){
@@ -3722,19 +3772,50 @@ function updateHUD(){
 let shopSelected='default';
 function costumeOf(id){return COSTUMES.find(c=>c.id===id)||COSTUMES[0];}
 function costumeOwned(id){return costumeOf(id).place?victoryOutfit()?.id===id:saved.costumesOwned.includes(id);}
+function activeCharacter(){return NEMO_CHARACTERS.find(c=>c.id===saved.characterEquipped)||NEMO_CHARACTERS[0];}
+function costumeForCharacter(outfit,character=activeCharacter().id){
+ if(character!=='dori')return outfit;
+ const art=outfit.id==='default'?NEMO_CHARACTERS[1]:DORI_WARDROBE[outfit.id];
+ return {...outfit,name:outfit.id==='default'?'기본 도리':outfit.name,desc:outfit.id==='default'?'민트 목도리와 도토리 가방을 멘 도리. 달빛 대포로 묵직하게 공격해요.':outfit.desc.replaceAll('니모','도리'),
+  portrait:art.portrait,atlas:art.atlas,artKey:'dori:'+outfit.id};
+}
+function selectCharacter(id){
+ if(screen!=='menu')return false;const choice=NEMO_CHARACTERS.find(c=>c.id===id);if(!choice)return false;
+ const previous={...saved,charactersOwned:[...saved.charactersOwned]};
+ if(!saved.charactersOwned.includes(id)){
+  if(saved.gold<choice.price)return false;
+  saved.gold-=choice.price;saved.charactersOwned.push(id);
+ }
+ saved.characterEquipped=id;if(!persist()){saved=previous;renderMenu();return false;}renderMenu();return true;
+}
+function renderCharacterSelect(){
+ $('menu-intro').textContent=activeCharacter().id==='dori'?'묵직한 달빛 한 발 들고, 낯선 숲으로.':'별빛 지팡이 하나 들고, 낯선 숲으로.';
+ $('character-select').innerHTML=NEMO_CHARACTERS.map(c=>{
+  const owned=saved.charactersOwned.includes(c.id),selected=c.id===saved.characterEquipped;
+  return '<button type="button" class="character-choice" data-character="'+c.id+'" aria-pressed="'+selected+'" '+(!owned&&saved.gold<c.price?'disabled':'')+'><img src="'+c.portrait+'" alt=""><strong>'+c.name+'</strong><span>'+c.description+'</span><small>'+(selected?'선택 중':owned?'선택하기':c.price.toLocaleString('ko-KR')+' G 해금')+'</small></button>';
+ }).join('');
+}
 function activeCostume(){
  const reward=victoryOutfit();
- return reward&&reward.id===saved.victoryEquipped?reward:costumeOf(saved.costumeEquipped);
+ return costumeForCharacter(reward&&reward.id===saved.victoryEquipped?reward:costumeOf(saved.costumeEquipped));
 }
 function syncCostumeVisual(){
- const outfit=g?.runCostume?costumeOf(g.runCostume):activeCostume();
- loadCostumeAtlas(COSTUMES[0]);
+ const inRun=g&&['playing','pause','cards','evolution','result'].includes(screen);
+ const outfit=inRun?costumeForCharacter(costumeOf(g.runCostume),g.runCharacter):activeCostume();
+ loadCostumeAtlas(costumeForCharacter(COSTUMES[0],inRun?g.runCharacter:activeCharacter().id));
  if(outfit.id!=='default')loadCostumeAtlas(outfit);
  if(!sprites.nemo.src.endsWith(outfit.portrait.replace('./','/')))sprites.nemo.src=outfit.portrait;
  $('hero').src=outfit.portrait;
  $('portrait').src=outfit.portrait;
 }
-let drawBusy=false,drawPending=null;
+let drawBusy=false,drawPending=null,drawPreviewCharacter='nemo',shopPreviewCharacter='nemo',shownDrawReward=null;
+function renderDrawExclusives(){
+ const gallery=$('draw-exclusive-items');
+ gallery.innerHTML=['dreamstar','patisserie','captain'].map(id=>{
+  const item=costumeForCharacter(costumeOf(id),drawPreviewCharacter);
+  return '<figure><img loading="lazy" src="'+item.portrait+'" alt="'+item.name+' · '+(drawPreviewCharacter==='dori'?'도리':'니모')+'"><figcaption><strong>'+item.name+'</strong><p>체력 +'+item.hp+'<br>공격력 +'+item.attack+'</p><span>획득 확률 0.5%</span></figcaption></figure>';
+ }).join('');
+}
 function drawCostumes(){return COSTUMES.filter(item=>(item.price>0||item.drawOnly)&&!item.place).map(item=>({...item,drawWeight:item.drawOnly?1:.875}));}
 function updateDrawWallet(){
  $('draw-wallet').textContent=`보유 ${saved.gold.toLocaleString('ko-KR')} 골드`;
@@ -3751,6 +3832,7 @@ function renderDrawCollection(){
  $('draw-photos').replaceChildren();
 }
 function showDrawReward(reward){
+ shownDrawReward=reward;
  const panel=$('draw-reward');
  panel.dataset.reveal='false';
  panel.hidden=!reward;
@@ -3759,13 +3841,15 @@ function showDrawReward(reward){
   panel.innerHTML='<img class="draw-reward-art" src="./assets/lobby-icons-v5618/bag.webp" alt=""><h3>어떤 선물이 들어 있을까요?</h3><p>니모 사진과 코스튬을 모아 보세요.</p>';
   return;
  }
- const {item,type,duplicate,refund,preview}=reward;
+ const {type,duplicate,refund,preview}=reward;
+ const item=type==='costume'?costumeForCharacter(reward.item,drawPreviewCharacter):reward.item;
  panel.dataset.tier=type;panel.dataset.photoRank=item.rank||'R';
  const caption=preview?'포토카드':duplicate?`중복 보상 · ${refund} 골드 환급`:type==='costume'?'새 코스튬 획득!':'새 포토카드 획득!';
  panel.innerHTML=`<img class="draw-reward-art" src="${type==='costume'?item.portrait:item.art}" alt="${item.name}"><h3>${item.name}</h3>${type==='photo'?`<span class="photo-grade" data-rank="${item.rank||'R'}">${item.rank||'R'}</span>`:''}<p>${caption}</p>${type==='costume'?'<p>코스튬 보관함에서 장착할 수 있어요.</p>':''}`;
  if(!preview)panel.dataset.reveal='true';
 }
 function openLuckyDraw(){
+ drawPreviewCharacter='nemo';$('draw-character').value='nemo';renderDrawExclusives();
  $('lucky-draw').classList.remove('album-only');
  saved=readSave();
  NEMO_CAPSULE.reset();
@@ -3827,9 +3911,9 @@ window.addEventListener('storage',event=>{
  renderDrawCollection();
  updateDrawWallet();
 });
-function shopOpen(){shopSelected=activeCostume().id;setScreen('costume-shop');shopRender();void refreshVictoryPodium();}
+function shopOpen(){shopPreviewCharacter=activeCharacter().id;$('shop-character').value=shopPreviewCharacter;shopSelected=activeCostume().id;setScreen('costume-shop');shopRender();void refreshVictoryPodium();}
 function shopRender(){
- const selected=costumeOf(shopSelected),owned=costumeOwned(selected.id),equipped=activeCostume().id;
+ const selected=costumeForCharacter(costumeOf(shopSelected),shopPreviewCharacter),owned=costumeOwned(selected.id),equipped=activeCostume().id;
  $('shop-wallet').textContent='🪙 '+saved.gold.toLocaleString('ko-KR')+' G';
  const art=$('shop-feature-art');
  if(art.getAttribute('src')!==selected.portrait){
@@ -3842,7 +3926,7 @@ function shopRender(){
  $('shop-feature-bonus').textContent=selected.hp||selected.attack
   ?`장착 효과 · 최대 체력 +${selected.hp} · 공격력 +${selected.attack}`
   :'기본 능력치';
- $('shop-items').innerHTML=COSTUMES.map(item=>'<button type="button" class="nemo-shop-item '+(item.id===shopSelected?'selected ':'')+(item.id===equipped?'equipped':'')+'" data-costume="'+item.id+'" aria-pressed="'+(item.id===shopSelected)+'" aria-label="'+item.name+'"><span class="shop-art" data-art-state="loading"><img src="'+item.portrait+'" alt=""><span class="shop-art-status" aria-hidden="true"></span></span><strong>'+item.name+'</strong><small>'+(item.id===equipped?'장착 중':item.place?(costumeOwned(item.id)?'이번 주 사용 가능':'주간 '+item.place+'위 보상'):costumeOwned(item.id)?'보유 중':item.drawOnly?'뽑기 전용':'🪙 '+item.price.toLocaleString('ko-KR')+' G')+'</small></button>').join('');
+ $('shop-items').innerHTML=COSTUMES.map(raw=>{const item=costumeForCharacter(raw,shopPreviewCharacter);return '<button type="button" class="nemo-shop-item '+(item.id===shopSelected?'selected ':'')+(item.id===equipped?'equipped':'')+'" data-costume="'+item.id+'" aria-pressed="'+(item.id===shopSelected)+'" aria-label="'+item.name+'"><span class="shop-art" data-art-state="loading"><img src="'+item.portrait+'" alt=""><span class="shop-art-status" aria-hidden="true"></span></span><strong>'+item.name+'</strong><small>'+(item.id===equipped?'장착 중':item.place?(costumeOwned(item.id)?'이번 주 사용 가능':'주간 '+item.place+'위 보상'):costumeOwned(item.id)?'보유 중':item.drawOnly?'뽑기 전용':'🪙 '+item.price.toLocaleString('ko-KR')+' G')+'</small></button>';}).join('');
  for(const img of $('shop-items').querySelectorAll('img'))updateShopArt(img);
  const shortfall=owned||selected.place||selected.drawOnly?0:Math.max(0,selected.price-saved.gold);
  $('shop-action').disabled=shortfall>0||selected.id===equipped||!!selected.place&&!owned||!!selected.drawOnly&&!owned;
@@ -3888,7 +3972,7 @@ function buySchool(k){const item=DATA.economy.upgrades[k];if(!item)return;let lv
 function renderMenu(){$('menu-gold-value').textContent=`${saved.gold.toLocaleString('ko-KR')} 골드`;$('total-plays').textContent=`모험 ${saved.stats.plays}회`;
  $('menu-profile-name').textContent=rankSanitizeName(rankCfg.nickname)||'닉네임 설정';
  $('nemo-name-change').setAttribute('aria-label','닉네임 변경');
- syncCostumeVisual();
+ renderCharacterSelect();syncCostumeVisual();
  renderDifficulty();$('setting-numbers').checked=opts.numbers;$('setting-particles').checked=opts.particles;$('setting-shake').checked=opts.shake;$('setting-auto-pause').checked=opts.autoPause;
  $('setting-volume').value=effectVolume();
  $('setting-music-volume').value=musicVolume();}
@@ -4326,7 +4410,7 @@ function drawGem(l){
    line(l.x+.04,y-.30,l.x-.08,y+.09,'#725582',.11);
    polygon([[l.x-.13,y-.05],[l.x+.07,y+.015],[l.x+.16,y+.29],[l.x-.32,y+.18]],'#8be1ca','#325966',.05);
   }else star(l.x,y,.22,0,reward.color,'#79526d');
- }else if(l.kind==='coin')drawPickup('pickupGold',l.x,y,.56);
+ }else if(l.kind==='coin')drawPickup('pickupGold',l.x,y,.40);
  else imageSprite('fx_coin',l.x,y,.56,.56);
 }
 const SPELL_EFFECT_PAINT={
@@ -4374,6 +4458,10 @@ function drawSpellContact(e,f){
 }
 function drawProjectile(s){
  if(!visible(s.x,s.y,1))return;
+ if(s.kind==='cannon'){
+  if(s.trail?.length>1&&!reducedMotion.matches){const tail=s.trail[0];line(tail.x,tail.y,s.x,s.y,'#d2f5df',.10);}
+  imageSprite('cannonProjectile',s.x,s.y,s.r*2,s.r*2);return;
+ }
  const paint=SPELL_EFFECT_PAINT[PROJECTILE_SPELLS[s.kind]];
  if(paint&&s.trail?.length>1&&!reducedMotion.matches){
   const [edge,body,light]=paint;
@@ -4479,7 +4567,12 @@ function drawPickupSweep(e){
 }
 function drawEffects(){for(const e of g.effects){if(e.kind==='event')continue;const f=clamp(e.life/e.max,0,1);
  ctx.save();ctx.globalAlpha=f;
- if(e.kind==='pickupSweep'){
+ if(e.kind==='cannonBlast'){
+  const image=sprites.cannonBurst;
+  if(image?.naturalWidth){const frame=Math.min(7,Math.floor((1-f)*8)),size=e.r*2.15;ctx.drawImage(image,(frame%4)*128,Math.floor(frame/4)*128,128,128,e.x-size/2,e.y-size/2,size,size);}
+ }else if(e.kind==='cannonMuzzle'){
+  ellipse(e.x,e.y,.18*f,.18*f,'#fff3ba');
+ }else if(e.kind==='pickupSweep'){
   ctx.globalAlpha=1;
   drawPickupSweep(e);
  }else if(e.kind==='healingPickup'){
@@ -5002,12 +5095,13 @@ function normalizeRankLoadout(value){
   weapons.push({id:item.id,level:clamp((Number.isFinite(item.level)?Math.floor(item.level):1),1,7)});
   if(weapons.length===DATA.player.weaponSlots)break;
  }
- return costume||weapons.length?{costume:costume??null,weapons}:null;
+ return costume||weapons.length?{character:value.character==='dori'?'dori':'nemo',costume:costume??null,weapons}:null;
 }
 function rankLoadoutHTML(value,part='all'){
  const loadout=normalizeRankLoadout(value);
  if(!loadout)return part==='weapons'?'<span class="rank-missing">—</span>':'';
- const costume=COSTUMES.find(outfit=>outfit.id===loadout.costume);
+ const rawCostume=COSTUMES.find(outfit=>outfit.id===loadout.costume);
+ const costume=rawCostume?costumeForCharacter(rawCostume,loadout.character):null;
  const label=costume?costume.name+' · 코스튬':'';
  const portrait=costume&&part!=='weapons'?`<img class="rank-outfit" src="${rankEsc(costume.portrait)}" alt="${rankEsc(label)}" title="${rankEsc(label)}" loading="lazy">`:'';
  const weapons=part==='costume'?'':loadout.weapons.map(({id,level})=>{
@@ -5028,7 +5122,7 @@ function saveRunRecord(won){const t=Math.round(g.t*10)/10,b=Math.round(g.bossTim
     nickname:rankSanitizeName(rankCfg.nickname)||'익명의 멍법사',survival_seconds:t,boss_seconds:b,
     winner:!!won,kills:Math.max(0,g.totalKills|0),level:Math.max(1,g.player.level|0),
     debug_used:false,created_at:new Date().toISOString(),
-    rank_score:t,loadout:normalizeRankLoadout({costume:g.runCostume,weapons:Object.entries(g.weapons).map(([id,w])=>({id,level:w.lv}))}),uploaded:false};
+    rank_score:t,loadout:normalizeRankLoadout({character:g.runCharacter,costume:g.runCostume,weapons:Object.entries(g.weapons).map(([id,w])=>({id,level:w.lv}))}),uploaded:false};
  rankRuns.unshift(record);rankRuns=rankRuns.slice(0,50);syncRankRetry();
  try{localStorage.setItem(RANK_RUNS_KEY,JSON.stringify(rankRuns));}catch(_){}
  if(rankConfigured()&&rankSanitizeName(rankCfg.nickname)&&!record.debug_used)void rankUpload(record,false);
@@ -5365,6 +5459,8 @@ const NEMO_CAPSULE=createNemoCapsule(document);
 $('draw-btn').onclick=openLuckyDraw;
 $('album-btn').onclick=openMainAlbum;
 $('draw-back').onclick=closeLuckyDraw;
+$('draw-character').onchange=()=>{drawPreviewCharacter=$('draw-character').value;renderDrawExclusives();if(shownDrawReward?.type==='costume')showDrawReward(shownDrawReward);};
+$('shop-character').onchange=()=>{shopPreviewCharacter=$('shop-character').value;shopRender();};
 $('draw-buy').onclick=buyLuckyDraw;
 $('capsule-open').onclick=openDrawCapsule;
 $('draw-album-open').onclick=()=>NEMO_CAPSULE.openAlbum(DRAW_PHOTOS,saved.photosOwned,saved.photosObtainedAt);
@@ -5383,6 +5479,7 @@ $('draw-photos').addEventListener('click',event=>{
  const photo=DRAW_PHOTOS.find(item=>item.id===button?.dataset.photo);
  if(!drawBusy&&photo&&saved.photosOwned.includes(photo.id))showDrawReward({type:'photo',item:photo,preview:true});
 });
+$('character-select').onclick=event=>{const button=event.target.closest('[data-character]');if(button)selectCharacter(button.dataset.character);};
 $('shop-btn').onclick=shopOpen;
 $('shop-back').onclick=()=>{setScreen('menu');renderMenu();};
 $('shop-items').addEventListener('click',e=>{
@@ -5520,7 +5617,7 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.11.0';
+  const CURRENT='5.12.0';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';

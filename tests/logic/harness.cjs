@@ -19,6 +19,7 @@ globalThis.__logicGame = {
   parseImportedSave, normalizeSave, readSave, spawn,
   nextBossEncounter, bossCast, bossUpdate, updateBossEncounter, kill, collect, awardGold,
   drawCostumes, COSTUMES, DRAW_PHOTOS, RARE_PICKUP_KINDS, getLevelNeed, rageActive, updateHUD,
+  selectCharacter, activeCharacter, activeCostume, costumeForCharacter, fireWeapon, impactCannon, updateShots, weaponPower, cooldown, normalizeRankLoadout, NEMO_CHARACTERS,
   get g() { return g; },
   get screen() { return screen; },
   get saved() { return saved; },

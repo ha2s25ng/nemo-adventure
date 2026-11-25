@@ -1,0 +1,32 @@
+{
+  "id": "dori",
+  "name": "도리",
+  "stance": "biped",
+  "portrait": "portrait.webp",
+  "portraitLarge": "portrait-large.webp",
+  "walk": {
+    "file": "walk-8.png",
+    "frameSize": 96,
+    "columns": 8,
+    "rows": [
+      "down",
+      "down-right",
+      "right",
+      "up-right",
+      "up"
+    ],
+    "footBaseline": 89,
+    "mirrorLeft": true
+  },
+  "compatibilityWalk": {
+    "file": "walk.png",
+    "columns": 4,
+    "rows": 5,
+    "frameSize": 96
+  },
+  "palette": {
+    "fur": "chocolate",
+    "markings": "cream eyebrows, muzzle, chest and toes",
+    "scarf": "mint"
+  }
+}

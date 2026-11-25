@@ -1,0 +1,12 @@
+#app #menu .character-select{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+#app #menu .character-choice{box-sizing:border-box;display:grid;grid-template-columns:46px minmax(0,1fr);gap:0 7px;align-items:center;min-height:76px;padding:7px 9px;border:1px solid #b6bb94;border-radius:13px;background:#fff9e8;color:#425a44;text-align:left;font:inherit;box-shadow:0 2px #a2ad8a}
+#app #menu .character-choice[aria-pressed=true]{border:2px solid #728d62;background:#e2edcf;box-shadow:0 2px #718761}
+#app #menu .character-choice img{width:46px;height:58px;object-fit:contain;grid-row:span 3}
+#app #menu .character-choice strong{font-size:15px;line-height:1.3}.character-choice span{font-size:10px;line-height:1.4;word-break:keep-all}.character-choice small{font-size:10px;color:#9b703b;line-height:1.4}
+#app #menu .character-choice:disabled{filter:none;opacity:.75}
+.costume-character-switch{display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px;color:#665d44}.costume-character-switch select{font:inherit;border:1px solid #b5b98e;border-radius:8px;padding:5px 10px;background:#fffae9;color:#405543}
+#costume-shop .costume-character-switch{justify-content:flex-start;margin-top:6px}
+#lucky-draw .draw-exclusive-gallery{gap:10px}
+#lucky-draw .exclusive-costumes img{height:115px}
+#lucky-draw .draw-board{max-height:calc(100% - 24px)!important;min-height:0!important;overflow-y:auto}
+@media(max-width:650px){#app #menu .character-select{margin:6px 0;gap:5px}#app #menu .character-choice{grid-template-columns:32px 1fr;padding:5px;min-height:57px;gap:0 4px}#app #menu .character-choice img{width:32px;height:45px}#app #menu .character-choice strong{font-size:12px}#app #menu .character-choice span,#app #menu .character-choice small{font-size:8px}}
