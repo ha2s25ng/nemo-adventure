@@ -1,0 +1,56 @@
+{
+  "mode": "built-in imagegen",
+  "processing": "Alpha crop, downsample and transparent padding only",
+  "assets": [
+    {
+      "id": "windstep",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-0e439fd4-ab85-4f37-9f32-fa30c7de7f16.png",
+      "prompt": "One isolated cute fantasy game passive item icon. Style reference only: simple flat pastel hand-drawn icon, warm mauve-brown outline, soft cream highlights, chunky readable silhouette at 24px. Transparent alpha background, square high resolution, centered 80 percent canvas. No text, scene, ground shadow, realistic textures or scattered extra objects. A small pastel lavender stopwatch with TWO small sage mint wings on its sides. Cream clock dial, gold hands. A movement-powered spell casting rhythm, clearly a winged clock, NOT a shoe or feather.",
+      "nativeSize": [
+        1236,
+        1167
+      ],
+      "output": "windstep.webp"
+    },
+    {
+      "id": "leafguard",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-7fdde236-8a80-44a7-9419-afd4b3fa7675.png",
+      "prompt": "One isolated cute fantasy game passive item icon. Style reference only: simple flat pastel hand-drawn icon, warm mauve-brown outline, soft cream highlights, chunky readable silhouette at 24px. Transparent alpha background, square high resolution, centered 80 percent canvas. No text, scene, ground shadow, realistic textures or scattered extra objects. A compact shield shaped like a round sage leaf, warm gold border, simple cream leaf vein. Flat cute pastel style, minimal details.",
+      "nativeSize": [
+        1073,
+        1145
+      ],
+      "output": "leafguard.webp"
+    },
+    {
+      "id": "emberheart",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-9a05924d-e3e3-4409-97c5-cc8071bb1f57.png",
+      "prompt": "One isolated cute fantasy game passive item icon. Style reference only: simple flat pastel hand-drawn icon, warm mauve-brown outline, soft cream highlights, chunky readable silhouette at 24px. Transparent alpha background, square high resolution, centered 80 percent canvas. No text, scene, ground shadow, realistic textures or scattered extra objects. One small coral and butter-gold flame with a tiny cream heart in the center. Rounded friendly flame tips, no ash, no logs.",
+      "nativeSize": [
+        1062,
+        1032
+      ],
+      "output": "emberheart.webp"
+    },
+    {
+      "id": "honeypouch",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-29debde6-c493-405e-b1e7-71d228f199fc.png",
+      "prompt": "One isolated cute fantasy game passive item icon. Style reference only: simple flat pastel hand-drawn icon, warm mauve-brown outline, soft cream highlights, chunky readable silhouette at 24px. Transparent alpha background, square high resolution, centered 80 percent canvas. No text, scene, ground shadow, realistic textures or scattered extra objects. One small cream honey pot with amber honey, blush cloth lid tied with a sage ribbon, and a cream heart emblem on the amber front. Clearly a honey jar NOT a coin bag or potion.",
+      "nativeSize": [
+        1145,
+        1135
+      ],
+      "output": "honeypouch.webp"
+    },
+    {
+      "id": "insight",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-d84f69b2-85ca-4bac-84bf-e3da3acc09ae.png",
+      "prompt": "One isolated cute fantasy game passive item icon. Style reference only: simple flat pastel hand-drawn icon, warm mauve-brown outline, soft cream highlights, chunky readable silhouette at 24px. Transparent alpha background, square high resolution, centered 80 percent canvas. No text, scene, ground shadow, realistic textures or scattered extra objects. One CLOSED lavender storybook with a cream star on its cover and a pink bookmark. Compact little book, three-quarter view. Clearly closed, unlike the open spell book weapon.",
+      "nativeSize": [
+        1183,
+        1201
+      ],
+      "output": "insight.webp"
+    }
+  ]
+}

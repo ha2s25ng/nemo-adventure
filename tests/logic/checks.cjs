@@ -88,7 +88,7 @@ module.exports = function engineChecks() {
     game.g.weapons = Object.fromEntries(['star', 'orbit', 'moon', 'book', 'bell'].map(id => [
       id, { lv: 7, up: [2, 2, 0], break: true, evo: 0, clock: 0 }
     ]));
-    game.g.passives = { magic: 3, quick: 3, lucky: 3, shoes: 3, insight: 3 };
+    game.g.passives = { magic: 5, quick: 5, lucky: 5, shoes: 5, insight: 5 };
     for (let draw = 0; draw < 100; draw++) {
       const cards = game.rollCards(null);
       assert.equal(cards.length, 2);

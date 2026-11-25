@@ -22,6 +22,7 @@ globalThis.__logicGame = {
   selectCharacter, activeCharacter, activeCostume, costumeForCharacter, fireWeapon, impactCannon, updateShots, weaponPower, cooldown, normalizeRankLoadout, NEMO_CHARACTERS,
   updateOrbit, orbitPosition, updateVortex, updateMonster, updateEndlessMonster, castEndlessAttack, updateCampaignMonster, drawBattle,
   drawProjectile, drawBookFamiliar, updateBookFamiliar, drawEffects,
+  PASSIVE_LEVELS, PASSIVE_MAX_LEVEL, passiveValue, passiveOffer, radiusMult, wpCrit, damagePlayer, moveCastRate,
   get g() { return g; },
   get screen() { return screen; },
   get saved() { return saved; },
@@ -148,7 +149,7 @@ function createHarness(seed = 0x4e454d4f, captureDraws = false, reduceMotion = f
     vm.runInContext(script.code, context, { filename: script.filename, timeout: 10000 });
   }
   if (!context.__logicGame) throw new Error('VM game hooks were not initialized.');
-  return { game: context.__logicGame, storage, drawCalls, vectorCalls };
+  return { game: context.__logicGame, storage, drawCalls, vectorCalls, element };
 }
 
 function runFrame(game) {
