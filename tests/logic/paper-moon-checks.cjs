@@ -35,9 +35,11 @@ module.exports=function(){
    g.effects=[{kind:'beam',x:p.x,y:p.y,ex:p.x+10,ey:p.y,width:.87,life:.44*(1-progress),max:.44}];
    drawCalls.length=0;vectorCalls.length=0;game.drawEffects();
    assert.equal(drawCalls.filter(call=>call.src===game.ASSET_DATA.ui_moon).length,0);
-   const curves=vectorCalls.filter(call=>call.kind==='quadraticCurveTo');assert.equal(curves.length,3);
+   const curves=vectorCalls.filter(call=>call.kind==='arc');assert.equal(curves.length,3);
    const head=curves[0].args[0];assert(head>=previous);previous=head;
-   assert(curves.every(call=>call.args.every(Number.isFinite)));
+   assert.equal(curves[1].args[5],true,'inner cutout must curve back to the top tip');
+   assert(curves.every(call=>call.args.slice(0,5).every(Number.isFinite)));
+   assert(!vectorCalls.some(call=>call.kind==='lineTo'),'moon must not contain an arrow shaft');
   }
  });
  check('moon stays fully visible after .20 seconds while damage, width and reach are unchanged',()=>{

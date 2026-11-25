@@ -97,7 +97,7 @@ function createHarness(seed = 0x4e454d4f, captureDraws = false, reduceMotion = f
     createLinearGradient: () => ({ addColorStop: noop }),
     createRadialGradient: () => ({ addColorStop: noop })
   }, {
-    get: (target, key) => key in target ? target[key] : ['rotate','moveTo','lineTo','quadraticCurveTo','closePath','fill','stroke'].includes(key)
+    get: (target, key) => key in target ? target[key] : ['rotate','arc','moveTo','lineTo','quadraticCurveTo','closePath','fill','stroke'].includes(key)
       ? (...args) => { if (captureDraws) vectorCalls.push({ kind:key, args, alpha:target.globalAlpha }); } : noop,
     set: (target, key, value) => { target[key] = value; return true; }
   });
