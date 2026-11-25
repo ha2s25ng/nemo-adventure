@@ -1,0 +1,9 @@
+{
+  "mode": "built-in image_gen",
+  "intent": "edit",
+  "prompt": "Edit the reference magical frisbee game sprite. Keep its soft pastel storybook style, mint and light blue rim, cream center and simple lavender swirl. Change the viewing angle to almost straight overhead: show the COMPLETE ROUND CIRCULAR frisbee face, width and height equal, with a thin shallow rim only. This must be a flat flying DISC, never a spherical ball, crescent, semicircle, bowl or oblique ellipse. Entire unbroken circle visible, centered, no cut-off parts. Simplify shading for a small 32 pixel game projectile: smooth clean brown-purple outline, subtle rim highlight, one simple lavender swirl. No paw print, text, motion trails, sparkle, glow, shadow, extra objects or background. Genuine transparent alpha background. Output ONE complete round mint frisbee with generous transparent margins, crisp readable silhouette.",
+  "reference": "assets/frisbee-v51213/frisbee.webp",
+  "source": "exec-13c08d60-f3a1-45dc-b7e4-b32f96dacb26.png",
+  "output": "frisbee.webp",
+  "processing": "Crop to subject alpha bounding box, downsample with preserved aspect ratio and center in a 512 x 512 transparent canvas; remove only near-transparent export speckles."
+}

@@ -27,16 +27,16 @@ module.exports=function(){
   assert(!drawCalls.some(call=>call.src===game.ASSET_DATA.ui_book));
   assert.equal(vectorCalls.find(call=>call.kind==='rotate').args[0],g.bookFamiliar.artAngle);
  });
- check('frisbee uses a flat mint sprite in all directions and reduced motion',()=>{
+ check('frisbee shows its complete round mint face in all directions and reduced motion',()=>{
   for(const reduced of [false,true])for(let i=0;i<8;i++){
    const {game,drawCalls,vectorCalls}=createHarness(123,true,reduced);game.begin();const p=game.g.player;
    game.beam(p.x,p.y,i*Math.PI/4,14,.87,108,'moon',1);
-   const s=game.g.shots[0];game.drawProjectile(s);
+   const s=game.g.shots[0];game.g.worldClock=.25;game.drawProjectile(s);
    const art=drawCalls.find(c=>c.src===game.ASSET_DATA.spell_moon);assert(art);
    assert.notEqual(art.src,game.ASSET_DATA.cannonProjectile);
-   assert(art.args[2]/art.args[3]>1.9,'flat disc must not become a ball');
+   assert.equal(art.args[2],art.args[3],'disc face must stay round, never squash into a half-disc');
    assert.equal(art.args[2],s.longR*2);assert.equal(art.args[3],s.r*2);
-   assert.equal(vectorCalls.find(c=>c.kind==='rotate').args[0],Math.atan2(s.vy,s.vx));
+   assert.equal(vectorCalls.find(c=>c.kind==='rotate').args[0],Math.atan2(s.vy,s.vx)+(reduced?0:1.75));
    assert(!game.g.effects.some(e=>e.kind==='beam'));
   }
  });
@@ -62,11 +62,12 @@ module.exports=function(){
  check('return starts at range end and hits once for half damage on a fixed line',()=>{
   const {game,g,p,enemy}=setup(true);const e=enemy(4);const start={x:p.x,y:p.y};
   game.beam(p.x,p.y,0,14,.87,108,'moon',1);
-  for(let i=0;i<16;i++)game.updateShots(.1,false);
+  assert.equal(g.shots[0].speed,12.5);
+  for(let i=0;i<11;i++)game.updateShots(.1,false);
   assert.equal(e.hp,9892);assert.equal(g.shots[0].returning,false);
   game.updateShots(.1,false);assert.equal(g.shots[0].returning,true);
   assert(Math.abs(g.shots[0].x-start.x-14)<1e-9);p.y+=5;
-  for(let i=0;i<18;i++)game.updateShots(.1,false);
+  for(let i=0;i<12;i++)game.updateShots(.1,false);
   assert.equal(e.hp,9838);assert.equal(g.shots.length,0);
  });
  check('both evolution variants retain their damage, widths and firing cadence',()=>{
