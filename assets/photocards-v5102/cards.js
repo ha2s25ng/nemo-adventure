@@ -20,7 +20,7 @@ function createNemoCapsule(doc){
  function reset(){phase('idle');capsule.hidden=true;capsule.disabled=true;$('draw-reward').hidden=true;$('capsule-hint').textContent='작은 캡슐 속, 우리들의 선물';}
  function ready(){phase('ready');capsule.hidden=false;capsule.disabled=false;$('capsule-hint').textContent='캡슐을 눌러 열어 보세요';capsule.focus({preventScroll:true});}
  async function dispense(){reset();phase('coin');$('capsule-hint').textContent='코인을 넣고…';await wait(620);phase('turn');$('capsule-hint').textContent='손잡이를 돌리면…';await wait(1050);phase('drop');capsule.hidden=false;$('capsule-hint').textContent='선물이 나왔어요!';await wait(720);ready();}
- async function reveal(tier){if(stage.dataset.phase!=='ready')return;capsule.disabled=true;stage.dataset.tier=tier;phase('opening');$('capsule-hint').textContent='반짝, 어떤 선물일까요?';await wait(650);phase('revealed');$('capsule-hint').textContent=tier==='costume'?'특별한 코스튬을 발견했어요!':'포토카드를 발견했어요!';}
+ async function reveal(tier){if(stage.dataset.phase!=='ready')return;capsule.disabled=true;stage.dataset.tier=tier;phase('opening');$('capsule-hint').textContent='반짝, 어떤 선물일까요?';await wait(650);phase('revealed');$('capsule-hint').textContent=tier==='costume'?'특별한 코스튬을 발견했어요!':tier==='bundle'?'10개의 선물을 발견했어요!':tier==='gold'?'수집 완료 보상을 발견했어요!':'포토카드를 발견했어요!';}
  function render(){
   for(const button of $('album-character').querySelectorAll('[data-album-character]'))button.setAttribute('aria-pressed',String(button.dataset.albumCharacter===characterFilter));
   $('album-title').textContent='포토카드';
@@ -29,7 +29,7 @@ function createNemoCapsule(doc){
   const count=Math.max(1,Math.ceil(photos.length/PAGE_SIZE));page=Math.max(0,Math.min(count-1,page));
   $('album-pages').innerHTML=photos.slice(page*PAGE_SIZE,(page+1)*PAGE_SIZE).map(photo=>{
    const has=owned.includes(photo.id),number=photo.number||allPhotos.indexOf(photo)+1,isDori=photo.character==='dori';
-   return `<button type="button" class="collection-card${has?'':' is-locked'}" data-rank="${rank(photo)}" data-character="${isDori?'dori':'nemo'}" ${has?`data-album-photo="${escape(photo.id)}"`:'disabled'} aria-label="${has?escape(photo.name)+' 포토카드 보기':'미수집 포토카드 '+number}"><span class="collection-card-top"><span class="photo-grade" data-rank="${rank(photo)}">${rank(photo)}</span><small>${isDori?'도리':'니모'} · ${String(number).padStart(3,'0')}</small></span>${has?`<span class="collection-image"><img src="${escape(photo.thumb||photo.art)}" alt="${escape(photo.name)}" loading="lazy" decoding="async"></span>`:`<span class="collection-card-back" aria-hidden="true"><i>✦</i><b>${isDori?'DORI':'NEMO'}</b><small>아직 만나지 못한 순간</small></span>`}<strong>${has?escape(photo.name):'미수집 카드'}</strong><span class="collection-date">${has?escape(dateLabel(photo.id)):'캡슐에서 만나요'}</span></button>`;
+   return `<button type="button" class="collection-card${has?'':' is-locked'}" data-rank="${rank(photo)}" data-character="${isDori?'dori':'nemo'}" ${has?`data-album-photo="${escape(photo.id)}"`:'disabled'} aria-label="${has?escape(photo.name)+' 포토카드 보기':'미수집 포토카드 '+number}"><span class="collection-card-top"><span class="photo-grade" data-rank="${rank(photo)}">${rank(photo)}</span><small>No. ${String(number).padStart(3,'0')}</small></span>${has?`<span class="collection-image"><img src="${escape(photo.thumb||photo.art)}" alt="${escape(photo.name)}" loading="lazy" decoding="async"></span>`:`<span class="collection-card-back" aria-hidden="true"><i>✦</i><b>${isDori?'DORI':'NEMO'}</b><small>아직 만나지 못한 순간</small></span>`}<strong>${has?escape(photo.name):'미수집 카드'}</strong><span class="collection-date">${has?escape(dateLabel(photo.id)):'캡슐에서 만나요'}</span></button>`;
   }).join('');
   $('album-sort').disabled=false;$('album-prev').disabled=page===0;$('album-next').disabled=page===count-1;
   $('album-page-count').textContent=`${page+1} / ${count}`;$('album-pages').scrollTop=0;
@@ -59,9 +59,9 @@ function createNemoCapsule(doc){
   image.onerror=()=>{if(selected?.id===item.id){image.style.visibility='visible';image.alt=item.name+' · 사진을 불러오지 못했어요';}};
   image.src=item.full||item.art;
   $('photo-title').textContent=item.name;$('photo-caption').textContent=item.name;$('photo-back-title').textContent=item.name;
-  $('photo-date').textContent=dateLabel(item.id);$('photo-number').textContent=(item.characterName||'니모')+' · No. '+String(item.number||allPhotos.indexOf(item)+1).padStart(3,'0');
+  $('photo-date').textContent=dateLabel(item.id);$('photo-number').textContent='No. '+String(item.number||allPhotos.indexOf(item)+1).padStart(3,'0');
   $('photo-brand').textContent=item.character==='dori'?'DORI MEMORIES':'NEMO MEMORIES';
-  $('photo-character-art').src=item.characterArt||'./assets/wardrobe-rig-v5121/nemo-default-portrait.webp';
+  $('photo-character-art').src=item.characterArt||'./assets/wardrobe-portraits-v5122/nemo-default.webp';
   $('photo-memory').textContent=(item.characterName||'니모')+'와 함께한 작은 순간';
   for(const id of ['photo-rank','photo-back-rank']){$(id).textContent=rank(item);$(id).className='photo-grade';$(id).dataset.rank=rank(item);}
   $('photocard-detail').dataset.rank=rank(item);$('photo-scroll').classList.remove('zoomed');$('photo-zoom').textContent='크게 보기';

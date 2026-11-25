@@ -38,7 +38,7 @@ module.exports=function(){
   assert(node('album-pages').innerHTML.includes('DORI'));assert.equal((node('album-pages').innerHTML.match(/<img /g)||[]).length,0);
   ui.photo('card24');assert(node('photo-lightbox').hidden);
   owned.push('card24');ui.filter('dori');assert.equal(node('album-owned-count').textContent,'수집 1 / 1');ui.photo('card24');
-  assert.equal(node('photo-brand').textContent,'DORI MEMORIES');assert.equal(node('photo-character-art').src,'dori-portrait.webp');assert.equal(node('photo-number').textContent,'도리 · No. 001');ui.closePhoto();
+  assert.equal(node('photo-brand').textContent,'DORI MEMORIES');assert.equal(node('photo-character-art').src,'dori-portrait.webp');assert.equal(node('photo-number').textContent,'No. 001');ui.closePhoto();
   ui.filter('nemo');assert.equal(node('album-owned-count').textContent,'수집 3 / 24');
   ui.filter('all');assert.equal(node('album-owned-count').textContent,'수집 3 / 24');
   ui.filter('dori');ui.openAlbum(photos,owned,dates);assert.equal(node('album-owned-count').textContent,'수집 3 / 24');assert(!node('album-pages').innerHTML.includes('DORI'));

@@ -13,7 +13,7 @@ const ENGINE_MARKER = 'const $ = id => document.getElementById(id)';
 const STARTUP_MARKER = 'rankWire();renderMenu();syncFullscreen();setScreen';
 const TEST_EXPORTS = `
 globalThis.__logicGame = {
-  DATA, W, RARE_CARDS, NEMO_STAGES,
+  DATA, W, RARE_CARDS, NEMO_STAGES, NEMO_DRAW, weaponAvailableForCharacter,
   begin, menu, pause, resume, setScreen, openCodex, closeCodex, update, finish,
   hasGrowth, makeGrowth, rollCards, selectCard, chooseEvo, weaponNumbers,
   parseImportedSave, normalizeSave, readSave, spawn,

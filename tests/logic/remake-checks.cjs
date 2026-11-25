@@ -21,6 +21,27 @@ module.exports=function(){
   const save=game.normalizeSave({...game.saved,photosOwned:['nap',dori],photosObtainedAt:{nap:Date.now(),[dori]:Date.now()}});
   assert(save.photosOwned.includes('nap'));assert(save.photosOwned.includes(dori));assert(save.photosObtainedAt[dori]);
  });
+ check('photo draws never repeat until collection is complete; Dori titles have no prefix',()=>{
+  let save={...game.saved,gold:100000,photosOwned:[],photosObtainedAt:{}};
+  for(let n=0;n<game.DRAW_PHOTOS.length;n++){
+   const result=game.NEMO_DRAW.purchase(save,game.DRAW_PHOTOS,game.drawCostumes(),()=>.9,123456+n);
+   assert.equal(result.reward.type,'photo');assert.equal(result.reward.duplicate,false);assert(!save.photosOwned.includes(result.reward.item.id));save=result.save;
+  }
+  assert.equal(new Set(save.photosOwned).size,183);
+  const completed=game.NEMO_DRAW.purchase(save,game.DRAW_PHOTOS,game.drawCostumes(),()=>.9,999999);
+  assert.equal(completed.reward.type,'gold');assert.equal(completed.reward.amount,25);assert.equal(completed.save.photosOwned.length,183);
+  assert(game.DRAW_PHOTOS.filter(p=>p.character==='dori').every(p=>!p.name.startsWith('도리 ·')));
+ });
+ check('ten draws cost 900 atomically and cannot repeat photos within the batch',()=>{
+  const save={...game.saved,gold:900,drawCount:0,photosOwned:[],photosObtainedAt:{}};
+  const result=game.NEMO_DRAW.purchaseMany(save,game.DRAW_PHOTOS,game.drawCostumes(),10,()=>.9,123456);
+  assert.equal(result.cost,900);assert.equal(result.rewards.length,10);assert.equal(result.save.gold,0);assert.equal(result.save.drawCount,10);assert.equal(new Set(result.save.photosOwned).size,10);
+  assert.equal(save.gold,900);assert.equal(save.photosOwned.length,0);assert.equal(game.NEMO_DRAW.purchaseMany({...save,gold:899},game.DRAW_PHOTOS,game.drawCostumes(),10),null);
+  assert.equal(game.NEMO_DRAW.purchaseMany(save,game.DRAW_PHOTOS,game.drawCostumes(),2),null);
+  const single=game.NEMO_DRAW.purchaseMany(save,game.DRAW_PHOTOS,game.drawCostumes(),1,()=>.9,123456);assert.equal(single.save.gold,800);
+  const pool=game.NEMO_DRAW.photoPool({...save,photosOwned:game.DRAW_PHOTOS.filter(p=>p.rank==='R').map(p=>p.id)},game.DRAW_PHOTOS);
+  assert(!pool.some(p=>p.rank==='R'));assert(Math.abs(pool.filter(p=>p.rank==='SR').reduce((sum,p)=>sum+p.weight,0)-28)<1e-8);
+ });
  check('thief reward scales, heals 10%, and cannot be awarded twice',()=>{
   game.begin();const e=game.spawn('thief',{x:game.g.player.x,y:game.g.player.y});
   game.kill(e);assert.equal(game.g.gold,40);game.kill(e);assert.equal(game.g.gold,40);

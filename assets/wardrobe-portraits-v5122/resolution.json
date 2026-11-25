@@ -1,0 +1,512 @@
+{
+  "nemo:default": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 833,
+    "eyeY": 364.8,
+    "earPinkY": 168,
+    "scale": 0.76227,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 247,
+    "highlightX": 458.43,
+    "highlightY": 355.93
+  },
+  "dori:default": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 836,
+    "eyeY": 368.74,
+    "earPinkY": 166,
+    "scale": 0.76031,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 248,
+    "highlightX": 399.41,
+    "highlightY": 359.85
+  },
+  "nemo:redhood": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 847,
+    "eyeY": 396.4,
+    "earPinkY": 155,
+    "scale": 0.75448,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 274,
+    "highlightX": 476.88,
+    "highlightY": 387.06
+  },
+  "dori:redhood": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 846,
+    "eyeY": 404.03,
+    "earPinkY": 159,
+    "scale": 0.75835,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 302,
+    "highlightX": 414.88,
+    "highlightY": 394.23
+  },
+  "nemo:victory-silver": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 822,
+    "eyeY": 407.97,
+    "earPinkY": 171,
+    "scale": 0.76923,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 585,
+    "highlightX": 469.49,
+    "highlightY": 394.32
+  },
+  "dori:victory-silver": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 818,
+    "eyeY": 409.57,
+    "earPinkY": 184,
+    "scale": 0.78353,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 459,
+    "highlightX": 427.02,
+    "highlightY": 397.48
+  },
+  "nemo:captain": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 788,
+    "eyeY": 409.34,
+    "earPinkY": 214,
+    "scale": 0.8526,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 525,
+    "highlightX": 493.35,
+    "highlightY": 396.42
+  },
+  "dori:captain": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 789,
+    "eyeY": 415.19,
+    "earPinkY": 223,
+    "scale": 0.86131,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 502,
+    "highlightX": 425.06,
+    "highlightY": 402.55
+  },
+  "nemo:dreamstar": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 794,
+    "eyeY": 404.34,
+    "earPinkY": 175,
+    "scale": 0.79946,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 616,
+    "highlightX": 453.45,
+    "highlightY": 390.34
+  },
+  "dori:dreamstar": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 793,
+    "eyeY": 415.25,
+    "earPinkY": 189,
+    "scale": 0.81267,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 518,
+    "highlightX": 422.77,
+    "highlightY": 402.41
+  },
+  "nemo:forest": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 804,
+    "eyeY": 413.01,
+    "earPinkY": 174,
+    "scale": 0.79088,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 482,
+    "highlightX": 458.6,
+    "highlightY": 400.63
+  },
+  "dori:forest": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 803,
+    "eyeY": 415.34,
+    "earPinkY": 180,
+    "scale": 0.7973,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 508,
+    "highlightX": 398.71,
+    "highlightY": 402.63
+  },
+  "nemo:halloween": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 764,
+    "eyeY": 412.77,
+    "earPinkY": 227,
+    "scale": 0.8651,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 429,
+    "highlightX": 467.55,
+    "highlightY": 401.09
+  },
+  "dori:halloween": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 767,
+    "eyeY": 414.93,
+    "earPinkY": 217,
+    "scale": 0.85014,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 408,
+    "highlightX": 430.8,
+    "highlightY": 403.54
+  },
+  "nemo:legend": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 815,
+    "eyeY": 386.93,
+    "earPinkY": 181,
+    "scale": 0.79622,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 215,
+    "highlightX": 454.47,
+    "highlightY": 378.66
+  },
+  "dori:legend": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 810,
+    "eyeY": 391.63,
+    "earPinkY": 182,
+    "scale": 0.79622,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 236,
+    "highlightX": 409.7,
+    "highlightY": 382.97
+  },
+  "nemo:patisserie": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 816,
+    "eyeY": 416.07,
+    "earPinkY": 204,
+    "scale": 0.81717,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 408,
+    "highlightX": 471.19,
+    "highlightY": 404.67
+  },
+  "dori:patisserie": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 816,
+    "eyeY": 416.13,
+    "earPinkY": 204,
+    "scale": 0.81717,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 411,
+    "highlightX": 423.95,
+    "highlightY": 404.7
+  },
+  "nemo:rain": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 777,
+    "eyeY": 390.84,
+    "earPinkY": 170,
+    "scale": 0.81492,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 195,
+    "highlightX": 477.61,
+    "highlightY": 382.96
+  },
+  "dori:rain": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 778,
+    "eyeY": 394.28,
+    "earPinkY": 176,
+    "scale": 0.82173,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 205,
+    "highlightX": 412.39,
+    "highlightY": 386.2
+  },
+  "nemo:royal": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 839,
+    "eyeY": 413.78,
+    "earPinkY": 206,
+    "scale": 0.81044,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 221,
+    "highlightX": 449.39,
+    "highlightY": 405.39
+  },
+  "dori:royal": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 839,
+    "eyeY": 417.32,
+    "earPinkY": 207,
+    "scale": 0.81155,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 226,
+    "highlightX": 418.35,
+    "highlightY": 408.84
+  },
+  "nemo:starlight": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 759,
+    "eyeY": 443.54,
+    "earPinkY": 248,
+    "scale": 0.91331,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 422,
+    "highlightX": 483.13,
+    "highlightY": 431.95
+  },
+  "dori:starlight": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 758,
+    "eyeY": 448.43,
+    "earPinkY": 252,
+    "scale": 0.92044,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 415,
+    "highlightX": 439.27,
+    "highlightY": 436.93
+  },
+  "nemo:student": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 801,
+    "eyeY": 415.46,
+    "earPinkY": 207,
+    "scale": 0.82633,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 442,
+    "highlightX": 466.99,
+    "highlightY": 403.6
+  },
+  "dori:student": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 801,
+    "eyeY": 422.68,
+    "earPinkY": 225,
+    "scale": 0.8477,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 568,
+    "highlightX": 438.42,
+    "highlightY": 409.23
+  },
+  "nemo:victory-bronze": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 802,
+    "eyeY": 400.56,
+    "earPinkY": 180,
+    "scale": 0.78877,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 207,
+    "highlightX": 467.64,
+    "highlightY": 392.44
+  },
+  "dori:victory-bronze": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 804,
+    "eyeY": 406.92,
+    "earPinkY": 183,
+    "scale": 0.79301,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 203,
+    "highlightX": 409.39,
+    "highlightY": 398.88
+  },
+  "nemo:victory-gold": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 802,
+    "eyeY": 402.82,
+    "earPinkY": 169,
+    "scale": 0.78146,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 497,
+    "highlightX": 472.59,
+    "highlightY": 390.24
+  },
+  "dori:victory-gold": {
+    "nativeSource": [
+      768,
+      1024
+    ],
+    "nativeBodyHeight": 798,
+    "eyeY": 411.86,
+    "earPinkY": 189,
+    "scale": 0.80272,
+    "footY": 735,
+    "registeredEarPinkY": 145,
+    "portraitSize": 768,
+    "thumbnailSize": 384,
+    "highlightArea": 452,
+    "highlightX": 423.22,
+    "highlightY": 399.87
+  }
+}

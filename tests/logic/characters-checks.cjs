@@ -24,8 +24,9 @@ module.exports=function(){
  });
  check('each character starts with its own weapon and cannot switch during a run',({game})=>{
   game.saved.gold=2000;game.selectCharacter('dori');game.begin();assert.equal(game.g.runCharacter,'dori');assert(game.g.weapons.cannon);assert(!game.g.weapons.star);assert.equal(game.selectCharacter('nemo'),false);assert.equal(game.g.runCharacter,'dori');
+  assert.equal(game.fireWeapon('star'),false);for(let i=0;i<200;i++)assert(!game.rollCards(null).some(c=>c.type==='new'&&c.id==='star'));
   game.menu();game.selectCharacter('nemo');game.begin();assert(game.g.weapons.star);assert(!game.g.weapons.cannon);
-  for(let i=0;i<100;i++)assert(!game.rollCards(null).some(c=>c.type==='new'&&c.id==='cannon'));
+  assert.equal(game.fireWeapon('cannon'),false);for(let i=0;i<200;i++)assert(!game.rollCards(null).some(c=>c.type==='new'&&c.id==='cannon'));
  });
  check('cannon has a heavier hit and restrained single-target DPS advantage',({game})=>{
   game.begin();const w={lv:1,up:[0,0,0],evo:null},star=game.weaponPower('star',game.W.star.coef,w),cannon=game.weaponPower('cannon',game.W.cannon.coef,w);
@@ -35,12 +36,23 @@ module.exports=function(){
   game.saved.gold=2000;game.selectCharacter('dori');game.begin();const g=game.g,p=g.player;p.crit=0;
   const a=game.spawn('green',{x:p.x+4,y:p.y}),b=game.spawn('green',{x:p.x+4.5,y:p.y}),far=game.spawn('green',{x:p.x+8,y:p.y});
   for(const enemy of [a,b,far])enemy.hp=enemy.maxHp=10000;
-  assert(game.fireWeapon('cannon'));const shot=g.shots[0];assert.equal(shot.kind,'cannon');assert.equal(shot.r,.26);
+  assert(game.fireWeapon('cannon'));assert.equal(p.cannonRecoil,.18);const shot=g.shots[0];assert.equal(shot.kind,'cannon');assert.equal(shot.r,.26);
   game.impactCannon(shot,a);assert.equal(a.hp,10000-shot.damage);assert.equal(b.hp,10000-Math.round(shot.damage*.35*100)/100);assert.equal(far.hp,10000);
   const before=b.hp;game.impactCannon({...shot},a);assert.equal(b.hp,before);
  });
  check('ranking loadouts retain character and the cannon without changing old records',({game})=>{
   const value=game.normalizeRankLoadout({character:'dori',costume:'rain',weapons:[{id:'cannon',level:7}]});assert.equal(value.character,'dori');assert.equal(value.weapons[0].id,'cannon');assert.equal(game.normalizeRankLoadout({costume:'default',weapons:[]}).character,'nemo');
+ });
+ check('every lobby and shop portrait has native high-resolution art and separate thumbnails',({game})=>{
+  const metadata=JSON.parse(fs.readFileSync(path.resolve(__dirname,'../../assets/wardrobe-portraits-v5122/resolution.json'),'utf8'));
+  assert.equal(Object.keys(metadata).length,30);
+  for(const character of ['nemo','dori'])for(const raw of game.COSTUMES){
+   const art=game.costumeForCharacter(raw,character),detail=metadata[character+':'+raw.id];
+   assert(detail.nativeBodyHeight>=600);assert(detail.scale<=1);assert(art.thumbnail);assert.notEqual(art.thumbnail,art.portrait);
+   for(const [file,size] of [[art.portrait,768],[art.thumbnail,384]]){
+    const bytes=fs.readFileSync(path.resolve(__dirname,'../..',file));assert.equal(bytes.toString('ascii',12,16),'VP8X',file);assert.equal(bytes.readUIntLE(24,3)+1,size,file);assert.equal(bytes.readUIntLE(27,3)+1,size,file);
+   }
+  }
  });
  const failures=results.filter(x=>!x.pass);return {total:results.length,passed:results.length-failures.length,failures,detail:'2000G unlock, persistence rollback, shared costumes, starter combat and rankings'};
 };
