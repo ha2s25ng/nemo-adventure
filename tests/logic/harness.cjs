@@ -21,7 +21,7 @@ globalThis.__logicGame = {
   drawCostumes, COSTUMES, DRAW_PHOTOS, RARE_PICKUP_KINDS, getLevelNeed, rageActive, updateHUD,
   selectCharacter, activeCharacter, activeCostume, costumeForCharacter, fireWeapon, impactCannon, updateShots, weaponPower, cooldown, normalizeRankLoadout, NEMO_CHARACTERS,
   updateOrbit, orbitPosition, updateVortex, updateMonster, updateEndlessMonster, castEndlessAttack, updateCampaignMonster, drawBattle,
-  drawProjectile, drawBookFamiliar, updateBookFamiliar, drawEffects,
+  drawProjectile, drawBookFamiliar, updateBookFamiliar, drawEffects, beam,
   PASSIVE_LEVELS, PASSIVE_MAX_LEVEL, passiveValue, passiveOffer, radiusMult, wpCrit, damagePlayer, moveCastRate,
   get g() { return g; },
   get screen() { return screen; },
@@ -98,7 +98,7 @@ function createHarness(seed = 0x4e454d4f, captureDraws = false, reduceMotion = f
     createRadialGradient: () => ({ addColorStop: noop })
   }, {
     get: (target, key) => key in target ? target[key] : ['rotate','moveTo','lineTo','quadraticCurveTo','closePath','fill','stroke'].includes(key)
-      ? (...args) => { if (captureDraws) vectorCalls.push({ kind:key, args }); } : noop,
+      ? (...args) => { if (captureDraws) vectorCalls.push({ kind:key, args, alpha:target.globalAlpha }); } : noop,
     set: (target, key, value) => { target[key] = value; return true; }
   });
   element('canvas').getContext = () => drawing;

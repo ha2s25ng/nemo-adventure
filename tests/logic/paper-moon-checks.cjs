@@ -32,7 +32,7 @@ module.exports=function(){
   g.weapons.moon={lv:1,up:[0,0,0],break:false,evo:null,clock:0};
   let previous=-Infinity;
   for(const progress of [0,.2,.4,.6,.8]){
-   g.effects=[{kind:'beam',x:p.x,y:p.y,ex:p.x+10,ey:p.y,width:.87,life:.22*(1-progress),max:.22}];
+   g.effects=[{kind:'beam',x:p.x,y:p.y,ex:p.x+10,ey:p.y,width:.87,life:.44*(1-progress),max:.44}];
    drawCalls.length=0;vectorCalls.length=0;game.drawEffects();
    assert.equal(drawCalls.filter(call=>call.src===game.ASSET_DATA.ui_moon).length,0);
    const curves=vectorCalls.filter(call=>call.kind==='quadraticCurveTo');assert.equal(curves.length,3);
@@ -40,5 +40,17 @@ module.exports=function(){
    assert(curves.every(call=>call.args.every(Number.isFinite)));
   }
  });
- const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'48 plane direction/evolution/motion cases, rare familiar heading, single moon wave'};
+ check('moon stays fully visible after .20 seconds while damage, width and reach are unchanged',()=>{
+  const {game,vectorCalls}=createHarness(123,true);game.begin();const g=game.g,p=g.player;p.crit=0;
+  g.weapons.moon={lv:1,up:[0,0,0],break:false,evo:null,clock:0};
+  const inside=game.spawn('green',{x:p.x+4,y:p.y+.8}),outside=game.spawn('green',{x:p.x+4,y:p.y+1.1}),far=game.spawn('green',{x:p.x+14.6,y:p.y});
+  for(const e of [inside,outside,far])e.hp=e.maxHp=10000;
+  game.beam(p.x,p.y,0,14,.87,108,'moon',1);
+  assert.equal(inside.hp,9892);assert.equal(outside.hp,10000);assert.equal(far.hp,10000);
+  const fx=g.effects.find(e=>e.kind==='beam');assert.equal(fx.max,.44);assert.equal(fx.width,.87);
+  g.effects=[{...fx,life:.24}];vectorCalls.length=0;game.drawEffects();
+  assert.equal(vectorCalls.find(call=>call.kind==='fill').alpha,1);
+  assert.equal(game.cooldown('moon'),1.58);
+ });
+ const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'48 plane cases, single visible moon wave, unchanged moon damage and hit area'};
 };
