@@ -28,6 +28,9 @@ module.exports=()=>{
    const e=game.spawn('armor',{x:p.x+3,y:p.y});e.hp=1e6;g.shots=[];game.fireWeapon('star');assert.equal(g.shots.length,lv+1>=4?3:1);assert(g.shots.every(s=>Number.isFinite(s.vx)&&Number.isFinite(s.vy)));e.dead=true;
   }
   assert(!game.rollCards(null).some(c=>c.type==='awakening'));g.passives.lucky=5;g.cards=game.rollCards(null);assert.equal(g.cards[0].id,'star-piercing');
+  game.renderCards();const cardHtml=element('card-options').innerHTML;
+  assert(cardHtml.includes('별 4발이 적을 관통해 뒤의 적까지 공격해요.'));
+  assert(cardHtml.includes('class="awakening-combination"'));assert(cardHtml.includes(game.ASSET_DATA.ui_lucky));assert(cardHtml.includes('스타 샷'));assert(cardHtml.includes('행운의 리본'));assert(cardHtml.includes('Lv.7'));assert(cardHtml.includes('Lv.5'));
   game.setCodexCategory('evolutions');assert(!element('codex-details').innerHTML.includes('행운의 리본'));
   game.setScreen('cards');game.selectCard(0);assert.equal(g.weapons.star.lv,7);assert.equal(g.weapons.star.awakened,'star-piercing');
   assert(game.readSave().awakeningDiscoveries.includes('star-piercing'));game.setCodexCategory('evolutions');assert(element('codex-details').innerHTML.includes('행운의 리본'));
