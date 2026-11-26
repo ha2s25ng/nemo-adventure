@@ -1,0 +1,198 @@
+{
+  "mode": "built-in image_gen",
+  "intent": "generate using existing character and skill style references",
+  "references": [
+    "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+    "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+  ],
+  "prompts": [
+    {
+      "id": "garden",
+      "type": "landmark",
+      "subject": "A SMALL BLOSSOM WINDMILL for a gentle garden stage. Short cream cylindrical cottage with pale sage roof, four chunky warm honey wooden sails around a coral circular hub, a small rounded door, two clusters of peach-pink blossoms only. Cozy dollhouse proportions and restrained decoration, not a giant realistic building; groundless isolated prop.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-e5ba2f0f-a186-4be8-8962-9bfe44b15491.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished 2D storybook action-game sprite, transparent RGBA. The two input images are STYLE REFERENCES ONLY: match their confident thick warm mauve-brown outlines, large simple readable shapes, cute chibi proportions, soft flat pastel cel shading, tiny clean highlights. Render as a professionally drawn clean game prop, not as a painted scene. No watercolor grain, no paper texture, no realism, no photoreal materials, no tiny clutter, no text, no labels, no border, no checkerboard. Isolated single object, entire silhouette visible with 10% transparent padding, elevated three-quarter orthographic game view, light from upper left. No cast shadow outside the object. Keep crisp outlines at thumbnail size.\nPrimary request: A SMALL BLOSSOM WINDMILL for a gentle garden stage. Short cream cylindrical cottage with pale sage roof, four chunky warm honey wooden sails around a coral circular hub, a small rounded door, two clusters of peach-pink blossoms only. Cozy dollhouse proportions and restrained decoration, not a giant realistic building; groundless isolated prop.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "twilight",
+      "type": "landmark",
+      "subject": "A TWILIGHT LANTERN TREE GATEWAY. Two low gently curving plum-brown tree trunks join as a soft arch with simple lavender leafy canopy and exactly three hanging warm peach lanterns. Magical but friendly, chunky readable shapes, no tangled fine branches, no path or scenery; isolated gateway prop.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-dcb52dd1-936c-478c-ad58-e4f8a516ab7b.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished 2D storybook action-game sprite, transparent RGBA. The two input images are STYLE REFERENCES ONLY: match their confident thick warm mauve-brown outlines, large simple readable shapes, cute chibi proportions, soft flat pastel cel shading, tiny clean highlights. Render as a professionally drawn clean game prop, not as a painted scene. No watercolor grain, no paper texture, no realism, no photoreal materials, no tiny clutter, no text, no labels, no border, no checkerboard. Isolated single object, entire silhouette visible with 10% transparent padding, elevated three-quarter orthographic game view, light from upper left. No cast shadow outside the object. Keep crisp outlines at thumbnail size.\nPrimary request: A TWILIGHT LANTERN TREE GATEWAY. Two low gently curving plum-brown tree trunks join as a soft arch with simple lavender leafy canopy and exactly three hanging warm peach lanterns. Magical but friendly, chunky readable shapes, no tangled fine branches, no path or scenery; isolated gateway prop.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "crystal",
+      "type": "landmark",
+      "subject": "A CRYSTAL GARDEN ARCH. A small rounded ivory stone arch with three large rounded lilac and pale blue crystal clusters, tiny pink flower at base. Simple large facets, soft clean pastel colors, cute dollhouse game prop; no dark realistic mineral texture, no scene.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-22837d0a-0ec2-47a8-a588-4f0e265b4095.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished 2D storybook action-game sprite, transparent RGBA. The two input images are STYLE REFERENCES ONLY: match their confident thick warm mauve-brown outlines, large simple readable shapes, cute chibi proportions, soft flat pastel cel shading, tiny clean highlights. Render as a professionally drawn clean game prop, not as a painted scene. No watercolor grain, no paper texture, no realism, no photoreal materials, no tiny clutter, no text, no labels, no border, no checkerboard. Isolated single object, entire silhouette visible with 10% transparent padding, elevated three-quarter orthographic game view, light from upper left. No cast shadow outside the object. Keep crisp outlines at thumbnail size.\nPrimary request: A CRYSTAL GARDEN ARCH. A small rounded ivory stone arch with three large rounded lilac and pale blue crystal clusters, tiny pink flower at base. Simple large facets, soft clean pastel colors, cute dollhouse game prop; no dark realistic mineral texture, no scene.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "frost",
+      "type": "landmark",
+      "subject": "A COZY FROST OBSERVATORY. A small rounded powder-blue tower with snowcap roof, a single brass telescope poking from open roof hatch, one warm glowing peach window and one snow-covered little spruce by base. Toylike proportions, simple snow shapes, isolated object with no platform/ground patch.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-baa3bbf9-a019-4e3c-95c2-6dea4fd275f1.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished 2D storybook action-game sprite, transparent RGBA. The two input images are STYLE REFERENCES ONLY: match their confident thick warm mauve-brown outlines, large simple readable shapes, cute chibi proportions, soft flat pastel cel shading, tiny clean highlights. Render as a professionally drawn clean game prop, not as a painted scene. No watercolor grain, no paper texture, no realism, no photoreal materials, no tiny clutter, no text, no labels, no border, no checkerboard. Isolated single object, entire silhouette visible with 10% transparent padding, elevated three-quarter orthographic game view, light from upper left. No cast shadow outside the object. Keep crisp outlines at thumbnail size.\nPrimary request: A COZY FROST OBSERVATORY. A small rounded powder-blue tower with snowcap roof, a single brass telescope poking from open roof hatch, one warm glowing peach window and one snow-covered little spruce by base. Toylike proportions, simple snow shapes, isolated object with no platform/ground patch.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "ember",
+      "type": "landmark",
+      "subject": "An EMBER KILN SHRINE. Short rounded terracotta kiln with plum-brown stone outline, tiny arched opening containing three bright friendly orange embers, chunky golden chimney cap, two coral flowers at base. Magical cozy glowing prop, cute soft forms, not scary volcanic rock, no smoke cloud, no scene.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-e41da234-e7a2-4ba7-9055-ba39ff94a7fc.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished 2D storybook action-game sprite, transparent RGBA. The two input images are STYLE REFERENCES ONLY: match their confident thick warm mauve-brown outlines, large simple readable shapes, cute chibi proportions, soft flat pastel cel shading, tiny clean highlights. Render as a professionally drawn clean game prop, not as a painted scene. No watercolor grain, no paper texture, no realism, no photoreal materials, no tiny clutter, no text, no labels, no border, no checkerboard. Isolated single object, entire silhouette visible with 10% transparent padding, elevated three-quarter orthographic game view, light from upper left. No cast shadow outside the object. Keep crisp outlines at thumbnail size.\nPrimary request: An EMBER KILN SHRINE. Short rounded terracotta kiln with plum-brown stone outline, tiny arched opening containing three bright friendly orange embers, chunky golden chimney cap, two coral flowers at base. Magical cozy glowing prop, cute soft forms, not scary volcanic rock, no smoke cloud, no scene.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "tide",
+      "type": "landmark",
+      "subject": "A LILY-STONE LIGHTHOUSE. Short rounded seafoam lighthouse of three smooth stone tiers with cream cap and warm little lantern, two large pink lily flowers and two simple lily leaves at base. Sea-glass turquoise and soft pink, cute garden-coast dollhouse prop. No water tile, no island, no scene.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-5e1c9638-e5bc-4a94-b61d-f0eb4cd56288.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished 2D storybook action-game sprite, transparent RGBA. The two input images are STYLE REFERENCES ONLY: match their confident thick warm mauve-brown outlines, large simple readable shapes, cute chibi proportions, soft flat pastel cel shading, tiny clean highlights. Render as a professionally drawn clean game prop, not as a painted scene. No watercolor grain, no paper texture, no realism, no photoreal materials, no tiny clutter, no text, no labels, no border, no checkerboard. Isolated single object, entire silhouette visible with 10% transparent padding, elevated three-quarter orthographic game view, light from upper left. No cast shadow outside the object. Keep crisp outlines at thumbnail size.\nPrimary request: A LILY-STONE LIGHTHOUSE. Short rounded seafoam lighthouse of three smooth stone tiers with cream cap and warm little lantern, two large pink lily flowers and two simple lily leaves at base. Sea-glass turquoise and soft pink, cute garden-coast dollhouse prop. No water tile, no island, no scene.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "clock",
+      "type": "landmark",
+      "subject": "A CLOCKWORK BRASS GARDEN TOWER. A short wooden cream-and-sage tower with one large circular brass clock face with simple hands and NO numbers, two chunky exposed golden gears, rounded mint roof and tiny peach flower. Friendly whimsical toy clockwork, minimal details, isolated game prop.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-b0ab09d6-4d77-4579-829c-5344ac7cab0d.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished 2D storybook action-game sprite, transparent RGBA. The two input images are STYLE REFERENCES ONLY: match their confident thick warm mauve-brown outlines, large simple readable shapes, cute chibi proportions, soft flat pastel cel shading, tiny clean highlights. Render as a professionally drawn clean game prop, not as a painted scene. No watercolor grain, no paper texture, no realism, no photoreal materials, no tiny clutter, no text, no labels, no border, no checkerboard. Isolated single object, entire silhouette visible with 10% transparent padding, elevated three-quarter orthographic game view, light from upper left. No cast shadow outside the object. Keep crisp outlines at thumbnail size.\nPrimary request: A CLOCKWORK BRASS GARDEN TOWER. A short wooden cream-and-sage tower with one large circular brass clock face with simple hands and NO numbers, two chunky exposed golden gears, rounded mint roof and tiny peach flower. Friendly whimsical toy clockwork, minimal details, isolated game prop.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "astral",
+      "type": "landmark",
+      "subject": "An ASTRAL MOON OBSERVATORY. Small rounded lavender observatory dome atop a cream tower, a large pale golden crescent moon finial and a tiny brass telescope through the dome. Two chunky star decorations, deep periwinkle accent, cozy cute storybook silhouette, no stars scattered outside object, no space background.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-eb194ab1-8126-4741-96ba-b9f55cd7b94d.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished 2D storybook action-game sprite, transparent RGBA. The two input images are STYLE REFERENCES ONLY: match their confident thick warm mauve-brown outlines, large simple readable shapes, cute chibi proportions, soft flat pastel cel shading, tiny clean highlights. Render as a professionally drawn clean game prop, not as a painted scene. No watercolor grain, no paper texture, no realism, no photoreal materials, no tiny clutter, no text, no labels, no border, no checkerboard. Isolated single object, entire silhouette visible with 10% transparent padding, elevated three-quarter orthographic game view, light from upper left. No cast shadow outside the object. Keep crisp outlines at thumbnail size.\nPrimary request: An ASTRAL MOON OBSERVATORY. Small rounded lavender observatory dome atop a cream tower, a large pale golden crescent moon finial and a tiny brass telescope through the dome. Two chunky star decorations, deep periwinkle accent, cozy cute storybook silhouette, no stars scattered outside object, no space background.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "oak",
+      "type": "prop",
+      "subject": "A SMALL ROUND OAK TREE. A chunky warm-brown trunk with two readable branches, rounded sage-green canopy formed from six large soft lobes, sparse simple leaf marks. Clean cute plushlike proportions, modest exposed roots. Not individual tiny leaves, no branches tangled together, no flowers, no scene or ground patch.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-0daec5bc-7f25-456e-a80d-a6227b48a08d.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished 2D storybook action-game sprite, transparent RGBA. The two input images are STYLE REFERENCES ONLY: match their confident thick warm mauve-brown outlines, large simple readable shapes, cute chibi proportions, soft flat pastel cel shading, tiny clean highlights. Render as a professionally drawn clean game prop, not as a painted scene. No watercolor grain, no paper texture, no realism, no photoreal materials, no tiny clutter, no text, no labels, no border, no checkerboard. Isolated single object, entire silhouette visible with 10% transparent padding, elevated three-quarter orthographic game view, light from upper left. No cast shadow outside the object. Keep crisp outlines at thumbnail size.\nPrimary request: A SMALL ROUND OAK TREE. A chunky warm-brown trunk with two readable branches, rounded sage-green canopy formed from six large soft lobes, sparse simple leaf marks. Clean cute plushlike proportions, modest exposed roots. Not individual tiny leaves, no branches tangled together, no flowers, no scene or ground patch.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "blossom",
+      "type": "prop",
+      "subject": "A SMALL BLOSSOM TREE. Chunky warm-brown trunk with three readable branches, rounded pale-sage canopy formed from five broad lobes, exactly seven large peach/pink five-petal blossoms. Cute clean shape and modest roots, not hundreds of tiny petals, no scene, no ground patch.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-c9305eed-6188-4cde-9317-bdea8cbe9767.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished 2D storybook action-game sprite, transparent RGBA. The two input images are STYLE REFERENCES ONLY: match their confident thick warm mauve-brown outlines, large simple readable shapes, cute chibi proportions, soft flat pastel cel shading, tiny clean highlights. Render as a professionally drawn clean game prop, not as a painted scene. No watercolor grain, no paper texture, no realism, no photoreal materials, no tiny clutter, no text, no labels, no border, no checkerboard. Isolated single object, entire silhouette visible with 10% transparent padding, elevated three-quarter orthographic game view, light from upper left. No cast shadow outside the object. Keep crisp outlines at thumbnail size.\nPrimary request: A SMALL BLOSSOM TREE. Chunky warm-brown trunk with three readable branches, rounded pale-sage canopy formed from five broad lobes, exactly seven large peach/pink five-petal blossoms. Cute clean shape and modest roots, not hundreds of tiny petals, no scene, no ground patch.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "pond",
+      "type": "prop",
+      "subject": "A SMALL OVAL STORYBOOK POND seen from elevated game view. Simple tranquil clean turquoise water oval with one broad pale reflection, rim of twelve chunky smooth cream stones, two broad sage lily leaves and one pink lily. Clear large shapes with mauve outline, no water texture/noise, no reeds forest, no fish, isolated transparent outside pond.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-6698b6af-c70f-4935-82e5-fee9fb6f404f.png",
+      "prompt": "Use case: stylized-concept. Asset type: polished 2D storybook action-game sprite, transparent RGBA. The two input images are STYLE REFERENCES ONLY: match their confident thick warm mauve-brown outlines, large simple readable shapes, cute chibi proportions, soft flat pastel cel shading, tiny clean highlights. Render as a professionally drawn clean game prop, not as a painted scene. No watercolor grain, no paper texture, no realism, no photoreal materials, no tiny clutter, no text, no labels, no border, no checkerboard. Isolated single object, entire silhouette visible with 10% transparent padding, elevated three-quarter orthographic game view, light from upper left. No cast shadow outside the object. Keep crisp outlines at thumbnail size.\nPrimary request: A SMALL OVAL STORYBOOK POND seen from elevated game view. Simple tranquil clean turquoise water oval with one broad pale reflection, rim of twelve chunky smooth cream stones, two broad sage lily leaves and one pink lily. Clear large shapes with mauve outline, no water texture/noise, no reeds forest, no fish, isolated transparent outside pond.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "bramble",
+      "type": "enemy",
+      "subject": "A CUTE LITTLE QUADRUPED BRAMBLE HEDGEHOG in low crawling animal posture, wide oval sage-green back with seven large soft pointed leaf spines, cream face and belly, tiny brown nose, two dark plum eyes and FOUR SHORT CLEAR ANIMAL LEGS underneath. Not upright, not biped. Four natural walking gait phases: front-left/back-right forward, passing stance, front-right/back-left forward, passing stance. All frames must show four legs or clearly visible far legs, body low and horizontal, paws actually change position, spine silhouette stays the same. Three-quarter front-right view.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-208194ec-b8c4-408b-b914-392802818351.png",
+      "prompt": "Use case: stylized-concept. Asset type: 2D game WALKING ANIMATION SPRITE SHEET, transparent RGBA, EXACTLY FOUR separate sprites in a precise TWO BY TWO grid, no labels, no separators. Input images are STYLE REFERENCES ONLY, not subjects. Match their confident thick clean warm mauve-brown outline and soft flat pastel cel shading. Chubby, cute, clean large readable shapes. Each quadrant contains the SAME ONE creature, SAME proportions, same three-quarter front-right orientation, same scale, same character design, center aligned in cell with ample transparent gap. Four successive gait phases in reading order, not four different designs or directions. Body size must remain consistent while feet visibly alternate. Full body in every quadrant, no clipping, no overlap between cells, no shadows outside characters. No watercolor/paper grain, no realism, no fine texture, no tiny clutter, no backdrop, no ground, no text, no border, no checkerboard. The FOUR sprites should fill each equal square cell at approximately 75% of cell height, feet on same baseline.\nPrimary request: A CUTE LITTLE QUADRUPED BRAMBLE HEDGEHOG in low crawling animal posture, wide oval sage-green back with seven large soft pointed leaf spines, cream face and belly, tiny brown nose, two dark plum eyes and FOUR SHORT CLEAR ANIMAL LEGS underneath. Not upright, not biped. Four natural walking gait phases: front-left/back-right forward, passing stance, front-right/back-left forward, passing stance. All frames must show four legs or clearly visible far legs, body low and horizontal, paws actually change position, spine silhouette stays the same. Three-quarter front-right view.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "thief",
+      "type": "enemy",
+      "subject": "A CUTE ACORN THIEF MOUSE, warm caramel chubby mouse with large round peach inner ears, cream muzzle and chest, tiny plum eyes, long curled tail, sage leaf neckerchief, holding ONE small acorn near chest with both hands. Small biped animal TWO distinct feet. Four walking frames with left foot forward, passing stance, right foot forward, passing stance, arms hold acorn steadily, tail gently changes arc. No realistic fur strands, no human shoes.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-6d7091b8-67d6-48e7-8000-110ad7b71b6b.png",
+      "prompt": "Use case: stylized-concept. Asset type: 2D game WALKING ANIMATION SPRITE SHEET, transparent RGBA, EXACTLY FOUR separate sprites in a precise TWO BY TWO grid, no labels, no separators. Input images are STYLE REFERENCES ONLY, not subjects. Match their confident thick clean warm mauve-brown outline and soft flat pastel cel shading. Chubby, cute, clean large readable shapes. Each quadrant contains the SAME ONE creature, SAME proportions, same three-quarter front-right orientation, same scale, same character design, center aligned in cell with ample transparent gap. Four successive gait phases in reading order, not four different designs or directions. Body size must remain consistent while feet visibly alternate. Full body in every quadrant, no clipping, no overlap between cells, no shadows outside characters. No watercolor/paper grain, no realism, no fine texture, no tiny clutter, no backdrop, no ground, no text, no border, no checkerboard. The FOUR sprites should fill each equal square cell at approximately 75% of cell height, feet on same baseline.\nPrimary request: A CUTE ACORN THIEF MOUSE, warm caramel chubby mouse with large round peach inner ears, cream muzzle and chest, tiny plum eyes, long curled tail, sage leaf neckerchief, holding ONE small acorn near chest with both hands. Small biped animal TWO distinct feet. Four walking frames with left foot forward, passing stance, right foot forward, passing stance, arms hold acorn steadily, tail gently changes arc. No realistic fur strands, no human shoes.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "crown",
+      "type": "enemy",
+      "subject": "A CUTE CROWN SLIME BOSS, plump pink-lilac jelly mound, simple golden three-point crown with one coral heart jewel, two big dark plum eyes and small determined eyebrows. Broad readable royal silhouette, no ruffled skirt, no intricate jewelry. Four walking/bouncing gait frames: neutral mound, broad squash leaning right, gently stretched mound with crown leaning forward, broad squash leaning left. Keep crown size and recognizable face identical.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-bc828f02-be42-4eaf-b5c3-b031286813ec.png",
+      "prompt": "Use case: stylized-concept. Asset type: 2D game WALKING ANIMATION SPRITE SHEET, transparent RGBA, EXACTLY FOUR separate sprites in a precise TWO BY TWO grid, no labels, no separators. Input images are STYLE REFERENCES ONLY, not subjects. Match their confident thick clean warm mauve-brown outline and soft flat pastel cel shading. Chubby, cute, clean large readable shapes. Each quadrant contains the SAME ONE creature, SAME proportions, same three-quarter front-right orientation, same scale, same character design, center aligned in cell with ample transparent gap. Four successive gait phases in reading order, not four different designs or directions. Body size must remain consistent while feet visibly alternate. Full body in every quadrant, no clipping, no overlap between cells, no shadows outside characters. No watercolor/paper grain, no realism, no fine texture, no tiny clutter, no backdrop, no ground, no text, no border, no checkerboard. The FOUR sprites should fill each equal square cell at approximately 75% of cell height, feet on same baseline.\nPrimary request: A CUTE CROWN SLIME BOSS, plump pink-lilac jelly mound, simple golden three-point crown with one coral heart jewel, two big dark plum eyes and small determined eyebrows. Broad readable royal silhouette, no ruffled skirt, no intricate jewelry. Four walking/bouncing gait frames: neutral mound, broad squash leaning right, gently stretched mound with crown leaning forward, broad squash leaning left. Keep crown size and recognizable face identical.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "green",
+      "type": "enemy",
+      "subject": "A SMALL MINT-GREEN SPROUT SLIME, jellybean mound body, one two-leaf sprout, rosy cheeks, two big dark plum eyes. Four walking/bouncing frames: frame1 neutral mound, frame2 low and broad squash moving weight right, frame3 gently tall stretch with sprout tilted forward, frame4 low squash moving weight left. Cute simple solid semiopaque cel shaded mint, no translucent photographic material.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-3889f8f5-81ed-40b5-b4df-4b0267afeca4.png",
+      "prompt": "Use case: stylized-concept. Asset type: 2D game WALKING ANIMATION SPRITE SHEET, transparent RGBA, EXACTLY FOUR separate sprites in a precise TWO BY TWO grid, no labels, no separators. Input images are STYLE REFERENCES ONLY, not subjects. Match their confident thick clean warm mauve-brown outline and soft flat pastel cel shading. Chubby, cute, clean large readable shapes. Each quadrant contains the SAME ONE creature, SAME proportions, same three-quarter front-right orientation, same scale, same character design, center aligned in cell with ample transparent gap. Four successive gait phases in reading order, not four different designs or directions. Body size must remain consistent while feet visibly alternate. Full body in every quadrant, no clipping, no overlap between cells, no shadows outside characters. No watercolor/paper grain, no realism, no fine texture, no tiny clutter, no backdrop, no ground, no text, no border, no checkerboard. The FOUR sprites should fill each equal square cell at approximately 75% of cell height, feet on same baseline.\nPrimary request: A SMALL MINT-GREEN SPROUT SLIME, jellybean mound body, one two-leaf sprout, rosy cheeks, two big dark plum eyes. Four walking/bouncing frames: frame1 neutral mound, frame2 low and broad squash moving weight right, frame3 gently tall stretch with sprout tilted forward, frame4 low squash moving weight left. Cute simple solid semiopaque cel shaded mint, no translucent photographic material.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "fat",
+      "type": "enemy",
+      "subject": "A CHUBBY CORAL-PINK MUSHROOM CREATURE, broad rounded pink cap with exactly five cream spots, cream chubby body, small two arms, TWO distinct short feet, big plum eyes and cute determined expression. Four walking frames: left foot forward/right back, passing stance, right foot forward/left back, passing stance. Feet must clearly alternate, cap tilts only slightly. No realistic mushroom gills, no ornate scenery.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-7ee7de5a-6375-4038-beb8-c6f242812ed1.png",
+      "prompt": "Use case: stylized-concept. Asset type: 2D game WALKING ANIMATION SPRITE SHEET, transparent RGBA, EXACTLY FOUR separate sprites in a precise TWO BY TWO grid, no labels, no separators. Input images are STYLE REFERENCES ONLY, not subjects. Match their confident thick clean warm mauve-brown outline and soft flat pastel cel shading. Chubby, cute, clean large readable shapes. Each quadrant contains the SAME ONE creature, SAME proportions, same three-quarter front-right orientation, same scale, same character design, center aligned in cell with ample transparent gap. Four successive gait phases in reading order, not four different designs or directions. Body size must remain consistent while feet visibly alternate. Full body in every quadrant, no clipping, no overlap between cells, no shadows outside characters. No watercolor/paper grain, no realism, no fine texture, no tiny clutter, no backdrop, no ground, no text, no border, no checkerboard. The FOUR sprites should fill each equal square cell at approximately 75% of cell height, feet on same baseline.\nPrimary request: A CHUBBY CORAL-PINK MUSHROOM CREATURE, broad rounded pink cap with exactly five cream spots, cream chubby body, small two arms, TWO distinct short feet, big plum eyes and cute determined expression. Four walking frames: left foot forward/right back, passing stance, right foot forward/left back, passing stance. Feet must clearly alternate, cap tilts only slightly. No realistic mushroom gills, no ornate scenery.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    },
+    {
+      "id": "spore",
+      "type": "enemy",
+      "subject": "A SMALL LILAC SPORE MUSHROOM CREATURE, simple lavender cap made of three overlapping scalloped soft lobes, exactly three pink circular cap spots, pale mauve chubby body with two short arms and TWO distinct short feet, sleepy determined face. Four walking frames left foot forward, passing stance, right foot forward, passing stance. Alternating feet and subtle cap sway. No lace ruffles, no mushroom gills, no glitter texture.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216de-6b42-75c2-8318-5af2fb1d3cce\\exec-79789035-0188-4ab5-9832-712529946a93.png",
+      "prompt": "Use case: stylized-concept. Asset type: 2D game WALKING ANIMATION SPRITE SHEET, transparent RGBA, EXACTLY FOUR separate sprites in a precise TWO BY TWO grid, no labels, no separators. Input images are STYLE REFERENCES ONLY, not subjects. Match their confident thick clean warm mauve-brown outline and soft flat pastel cel shading. Chubby, cute, clean large readable shapes. Each quadrant contains the SAME ONE creature, SAME proportions, same three-quarter front-right orientation, same scale, same character design, center aligned in cell with ample transparent gap. Four successive gait phases in reading order, not four different designs or directions. Body size must remain consistent while feet visibly alternate. Full body in every quadrant, no clipping, no overlap between cells, no shadows outside characters. No watercolor/paper grain, no realism, no fine texture, no tiny clutter, no backdrop, no ground, no text, no border, no checkerboard. The FOUR sprites should fill each equal square cell at approximately 75% of cell height, feet on same baseline.\nPrimary request: A SMALL LILAC SPORE MUSHROOM CREATURE, simple lavender cap made of three overlapping scalloped soft lobes, exactly three pink circular cap spots, pale mauve chubby body with two short arms and TWO distinct short feet, sleepy determined face. Four walking frames left foot forward, passing stance, right foot forward, passing stance. Alternating feet and subtle cap sway. No lace ruffles, no mushroom gills, no glitter texture.",
+      "references": [
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/wardrobe-portraits-v5122/nemo-default.webp",
+        "C:/Users/wsu58/Documents/Codex/2026-11-10/referenced-chatgpt-conversation-this-is-an/work/monster-refresh/assets/awakening-v51224-art/seed.webp"
+      ]
+    }
+  ],
+  "processing": "Mechanical alpha trimming, RGBA cleanup, Lanczos downscale, 2x2 frame crop and sprite atlas packing. No drawn image changes."
+}

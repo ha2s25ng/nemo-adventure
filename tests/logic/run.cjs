@@ -16,12 +16,20 @@ const suites = [
   ['New passives and simple cards', './passive-v51216.cjs'],
   ['Guaranteed awakening queue', './awakening-queue.cjs'],
   ['Independent attack schedule', './schedule-v51224.cjs'],
-  ['All weapon awakenings', './all-awakenings-v51224.cjs']
+  ['All weapon awakenings', './all-awakenings-v51224.cjs'],
+  ['Weapon balance and actual descriptions', './weapon-refresh-v51226.cjs'],
+  ['Renewed stage configuration', './stage-config-v51226.cjs'],
+  ['Campaign medals and ticket accounting', './stage-progress-v51226.cjs'],
+  ['World layout and region palettes', './world-config-v51226.cjs'],
+  ['Campaign engine integration', './stage-integration-v5130.cjs'],
+  ['Renewed world art and actual draws', './world-art-v5130.cjs'],
+  ['Real capsule ticket purchases', './ticket-purchase-v5130.cjs']
 ];
+(async()=>{
 let failed = 0;
 for (const [name, modulePath] of suites) {
   try {
-    const result = require(modulePath)();
+    const result = await require(modulePath)();
     const passed = result.failures.length === 0 && result.passed === result.total;
     console.log(`${passed ? 'PASS' : 'FAIL'} ${name}: ${result.passed}/${result.total}; ${result.detail}`);
     if (!passed) {
@@ -37,3 +45,4 @@ for (const [name, modulePath] of suites) {
 }
 console.log(`${failed ? 'FAIL' : 'PASS'} Logic regression suites: ${suites.length - failed}/${suites.length}.`);
 process.exitCode = failed ? 1 : 0;
+})().catch(error=>{console.error(error.stack);process.exitCode=1;});

@@ -285,7 +285,7 @@
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
 #setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.12.25" />
+</style><meta name="nemo-version" content="5.13.0" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -611,11 +611,15 @@
 </style>
 <script src="./assets/awakening-v51224/design.js"></script>
 <script src="./assets/awakening-v51218/awakening.js"></script>
-<script src="./assets/campaign-v573/stages.js?v=5.12.25"></script>
+<script src="./assets/campaign-v573/stages.js?v=5.13.0"></script>
+<script src="./assets/stage-v51226/campaign.js"></script>
+<script src="./assets/stage-v51226/progress.js"></script>
+<script src="./assets/world-v51226/world.js"></script>
+<script src="./assets/world-v51226-art/registry.js"></script>
 <script src="./assets/campaign-v573/maps.js?v=5.9.0"></script>
-<script src="./assets/campaign-v590/bosses.js?v=5.12.25"></script>
-<script src="./assets/campaign-v590/monsters.js?v=5.12.25"></script>
-<script src="./assets/survival-v594/bosses.js?v=5.12.25"></script>
+<script src="./assets/campaign-v590/bosses.js?v=5.13.0"></script>
+<script src="./assets/campaign-v590/monsters.js?v=5.13.0"></script>
+<script src="./assets/survival-v594/bosses.js?v=5.13.0"></script>
 <script src="./assets/survival-v594/drops.js"></script>
 <style id="rare-card-art">
 #app #cards .choice-card[data-kind="rare"]{
@@ -734,14 +738,14 @@
 @media(max-width:600px){.draw-layout{grid-template-columns:1fr}.draw-reward{min-height:200px}.draw-reward-art{height:150px}.draw-photo-grid{max-width:330px;margin:auto}}
 @media(prefers-reduced-motion:no-preference){.draw-reward[data-reveal="true"] .draw-reward-art{animation:draw-reveal .5s ease-out}@keyframes draw-reveal{from{opacity:.2;transform:translateY(9px) scale(.84)}to{opacity:1;transform:none}}}
 </style>
-<link rel="stylesheet" href="./assets/capsule-v5912/capsule.css?v=5.12.25">
-<script src="./assets/lucky-draw-v5910/draw.js?v=5.12.25"></script>
-<link rel="stylesheet" href="./assets/capsule-v5916/premium.css?v=5.12.25">
-<link rel="stylesheet" href="./assets/photocards-v5102/cards.css?v=5.12.25">
-<link rel="stylesheet" href="./assets/characters-v5120/characters.css?v=5.12.25">
-<script src="./assets/characters-v5120/characters.js?v=5.12.25"></script>
-<script src="./assets/photocards-v5102/cards.js?v=5.12.25"></script>
-<script src="./assets/dori-v5110/photos.js?v=5.12.25"></script>
+<link rel="stylesheet" href="./assets/capsule-v5912/capsule.css?v=5.13.0">
+<script src="./assets/lucky-draw-v5910/draw.js?v=5.13.0"></script>
+<link rel="stylesheet" href="./assets/capsule-v5916/premium.css?v=5.13.0">
+<link rel="stylesheet" href="./assets/photocards-v5102/cards.css?v=5.13.0">
+<link rel="stylesheet" href="./assets/characters-v5120/characters.css?v=5.13.0">
+<script src="./assets/characters-v5120/characters.js?v=5.13.0"></script>
+<script src="./assets/photocards-v5102/cards.js?v=5.13.0"></script>
+<script src="./assets/dori-v5110/photos.js?v=5.13.0"></script>
 <script src="./assets/nemo-album-v5913/photos.js"></script>
 <style id="passive-card-readable-values">
 #app #cards .choice-effect strong.passive-effect { display:grid !important; gap:5px; min-width:0; }
@@ -799,6 +803,7 @@
 #app .pause-awakened-label{display:block;color:#754294;font-size:11px;font-weight:900;white-space:nowrap;}
 
 </style>
+<link rel="stylesheet" href="./assets/stage-v51226/campaign.css">
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
 <div class="hidden" id="hud">
@@ -853,8 +858,8 @@
     <div class="menu-art" aria-hidden="true">
       <div class="menu-art-mat"></div>
       <img id="hero" alt="">
-      <img class="menu-monster menu-slime" src="./assets/monsters-v553/green.webp" alt="">
-      <img class="menu-monster menu-mushroom" src="./assets/monsters-v553/fat.webp" alt="">
+      <img class="menu-monster menu-slime" src="./assets/world-v51226-art/green.webp" alt="">
+      <img class="menu-monster menu-mushroom" src="./assets/world-v51226-art/fat.webp" alt="">
     </div>
   </div>
 </div>
@@ -864,6 +869,7 @@
     <p id="stage-progress"></p>
     <nav id="stage-chapters" class="stage-chapters" aria-label="모험 지역"></nav>
     <h3 id="stage-chapter-title"></h3>
+    <div id="stage-route-summary" class="stage-route-summary"></div>
     <div class="stage-grid" id="stage-options" aria-labelledby="stage-chapter-title"></div>
   </div>
 </div>
@@ -1029,7 +1035,7 @@ const DATA = Object.freeze({
  world:160, survival:null, widthWorld:28,
  player:{attack:100,hp:100,speed:3.65,crit:.05,critMultiplier:1.5,invuln:1,pickup:1.75,weaponSlots:5,passiveSlots:5,rerolls:1},
  weapons:{
-  star:{name:'스타 샷',icon:'⭐',coef:0.6,cd:0.68,range:12.8,up:[],break:'별 +1 · 한 번에 총 3발 발사',steps:{
+  star:{name:'스타 샷',icon:'⭐',coef:0.6,cd:0.85,range:12.8,up:[],break:'별 +1 · 한 번에 총 3발 발사',steps:{
    2:['쌍별','별 +1 · 한 번에 총 2발 발사'],
    3:['빛나는 별','모든 별의 피해 +25%'],
    5:['행운의 별','치명타 확률 +15%p'],
@@ -1131,13 +1137,17 @@ const FOREST_PATHS=[
  {width:1.20,points:[westJunction,[-42,-3],[-31,-13],[-25,-25],[-16,-37],northJunction]}
 ].map(({width,points})=>makeForestPath(width,points.map(([x,y])=>forestPoint(x,y))));
 const PATH_SEGMENTS=FOREST_PATHS.flatMap(({segments})=>segments);
-const CAMPAIGN_MAPS=NEMO_MAPS.map((map,index)=>{
- const key='stageLandmark'+(index+1);
- const paths=map.paths.map((points,i)=>makeForestPath(i===2?1.65:2.12,points.map(([x,y])=>forestPoint(x,y))));
+const STAGES=NEMO_CAMPAIGN_RENEWAL.stages;
+function buildRenewedMap(map,index){
+ const key=index<0?'survivalLandmark':'stageLandmark'+(index+1);
+ const paths=map.paths.map((points,i)=>makeForestPath(map.pathWidths[i],points.map(([x,y])=>forestPoint(x,y))));
  const structures=map.landmarks.map(([x,y,h,rx,ry])=>placeInForest({key,x,y,h,rx,ry}));
  const pools=map.pools.map(([x,y,w,h,rx,ry])=>placeInForest({key:map.landmarkPool?key:map.poolArt??'pond',x,y,w,h,rx,ry}));
- return {...map,key,paths,sections:paths.flatMap(route=>route.segments),structures,pools,landmarks:[...structures,...pools]};
-});
+ const trees=map.dressing.map(tree=>placeInForest({...tree}));
+ return {...map,key,paths,sections:paths.flatMap(route=>route.segments),structures,pools,dressing:trees,landmarks:[...structures,...pools,...trees]};
+}
+const CAMPAIGN_MAPS=NEMO_WORLD_RENEWAL.maps.map(buildRenewedMap);
+const SURVIVAL_MAP=buildRenewedMap(NEMO_WORLD_RENEWAL.survivalMap,-1);
 const GROVES=[
  [-14,-6,8,true],[4,-11,10,true],[14,9,9,false],[24,-24,10,false],[-29,14,11,false],
  [38,18,14,true],[-34,-22,12,false],[-6,36,14,false],[7,-35,11,true],
@@ -1162,6 +1172,7 @@ const RARE_PICKUPS={
 const RARE_PICKUP_KINDS=Object.keys(RARE_PICKUPS);
 const RARE_DROP={chance:.0045,unlock:40,life:22,cooldown:55,freeze:5};
 DATA.weapons.cannon=DORI_CANNON;
+DATA.weapons.cannon.cd=1.40;DATA.weapons.ribbon.coef=1.02;
 for(const id of ['star','cannon'])DATA.weapons[id].steps[4]=['투사체 추가','투사체 +1'];
 DATA.weapons.star.steps={2:['빛나는 별','공격력 증가'],3:['재빠른 별','공격 속도 증가'],4:['세 갈래 별','별 3발 발사'],5:['행운의 별','치명타 확률 증가'],6:['단단한 별','공격력 증가'],7:['완성된 별','공격 속도와 치명타 확률 증가']};
 DATA.weapons.cannon.steps[7]=['완성된 공','공격력 증가'];
@@ -1277,8 +1288,14 @@ ASSET_DATA.pickupCrystal='./assets/forest-pickups-v5637/xp-crystal.png';
 ASSET_DATA.pickupBone='./assets/forest-pickups-v5637/health-bone.png';
 ASSET_DATA.ui_gold='./assets/nemo-wardrobe-v5631/gold-pouch.png';
 ASSET_DATA.ui_heal='./assets/nemo-wardrobe-v5631/sweet-snack.png';
-for(const [i,map] of CAMPAIGN_MAPS.entries())ASSET_DATA[map.key]=map.art??'./assets/campaign-v573/landmark-'+(i+1)+'.png?v=5.9.0';
+for(const [i,map] of [...CAMPAIGN_MAPS,SURVIVAL_MAP].entries())ASSET_DATA[map.key]=map.art??'./assets/campaign-v573/landmark-'+(i+1)+'.png?v=5.9.0';
 for(const id of ['windstep','leafguard','emberheart','honeypouch'])ASSET_DATA['ui_'+id]='./assets/passives-v580/'+id+'.png';
+Object.assign(ASSET_DATA,NEMO_WORLD_RENEWAL.assetPaths);
+for(const [kind,art] of Object.entries(NEMO_WORLD_RENEWAL_ART.enemies)){
+ ASSET_DATA['renewalEnemy_'+kind]=art.assetPath;
+ ASSET_DATA['enemy_'+kind]='./assets/world-v51226-art/'+(kind==='boss'?'crown':kind)+'.webp';
+ for(const suffix of ['directions','gait','move-1','move-2','attack','hit'])delete ASSET_DATA['enemy_'+kind+'_'+suffix];
+}
 const sprites={};
 function loadSprite(key,url){
  if(!sprites[key]){
@@ -1310,7 +1327,7 @@ for(const id of ['windstep','leafguard','emberheart','honeypouch','insight'])ASS
 ASSET_DATA.spell_seed=ASSET_DATA.ui_seed;
 ASSET_DATA.cloudFamiliar=ASSET_DATA.spell_cloud;
 for(const [key,url] of Object.entries(ASSET_DATA)){
- if(!key.startsWith('stageLandmark'))loadSprite(key,url);
+ if(!key.startsWith('stageLandmark')&&!['windmill','tree_pink','tree_green','pond','rock','bush','mushroom','flowers','groundFull'].includes(key))loadSprite(key,url);
 }
 const CAMPAIGN_LEGACY_BOSS_ART=Object.fromEntries(
  ['boss','thorn-guardian','moonwing-queen','storm-owl','root-boar'].map(id=>[id,{size:ENEMY_ART[id],flying:FLYING_ENEMIES.has(id)}])
@@ -1325,7 +1342,7 @@ function loadCampaignCreature(id){
 }
 function loadCampaignMap(map){
  loadSprite(map.key,ASSET_DATA[map.key]);
- for(const url of [map.texture,map.poolArt,...(map.dressing??[])])if(url)loadSprite(url,url);
+ for(const key of new Set([map.poolArt,...map.dressing.map(prop=>prop.key)]))if(key&&ASSET_DATA[key])loadSprite(key,ASSET_DATA[key]);
 }
 const COSTUME_ART='./assets/nemo-wardrobe-v5631/';
 const COSTUMES=[
@@ -1519,20 +1536,81 @@ function castFromWand(p,a){playSound('cast');p.castDuration=NEMO_CAST/spellTrave
 function wandLink(from,to,color='#fff1b4'){g.effects.push({kind:'wandLink',x:from.x,y:from.y,ex:to.x,ey:to.y,color,life:.28,max:.28});}
 
 const WEAPON_GUIDE={
- star:{role:'니모 전용 · 별 탄막',desc:'가까운 적에게 별을 발사합니다. 별 추가와 피해 강화를 번갈아 얻고, 최종 진화하면 적을 관통해요.',pair:'옆으로 퍼지는 별의 피해는 중앙 별의 70%예요. 같은 발사의 별이 한 적에게 여러 번 맞으면, 첫 타격 이후 피해는 65%만 들어가요.'},
- orbit:{"role":"근거리 · 회전 접촉 공격","desc":"회전하는 별에 닿은 적만 피해를 받습니다. 적에게 접근하며 별의 궤도를 맞출수록 강해져요.","pair":"달빛 종소리로 적을 밀어낸 뒤 회전 별의 궤도에 걸치게 해보세요."},
- moon:{"role":"원거리 · 밀집 대열 관통","desc":"민트색 프리스비를 적이 모인 방향으로 던집니다. 원반이 직선으로 날아가며 실제로 닿은 적들을 관통해요.","pair":"솜사탕 소용돌이로 느려진 적을 한 줄로 꿰뚫기 좋아요."},
- bubble:{"role":"원거리 · 추적 폭발과 둔화","desc":"느리게 따라가는 방울이 부딪히거나 수명이 다하면 터집니다. 폭발 주변의 적을 잠시 둔화시켜요.","pair":"방울로 적을 늦추면 별똥별이 무리에 떨어질 시간을 벌 수 있어요."},
- bloom:{"role":"광역 · 거점 유지","desc":"적이 뭉친 곳에 꽃밭을 피웁니다. 꽃밭에 오래 머무는 적에게 반초마다 피해를 줘요.","pair":"서리 수정이 적을 늦추면 꽃밭에 더 오래 머물러요."},
- cloud:{"role":"원거리 · 보스 집중과 약화","desc":"보스를 우선 노리고, 보스가 사거리 밖이면 현재 체력이 가장 높은 적에게 벼락을 떨어뜨립니다. 돌파하면 대상이 받는 피해가 늘어요.","pair":"스타 샷처럼 빠르게 연속으로 맞히는 무기가 약화 효과를 활용하기 좋아요."},
- ribbon:{"role":"근거리 · 전방 돌파","desc":"가까운 적을 향해 130도 부채꼴로 리본을 휘둘러 적을 밖으로 밀어냅니다. 돌파하면 같은 방향을 다시 쓸어요.","pair":"리본으로 적을 밀어 꽃밭이나 덫 쪽으로 유도할 수 있어요."},
- book:{"role":"원거리 · 여러 적 동시 추적","desc":"종이비행기가 각자 다른 적을 추적합니다. 적이 여러 방향에서 들어올 때 가장 강해요.","pair":"니모 주변을 지키는 달빛 종소리와 함께 쓰면 여러 방향에서 들어오는 적을 상대하기 좋아요."},
- comet:{"role":"광역 · 지연 폭발","desc":"가장 밀집한 곳을 조준한 뒤, 별똥별이 잠시 뒤에 떨어져 한꺼번에 피해를 줍니다.","pair":"서리 수정과 함께 쓰면 예고 지점에서 적이 벗어나기 어려워요."},
- frost:{"role":"원거리 · 관통 둔화","desc":"서리 수정이 기본으로 적 2명을 관통합니다. 맞은 적의 이동 속도가 느려져요.","pair":"블룸 가든이나 별똥별 소나기가 피해를 넣을 시간을 벌어줘요."},
- feather:{"role":"원거리 · 왕복 투사체","desc":"깃털을 던지면 끝에서 방향을 돌려 니모에게 돌아옵니다. 위치를 바꿔 돌아오는 길에도 적을 맞힐 수 있어요.","pair":"리본으로 길을 열고 자리를 옮기면 깃털이 돌아오는 궤적도 바뀌어요."},
- vortex:{"role":"근거리 · 지속 피해와 둔화","desc":"캐릭터를 따라가는 바람이 반초마다 주변 적에게 피해를 줍니다. 강화하면 둔화로 접근을 늦출 수 있어요.","pair":"느려진 적을 달빛 종소리로 밀어내며 거리를 벌려 보세요."},
- seed:{"role":"설치형 · 추격 경로 방어","desc":"움직일 때는 뒤에 덫을 심고, 멈춰 있을 때는 가까운 적 밑에 심습니다. 덫을 따라오도록 유도해 보세요.","pair":"리본으로 적을 덫 쪽에 밀거나, 둔화로 덫을 심을 시간을 벌 수 있어요."},
- bell:{"role":"근거리 · 탄환 방어","desc":"가까운 적이나 탄환을 감지하면 종이 울려요. 적을 밀어내고 파동에 닿은 적 탄환을 최대 2개 지웁니다.","pair":"꽃밭이나 회전 별처럼 가까운 곳을 지키는 무기와 함께 쓰기 좋아요."}
+ "star": {
+  "role": "니모 전용 · 별 탄막",
+  "desc": "가까운 적에게 별을 발사합니다. 강화하면 별이 세 갈래로 퍼지고, 각성하면 별의 개수가 늘어나며 적을 관통합니다.",
+  "pair": "보조 별은 중앙 별보다 가볍게 적중합니다. 같은 적에게 별이 몰려도 피해가 과하게 중첩되지 않습니다."
+ },
+ "cannon": {
+  "role": "도리 전용 · 장난감 범위 공격",
+  "desc": "가까운 적에게 삑삑이 공을 보내 직격과 주변 폭발로 공격합니다. 각성하면 공이 다른 적에게 튀어 다시 폭발합니다.",
+  "pair": "한 번 보낸 공들의 폭발은 같은 적에게 겹쳐 들어가지 않습니다."
+ },
+ "orbit": {
+  "role": "근거리 · 회전 접촉 공격",
+  "desc": "주변을 회전하는 별이 닿은 적을 공격합니다. 각성하면 반복 적중 후 별꽃 폭발이 일어납니다.",
+  "pair": "별의 궤도에 적을 걸치며 움직이면 주변의 적을 함께 상대하기 좋습니다."
+ },
+ "moon": {
+  "role": "원거리 · 직선 관통",
+  "desc": "프리스비가 직선으로 날아가 닿은 적들을 관통합니다. 각성하면 날아간 길을 되돌아오며 다시 공격합니다.",
+  "pair": "돌아오는 원반은 보조 공격입니다. 한 방향으로 모인 적들을 상대하기 좋습니다."
+ },
+ "bubble": {
+  "role": "원거리 · 추적 폭발과 둔화",
+  "desc": "적을 따라가는 방울이 터지며 주변 적을 느리게 합니다. 각성하면 작은 방울이 갈라져 다른 적을 찾아갑니다.",
+  "pair": "작은 방울은 다시 갈라지지 않고, 원래 폭발에 맞은 적을 다시 공격하지 않습니다."
+ },
+ "bloom": {
+  "role": "광역 · 거점 유지",
+  "desc": "적이 모인 곳에 꽃밭을 피워 지속적으로 공격합니다. 각성하면 꽃밭의 빛나는 꽃잎을 밟아 체력을 회복할 수 있습니다.",
+  "pair": "꽃밭이 겹쳐도 피해와 회복이 중첩되지 않습니다."
+ },
+ "cloud": {
+  "role": "원거리 · 강한 적 집중",
+  "desc": "사거리 안의 보스를 우선 노리고, 보스가 없으면 체력이 높은 적을 공격합니다. 강화 후 같은 적의 표식을 다시 맞히면 번개가 강해집니다. 각성하면 다른 적에게 번개가 이어집니다.",
+  "pair": "표식은 구름 친구의 다음 번개에만 영향을 줍니다. 연쇄 번개는 같은 적을 반복해서 오가지 않습니다."
+ },
+ "ribbon": {
+  "role": "근거리 · 전방 돌파",
+  "desc": "가까운 적을 향해 리본을 넓게 휘둘러 일반 적을 밀어냅니다. 각성하면 반대 방향으로 리본이 다시 휘둘러집니다.",
+  "pair": "앞뒤로 접근하는 적에게 대응하기 좋습니다. 보스의 행동을 넉백으로 끊지는 않습니다."
+ },
+ "book": {
+  "role": "원거리 · 여러 적 추적",
+  "desc": "종이비행기들이 서로 다른 적을 추적합니다. 적이 하나뿐이면 보조 비행기가 함께 날아갑니다. 각성하면 다른 적에게 한 번 더 이어서 날아갑니다.",
+  "pair": "추적과 연쇄 공격으로 흩어진 적을 상대합니다. 같은 비행기가 한 적을 계속 왕복하지는 않습니다."
+ },
+ "comet": {
+  "role": "광역 · 지연 폭발",
+  "desc": "적이 모인 곳에 유성이 떨어져 폭발합니다. 각성하면 떨어진 자리에 별빛 잔불이 남아 추가로 공격합니다.",
+  "pair": "잔불이 겹쳐도 같은 적에게 피해가 중첩되지 않습니다. 느려진 적을 상대하기 좋습니다."
+ },
+ "frost": {
+  "role": "원거리 · 관통 둔화",
+  "desc": "서리 수정이 적을 관통하며 움직임을 늦춥니다. 각성하면 반복해서 맞은 일반 적이 잠시 얼어붙습니다.",
+  "pair": "보스에게는 빙결 대신 둔화만 적용됩니다. 일반 적도 연속으로 계속 얼어붙지는 않습니다."
+ },
+ "feather": {
+  "role": "원거리 · 왕복 투사체",
+  "desc": "깃털이 날아갔다가 돌아오며 적을 공격합니다. 각성하면 돌아오는 깃털이 다른 적을 찾아 경로를 꺾습니다.",
+  "pair": "돌아오는 깃털은 보조 공격입니다. 이동하며 복귀 경로를 적에게 맞출 수 있습니다."
+ },
+ "vortex": {
+  "role": "근거리 · 지속 피해와 둔화",
+  "desc": "캐릭터를 따라가는 소용돌이가 주변 적을 느리게 하고 지속적으로 공격합니다. 각성하면 주기적으로 넓게 퍼집니다.",
+  "pair": "적을 끌어당기지 않고 접근을 늦춥니다. 퍼지는 동안에도 별도의 중복 피해가 생기지는 않습니다."
+ },
+ "seed": {
+  "role": "설치형 · 추격 경로 방어",
+  "desc": "움직일 때는 뒤에, 멈추면 가까운 적 아래에 씨앗 덫을 심습니다. 덫은 적이 닿거나 잠시 지나면 폭발합니다. 각성하면 덫 대신 걸어간 자리에 공격하는 꽃길을 남깁니다.",
+  "pair": "꽃길은 움직일 때 생기고 잠시 뒤 사라집니다. 여러 꽃길이 겹쳐도 피해가 중첩되지 않습니다."
+ },
+ "bell": {
+  "role": "근거리 · 주기적인 울림",
+  "desc": "일정한 간격으로 종이 울려 주변 적을 공격합니다. 각성하면 일반 적을 밀어내고 가까운 적 탄환을 지웁니다.",
+  "pair": "기본 종은 탄환을 지우지 않습니다. 각성 후에도 모든 탄환을 한꺼번에 지우거나 보스를 밀어내지는 않습니다."
+ }
 };
 const PASSIVE_GUIDE={coin:'전투 중 획득하는 골드가 늘어나요.',claw:'치명타가 터졌을 때 더 강한 피해를 줘요.',courage:'보스에게 더 강한 피해를 줘요.',jelly:'피격 후 잠시 더 안전하게 움직일 수 있어요.',magnet:'경험치 획득 반경이 커져서 더 먼 보석도 즉시 얻습니다.',
  windstep:'움직이는 동안 다음 공격이 더 빨리 준비돼요.',
@@ -1541,7 +1619,7 @@ const PASSIVE_GUIDE={coin:'전투 중 획득하는 골드가 늘어나요.',claw
  honeypouch:'바닥에서 주운 회복 아이템의 효과가 커져요.',
  insight:'모은 보석에서 얻는 경험치가 더 많아져요.'
 };
-WEAPON_GUIDE.cannon={role:'도리 전용 · 장난감 범위 공격',desc:'가장 가까운 적에게 삑삑이 공을 톡 보냅니다. 공이 맞으면 눌렸다가 발바닥 충격파로 터져 주변 적에게 직격 피해의 35%와 밀침을 줘요.',pair:'한 번에 보낸 공의 폭발은 같은 적에게 한 번만 적용돼요. 최종 진화에서 관통 또는 폭발 강화를 고를 수 있어요.'};
+
 const PASSIVE_ROLE={magic:'장착한 모든 무기가 더 강해져요',quick:'마법을 더욱 빠르게 사용해요',lucky:'행운의 한 방이 더 자주 터져요',big:'마법이 더 넓게 퍼져요',cloak:'더욱 튼튼해져요',shoes:'조금 더 빠르게 움직여요',magnet:'경험치 보석을 더 멀리서 모아요'};
 function skillIcon(id,fallback){const src=ASSET_DATA['ui_'+id];return src?`<img class="new-magic-icon" src="${src}" alt="${W[id]?.name||DATA.passives[id]?.[0]||(id==='gold'?'반짝이는 주머니':id==='heal'?'달콤한 간식':'스킬 아이콘')}">`:fallback;}
 function friendlyEffect(text){return text.replaceAll('×0.85','(별 하나의 위력 소폭 감소)').replaceAll('×0.8','(방울 하나의 위력 소폭 감소)').replaceAll('×0.75','(발사체 하나의 위력 소폭 감소)').replaceAll('×1.15','+15%').replaceAll('×1.25','+25%').replace(/×1\.2(?!\d)/g,'+20%').replaceAll('×1.3','+30%').replaceAll('×1.4','+40%').replaceAll('×1.5','+50%').replaceAll('×1.6','+60%').replaceAll('50%p','50%p');}
@@ -1623,7 +1701,7 @@ function renderCodex(){
   const id=currentCodex,d=W[id],w=g?.weapons[id];
   const growth=Object.keys(d.steps||{}).map(lv=>`<div class="codex-up"><b>Lv.${lv}</b><span>${levelChoiceCopy(id,Number(lv))}</span></div>`).join('');
   const discoveries=recipes.filter(recipe=>recipe.weapon===id).map(recipe=>awakenings.has(recipe.id)?`<p>${recipe.name} · 발견 완료</p>`:'<p>??? · 미발견</p>').join('');
-  content=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(id,d.icon)}</div><div class="codex-intro"><h3>${d.name}</h3><p>${weaponGuide(id).role}</p><p>${w?'현재 Lv.'+w.lv:'기본 Lv.1'} · 최대 Lv.7${w?.awakened?' · 각성':''}</p></div></div><div class="codex-columns"><section><h4>레벨별 강화</h4>${growth}</section><section><h4>발견한 각성</h4>${discoveries}</section></div>`;
+  content=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(id,d.icon)}</div><div class="codex-intro"><h3>${d.name}</h3><p>${weaponGuide(id).role}</p><p class="codex-behavior">${weaponGuide(id).desc}</p><p>${w?'현재 Lv.'+w.lv:'기본 Lv.1'} · 최대 Lv.7${w?.awakened?' · 각성':''}</p></div></div><div class="codex-columns"><section><h4>레벨별 강화</h4>${growth}</section><section><h4>발견한 각성</h4>${discoveries}</section></div>`;
  }
  $('codex-details').innerHTML=content;$('codex-details').scrollTop=0;
 }
@@ -1648,13 +1726,14 @@ function normalizeSave(old){
  const refund=boundedSaveNumber(old?.upgrades?.reroll,2)>=2?340:0;
  return {
   version:DATA.version,
+  ...NEMO_CAMPAIGN_PROGRESS.normalize(old,STAGES,NEMO_CAMPAIGN_RENEWAL.chapterRewards),
   awakeningDiscoveries:[...new Set(Array.isArray(old?.awakeningDiscoveries)?old.awakeningDiscoveries.filter(id=>typeof id==='string'&&/^[a-z0-9-]{1,64}$/.test(id)):[])],
   evolutionDiscoveries:[...new Set(Array.isArray(old?.evolutionDiscoveries)?old.evolutionDiscoveries.filter(key=>typeof key==='string'&&/^[a-z]+:[01]$/.test(key)&&W[key.split(':')[0]]):[])],
   charactersOwned:['nemo',...(Array.isArray(old?.charactersOwned)&&old.charactersOwned.includes('dori')?['dori']:[])],
   characterEquipped:old?.characterEquipped==='dori'&&Array.isArray(old?.charactersOwned)&&old.charactersOwned.includes('dori')?'dori':'nemo',
   gold:Math.min(99999999,boundedSaveNumber(old?.gold,99999999)+refund),
   firstClear:!!old?.firstClear,
-  stagesCleared:boundedSaveNumber(old?.stagesCleared,NEMO_STAGES.length,true),
+  stagesCleared:boundedSaveNumber(old?.stagesCleared,STAGES.length,true),
   unlocks:Array.isArray(old?.unlocks)?old.unlocks:[],
   unlocked:Array.isArray(old?.unlocked)?old.unlocked:[],
   costumesOwned:[...new Set(costumesOwned)],
@@ -1896,48 +1975,54 @@ function difficulty(){
  diff.spawns*=1.12;
  return diff;
 }
-const CAMPAIGN_CHAPTERS=[...new Set(NEMO_STAGES.map(stage=>stage.chapter))].map(name=>({
- name,stages:NEMO_STAGES.filter(stage=>stage.chapter===name)
+const CAMPAIGN_CHAPTERS=[...new Set(STAGES.map(stage=>stage.chapter))].map(name=>({
+ name,stages:STAGES.filter(stage=>stage.chapter===name)
 }));
 let campaignChapter=0;
 function renderStageChapter(){
- $('stage-progress').textContent=`클리어 ${saved.stagesCleared} / ${NEMO_STAGES.length}`;
+ const records=saved.stageRecords;
+ const seals=Object.values(records).reduce((sum,record)=>sum+[1,2,4].filter(bit=>record.medals&bit).length,0);
+ $('stage-progress').textContent=`클리어 ${saved.stagesCleared} / ${STAGES.length} · 훈장 ${seals} / ${STAGES.length*3} · 캡슐 교환권 ${saved.capsuleTickets}장`;
  $('stage-chapters').innerHTML=CAMPAIGN_CHAPTERS.map(({name,stages},index)=>{
   const first=stages[0].id,last=stages.at(-1).id;
   const status=last<=saved.stagesCleared?'cleared':first>saved.stagesCleared+1?'locked':'open';
   return `<button type="button" class="stage-chapter" data-chapter="${index}" data-status="${status}" aria-pressed="${index===campaignChapter}"><span>${name}</span><small>${first}–${last}</small></button>`;
  }).join('');
- const chapter=CAMPAIGN_CHAPTERS[campaignChapter];
+ const chapter=CAMPAIGN_CHAPTERS[campaignChapter],reward=NEMO_CAMPAIGN_RENEWAL.chapterRewards[campaignChapter];
  $('stage-chapter-title').textContent=chapter.name;
+ const claimed=saved.chapterRewardsClaimed.includes(reward.id);
+ $('stage-route-summary').innerHTML=`<p>${NEMO_CAMPAIGN_RENEWAL.chapters[campaignChapter].objective}</p><div class="stage-chapter-reward"><h3>지역 마지막 스테이지 보너스</h3><p>${reward.gold} 골드 · 캡슐 교환권 ${reward.tickets}장</p><span class="chapter-reward-state">${claimed?'획득 완료':`스테이지 ${reward.lastStage} 클리어`}</span></div>`;
  $('stage-options').innerHTML=chapter.stages.map(stage=>{
   const cleared=stage.id<=saved.stagesCleared,locked=stage.id>saved.stagesCleared+1;
-  const status=cleared?'클리어':locked?'잠김':'도전 가능';
+  const status=cleared?'클리어':locked?'잠김':'도전 가능',record=records[stage.id],medals=record?.medals??0;
   const map=CAMPAIGN_MAPS[stage.id-1],preview=ASSET_DATA[map.key];
-  return `<button class="stage-card" type="button" data-stage="${stage.id}" data-status="${cleared?'cleared':locked?'locked':'next'}" ${locked?'disabled':''}>
+  const goal=`신속: 보스 세 마리를 각각 ${stage.bossEnrageSeconds}초 안에 격파 · 도전: ${stage.challenge.label}`;
+  return `<button class="stage-card" type="button" data-stage="${stage.id}" data-theme="${stage.theme}" data-status="${cleared?'cleared':locked?'locked':'next'}" ${locked?'disabled':''} aria-label="스테이지 ${stage.id} ${stage.name}. ${status}. ${goal}">
    <small class="stage-card-status">스테이지 ${stage.id} · ${status}</small><strong>${stage.name}</strong>
    <span class="stage-preview" style="--stage-ground:${map.ground};--stage-trail:${map.trail}"><img class="stage-landmark-preview" src="${preview}" alt=""></span>
    <span class="stage-boss-name">${stage.title}</span>
-   <small>${locked?'이전 스테이지 클리어':`보상 ${cleared?stage.replayGold:stage.reward} G · ${stage.recommended}`}</small>
+   <span class="stage-medals">${[[1,'완주'],[2,'신속'],[4,'도전']].map(([bit,label])=>`<span class="stage-seal" data-earned="${!!(medals&bit)}">${medals&bit?'✦':'◇'} ${label}</span>`).join('')}</span>
+   <span class="stage-challenge">${stage.challenge.label}<small>${stage.tactic}</small></span>
+   <span class="stage-reward">${cleared?`재도전 ${stage.replayGold} G`:`첫 완주 ${stage.reward} G · 교환권 1장`}</span>
+   <small class="stage-best">${record?.bestTime?`최고 기록 ${fmt(record.bestTime)} · 피격 ${record.bestHits}회`:locked?'이전 스테이지를 클리어하면 열려요.':'선택해서 출발 · 훈장은 추가 목표예요.'}</small>
   </button>`;
  }).join('');
 }
 function stageOpen(){
  g=null;
- const next=Math.min(saved.stagesCleared+1,NEMO_STAGES.length);
+ const next=Math.min(saved.stagesCleared+1,STAGES.length);
  campaignChapter=CAMPAIGN_CHAPTERS.findIndex(({stages})=>stages.some(stage=>stage.id===next));
  renderStageChapter();
  $('stages').querySelector('.stage-board').scrollTop=0;
  setScreen('stages');
 }
 function stageReward(victory){
- const stage=g.stage;
- const first=stage.id>saved.stagesCleared;
- const clearGold=victory?(first?stage.reward:stage.replayGold):0;
- if(victory&&!g.debugUsed){
-  saved.stagesCleared=Math.max(saved.stagesCleared,stage.id);
-  saved.stats.wins++;
- }
- return clearGold;
+ const result=NEMO_CAMPAIGN_PROGRESS.complete(saved,g.stage,{
+  victory,debugUsed:!!g.debugUsed,time:g.t,hits:g.hitCount,bossKills:g.stageBossKills,
+  awakenings:Object.values(g.weapons).filter(w=>w.awakened).length,xp:g.totalXP,earnedXP:g.earnedXP
+ },NEMO_CAMPAIGN_RENEWAL.chapterRewards);
+ saved=result.save;g.stageResult=result.result;
+ return result.result.gold;
 }
 function runGold(){
  return g.achievedMinutes*(g.stage?.minuteGold??20)+g.gold;
@@ -1945,13 +2030,13 @@ function runGold(){
 function renderDifficulty(){} // The old 3-choice selector was removed.
 function chooseDifficulty(){return;} // Compatibility shim for older test hooks.
 function begin(stageId=0){
- const stage=typeof stageId==='number'&&stageId>0?NEMO_STAGES[stageId-1]:null;
+ const stage=typeof stageId==='number'&&stageId>0?STAGES[stageId-1]:null;
  if(stageId>0&&(!stage||stageId>saved.stagesCleared+1))return;
  rngState=(Math.random()*0x10000000)>>>0;
  const outfit=activeCostume();
  loadCostumeAtlas(outfit);
  const hp=DATA.player.hp+saved.upgrades.hp*5+outfit.hp;
- g={stage,endlessIntroduced:new Set(),map:stage?CAMPAIGN_MAPS[stage.id-1]:null,t:0,bossTime:0,runCostume:outfit.id,runCharacter:activeCharacter().id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.40,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*(stage?3:2)+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
+ g={stage,stageBossKills:[],endlessIntroduced:new Set(),map:stage?CAMPAIGN_MAPS[stage.id-1]:SURVIVAL_MAP,t:0,bossTime:0,runCostume:outfit.id,runCharacter:activeCharacter().id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.40,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*(stage?3:2)+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
   speed:DATA.player.speed*(1+saved.upgrades.speed*.02),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
   weapons:{[activeCharacter().starter]:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
   enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],scheduledEvents:[],bellEchoes:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0, waveIndex:0,
@@ -1961,8 +2046,8 @@ function begin(stageId=0){
   lastSample:0,magnetCount:0, healTimer:0, camera:{x:WORLD_CENTER,y:WORLD_CENTER},worldClock:0};
  g.metrics.aliveByMinute=[];
  // Monster attacks use travelling projectiles and contact, never hidden floor damage.
+ loadCampaignMap(g.map);
  if(stage){
-  loadCampaignMap(g.map);
   for(const id of Object.keys({...stage.enemies,...stage.openingEnemies})){
    if(CAMPAIGN_CREATURE_ART[id])loadCampaignCreature(id);
   }
@@ -1973,7 +2058,7 @@ function begin(stageId=0){
  }
  syncCostumeVisual();
  saved.stats.plays++;persist();
- g.deco=g.map?campaignDecor(g.map,stage.id):forestDecor();g.treeDecor=g.deco.trees;g.camera=calcCamera();setScreen('playing');
+ g.deco=campaignDecor(g.map,stage?.id??0);g.treeDecor=g.deco.trees;g.camera=calcCamera();setScreen('playing');
  const touchControls=touchDisplay.matches;
  if(saved.stats.plays===1)showToast(touchControls?'전투 화면을 누른 채 끌어 이동하세요. 마법은 자동으로 시전돼요.':'WASD 또는 방향키로 이동하세요. 마법은 자동으로 시전돼요.',4.5);
  else if(stage)showToast(`스테이지 ${stage.id} · ${stage.name}`,2.6);
@@ -2185,10 +2270,11 @@ function kill(e,allowRareDrop=true){
  }
  if(e.isBoss||e.kind==='boss'){
   g.metrics.bossSeconds=g.bossTime;
+  if(g.stage){const seconds=g.t-(e.spawnedAt??g.t);g.stageBossKills.push({seconds,swift:!e.enraged&&seconds<=g.stage.bossEnrageSeconds});}
   const def=e.bossDef||DATA.boss,reward=awardGold(def.gold);
   if(finalBoss){finish(true);return;}
   loot(e.x,e.y,Math.floor(getLevelNeed()*.5));
-  loot(e.x+.7,e.y+.6,0,'snack',.2);
+  loot(e.x+.7,e.y+.6,0,'snack',g.stage?.10:.2);
   g.freeCards++;
   showToast(`${def.name} 격파! +${reward} 골드 · 성장 카드`,3.2);
   return;
@@ -2368,6 +2454,7 @@ const LEVEL_FOUR_COPY={star:'별을 세 갈래로 발사합니다.',cannon:'공�
 function levelChoiceCopy(id,level){
  if(level===4)return LEVEL_FOUR_COPY[id];
  if(id==='bell'&&level===5)return '울림이 더 넓게 퍼집니다.';
+ if(id==='cannon'&&level===5)return '공의 위력과 치명타 확률이 높아집니다.';
  if(id==='star')return ({2:'별의 위력이 강해집니다.',3:'별을 더 자주 발사합니다.',5:'치명타가 더 자주 터집니다.',6:'별의 위력이 강해집니다.',7:'공격 속도와 치명타 확률이 높아집니다.'})[level];
  return [3,6].includes(level)?'공격을 더 자주 사용합니다.':'마법의 위력이 강해집니다.';
 }
@@ -2529,7 +2616,7 @@ function wavePace(){
  if(phase>=17)return {interval:.86,pack:1.22,cap:1.05};
  return {interval:1,pack:1,cap:1};
 }
-function bossEscortLimit(){return 12+Math.min(8,g.bossEncounters*2);}
+function bossEscortLimit(){return g.stage?(g.stage.id<=10?7:9)+Math.min(6,g.bossEncounters*2):12+Math.min(8,g.bossEncounters*2);}
 function isEscort(e){return !e.dead&&!e.retreat&&!e.isBoss&&!Object.hasOwn(DATA.elites,e.kind)&&e.kind!=='thief';}
 function arrangeBossEscort(boss){
  const p=g.player,angle=atan(p.x,p.y,boss.x,boss.y);
@@ -2573,7 +2660,7 @@ function spawnGroup(pace=wavePace()){
     return counts.spark+counts.firefly<runnerLimit&&(!g.boss||counts[kind]<1);
    }
    return counts[kind]===undefined||counts[kind]<(
-    CAMPAIGN_MONSTERS[kind]?(g.boss?1:CAMPAIGN_MONSTERS[kind].cap+Math.floor(g.stage.id/8))
+    CAMPAIGN_MONSTERS[kind]?(g.boss?1:CAMPAIGN_MONSTERS[kind].cap+Math.min(2,Math.floor((g.stage.id-1)/12)))
     :ENDLESS_ENEMIES[kind]?(g.boss?1:ENDLESS_ENEMIES[kind].cap):kind==='spark'?Math.min(6,2+Math.floor(m/2)):kind==='moth'?Math.min(8,2+Math.floor(m/3)):Math.min(15,6+Math.floor(m/4)));
   });
   if(!pool.length)break;
@@ -2694,7 +2781,8 @@ function waveWeights(survivalWeights){
 }
 function stageBossDefinition(stage,wave=2){
  const templates={crown:DATA.boss,thorn:LATE_BOSSES[0],moon:LATE_BOSSES[1],owl:LATE_BOSSES[2],boar:{art:'root-boar'}};
- return NEMO_CAMPAIGN_BOSSES.definition(stage,wave,templates);
+ const definition=NEMO_CAMPAIGN_BOSSES.definition(stage,wave,templates);
+ return {...definition,name:wave<2?stage.scoutTitles[wave]:stage.title};
 }
 function stageBossTime(stage,index){
  return stage.bossTimes[Math.min(index,2)];
@@ -2712,7 +2800,7 @@ function updateBossEncounter(dt){
  if(g.boss){
   g.bossTime+=dt;
   const elapsed=g.t-(g.boss.spawnedAt??g.t);
-  if(!g.boss.enraged&&elapsed>=75){
+  if(!g.boss.enraged&&elapsed>=(g.stage?.bossEnrageSeconds??75)){
    const boss=g.boss;boss.enraged=true;boss.speed*=1.18;boss.dmg*=1.20;
    boss.specialClock=Math.min(boss.specialClock,.9);burst(boss.x,boss.y,'#e08772',20);
    showToast('제한시간 초과 · 보스의 이동과 탄막이 강해져요!',3.3);
@@ -2737,7 +2825,7 @@ function updateBossEncounter(dt){
  if(g.stage){
   g.enemyShots=[];
   g.bossTime=0;
-  const player=g.player,healFraction=[.22,.26,.36][count];
+  const player=g.player,healFraction=[.12,.15,.18][count];
   player.hp=Math.min(player.maxHp,player.hp+player.maxHp*healFraction);
   player.healUntil=g.worldClock+.4;
   player.invuln=Math.max(player.invuln,1);
@@ -3630,7 +3718,7 @@ function weaponRule(id){
  if(id==='book'&&g?.rareCard==='bookFamiliar')return FAMILIAR_BOOK;
  return g?.stage&&id==='vortex'?STAGE_VORTEX:W[id];
 }
-function weaponGuide(id){return g?.stage&&id==='vortex'?STAGE_VORTEX_GUIDE:WEAPON_GUIDE[id];}
+function weaponGuide(id){return WEAPON_GUIDE[id];}
 function updateVortex(dt){
  const w=g.weapons.vortex;if(!w)return;
  w.vortexTick=(w.vortexTick??0)-dt*rageRate()*moveCastRate();
@@ -3752,7 +3840,7 @@ function blockedByTerrain(x,y,r){return !!terrainAt(x,y,r);}
 function blockedByTree(x,y,r){
  if(blockedByTerrain(x,y,r))return true;
  for(const tree of g?.treeDecor||[]){
-  const tx=tree.x,ty=tree.y+.16*tree.s,rx=.43*tree.s+r*.70,ry=.29*tree.s+r*.72;
+  const scale=tree.s??1,tx=tree.x,ty=tree.y+(tree.ry?0:.16*scale),rx=(tree.rx??.43*scale)+r*.70,ry=(tree.ry??.29*scale)+r*.72;
   if(Math.abs(x-tx)>rx||Math.abs(y-ty)>ry)continue;
   if(((x-tx)/rx)**2+((y-ty)/ry)**2<1)return true;
  }
@@ -3851,7 +3939,7 @@ function updateEncounters(dt){
  if(!g.stage&&lateWave>(g.lateWave||0)){g.lateWave=lateWave;g.rushUntil=g.t+20;showToast('🌑 숲이 더욱 위험해졌어! 살아남아!');}
  if(!g.stage&&g.t>=MASTERY_AT&&!g.milestones.mastery){
   g.milestones.mastery=true;
-  showToast('15분 돌파 · 최종 진화 무기 연마 해금',3.2);
+  // Legacy mastery was removed; elapsed survival time grants no hidden upgrade.
  }
  const full=Math.floor((g.stage?Math.min(g.t,g.stage.bossAt):g.t)/60);if(full>g.achievedMinutes)g.achievedMinutes=full;
  return true;
@@ -3891,16 +3979,16 @@ function finish(victory){
  if(!g||g.done)return;
  g.done=true;
  const stage=g.stage;
- if(!stage)saveRunRecord(false);
+ if(!stage&&!g.debugUsed)saveRunRecord(false);
  const cleared=!!(stage&&victory);
  playSound(cleared?'clear':'end');
  g.gold=runGold()+(stage&&!g.debugUsed?stageReward(cleared):0);
  saved.gold+=g.gold;persist();setScreen('result');
  const rate=g.earnedXP?Math.round(100*g.totalXP/g.earnedXP):0;
  $('result-title').textContent=stage?`스테이지 ${stage.id} · ${cleared?'클리어':'도전 종료'}`:'이번 모험의 기록';
- $('result-desc').textContent=stage?(cleared&&stage.id===NEMO_STAGES.length?'모든 지역의 스테이지를 클리어했어요.':stage.name):'숲에서 모은 골드와 생존 기록을 확인하세요.';
+ $('result-desc').textContent=stage?(cleared&&stage.id===STAGES.length?'모든 지역의 스테이지를 클리어했어요.':stage.name):'숲에서 모은 골드와 생존 기록을 확인하세요.';
  const next=$('next-stage');
- next.classList.toggle('hidden',!cleared||stage.id>=NEMO_STAGES.length||!!g.debugUsed);
+ next.classList.toggle('hidden',!cleared||stage.id>=STAGES.length||!!g.debugUsed);
  $('result-rank-btn').classList.toggle('hidden',!!stage);
  $('result-menu').textContent=stage?'스테이지 지도':'숲 입구로';
  $('result-time').textContent=fmt(g.t);
@@ -3910,6 +3998,13 @@ function finish(victory){
  ['처치 수',g.totalKills.toLocaleString('ko-KR')+'마리'],['총 피해',Math.round(g.totalDamage).toLocaleString('ko-KR')],
  ['보석 회수율',rate+'%'],['피격',g.hitCount+'회'],['첫 진화',g.metrics.firstEvolution===null?'없음':fmt(g.metrics.firstEvolution)],
  ['최고 피해 무기',best?W[best[0]].name:'스타 샷'],['전투 골드',(g.combatGold||0)+' G']];
+ if(g.stageResult&&cleared){
+  const r=g.stageResult;
+  a.push(['이번 훈장',[1,2,4].map((bit,index)=>(r.medals&bit?'✦ ':'◇ ')+['완주','신속','도전'][index]).join(' · ')],['완주 보상',r.clearGold+' G']);
+  if(r.medalGold)a.push(['새 훈장 보너스',r.medalGold+' G']);
+  if(r.chapterGold)a.push(['지역 완주 보너스',r.chapterGold+' G']);
+  if(r.tickets)a.push(['캡슐 교환권','+'+r.tickets+'장']);
+ }
  $('result-grid').innerHTML=a.map(([k,v])=>`<div class="result-stat"><small>${k}</small><b>${v}</b></div>`).join('');
  updateHUD();
 }
@@ -4027,14 +4122,17 @@ function renderDrawExclusives(){
 }
 function drawCostumes(){return COSTUMES.filter(item=>(item.price>0||item.drawOnly)&&!item.place).map(item=>({...item,drawWeight:item.drawOnly?1:.875}));}
 function updateDrawWallet(){
- $('draw-wallet').textContent=`보유 ${saved.gold.toLocaleString('ko-KR')} 골드`;
- $('draw-buy').disabled=drawBusy||saved.gold<NEMO_DRAW.cost;
- $('draw-buy-ten').disabled=drawBusy||saved.gold<NEMO_DRAW.bulkCost;
+ const single=NEMO_CAMPAIGN_PROGRESS.drawQuote(saved,1),bulk=NEMO_CAMPAIGN_PROGRESS.drawQuote(saved,10);
+ $('draw-wallet').textContent=`보유 ${saved.gold.toLocaleString('ko-KR')} 골드 · 교환권 ${saved.capsuleTickets}장`;
+ $('draw-buy').disabled=drawBusy||!single.canAfford;
+ $('draw-buy-ten').disabled=drawBusy||!bulk.canAfford;
+ const price=quote=>quote.ticketsUsed?`교환권 ${quote.ticketsUsed}장${quote.goldCost?' + '+quote.goldCost+' 골드':''}`:quote.goldCost+' 골드';
+ $('draw-buy').textContent='한 번 뽑기 · '+price(single);
+ $('draw-buy-ten').textContent='10개 뽑기 · '+price(bulk);
  $('draw-back').disabled=drawBusy;
  $('draw-costumes').disabled=drawBusy;
  $('draw-album-open').disabled=drawBusy;
- $('draw-status').textContent=drawBusy?(drawPending?'캡슐을 눌러 선물을 확인하세요.':'캡슐을 뽑고 있어요.'):saved.gold<NEMO_DRAW.cost
-  ?`${NEMO_DRAW.cost-saved.gold} 골드가 부족해요.`:'';
+ $('draw-status').textContent=drawBusy?(drawPending?'캡슐을 눌러 선물을 확인하세요.':'캡슐을 뽑고 있어요.'):!single.canAfford?`${single.goldCost-saved.gold} 골드가 부족해요.`:'';
 }
 function renderDrawCollection(){
  $('draw-photo-count').textContent=`포토카드 · ${saved.photosOwned.length}/${DRAW_PHOTOS.length}`;
@@ -4101,7 +4199,10 @@ async function buyLuckyDraw(count=1){
  const purchase=()=>{
   if(screen!=='lucky-draw')return;
   const previous=readSave();
-  const result=NEMO_DRAW.purchaseMany(previous,DRAW_PHOTOS,drawCostumes(),count);
+  const quote=NEMO_CAMPAIGN_PROGRESS.drawQuote(previous,count);
+  if(!quote.canAfford)return;
+  const result=NEMO_DRAW.purchaseMany({...previous,gold:previous.gold+quote.discount},DRAW_PHOTOS,drawCostumes(),count);
+  if(result)result.save.capsuleTickets=previous.capsuleTickets-quote.ticketsUsed;
   saved=previous;
   if(!result)return;
   saved=result.save;
@@ -4320,6 +4421,24 @@ function forestDecor(){
 const campaignDecorCache=new Map();
 function campaignDecor(map,id){
  if(campaignDecorCache.has(id))return campaignDecorCache.get(id);
+ if(map.cleanGround){
+  const rand=hashed(19374+id*893),trees=[...map.dressing],dressing=[],trailFlecks=[],grain=[];
+  // Sparse landmarks are readable; cosmetic ground motifs never block movement.
+  for(let i=0;i<850;i++){
+   const x=rand()*DATA.world,y=rand()*DATA.world;
+   if(!isNearForestPath(x,y,.7,map.sections))grain.push({x,y,r:.035+rand()*.055,a:.26});
+  }
+  for(let x=14;x<DATA.world-10;x+=21)for(let y=14;y<DATA.world-10;y+=23){
+   const tx=x+(rand()-.5)*7,ty=y+(rand()-.5)*7;
+   if(distance(tx,ty,WORLD_CENTER,WORLD_CENTER)<25||isNearForestPath(tx,ty,2.5,map.sections))continue;
+   trees.push({key:rand()<.25?'renewalBlossom':'renewalOak',x:tx,y:ty,h:2.6+rand()*.55,flip:rand()<.5?-1:1});
+  }
+  for(const {x,y,dx,dy,length,width} of map.sections){
+   const t=rand(),offset=(rand()-.5)*width*.6;
+   trailFlecks.push({x:x+t*dx-offset*dy/length,y:y+t*dy+offset*dx/length,s:.035,stone:false});
+  }
+  const decor={map,trees,dressing,trailFlecks,grain};campaignDecorCache.set(id,decor);return decor;
+ }
  const rand=hashed(19374+id*893),trees=[],dressing=[],trailFlecks=[],grain=[];
  const smallProps=map.dressing??['flowers','mushroom','bush'];
  for(let i=0;i<6000;i++){
@@ -4361,12 +4480,12 @@ function drawWorldGround(c,deco){
  const map=deco.map;
  ctx.fillStyle=map?.ground??'#d9e5bd';ctx.fillRect(left,top,width,height);
  const ground=sprites[map?.texture??'groundFull'];
- if(ground?.complete&&ground.naturalWidth){
+ if(!map?.cleanGround&&ground?.complete&&ground.naturalWidth){
   ctx.save();if(map)ctx.globalAlpha=map.groundTextureAlpha??.25;
   ctx.drawImage(ground,0,0,DATA.world,DATA.world);ctx.restore();
  }
  if(map){
-  for(const p of map.landmarks){
+  for(const p of map.cleanGround?[]:map.landmarks){
    const r=(p.h??3)*1.9;
    if(!visibleTerrain(p.x,p.y,c,r))continue;
    const wash=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,r);
@@ -4402,6 +4521,15 @@ function imageSprite(key,x,y,w,h,face=1,alpha=1){let im=sprites[key];if(!im?.com
 // Fit the padded source without stretching and keep its baseline at the actor's feet.
 function drawEnemyArt(kind,x,baseline,maxWidth,maxHeight,pose){
  if(kind==='endless-thorn-guardian')kind='thorn-guardian';
+ const renewed=NEMO_WORLD_RENEWAL_ART.enemies[kind];
+ if(renewed){
+  const atlas=sprites['renewalEnemy_'+kind],tile=renewed.frame;
+  if(atlas?.complete&&atlas.naturalWidth===tile*4&&atlas.naturalHeight===tile){
+   const size=Math.max(maxWidth,maxHeight)*1.12;
+   ctx.save();ctx.translate(x,baseline);ctx.rotate(pose.lean);ctx.scale(pose.face*pose.widthScale,pose.stretch);ctx.globalAlpha=pose.opacity;
+   ctx.drawImage(atlas,pose.cell*tile,0,tile,tile,-size/2,-size*renewed.anchor/tile,size,size);ctx.restore();return;
+  }
+ }
  if(CAMPAIGN_CREATURE_ART[kind]){
   const atlas=loadCampaignCreature(kind),tile=atlas.naturalWidth/4;
   const direction=Math.max(0,DIRECTIONS.indexOf(pose.direction));
@@ -5197,16 +5325,14 @@ function drawBattle(){
  ctx.restore();
  if(screen==='intro'){ctx.save();ctx.fillStyle='#56387774';ctx.fillRect(0,0,VW,VH);ctx.font='400 63px Jua, Malgun Gothic, sans-serif';ctx.textAlign='center';ctx.lineWidth=8;ctx.strokeStyle='#7d4c8f';ctx.strokeText('👑 왕관 슬라임이 나타났다!',VW/2,VH/2);ctx.fillStyle='#fff0c3';ctx.fillText('👑 왕관 슬라임이 나타났다!',VW/2,VH/2);ctx.restore();}}
 function drawMenuWorld(){
- const c={x:WORLD_CENTER,y:WORLD_CENTER},deco=forestDecor();
+ const c={x:WORLD_CENTER,y:WORLD_CENTER},deco=campaignDecor(SURVIVAL_MAP,0);
  ctx.save();ctx.translate(VW/2-c.x*PPU,VH/2-c.y*PPU);ctx.scale(PPU,VH/SCREEN_H);
  drawWorldGround(c,deco);
- const props=[...STRUCTURES,...deco.trees].filter(p=>visibleTerrain(p.x,p.y,c,p.h)).sort((a,b)=>a.y-b.y);
+ const props=[...SURVIVAL_MAP.structures,...deco.trees].filter(p=>visibleTerrain(p.x,p.y,c,p.h)).sort((a,b)=>a.y-b.y);
  for(const prop of props)drawWorldProp(prop);
  ctx.restore();
 }
-function draw(){ctx.fillStyle='#d9e5bd';ctx.fillRect(0,0,VW,VH);if(g)drawBattle();else drawMenuWorld();
- if(opts.particles&&!touchDisplay.matches && sprites.grain?.complete&&sprites.grain.naturalWidth){ctx.save();ctx.globalAlpha=.17;ctx.drawImage(sprites.grain,0,0,VW,VH);ctx.restore();}
-}
+function draw(){ctx.fillStyle='#d9e5bd';ctx.fillRect(0,0,VW,VH);if(g)drawBattle();else drawMenuWorld();}
 // --------- controls, fixed-step loop and saved upgrades ---------------
 const keys=new Set(),touch={active:false,x:0,y:0,id:null},pad=$('touch-pad'),knob=$('touch-knob');
 const fieldScreens=new Set(['playing','intro','pause','cards','evolution']);
@@ -5879,7 +6005,7 @@ $('save-preview-button').onclick=()=>{
  saveApply.hidden=true;
  try{
   pendingSave=parseImportedSave(saveData.value);
-  const summary=data=>`스테이지 ${data.stagesCleared}/${NEMO_STAGES.length} 클리어 · ${data.gold.toLocaleString('ko-KR')} G`;
+  const summary=data=>`스테이지 ${data.stagesCleared}/${STAGES.length} 클리어 · ${data.gold.toLocaleString('ko-KR')} G`;
   savePreview.textContent=`현재 진행 · ${summary(saved)}
 가져올 진행 · ${summary(pendingSave)}
 이 데이터를 사용하면 현재 진행을 덮어써요.`;
@@ -5939,7 +6065,7 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.12.25';
+  const CURRENT='5.13.0';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';

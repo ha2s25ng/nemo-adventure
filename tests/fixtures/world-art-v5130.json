@@ -1,0 +1,712 @@
+{
+  "version": "5.13.0",
+  "method": "Pillow decoded RGBA pixel audit, file SHA256 pins tested bytes; Node suite needs no image library",
+  "assets": [
+    {
+      "file": "assets/world-v51226-art/garden.webp",
+      "bytes": 194774,
+      "sha256": "d70e89654fe3c21be72dbd8abad156b71c142d42358341e003cfbc66bf6d424d",
+      "dimensions": [
+        421,
+        640
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 100790,
+      "visiblePixels": 168650,
+      "bounds": [
+        16,
+        16,
+        405,
+        624
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/twilight.webp",
+      "bytes": 209326,
+      "sha256": "72632245845ada6c1ba31814200191cb5bc05da87dd58d35fb05ee3e93c38d63",
+      "dimensions": [
+        640,
+        583
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 184019,
+      "visiblePixels": 189101,
+      "bounds": [
+        16,
+        16,
+        624,
+        567
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/crystal.webp",
+      "bytes": 188502,
+      "sha256": "b77638f4dff4fbca304a7d2c221c00f70407131c23079e9974049c1d47972e6e",
+      "dimensions": [
+        564,
+        640
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 196968,
+      "visiblePixels": 163992,
+      "bounds": [
+        16,
+        16,
+        548,
+        624
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/frost.webp",
+      "bytes": 230258,
+      "sha256": "057ac2844a50a4c867f8102cc646f62a7880eaa2f0cf3463149eeba6c093699e",
+      "dimensions": [
+        476,
+        640
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 94568,
+      "visiblePixels": 210072,
+      "bounds": [
+        16,
+        16,
+        460,
+        624
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/ember.webp",
+      "bytes": 216954,
+      "sha256": "c3c199b170805cb937cadcf3fcb474023a0f6bc117f4b9660cdc4b2799c0a0d9",
+      "dimensions": [
+        527,
+        640
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 138630,
+      "visiblePixels": 198650,
+      "bounds": [
+        16,
+        16,
+        511,
+        624
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/tide.webp",
+      "bytes": 174212,
+      "sha256": "c23f1e808642cfe1ca385ba663f94cec139af8278d632ca39fd1fcad2c141a73",
+      "dimensions": [
+        472,
+        640
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 158005,
+      "visiblePixels": 144075,
+      "bounds": [
+        16,
+        16,
+        456,
+        624
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/clock.webp",
+      "bytes": 177946,
+      "sha256": "ba5338cb55c6eb2ce314d57742f29890c3f61279e37e1a47c48c0b3650cecc87",
+      "dimensions": [
+        370,
+        640
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 91231,
+      "visiblePixels": 145569,
+      "bounds": [
+        16,
+        16,
+        354,
+        624
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/astral.webp",
+      "bytes": 167620,
+      "sha256": "865903dcc25fa017d095e85ec6849331f78955ff709aba6416fc4f144dce3e4a",
+      "dimensions": [
+        393,
+        640
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 116456,
+      "visiblePixels": 135064,
+      "bounds": [
+        16,
+        16,
+        377,
+        624
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/oak.webp",
+      "bytes": 181992,
+      "sha256": "bdc5c5fbdc458c48f1f3e06ad7dbc664f1208405333df729111755fabd5fd438",
+      "dimensions": [
+        535,
+        640
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 142333,
+      "visiblePixels": 200067,
+      "bounds": [
+        16,
+        16,
+        519,
+        624
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/blossom.webp",
+      "bytes": 218674,
+      "sha256": "74bab957cc55e26031f7bdeaff30cc6e9beab62cb2cb63d839dade921db89a7a",
+      "dimensions": [
+        559,
+        640
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 157237,
+      "visiblePixels": 200523,
+      "bounds": [
+        16,
+        16,
+        543,
+        624
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/pond.webp",
+      "bytes": 191578,
+      "sha256": "e3b07602aea1ed26ebf80d3fedabd6b69020a8c9ce51202f598fb5964bc0fe7d",
+      "dimensions": [
+        640,
+        447
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 93352,
+      "visiblePixels": 192728,
+      "bounds": [
+        16,
+        16,
+        624,
+        431
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/bramble-walk.webp",
+      "bytes": 171080,
+      "sha256": "965fccc49c4af72e6fcff30627882f18f695a9b72bbb8382fc2ecd3b7e71d693",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 134661,
+      "visiblePixels": 127483,
+      "bounds": [
+        16,
+        31,
+        1009,
+        234
+      ],
+      "frames": [
+        {
+          "rgbaSha256": "22230a3a70da8df7872fa2f6d04a833412d95a9f0459f106dd3e9d78f1353b25",
+          "bounds": [
+            16,
+            33,
+            240,
+            234
+          ],
+          "transparentPixels": 33705
+        },
+        {
+          "rgbaSha256": "48e9f89ea59e0a3c8260fe45077c53661f287cca17b6d8d19572eecfe74fc92f",
+          "bounds": [
+            16,
+            34,
+            239,
+            234
+          ],
+          "transparentPixels": 34201
+        },
+        {
+          "rgbaSha256": "77d4f9b92a2a0f0def3eabf5109bbc996541c653df4ed34d6d8175f076ac6d62",
+          "bounds": [
+            15,
+            31,
+            241,
+            234
+          ],
+          "transparentPixels": 33552
+        },
+        {
+          "rgbaSha256": "202e97d31b2d4bb9309673713bcc8b5767fb2c5275b912c1bf28ddb89f046869",
+          "bounds": [
+            15,
+            31,
+            241,
+            234
+          ],
+          "transparentPixels": 33203
+        }
+      ]
+    },
+    {
+      "file": "assets/world-v51226-art/thief-walk.webp",
+      "bytes": 145282,
+      "sha256": "fabbeb3a5fb15145f1455cc5b2ccb8f60942650e747113eead4998f22dc85bdc",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 163475,
+      "visiblePixels": 98669,
+      "bounds": [
+        41,
+        20,
+        988,
+        234
+      ],
+      "frames": [
+        {
+          "rgbaSha256": "7251640e9aa59628b98ad1401eb171ff357aadef9afb99eeaa215d2bc64ca16e",
+          "bounds": [
+            41,
+            22,
+            215,
+            234
+          ],
+          "transparentPixels": 40022
+        },
+        {
+          "rgbaSha256": "c6049ac193f5920b75a7b38d8590d846ba8ca5cec20b0fb3d76b990cbb6054b7",
+          "bounds": [
+            38,
+            20,
+            217,
+            234
+          ],
+          "transparentPixels": 41417
+        },
+        {
+          "rgbaSha256": "bc88e05d8c2cfdb3b1c57611e386ad5a7c0c4ac244b978c8a62bf6572b9a40ce",
+          "bounds": [
+            41,
+            21,
+            214,
+            234
+          ],
+          "transparentPixels": 40510
+        },
+        {
+          "rgbaSha256": "d7e2dce79f2685e57dea239d53c04a07cc85a0646234e3be68329bc2ca817ac4",
+          "bounds": [
+            36,
+            22,
+            220,
+            234
+          ],
+          "transparentPixels": 41526
+        }
+      ]
+    },
+    {
+      "file": "assets/world-v51226-art/crown-walk.webp",
+      "bytes": 128240,
+      "sha256": "15fd4e265758dee39de2f29e7c511765c7d9023b6959caa8ab81445c63e3530b",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 156254,
+      "visiblePixels": 105890,
+      "bounds": [
+        36,
+        20,
+        1003,
+        234
+      ],
+      "frames": [
+        {
+          "rgbaSha256": "9cd4524ab7b6503c28503cb375fbce92ba83cf81396302d3ac64f2c673957bc6",
+          "bounds": [
+            36,
+            37,
+            220,
+            234
+          ],
+          "transparentPixels": 40283
+        },
+        {
+          "rgbaSha256": "8fae34d211fdc3bbf82e06c5229ee3e2c0dc3589ea19e31d128a28bdd1ee334b",
+          "bounds": [
+            18,
+            54,
+            238,
+            234
+          ],
+          "transparentPixels": 39661
+        },
+        {
+          "rgbaSha256": "f2eae1bc68e46f5cf1fe0ea8fe97dfe1ce9b4314faa307e2f273fc925356378b",
+          "bounds": [
+            32,
+            20,
+            223,
+            234
+          ],
+          "transparentPixels": 37366
+        },
+        {
+          "rgbaSha256": "24806bb921e64ab622fefdc35d77f47d8f564e8168e36889a5a60b2336604947",
+          "bounds": [
+            21,
+            41,
+            235,
+            234
+          ],
+          "transparentPixels": 38944
+        }
+      ]
+    },
+    {
+      "file": "assets/world-v51226-art/green-walk.webp",
+      "bytes": 117336,
+      "sha256": "a58ab77befd9a9e9df46ff3b6068d7cfe734f4500f15b467e5ca77a771c2b3ab",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 170856,
+      "visiblePixels": 91288,
+      "bounds": [
+        48,
+        20,
+        981,
+        234
+      ],
+      "frames": [
+        {
+          "rgbaSha256": "709f393bac37eefc3b6fb266ab40037f2de871e831e43a61513e2aad3dd7c1e0",
+          "bounds": [
+            48,
+            41,
+            207,
+            234
+          ],
+          "transparentPixels": 42716
+        },
+        {
+          "rgbaSha256": "56e840574aac371a70a4f2ca460fb3310b04bdd592e6a1d73983ef06147fa138",
+          "bounds": [
+            40,
+            55,
+            216,
+            234
+          ],
+          "transparentPixels": 43124
+        },
+        {
+          "rgbaSha256": "08b823d50febf15458008d38e97f083a82e94461173dca6741a8cd62a9a0b10a",
+          "bounds": [
+            50,
+            20,
+            205,
+            234
+          ],
+          "transparentPixels": 42120
+        },
+        {
+          "rgbaSha256": "b38934b6b82fbc2f7f37aba218adcda97e3a2f449d084d49c886688c8731c6f1",
+          "bounds": [
+            42,
+            42,
+            213,
+            234
+          ],
+          "transparentPixels": 42896
+        }
+      ]
+    },
+    {
+      "file": "assets/world-v51226-art/fat-walk.webp",
+      "bytes": 136294,
+      "sha256": "fa79aac47446b3a574e8ec471df8bc941493aaac3faf49ec107349b3f76d2c67",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 153052,
+      "visiblePixels": 109092,
+      "bounds": [
+        31,
+        20,
+        993,
+        234
+      ],
+      "frames": [
+        {
+          "rgbaSha256": "b33e43e93ae6933208c153fc6da0ca7b759cbb09e0ba6250ca665f401f3b9593",
+          "bounds": [
+            31,
+            21,
+            224,
+            234
+          ],
+          "transparentPixels": 37600
+        },
+        {
+          "rgbaSha256": "b180a62f92027848c3980369f09438eac1c482aae24ffab6c46ad29b27f9ce97",
+          "bounds": [
+            31,
+            24,
+            225,
+            234
+          ],
+          "transparentPixels": 38691
+        },
+        {
+          "rgbaSha256": "87ccd096bb5a63db102f24fca415257bf6cdf7f1582bc3baec8a86428f2e0101",
+          "bounds": [
+            30,
+            20,
+            225,
+            234
+          ],
+          "transparentPixels": 38313
+        },
+        {
+          "rgbaSha256": "a1792281945115419d1fb060b2350a2557b37e9316cbbf0c3247e1f556248d76",
+          "bounds": [
+            30,
+            22,
+            225,
+            234
+          ],
+          "transparentPixels": 38448
+        }
+      ]
+    },
+    {
+      "file": "assets/world-v51226-art/spore-walk.webp",
+      "bytes": 124830,
+      "sha256": "4492f28876872580768fc5ec29adfd7f6e571c5d360c99783308fabfe14c2c9b",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 164938,
+      "visiblePixels": 97206,
+      "bounds": [
+        39,
+        20,
+        986,
+        234
+      ],
+      "frames": [
+        {
+          "rgbaSha256": "069818ec3ec61339aff2a5aa704678f85bbb656f5c852777ee8bbcc7fdb029da",
+          "bounds": [
+            39,
+            24,
+            217,
+            234
+          ],
+          "transparentPixels": 40858
+        },
+        {
+          "rgbaSha256": "7004521adb815dd65e2ea7334e727c28b69953beef2fe28ffe22ed45a0b180cd",
+          "bounds": [
+            39,
+            22,
+            216,
+            234
+          ],
+          "transparentPixels": 42027
+        },
+        {
+          "rgbaSha256": "a141cf8c6417487cb1f9b38a0e62b9ddd1dce706923c74c986bf6cec08b6f9e5",
+          "bounds": [
+            38,
+            20,
+            218,
+            234
+          ],
+          "transparentPixels": 40600
+        },
+        {
+          "rgbaSha256": "b452f39d4e9d024277c4236cf978aceef7ee5168aeca57114a8457a20dcbd58b",
+          "bounds": [
+            37,
+            21,
+            218,
+            234
+          ],
+          "transparentPixels": 41453
+        }
+      ]
+    },
+    {
+      "file": "assets/world-v51226-art/green.webp",
+      "bytes": 28790,
+      "sha256": "727abdb8c7ec2c479a8eae73e9a2cff752f81bed4580fbcca14d8057837ada3a",
+      "dimensions": [
+        256,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 42716,
+      "visiblePixels": 22820,
+      "bounds": [
+        48,
+        41,
+        207,
+        234
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/fat.webp",
+      "bytes": 35350,
+      "sha256": "f1be7f046563429146575ba64b6e6a81b4c65e504e46f422656a01e20e40e59d",
+      "dimensions": [
+        256,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 37600,
+      "visiblePixels": 27936,
+      "bounds": [
+        31,
+        21,
+        224,
+        234
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/spore.webp",
+      "bytes": 33442,
+      "sha256": "510657a2015dcd2c63b4bb571c204b5ddc6d9c60747ade6121986f2cbb230985",
+      "dimensions": [
+        256,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 40858,
+      "visiblePixels": 24678,
+      "bounds": [
+        39,
+        24,
+        217,
+        234
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/bramble.webp",
+      "bytes": 43988,
+      "sha256": "8181ca840d9f27f3384f6d0d446a211d79ff41d32a97576edfc14e6296981b26",
+      "dimensions": [
+        256,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 33705,
+      "visiblePixels": 31831,
+      "bounds": [
+        16,
+        33,
+        240,
+        234
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/thief.webp",
+      "bytes": 38490,
+      "sha256": "91dd1a01a3bd18bdd5eaa332d91d881aafcc3d1192d07074d96c81dad5553285",
+      "dimensions": [
+        256,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 40022,
+      "visiblePixels": 25514,
+      "bounds": [
+        41,
+        22,
+        215,
+        234
+      ],
+      "frames": []
+    },
+    {
+      "file": "assets/world-v51226-art/crown.webp",
+      "bytes": 31224,
+      "sha256": "102bd039367b67e05de01e437d461ed92c526da65ae4148dcb3ca836e3c6b2e3",
+      "dimensions": [
+        256,
+        256
+      ],
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "transparentPixels": 40283,
+      "visiblePixels": 25253,
+      "bounds": [
+        36,
+        37,
+        220,
+        234
+      ],
+      "frames": []
+    }
+  ]
+}

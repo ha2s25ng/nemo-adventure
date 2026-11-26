@@ -13,7 +13,7 @@ const ENGINE_MARKER = 'const $ = id => document.getElementById(id)';
 const STARTUP_MARKER = 'rankWire();renderMenu();syncFullscreen();setScreen';
 const TEST_EXPORTS = `
 globalThis.__logicGame = {
-  AWAKENING_RECIPES, DATA, W, ASSET_DATA, RARE_CARDS, NEMO_STAGES, NEMO_DRAW, weaponAvailableForCharacter,
+  AWAKENING_RECIPES, DATA, W, ASSET_DATA, RARE_CARDS, NEMO_STAGES:STAGES, NEMO_DRAW, NEMO_CAMPAIGN_PROGRESS, CAMPAIGN_MAPS, SURVIVAL_MAP, stageReward, renderStageChapter, buyLuckyDraw, updateDrawWallet, stageOpen, weaponAvailableForCharacter,
   begin, menu, pause, resume, setScreen, openCodex, closeCodex, update, finish,
   hasGrowth, makeGrowth, rollRareCard, rollCards, renderCards, selectCard, chooseEvo, weaponNumbers,
   parseImportedSave, normalizeSave, readSave, spawn,
@@ -127,6 +127,13 @@ function createHarness(seed = 0x4e454d4f, captureDraws = false, reduceMotion = f
         this.complete = true;
         this.naturalWidth = this.naturalHeight = this.width = this.height = 1024;
       }
+      set src(value) {
+        this._src=value;
+        if(value.includes('world-v51226-art/')&&value.includes('-walk.webp')){
+          this.naturalWidth=this.width=1024;this.naturalHeight=this.height=256;
+        }
+      }
+      get src(){return this._src;}
       addEventListener() {}
     },
     Path2D: class { constructor() { return new Proxy({}, { get: () => noop }); } },

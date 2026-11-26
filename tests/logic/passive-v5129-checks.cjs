@@ -32,7 +32,7 @@ module.exports=function(){
   game.begin();const g=game.g,w=g.weapons.star;g.passives={magic:5,quick:5,lucky:5,big:5,emberheart:5,windstep:5};
   assert(Math.abs(game.weaponPower('star',.6,w)-66)<1e-9);
   g.player.hp=50;assert(Math.abs(game.weaponPower('star',.6,w)-84)<1e-9);
-  assert(Math.abs(game.cooldown('star',w)-.68/1.1)<1e-9);
+  assert(Math.abs(game.cooldown('star',w)-game.W.star.cd/1.1)<1e-9);
   assert.equal(game.wpCrit('star'),.25);assert.equal(game.radiusMult(),1.20);
   assert.equal(game.moveCastRate(),1);g.player.moving=true;assert.equal(game.moveCastRate(),1.15);
  });

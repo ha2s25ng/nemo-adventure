@@ -39,7 +39,7 @@ module.exports=()=>{
   for(let rank=1;rank<=5;rank++){
    g.player.crit=.05;
    g.passives={magic:rank};assert(Math.abs(game.weaponPower('star',.6,w)-60*(1+.02*rank))<1e-9);
-   g.passives={quick:rank};assert(Math.abs(game.cooldown('star')-.68/(1+.02*rank))<1e-9);
+   g.passives={quick:rank};assert(Math.abs(game.cooldown('star')-game.W.star.cd/(1+.02*rank))<1e-9);
    g.passives={lucky:rank};assert(Math.abs(game.wpCrit('star')-(.05+.04*rank))<1e-9);
    g.passives={big:rank};assert(Math.abs(game.radiusMult()-(1+.04*rank))<1e-9);
    g.passives={leafguard:rank,jelly:rank};g.player.hp=g.player.maxHp=1000;g.player.invuln=0;

@@ -1,0 +1,406 @@
+{
+  "version": "5.13.0",
+  "style": "crisp storybook pastel with warm mauve outline",
+  "assets": [
+    {
+      "id": "garden",
+      "type": "landmark",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\garden.png",
+      "file": "assets/world-v51226-art/garden.webp",
+      "dimensions": [
+        421,
+        640
+      ],
+      "alphaBounds": [
+        16,
+        16,
+        405,
+        624
+      ]
+    },
+    {
+      "id": "twilight",
+      "type": "landmark",
+      "sourceSize": [
+        1312,
+        1199
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\twilight.png",
+      "file": "assets/world-v51226-art/twilight.webp",
+      "dimensions": [
+        640,
+        583
+      ],
+      "alphaBounds": [
+        16,
+        16,
+        624,
+        567
+      ]
+    },
+    {
+      "id": "crystal",
+      "type": "landmark",
+      "sourceSize": [
+        1312,
+        1199
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\crystal.png",
+      "file": "assets/world-v51226-art/crystal.webp",
+      "dimensions": [
+        564,
+        640
+      ],
+      "alphaBounds": [
+        16,
+        16,
+        548,
+        624
+      ]
+    },
+    {
+      "id": "frost",
+      "type": "landmark",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\frost.png",
+      "file": "assets/world-v51226-art/frost.webp",
+      "dimensions": [
+        476,
+        640
+      ],
+      "alphaBounds": [
+        16,
+        16,
+        460,
+        624
+      ]
+    },
+    {
+      "id": "ember",
+      "type": "landmark",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\ember.png",
+      "file": "assets/world-v51226-art/ember.webp",
+      "dimensions": [
+        527,
+        640
+      ],
+      "alphaBounds": [
+        16,
+        16,
+        511,
+        624
+      ]
+    },
+    {
+      "id": "tide",
+      "type": "landmark",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\tide.png",
+      "file": "assets/world-v51226-art/tide.webp",
+      "dimensions": [
+        472,
+        640
+      ],
+      "alphaBounds": [
+        16,
+        16,
+        456,
+        624
+      ]
+    },
+    {
+      "id": "clock",
+      "type": "landmark",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\clock.png",
+      "file": "assets/world-v51226-art/clock.webp",
+      "dimensions": [
+        370,
+        640
+      ],
+      "alphaBounds": [
+        16,
+        16,
+        354,
+        624
+      ]
+    },
+    {
+      "id": "astral",
+      "type": "landmark",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\astral.png",
+      "file": "assets/world-v51226-art/astral.webp",
+      "dimensions": [
+        393,
+        640
+      ],
+      "alphaBounds": [
+        16,
+        16,
+        377,
+        624
+      ]
+    },
+    {
+      "id": "oak",
+      "type": "prop",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\oak.png",
+      "file": "assets/world-v51226-art/oak.webp",
+      "dimensions": [
+        535,
+        640
+      ],
+      "alphaBounds": [
+        16,
+        16,
+        519,
+        624
+      ]
+    },
+    {
+      "id": "blossom",
+      "type": "prop",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\blossom.png",
+      "file": "assets/world-v51226-art/blossom.webp",
+      "dimensions": [
+        559,
+        640
+      ],
+      "alphaBounds": [
+        16,
+        16,
+        543,
+        624
+      ]
+    },
+    {
+      "id": "pond",
+      "type": "prop",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\pond.png",
+      "file": "assets/world-v51226-art/pond.webp",
+      "dimensions": [
+        640,
+        447
+      ],
+      "alphaBounds": [
+        16,
+        16,
+        624,
+        431
+      ]
+    },
+    {
+      "id": "bramble",
+      "type": "enemy",
+      "sourceSize": [
+        1261,
+        1247
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\bramble.png",
+      "file": "assets/world-v51226-art/bramble-walk.webp",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "frameSize": 256,
+      "columns": 4,
+      "rows": 1,
+      "feetBaseline": 234,
+      "atlasDimensions": [
+        1280,
+        1024
+      ],
+      "atlasColumns": 5,
+      "atlasRows": 4,
+      "compatDimensions": [
+        720,
+        576
+      ],
+      "compatFrameSize": 144,
+      "directionNotes": "Single consistent three-quarter view repeated in 5 columns, caller mirrors pose.face. Four unique gait rows."
+    },
+    {
+      "id": "thief",
+      "type": "enemy",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\thief.png",
+      "file": "assets/world-v51226-art/thief-walk.webp",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "frameSize": 256,
+      "columns": 4,
+      "rows": 1,
+      "feetBaseline": 234,
+      "atlasDimensions": [
+        1280,
+        1024
+      ],
+      "atlasColumns": 5,
+      "atlasRows": 4,
+      "compatDimensions": [
+        720,
+        576
+      ],
+      "compatFrameSize": 144,
+      "directionNotes": "Single consistent three-quarter view repeated in 5 columns, caller mirrors pose.face. Four unique gait rows."
+    },
+    {
+      "id": "crown",
+      "type": "enemy",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\crown.png",
+      "file": "assets/world-v51226-art/crown-walk.webp",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "frameSize": 256,
+      "columns": 4,
+      "rows": 1,
+      "feetBaseline": 234,
+      "atlasDimensions": [
+        1280,
+        1024
+      ],
+      "atlasColumns": 5,
+      "atlasRows": 4,
+      "compatDimensions": [
+        720,
+        576
+      ],
+      "compatFrameSize": 144,
+      "directionNotes": "Single consistent three-quarter view repeated in 5 columns, caller mirrors pose.face. Four unique gait rows."
+    },
+    {
+      "id": "green",
+      "type": "enemy",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\green.png",
+      "file": "assets/world-v51226-art/green-walk.webp",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "frameSize": 256,
+      "columns": 4,
+      "rows": 1,
+      "feetBaseline": 234,
+      "atlasDimensions": [
+        1280,
+        1024
+      ],
+      "atlasColumns": 5,
+      "atlasRows": 4,
+      "compatDimensions": [
+        720,
+        576
+      ],
+      "compatFrameSize": 144,
+      "directionNotes": "Single consistent three-quarter view repeated in 5 columns, caller mirrors pose.face. Four unique gait rows."
+    },
+    {
+      "id": "fat",
+      "type": "enemy",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\fat.png",
+      "file": "assets/world-v51226-art/fat-walk.webp",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "frameSize": 256,
+      "columns": 4,
+      "rows": 1,
+      "feetBaseline": 234,
+      "atlasDimensions": [
+        1280,
+        1024
+      ],
+      "atlasColumns": 5,
+      "atlasRows": 4,
+      "compatDimensions": [
+        720,
+        576
+      ],
+      "compatFrameSize": 144,
+      "directionNotes": "Single consistent three-quarter view repeated in 5 columns, caller mirrors pose.face. Four unique gait rows."
+    },
+    {
+      "id": "spore",
+      "type": "enemy",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "source": "C:\\Users\\wsu58\\Documents\\Codex\\2026-11-10\\referenced-chatgpt-conversation-this-is-an\\work\\world-v51226-sources\\spore.png",
+      "file": "assets/world-v51226-art/spore-walk.webp",
+      "dimensions": [
+        1024,
+        256
+      ],
+      "frameSize": 256,
+      "columns": 4,
+      "rows": 1,
+      "feetBaseline": 234,
+      "atlasDimensions": [
+        1280,
+        1024
+      ],
+      "atlasColumns": 5,
+      "atlasRows": 4,
+      "compatDimensions": [
+        720,
+        576
+      ],
+      "compatFrameSize": 144,
+      "directionNotes": "Single consistent three-quarter view repeated in 5 columns, caller mirrors pose.face. Four unique gait rows."
+    }
+  ]
+}
