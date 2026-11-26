@@ -27,16 +27,22 @@ module.exports=function(){
   assert(!drawCalls.some(call=>call.src===game.ASSET_DATA.ui_book));
   assert.equal(vectorCalls.find(call=>call.kind==='rotate').args[0],g.bookFamiliar.artAngle);
  });
- check('frisbee shows its complete round mint face in all directions and reduced motion',()=>{
+ check('frisbee spins inside a stable shallow silhouette with short curved rim afterimages',()=>{
   for(const reduced of [false,true])for(let i=0;i<8;i++){
    const {game,drawCalls,vectorCalls}=createHarness(123,true,reduced);game.begin();const p=game.g.player;
    game.beam(p.x,p.y,i*Math.PI/4,14,.87,108,'moon',1);
    const s=game.g.shots[0];game.g.worldClock=.25;game.drawProjectile(s);
    const art=drawCalls.find(c=>c.src===game.ASSET_DATA.spell_moon);assert(art);
    assert.notEqual(art.src,game.ASSET_DATA.cannonProjectile);
-   assert.equal(art.args[2],art.args[3],'disc face must stay round, never squash into a half-disc');
-   assert.equal(art.args[2],s.longR*2);assert.equal(art.args[3],s.r*2);
-   assert.equal(vectorCalls.find(c=>c.kind==='rotate').args[0],Math.atan2(s.vy,s.vx)+(reduced?0:1.75));
+   assert.equal(art.args[2],art.args[3],'rotate the full face before projecting it');
+   assert.equal(art.args[2],s.longR*2);
+   const scale=vectorCalls.find(c=>c.kind==='scale');assert.equal(scale.args[0],1);
+   assert.equal(scale.args[1],s.r/s.longR);assert(scale.args[1]<.52);
+   const turns=vectorCalls.filter(c=>c.kind==='rotate');
+   assert.equal(turns[0].args[0],Math.atan2(s.vy,s.vx));assert.equal(turns[1].args[0],reduced?0:2.25);
+   const swishes=vectorCalls.filter(c=>c.kind==='ellipse'&&c.args[5]!==0);
+   assert.equal(swishes.length,reduced?0:6);
+   for(const arc of swishes)assert(Math.abs(arc.args[6]-arc.args[5])<1,'no complete range rings');
    assert(!game.g.effects.some(e=>e.kind==='beam'));
   }
  });
