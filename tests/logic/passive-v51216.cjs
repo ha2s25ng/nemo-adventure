@@ -11,7 +11,7 @@ module.exports=()=>{
  check('courage affects bosses, not normal enemies',()=>{
   const {game}=createHarness();game.begin();game.g.player.crit=0;game.g.passives.courage=5;
   const p=game.g.player,a=game.spawn('armor',{x:p.x+2,y:p.y}),b=game.spawn('armor',{x:p.x+3,y:p.y});
-  a.hp=b.hp=10000;b.isBoss=true;game.deal(a,100,'star');game.deal(b,100,'star');assert.equal(a.hp,9900);assert.equal(b.hp,9890);
+  a.hp=b.hp=10000;b.isBoss=true;game.deal(a,100,'star');game.deal(b,100,'star');assert.equal(a.hp,9900);assert.equal(b.hp,9885);
  });
  check('claw adds to both ordinary and strengthened critical multipliers',()=>{
   const {game}=createHarness();game.begin();game.g.passives.claw=5;game.g.player.crit=1;
@@ -34,5 +34,21 @@ module.exports=()=>{
   for(const id of Object.keys(game.W)){game.renderEvo(id);assert(!element('evo-options').innerHTML.includes('%'));}
   game.openCodex();
  });
- const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'combat gold fractions, additive critical damage, boss-only damage, 1.5s immunity and qualitative selections'};
+ check('redistributed ranks change actual damage, cadence, radius, defense and immunity',()=>{
+  const {game}=createHarness();game.begin();const g=game.g,w=g.weapons.star;
+  for(let rank=1;rank<=5;rank++){
+   g.player.crit=.05;
+   g.passives={magic:rank};assert(Math.abs(game.weaponPower('star',.6,w)-60*(1+.02*rank))<1e-9);
+   g.passives={quick:rank};assert(Math.abs(game.cooldown('star')-.68/(1+.02*rank))<1e-9);
+   g.passives={lucky:rank};assert(Math.abs(game.wpCrit('star')-(.05+.04*rank))<1e-9);
+   g.passives={big:rank};assert(Math.abs(game.radiusMult()-(1+.04*rank))<1e-9);
+   g.passives={leafguard:rank,jelly:rank};g.player.hp=g.player.maxHp=1000;g.player.invuln=0;
+   game.damagePlayer(100,'test',true);assert.equal(g.player.hp,1000-(100-(5+rank*5)));
+   assert(Math.abs(g.player.invuln-(1+rank*.1))<1e-9);
+   g.passives={courage:rank};g.player.crit=0;
+   const e=game.spawn('armor',{x:g.player.x+2,y:g.player.y});e.isBoss=true;e.hp=10000;
+   game.deal(e,100,'star');assert.equal(e.hp,10000-(100+rank*3));
+  }
+ });
+ const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'combat gold, critical damage, bosses, immunity, qualitative selections and seven rebalanced rank effects'};
 };

@@ -1,5 +1,5 @@
 {
-  "version": "5.12.16",
+  "version": "5.12.17",
   "mode": "endless_survival_and_campaign",
-  "notes": "패시브 4종 추가, 선택 카드 상세 수치 제거"
+  "notes": "패시브 7종 초기 레벨 효율 조정, 넓은 마법 최대 20%, 용기의 목걸이 최대 15%"
 }

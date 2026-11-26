@@ -2,13 +2,13 @@
 const assert=require('node:assert/strict');const {createHarness}=require('./harness.cjs');
 module.exports=function(){
  const results=[],check=(name,fn)=>{try{fn(createHarness().game);results.push({name,pass:true});}catch(error){results.push({name,pass:false,error:error.stack});}};
- const caps={magic:.10,quick:.10,lucky:.20,big:.30,cloak:60,shoes:.30,insight:.30,magnet:2,windstep:.15,leafguard:.30,emberheart:.30,honeypouch:.50,coin:.20,claw:.50,courage:.10,jelly:.50};
- check('all 12 cumulative tables reach agreed Lv.5 caps with a larger final step',game=>{
+ const caps={magic:.10,quick:.10,lucky:.20,big:.20,cloak:60,shoes:.30,insight:.30,magnet:2,windstep:.15,leafguard:.30,emberheart:.30,honeypouch:.50,coin:.20,claw:.50,courage:.15,jelly:.50};
+ check('all 16 cumulative tables reach agreed Lv.5 caps',game=>{
   assert.equal(game.PASSIVE_MAX_LEVEL,5);
   for(const [id,cap] of Object.entries(caps)){
    const values=Array.from(game.PASSIVE_LEVELS[id]);assert.equal(values.length,6);assert.equal(values[0],0);assert.equal(values[5],cap,id);
    for(let i=1;i<=5;i++)assert(values[i]>values[i-1],id);
-   assert(values[5]-values[4]>values[4]-values[3],id);
+   if(!['magic','quick','lucky','big','leafguard','courage','jelly'].includes(id))assert(values[5]-values[4]>values[4]-values[3],id);
    assert.equal(game.passiveValue(id,99),cap);assert.equal(game.passiveValue(id,-1),0);
   }
  });
@@ -33,7 +33,7 @@ module.exports=function(){
   assert(Math.abs(game.weaponPower('star',.6,w)-66)<1e-9);
   g.player.hp=50;assert(Math.abs(game.weaponPower('star',.6,w)-84)<1e-9);
   assert(Math.abs(game.cooldown('star',w)-.68/1.1)<1e-9);
-  assert.equal(game.wpCrit('star'),.25);assert.equal(game.radiusMult(),1.30);
+  assert.equal(game.wpCrit('star'),.25);assert.equal(game.radiusMult(),1.20);
   assert.equal(game.moveCastRate(),1);g.player.moving=true;assert.equal(game.moveCastRate(),1.15);
  });
  check('cloak reaches exactly +60 and heals only the rank delta; bone restores 24 at full recovery build',game=>{
@@ -50,7 +50,7 @@ module.exports=function(){
  check('experience bonus is 30 percent, and UI descriptions show rank totals',game=>{
   game.begin();const g=game.g;g.passives.insight=5;game.collect({kind:'xp',xp:10,x:g.player.x,y:g.player.y});assert.equal(g.player.xp,13);
   for(const id of Object.keys(caps)){g.passives[id]=4;assert(!/NaN|undefined/.test(game.passiveOffer(id)));}
-  assert(game.passiveOffer('cloak').includes('36 → +60'));assert(game.passiveOffer('magic').includes('6% → +10%'));
+  assert(game.passiveOffer('cloak').includes('36 → +60'));assert(game.passiveOffer('magic').includes('8% → +10%'));
  });
  check('passive names are distinct and old misleading names are gone',game=>{
   const names=Object.values(game.DATA.passives).map(row=>row[0]);assert.equal(new Set(names).size,16);
