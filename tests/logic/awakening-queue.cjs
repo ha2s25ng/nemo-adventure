@@ -37,5 +37,21 @@ module.exports=()=>{
   for(let i=0;i<30;i++)game.updateShots(.02,false);
   assert(e.hp<1e6);assert(second.hp<1e6);assert.equal(third.hp,1e6);assert(1e6-second.hp<1e6-e.hp);
  });
- const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'normal ranks 1–7, 3/4 star shots, piercing limit, ribbon gate, first-slot queue and saved hidden discoveries'};
+ check('larger stars use matching contact radii and awakened-only dust, respecting reduced motion',()=>{
+  const {createHarness}=require('./harness.cjs');
+  for(const reduced of [false,true]){
+   const {game,drawCalls,vectorCalls}=createHarness(123,true,reduced);game.begin();const g=game.g,p=g.player;g.weapons.star.lv=7;
+   const e=game.spawn('armor',{x:p.x+3,y:p.y});e.hp=1e6;game.fireWeapon('star');const ordinary=g.shots[0];assert.equal(ordinary.r,.28);assert.equal(ordinary.awakened,false);
+   g.weapons.star.awakened='star-piercing';game.fireWeapon('star');const awake=g.shots.at(-1);assert.equal(awake.r,.32);assert.equal(awake.awakened,true);assert.equal(ordinary.r,.28);
+   for(const shot of [ordinary,awake])shot.trail=Array.from({length:6},(_,i)=>({x:p.x-i*.1,y:p.y}));
+   let normalFills=0;
+   for(const shot of [ordinary,awake]){
+    drawCalls.length=0;vectorCalls.length=0;game.drawProjectile(shot);
+    const body=drawCalls.find(c=>c.src===game.ASSET_DATA.spell_star);assert(body);assert.equal(body.args[2],shot.r*2);assert.equal(body.args[3],shot.r*2);
+    const fills=vectorCalls.filter(c=>c.kind==='fill').length;
+    if(shot===ordinary)normalFills=fills;else {assert(fills>normalFills);if(reduced)assert.equal(fills,1);else assert.equal(fills,7);}
+   }
+  }
+ });
+ const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'normal ranks 1–7, 3/4 star shots, piercing, queued awakening, discoveries, visible hitboxes and reduced-motion dust'};
 };
