@@ -1,5 +1,5 @@
 {
-  "version": "5.12.19",
+  "version": "5.12.20",
   "mode": "endless_survival_and_campaign",
-  "notes": "Lv.7 일반 강화, 스타 샷·행운의 리본 각성, 발견 도감과 카드 정렬 수정"
+  "notes": "각성 카드의 각진 테두리를 둥근 모서리로 통일"
 }
