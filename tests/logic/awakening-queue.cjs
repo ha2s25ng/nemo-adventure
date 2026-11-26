@@ -65,5 +65,14 @@ module.exports=()=>{
    assert(details.includes(recipe.name));assert(details.includes(recipe.summary));assert(details.includes(game.DATA.passives[recipe.passive][0]));
   }
  });
- const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'normal ranks 1–7, queued awakening, per-entry discoveries, visible hitboxes and reduced-motion dust'};
+ check('unchanged rank seven redraws with a purple awakening marker in HUD and pause, then resets next run',()=>{
+  const {createHarness}=require('./harness.cjs'),{game,element}=createHarness();game.begin();game.g.weapons.star.lv=7;game.updateHUD();
+  assert(!element('weapon-slots').innerHTML.includes('data-awakened="true"'));
+  game.g.weapons.star.awakened='star-piercing';game.updateHUD();
+  for(const id of ['weapon-slots','pause-loadout'])assert(element(id).innerHTML.includes('data-awakened="true"'));
+  assert(element('weapon-slots').innerHTML.includes('✦ 각성'));assert(element('weapon-slots').innerHTML.includes('Lv.7'));
+  assert(element('pause-loadout').innerHTML.includes('pause-awakened-label'));assert.equal(game.g.weapons.star.lv,7);
+  game.menu();game.begin();game.updateHUD();assert(!element('weapon-slots').innerHTML.includes('data-awakened="true"'));assert(!element('pause-loadout').innerHTML.includes('data-awakened="true"'));
+ });
+ const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'normal ranks 1–7, queued awakening, discoveries, hitboxes, reduced motion and HUD/pause awakening markers'};
 };

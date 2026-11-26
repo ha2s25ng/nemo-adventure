@@ -1,5 +1,5 @@
 {
-  "version": "5.12.24",
+  "version": "5.12.25",
   "mode": "endless_survival_and_campaign",
-  "notes": "전체 무기 패시브 조합 각성·레벨 성장 및 밸런스 정리"
+  "notes": "각성한 무기의 장착 슬롯·일시정지 목록을 보라색과 각성 표시로 구분"
 }
