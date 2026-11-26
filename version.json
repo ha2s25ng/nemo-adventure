@@ -1,5 +1,5 @@
 {
-  "version": "5.12.22",
+  "version": "5.12.23",
   "mode": "endless_survival_and_campaign",
-  "notes": "각성 설명을 별 4발·관통으로 명확화, 무기·패시브 조합을 아이콘과 레벨로 표시"
+  "notes": "각성 설명을 간결하게 수정, 무기·패시브 조합 아이콘 표시"
 }
