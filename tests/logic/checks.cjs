@@ -57,7 +57,7 @@ module.exports = function engineChecks() {
     assert(game.g.t > before);
   });
 
-  check('all weapon upgrade chains and both evolutions', () => {
+  check('all ordinary weapon ranks reach seven without evolution choices', () => {
     for (const id of weaponIds) for (const evolution of [0, 1]) {
       game.begin();
       game.g.weapons = { [id]: { lv: 1, up: [0, 0, 0], break: false, evo: null, clock: 0 } };
@@ -85,7 +85,7 @@ module.exports = function engineChecks() {
       id, { lv: 7, up: [2, 2, 0], break: true, evo: 0, clock: 0 }
     ]));
     game.g.passives = { magic: 5, quick: 5, lucky: 5, shoes: 5, insight: 5 };
-    game.g.weapons.star.awakened='star-piercing';
+    for(const id of Object.keys(game.g.weapons))game.g.weapons[id].awakened='fixture-complete';
     for (let draw = 0; draw < 100; draw++) {
       const cards = game.rollCards(null);
       assert.equal(cards.length, 2);

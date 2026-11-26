@@ -56,5 +56,14 @@ module.exports=()=>{
    }
   }
  });
- const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'normal ranks 1–7, 3/4 star shots, piercing, queued awakening, discoveries, visible hitboxes and reduced-motion dust'};
+ check('every discovered codex entry opens its own record while undiscovered recipes stay hidden',()=>{
+  const {createHarness}=require('./harness.cjs'),{game,element}=createHarness();game.begin();game.setCodexCategory('evolutions');
+  for(const recipe of game.AWAKENING_RECIPES){
+   game.saved.awakeningDiscoveries=[];game.selectCodexEntry(recipe.id);let details=element('codex-details').innerHTML;
+   assert(details.includes('아직 발견하지 못한 각성'));assert(!details.includes(recipe.summary));assert(!details.includes(game.DATA.passives[recipe.passive][0]));
+   game.saved.awakeningDiscoveries=[recipe.id];game.selectCodexEntry(recipe.id);details=element('codex-details').innerHTML;
+   assert(details.includes(recipe.name));assert(details.includes(recipe.summary));assert(details.includes(game.DATA.passives[recipe.passive][0]));
+  }
+ });
+ const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'normal ranks 1–7, queued awakening, per-entry discoveries, visible hitboxes and reduced-motion dust'};
 };

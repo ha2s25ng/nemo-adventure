@@ -31,15 +31,16 @@ module.exports=function(){
    for(const call of drawCalls)assert(call.args.every(Number.isFinite),`${id}: non-finite drawing coordinates`);
   }
  });
- check('all six rare cards render their retained damage mechanics using the matching art',()=>{
+ check('all fifteen awakenings use matching battle art in both modes',()=>{
   const {game}=createHarness();
-  for(const [rare,card] of Object.entries(game.RARE_CARDS))for(const evo of [0,1]){
-   game.menu();game.begin();const g=game.g,p=g.player;p.invuln=1e9;
-   g.weapons={[card.weapon]:{lv:7,up:[1,2,1],break:true,evo,clock:0}};
-   g.cards=[{type:'rare',id:rare,...card}];game.setScreen('cards');game.selectCard(0);
+  for(const recipe of game.AWAKENING_RECIPES)for(const stage of [0,1]){
+   game.menu();if(recipe.weapon==='cannon'){game.saved.gold=2000;game.selectCharacter('dori');}else game.selectCharacter('nemo');
+   game.begin(stage);const g=game.g,p=g.player;p.invuln=1e9;
+   g.weapons={[recipe.weapon]:{lv:7,up:[0,0,0],break:false,evo:null,clock:0}};g.passives={[recipe.passive]:5};
+   g.cards=[{type:'awakening',id:recipe.id,weapon:recipe.weapon,name:recipe.name}];game.setScreen('cards');game.selectCard(0);
    for(let i=0;i<5;i++){const e=game.spawn('armor',{x:p.x+1.8+i*.3,y:p.y+i*.15});e.hp=e.maxHp=1e7;}
-   for(let frame=0;frame<180;frame++){game.update(1/30);game.drawBattle();}
-   assert(g.totalDamage>0,rare);
+   for(let frame=0;frame<180;frame++){if(recipe.weapon==='seed'){p.moving=true;p.x+=.02;game.updateTraps(1/30);}game.update(1/30);game.drawBattle();}
+   assert(g.totalDamage>0,recipe.id);
   }
  });
  check('reduced motion renders every weapon without relying on animated sparkles',()=>{

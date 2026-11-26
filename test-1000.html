@@ -285,7 +285,7 @@
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
 #setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.12.23" />
+</style><meta name="nemo-version" content="5.12.24" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -609,12 +609,13 @@
 #app .rank-podium img { width:23px; height:23px; object-fit:contain; }
 #app .nemo-shop-item[data-costume^="victory-"] { border-color:#997a4d; }
 </style>
+<script src="./assets/awakening-v51224/design.js"></script>
 <script src="./assets/awakening-v51218/awakening.js"></script>
-<script src="./assets/campaign-v573/stages.js?v=5.12.23"></script>
+<script src="./assets/campaign-v573/stages.js?v=5.12.24"></script>
 <script src="./assets/campaign-v573/maps.js?v=5.9.0"></script>
-<script src="./assets/campaign-v590/bosses.js?v=5.12.23"></script>
-<script src="./assets/campaign-v590/monsters.js?v=5.12.23"></script>
-<script src="./assets/survival-v594/bosses.js?v=5.12.23"></script>
+<script src="./assets/campaign-v590/bosses.js?v=5.12.24"></script>
+<script src="./assets/campaign-v590/monsters.js?v=5.12.24"></script>
+<script src="./assets/survival-v594/bosses.js?v=5.12.24"></script>
 <script src="./assets/survival-v594/drops.js"></script>
 <style id="rare-card-art">
 #app #cards .choice-card[data-kind="rare"]{
@@ -733,14 +734,14 @@
 @media(max-width:600px){.draw-layout{grid-template-columns:1fr}.draw-reward{min-height:200px}.draw-reward-art{height:150px}.draw-photo-grid{max-width:330px;margin:auto}}
 @media(prefers-reduced-motion:no-preference){.draw-reward[data-reveal="true"] .draw-reward-art{animation:draw-reveal .5s ease-out}@keyframes draw-reveal{from{opacity:.2;transform:translateY(9px) scale(.84)}to{opacity:1;transform:none}}}
 </style>
-<link rel="stylesheet" href="./assets/capsule-v5912/capsule.css?v=5.12.23">
-<script src="./assets/lucky-draw-v5910/draw.js?v=5.12.23"></script>
-<link rel="stylesheet" href="./assets/capsule-v5916/premium.css?v=5.12.23">
-<link rel="stylesheet" href="./assets/photocards-v5102/cards.css?v=5.12.23">
-<link rel="stylesheet" href="./assets/characters-v5120/characters.css?v=5.12.23">
-<script src="./assets/characters-v5120/characters.js?v=5.12.23"></script>
-<script src="./assets/photocards-v5102/cards.js?v=5.12.23"></script>
-<script src="./assets/dori-v5110/photos.js?v=5.12.23"></script>
+<link rel="stylesheet" href="./assets/capsule-v5912/capsule.css?v=5.12.24">
+<script src="./assets/lucky-draw-v5910/draw.js?v=5.12.24"></script>
+<link rel="stylesheet" href="./assets/capsule-v5916/premium.css?v=5.12.24">
+<link rel="stylesheet" href="./assets/photocards-v5102/cards.css?v=5.12.24">
+<link rel="stylesheet" href="./assets/characters-v5120/characters.css?v=5.12.24">
+<script src="./assets/characters-v5120/characters.js?v=5.12.24"></script>
+<script src="./assets/photocards-v5102/cards.js?v=5.12.24"></script>
+<script src="./assets/dori-v5110/photos.js?v=5.12.24"></script>
 <script src="./assets/nemo-album-v5913/photos.js"></script>
 <style id="passive-card-readable-values">
 #app #cards .choice-effect strong.passive-effect { display:grid !important; gap:5px; min-width:0; }
@@ -789,6 +790,9 @@
 #app #cards .choice-meta{display:flex;align-items:center;}
 #app #codex .awakening-combination{max-width:420px;margin:16px auto;padding:12px;border:1px solid #cfbc97;border-radius:15px;background:#f8efdf;}
 @media(max-height:520px) and (orientation:landscape){#app .recipe-ingredient b{font-size:10px;}#app .recipe-ingredient small{font-size:9px;}#app .awakening-combination img.new-magic-icon{width:20px!important;height:20px!important;max-height:20px!important;}}
+</style>
+<style id="awakened-loadout-cues">
+#app .slot[data-awakened="true"]{border-color:#bf9b55!important;box-shadow:inset 0 0 0 1px #f7dc93,0 0 5px #e9c36b55!important;}
 </style>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
@@ -1156,7 +1160,10 @@ DATA.weapons.cannon=DORI_CANNON;
 for(const id of ['star','cannon'])DATA.weapons[id].steps[4]=['투사체 추가','투사체 +1'];
 DATA.weapons.star.steps={2:['빛나는 별','공격력 증가'],3:['재빠른 별','공격 속도 증가'],4:['세 갈래 별','별 3발 발사'],5:['행운의 별','치명타 확률 증가'],6:['단단한 별','공격력 증가'],7:['완성된 별','공격 속도와 치명타 확률 증가']};
 DATA.weapons.cannon.steps[7]=['완성된 공','공격력 증가'];
+DATA.weapons.cloud.coef=1.75;DATA.weapons.cloud.cd=2.1;DATA.weapons.book.coef=.90;
 const W=DATA.weapons,MD={...DATA.monsters,...CAMPAIGN_MONSTERS},passiveKeys=Object.keys(DATA.passives),weaponKeys=Object.keys(W);
+for(const id of weaponKeys)if(id!=='star')W[id].steps=NEMO_WEAPON_DESIGNS.steps(id);
+W.bell.steps[5]=['넓은 공명','울림 범위 증가'];
 const SURVIVAL_RUNNERS={
  spark:{at:75,weight:7,lateWeight:14},
  firefly:{at:240,weight:8,lateWeight:15}
@@ -1289,6 +1296,9 @@ for(const id of ["star","moon","bubble","bloom","cloud","ribbon","book","comet",
 }
 ASSET_DATA.ui_moon=ASSET_DATA.spell_moon='./assets/frisbee-v51214/frisbee.webp';
 for(const id of ['coin','claw','courage','jelly'])ASSET_DATA['ui_'+id]='./assets/passives-v51216/'+id+'.webp';
+for(const id of ['magic','quick','lucky','big','cloak','shoes','magnet','seed'])ASSET_DATA['ui_'+id]='./assets/awakening-v51224-art/'+id+'.webp';
+ASSET_DATA.spell_seed=ASSET_DATA.ui_seed;
+ASSET_DATA.cloudFamiliar=ASSET_DATA.ui_cloud;
 ASSET_DATA.ui_orbit=ASSET_DATA.orbitToy;
 for(const id of ['windstep','leafguard','emberheart','honeypouch','insight'])ASSET_DATA['ui_'+id]='./assets/passives-v5129/'+id+'.webp';
 // Seed art replacement is pending a generation-service recovery; never request a missing asset.
@@ -1544,10 +1554,10 @@ function weaponNumbers(id){
  const d=W[id],w=g?.weapons[id]||{lv:1,up:[0,0,0],break:false,evo:null};
  const extra=w.evo===0?2:0;
  const count={
-  star:starShotCount(w),cannon:starShotCount(w,'cannon'),orbit:2+w.up[0]+extra,moon:w.evo===0?2:1,bubble:1+w.up[0],
-  bloom:1,cloud:w.evo===1?4:w.evo===0?2:1,ribbon:w.break?2:1,book:2+w.up[0]+extra,
-  comet:1+w.up[0]+extra,frost:1+w.up[0]+extra,feather:1+w.up[0]+extra,vortex:1,
-  seed:3+w.up[0]+extra,bell:w.evo===0?2:1
+  star:starShotCount(w),cannon:starShotCount(w,'cannon'),orbit:projectileCount('orbit',w),moon:1,bubble:projectileCount('bubble',w),
+  bloom:1,cloud:w.awakened?3:1,ribbon:w.awakened?2:1,book:projectileCount('book',w),
+  comet:projectileCount('comet',w),frost:projectileCount('frost',w),feather:projectileCount('feather',w),vortex:1,
+  seed:w.awakened?3:w.lv>=4?4:3,bell:w.evo===0?2:1
  }[id];
  const labels={cannon:'공 개수',star:'탄환 수',orbit:'회전 별',moon:'관통 원반',bubble:'추적 방울',bloom:'꽃밭 수',cloud:'최대 낙뢰',ribbon:'리본 타격',book:'최대 종이비행기',comet:'유성',frost:'수정',feather:'깃털',vortex:'소용돌이',seed:'최대 설치 덫',bell:'충격파'};
  if(id==='book'&&g?.rareCard==='bookFamiliar'){
@@ -1583,37 +1593,32 @@ function closeCodex(){
  if(codexReturn==='menu')renderMenu();
  $(codexReturn==='pause'?'pause-codex':'codex-btn').focus();
 }
+function selectCodexEntry(id){currentCodex=id;renderCodex();}
 function renderCodex(){
- const categories=[['weapons','공격 마법'],['passives','패시브'],['evolutions','진화 기록']];
+ const awakenings=new Set(saved.awakeningDiscoveries||[]),recipes=AWAKENING_RECIPES;
+ const categories=[['weapons','공격 마법'],['passives','패시브'],['evolutions','각성 기록 · '+recipes.filter(recipe=>awakenings.has(recipe.id)).length+'/'+recipes.length]];
  $('codex-categories').innerHTML=categories.map(([id,name])=>`<button type="button" class="btn" data-codex-category="${id}" aria-pressed="${codexCategory===id}">${name}</button>`).join('');
- const discovered=new Set(saved.evolutionDiscoveries||[]);
- const awakenings=new Set(saved.awakeningDiscoveries||[]);
- const ids=codexCategory==='passives'?passiveKeys:codexCategory==='evolutions'?weaponKeys.flatMap(id=>[id+':0',id+':1']):weaponKeys;
+ const ids=codexCategory==='passives'?passiveKeys:codexCategory==='evolutions'?recipes.map(recipe=>recipe.id):weaponKeys;
  if(!ids.includes(currentCodex))currentCodex=ids[0];
- const known=key=>codexCategory!=='evolutions'||discovered.has(key);
- const title=key=>codexCategory==='passives'?DATA.passives[key][0]:codexCategory==='evolutions'?(known(key)?W[key.split(':')[0]].evos[Number(key.split(':')[1])][0]:'???'):W[key].name;
- $('codex-tabs').innerHTML=ids.map(key=>`<button type="button" class="codex-tab ${key===currentCodex?'on':''}" data-codex="${key}" aria-pressed="${key===currentCodex}"><span aria-hidden="true">${known(key)?skillIcon(key.split(':')[0],codexCategory==='passives'?DATA.passives[key][1]:W[key.split(':')[0]].icon):'?'}</span>${title(key)}</button>`).join('');
+ const recipeFor=id=>recipes.find(recipe=>recipe.id===id);
+ const known=id=>codexCategory!=='evolutions'||awakenings.has(id);
+ const title=id=>codexCategory==='passives'?DATA.passives[id][0]:codexCategory==='evolutions'?(known(id)?recipeFor(id).name:'???'):W[id].name;
+ $('codex-tabs').innerHTML=ids.map(id=>{
+  const iconId=codexCategory==='evolutions'?recipeFor(id).weapon:id;
+  return `<button type="button" class="codex-tab ${id===currentCodex?'on':''}" data-codex="${id}" aria-pressed="${id===currentCodex}"><span aria-hidden="true">${known(id)?skillIcon(iconId,codexCategory==='passives'?DATA.passives[id][1]:W[iconId].icon):'?'}</span>${title(id)}</button>`;
+ }).join('');
  let content='';
- if(codexCategory==='evolutions'&&AWAKENING_RECIPES.length){
-  const recipes=AWAKENING_RECIPES;
-  if(!recipes.some(recipe=>recipe.id===currentCodex))currentCodex=recipes[0].id;
-  $('codex-tabs').innerHTML=recipes.map(recipe=>`<button type="button" class="codex-tab" data-codex="${recipe.id}" aria-pressed="${recipe.id===currentCodex}">${awakenings.has(recipe.id)?recipe.name:'???'}</button>`).join('');
-  const recipe=recipes.find(recipe=>recipe.id===currentCodex);
-  $('codex-details').innerHTML=awakenings.has(recipe.id)?`<h3>${recipe.name}</h3><p>${recipe.summary}</p>${awakeningCombination(recipe.id)}`:'<div class="codex-undiscovered"><strong>?</strong><h3>아직 발견하지 못한 각성</h3><p>직접 각성에 성공하면 기록돼요.</p></div>';
-  return;
- }
  if(codexCategory==='evolutions'){
-  const [id,index]=currentCodex.split(':'),n=Number(index);
-  content=known(currentCodex)?`<div class="codex-summary"><div class="codex-emblem">${skillIcon(id,W[id].icon)}</div><div class="codex-intro"><h3>${title(currentCodex)}</h3><p>발견한 진화 · ${W[id].name}</p><p>${EVOLUTION_COPY[id]?.[n]||'마법의 새로운 힘이 깨어났어요.'}</p></div></div>`:'<div class="codex-undiscovered"><strong>?</strong><h3>아직 발견하지 못한 진화</h3><p>모험에서 최종 진화에 성공하면 이곳에 기록돼요.</p></div>';
+  const recipe=recipeFor(currentCodex);
+  content=recipe&&known(currentCodex)?`<div class="codex-summary"><div class="codex-emblem">${skillIcon(recipe.weapon,W[recipe.weapon].icon)}</div><div class="codex-intro"><h3>${recipe.name}</h3><p>${recipe.summary}</p></div></div>${awakeningCombination(recipe.id)}`:'<div class="codex-undiscovered"><strong>?</strong><h3>아직 발견하지 못한 각성</h3><p>직접 각성에 성공하면 기록돼요.</p></div>';
  }else if(codexCategory==='passives'){
   const id=currentCodex;
   content=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(id,DATA.passives[id][1])}</div><div class="codex-intro"><h3>${title(id)}</h3><p>패시브 · 최대 Lv.5</p><p>${PASSIVE_GUIDE[id]||PASSIVE_ROLE[id]||'모험에 도움이 되는 능력이에요.'}</p></div></div><p class="codex-note">레벨을 올리면 효과가 더욱 강해져요.</p>`;
  }else{
   const id=currentCodex,d=W[id],w=g?.weapons[id];
-  const growth=d.steps?Object.keys(d.steps).map(lv=>`<div class="codex-up"><b>Lv.${lv}</b><span>${({2:'투사체가 늘어나요.',3:'공격이 강해져요.',4:'투사체가 늘어나요.',5:'치명타가 더 자주 터져요.',6:'치명타가 더욱 강해져요.'})[lv]}</span></div>`).join(''):(GROWTH_COPY[id]||[]).map(copy=>`<p>${copy}</p>`).join('');
-  const recipes=AWAKENING_RECIPES.filter(recipe=>recipe.weapon===id);
-  const discoveries=recipes.length?recipes.map(recipe=>awakenings.has(recipe.id)?`<p>${recipe.name} · 발견 완료</p>`:'<p>??? · 미발견</p>').join(''):'<p>??? · 미발견</p>';
-  content=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(id,d.icon)}</div><div class="codex-intro"><h3>${d.name}</h3><p>${weaponGuide(id).role}</p><p>${w?'현재 Lv.'+w.lv:'기본 Lv.1'} · 최대 Lv.7</p></div></div><div class="codex-columns"><section><h4>레벨별 강화</h4>${growth}</section><section><h4>발견한 진화</h4>${discoveries}</section></div>`;
+  const growth=Object.keys(d.steps||{}).map(lv=>`<div class="codex-up"><b>Lv.${lv}</b><span>${levelChoiceCopy(id,Number(lv))}</span></div>`).join('');
+  const discoveries=recipes.filter(recipe=>recipe.weapon===id).map(recipe=>awakenings.has(recipe.id)?`<p>${recipe.name} · 발견 완료</p>`:'<p>??? · 미발견</p>').join('');
+  content=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(id,d.icon)}</div><div class="codex-intro"><h3>${d.name}</h3><p>${weaponGuide(id).role}</p><p>${w?'현재 Lv.'+w.lv:'기본 Lv.1'} · 최대 Lv.7${w?.awakened?' · 각성':''}</p></div></div><div class="codex-columns"><section><h4>레벨별 강화</h4>${growth}</section><section><h4>발견한 각성</h4>${discoveries}</section></div>`;
  }
  $('codex-details').innerHTML=content;$('codex-details').scrollTop=0;
 }
@@ -1944,7 +1949,7 @@ function begin(stageId=0){
  g={stage,endlessIntroduced:new Set(),map:stage?CAMPAIGN_MAPS[stage.id-1]:null,t:0,bossTime:0,runCostume:outfit.id,runCharacter:activeCharacter().id,player:{x:WORLD_CENTER,y:WORLD_CENTER,r:.40,hp,maxHp:hp,level:1,xp:0,attack:DATA.player.attack+saved.upgrades.attack*(stage?3:2)+outfit.attack,face:1,direction:'down',moving:false,moveX:0,moveY:0,stepDistance:0,gait:0,castTimer:0,castFacing:'down',castAngle:0,invuln:0,crit:DATA.player.crit+saved.upgrades.crit*.01,
   speed:DATA.player.speed*(1+saved.upgrades.speed*.02),pickup:DATA.player.pickup*(1+saved.upgrades.pickup*.10)},
   weapons:{[activeCharacter().starter]:{lv:1,up:[0,0,0],break:false,evo:null,clock:.2}},passives:{},
-  enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],bellEchoes:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0, waveIndex:0,
+  enemies:[], shots:[], enemyShots:[], zones:[],traps:[],effects:[],scheduledEvents:[],bellEchoes:[],numbers:[],loot:[], particles:[], n:0,spawnClock:0, spawnCount:0, waveIndex:0,
   boss:null,bossEncounters:0,bossRestUntil:0,nextForestEvent:66,forestEventBag:[],lastForestEvent:null,frenzyStarts:0,frenzyUntil:0,freeCards:0, cardReason:'level',cards:[],rareCard:null, cardOffers:[],rerolls:DATA.player.rerolls+saved.upgrades.reroll,
   gold:0, achievedMinutes:0,eliteGold:0,bossGold:0, firstGold:0,done:false,blessings:{},milestones:{},rushUntil:0,rushFired:{}, totalKills:0, totalDamage:0, totalXP:0,earnedXP:0,hitCount:0,hitReasons:{},
   metrics:{weaponDamage:{},weaponKills:{},cardPicks:{},aliveByMinute:[],firstEvolution:null,killsByType:{},skipped:0,invalidSpawns:0,bossSeconds:null},
@@ -2048,13 +2053,13 @@ function masteryBonus(w,branch,additionalRank=0){
  return WEAPON_MASTERY[branch].limit*rank/(rank+4);
 }
 function clockMult(id,w=g?.weapons[id]){
- const speed=1+saved.upgrades.tempo*.03+passiveValue('quick')+.08*(g?.blessings?.breeze||0)+.15*(w?.up[SPEED_RANK[id]]||0);
+ const speed=1+saved.upgrades.tempo*.03+passiveValue('quick')+.08*(g?.blessings?.breeze||0)+(id==='star'?0:(w?.lv>=3?.08:0)+(w?.lv>=6?.07:0));
  return speed*(id==='star'?1+(w?.lv>=3?.08:0)+(w?.lv>=7?.07:0):1)*(1+masteryBonus(w,'tempo'));
 }
 function cooldown(id,w=g?.weapons[id]){
  return Math.max(.08,W[id].cd/clockMult(id,w)*(id==='moon'&&w?.evo===1?1.2:1));
 }
-function starShotCount(w,id='star'){return id==='cannon'?1+Number(w.lv>=2)+Number(w.lv>=4):w.awakened==='star-piercing'?4:w.lv>=4?3:1;}
+function starShotCount(w,id='star'){return id==='cannon'?(w.lv>=4?3:1):w.awakened==='star-piercing'?4:w.lv>=4?3:1;}
 function starShotPower(w){
  return (w.lv>=3?1.25:1)*([1.15,1.10][w.evo]??1);
 }
@@ -2062,27 +2067,31 @@ function weaponPower(id,coefficient,w){
  const low=!!g&&g.player.hp<=g.player.maxHp*.5;
  const magic=1+passiveValue('magic')+(low?passiveValue('emberheart'):0);
  const brave=1+.12*(g?.blessings?.brave||0);
- const power=(id==='star'||id==='cannon')?(id==='star'?(w.lv>=6?1.20:w.lv>=2?1.10:1):starShotPower(w)*(w.lv>=7?1.10:1))
-  :(1+.25*w.up[DAMAGE_RANK[id]])*(SPREAD_DAMAGE[id]??1)**w.up[0]*(EXTRA_DAMAGE[id]?.[w.evo]??1);
+ const level=clamp(w.lv||1,1,7);
+ const power=id==='star'?(level>=6?1.20:level>=2?1.10:1):id==='bell'?[0,83,94,94,105,105,116,127][level]/83:[0,1,1.10,1.10,1.10,1.20,1.20,1.30][level];
  return (g?.player.attack??DATA.player.attack)*coefficient*magic*brave*power*(rageActive()?RAGE.power:1)*(1+masteryBonus(w,'power'));
 }
 function wpBase(id,coefficient){return weaponPower(id,coefficient,g.weapons[id]);}
 function weaponReach(id,w=g?.weapons[id]){
- const rm=1+passiveValue('big'),d=W[id];
+ const d=W[id],rm=radiusMult(),wide=w?.lv>=4?1.12:1;
  switch(id){
-  case 'cannon':return .95*rm*(w.evo===1?1.25:w.evo===0?1.15:1);
-  case 'ribbon':return d.range*1.2**w.up[1]*rm;
-  case 'bell':return d.range*1.22**w.up[0]*rm*(w.evo===1?1.3:1);
-  case 'orbit':return d.range*1.15**w.up[2]*rm;
-  case 'vortex':return d.range*1.2**w.up[0]*rm*(w.evo===1?1.28:1);
-  case 'bloom':return 1.68*1.2**w.up[1]*rm*(w.evo===0?1.25:1);
-  case 'comet':return 1.46*1.2**w.up[2]*rm*(w.evo===1?1.5:1);
-  case 'bubble':return 1.33*1.2**w.up[2]*rm*(w.evo===1?1.4:1);
-  case 'seed':return 1.22*1.2**w.up[2]*rm*(w.evo===1?1.5:1);
+  case 'cannon':return .95*rm;
+  case 'orbit':return d.range*rm;
+  case 'ribbon':case 'vortex':return d.range*wide*rm;
+  case 'bell':return d.range*(w.lv>=5?1.12:w.lv>=4?1.06:1)*rm;
+  case 'bloom':return 1.68*wide*rm;
+  case 'comet':return 1.46*rm;
+  case 'bubble':return 1.33*rm;
+  case 'seed':return 1.22*rm;
   default:return d.range;
  }
 }
-function wpCrit(id){let chance=g.player.crit+passiveValue('lucky');if(id==='star')chance+=(g.weapons[id].lv>=5?.05:0)+(g.weapons[id].lv>=7?.05:0);if(id==='cannon')chance+=(g.weapons[id].lv>=5?.15:0)+(g.weapons[id].evo===1?.10:0);if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
+function awakened(id){return !!g?.weapons[id]?.awakened;}
+function burstAwakening(id,x,y,r=.6){g.effects.push({kind:'awakeningPuff',spell:id,x,y,r,life:.40,max:.40});}
+function projectileCount(id,w){if(id==='star'||id==='cannon')return starShotCount(w,id);if(id==='book'||id==='orbit')return w.lv>=4?3:2;return w.lv>=4?2:1;}
+function multiShotScale(id,w){return w.lv>=4?({bubble:.70,book:.85,comet:.65,frost:.70,feather:.65}[id]??1):1;}
+function vortexReach(w){const base=weaponReach('vortex',w);return base*(awakened('vortex')?1+.35*Math.max(0,Math.sin(g.worldClock*TAU/3))**4:1);}
+function wpCrit(id){let chance=g.player.crit+passiveValue('lucky');if(id==='star')chance+=(g.weapons[id].lv>=5?.05:0)+(g.weapons[id].lv>=7?.05:0);if(id==='cannon')chance+=g.weapons[id].lv>=5?.05:0;if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
 function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
  let value=raw;if(e.vulnerableUntil>g.worldClock)value*=1.15;
  if(e.kind==='bramble'&&g.worldClock>=(e.guardUntil||0)){
@@ -2094,7 +2103,7 @@ function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
  if(e.isBoss)value*=1+masteryBonus(g.weapons[id],'boss');
  const crit=(settings.critAllowed!==false)&&rand()<wpCrit(id);
  if(e.isBoss||e.kind==='boss')value*=1+passiveValue('courage');
- if(crit)value*=((id==='cannon'&&g.weapons[id].lv>=6)?2:1.5)+passiveValue('claw');
+ if(crit)value*=1.5+passiveValue('claw');
  value=Math.round(value*100)/100;const actual=Math.min(e.hp,value);
  e.hp-=value;e.flash=.13;e.hitLast=g.worldClock;
  if(visible(e.x,e.y,0))playSound('hit');
@@ -2115,9 +2124,9 @@ function forestFrenzied(){
 function enemyPace(){return forestFrenzied()?1.30:1;}
 function damagePlayer(value,reason,projectile=false){const p=g.player;if(p.invuln>0||screen!=='playing')return;value=Math.round(value*(projectile?1-passiveValue('leafguard'):1)*(1-saved.upgrades.guard*.03)*(forestFrenzied()?1.20:1)*100)/100;p.hp=Math.max(0,p.hp-value);p.invuln=DATA.player.invuln+passiveValue('jelly');g.hitCount++;g.hitReasons[reason]=(g.hitReasons[reason]||0)+1;
  playSound('hurt');p.hurtTimer=.24;if(opts.numbers)g.numbers.push({x:p.x,y:p.y-.75,text:'-'+Math.round(value),ttl:.8,color:'#e84779'});if(opts.particles)burst(p.x,p.y,'#ff9fbd',13);if(p.hp<=0)finish(false);}
-function slow(e,amount,duration){if(e.isBoss){amount=Math.min(amount,.2);duration=Math.min(duration,.6);}if(amount>e.slowAmount||e.slowUntil<g.worldClock){e.slowAmount=amount;e.slowUntil=g.worldClock+duration;}else if(e.slowUntil<g.worldClock+duration)e.slowUntil=g.worldClock+duration;}
+function slow(e,amount,duration){if(e.isBoss||e.kind==='boss'){amount=Math.min(amount,.2);duration=Math.min(duration,.6);}if(amount>e.slowAmount||e.slowUntil<g.worldClock){e.slowAmount=amount;e.slowUntil=g.worldClock+duration;}else if(e.slowUntil<g.worldClock+duration)e.slowUntil=g.worldClock+duration;}
 function burst(x,y,color,n=7){if(!opts.particles)return;for(let i=0;i<n&&g.particles.length<320;i++){let a=rand()*TAU,sp=range(.4,2.8),ttl=range(.20,.70);g.particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,life:ttl,max:ttl,color,r:range(.035,.12)});}}
-function statusReady(e){return enemyPace()*(e.slowUntil>g.worldClock?1-e.slowAmount:1);}
+function statusReady(e){if(!e.isBoss&&e.kind!=='boss'&&(e.frozenUntil||0)>g.worldClock)return 0;return enemyPace()*(e.slowUntil>g.worldClock?1-e.slowAmount:1);}
 function pushEnemy(e,dx,dy){
  if(e.dead||e.isBoss||(e.attackState?.travel!==undefined&&e.attackState.type.startsWith('campaign-')))return;
  e.pushX=clamp((e.pushX||0)+dx,-1.45,1.45);
@@ -2135,7 +2144,30 @@ function knock(e,a,r){
  const force=r*(e.kind==='fat'?.5:1);
  pushEnemy(e,Math.cos(a)*force,Math.sin(a)*force);
 }
-function schedule(delay,fn){g.effects.push({kind:'event',life:delay,fn});}
+// Gameplay timers must never be truncated with cosmetic effects.
+function schedule(delay,fn,hostile=false){
+ if(!g||g.done||typeof fn!=='function')return;
+ (g.scheduledEvents??=[]).push({life:Math.max(0,Number(delay)||0),fn,hostile:!!hostile});
+}
+function updateScheduledEvents(dt){
+ if(!g||g.done||screen!=='playing')return;
+ const run=g,pending=run.scheduledEvents||[],due=[];
+ run.scheduledEvents=[];
+ const frozen=timeIsSealed();
+ // Snapshot processing keeps callbacks created by callbacks for the next tick.
+ for(const event of pending){
+  if(!(event.hostile&&frozen))event.life-=dt;
+  if(event.life<=1e-9)due.push(event);else run.scheduledEvents.push(event);
+ }
+ for(let i=0;i<due.length;i++){
+  if(g!==run||run.done)break;
+  if(screen!=='playing'){
+   run.scheduledEvents.push(...due.slice(i));break;
+  }
+  due[i].fn();
+ }
+}
+
 function loot(x,y,xp,kind='xp',healAmount=0,life){if(kind==='xp')g.earnedXP+=xp;g.loot.push({x,y,xp,kind,healAmount,ttl:life??(kind==='rage'?RAGE.dropLife:RARE_PICKUPS[kind]?RARE_DROP.life:95),r:kind==='xp'?.2:RARE_PICKUPS[kind]?.44:.33,phase:range(0,TAU)});}
 function awardGold(amount){const base=Math.round(amount*((g.player.fortuneUntil||0)>g.worldClock?2:1));const extra=base*passiveValue('coin')+(g.coinGoldRemainder||0);const bonus=Math.floor(extra+1e-9);g.coinGoldRemainder=extra-bonus;const value=base+bonus;g.gold+=value;g.combatGold=(g.combatGold||0)+value;return value;}
 function kill(e,allowRareDrop=true){
@@ -2277,7 +2309,8 @@ const RARE_CARDS={
  cometEmbers:{weapon:'comet',name:'별불 파편',desc:'첫 운석이 잔불 3개를 흩뿌림 · 운석 피해의 45%',lore:'잔불은 떨어진 자리에서 터져요. 적 한 마리당 한 번만 잔불 피해를 받아요.'},
  twinBell:{weapon:'bell',name:'달빛 쌍종',desc:'0.55초 뒤 같은 자리에 추가 울림 · 원래 피해의 50%',lore:'추가 울림은 적에게 피해를 줘요. 탄환 제거, 넉백, 둔화는 기존 울림에 적용돼요.'}
 };
-function rollRareCard(){
+function rollRareCard(){return null;
+ /* Legacy cards remain readable for historical records only. */
  if(g.rareCard)return null;
  const eligible=Object.entries(RARE_CARDS).filter(([,card])=>g.weapons[card.weapon]?.lv>=4);
  if(!eligible.length||rand()>=(g.cardReason==='bonus'?.15:.05))return null;
@@ -2294,8 +2327,8 @@ function makeMastery(id,w){
  };
 }
 function weaponAvailableForCharacter(id,character=g?.runCharacter??activeCharacter().id){return id==='star'?character==='nemo':id==='cannon'?character==='dori':true;}
-// Populate only after weapon/passive pairs and actual effects are approved.
-const AWAKENING_RECIPES=[{id:'star-piercing',weapon:'star',passive:'lucky',name:'스타 샷 · 각성',summary:'별의 개수가 늘어나고 관통 효과가 생깁니다.',apply:run=>{run.weapons.star.awakened='star-piercing';}}];
+// Approved one-passive awakening per weapon; starter weapons share an exclusive material.
+const AWAKENING_RECIPES=NEMO_WEAPON_DESIGNS.entries.map(([weapon,id,passive,summary])=>({id,weapon,passive,name:W[weapon].name+' · 각성',summary,apply:run=>{run.weapons[weapon].awakened=id;run.weapons[weapon].evo=null;run.weapons[weapon].break=false;if(weapon==='seed')run.traps=[];}}));
 function rollCards(rare){
  const awakening=NEMO_AWAKENING.next(g,AWAKENING_RECIPES,g.cardReason);
  const out=awakening?[awakening,...(rare?[rare]:[])]:rare?[rare]:[],owned=Object.keys(g.weapons);
@@ -2326,12 +2359,19 @@ function openForestChoice(stage){g.milestoneStage=stage;g.cardReason='milestone'
 const GROWTH_COPY={"star": ["별을 더 많이 발사해요.", "별의 위력이 강해져요.", "치명타가 더욱 강해져요."], "cannon": ["공을 더 많이 보내요.", "공의 위력이 강해져요.", "치명타가 더욱 강해져요."], "orbit": ["회전하는 별이 늘어나요.", "별에 닿은 적에게 더 강한 피해를 줘요.", "별이 더 넓게 돌아요."], "moon": ["원반의 위력이 강해져요.", "원반을 더 자주 던져요.", "원반이 더 넓어져요."], "bubble": ["방울이 늘어나요.", "방울의 위력이 강해져요.", "방울이 더 넓게 터져요."], "bloom": ["꽃밭의 위력이 강해져요.", "꽃밭이 넓어져요.", "꽃밭이 더 오래 남아요."], "cloud": ["번개가 강해져요.", "번개가 더 자주 내려요.", "번개의 치명타가 더 자주 터져요."], "ribbon": ["리본의 위력이 강해져요.", "리본이 더 넓게 퍼져요.", "리본으로 더 자주 공격해요."], "book": ["종이비행기가 늘어나요.", "종이비행기가 강해져요.", "종이비행기를 더 자주 보내요."], "comet": ["떨어지는 유성이 늘어나요.", "유성의 위력이 강해져요.", "유성이 더 넓게 터져요."], "frost": ["수정이 늘어나요.", "수정의 위력이 강해져요.", "적이 더 오래 느려져요."], "vortex": ["소용돌이가 넓어져요.", "소용돌이의 위력이 강해져요.", "적의 움직임을 더 늦춰요."], "seed": ["더 많은 덫을 설치해요.", "덫의 위력이 강해져요.", "덫이 더 넓게 터져요."], "bell": ["울림이 더 넓게 퍼져요.", "울림의 위력이 강해져요.", "종이 더 자주 울려요."], "feather": ["깃털이 늘어나요.", "깃털의 위력이 강해져요.", "깃털을 더 자주 보내요."]};
 const EVOLUTION_COPY={"star": ["별이 적들을 꿰뚫고 나아가요.", "치명타와 관통 능력이 강해져요."], "cannon": ["공이 적을 뚫고 나아가요.", "공의 폭발이 더욱 강해져요."], "orbit": ["더 많은 별이 겹겹이 돌아요.", "회전하는 별이 적 탄환을 막아줘요."], "moon": ["원반이 갈라져 날아가요.", "크고 강력한 원반을 던져요."], "bubble": ["터진 방울에서 작은 방울들이 나와요.", "커다란 방울이 적을 더욱 느리게 해요."], "bloom": ["꽃이 피는 순간에도 적을 공격해요.", "꽃밭이 체력을 회복시켜 줘요."], "cloud": ["같은 적에게 번개가 다시 내려요.", "여러 적에게 번개가 함께 내려요."], "ribbon": ["주변을 둘러싸며 리본으로 공격해요.", "적을 밀어내고 강한 후속 공격을 해요."], "book": ["더 많은 비행기가 적들 사이를 오가요.", "비행기가 한 적에게도 집중해 날아가요."], "comet": ["더 많은 유성이 쏟아져요.", "거대한 유성이 넓고 강하게 터져요."], "frost": ["수정이 늘어나고 적을 더 느리게 해요.", "수정이 주변에 서리 폭발을 일으켜요."], "vortex": ["소용돌이의 위력이 크게 강해져요.", "소용돌이가 넓어지고 적을 더 느리게 해요."], "seed": ["폭발한 자리에 공격하는 꽃밭이 남아요.", "덫이 더 넓게 감지하고 터져요."], "bell": ["종이 연달아 울리며 적을 밀어내요.", "울림이 적 탄환을 지워줘요."], "feather": ["많은 깃털이 적들 사이를 이어 날아가요.", "돌아오는 깃털이 더 강해져요."]};
 const RARE_COPY={"bookFamiliar": "금빛 종이비행기가 곁에서 적을 쫓아 공격해요.", "starLegacy": "관통한 별이 작은 별들로 갈라져요.", "orbitBloom": "회전 별이 적을 맞히면 별꽃 폭발이 일어나요.", "cloudChain": "번개가 다른 적에게 이어져요.", "cometGarden": "유성이 떨어진 자리에 별빛이 남아 공격해요.", "twinBell": "같은 자리에서 종이 다시 울려요."};
+const LEVEL_FOUR_COPY={star:'별을 세 갈래로 발사합니다.',cannon:'공을 세 갈래로 보냅니다.',orbit:'회전하는 별이 늘어납니다.',moon:'원반이 넓어집니다.',bubble:'방울이 갈라져 날아갑니다.',bloom:'꽃밭이 넓게 피어납니다.',cloud:'번개가 남긴 표식에 다시 적중하면 더 강해집니다.',ribbon:'리본이 더 넓게 펼쳐집니다.',book:'더 많은 종이비행기를 보냅니다.',comet:'더 많은 유성이 떨어집니다.',frost:'수정을 나란히 발사합니다.',vortex:'소용돌이가 더 넓게 퍼집니다.',seed:'더 많은 씨앗 덫을 설치합니다.',bell:'울림이 더 넓게 퍼집니다.',feather:'깃털을 나란히 보냅니다.'};
+function levelChoiceCopy(id,level){
+ if(level===4)return LEVEL_FOUR_COPY[id];
+ if(id==='bell'&&level===5)return '울림이 더 넓게 퍼집니다.';
+ if(id==='star')return ({2:'별의 위력이 강해집니다.',3:'별을 더 자주 발사합니다.',5:'치명타가 더 자주 터집니다.',6:'별의 위력이 강해집니다.',7:'공격 속도와 치명타 확률이 높아집니다.'})[level];
+ return [3,6].includes(level)?'공격을 더 자주 사용합니다.':'마법의 위력이 강해집니다.';
+}
 function choiceSummary(c){
  if(c.type==='passive')return PASSIVE_GUIDE[c.id]||PASSIVE_ROLE[c.id]||'이 능력을 강화해요.';
  if(c.type==='awakening')return c.desc;
  if(c.type==='new')return weaponGuide(c.id).role;
  if(c.type==='rare')return RARE_COPY[c.id]||'이 마법에 특별한 능력이 더해져요.';
- if(c.type==='growth')return c.up===undefined?({2:'투사체가 늘어나요.',3:'투사체의 위력이 강해져요.',5:'치명타가 더 자주 터져요.',6:'치명타가 더욱 강해져요.'}[g.weapons[c.id]?.lv+1]||'마법이 더욱 강해져요.'):(GROWTH_COPY[c.id]?.[c.up]||'마법이 더욱 강해져요.');
+ if(c.type==='growth')return levelChoiceCopy(c.id,g.weapons[c.id].lv+1);
  if(c.type==='break')return '마법에 새로운 공격 효과가 더해져요.';
  if(c.type==='evo')return '마법의 최종 진화 모습을 선택해요.';
  if(c.type==='mastery')return '완성된 마법을 더욱 강하게 다듬어요.';
@@ -2370,7 +2410,7 @@ function renderCards(revealRare=false){
  $('reroll').hidden=milestone;
  $('reroll').disabled=g.rerolls<=0||milestone;
 }
-function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c||(c.type==='rare'&&g.rareCard))return;g.metrics.cardPicks[c.name]=(g.metrics.cardPicks[c.name]||0)+1;
+function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c||c.type==='rare')return;g.metrics.cardPicks[c.name]=(g.metrics.cardPicks[c.name]||0)+1;
  if(c.type==='awakening'){
   const recipe=NEMO_AWAKENING.apply(g,AWAKENING_RECIPES,c.id);if(!recipe)return;
   saved.awakeningDiscoveries??=[];if(!saved.awakeningDiscoveries.includes(recipe.id)){saved.awakeningDiscoveries.push(recipe.id);persist();}
@@ -2596,7 +2636,7 @@ function updateForestEncounter(){
     const follower=spawnPoint({side,offset:range(-.38,.38),margin:2},MD.green.r);
     if(follower)spawn('green',follower);
    }
-  });
+  },true);
  }
 }
 function enemyBullet(x,y,angle,speed,damage,life=4,label='적 탄환',pattern='normal',sourceId=null){
@@ -3012,6 +3052,7 @@ function updateEnemyFacing(e,dx,dy,speed){
 }
 function updateMonster(e,dt){
  e.flash=Math.max(0,e.flash-dt);
+ if(!e.isBoss&&e.kind!=='boss'&&(e.frozenUntil||0)>g.worldClock)return;
  if(e.retreat){
   if(g.worldClock>=e.retreat||!visible(e.x,e.y,1.4)){e.dead=true;return;}
   const away=atan(g.player.x,g.player.y,e.x,e.y);
@@ -3147,6 +3188,7 @@ function crowdedTarget(p,range,radius,beamWidth=0){
  return best;
 }
 function placeSeedTrap(p,w,d){
+ if(awakened('seed'))return false;
  const direction=DIRECTIONS.indexOf(p.direction)*Math.PI/4;
  const target=p.moving?null:targetNearest(p.x,p.y,d.range);
  if(!p.moving&&!target)return false;
@@ -3154,7 +3196,7 @@ function placeSeedTrap(p,w,d){
  const py=clamp(target?.y??p.y-Math.sin(direction)*.92,.4,DATA.world-.4);
  const live=g.traps.filter(z=>!z.dead&&!z.mini);
  if(blockedByTerrain(px,py,.16)||live.some(z=>distance(px,py,z.x,z.y)<.95))return false;
- const max=3+w.up[0]+(w.evo===0?2:0),r=weaponReach('seed',w);
+ const max=w.lv>=4?4:3,r=weaponReach('seed',w);
  const origin=castFromWand(p,atan(p.x,p.y,px,py));
  g.traps.push({x:px,y:py,r,trigger:.80*(w.evo===1?1.4:1),damage:wpBase('seed',d.coef),life:9,armed:.27,mini:false,dead:false,phase:range(0,TAU)});
  if(live.length>=max)live[0].dead=true;
@@ -3163,25 +3205,16 @@ function placeSeedTrap(p,w,d){
 }
 function ringBell(p,w,d){
  const r=weaponReach('bell',w),power=wpBase('bell',d.coef);
- const enemyNear=g.enemies.some(e=>!e.dead&&!e.retreat&&distance(e.x,e.y,p.x,p.y)<=r+e.r);
- const bulletNear=g.enemyShots.some(b=>!b.dead&&distance(b.x,b.y,p.x,p.y)<=r+b.r);
- if(!enemyNear&&!bulletNear)return false;
- function pulse(scale,limit){
-  g.effects.push({kind:'bellWave',x:p.x,y:p.y,r,life:.68,max:.68});
-  for(const e of g.enemies){
-   if(e.dead||distance(e.x,e.y,p.x,p.y)>r+e.r)continue;
-   deal(e,power*scale,'bell');knock(e,atan(p.x,p.y,e.x,e.y),w.evo===0?1.02:.73);
-   if(w.break)slow(e,.18,1);
-  }
-  const bullets=g.enemyShots.filter(b=>!b.dead&&distance(b.x,b.y,p.x,p.y)<=r+b.r);
-  bullets.sort((a,b)=>distance(a.x,a.y,p.x,p.y)-distance(b.x,b.y,p.x,p.y));
-  for(const bullet of bullets.slice(0,limit)){
-   bullet.dead=true;burst(bullet.x,bullet.y,'#f9e6a8',4);
-  }
+ g.effects.push({kind:'bellWave',x:p.x,y:p.y,r,life:.68,max:.68});
+ for(const e of g.enemies){
+  if(e.dead||distance(e.x,e.y,p.x,p.y)>r+e.r)continue;
+  deal(e,power,'bell');
+  if(awakened('bell')&&!e.isBoss&&e.kind!=='boss')knock(e,atan(p.x,p.y,e.x,e.y),.38);
  }
- pulse(1,w.evo===1?Infinity:2);
- if(w.evo===0)schedule(.25,()=>pulse(.45,1));
- if(g.rareCard==='twinBell')g.bellEchoes.push({x:p.x,y:p.y,r,damage:power*.50,remaining:.55});
+ if(awakened('bell')){
+  const bullets=g.enemyShots.filter(b=>!b.dead&&distance(b.x,b.y,p.x,p.y)<=r+b.r).sort((a,b)=>distance(a.x,a.y,p.x,p.y)-distance(b.x,b.y,p.x,p.y));
+  for(const bullet of bullets.slice(0,2)){bullet.dead=true;burstAwakening('bell',bullet.x,bullet.y,.30);}
+ }
  return true;
 }
 function bookFamiliarInterval(w){return cooldown('book',w)*(w.evo===0?.40:.46);}
@@ -3236,7 +3269,7 @@ function fireCannon(p,w,d){
  for(let i=0;i<count;i++){
   const angle=aim+[0,-.16,.16][i];
   g.shots.push({kind:'cannon',weapon:'cannon',x:origin.x,y:origin.y,vx:Math.cos(angle)*12,vy:Math.sin(angle)*12,speed:12,life:1.3,r:.26,
-   damage:damage*(i?.70:1),chains:w.evo===0?1:0,volleyHits,splashHits,hit:new Set(),trail:[],dead:false});
+   damage:damage*(i?.35:1),chains:0,bounces:awakened('cannon')?1:0,volleyHits,splashHits,hit:new Set(),trail:[],dead:false});
  }
  playSound('cannon');return true;
 }
@@ -3244,11 +3277,11 @@ function impactCannon(shot,target){
  const w=g.weapons.cannon,r=weaponReach('cannon',w);
  deal(target,shot.damage*(shot.volleyHits.has(target.id)?.65:1),'cannon');shot.volleyHits.add(target.id);shot.splashHits.add(target.id);
  g.effects.push({kind:'cannonBlast',x:target.x,y:target.y,r,life:.42,max:.42,angle:Math.atan2(shot.vy,shot.vx)});
- knock(target,Math.atan2(shot.vy,shot.vx),.7);
+ if(!target.isBoss&&target.kind!=='boss')knock(target,Math.atan2(shot.vy,shot.vx),.45);
  for(const enemy of g.enemies){
   if(enemy.dead||shot.splashHits.has(enemy.id)||distance(enemy.x,enemy.y,target.x,target.y)>r+enemy.r)continue;
-  shot.splashHits.add(enemy.id);deal(enemy,shot.damage*(w.evo===1?.55:.35),'cannon',{critAllowed:false});
-  knock(enemy,atan(target.x,target.y,enemy.x,enemy.y),.65);
+  shot.splashHits.add(enemy.id);deal(enemy,shot.damage*.35,'cannon',{critAllowed:false});
+  if(!enemy.isBoss&&enemy.kind!=='boss')knock(enemy,atan(target.x,target.y,enemy.x,enemy.y),.35);
  }
 }
 function fireWeapon(id){
@@ -3258,7 +3291,7 @@ function fireWeapon(id){
  if(id==='orbit'||id==='vortex'||(id==='book'&&g.bookFamiliar))return false;
  if(id==='seed')return placeSeedTrap(p,w,d);
  if(id==='bell')return ringBell(p,w,d);
- const width=id==='moon'?.87*1.25**w.up[2]*radiusMult()*(w.evo===1?1.5:1):0;
+ const width=id==='moon'?.87*(w.lv>=4?1.12:1)*radiusMult():0;
  let t;
  if(id==='cloud'){
   const boss=g.boss;
@@ -3273,27 +3306,27 @@ function fireWeapon(id){
  let a=atan(p.x,p.y,t.x,t.y);
  const origin=castFromWand(p,a);
  a=atan(origin.x,origin.y,t.x,t.y);
- const damage=wpBase(id,d.coef),extra=w.evo===0?2:0;
+ const damage=wpBase(id,d.coef)*multiShotScale(id,w),extra=0;
  if(id==='star'||id==='bubble'||id==='frost'||id==='feather'){
-  const count=id==='star'?starShotCount(w):1+w.up[0]+(id==='bubble'?0:extra);
+  const count=projectileCount(id,w);
   const speed={star:17,bubble:5.6,frost:14,feather:11.5}[id];
   const life={star:1,bubble:3.65,frost:1.14,feather:.96}[id];
   const radius={star:w.awakened==='star-piercing'?.32:.28,bubble:.25,frost:.22,feather:.24}[id];
   const volleyHits=id==='star'?new Set():null;
   if(id==='star')w.fanSide=-(w.fanSide??-1);
   for(let i=0;i<count;i++){
-   const angle=a+(id==='star'?(count===4?[-.5,.5,-1.5,1.5][i]:[0,-1,1][i])*.16*w.fanSide:(i-(count-1)/2)*.20);
+   const angle=a+(id==='star'?(count===4?[0,-1,1,2][i]:[0,-1,1][i])*.16*w.fanSide:(i-(count-1)/2)*.20);
    g.shots.push({kind:id,weapon:id,x:origin.x,y:origin.y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,
-    speed,life,r:radius,awakened:id==='star'&&w.awakened==='star-piercing',damage:id==='star'&&i>0?damage*.40:damage,volleyHits,target:id==='bubble'||(id==='star'&&i===0)?t.id:null,
-    splitOnHit:id==='star'&&i===0&&g.rareCard==='starLegacy',chains:id==='star'?(w.awakened==='star-piercing'?1:0):id==='frost'?(w.break?3:1):id==='feather'&&w.break?(w.evo===0?2:1):0,sub:false,returning:false,hit:new Set(),trail:[],dead:false});
+    speed,life,r:radius,small:false,awakened:!!w.awakened,damage:id==='star'&&i>0?damage*.40:damage,volleyHits,target:id==='bubble'||(id==='star'&&i===0)?t.id:null,
+    splitOnHit:false,chains:id==='star'?(w.awakened==='star-piercing'?1:0):id==='frost'?1:0,sub:false,returning:false,hit:new Set(),trail:[],dead:false});
   }
  }else if(id==='moon'){
   const angles=w.evo===0?[a-.13,a+.13]:[a];
   for(const angle of angles)beam(origin.x,origin.y,angle,d.range,width,damage*(angles.length===2?.65:1),id,1);
  }else if(id==='bloom'){
-  const r=weaponReach(id,w),duration=2.2+.5*w.up[2];
+  const r=weaponReach(id,w),duration=2.4;
   wandLink(origin,t,'#ffd1eb');
-  g.zones.push({kind:'bloom',x:t.x,y:t.y,r,remain:duration,next:.25,damage,id:g.n++});
+  g.zones.push({kind:'bloom',x:t.x,y:t.y,r,remain:duration,next:.25,damage,petal:awakened('bloom'),id:g.n++});
   if(w.evo===0)for(const e of g.enemies){
    if(!e.dead&&distance(e.x,e.y,t.x,t.y)<=r+e.r)deal(e,damage*2.6,id,{critAllowed:false});
   }
@@ -3301,14 +3334,14 @@ function fireWeapon(id){
   const others=w.evo===1?nearbyTargets(p,d.range).filter(e=>e!==t).sort((a,b)=>b.hp-a.hp).slice(0,3):[];
   thunder(t,damage,origin);
   for(const e of others)thunder(e,damage*.75,origin);
-  if(g.rareCard==='cloudChain')chainFairyLightning(t,others,damage);
+  if(awakened('cloud'))chainFairyLightning(t,others,damage);
  }else if(id==='ribbon'){
   const swing=atan(p.x,p.y,t.x,t.y);
   doRibbon(swing,1);
-  if(w.break)schedule(.19,()=>doRibbon(swing,w.evo===1?.85:w.evo===0?.35:.5));
+  if(awakened('ribbon'))schedule(.22,()=>doRibbon(swing+Math.PI,.40));
  }else if(id==='book'){
-  const count=2+w.up[0]+extra,used=new Set();
-  const singleTarget=w.evo===0&&nearbyTargets(p,d.range).length===1;
+  const count=projectileCount('book',w),used=new Set();
+  const singleTarget=nearbyTargets(p,d.range).length===1;
   for(let i=0;i<count;i++){
    const extraFairy=singleTarget&&i===1;
    const target=targetNearest(p.x,p.y,d.range,used)||(w.evo===1||extraFairy?t:null);
@@ -3316,10 +3349,10 @@ function fireWeapon(id){
    used.add(target.id);
    const angle=atan(origin.x,origin.y,target.x,target.y);
    g.shots.push({kind:'fairy',weapon:id,x:origin.x,y:origin.y,vx:Math.cos(angle)*7,vy:Math.sin(angle)*7,speed:9,life:2.7,r:.23,target:target.id,
-    damage:extraFairy?damage*.75:damage,hit:new Set(),chains:w.break?(w.evo===0?2:1):0,dead:false,trail:[]});
+    damage:extraFairy?damage*.45:damage,hit:new Set(),awakened:!!w.awakened,chains:awakened('book')?1:0,dead:false,trail:[]});
   }
  }else if(id==='comet'){
-  const count=1+w.up[0]+extra,r=weaponReach(id,w),spread=count===1?0:r*.86;
+  const count=projectileCount('comet',w),r=weaponReach(id,w),spread=count===1?0:r*.86;
   wandLink(origin,t,'#ffe9a6');
   for(let i=0;i<count;i++){
    const angle=i*TAU/count,tx=clamp(t.x+Math.cos(angle)*spread,.4,DATA.world-.4),ty=clamp(t.y+Math.sin(angle)*spread,.4,DATA.world-.4);
@@ -3331,7 +3364,7 @@ function fireWeapon(id){
      if(!e.dead&&distance(e.x,e.y,tx,ty)<=r+e.r)deal(e,damage,id);
     }
     if(i===0&&g.rareCard==='cometEmbers'&&screen==='playing')scatterCometEmbers(tx,ty,a,r,damage);
-    if(w.break)g.zones.push({kind:'comet',weapon:id,x:tx,y:ty,r:r*.74,remain:1.65,next:.45,damage:damage*.14,id:g.n++});
+    if(awakened('comet'))g.zones.push({kind:'comet',weapon:id,x:tx,y:ty,r:r*.74,remain:1.65,next:.45,damage:damage*.15,id:g.n++});
     burst(tx,ty,'#ffdb93',10);
    });
   }
@@ -3360,7 +3393,7 @@ function beam(x,y,a,range,width,raw,id,coef){
  const speed=12.5,r=width*.5;
  g.shots.push({kind:'frisbee',weapon:id,x,y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,
   speed,r,longR:r*(512/262),range,left:range,damage:raw*coef,hit:new Set(),trail:[],
-  returnAllowed:!!g.weapons.moon?.break&&coef===1,returning:false,life:8,dead:false});
+  returnAllowed:(awakened('moon')||!!g.weapons.moon?.break)&&coef===1,returning:false,life:8,dead:false});
 }
 function updateFrisbee(s,dt){
  const travel=Math.min(s.left,s.speed*dt*spellTravelRate()),nx=s.vx/s.speed,ny=s.vy/s.speed;
@@ -3389,7 +3422,7 @@ function cloudPosition(p){
 function chainFairyLightning(first,others,damage){
  const hit=new Set([first.id,...others.map(e=>e.id)]);
  let from=first;
- for(const scale of [.50,.30]){
+ for(const scale of [.45,.25]){
   const next=targetNearest(from.x,from.y,3.2,hit);
   if(!next)break;
   g.effects.push({kind:'fairyLightning',x:from.x,y:from.y,ex:next.x,ey:next.y,life:.36,max:.36});
@@ -3408,12 +3441,13 @@ function thunder(e,raw,origin=null){
   g.effects.push({kind:'thunder',x:e.x,y:e.y,lean:Math.cos(e.phase)*.51,life,max:life});
   deal(e,damage,'cloud');
  }
- strike(raw,.34);
+ strike(raw*(w.lv>=4&&e.cloudMarkUntil>g.worldClock?1.15:1),.34);
+ if(w.lv>=4)e.cloudMarkUntil=g.worldClock+3.0;
  if(w.break&&!e.dead)e.vulnerableUntil=Math.max(e.vulnerableUntil,g.worldClock+2.5);
  if(w.evo===0)schedule(.22,()=>strike(raw*.85,.29));
 }
 function doRibbon(a,scale){
- const p=g.player,w=g.weapons.ribbon,r=weaponReach('ribbon',w),arc=w.evo===0?TAU:Math.PI*130/180;
+ const p=g.player,w=g.weapons.ribbon,r=weaponReach('ribbon',w),arc=Math.PI*(w.lv>=4?150:130)/180;
  g.effects.push({kind:'ribbon',x:p.x,y:p.y,r,angle:a,arc,life:.26,max:.26});
  for(const e of g.enemies){
   if(e.dead||distance(e.x,e.y,p.x,p.y)>r+e.r)continue;
@@ -3421,15 +3455,23 @@ function doRibbon(a,scale){
   if(Math.abs(diff)>arc*.5)continue;
   const outsideFront=Math.abs(diff)>Math.PI*65/180;
   deal(e,wpBase('ribbon',W.ribbon.coef)*scale*(outsideFront?.40:1),'ribbon');
-  knock(e,angle,w.evo===1?1.12:outsideFront?.48:.82);
+  if(!e.isBoss&&e.kind!=='boss')knock(e,angle,outsideFront?.30:.48);
  }
 }
-function explodeBubble(b){if(b.dead)return;b.dead=true;let w=g.weapons.bubble,mult=radiusMult(),r=b.sub?.72*mult:weaponReach('bubble',w);
- g.effects.push({kind:'bubbleBoom',x:b.x,y:b.y,r,life:.35,max:.35});
- for(const e of g.enemies){if(e.dead||distance(e.x,e.y,b.x,b.y)>r+e.r)continue;deal(e,b.damage,'bubble');slow(e,w.break?.30:.14,w.break?1.5:.65);if(w.evo===1)slow(e,.56,.9);}
- if(!b.sub&&w.evo===0){for(let i=0;i<2;i++){let aa=i*Math.PI+rand()*.7;
-  g.shots.push({kind:'bubble',weapon:'bubble',x:b.x,y:b.y,vx:Math.cos(aa)*5,vy:Math.sin(aa)*5,speed:5,life:2,r:.19,damage:b.damage*.3,target:null,sub:true,hit:new Set(),dead:false,trail:[]});}}
- burst(b.x,b.y,'#f7c4f2',10);
+function explodeBubble(b){
+ if(b.dead)return;b.dead=true;
+ const w=g.weapons.bubble,r=weaponReach('bubble',w)*(b.small?.52:1),primaryHits=new Set();
+ g.effects.push({kind:'bubblePop',x:b.x,y:b.y,r,life:.36,max:.36});
+ for(const e of g.enemies){
+  if(e.dead||distance(e.x,e.y,b.x,b.y)>r+e.r||b.sharedHits?.has(e.id))continue;
+  primaryHits.add(e.id);b.sharedHits?.add(e.id);deal(e,b.damage,'bubble',{critAllowed:!b.small});slow(e,.14,.65);
+ }
+ if(awakened('bubble')&&!b.small){
+  const chosen=new Set(primaryHits),sharedHits=new Set(primaryHits);
+  for(let i=0;i<2;i++){const target=targetNearest(b.x,b.y,6,chosen);if(!target)break;chosen.add(target.id);const a=atan(b.x,b.y,target.x,target.y);
+   (g.pendingShots??=[]).push({kind:'bubble',weapon:'bubble',x:b.x,y:b.y,vx:Math.cos(a)*5.6,vy:Math.sin(a)*5.6,speed:5.6,life:1.5,r:.16,damage:b.damage*.25,armed:.12,hit:new Set(primaryHits),sharedHits,small:true,target:target.id,trail:[],dead:false,awakened:true});
+  }
+ }
 }
 function wfrostSlow(){return g.weapons.frost?.evo===0?.49:.29;}
 function outsideWorld(x,y,pad=0){
@@ -3446,13 +3488,14 @@ function splitStar(s,e,splitShots){
 }
 function updateShots(dt,hostiles=true){const splitShots=[],step=dt*spellTravelRate();for(const s of g.shots){if(s.dead)continue;if(s.kind==='frisbee'){updateFrisbee(s,dt);continue;}s.life-=dt;
  if(s.kind==='feather'&&!s.returning&&(s.life<=0||outsideWorld(s.x,s.y))){
-  s.returning=true;s.target=null;s.hit.clear();s.life=1.48;
-  s.speed=g.weapons.feather.evo===1?18:13.5;
-  if(g.weapons.feather.evo===1)s.damage*=1.65;
+  const outboundHits=new Set(s.hit);s.returning=true;s.target=null;s.hit.clear();s.life=1.48;
+  s.speed=13.5;s.damage*=.5;
+  if(awakened('feather')){const next=targetNearest(s.x,s.y,10,outboundHits);s.returnTarget=next?.id??null;}
  }
  const homing=s.kind==='bubble'||s.kind==='fairy'||s.target!=null||s.returning;
  if(homing){
-  const target=s.returning?g.player:g.enemies.find(e=>!e.dead&&e.id===s.target)||
+  const guided=s.returning&&s.returnTarget?g.enemies.find(e=>!e.dead&&e.id===s.returnTarget):null;
+  const target=s.returning?(guided||g.player):g.enemies.find(e=>!e.dead&&e.id===s.target)||
    (s.kind==='bubble'||s.kind==='fairy'?targetNearest(s.x,s.y,10,s.hit):null);
   if(target){
    const dx=target.x-s.x,dy=target.y-s.y,length=Math.hypot(dx,dy)||1;
@@ -3466,11 +3509,12 @@ function updateShots(dt,hostiles=true){const splitShots=[],step=dt*spellTravelRa
  if(s.trail){s.trail.push({x:s.x,y:s.y});if(s.trail.length>6)s.trail.shift();}
  const outside=outsideWorld(s.x,s.y,NEMO_SIZE/2);
  if(s.life<=0||(outside&&s.kind!=='feather')){if(s.kind==='bubble')explodeBubble(s);else s.dead=true;continue;}
+ if(s.armed>0){s.armed=Math.max(0,s.armed-dt);if(s.armed>0)continue;}
  for(const e of g.enemies){if(e.dead||s.hit.has(e.id)||distance(s.x,s.y,e.x,e.y)>s.r+e.r)continue;
   s.hit.add(e.id);if(s.kind==='bubble'){explodeBubble(s);break;}
   if(s.kind==='cannon'){
    impactCannon(s,e);
-   if(s.chains>0){s.chains--;s.damage*=.65;continue;}
+   if(s.bounces>0){const next=targetNearest(s.x,s.y,4,s.hit);s.bounces=0;if(next){const a=atan(s.x,s.y,next.x,next.y);s.vx=Math.cos(a)*s.speed;s.vy=Math.sin(a)*s.speed;s.target=next.id;s.damage*=.45;s.life=Math.min(1.0,Math.max(s.life,.5));burstAwakening('cannon',s.x,s.y,.35);break;}}
    s.dead=true;break;
   }else if(s.kind==='starShard'){
    deal(e,s.damage,'star',{critAllowed:false});
@@ -3489,24 +3533,25 @@ function updateShots(dt,hostiles=true){const splitShots=[],step=dt*spellTravelRa
    s.target=null;
    continue;
   }else if(s.kind==='frost'){
-   deal(e,s.damage,'frost');slow(e,wfrostSlow(),1.05+.5*g.weapons.frost.up[2]);
+   deal(e,s.damage,'frost');slow(e,wfrostSlow(),1.05);
+   if(awakened('frost')){e.frostStacks=(e.frostStacks||0)+1;if(e.frostStacks>=3){e.frostStacks=0;if(!e.isBoss&&e.kind!=='boss'&&g.worldClock>=(e.freezeReadyAt||0)){e.frozenUntil=g.worldClock+.45;e.freezeReadyAt=g.worldClock+2;g.effects.push({kind:'frostBurst',x:e.x,y:e.y,r:.65,life:.35,max:.35});}}}
    if(g.weapons.frost.evo===1){deal(e,s.damage*.22,'frost',{critAllowed:false});g.effects.push({kind:'frostBurst',x:e.x,y:e.y,r:.85,life:.28,max:.28});for(const other of g.enemies){if(!other.dead&&other.id!==e.id&&distance(other.x,other.y,e.x,e.y)<.85+other.r){deal(other,s.damage*.38,'frost',{critAllowed:false});slow(other,.25,1);}}}
    if(s.chains-->0){break;}s.dead=true;
   }else if(s.kind==='feather'){
-   deal(e,s.damage,'feather');
+   deal(e,s.damage,'feather');s.lastHit=e.id;if(s.returning&&s.returnTarget===e.id){s.returnTarget=null;burstAwakening('feather',e.x,e.y,.35);}
    if(!s.returning&&s.chains>0){
     const next=targetNearest(e.x,e.y,6,s.hit);
     if(next){s.target=next.id;s.chains--;s.damage*=.76;s.life=Math.max(s.life,.34);}
    }
   }else if(s.kind==='fairy'){
    deal(e,s.damage,'book');if(s.chains>0){let excl=new Set(s.hit);if(g.weapons.book.evo===1)excl=new Set([e.id]);let nxt=targetNearest(e.x,e.y,10,excl);
-    if(nxt){s.target=nxt.id;s.chains--;s.damage*=g.weapons.book.evo===0?.72:.5;s.x=e.x;s.y=e.y;s.life=Math.max(s.life,.65);break;}}
+    if(nxt){s.target=nxt.id;s.chains--;s.damage*=.45;s.life=Math.max(s.life,1.4);break;}}
    s.dead=true;
   }
   break;
  }
  }
- g.shots=g.shots.filter(s=>!s.dead).concat(splitShots);
+ g.shots=g.shots.filter(s=>!s.dead).concat(splitShots,g.pendingShots||[]);g.pendingShots=[];
  if(!hostiles)return;
  for(const b of g.enemyShots){
   const oldX=b.x,oldY=b.y;
@@ -3537,7 +3582,7 @@ function chargeOrbitBloom(w,enemy,power){
 }
 function updateOrbit(dt){
  const w=g.weapons.orbit;if(!w)return;
- const p=g.player,n=2+w.up[0]+(w.evo===0?2:0),r=weaponReach('orbit',w);
+ const p=g.player,n=projectileCount('orbit',w),r=weaponReach('orbit',w);
  const frequency=(w.break?1.3:1)*clockMult('orbit')*rageRate()*moveCastRate();
  w.angle=((w.angle||0)+TAU*frequency*dt)%TAU;
  if(w.orbitWand&&g.worldClock-w.orbitBirth>=.48)w.orbitWand=null;
@@ -3549,7 +3594,7 @@ function updateOrbit(dt){
    if(e.dead||distance(x,y,e.x,e.y)>.28+e.r||g.worldClock-(hitTimes.get(e.id)??-100)<.36)continue;
    hitTimes.set(e.id,g.worldClock);
    deal(e,power,'orbit');(w.popUntil??=[])[i]=g.worldClock+.14;if(w.break)slow(e,.20,1);
-   if(g.rareCard==='orbitBloom'&&screen==='playing')chargeOrbitBloom(w,e,power);
+   if(awakened('orbit')&&screen==='playing')chargeOrbitBloom(w,e,power);
   }
  }
  if(hitTimes.size>240)for(const [id,time] of hitTimes)if(g.worldClock-time>2)hitTimes.delete(id);
@@ -3586,9 +3631,8 @@ function updateVortex(dt){
  w.vortexTick=(w.vortexTick??0)-dt*rageRate()*moveCastRate();
  if(w.vortexTick>0)return;
  w.vortexTick=.52/clockMult('vortex');
- const p=g.player,r=weaponReach('vortex',w),power=wpBase('vortex',W.vortex.coef);
- const baseSlow=g.stage?.15+(w.break?.08:0)+(w.evo===1?.08:0):w.evo===1?.37:w.break?.23:0;
- const slowAmount=baseSlow+.05*w.up[2];
+ const p=g.player,r=vortexReach(w),power=wpBase('vortex',W.vortex.coef);
+ const slowAmount=.15+(w.lv>=4?.05:0)+(awakened('vortex')?.05:0);
  for(const e of g.enemies){
   if(e.dead)continue;
   const d=distance(e.x,e.y,p.x,p.y);
@@ -3597,11 +3641,23 @@ function updateVortex(dt){
   if(!e.dead&&slowAmount>0)slow(e,slowAmount,.86);
  }
 }
-function updateTraps(dt){
+function updateFlowerTrail(dt){
+ const p=g.player,w=g.weapons.seed;if(!w||!awakened('seed'))return;
+ w.trailTimer=Math.max(0,(w.trailTimer||0)-dt);
+ if(!p.moving||w.trailTimer>0)return;
+ const last=w.lastFlower;
+ if(last&&distance(p.x,p.y,last.x,last.y)<.75)return;
+ const x=p.x,y=p.y;
+ if(blockedByTerrain(x,y,.16))return;
+ w.trailTimer=.40/(clockMult('seed')*rageRate()*moveCastRate());w.lastFlower={x,y};
+ const old=g.zones.filter(z=>z.kind==='flowerTrail');if(old.length>=3)old[0].remain=0;
+ g.zones.push({kind:'flowerTrail',weapon:'seed',x,y,r:.88*radiusMult(),remain:2,next:0,damage:wpBase('seed',W.seed.coef)*.30,id:g.n++});
+}
+function updateTraps(dt){updateFlowerTrail(dt);
  const w=g.weapons.seed;if(!w){g.traps.length=0;return;}
  for(const z of g.traps){if(z.dead)continue;z.life-=dt;z.armed-=dt;
   if(z.life<=0){z.dead=true;continue;}if(z.armed>0)continue;
-  if(!g.enemies.some(e=>!e.dead&&distance(e.x,e.y,z.x,z.y)<e.r+z.trigger))continue;
+  if(z.life>8.1&&!g.enemies.some(e=>!e.dead&&distance(e.x,e.y,z.x,z.y)<e.r+z.trigger))continue;
   z.dead=true;g.effects.push({kind:'seedBurst',x:z.x,y:z.y,r:z.r,life:.46,max:.46});burst(z.x,z.y,'#ffbedb',13);
   for(const e of g.enemies){if(e.dead||distance(e.x,e.y,z.x,z.y)>z.r+e.r)continue;
    deal(e,z.damage*(w.evo===1&&e.kind==='boss'?1.3:1),'seed',{critAllowed:!z.mini});}
@@ -3611,16 +3667,22 @@ function updateTraps(dt){
  }
  g.traps=g.traps.filter(z=>!z.dead).slice(-32);
 }
-function updateZones(dt){for(const z of g.zones){z.remain-=dt;z.next-=dt;if(z.kind==='comet'){if(z.next<=0){z.next+=.45;for(const e of g.enemies){if(!e.dead&&distance(e.x,e.y,z.x,z.y)<=z.r+e.r)deal(e,z.damage,z.weapon,{critAllowed:false});}}}if(z.kind==='bloom'){
-  if(g.weapons.bloom?.break)for(const e of g.enemies){if(!e.dead&&distance(e.x,e.y,z.x,z.y)<z.r+e.r)slow(e,.25,.25);}
-  if(z.next<=0){z.next+=.5;for(const e of g.enemies){if(e.dead||distance(e.x,e.y,z.x,z.y)>z.r+e.r)continue;
-    if(g.worldClock-(e.lastBloomTick||-100)<.48)continue;e.lastBloomTick=g.worldClock;deal(e,z.damage,'bloom',{critAllowed:false});}}
+function updateZones(dt){
+ for(const z of g.zones){
+  z.remain-=dt;if(z.remain<=0)continue;z.next-=dt;
+  if(z.kind==='bloom'&&z.petal&&distance(z.x,z.y,g.player.x,g.player.y)<=z.r&&g.worldClock>=(g.bloomHealReadyAt||0)){
+   z.petal=false;g.bloomHealReadyAt=g.worldClock+4;
+   const p=g.player;p.hp=Math.min(p.maxHp,p.hp+p.maxHp*.02);g.effects.push({kind:'healingPickup',x:p.x,y:p.y,life:.6,max:.6});
+  }
+  if(z.next>0)continue;const rate=z.kind==='flowerTrail'?clockMult('seed')*rageRate()*moveCastRate():1;z.next+=.50/rate;
+  for(const e of g.enemies){
+   if(e.dead||distance(e.x,e.y,z.x,z.y)>z.r+e.r)continue;
+   const gate=z.kind==='bloom'?'lastBloomTick':z.kind==='flowerTrail'?'lastFlowerTick':'lastCometTick';
+   if(g.worldClock-(e[gate]??-100)<.48/rate)continue;e[gate]=g.worldClock;
+   deal(e,z.damage,z.weapon||'bloom',{critAllowed:false});
+  }
  }
- }g.zones=g.zones.filter(z=>z.remain>0);
- if(g.weapons.bloom?.evo===1){let inside=g.zones.some(z=>z.kind==='bloom'&&distance(z.x,z.y,g.player.x,g.player.y)<=z.r);
-  if(inside)g.healTimer=1.5;else g.healTimer=Math.max(0,g.healTimer-dt);
-  if(g.healTimer>0)g.player.hp=Math.min(g.player.maxHp,g.player.hp+g.player.maxHp*.015*dt);
- }
+ g.zones=g.zones.filter(z=>z.remain>0);
 }
 function pullGemToNemo(gem,p,dt){
  const dx=p.x-gem.x,dy=p.y+NEMO_HURT_Y-gem.y,gap=Math.hypot(dx,dy);
@@ -3671,7 +3733,7 @@ function updateBellEchoes(dt){
  }
  g.bellEchoes=g.bellEchoes.filter(echo=>echo.remaining>0);
 }
-function updateWorldEffects(dt){if(g.bellEchoes.length)updateBellEchoes(dt);for(const a of g.effects){a.life-=dt;if(a.kind==='event'&&a.life<=0){a.fn();}}g.effects=g.effects.filter(a=>a.life>0).slice(-100);
+function updateWorldEffects(dt){if(!g||g.done||screen!=='playing')return;const run=g;updateScheduledEvents(dt);if(g!==run||g.done||screen!=='playing')return;if(g.bellEchoes.length)updateBellEchoes(dt);for(const a of g.effects)a.life-=dt;g.effects=g.effects.filter(a=>a.life>0).slice(-100);
  for(const a of g.particles){a.x+=a.vx*dt;a.y+=a.vy*dt;a.vx*=.97;a.vy*=.97;a.life-=dt;}g.particles=g.particles.filter(a=>a.life>0);
  for(const a of g.numbers){a.ttl-=dt;a.y-=dt*.9;}g.numbers=g.numbers.filter(a=>a.ttl>0);}
 function terrainAt(x,y,r){
@@ -3886,13 +3948,13 @@ function updateHUD(){
  const xpBar=$('xp-progress'),xpPercent=String(Math.round(xpProgress*100));
  if(xpBar.getAttribute('aria-valuenow')!==xpPercent)xpBar.setAttribute('aria-valuenow',xpPercent);
  const weapons=Object.entries(g.weapons);
- const loadout=weapons.map(([id,w])=>`${id}:${w.lv}:${w.evo}:${Object.values(w.mastery??{}).join(',')}`).join('|');
+ const loadout=weapons.map(([id,w])=>`${id}:${w.lv}:${w.evo}:${w.awakened||''}:${Object.values(w.mastery??{}).join(',')}`).join('|');
  if(loadout!==shownLoadout){
   shownLoadout=loadout;
-  $('weapon-slots').innerHTML=weapons.map(([id,w])=>`<div class="slot" title="${W[id].name} · Lv.${w.lv}"><span class="ico">${skillIcon(id,W[id].icon)}</span><small>Lv.${w.lv}${w.evo!==null?'★':''}</small></div>`).join('');
+  $('weapon-slots').innerHTML=weapons.map(([id,w])=>`<div class="slot" data-awakened="${!!w.awakened}" title="${W[id].name} · Lv.${w.lv}${w.awakened?' · 각성':''}"><span class="ico">${skillIcon(id,W[id].icon)}</span><small>Lv.${w.lv}${w.awakened?'✦':''}</small></div>`).join('');
   $('pause-loadout').innerHTML=weapons.map(([id,w])=>{
    const ranks=Object.values(w.mastery??{}).reduce((total,rank)=>total+rank,0);
-   const level=`Lv.${w.lv}${w.evo!==null?'★':''}`;
+   const level=`Lv.${w.lv}${w.awakened?'✦':''}`;
    return `<li>${skillIcon(id,W[id].icon)}<span>${W[id].name}</span><small>${level}${ranks?` +${ranks}`:''}</small></li>`;
   }).join('');
  }
@@ -4568,6 +4630,7 @@ const SPELL_EFFECT_PAINT={
  rareStar:['#297773','#86d7c3','#e4fff5'],rareBell:['#7754a4','#c7a9ed','#ffefb4'],
  star:['#ac7858','#f5c78d','#fff0ce','spark'],
  orbit:['#a47a51','#f5d583','#fff3cc','spark'],
+ comet:['#b77d67','#f0b980','#fff1ba','spark'],
  moon:['#849f99','#b5ddce','#fff5d9','spark'],
  bubble:['#56749d','#81c3dd','#e8faff','drop'],
  bloom:['#a55e79','#e4a1af','#ffded5','petal'],
@@ -4686,6 +4749,7 @@ function drawProjectile(s){
   ctx.restore();return;
  }
  const id=s.kind==='fairy'?'book':s.kind==='starShard'?'star':s.kind;
+ if(id!=='star'&&g.weapons[s.weapon]?.awakened&&opts.particles&&!reducedMotion.matches){const point=s.trail?.[0];if(point)spellTwinkles(s.weapon,point.x,point.y,.20,.45,2);}
  const angle=Math.atan2(s.vy,s.vx),diameter=s.r*2;
  if(s.kind==='star'&&s.awakened)drawAwakenedStarDust(s,angle);
  else if(opts.particles&&!reducedMotion.matches&&s.trail?.length>2){
@@ -4703,7 +4767,7 @@ function drawProjectile(s){
  else if(id==='feather')tilt=angle+Math.PI/4;
  else if(id==='book')tilt=angle;
  else if(id==='star')tilt=reducedMotion.matches?0:Math.sin(g.worldClock*7)*.10;
- if(id==='book')drawPaperPlane(s.x,s.y,diameter,angle,1,g.weapons.book?.evo===1);
+ if(id==='book')drawPaperPlane(s.x,s.y,diameter,angle,1,!!g.weapons.book?.awakened);
  else if(!spellStamp(id,s.x,s.y,diameter,tilt)){
   // Loading fallback stays centered on the same collision radius.
   star(s.x,s.y,s.r*.88,angle,'#fff0c5','#a47a69');
@@ -4803,7 +4867,8 @@ function drawEffects(){for(const e of g.effects){if(e.kind==='event')continue;co
     line(x,y-size,x,y+size,color,width);
    }
   }
- }else if(e.kind==='spellContact'){
+ }else if(e.kind==='awakeningPuff'){spellTwinkles(e.spell,e.x,e.y,e.r,f,4);}
+ else if(e.kind==='spellContact'){
   drawSpellContact(e,f);
  }else if(e.kind==='bossRecover'){
   const y=e.y-(1-f)*.57;
@@ -4957,10 +5022,11 @@ function drawCometEmbers(z,t){
 }
 function drawZone(z){
  if(!visible(z.x,z.y,z.r+1))return;
- const comet=z.kind==='comet',t=g.worldClock;
+ const comet=z.kind==='comet',t=g.worldClock,count=z.kind==='flowerTrail'?6:12;
  if(comet&&z.weapon==='comet'){drawCometEmbers(z,t);return;}
- for(let k=0;k<12;k++){
-  const a=k*2.39996+z.id*.47,r=z.r*Math.sqrt((k+.5)/12)*.83;
+ if(z.kind==='bloom'&&z.petal)star(z.x,z.y,.16,Math.sin(t*2)*.1,'#fff6ce','#d0aa74');
+ for(let k=0;k<count;k++){
+  const a=k*2.39996+z.id*.47,r=z.r*Math.sqrt((k+.5)/count)*.83;
   const x=z.x+Math.cos(a)*r,y=z.y+Math.sin(a)*r;
   if(comet)star(x,y,.11+.045*Math.sin(t*4+k),t*.8+a,'#fff0b1','#e7b778');
   else{
@@ -4972,7 +5038,7 @@ function drawZone(z){
 function drawWeaponFields(){
  const p=g.player,t=g.worldClock;
  if(g.weapons.vortex){
-  const w=g.weapons.vortex,r=weaponReach('vortex',w);
+  const w=g.weapons.vortex,r=vortexReach(w);
   for(let k=0;k<9;k++){
    const a=t*2.05+k*2.39996,reach=r*(.31+(k%5)*.13);
    const x=p.x+Math.cos(a)*reach,y=p.y+Math.sin(a)*reach;
@@ -5002,7 +5068,7 @@ function drawOrbitToy(x,y,diameter,tilt=0,squash=1){
 }
 function drawOrbit(){
  const w=g.weapons.orbit;if(!w)return;
- const n=2+w.up[0]+(w.evo===0?2:0),r=weaponReach('orbit',w),still=reducedMotion.matches;
+ const n=projectileCount('orbit',w),r=weaponReach('orbit',w),still=reducedMotion.matches;
  for(let i=0;i<n;i++){
   const {x,y}=orbitPosition(g.player,w,i,n,r);
   const angle=(w.angle||0)+TAU*i/n;
@@ -5659,7 +5725,7 @@ document.addEventListener('pointerdown',event=>{
 });
 $('codex-btn').onclick=openCodex;$('pause-codex').onclick=openCodex;$('codex-back').onclick=closeCodex;
 $('codex-categories').addEventListener('click',e=>{const b=e.target.closest('[data-codex-category]');if(b)setCodexCategory(b.dataset.codexCategory);});
-$('codex-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-codex]');if(!b)return;currentCodex=b.dataset.codex;renderCodex();$('codex-tabs').querySelector('[aria-pressed="true"]').focus({preventScroll:true});});
+$('codex-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-codex]');if(!b)return;selectCodexEntry(b.dataset.codex);$('codex-tabs').querySelector('[aria-pressed="true"]').focus({preventScroll:true});});
 $('start').onclick=stageOpen;
 $('survival-start').onclick=()=>{if(!nicknameConfirmed())showNicknameSetup('menu');else begin();};$('retry').onclick=()=>begin(g?.stage?.id??0);
 $('result-menu').onclick=()=>g?.stage?stageOpen():menu();
@@ -5868,7 +5934,7 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.12.23';
+  const CURRENT='5.12.24';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';

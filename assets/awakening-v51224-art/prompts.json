@@ -1,0 +1,218 @@
+{
+  "mode": "built-in image_gen",
+  "intent": "generate",
+  "reference": "assets/passives-v5129/honeypouch.webp (style only)",
+  "processing": "Crop alpha bounding box; proportionally downsample to <=350px and center in transparent 384px canvas. Remove alpha<=5 export speckles; preserve generated colors and remaining alpha. WebP lossless exact.",
+  "assets": {
+    "seed": {
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory icon for a cozy dog magic survival game. Primary subject: ONE magical flower seed, a round pink seed with a tiny five-petal starflower bud and two soft green sprouting leaves. Recognizable as a seed that grows into flowers, compact simple shape. Match ONLY the attached reference's illustration style: soft pastel storybook cartoon, warm muted mauve-brown thick clean outlines, broad soft painted shading, creamy highlights, smooth cute proportions, readable at 40 pixels. Center ONE object or explicitly requested pair with generous transparent margins, square high resolution. No background, ground shadow, scene, text, numerals, UI, border, badge, watermark, or extra accessories. Genuine transparent alpha background. The reference is style guidance only; do not draw the honey jar.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216aa-01b2-7f23-a655-ec9febd9f3b1\\exec-840567f2-003d-42a9-b2d0-02b7d4af95cb.png"
+    },
+    "magic": {
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory icon for a cozy dog magic survival game. Primary subject: ONE magical strength star charm, a chunky soft peach-pink four-point star with a little cream star inset, rounded tips, a small golden hanging loop. No wand, no face. Match ONLY the attached reference's illustration style: soft pastel storybook cartoon, warm muted mauve-brown thick clean outlines, broad soft painted shading, creamy highlights, smooth cute proportions, readable at 40 pixels. Center ONE object or explicitly requested pair with generous transparent margins, square high resolution. No background, ground shadow, scene, text, numerals, UI, border, badge, watermark, or extra accessories. Genuine transparent alpha background. The reference is style guidance only; do not draw the honey jar.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216aa-01b2-7f23-a655-ec9febd9f3b1\\exec-34e8d11d-9636-403a-9c64-7d4a15a54373.png"
+    },
+    "quick": {
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory icon for a cozy dog magic survival game. Primary subject: ONE pastel lavender pocket watch with a small rose-gold hanging loop, cream dial, two simple dark hands and only four tiny round hour marks. No numbers, no letters, no wings. Match ONLY the attached reference's illustration style: soft pastel storybook cartoon, warm muted mauve-brown thick clean outlines, broad soft painted shading, creamy highlights, smooth cute proportions, readable at 40 pixels. Center ONE object or explicitly requested pair with generous transparent margins, square high resolution. No background, ground shadow, scene, text, numerals, UI, border, badge, watermark, or extra accessories. Genuine transparent alpha background. The reference is style guidance only; do not draw the honey jar.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216aa-01b2-7f23-a655-ec9febd9f3b1\\exec-4d216dc4-aabc-4480-812a-1249dd4a0c2b.png"
+    },
+    "lucky": {
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory icon for a cozy dog magic survival game. Primary subject: ONE cute peach-pink ribbon bow with a small sage-green four-leaf clover jewel at the center. Clearly a lucky ribbon, short ribbon tails, rounded silky shapes. Match ONLY the attached reference's illustration style: soft pastel storybook cartoon, warm muted mauve-brown thick clean outlines, broad soft painted shading, creamy highlights, smooth cute proportions, readable at 40 pixels. Center ONE object or explicitly requested pair with generous transparent margins, square high resolution. No background, ground shadow, scene, text, numerals, UI, border, badge, watermark, or extra accessories. Genuine transparent alpha background. The reference is style guidance only; do not draw the honey jar.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216aa-01b2-7f23-a655-ec9febd9f3b1\\exec-45bc2199-d6e0-4499-983e-90f5c7720e91.png"
+    },
+    "big": {
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory icon for a cozy dog magic survival game. Primary subject: ONE faceted lavender crystal gemstone, upright chunky diamond shape, pale pink and lilac broad planes, simple strong silhouette, a couple tiny pale green sparkle marks only. Match ONLY the attached reference's illustration style: soft pastel storybook cartoon, warm muted mauve-brown thick clean outlines, broad soft painted shading, creamy highlights, smooth cute proportions, readable at 40 pixels. Center ONE object or explicitly requested pair with generous transparent margins, square high resolution. No background, ground shadow, scene, text, numerals, UI, border, badge, watermark, or extra accessories. Genuine transparent alpha background. The reference is style guidance only; do not draw the honey jar.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216aa-01b2-7f23-a655-ec9febd9f3b1\\exec-ffbbcd85-2b3c-4b79-8d9b-17bb623e9d2c.png"
+    },
+    "cloak": {
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory icon for a cozy dog magic survival game. Primary subject: ONE short cozy peach-pink cape, rounded flared hem, golden clasp at the collar, soft lavender interior, clearly a wearable little cape with no character inside. Match ONLY the attached reference's illustration style: soft pastel storybook cartoon, warm muted mauve-brown thick clean outlines, broad soft painted shading, creamy highlights, smooth cute proportions, readable at 40 pixels. Center ONE object or explicitly requested pair with generous transparent margins, square high resolution. No background, ground shadow, scene, text, numerals, UI, border, badge, watermark, or extra accessories. Genuine transparent alpha background. The reference is style guidance only; do not draw the honey jar.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216aa-01b2-7f23-a655-ec9febd9f3b1\\exec-9d8eb44d-a7c1-4b90-81a8-f101a8b8b3f4.png"
+    },
+    "shoes": {
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory icon for a cozy dog magic survival game. Primary subject: ONE pair of lightweight mint-green sneakers with cream soles, lavender laces, soft tan details. Two matching shoes in a compact diagonal arrangement, simple chunky readable shoes. Match ONLY the attached reference's illustration style: soft pastel storybook cartoon, warm muted mauve-brown thick clean outlines, broad soft painted shading, creamy highlights, smooth cute proportions, readable at 40 pixels. Center ONE object or explicitly requested pair with generous transparent margins, square high resolution. No background, ground shadow, scene, text, numerals, UI, border, badge, watermark, or extra accessories. Genuine transparent alpha background. The reference is style guidance only; do not draw the honey jar.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216aa-01b2-7f23-a655-ec9febd9f3b1\\exec-e3ac9607-5eac-4d71-b2b9-5611364ed601.png"
+    },
+    "magnet": {
+      "prompt": "Use case: stylized-concept. Asset type: transparent inventory icon for a cozy dog magic survival game. Primary subject: ONE pink horseshoe magnet with chunky rounded U shape, cream colored tips, little lavender shaded inner curve. Clearly a magnet, no other objects. Match ONLY the attached reference's illustration style: soft pastel storybook cartoon, warm muted mauve-brown thick clean outlines, broad soft painted shading, creamy highlights, smooth cute proportions, readable at 40 pixels. Center ONE object or explicitly requested pair with generous transparent margins, square high resolution. No background, ground shadow, scene, text, numerals, UI, border, badge, watermark, or extra accessories. Genuine transparent alpha background. The reference is style guidance only; do not draw the honey jar.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a216aa-01b2-7f23-a655-ec9febd9f3b1\\exec-0524093b-2afc-46e6-9176-881fd41a07c8.png"
+    }
+  },
+  "validation": [
+    {
+      "id": "seed",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "crop": [
+        290,
+        187,
+        943,
+        1068
+      ],
+      "packedSize": [
+        384,
+        384
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 64198
+    },
+    {
+      "id": "magic",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "crop": [
+        201,
+        71,
+        1024,
+        1144
+      ],
+      "packedSize": [
+        384,
+        384
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 53880
+    },
+    {
+      "id": "quick",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "crop": [
+        243,
+        91,
+        987,
+        1164
+      ],
+      "packedSize": [
+        384,
+        384
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 62810
+    },
+    {
+      "id": "lucky",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "crop": [
+        149,
+        315,
+        1095,
+        1028
+      ],
+      "packedSize": [
+        384,
+        384
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 72232
+    },
+    {
+      "id": "big",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "crop": [
+        273,
+        198,
+        961,
+        1064
+      ],
+      "packedSize": [
+        384,
+        384
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 59268
+    },
+    {
+      "id": "cloak",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "crop": [
+        123,
+        271,
+        1113,
+        1022
+      ],
+      "packedSize": [
+        384,
+        384
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 67442
+    },
+    {
+      "id": "shoes",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "crop": [
+        131,
+        200,
+        1109,
+        1100
+      ],
+      "packedSize": [
+        384,
+        384
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 96426
+    },
+    {
+      "id": "magnet",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "crop": [
+        188,
+        250,
+        1058,
+        1074
+      ],
+      "packedSize": [
+        384,
+        384
+      ],
+      "alphaRange": [
+        0,
+        255
+      ],
+      "bytes": 75738
+    }
+  ]
+}

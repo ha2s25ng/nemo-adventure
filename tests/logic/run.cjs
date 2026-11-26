@@ -5,7 +5,7 @@
 const suites = [
   ['Engine invariants', './checks.cjs'],
   ['Boss definitions', './boss-checks.cjs'],
-  ['Rare/evolution combinations', './rare-checks.cjs'],
+  ['Legacy enhancement removal', './rare-checks.cjs'],
   ['Drop/economy remake', './remake-checks.cjs'],
   ['Photocard collection', './photo-cards.cjs'],
   ['Playable characters', './characters-checks.cjs'],
@@ -14,7 +14,9 @@ const suites = [
   ['Paper planes and magic frisbee', './paper-moon-checks.cjs'],
   ['Five-rank passives', './passive-v5129-checks.cjs'],
   ['New passives and simple cards', './passive-v51216.cjs'],
-  ['Guaranteed awakening queue', './awakening-queue.cjs']
+  ['Guaranteed awakening queue', './awakening-queue.cjs'],
+  ['Independent attack schedule', './schedule-v51224.cjs'],
+  ['All weapon awakenings', './all-awakenings-v51224.cjs']
 ];
 let failed = 0;
 for (const [name, modulePath] of suites) {

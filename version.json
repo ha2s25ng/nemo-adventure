@@ -1,5 +1,5 @@
 {
-  "version": "5.12.23",
+  "version": "5.12.24",
   "mode": "endless_survival_and_campaign",
-  "notes": "각성 설명을 간결하게 수정, 무기·패시브 조합 아이콘 표시"
+  "notes": "전체 무기 패시브 조합 각성·레벨 성장 및 밸런스 정리"
 }

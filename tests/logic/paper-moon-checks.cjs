@@ -76,12 +76,13 @@ module.exports=function(){
   for(let i=0;i<12;i++)game.updateShots(.1,false);
   assert.equal(e.hp,9838);assert.equal(g.shots.length,0);
  });
- check('both evolution variants retain their damage, widths and firing cadence',()=>{
-  for(const evo of [0,1]){
-   const {game,g,enemy}=setup();g.weapons.moon.evo=evo;enemy(5);game.fireWeapon('moon');
-   assert.equal(g.shots.length,evo===0?2:1);
-   for(const s of g.shots){assert(Math.abs(s.damage-108*(evo===0?.65:1.6))<1e-8);assert.equal(s.r,.435*(evo===1?1.5:1));}
-   assert.equal(game.cooldown('moon'),1.58*(evo===1?1.2:1));
+ check('ordinary frisbee levels keep one disc; awakening adds only the return pass',()=>{
+  for(const level of [1,4,7])for(const awake of [false,true]){
+   const {game,g,enemy}=setup();g.weapons.moon.lv=level;if(awake)g.weapons.moon.awakened='moon-return';enemy(5);game.fireWeapon('moon');
+   assert.equal(g.shots.length,1);const shot=g.shots[0];
+   assert.equal(shot.returnAllowed,awake);assert.equal(shot.r,.435*(level>=4?1.12:1));
+   assert(Math.abs(shot.damage-108*({1:1,4:1.1,7:1.3}[level]))<1e-8);
+   assert(Math.abs(game.cooldown('moon')-1.58/(level>=6?1.15:level>=3?1.08:1))<1e-8);
   }
  });
  const failures=results.filter(r=>!r.pass);return {passed:results.length-failures.length,total:results.length,failures,detail:'48 plane cases, 16 frisbee directions, swept piercing, delayed impact, return pass and evolution balance'};

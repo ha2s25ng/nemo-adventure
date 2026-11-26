@@ -1,0 +1,2205 @@
+{
+  "version": "5.12.24",
+  "notes": [
+    "밸런스 모의 전투 기록 / v5.12.24",
+    "공격력100, 일반 Lv.7, 24초, 같은 시드와 배치. 각성 측정에는 지정 패시브Lv.5 포함.",
+    "근접 보스 / 원거리 보스 / 전방 적16 / 주변 적16. 적은 처치되지 않는 더미이므로 공격 배치와 역할을 비교하는 자료입니다.",
+    "moving 모드는 플레이어가 작은 원을 따라 이동하며 꽃길을 검증합니다. 적은 플레이어 기준 배치를 유지합니다.",
+    "회복·탄환 제거·빙결·넉백의 가치는 DPS에 포함하지 않습니다. 플레이 검증을 대신하지 않습니다.",
+    "일반 모드와 각성 모드는 같은 조건의 무기 성장에서 비교. 예약 공격은 실제 게임처럼 한 프레임에 한 번만 처리."
+  ],
+  "runs": [
+    {
+      "duration": 24,
+      "walking": false,
+      "packHp": "infinite",
+      "mode": "base level seven",
+      "rows": [
+        {
+          "id": "star",
+          "name": "스타 샷",
+          "nearBoss": {
+            "dps": 198,
+            "hits": 120,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 198,
+            "hits": 120,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 198,
+            "hits": 120,
+            "targets": 2,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 196,
+            "hits": 120,
+            "targets": 4,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "orbit",
+          "name": "스타 오비트",
+          "nearBoss": {
+            "dps": 98,
+            "hits": 55,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 367,
+            "hits": 209,
+            "targets": 6,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 521,
+            "hits": 296,
+            "targets": 8,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "moon",
+          "name": "마법 프리스비",
+          "nearBoss": {
+            "dps": 117,
+            "hits": 18,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 117,
+            "hits": 18,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 705,
+            "hits": 116,
+            "targets": 16,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 351,
+            "hits": 59,
+            "targets": 13,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "bubble",
+          "name": "버블 완드",
+          "nearBoss": {
+            "dps": 115,
+            "hits": 28,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 107,
+            "hits": 26,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 516,
+            "hits": 129,
+            "targets": 8,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 297,
+            "hits": 74,
+            "targets": 8,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "bloom",
+          "name": "블룸 가든",
+          "nearBoss": {
+            "dps": 59,
+            "hits": 42,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 59,
+            "hits": 42,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 822,
+            "hits": 584,
+            "targets": 16,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 290,
+            "hits": 206,
+            "targets": 11,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "cloud",
+          "name": "구름 친구",
+          "nearBoss": {
+            "dps": 157,
+            "hits": 14,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 157,
+            "hits": 14,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 133,
+            "hits": 14,
+            "targets": 14,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 133,
+            "hits": 14,
+            "targets": 14,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "ribbon",
+          "name": "리본 댄스",
+          "nearBoss": {
+            "dps": 159,
+            "hits": 25,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 1433,
+            "hits": 229,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 728,
+            "hits": 117,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "book",
+          "name": "꿈꾸는 마법책",
+          "nearBoss": {
+            "dps": 94,
+            "hits": 30,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 94,
+            "hits": 30,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 195,
+            "hits": 45,
+            "targets": 3,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 195,
+            "hits": 45,
+            "targets": 4,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "comet",
+          "name": "별똥별 소나기",
+          "nearBoss": {
+            "dps": 96,
+            "hits": 18,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 96,
+            "hits": 18,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 774,
+            "hits": 146,
+            "targets": 16,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 263,
+            "hits": 50,
+            "targets": 13,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "frost",
+          "name": "서리 수정",
+          "nearBoss": {
+            "dps": 104,
+            "hits": 40,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 104,
+            "hits": 40,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 203,
+            "hits": 80,
+            "targets": 6,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 161,
+            "hits": 62,
+            "targets": 10,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "vortex",
+          "name": "솜사탕 소용돌이",
+          "nearBoss": {
+            "dps": 68,
+            "hits": 52,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 693,
+            "hits": 533,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 811,
+            "hits": 624,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "seed",
+          "name": "별씨앗 덫",
+          "nearBoss": {
+            "dps": 134,
+            "hits": 17,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 757,
+            "hits": 99,
+            "targets": 11,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 252,
+            "hits": 34,
+            "targets": 8,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "bell",
+          "name": "달빛 종소리",
+          "nearBoss": {
+            "dps": 56,
+            "hits": 10,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 482,
+            "hits": 90,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 587,
+            "hits": 110,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "feather",
+          "name": "바람 깃털",
+          "nearBoss": {
+            "dps": 139,
+            "hits": 70,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 126,
+            "hits": 63,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 617,
+            "hits": 311,
+            "targets": 15,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 227,
+            "hits": 112,
+            "targets": 11,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "cannon",
+          "name": "삑삑이 공",
+          "nearBoss": {
+            "dps": 243,
+            "hits": 75,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 232,
+            "hits": 70,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 469,
+            "hits": 175,
+            "targets": 10,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 303,
+            "hits": 99,
+            "targets": 8,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        }
+      ]
+    },
+    {
+      "duration": 24,
+      "walking": false,
+      "packHp": "infinite",
+      "mode": "awakened plus required passive",
+      "rows": [
+        {
+          "id": "star",
+          "name": "스타 샷",
+          "nearBoss": {
+            "dps": 264,
+            "hits": 160,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "farBoss": {
+            "dps": 213,
+            "hits": 120,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "frontPack": {
+            "dps": 410,
+            "hits": 320,
+            "targets": 8,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "ringPack": {
+            "dps": 367,
+            "hits": 277,
+            "targets": 13,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          }
+        },
+        {
+          "id": "orbit",
+          "name": "스타 오비트",
+          "nearBoss": {
+            "dps": 109,
+            "hits": 63,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "jelly"
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": true,
+            "passive": "jelly"
+          },
+          "frontPack": {
+            "dps": 465,
+            "hits": 281,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "jelly"
+          },
+          "ringPack": {
+            "dps": 570,
+            "hits": 331,
+            "targets": 10,
+            "kills": 0,
+            "awakened": true,
+            "passive": "jelly"
+          }
+        },
+        {
+          "id": "moon",
+          "name": "마법 프리스비",
+          "nearBoss": {
+            "dps": 158,
+            "hits": 34,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "coin"
+          },
+          "farBoss": {
+            "dps": 161,
+            "hits": 35,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "coin"
+          },
+          "frontPack": {
+            "dps": 1035,
+            "hits": 227,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "coin"
+          },
+          "ringPack": {
+            "dps": 538,
+            "hits": 119,
+            "targets": 14,
+            "kills": 0,
+            "awakened": true,
+            "passive": "coin"
+          }
+        },
+        {
+          "id": "bubble",
+          "name": "버블 완드",
+          "nearBoss": {
+            "dps": 115,
+            "hits": 28,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "magnet"
+          },
+          "farBoss": {
+            "dps": 107,
+            "hits": 26,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "magnet"
+          },
+          "frontPack": {
+            "dps": 588,
+            "hits": 201,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "magnet"
+          },
+          "ringPack": {
+            "dps": 348,
+            "hits": 130,
+            "targets": 10,
+            "kills": 0,
+            "awakened": true,
+            "passive": "magnet"
+          }
+        },
+        {
+          "id": "bloom",
+          "name": "블룸 가든",
+          "nearBoss": {
+            "dps": 59,
+            "hits": 42,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "honeypouch"
+          },
+          "farBoss": {
+            "dps": 59,
+            "hits": 42,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "honeypouch"
+          },
+          "frontPack": {
+            "dps": 822,
+            "hits": 584,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "honeypouch"
+          },
+          "ringPack": {
+            "dps": 290,
+            "hits": 206,
+            "targets": 11,
+            "kills": 0,
+            "awakened": true,
+            "passive": "honeypouch"
+          }
+        },
+        {
+          "id": "cloud",
+          "name": "구름 친구",
+          "nearBoss": {
+            "dps": 180,
+            "hits": 14,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "courage"
+          },
+          "farBoss": {
+            "dps": 180,
+            "hits": 14,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "courage"
+          },
+          "frontPack": {
+            "dps": 226,
+            "hits": 42,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "courage"
+          },
+          "ringPack": {
+            "dps": 226,
+            "hits": 42,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "courage"
+          }
+        },
+        {
+          "id": "ribbon",
+          "name": "리본 댄스",
+          "nearBoss": {
+            "dps": 162,
+            "hits": 25,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "claw"
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": true,
+            "passive": "claw"
+          },
+          "frontPack": {
+            "dps": 1465,
+            "hits": 229,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "claw"
+          },
+          "ringPack": {
+            "dps": 1043,
+            "hits": 240,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "claw"
+          }
+        },
+        {
+          "id": "book",
+          "name": "꿈꾸는 마법책",
+          "nearBoss": {
+            "dps": 94,
+            "hits": 30,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "insight"
+          },
+          "farBoss": {
+            "dps": 94,
+            "hits": 30,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "insight"
+          },
+          "frontPack": {
+            "dps": 284,
+            "hits": 90,
+            "targets": 7,
+            "kills": 0,
+            "awakened": true,
+            "passive": "insight"
+          },
+          "ringPack": {
+            "dps": 281,
+            "hits": 90,
+            "targets": 8,
+            "kills": 0,
+            "awakened": true,
+            "passive": "insight"
+          }
+        },
+        {
+          "id": "comet",
+          "name": "별똥별 소나기",
+          "nearBoss": {
+            "dps": 123,
+            "hits": 45,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "emberheart"
+          },
+          "farBoss": {
+            "dps": 123,
+            "hits": 45,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "emberheart"
+          },
+          "frontPack": {
+            "dps": 987,
+            "hits": 419,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "emberheart"
+          },
+          "ringPack": {
+            "dps": 339,
+            "hits": 140,
+            "targets": 13,
+            "kills": 0,
+            "awakened": true,
+            "passive": "emberheart"
+          }
+        },
+        {
+          "id": "frost",
+          "name": "서리 수정",
+          "nearBoss": {
+            "dps": 104,
+            "hits": 40,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "cloak"
+          },
+          "farBoss": {
+            "dps": 104,
+            "hits": 40,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "cloak"
+          },
+          "frontPack": {
+            "dps": 203,
+            "hits": 80,
+            "targets": 6,
+            "kills": 0,
+            "awakened": true,
+            "passive": "cloak"
+          },
+          "ringPack": {
+            "dps": 161,
+            "hits": 62,
+            "targets": 10,
+            "kills": 0,
+            "awakened": true,
+            "passive": "cloak"
+          }
+        },
+        {
+          "id": "vortex",
+          "name": "솜사탕 소용돌이",
+          "nearBoss": {
+            "dps": 68,
+            "hits": 52,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "big"
+          },
+          "farBoss": {
+            "dps": 1,
+            "hits": 1,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "big"
+          },
+          "frontPack": {
+            "dps": 935,
+            "hits": 719,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "big"
+          },
+          "ringPack": {
+            "dps": 1082,
+            "hits": 832,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "big"
+          }
+        },
+        {
+          "id": "seed",
+          "name": "별씨앗 덫",
+          "nearBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": true,
+            "passive": "shoes"
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": true,
+            "passive": "shoes"
+          },
+          "frontPack": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": true,
+            "passive": "shoes"
+          },
+          "ringPack": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": true,
+            "passive": "shoes"
+          }
+        },
+        {
+          "id": "bell",
+          "name": "달빛 종소리",
+          "nearBoss": {
+            "dps": 56,
+            "hits": 10,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "leafguard"
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": true,
+            "passive": "leafguard"
+          },
+          "frontPack": {
+            "dps": 482,
+            "hits": 90,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "leafguard"
+          },
+          "ringPack": {
+            "dps": 587,
+            "hits": 110,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "leafguard"
+          }
+        },
+        {
+          "id": "feather",
+          "name": "바람 깃털",
+          "nearBoss": {
+            "dps": 139,
+            "hits": 70,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "windstep"
+          },
+          "farBoss": {
+            "dps": 126,
+            "hits": 63,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "windstep"
+          },
+          "frontPack": {
+            "dps": 662,
+            "hits": 346,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "windstep"
+          },
+          "ringPack": {
+            "dps": 226,
+            "hits": 111,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "windstep"
+          }
+        },
+        {
+          "id": "cannon",
+          "name": "삑삑이 공",
+          "nearBoss": {
+            "dps": 255,
+            "hits": 75,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "farBoss": {
+            "dps": 249,
+            "hits": 70,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "frontPack": {
+            "dps": 624,
+            "hits": 290,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "ringPack": {
+            "dps": 468,
+            "hits": 193,
+            "targets": 11,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          }
+        }
+      ]
+    },
+    {
+      "duration": 24,
+      "walking": true,
+      "packHp": "infinite",
+      "mode": "base level seven",
+      "rows": [
+        {
+          "id": "star",
+          "name": "스타 샷",
+          "nearBoss": {
+            "dps": 198,
+            "hits": 120,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 156,
+            "hits": 78,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 196,
+            "hits": 120,
+            "targets": 2,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 196,
+            "hits": 120,
+            "targets": 4,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "orbit",
+          "name": "스타 오비트",
+          "nearBoss": {
+            "dps": 98,
+            "hits": 55,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 367,
+            "hits": 209,
+            "targets": 6,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 521,
+            "hits": 296,
+            "targets": 8,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "moon",
+          "name": "마법 프리스비",
+          "nearBoss": {
+            "dps": 117,
+            "hits": 18,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 117,
+            "hits": 18,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 772,
+            "hits": 129,
+            "targets": 16,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 304,
+            "hits": 51,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "bubble",
+          "name": "버블 완드",
+          "nearBoss": {
+            "dps": 115,
+            "hits": 28,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 107,
+            "hits": 26,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 500,
+            "hits": 126,
+            "targets": 8,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 293,
+            "hits": 74,
+            "targets": 7,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "bloom",
+          "name": "블룸 가든",
+          "nearBoss": {
+            "dps": 38,
+            "hits": 27,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 41,
+            "hits": 29,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 430,
+            "hits": 305,
+            "targets": 16,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 228,
+            "hits": 162,
+            "targets": 16,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "cloud",
+          "name": "구름 친구",
+          "nearBoss": {
+            "dps": 157,
+            "hits": 14,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 157,
+            "hits": 14,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 133,
+            "hits": 14,
+            "targets": 14,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 133,
+            "hits": 14,
+            "targets": 14,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "ribbon",
+          "name": "리본 댄스",
+          "nearBoss": {
+            "dps": 159,
+            "hits": 25,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 1433,
+            "hits": 229,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 728,
+            "hits": 117,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "book",
+          "name": "꿈꾸는 마법책",
+          "nearBoss": {
+            "dps": 94,
+            "hits": 30,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 94,
+            "hits": 30,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 195,
+            "hits": 45,
+            "targets": 4,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 195,
+            "hits": 45,
+            "targets": 4,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "comet",
+          "name": "별똥별 소나기",
+          "nearBoss": {
+            "dps": 91,
+            "hits": 17,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 91,
+            "hits": 17,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 620,
+            "hits": 117,
+            "targets": 16,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 237,
+            "hits": 45,
+            "targets": 14,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "frost",
+          "name": "서리 수정",
+          "nearBoss": {
+            "dps": 104,
+            "hits": 40,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 61,
+            "hits": 24,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 203,
+            "hits": 80,
+            "targets": 7,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 163,
+            "hits": 63,
+            "targets": 11,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "vortex",
+          "name": "솜사탕 소용돌이",
+          "nearBoss": {
+            "dps": 68,
+            "hits": 52,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 693,
+            "hits": 533,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 811,
+            "hits": 624,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "seed",
+          "name": "별씨앗 덫",
+          "nearBoss": {
+            "dps": 48,
+            "hits": 6,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 137,
+            "hits": 18,
+            "targets": 4,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 275,
+            "hits": 37,
+            "targets": 5,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "bell",
+          "name": "달빛 종소리",
+          "nearBoss": {
+            "dps": 56,
+            "hits": 10,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 482,
+            "hits": 90,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 587,
+            "hits": 110,
+            "targets": 12,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "feather",
+          "name": "바람 깃털",
+          "nearBoss": {
+            "dps": 129,
+            "hits": 65,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 82,
+            "hits": 43,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 682,
+            "hits": 349,
+            "targets": 16,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 207,
+            "hits": 99,
+            "targets": 13,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        },
+        {
+          "id": "cannon",
+          "name": "삑삑이 공",
+          "nearBoss": {
+            "dps": 243,
+            "hits": 75,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "farBoss": {
+            "dps": 180,
+            "hits": 46,
+            "targets": 1,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "frontPack": {
+            "dps": 461,
+            "hits": 176,
+            "targets": 10,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          },
+          "ringPack": {
+            "dps": 303,
+            "hits": 99,
+            "targets": 8,
+            "kills": 0,
+            "awakened": false,
+            "passive": null
+          }
+        }
+      ]
+    },
+    {
+      "duration": 24,
+      "walking": true,
+      "packHp": "infinite",
+      "mode": "awakened plus required passive",
+      "rows": [
+        {
+          "id": "star",
+          "name": "스타 샷",
+          "nearBoss": {
+            "dps": 247,
+            "hits": 154,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "farBoss": {
+            "dps": 171,
+            "hits": 79,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "frontPack": {
+            "dps": 423,
+            "hits": 320,
+            "targets": 8,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "ringPack": {
+            "dps": 348,
+            "hits": 266,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          }
+        },
+        {
+          "id": "orbit",
+          "name": "스타 오비트",
+          "nearBoss": {
+            "dps": 109,
+            "hits": 63,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "jelly"
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": true,
+            "passive": "jelly"
+          },
+          "frontPack": {
+            "dps": 465,
+            "hits": 281,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "jelly"
+          },
+          "ringPack": {
+            "dps": 570,
+            "hits": 331,
+            "targets": 10,
+            "kills": 0,
+            "awakened": true,
+            "passive": "jelly"
+          }
+        },
+        {
+          "id": "moon",
+          "name": "마법 프리스비",
+          "nearBoss": {
+            "dps": 117,
+            "hits": 20,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "coin"
+          },
+          "farBoss": {
+            "dps": 120,
+            "hits": 22,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "coin"
+          },
+          "frontPack": {
+            "dps": 926,
+            "hits": 181,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "coin"
+          },
+          "ringPack": {
+            "dps": 464,
+            "hits": 102,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "coin"
+          }
+        },
+        {
+          "id": "bubble",
+          "name": "버블 완드",
+          "nearBoss": {
+            "dps": 115,
+            "hits": 28,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "magnet"
+          },
+          "farBoss": {
+            "dps": 107,
+            "hits": 26,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "magnet"
+          },
+          "frontPack": {
+            "dps": 591,
+            "hits": 217,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "magnet"
+          },
+          "ringPack": {
+            "dps": 355,
+            "hits": 136,
+            "targets": 9,
+            "kills": 0,
+            "awakened": true,
+            "passive": "magnet"
+          }
+        },
+        {
+          "id": "bloom",
+          "name": "블룸 가든",
+          "nearBoss": {
+            "dps": 38,
+            "hits": 27,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "honeypouch"
+          },
+          "farBoss": {
+            "dps": 41,
+            "hits": 29,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "honeypouch"
+          },
+          "frontPack": {
+            "dps": 430,
+            "hits": 305,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "honeypouch"
+          },
+          "ringPack": {
+            "dps": 228,
+            "hits": 162,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "honeypouch"
+          }
+        },
+        {
+          "id": "cloud",
+          "name": "구름 친구",
+          "nearBoss": {
+            "dps": 180,
+            "hits": 14,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "courage"
+          },
+          "farBoss": {
+            "dps": 180,
+            "hits": 14,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "courage"
+          },
+          "frontPack": {
+            "dps": 226,
+            "hits": 42,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "courage"
+          },
+          "ringPack": {
+            "dps": 226,
+            "hits": 42,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "courage"
+          }
+        },
+        {
+          "id": "ribbon",
+          "name": "리본 댄스",
+          "nearBoss": {
+            "dps": 162,
+            "hits": 25,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "claw"
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": true,
+            "passive": "claw"
+          },
+          "frontPack": {
+            "dps": 1465,
+            "hits": 229,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "claw"
+          },
+          "ringPack": {
+            "dps": 1043,
+            "hits": 240,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "claw"
+          }
+        },
+        {
+          "id": "book",
+          "name": "꿈꾸는 마법책",
+          "nearBoss": {
+            "dps": 94,
+            "hits": 30,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "insight"
+          },
+          "farBoss": {
+            "dps": 94,
+            "hits": 30,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "insight"
+          },
+          "frontPack": {
+            "dps": 283,
+            "hits": 90,
+            "targets": 8,
+            "kills": 0,
+            "awakened": true,
+            "passive": "insight"
+          },
+          "ringPack": {
+            "dps": 283,
+            "hits": 90,
+            "targets": 8,
+            "kills": 0,
+            "awakened": true,
+            "passive": "insight"
+          }
+        },
+        {
+          "id": "comet",
+          "name": "별똥별 소나기",
+          "nearBoss": {
+            "dps": 104,
+            "hits": 33,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "emberheart"
+          },
+          "farBoss": {
+            "dps": 104,
+            "hits": 33,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "emberheart"
+          },
+          "frontPack": {
+            "dps": 722,
+            "hits": 228,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "emberheart"
+          },
+          "ringPack": {
+            "dps": 291,
+            "hits": 111,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "emberheart"
+          }
+        },
+        {
+          "id": "frost",
+          "name": "서리 수정",
+          "nearBoss": {
+            "dps": 104,
+            "hits": 40,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "cloak"
+          },
+          "farBoss": {
+            "dps": 61,
+            "hits": 24,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "cloak"
+          },
+          "frontPack": {
+            "dps": 203,
+            "hits": 80,
+            "targets": 7,
+            "kills": 0,
+            "awakened": true,
+            "passive": "cloak"
+          },
+          "ringPack": {
+            "dps": 163,
+            "hits": 63,
+            "targets": 11,
+            "kills": 0,
+            "awakened": true,
+            "passive": "cloak"
+          }
+        },
+        {
+          "id": "vortex",
+          "name": "솜사탕 소용돌이",
+          "nearBoss": {
+            "dps": 68,
+            "hits": 52,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "big"
+          },
+          "farBoss": {
+            "dps": 1,
+            "hits": 1,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "big"
+          },
+          "frontPack": {
+            "dps": 935,
+            "hits": 719,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "big"
+          },
+          "ringPack": {
+            "dps": 1082,
+            "hits": 832,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "big"
+          }
+        },
+        {
+          "id": "seed",
+          "name": "별씨앗 덫",
+          "nearBoss": {
+            "dps": 29,
+            "hits": 13,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "shoes"
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": true,
+            "passive": "shoes"
+          },
+          "frontPack": {
+            "dps": 196,
+            "hits": 88,
+            "targets": 8,
+            "kills": 0,
+            "awakened": true,
+            "passive": "shoes"
+          },
+          "ringPack": {
+            "dps": 243,
+            "hits": 109,
+            "targets": 8,
+            "kills": 0,
+            "awakened": true,
+            "passive": "shoes"
+          }
+        },
+        {
+          "id": "bell",
+          "name": "달빛 종소리",
+          "nearBoss": {
+            "dps": 56,
+            "hits": 10,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "leafguard"
+          },
+          "farBoss": {
+            "dps": 0,
+            "hits": 0,
+            "targets": 0,
+            "kills": 0,
+            "awakened": true,
+            "passive": "leafguard"
+          },
+          "frontPack": {
+            "dps": 482,
+            "hits": 90,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "leafguard"
+          },
+          "ringPack": {
+            "dps": 587,
+            "hits": 110,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "leafguard"
+          }
+        },
+        {
+          "id": "feather",
+          "name": "바람 깃털",
+          "nearBoss": {
+            "dps": 151,
+            "hits": 76,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "windstep"
+          },
+          "farBoss": {
+            "dps": 107,
+            "hits": 61,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "windstep"
+          },
+          "frontPack": {
+            "dps": 789,
+            "hits": 401,
+            "targets": 16,
+            "kills": 0,
+            "awakened": true,
+            "passive": "windstep"
+          },
+          "ringPack": {
+            "dps": 250,
+            "hits": 129,
+            "targets": 14,
+            "kills": 0,
+            "awakened": true,
+            "passive": "windstep"
+          }
+        },
+        {
+          "id": "cannon",
+          "name": "삑삑이 공",
+          "nearBoss": {
+            "dps": 255,
+            "hits": 75,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "farBoss": {
+            "dps": 193,
+            "hits": 46,
+            "targets": 1,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "frontPack": {
+            "dps": 639,
+            "hits": 316,
+            "targets": 12,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          },
+          "ringPack": {
+            "dps": 463,
+            "hits": 191,
+            "targets": 11,
+            "kills": 0,
+            "awakened": true,
+            "passive": "lucky"
+          }
+        }
+      ]
+    }
+  ]
+}
