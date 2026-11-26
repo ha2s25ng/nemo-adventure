@@ -284,7 +284,7 @@
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
 #setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.12.17" />
+</style><meta name="nemo-version" content="5.12.19" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -608,11 +608,12 @@
 #app .rank-podium img { width:23px; height:23px; object-fit:contain; }
 #app .nemo-shop-item[data-costume^="victory-"] { border-color:#997a4d; }
 </style>
-<script src="./assets/campaign-v573/stages.js?v=5.12.17"></script>
+<script src="./assets/awakening-v51218/awakening.js"></script>
+<script src="./assets/campaign-v573/stages.js?v=5.12.19"></script>
 <script src="./assets/campaign-v573/maps.js?v=5.9.0"></script>
-<script src="./assets/campaign-v590/bosses.js?v=5.12.17"></script>
-<script src="./assets/campaign-v590/monsters.js?v=5.12.17"></script>
-<script src="./assets/survival-v594/bosses.js?v=5.12.17"></script>
+<script src="./assets/campaign-v590/bosses.js?v=5.12.19"></script>
+<script src="./assets/campaign-v590/monsters.js?v=5.12.19"></script>
+<script src="./assets/survival-v594/bosses.js?v=5.12.19"></script>
 <script src="./assets/survival-v594/drops.js"></script>
 <style id="rare-card-art">
 #app #cards .choice-card[data-kind="rare"]{
@@ -731,14 +732,14 @@
 @media(max-width:600px){.draw-layout{grid-template-columns:1fr}.draw-reward{min-height:200px}.draw-reward-art{height:150px}.draw-photo-grid{max-width:330px;margin:auto}}
 @media(prefers-reduced-motion:no-preference){.draw-reward[data-reveal="true"] .draw-reward-art{animation:draw-reveal .5s ease-out}@keyframes draw-reveal{from{opacity:.2;transform:translateY(9px) scale(.84)}to{opacity:1;transform:none}}}
 </style>
-<link rel="stylesheet" href="./assets/capsule-v5912/capsule.css?v=5.12.17">
-<script src="./assets/lucky-draw-v5910/draw.js?v=5.12.17"></script>
-<link rel="stylesheet" href="./assets/capsule-v5916/premium.css?v=5.12.17">
-<link rel="stylesheet" href="./assets/photocards-v5102/cards.css?v=5.12.17">
-<link rel="stylesheet" href="./assets/characters-v5120/characters.css?v=5.12.17">
-<script src="./assets/characters-v5120/characters.js?v=5.12.17"></script>
-<script src="./assets/photocards-v5102/cards.js?v=5.12.17"></script>
-<script src="./assets/dori-v5110/photos.js?v=5.12.17"></script>
+<link rel="stylesheet" href="./assets/capsule-v5912/capsule.css?v=5.12.19">
+<script src="./assets/lucky-draw-v5910/draw.js?v=5.12.19"></script>
+<link rel="stylesheet" href="./assets/capsule-v5916/premium.css?v=5.12.19">
+<link rel="stylesheet" href="./assets/photocards-v5102/cards.css?v=5.12.19">
+<link rel="stylesheet" href="./assets/characters-v5120/characters.css?v=5.12.19">
+<script src="./assets/characters-v5120/characters.js?v=5.12.19"></script>
+<script src="./assets/photocards-v5102/cards.js?v=5.12.19"></script>
+<script src="./assets/dori-v5110/photos.js?v=5.12.19"></script>
 <script src="./assets/nemo-album-v5913/photos.js"></script>
 <style id="passive-card-readable-values">
 #app #cards .choice-effect strong.passive-effect { display:grid !important; gap:5px; min-width:0; }
@@ -746,6 +747,35 @@
 #app #cards .passive-effect-condition { font-size:.82em; font-weight:600; white-space:nowrap; }
 #app #cards .passive-effect-values { display:flex; flex-wrap:nowrap; align-items:center; gap:.40em; white-space:nowrap; font-size:clamp(14px,2.2vmin,19px); line-height:1.25; font-variant-numeric:tabular-nums; }
 #app #cards .passive-effect-values>span { white-space:nowrap; }
+</style>
+<style id="consistent-choice-layout">
+#app #cards #card-options { align-items:stretch;grid-auto-rows:1fr; }
+#app #cards .choice-card { display:grid!important;grid-template-rows:96px minmax(90px,1fr) 24px 38px;gap:8px;align-content:stretch;height:100%;min-height:290px;padding:8px 12px 12px; }
+#app #cards .choice-identity { order:0;min-height:0;height:96px;margin:0;padding:4px 0;align-content:center; }
+#app #cards .choice-name { font-size:clamp(16px,2.6vmin,23px);line-height:1.25;word-break:keep-all;overflow-wrap:break-word; }
+#app #cards .choice-effect { order:1;box-sizing:border-box;min-height:90px;margin:0;align-content:start; }
+#app #cards .choice-meta { order:2;min-height:24px;margin:0;padding-top:4px; }
+#app #cards .choice-cta { order:3;box-sizing:border-box;height:38px;min-height:38px;margin:0;align-self:end; }
+#app #cards .rare-card-sparks { position:absolute; }
+.codex-categories { display:flex;gap:8px;flex-wrap:wrap; }
+.codex-categories [aria-pressed="true"] { background:#e2ead5!important;box-shadow:inset 0 0 0 2px #8f9e78; }
+#app #codex .codex-tabs { max-height:32vh;overflow-y:auto;flex-shrink:0; }
+.codex-undiscovered { text-align:center;padding:25px 15px;color:#67725b; }
+.codex-undiscovered>strong { display:block;font-size:60px; }
+@media(max-height:520px) and (orientation:landscape){#app #cards .choice-card {grid-template-rows:70px minmax(65px,1fr) 20px 30px;min-height:215px;gap:5px;padding:4px 8px 8px;}#app #cards .choice-identity{height:70px;}#app #cards .choice-effect{min-height:65px;font-size:13px;}#app #cards .choice-cta{height:30px;min-height:30px;}#app #cards .choice-meta{min-height:20px;}}
+</style>
+<style id="awakening-card-treatment">
+#app #cards .choice-card[data-kind="awakening"]{--wash:#443052;--ink:#fff0cc;--edge:#e2bb6d;background:linear-gradient(145deg,#443052,#241d38)!important;border:3px solid #dcb56b!important;box-shadow:0 0 0 2px #6f4c85,inset 0 0 18px #d2a6eb22!important;position:relative;}
+#app #cards .choice-card[data-kind="awakening"] .choice-identity{background:transparent;color:#fff2da;border-color:#cfad73;}
+#app #cards .choice-card[data-kind="awakening"] .choice-type{color:#f4d58e;font-weight:900;}
+#app #cards .choice-card[data-kind="awakening"] .choice-type::before{content:'✦ ';}
+#app #cards .choice-card[data-kind="awakening"] .choice-name{color:#fff4df;}
+#app #cards .choice-card[data-kind="awakening"] .choice-effect{color:#fff4df;background:#5b4166;border-color:#b591c3;}
+#app #cards .choice-card[data-kind="awakening"] .choice-meta{color:#e9d6f0;}
+#app #cards .choice-card[data-kind="awakening"] .choice-cta{color:#513e29!important;background:linear-gradient(#ffedbf,#dfbb73)!important;border-color:#efcf8a!important;}
+#app #cards .choice-card[data-kind="awakening"]::after{content:'✧';position:absolute;right:12px;top:12px;color:#ffe9a8;font-size:23px;pointer-events:none;animation:awakening-glimmer 2s ease-in-out infinite;}
+@keyframes awakening-glimmer{50%{opacity:.45;transform:scale(.75);}}
+@media(prefers-reduced-motion:reduce){#app #cards .choice-card[data-kind="awakening"]::after{animation:none;}}
 </style>
 </head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
@@ -907,8 +937,8 @@
 </div>
 <div class="overlay hidden" id="result" role="dialog" aria-modal="true" aria-labelledby="result-title"><div class="big-board"><p class="folio">모험 일지</p><h2 id="result-title">모험 결과</h2><p class="subtitle" id="result-desc"></p><div class="result-summary"><div><small>생존 시간</small><strong id="result-time">00:00</strong></div><div class="reward"><small>획득 골드</small><strong id="result-money">+0 G</strong></div></div><div class="result-grid" id="result-grid"></div><div class="stack-btns" style="max-width:390px;margin:auto"><button class="btn primary hidden" id="next-stage">다음 스테이지</button><button class="btn primary" id="retry">다시 도전</button><button class="btn" id="result-menu">숲 입구로</button><button class="btn nemo-rank-result" id="result-rank-btn">내 기록과 랭킹</button></div></div></div>
 <div class="overlay hidden" id="codex" role="dialog" aria-modal="true" aria-labelledby="codex-title"><div class="codex-board">
-<div class="codex-head"><div><p class="folio">마법 기록</p><h2 id="codex-title">마법 도감</h2><p>15종 마법의 공격 방식·강화·두 가지 최종 진화를 확인할 수 있어.</p></div><button class="btn codex-close" id="codex-back">✕ 닫기</button></div>
-<div class="codex-tabs" id="codex-tabs"></div><div class="codex-details" id="codex-details"></div>
+<div class="codex-head"><div><p class="folio">마법 기록</p><h2 id="codex-title">마법 도감</h2><p>마법과 패시브를 살펴보고, 직접 발견한 진화를 모아 보세요.</p></div><button class="btn codex-close" id="codex-back">✕ 닫기</button></div>
+<div class="codex-categories" id="codex-categories"></div><div class="codex-tabs" id="codex-tabs"></div><div class="codex-details" id="codex-details"></div>
 </div></div><div class="overlay hidden" id="leaderboard" role="dialog" aria-modal="true" aria-labelledby="leaderboard-title"><div class="nemo-leaderboard-board">
   <div class="nemo-rank-top"><div><p class="folio">모험 기록</p><h2 id="leaderboard-title" tabindex="-1">숲의 명예의 전당</h2><p>무한 생존 · 주간 랭킹 · 매주 일요일 22:00 초기화 (한국시간)</p></div><button type="button" id="leaderboard-close" class="btn">✕ 돌아가기</button></div>
   <div class="nemo-rank-layout"><section class="nemo-rank-left"><label for="rank-nickname">🐾 내 닉네임 (최대 16자)</label><input id="rank-nickname" maxlength="16" placeholder="예: 별빛 니모" autocomplete="nickname"/>
@@ -1110,6 +1140,9 @@ const RARE_PICKUPS={
 const RARE_PICKUP_KINDS=Object.keys(RARE_PICKUPS);
 const RARE_DROP={chance:.0045,unlock:40,life:22,cooldown:55,freeze:5};
 DATA.weapons.cannon=DORI_CANNON;
+for(const id of ['star','cannon'])DATA.weapons[id].steps[4]=['투사체 추가','투사체 +1'];
+DATA.weapons.star.steps={2:['빛나는 별','공격력 증가'],3:['재빠른 별','공격 속도 증가'],4:['세 갈래 별','별 3발 발사'],5:['행운의 별','치명타 확률 증가'],6:['단단한 별','공격력 증가'],7:['완성된 별','공격 속도와 치명타 확률 증가']};
+DATA.weapons.cannon.steps[7]=['완성된 공','공격력 증가'];
 const W=DATA.weapons,MD={...DATA.monsters,...CAMPAIGN_MONSTERS},passiveKeys=Object.keys(DATA.passives),weaponKeys=Object.keys(W);
 const SURVIVAL_RUNNERS={
  spark:{at:75,weight:7,lateWeight:14},
@@ -1498,7 +1531,7 @@ function weaponNumbers(id){
  const d=W[id],w=g?.weapons[id]||{lv:1,up:[0,0,0],break:false,evo:null};
  const extra=w.evo===0?2:0;
  const count={
-  star:starShotCount(w),cannon:starShotCount(w),orbit:2+w.up[0]+extra,moon:w.evo===0?2:1,bubble:1+w.up[0],
+  star:starShotCount(w),cannon:starShotCount(w,'cannon'),orbit:2+w.up[0]+extra,moon:w.evo===0?2:1,bubble:1+w.up[0],
   bloom:1,cloud:w.evo===1?4:w.evo===0?2:1,ribbon:w.break?2:1,book:2+w.up[0]+extra,
   comet:1+w.up[0]+extra,frost:1+w.up[0]+extra,feather:1+w.up[0]+extra,vortex:1,
   seed:3+w.up[0]+extra,bell:w.evo===0?2:1
@@ -1528,7 +1561,9 @@ function choiceDetail(c){
  const label=labels[c.type]||'선택 효과';
  return {label,effect:friendlyEffect(c.desc||c.name),copy};
 }
-let codexReturn='menu',currentCodex='star';
+let codexReturn='menu',currentCodex='star',codexCategory='weapons';
+function setCodexCategory(category){if(!['weapons','passives','evolutions'].includes(category))return;codexCategory=category;currentCodex=category==='passives'?passiveKeys[0]:category==='evolutions'?'star:0':'star';renderCodex();}
+function recordEvolution(id,index){const key=id+':'+index;if(!W[id]||![0,1].includes(index))return;saved.evolutionDiscoveries??=[];if(!saved.evolutionDiscoveries.includes(key)){saved.evolutionDiscoveries.push(key);persist();}}
 function openCodex(){codexReturn=(screen==='pause'||screen==='playing'||screen==='intro')?'pause':'menu';renderCodex();setScreen('codex');}
 function closeCodex(){
  setScreen(codexReturn);
@@ -1536,17 +1571,38 @@ function closeCodex(){
  $(codexReturn==='pause'?'pause-codex':'codex-btn').focus();
 }
 function renderCodex(){
- $('codex-tabs').innerHTML=weaponKeys.map(id=>`<button type="button" class="codex-tab ${id===currentCodex?'on':''}" data-codex="${id}" aria-pressed="${id===currentCodex}"><span aria-hidden="true">${skillIcon(id,W[id].icon)}</span> ${W[id].name}${g?.weapons[id]?' · Lv.'+g.weapons[id].lv:''}</button>`).join('');
- const d=weaponRule(currentCodex),w=g?.weapons[currentCodex];
- const v=d===FAMILIAR_BOOK?{role:'동행 정령 · 연속 추적',desc:RARE_CARDS.bookFamiliar.lore,pair:'탐색 거리 안에 적이 없으면 니모 곁으로 돌아와요.'}:weaponGuide(currentCodex);
- const growthList=d.steps
-  ? Object.entries({...d.steps,4:['세 갈래 별',d.break]}).map(([lv,[name,desc]])=>`<div class="codex-up"><b>${name}</b><span class="effect-lines">${effectLines(desc)}</span><em>Lv.${lv}</em></div>`).join('')
-  : d.up.map(([name,desc],i)=>`<div class="codex-up"><b>${name}</b><span class="effect-lines">${effectLines(friendlyEffect(desc))}</span><em>${w?w.up[i]:0}/2</em></div>`).join('')+`<h4>✦ Lv.4 중간 돌파</h4><p class="codex-text effect-lines">${effectLines(friendlyEffect(d.break))}</p>`;
- $('codex-details').innerHTML=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(currentCodex,d.icon)}</div><div class="codex-intro"><div class="codex-heading"><h3>${d.name}</h3><span>${w?'현재 Lv.'+w.lv:'기본 무기 Lv.1'}</span></div><p class="codex-role">${v.role}</p><p>${v.desc}</p><p class="codex-note">${v.pair}</p></div></div>
- ${currentCodex==='book'?'<p class="codex-note">희귀 카드 · 꿈결 정령 — 무기 Lv.4부터 등장. 금빛 종이비행기 한 대가 동행해요.</p>':''}
- <div class="codex-metrics">${guideMetrics(currentCodex)}</div><div class="codex-columns"><section><h4>✦ ${d.steps?'레벨별 강화':'일반 강화 (각 2회까지)'}</h4>${growthList}</section>
- <section><h4>🌟 Lv.7 최종 진화 — 둘 중 하나</h4><p class="codex-text">무기 Lv.6 달성 후 첫 보스를 격파하면 진화 후보가 등장해요.</p>${d.evos.map((a,i)=>`<div class="codex-evo ${w?.evo===i?'chosen':''}"><b>${i===0?'①':'②'} ${a[0]}</b><span class="effect-lines">${effectLines(friendlyEffect(a[1]))}</span></div>`).join('')}</section></div>`;
- $('codex-details').scrollTop=0;
+ const categories=[['weapons','공격 마법'],['passives','패시브'],['evolutions','진화 기록']];
+ $('codex-categories').innerHTML=categories.map(([id,name])=>`<button type="button" class="btn" data-codex-category="${id}" aria-pressed="${codexCategory===id}">${name}</button>`).join('');
+ const discovered=new Set(saved.evolutionDiscoveries||[]);
+ const awakenings=new Set(saved.awakeningDiscoveries||[]);
+ const ids=codexCategory==='passives'?passiveKeys:codexCategory==='evolutions'?weaponKeys.flatMap(id=>[id+':0',id+':1']):weaponKeys;
+ if(!ids.includes(currentCodex))currentCodex=ids[0];
+ const known=key=>codexCategory!=='evolutions'||discovered.has(key);
+ const title=key=>codexCategory==='passives'?DATA.passives[key][0]:codexCategory==='evolutions'?(known(key)?W[key.split(':')[0]].evos[Number(key.split(':')[1])][0]:'???'):W[key].name;
+ $('codex-tabs').innerHTML=ids.map(key=>`<button type="button" class="codex-tab ${key===currentCodex?'on':''}" data-codex="${key}" aria-pressed="${key===currentCodex}"><span aria-hidden="true">${known(key)?skillIcon(key.split(':')[0],codexCategory==='passives'?DATA.passives[key][1]:W[key.split(':')[0]].icon):'?'}</span>${title(key)}</button>`).join('');
+ let content='';
+ if(codexCategory==='evolutions'&&AWAKENING_RECIPES.length){
+  const recipes=AWAKENING_RECIPES;
+  if(!recipes.some(recipe=>recipe.id===currentCodex))currentCodex=recipes[0].id;
+  $('codex-tabs').innerHTML=recipes.map(recipe=>`<button type="button" class="codex-tab" data-codex="${recipe.id}" aria-pressed="${recipe.id===currentCodex}">${awakenings.has(recipe.id)?recipe.name:'???'}</button>`).join('');
+  const recipe=recipes.find(recipe=>recipe.id===currentCodex);
+  $('codex-details').innerHTML=awakenings.has(recipe.id)?`<h3>${recipe.name}</h3><p>${recipe.summary}</p><p>${W[recipe.weapon].name} + ${DATA.passives[recipe.passive][0]}</p>`:'<div class="codex-undiscovered"><strong>?</strong><h3>아직 발견하지 못한 각성</h3><p>직접 각성에 성공하면 기록돼요.</p></div>';
+  return;
+ }
+ if(codexCategory==='evolutions'){
+  const [id,index]=currentCodex.split(':'),n=Number(index);
+  content=known(currentCodex)?`<div class="codex-summary"><div class="codex-emblem">${skillIcon(id,W[id].icon)}</div><div class="codex-intro"><h3>${title(currentCodex)}</h3><p>발견한 진화 · ${W[id].name}</p><p>${EVOLUTION_COPY[id]?.[n]||'마법의 새로운 힘이 깨어났어요.'}</p></div></div>`:'<div class="codex-undiscovered"><strong>?</strong><h3>아직 발견하지 못한 진화</h3><p>모험에서 최종 진화에 성공하면 이곳에 기록돼요.</p></div>';
+ }else if(codexCategory==='passives'){
+  const id=currentCodex;
+  content=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(id,DATA.passives[id][1])}</div><div class="codex-intro"><h3>${title(id)}</h3><p>패시브 · 최대 Lv.5</p><p>${PASSIVE_GUIDE[id]||PASSIVE_ROLE[id]||'모험에 도움이 되는 능력이에요.'}</p></div></div><p class="codex-note">레벨을 올리면 효과가 더욱 강해져요.</p>`;
+ }else{
+  const id=currentCodex,d=W[id],w=g?.weapons[id];
+  const growth=d.steps?Object.keys(d.steps).map(lv=>`<div class="codex-up"><b>Lv.${lv}</b><span>${({2:'투사체가 늘어나요.',3:'공격이 강해져요.',4:'투사체가 늘어나요.',5:'치명타가 더 자주 터져요.',6:'치명타가 더욱 강해져요.'})[lv]}</span></div>`).join(''):(GROWTH_COPY[id]||[]).map(copy=>`<p>${copy}</p>`).join('');
+  const recipes=AWAKENING_RECIPES.filter(recipe=>recipe.weapon===id);
+  const discoveries=recipes.length?recipes.map(recipe=>awakenings.has(recipe.id)?`<p>${recipe.name} · 발견 완료</p>`:'<p>??? · 미발견</p>').join(''):'<p>??? · 미발견</p>';
+  content=`<div class="codex-summary"><div class="codex-emblem">${skillIcon(id,d.icon)}</div><div class="codex-intro"><h3>${d.name}</h3><p>${weaponGuide(id).role}</p><p>${w?'현재 Lv.'+w.lv:'기본 Lv.1'} · 최대 Lv.7</p></div></div><div class="codex-columns"><section><h4>레벨별 강화</h4>${growth}</section><section><h4>발견한 진화</h4>${discoveries}</section></div>`;
+ }
+ $('codex-details').innerHTML=content;$('codex-details').scrollTop=0;
 }
 
 let screen='menu', pausedFrom='playing', g=null, last=0, accumulator=0, saved=readSave();
@@ -1569,6 +1625,8 @@ function normalizeSave(old){
  const refund=boundedSaveNumber(old?.upgrades?.reroll,2)>=2?340:0;
  return {
   version:DATA.version,
+  awakeningDiscoveries:[...new Set(Array.isArray(old?.awakeningDiscoveries)?old.awakeningDiscoveries.filter(id=>typeof id==='string'&&/^[a-z0-9-]{1,64}$/.test(id)):[])],
+  evolutionDiscoveries:[...new Set(Array.isArray(old?.evolutionDiscoveries)?old.evolutionDiscoveries.filter(key=>typeof key==='string'&&/^[a-z]+:[01]$/.test(key)&&W[key.split(':')[0]]):[])],
   charactersOwned:['nemo',...(Array.isArray(old?.charactersOwned)&&old.charactersOwned.includes('dori')?['dori']:[])],
   characterEquipped:old?.characterEquipped==='dori'&&Array.isArray(old?.charactersOwned)&&old.charactersOwned.includes('dori')?'dori':'nemo',
   gold:Math.min(99999999,boundedSaveNumber(old?.gold,99999999)+refund),
@@ -1978,12 +2036,12 @@ function masteryBonus(w,branch,additionalRank=0){
 }
 function clockMult(id,w=g?.weapons[id]){
  const speed=1+saved.upgrades.tempo*.03+passiveValue('quick')+.08*(g?.blessings?.breeze||0)+.15*(w?.up[SPEED_RANK[id]]||0);
- return speed*(1+masteryBonus(w,'tempo'));
+ return speed*(id==='star'?1+(w?.lv>=3?.08:0)+(w?.lv>=7?.07:0):1)*(1+masteryBonus(w,'tempo'));
 }
 function cooldown(id,w=g?.weapons[id]){
  return Math.max(.08,W[id].cd/clockMult(id,w)*(id==='moon'&&w?.evo===1?1.2:1));
 }
-function starShotCount(w){return 1+Number(w.lv>=2)+Number(w.lv>=4);}
+function starShotCount(w,id='star'){return id==='cannon'?1+Number(w.lv>=2)+Number(w.lv>=4):w.awakened==='star-piercing'?4:w.lv>=4?3:1;}
 function starShotPower(w){
  return (w.lv>=3?1.25:1)*([1.15,1.10][w.evo]??1);
 }
@@ -1991,7 +2049,7 @@ function weaponPower(id,coefficient,w){
  const low=!!g&&g.player.hp<=g.player.maxHp*.5;
  const magic=1+passiveValue('magic')+(low?passiveValue('emberheart'):0);
  const brave=1+.12*(g?.blessings?.brave||0);
- const power=(id==='star'||id==='cannon')?starShotPower(w)
+ const power=(id==='star'||id==='cannon')?(id==='star'?(w.lv>=6?1.20:w.lv>=2?1.10:1):starShotPower(w)*(w.lv>=7?1.10:1))
   :(1+.25*w.up[DAMAGE_RANK[id]])*(SPREAD_DAMAGE[id]??1)**w.up[0]*(EXTRA_DAMAGE[id]?.[w.evo]??1);
  return (g?.player.attack??DATA.player.attack)*coefficient*magic*brave*power*(rageActive()?RAGE.power:1)*(1+masteryBonus(w,'power'));
 }
@@ -2011,7 +2069,7 @@ function weaponReach(id,w=g?.weapons[id]){
   default:return d.range;
  }
 }
-function wpCrit(id){let chance=g.player.crit+passiveValue('lucky');if(id==='star'||id==='cannon')chance+=(g.weapons[id].lv>=5?.15:0)+(g.weapons[id].evo===1?.10:0);if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
+function wpCrit(id){let chance=g.player.crit+passiveValue('lucky');if(id==='star')chance+=(g.weapons[id].lv>=5?.05:0)+(g.weapons[id].lv>=7?.05:0);if(id==='cannon')chance+=(g.weapons[id].lv>=5?.15:0)+(g.weapons[id].evo===1?.10:0);if(id==='cloud')chance+=.10*g.weapons.cloud.up[2];return Math.min(.75,chance);}
 function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
  let value=raw;if(e.vulnerableUntil>g.worldClock)value*=1.15;
  if(e.kind==='bramble'&&g.worldClock>=(e.guardUntil||0)){
@@ -2023,7 +2081,7 @@ function deal(e,raw,id,settings={}){if(!e||e.dead||screen!=='playing')return 0;
  if(e.isBoss)value*=1+masteryBonus(g.weapons[id],'boss');
  const crit=(settings.critAllowed!==false)&&rand()<wpCrit(id);
  if(e.isBoss||e.kind==='boss')value*=1+passiveValue('courage');
- if(crit)value*=(((id==='star'||id==='cannon')&&g.weapons[id].lv>=6)?2:1.5)+passiveValue('claw');
+ if(crit)value*=((id==='cannon'&&g.weapons[id].lv>=6)?2:1.5)+passiveValue('claw');
  value=Math.round(value*100)/100;const actual=Math.min(e.hp,value);
  e.hp-=value;e.flash=.13;e.hitLast=g.worldClock;
  if(visible(e.x,e.y,0))playSound('hit');
@@ -2188,9 +2246,9 @@ function maybeCards(){if(screen!=='playing'||!g||g.done)return false;
  if(p.xp>=need){p.xp-=need;p.level++;g.cardReason='level';openCards();return true;}
  if(g.freeCards>0){g.freeCards--;g.cardReason='bonus';openCards();return true;}
  return false;}
-function hasGrowth(id){let w=g.weapons[id];if(!w||w.lv>=7)return false;if(w.lv===6)return g.bossEncounters>Number(!!g.boss);if(W[id].steps||w.lv===3)return true;return w.up.reduce((a,b)=>a+b,0)<4&&w.up.some(v=>v<2);}
-function makeGrowth(id){let w=g.weapons[id],def=weaponRule(id);if(w.lv===3)return {type:'break',id,name:`${def.name} · 중간 돌파`,ico:def.icon,desc:def.break,meta:'Lv.3 → Lv.4 · 돌파',feature:true};
- if(w.lv===6)return {type:'evo',id,name:`${def.name} · 최종 진화`,ico:'🌟',desc:'두 가지 진화 중 하나를 비교하고 선택',meta:'Lv.6 → Lv.7 · 진화',feature:true};
+function hasGrowth(id){let w=g.weapons[id];if(!w||w.lv>=7)return false;if(W[id].steps)return true;return w.up.reduce((a,b)=>a+b,0)<6&&w.up.some(v=>v<2);}
+function makeGrowth(id){let w=g.weapons[id],def=weaponRule(id);
+
  if(def.steps){
   const [name,desc]=def.steps[w.lv+1];
   return {type:'growth',id,name,ico:def.icon,desc,meta:`${def.name} · Lv.${w.lv} → ${w.lv+1}`,feature:true};
@@ -2223,8 +2281,11 @@ function makeMastery(id,w){
  };
 }
 function weaponAvailableForCharacter(id,character=g?.runCharacter??activeCharacter().id){return id==='star'?character==='nemo':id==='cannon'?character==='dori':true;}
+// Populate only after weapon/passive pairs and actual effects are approved.
+const AWAKENING_RECIPES=[{id:'star-piercing',weapon:'star',passive:'lucky',name:'스타 샷 · 각성',summary:'별이 더 많이 날아가고 적을 관통해요.',apply:run=>{run.weapons.star.awakened='star-piercing';}}];
 function rollCards(rare){
- const out=rare?[rare]:[],owned=Object.keys(g.weapons);
+ const awakening=NEMO_AWAKENING.next(g,AWAKENING_RECIPES,g.cardReason);
+ const out=awakening?[awakening,...(rare?[rare]:[])]:rare?[rare]:[],owned=Object.keys(g.weapons);
  const pool=[];
  if(owned.length<maxWeaponSlots())for(const id of weaponKeys){if(!weaponAvailableForCharacter(id))continue;if(!g.weapons[id])pool.push({type:'new',id,name:W[id].name,ico:W[id].icon,desc:weaponGuide(id).role,meta:'무기 슬롯 사용 · Lv.1'});}
  const passiveOwned=pcount();for(const id of passiveKeys){if(getPassive(id)>=PASSIVE_MAX_LEVEL)continue;if(!getPassive(id)&&passiveOwned>=maxPassiveSlots())continue;
@@ -2232,7 +2293,7 @@ function rollCards(rare){
  // One entry per eligible weapon or passive, sampled without replacement.
  for(const id of owned){
   const w=g.weapons[id];
-  const mastered=!g.stage&&g.t>=MASTERY_AT&&w.evo!==null&&w.lv===7;
+  const mastered=false;
   const card=hasGrowth(id)?makeGrowth(id):mastered?makeMastery(id,w):null;
   if(card)pool.push(card);
  }
@@ -2254,6 +2315,7 @@ const EVOLUTION_COPY={"star": ["별이 적들을 꿰뚫고 나아가요.", "치�
 const RARE_COPY={"bookFamiliar": "금빛 종이비행기가 곁에서 적을 쫓아 공격해요.", "starLegacy": "관통한 별이 작은 별들로 갈라져요.", "orbitBloom": "회전 별이 적을 맞히면 별꽃 폭발이 일어나요.", "cloudChain": "번개가 다른 적에게 이어져요.", "cometGarden": "유성이 떨어진 자리에 별빛이 남아 공격해요.", "twinBell": "같은 자리에서 종이 다시 울려요."};
 function choiceSummary(c){
  if(c.type==='passive')return PASSIVE_GUIDE[c.id]||PASSIVE_ROLE[c.id]||'이 능력을 강화해요.';
+ if(c.type==='awakening')return c.desc;
  if(c.type==='new')return weaponGuide(c.id).role;
  if(c.type==='rare')return RARE_COPY[c.id]||'이 마법에 특별한 능력이 더해져요.';
  if(c.type==='growth')return c.up===undefined?({2:'투사체가 늘어나요.',3:'투사체의 위력이 강해져요.',5:'치명타가 더 자주 터져요.',6:'치명타가 더욱 강해져요.'}[g.weapons[c.id]?.lv+1]||'마법이 더욱 강해져요.'):(GROWTH_COPY[c.id]?.[c.up]||'마법이 더욱 강해져요.');
@@ -2266,7 +2328,7 @@ function renderCards(revealRare=false){
  const milestone=g.cardReason==='milestone',bonus=g.cardReason==='bonus';
  $('cards-title').textContent=milestone?`숲의 축복 · ${fmt(g.t)}`:bonus?'엘리트 보상':`레벨 업 · Lv.${g.player.level}`;
  $('choice-description').textContent=milestone?'생존 축복 · 슬롯을 사용하지 않으며 이번 판에만 적용돼요.':bonus?'전투에서 얻은 보상을 고르세요.':'이번 모험에 더할 마법이나 강화를 고르세요.';
- const tags={rare:'희귀 카드',new:'새로운 마법',growth:'무기 강화',break:'중간 돌파',evo:'최종 진화',mastery:'무기 연마',passive:'공용 패시브',heal:'회복 보상',gold:'추가 골드',blessing:'숲의 축복'};
+ const tags={awakening:'각성',rare:'희귀 카드',new:'새로운 마법',growth:'무기 강화',break:'중간 돌파',evo:'최종 진화',mastery:'무기 연마',passive:'공용 패시브',heal:'회복 보상',gold:'추가 골드',blessing:'숲의 축복'};
  const options=$('card-options');
  options.innerHTML=g.cards.map((c,i)=>{
   const {label,effect,copy}=choiceDetail(c);
@@ -2279,7 +2341,7 @@ function renderCards(revealRare=false){
     <span class="choice-identity"><span class="choice-icon" aria-hidden="true">${skillIcon(c.weapon??c.id,c.ico)}</span><span><span class="choice-type">${kindLabel}</span><strong class="choice-name">${title}</strong></span></span>
     <span class="choice-effect"><small>${effectLabel}</small><strong class="effect-lines">${choiceSummary(c)}</strong></span>
 
-    ${passive?'':`<span class="choice-meta">${g.weapons[c.id]?'Lv.'+g.weapons[c.id].lv+' → Lv.'+(g.weapons[c.id].lv+1):c.type==='new'?'Lv.1':''}</span>`}
+    <span class="choice-meta">${passive?'Lv.'+getPassive(c.id)+' → Lv.'+(getPassive(c.id)+1):g.weapons[c.id]?'Lv.'+g.weapons[c.id].lv+' → Lv.'+(g.weapons[c.id].lv+1):c.type==='new'?'Lv.1':''}</span>
     <span class="choice-cta">선택하기 <kbd aria-hidden="true">${i+1}</kbd></span>
   </button>`;
  }).join('');
@@ -2289,10 +2351,15 @@ function renderCards(revealRare=false){
  $('reroll').disabled=g.rerolls<=0||milestone;
 }
 function selectCard(i){if(screen!=='cards')return;let c=g.cards[i];if(!c||(c.type==='rare'&&g.rareCard))return;g.metrics.cardPicks[c.name]=(g.metrics.cardPicks[c.name]||0)+1;
+ if(c.type==='awakening'){
+  const recipe=NEMO_AWAKENING.apply(g,AWAKENING_RECIPES,c.id);if(!recipe)return;
+  saved.awakeningDiscoveries??=[];if(!saved.awakeningDiscoveries.includes(recipe.id)){saved.awakeningDiscoveries.push(recipe.id);persist();}
+  playSound('reward');showToast(recipe.name+' 각성!');
+ }
  if(c.type==='new'){if(!weaponAvailableForCharacter(c.id))return;g.weapons[c.id]={lv:1,up:[0,0,0],break:false,evo:null,clock:.1};if(c.id==='orbit'){const p=g.player;p.castDuration=NEMO_CAST;p.castTimer=NEMO_CAST;p.castFacing=p.direction;g.weapons.orbit.orbitBirth=g.worldClock;g.weapons.orbit.orbitWand=wandOrigin(p);}}
  if(c.type==='growth'){const w=g.weapons[c.id];if(c.up!==undefined)w.up[c.up]++;w.lv++;}
- if(c.type==='break'){let w=g.weapons[c.id];w.break=true;w.lv=4;}
- if(c.type==='evo'){g.currentEvo=c.id;renderEvo(c.id);setScreen('evolution');return;}
+ if(c.type==='break'||c.type==='mastery')return;
+ if(c.type==='evo')return;
  if(c.type==='mastery'){
   const ranks=g.weapons[c.id].mastery??={};
   ranks[c.branch]=(ranks[c.branch]??0)+1;
@@ -2337,10 +2404,10 @@ function renderEvo(id){
    <span class="card-select-label">✦ 이 진화 선택</span>
   </button>`).join('');
 }
-function chooseEvo(i){if(screen!=='evolution'||!g.currentEvo)return;let w=g.weapons[g.currentEvo];w.evo=i;w.lv=7;g.metrics.cardPicks[weaponRule(g.currentEvo).evos[i][0]]=(g.metrics.cardPicks[weaponRule(g.currentEvo).evos[i][0]]||0)+1;
+function chooseEvo(i){if(screen!=='evolution'||!g.currentEvo)return;let w=g.weapons[g.currentEvo];w.evo=i;w.lv=7;recordEvolution(g.currentEvo,i);g.metrics.cardPicks[weaponRule(g.currentEvo).evos[i][0]]=(g.metrics.cardPicks[weaponRule(g.currentEvo).evos[i][0]]||0)+1;
  playSound('level');
  if(!g.metrics.firstEvolution)g.metrics.firstEvolution=g.t;showToast(`🌟 ${weaponRule(g.currentEvo).evos[i][0]} 진화!`);g.currentEvo=null;afterCard();}
-function afterCard(){setScreen('playing');maybeCards();updateHUD();}
+function afterCard(){NEMO_AWAKENING.sync(g,AWAKENING_RECIPES);setScreen('playing');maybeCards();updateHUD();}
 function reroll(){if(screen!=='cards'||g.rerolls<=0||g.cardReason==='milestone')return;g.rerolls--;g.cards=rollCards(g.cards.find(card=>card.type==='rare'));renderCards();}
 function calcCamera(){return {x:clamp(g.player.x,SCREEN_W/2,DATA.world-SCREEN_W/2),y:clamp(g.player.y,SCREEN_H/2,DATA.world-SCREEN_H/2)};}
 function visible(x,y,extra=2){if(!g)return true;return Math.abs(x-g.camera.x)<SCREEN_W/2+extra&&Math.abs(y-g.camera.y)<SCREEN_H/2+extra;}
@@ -3145,7 +3212,7 @@ function fireCannon(p,w,d){
  p.castDuration=NEMO_CAST/spellTravelRate();p.castTimer=p.castDuration;
  p.castFacing=faceFromAngle(angleToTarget);p.castAngle=angleToTarget;
  const origin=wandOrigin(p),aim=atan(origin.x,origin.y,target.x,target.y);
- const count=starShotCount(w),damage=wpBase('cannon',d.coef),volleyHits=new Set(),splashHits=new Set();
+ const count=starShotCount(w,'cannon'),damage=wpBase('cannon',d.coef),volleyHits=new Set(),splashHits=new Set();
  for(let i=0;i<count;i++){
   const angle=aim+[0,-.16,.16][i];
   g.shots.push({kind:'cannon',weapon:'cannon',x:origin.x,y:origin.y,vx:Math.cos(angle)*12,vy:Math.sin(angle)*12,speed:12,life:1.3,r:.26,
@@ -3195,10 +3262,10 @@ function fireWeapon(id){
   const volleyHits=id==='star'?new Set():null;
   if(id==='star')w.fanSide=-(w.fanSide??-1);
   for(let i=0;i<count;i++){
-   const angle=a+(id==='star'?[0,-1,1][i]*.16*w.fanSide:(i-(count-1)/2)*.20);
+   const angle=a+(id==='star'?(count===4?[-.5,.5,-1.5,1.5][i]:[0,-1,1][i])*.16*w.fanSide:(i-(count-1)/2)*.20);
    g.shots.push({kind:id,weapon:id,x:origin.x,y:origin.y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,
-    speed,life,r:radius,damage:id==='star'&&i>0?damage*.70:damage,volleyHits,target:id==='bubble'||(id==='star'&&i===0)?t.id:null,
-    splitOnHit:id==='star'&&i===0&&g.rareCard==='starLegacy',chains:id==='star'?([2,1][w.evo]??0):id==='frost'?(w.break?3:1):id==='feather'&&w.break?(w.evo===0?2:1):0,sub:false,returning:false,hit:new Set(),trail:[],dead:false});
+    speed,life,r:radius,damage:id==='star'&&i>0?damage*.40:damage,volleyHits,target:id==='bubble'||(id==='star'&&i===0)?t.id:null,
+    splitOnHit:id==='star'&&i===0&&g.rareCard==='starLegacy',chains:id==='star'?(w.awakened==='star-piercing'?1:0):id==='frost'?(w.break?3:1):id==='feather'&&w.break?(w.evo===0?2:1):0,sub:false,returning:false,hit:new Set(),trail:[],dead:false});
   }
  }else if(id==='moon'){
   const angles=w.evo===0?[a-.13,a+.13]:[a];
@@ -3398,7 +3465,7 @@ function updateShots(dt,hostiles=true){const splitShots=[],step=dt*spellTravelRa
    }
    if(s.chains===0){s.dead=true;break;}
    s.chains--;
-   s.damage*=.70;
+   s.damage*=g.weapons.star.awakened==='star-piercing'?.60:.70;
    s.target=null;
    continue;
   }else if(s.kind==='frost'){
@@ -5556,6 +5623,7 @@ document.addEventListener('pointerdown',event=>{
  if(opts.autoPause&&!$('app').contains(event.target))onGameFocusLost();
 });
 $('codex-btn').onclick=openCodex;$('pause-codex').onclick=openCodex;$('codex-back').onclick=closeCodex;
+$('codex-categories').addEventListener('click',e=>{const b=e.target.closest('[data-codex-category]');if(b)setCodexCategory(b.dataset.codexCategory);});
 $('codex-tabs').addEventListener('click',e=>{const b=e.target.closest('[data-codex]');if(!b)return;currentCodex=b.dataset.codex;renderCodex();$('codex-tabs').querySelector('[aria-pressed="true"]').focus({preventScroll:true});});
 $('start').onclick=stageOpen;
 $('survival-start').onclick=()=>{if(!nicknameConfirmed())showNicknameSetup('menu');else begin();};$('retry').onclick=()=>begin(g?.stage?.id??0);
@@ -5736,7 +5804,7 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.12.17';
+  const CURRENT='5.12.19';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';

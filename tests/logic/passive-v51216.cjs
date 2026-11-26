@@ -15,7 +15,7 @@ module.exports=()=>{
  });
  check('claw adds to both ordinary and strengthened critical multipliers',()=>{
   const {game}=createHarness();game.begin();game.g.passives.claw=5;game.g.player.crit=1;
-  for(const [level,mult] of [[1,2],[6,2.5]]){
+  for(const [level,mult] of [[1,2],[6,2]]){
    game.g.weapons.star.lv=level;const p=game.g.player,e=game.spawn('armor',{x:p.x+2,y:p.y});e.hp=1e6;
    let critical=false;for(let i=0;i<30;i++){const before=e.hp;game.deal(e,100,'star');const loss=before-e.hp;assert(loss===100||loss===100*mult);if(loss===100*mult)critical=true;}assert(critical);
   }

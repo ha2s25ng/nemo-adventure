@@ -69,16 +69,12 @@ module.exports = function engineChecks() {
         game.g.cards = [card];
         game.setScreen('cards');
         game.selectCard(0);
-        if (level === 6) {
-          assert.equal(game.screen, 'evolution');
-          game.chooseEvo(evolution);
-        }
         assert.equal(game.g.weapons[id].lv, level + 1, `${id} upgrade level`);
         for (const stat of game.weaponNumbers(id)) {
           assert(!/NaN|undefined|Infinity/.test(stat.v), `${id} level ${level}: ${JSON.stringify(stat)}`);
         }
       }
-      assert.equal(game.g.weapons[id].evo, evolution);
+      assert.equal(game.g.weapons[id].evo, null);
       assert.equal(game.hasGrowth(id), false);
     }
   });
@@ -89,6 +85,7 @@ module.exports = function engineChecks() {
       id, { lv: 7, up: [2, 2, 0], break: true, evo: 0, clock: 0 }
     ]));
     game.g.passives = { magic: 5, quick: 5, lucky: 5, shoes: 5, insight: 5 };
+    game.g.weapons.star.awakened='star-piercing';
     for (let draw = 0; draw < 100; draw++) {
       const cards = game.rollCards(null);
       assert.equal(cards.length, 2);

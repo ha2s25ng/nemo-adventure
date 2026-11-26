@@ -13,7 +13,7 @@ const ENGINE_MARKER = 'const $ = id => document.getElementById(id)';
 const STARTUP_MARKER = 'rankWire();renderMenu();syncFullscreen();setScreen';
 const TEST_EXPORTS = `
 globalThis.__logicGame = {
-  DATA, W, ASSET_DATA, RARE_CARDS, NEMO_STAGES, NEMO_DRAW, weaponAvailableForCharacter,
+  AWAKENING_RECIPES, DATA, W, ASSET_DATA, RARE_CARDS, NEMO_STAGES, NEMO_DRAW, weaponAvailableForCharacter,
   begin, menu, pause, resume, setScreen, openCodex, closeCodex, update, finish,
   hasGrowth, makeGrowth, rollCards, renderCards, selectCard, chooseEvo, weaponNumbers,
   parseImportedSave, normalizeSave, readSave, spawn,
@@ -21,7 +21,7 @@ globalThis.__logicGame = {
   drawCostumes, COSTUMES, DRAW_PHOTOS, RARE_PICKUP_KINDS, getLevelNeed, rageActive, updateHUD,
   selectCharacter, activeCharacter, activeCostume, costumeForCharacter, fireWeapon, impactCannon, updateShots, weaponPower, cooldown, normalizeRankLoadout, NEMO_CHARACTERS,
   updateOrbit, orbitPosition, updateVortex, updateMonster, updateEndlessMonster, castEndlessAttack, updateCampaignMonster, drawBattle,
-  deal, renderEvo, drawProjectile, drawBookFamiliar, updateBookFamiliar, drawEffects, beam,
+  setCodexCategory, renderCodex, deal, renderEvo, drawProjectile, drawBookFamiliar, updateBookFamiliar, drawEffects, beam,
   PASSIVE_LEVELS, PASSIVE_MAX_LEVEL, passiveValue, passiveOffer, radiusMult, wpCrit, damagePlayer, moveCastRate,
   get g() { return g; },
   get screen() { return screen; },
