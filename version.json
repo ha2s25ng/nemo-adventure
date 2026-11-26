@@ -1,5 +1,5 @@
 {
-  "version": "5.12.15",
+  "version": "5.12.16",
   "mode": "endless_survival_and_campaign",
-  "notes": "프리스비를 납작한 원반으로 투영, 표면 회전과 테두리 곡선 잔상 추가, 빨라진 이동속도 유지"
+  "notes": "패시브 4종 추가, 선택 카드 상세 수치 제거"
 }

@@ -21,7 +21,7 @@ globalThis.__logicGame = {
   drawCostumes, COSTUMES, DRAW_PHOTOS, RARE_PICKUP_KINDS, getLevelNeed, rageActive, updateHUD,
   selectCharacter, activeCharacter, activeCostume, costumeForCharacter, fireWeapon, impactCannon, updateShots, weaponPower, cooldown, normalizeRankLoadout, NEMO_CHARACTERS,
   updateOrbit, orbitPosition, updateVortex, updateMonster, updateEndlessMonster, castEndlessAttack, updateCampaignMonster, drawBattle,
-  drawProjectile, drawBookFamiliar, updateBookFamiliar, drawEffects, beam,
+  deal, renderEvo, drawProjectile, drawBookFamiliar, updateBookFamiliar, drawEffects, beam,
   PASSIVE_LEVELS, PASSIVE_MAX_LEVEL, passiveValue, passiveOffer, radiusMult, wpCrit, damagePlayer, moveCastRate,
   get g() { return g; },
   get screen() { return screen; },

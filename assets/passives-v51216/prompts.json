@@ -1,0 +1,23 @@
+{
+  "mode": "built-in image_gen",
+  "reference": "assets/passives-v5129/honeypouch.webp",
+  "processing": "Alpha crop, proportional downsample, centered transparent 384px packing; preserve artwork.",
+  "assets": {
+    "coin": {
+      "prompt": "Create a SINGLE transparent game passive inventory icon. ONE gold lucky coin with a small four-leaf clover engraved in its center, warm honey gold and soft mint, thick readable coin rim, no pile. Match the attached reference exactly in illustration tone: chunky simple pastel storybook cartoon, clean warm muted mauve-brown outline, softly painted shading, broad highlights, adorable dog magic adventure game, readable at 40 pixels. Centered standalone object, generous transparent margins. No background, ground shadow, glow, sparkles, text, numbers, UI, or other objects. Genuine transparent alpha.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-42227736-0bf4-4f3b-a2b6-907dd0486b1f.png"
+    },
+    "claw": {
+      "prompt": "Create a SINGLE transparent game passive inventory icon. ONE cute ivory dog claw charm, three little rounded claw tips attached to a lavender leather tab, friendly not sharp or frightening, no paw print. Match the attached reference exactly in illustration tone: chunky simple pastel storybook cartoon, clean warm muted mauve-brown outline, softly painted shading, broad highlights, adorable dog magic adventure game, readable at 40 pixels. Centered standalone object, generous transparent margins. No background, ground shadow, glow, sparkles, text, numbers, UI, or other objects. Genuine transparent alpha.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-2bf7433a-8076-4b29-8d7b-8a301e0f1ca7.png"
+    },
+    "courage": {
+      "prompt": "Create a SINGLE transparent game passive inventory icon. ONE dog collar necklace charm: a small rose-gold heart shield pendant on a sage mint collar loop, courage theme, no letters. Match the attached reference exactly in illustration tone: chunky simple pastel storybook cartoon, clean warm muted mauve-brown outline, softly painted shading, broad highlights, adorable dog magic adventure game, readable at 40 pixels. Centered standalone object, generous transparent margins. No background, ground shadow, glow, sparkles, text, numbers, UI, or other objects. Genuine transparent alpha.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-d579d2e1-3639-4b45-baa0-556bf2000c95.png"
+    },
+    "jelly": {
+      "prompt": "Create a SINGLE transparent game passive inventory icon. ONE squishy pink jelly candy shaped like a soft rounded cushion blob, gentle lavender shading, tiny cream highlights, no eyes or mouth, clearly jelly not potion. Match the attached reference exactly in illustration tone: chunky simple pastel storybook cartoon, clean warm muted mauve-brown outline, softly painted shading, broad highlights, adorable dog magic adventure game, readable at 40 pixels. Centered standalone object, generous transparent margins. No background, ground shadow, glow, sparkles, text, numbers, UI, or other objects. Genuine transparent alpha.",
+      "source": "C:\\Users\\wsu58\\.codex\\generated_images\\01a1c462-0878-7b03-a167-7a6910f31f7a\\exec-d1e4f625-e5c3-42df-b8ce-26573d9004c5.png"
+    }
+  }
+}

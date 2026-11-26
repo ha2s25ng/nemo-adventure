@@ -2,7 +2,7 @@
 const assert=require('node:assert/strict');const {createHarness}=require('./harness.cjs');
 module.exports=function(){
  const results=[],check=(name,fn)=>{try{fn(createHarness().game);results.push({name,pass:true});}catch(error){results.push({name,pass:false,error:error.stack});}};
- const caps={magic:.10,quick:.10,lucky:.20,big:.30,cloak:60,shoes:.30,insight:.30,magnet:2,windstep:.15,leafguard:.30,emberheart:.30,honeypouch:.50};
+ const caps={magic:.10,quick:.10,lucky:.20,big:.30,cloak:60,shoes:.30,insight:.30,magnet:2,windstep:.15,leafguard:.30,emberheart:.30,honeypouch:.50,coin:.20,claw:.50,courage:.10,jelly:.50};
  check('all 12 cumulative tables reach agreed Lv.5 caps with a larger final step',game=>{
   assert.equal(game.PASSIVE_MAX_LEVEL,5);
   for(const [id,cap] of Object.entries(caps)){
@@ -53,7 +53,7 @@ module.exports=function(){
   assert(game.passiveOffer('cloak').includes('36 → +60'));assert(game.passiveOffer('magic').includes('6% → +10%'));
  });
  check('passive names are distinct and old misleading names are gone',game=>{
-  const names=Object.values(game.DATA.passives).map(row=>row[0]);assert.equal(new Set(names).size,12);
+  const names=Object.values(game.DATA.passives).map(row=>row[0]);assert.equal(new Set(names).size,16);
   for(const old of ['별빛 공부','포근한 망토','바람 걸음','꿀풀 주머니','커다란 마법','공격력 증가'])assert(!names.includes(old));
   assert.equal(game.DATA.passives.insight[0],'배움의 책');assert.equal(game.DATA.passives.cloak[0],'생명의 망토');
  });
@@ -69,13 +69,13 @@ module.exports=function(){
    other.g.passives[id]=rank;
    other.g.cards=[{type:'passive',id,name:other.DATA.passives[id][0],desc:other.passiveOffer(id)}];other.renderCards();
    const html=element('card-options').innerHTML;
-   assert(html.includes('class="passive-effect-values"'),id);
+   assert(!html.includes('class="passive-effect-values"'),id);
    assert(!html.includes('class="effect-line"'),id);
-   if(id==='emberheart')assert(html.includes('(체력 50% 이하)'));
-   if(id==='windstep')assert(html.includes('(이동 중)'));
+   assert(!html.includes('%'),id);
+
   }
   other.g.cards=[{type:'new',id:'orbit',name:other.W.orbit.name,ico:other.W.orbit.icon,desc:'회전 공격',meta:'무기 슬롯'}];other.renderCards();
   const html=element('card-options').innerHTML;assert(!html.includes('강화 방향'));assert(!html.includes('choice-growth'));
  });
- const failures=results.filter(r=>!r.pass);return {total:results.length,passed:results.length-failures.length,failures,detail:'12 Lv.5 caps, 60 selections, max-rank exclusion, combat/recovery formulas and card labels'};
+ const failures=results.filter(r=>!r.pass);return {total:results.length,passed:results.length-failures.length,failures,detail:'16 Lv.5 caps, 80 selections, max-rank exclusion, combat/recovery formulas and card labels'};
 };

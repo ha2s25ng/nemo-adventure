@@ -12,7 +12,8 @@ const suites = [
   ['Fair monster attacks and targeting', './combat-v5123.cjs'],
   ['Unified skill art', './skill-art-checks.cjs'],
   ['Paper planes and magic frisbee', './paper-moon-checks.cjs'],
-  ['Five-rank passives', './passive-v5129-checks.cjs']
+  ['Five-rank passives', './passive-v5129-checks.cjs'],
+  ['New passives and simple cards', './passive-v51216.cjs']
 ];
 let failed = 0;
 for (const [name, modulePath] of suites) {
