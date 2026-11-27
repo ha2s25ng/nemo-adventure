@@ -10,7 +10,7 @@ module.exports=function storybookWorldChecks(){
  const root=path.resolve(__dirname,'../..');
  check('actual exported atlases preserve alpha and have distinct cells',()=>{
   const manifest=JSON.parse(fs.readFileSync(path.join(root,'assets/storybook-v5140/manifest.json'),'utf8'));
-  assert.equal(manifest.assets.length,9);
+  assert.equal(manifest.assets.length,10);
   for(const asset of manifest.assets){
    const file=fs.readFileSync(path.join(root,'assets/storybook-v5140',asset.file));
    assert.equal(createHash('sha256').update(file).digest('hex'),asset.sha256,asset.file+' audit matches deployed bytes');
@@ -32,6 +32,10 @@ module.exports=function storybookWorldChecks(){
    assert.equal(map.storybook,true);assert.equal(map.groundCell,id?['garden','twilight','crystal','frost','ember','tide','clock','astral'].indexOf(map.region):8);
    assert.ok(g.deco.trees.length>70&&g.deco.trees.length<240,'bounded groves across scrolling world');
    assert.ok(g.deco.dressing.length>400&&g.deco.dressing.length<2400,'bounded dense small props');
+   if(id){assert.equal(map.storybookFeatures,true);assert.ok(map.sceneAnchors.length>20,'exploration has composed points of interest');
+    const opening=map.sceneAnchors.find(p=>p.kind==='feature');assert.ok(Math.abs(opening.x)<10&&Math.abs(opening.y)<6.8,'landmark is visible at the start');
+    assert.ok(map.sceneAnchors.some(p=>p.kind==='pool'&&Math.abs(p.x)<12&&Math.abs(p.y)<7),'pond is visible at the start');
+   }else{assert.equal(map.storybookFeatures,false);assert.equal(map.sceneAnchors.length,0,'campaign enrichment leaves endless layout alone');}
    const obstacles=[...map.structures,...map.pools,...g.deco.trees];
    const blocked=(x,y)=>obstacles.some(p=>((x-p.x)/((p.rx??.4)+.3))**2+((y-p.y)/((p.ry??.25)+.3))**2<1);
    for(let x=76;x<=84;x+=1)for(let y=76;y<=84;y+=1)assert.equal(blocked(x,y),false,'safe starting clearing');
@@ -42,7 +46,7 @@ module.exports=function storybookWorldChecks(){
    }
   }
  });
- check('each themed renderer crops a single kit and does not draw foreign biome props',()=>{
+ check('each themed renderer uses matching regional props and landmark cells',()=>{
   const {game,drawCalls}=createHarness(8291,true);game.saved=game.normalizeSave({...game.saved,stagesCleared:30});
   const regions=['garden','twilight','crystal','frost','ember','tide','clock','astral'];
   for(const region of regions){
@@ -51,12 +55,15 @@ module.exports=function storybookWorldChecks(){
    const calls=drawCalls.filter(c=>c.src?.includes('/storybook-v5140/'));
    assert.ok(calls.some(c=>c.src.endsWith('/ground.webp')));
    assert.ok(calls.some(c=>c.src.endsWith('/'+region+'.webp')));
+   const featureCalls=calls.filter(c=>c.src.endsWith('/features.webp'));assert.ok(featureCalls.length>0,'opening landmark must actually draw');
+   const cell=regions.indexOf(region),audit=JSON.parse(fs.readFileSync(path.join(root,'assets/storybook-v5140/manifest.json'),'utf8')).assets.find(a=>a.file==='features.webp');
+   for(const c of featureCalls)assert.deepEqual(c.args.slice(0,4),[(cell%4)*audit.width/4,Math.floor(cell/4)*audit.height/2,audit.width/4,audit.height/2],'region chooses the right landmark cell');
    assert.ok(calls.length<160,'view culling keeps atlas draw count bounded');
    for(const c of calls){assert.equal(c.args.length,8);assert.ok(c.args.every(Number.isFinite));assert.ok(c.args[2]>0&&c.args[3]>0&&c.args[6]>0&&c.args[7]>0);}
-   assert.equal(calls.some(c=>!c.src.endsWith('/ground.webp')&&!c.src.endsWith('/'+region+'.webp')),false,'no mismatched region kit');
+   assert.equal(calls.some(c=>!c.src.endsWith('/ground.webp')&&!c.src.endsWith('/'+region+'.webp')&&!c.src.endsWith('/features.webp')),false,'no mismatched region kit');
   }
  });
  const failures=results.filter(x=>!x.pass);
- return {passed:results.length-failures.length,total:results.length,failures,detail:'9 audited atlases, 31 playable environments, clear routes, bounded rendering and correct region kits'};
+ return {passed:results.length-failures.length,total:results.length,failures,detail:'10 audited atlases, 31 playable environments, clear routes, bounded rendering and correct region kits'};
 };
 if(require.main===module){const r=module.exports();console.log(r.passed+'/'+r.total,r.detail);for(const f of r.failures)console.error(f.name+'\n'+f.error);process.exitCode=r.failures.length?1:0;}

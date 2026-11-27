@@ -1,5 +1,5 @@
 {
-  "version": "5.14.0",
+  "version": "5.14.2",
   "generation": "built-in image_gen; eight transparent 4x2 prop kits and nine 3x3 ground materials; WebP encoding only",
   "assets": [
     {
@@ -1029,6 +1029,119 @@
             431
           ],
           "digest": "7993d49bf3b92ce109191f5382fbd6a189dda500f5102ff82fc74dc8474880a6"
+        }
+      ]
+    },
+    {
+      "file": "features.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 550504,
+      "sha256": "27563c636e32c085215422a0583fdcb1e8d951294e24c84fd4b47087b0f5680d",
+      "cells": [
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            3,
+            444,
+            444
+          ],
+          "digest": "1b8919488e29ddd43f1b774c7e88887d6bf9ad1d8f073b990d766ba5aa51554c"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            19,
+            443,
+            444
+          ],
+          "digest": "88318bbf674dee188bf33fb9cc73339cf9b3692e5d4c6af89b980e738a9a821e"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            1,
+            23,
+            443,
+            444
+          ],
+          "digest": "d4e6278271019a4b0a7590e0b956b4ffc1cbe2605dd4e4c35d66f21885d6b54d"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            13,
+            430,
+            444
+          ],
+          "digest": "fc1950c2747eeccb6de789c0bb8d0327060caebbede41869ce241f43172df99c"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            7,
+            444,
+            443
+          ],
+          "digest": "5eeec97bc59a70f898dfb031d74a023521a0fbdd5db271b46122dc1744b1a168"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            423
+          ],
+          "digest": "6d43ffef027e33e3ef9eb341fbdf1358d93ae07d1153d205d2cc0d2df92a4cce"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            1,
+            0,
+            443,
+            443
+          ],
+          "digest": "490ba8652cc1e159047f3b426e02f38ca7cade7ade629bd7e74c0f5cba2f0bae"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "digest": "aaaa55f55d4a784fd0ad8c483c6f73296b42634c7bfad78f8b12ab7644154331"
         }
       ]
     }

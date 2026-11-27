@@ -15,6 +15,8 @@ const NEMO_STORYBOOK_WORLD = (() => {
  ])));
  const assetPaths=Object.fromEntries(regions.map(region=>['storybook-'+region,root+region+'.webp']));
  assetPaths.storybookGround=root+'ground.webp';
+ assetPaths['storybook-features']=root+'features.webp';
+ for(const [frame,region] of regions.entries())frames['storybook-feature-'+region]={sheet:'storybook-features',frame};
  function random(seed){return()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};}
  function nearPath(x,y,r,paths,widths){
   return paths.some((route,j)=>route.slice(1).some((b,i)=>{
@@ -22,6 +24,35 @@ const NEMO_STORYBOOK_WORLD = (() => {
    const t=Math.max(0,Math.min(1,((x-a[0])*dx+(y-a[1])*dy)/d));
    return Math.hypot(x-a[0]-t*dx,y-a[1]-t*dy)<widths[j]/2+r;
   }));
+ }
+ function adventureComposition(map,region,index,trees,pools,landmarks){
+  const rand=random(93531+index*179),kit='storybook-'+region+'-';
+  const scenes=[];
+  const safe=(x,y,r)=>Math.hypot(x,y)>6.5+r&&!nearPath(x,y,r+.7,map.paths,map.pathWidths);
+  const separated=(x,y,r)=>!scenes.some(p=>Math.hypot(x-p.x,y-p.y)<r);
+  // A readable landmark on one side of the opening, a pond on the other.
+  for(const [x,y] of [[-7.8,4.8],[-7.8,6.2],[8.2,5.8],[8,-3.8],[-8,-3.8]]){
+   if(safe(x,y,1.35)){scenes.push({x,y,kind:'feature',h:4.7,w:4.7});break;}
+  }
+  for(const [x,y] of [[9.8,-4.3],[-9.8,-4.3],[10.8,-5.8],[-10.8,-5.8],[10.2,4.6],[-10.8,5.7]]){
+   if(safe(x,y,1.9)&&separated(x,y,9)&&landmarks.every(p=>Math.hypot(x-p[0],y-p[1])>5)){scenes.push({x,y,kind:'pool',h:3.9,w:6.2});break;}
+  }
+  // Small composed pockets extend beyond spawn, instead of a tree-only grid.
+  for(let x=-64;x<=64;x+=22)for(let y=-60;y<=60;y+=18){
+   const tx=x+(rand()-.5)*4,ty=y+(rand()-.5)*3;
+   if(Math.hypot(tx,ty)<18||!safe(tx,ty,1.5)||!separated(tx,ty,10))continue;
+   if(landmarks.some(p=>Math.hypot(tx-p[0],ty-p[1])<6))continue;
+   const pick=rand(),kind=pick<.42?'feature':pick<.76?'house':'pool';
+   scenes.push({x:tx,y:ty,kind,h:kind==='feature'?4.3+rand()*.5:3.5,w:kind==='feature'?5.2:kind==='pool'?6:3.9});
+  }
+  // Clear foliage around landmark silhouettes, not the broad routes themselves.
+  const dressing=trees.filter(t=>!scenes.some(p=>Math.hypot(t.x-p.x,t.y-p.y)<(p.kind==='pool'?4.5:4.3)));
+  const keptPools=pools.filter(p=>!scenes.some(scene=>Math.hypot(p[0]-scene.x,p[1]-scene.y)<7));
+  for(const scene of scenes){
+   if(scene.kind==='pool')keptPools.push([scene.x,scene.y,scene.w,scene.h,1.85,1.0]);
+   else dressing.push({key:scene.kind==='feature'?'storybook-feature-'+region:kit+'landmark',x:scene.x,y:scene.y,h:scene.h,w:scene.kind==='feature'?scene.h:scene.w,rx:scene.kind==='feature'?1.35:1.0,ry:.55});
+  }
+  return {dressing,pools:keptPools,landmarks,sceneAnchors:scenes,storybookFeatures:true};
  }
  function decorate(map,index){
   const region=map.region,cell=regions.indexOf(region),survival=index<0;
@@ -46,8 +77,9 @@ const NEMO_STORYBOOK_WORLD = (() => {
    if(!clear(tx,ty,.65)||dressing.some(t=>Math.hypot(tx-t.x,ty-t.y)<4.8)||pools.some(p=>Math.hypot(tx-p[0],ty-p[1])<5)||landmarks.some(p=>Math.hypot(tx-p[0],ty-p[1])<4.5))continue;
    dressing.push({key:kit+'tree',x:tx,y:ty,h:3.9+rand()*1.1,rx:.38,ry:.24,flip:rand()<.5?-1:1});
   }
+  const composition=survival?{landmarks,pools,dressing,sceneAnchors:[],storybookFeatures:false}:adventureComposition(map,region,index,dressing,pools,landmarks);
   return {...map,ground:survival?'#61a650':ground,trail,water,fleck,storybook:true,groundCell:survival?8:cell,
-   landmarkKey:kit+'landmark',poolArt:kit+'pool',landmarks,pools,dressing,
+   landmarkKey:kit+'landmark',poolArt:kit+'pool',...composition,
    // Endless gets a distinct golden meadow with a small mushroom hamlet.
    name:survival?'햇살 버섯 숲':map.name,storybookKits:survival?['garden','clock']: [region],
    preview:root+region+'.webp',decorSeed:19374+(index+1)*893};
@@ -60,16 +92,23 @@ const NEMO_STORYBOOK_WORLD = (() => {
    return ![...map.structures,...map.pools,...trees].some(p=>Math.hypot(x-p.x,y-p.y)<(p.w?3:1.1)+r);
   }
   // Small, nonblocking details are dense enough to accompany exploration.
-  for(let i=0;i<2300;i++){
+  for(let i=0;i<(map.storybookFeatures?1300:2300);i++){
    const x=3+rand()*(world-6),y=3+rand()*(world-6);
    if(!free(x,y))continue;
    const n=rand(),name=n<.45?'flowers':n<.67?'mushrooms':n<.85?'bush':'rock';
-   const h=name==='bush'?.7+rand()*.45:name==='rock'?.5+rand()*.6:.35+rand()*.35;
+   const size=rand(),h=map.storybookFeatures?(name==='bush'?1.1+size*.5:name==='rock'?.85+size*.6:name==='mushrooms'?.7+size*.45:.65+size*.4):(name==='bush'?.7+size*.45:name==='rock'?.5+size*.6:.35+size*.35);
    dressing.push({key:key(name),x,y,h,flip:rand()<.5?-1:1});
   }
   // Hand placed details make the first screen feel like the approved concepts.
   for(const [x,y,name,h] of [[-6,3,'flowers',.7],[5,-3,'flowers',.65],[-7,-3,'mushrooms',.8],[8,5,'bush',1.1],[-12,4,'rock',1.1],[10,-3,'lantern',1.9],[4,7,'mushrooms',.75],[-8,1,'flowers',.65]]){
    dressing.push({key:key(name),x:center+x,y:center+y,h});
+  }
+  for(const scene of map.sceneAnchors??[]){
+   // Nearby flowers, stones and lamps read as one little place, not scattered dots.
+   for(const [dx,dy,name,h] of [[-2.5,.5,'flowers',1.05],[2.7,.8,'bush',1.3],[-2.7,-.8,'lantern',1.9],[2.5,-1.2,'mushrooms',.95],[1.8,1.9,'flowers',1.1],[-1.8,1.8,'rock',1.1]]){
+    const x=center+scene.x+dx,y=center+scene.y+dy;
+    if(free(x,y,.3))dressing.push({key:key(name),x,y,h});
+   }
   }
   if(map.groundCell===8){
    for(const [x,y,h] of [[11,-5,3.7],[-13,8,3.4],[-22,-13,3.7],[29,14,3.8]]){
@@ -84,5 +123,5 @@ const NEMO_STORYBOOK_WORLD = (() => {
   }
   return {map,trees,dressing,trailFlecks,grain:[]};
  }
- return Object.freeze({version:'5.14.0',regions,frames,assetPaths,decorate,makeDecor});
+ return Object.freeze({version:'5.14.2',regions,frames,assetPaths,decorate,makeDecor});
 })();
