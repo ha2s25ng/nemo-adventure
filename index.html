@@ -284,7 +284,7 @@
 .nemo-rank-top{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:2px dashed #e5c3db;padding-bottom:13px}.nemo-rank-top h2{font-size:clamp(22px,2.6vw,39px);margin:0;color:#75418c;text-shadow:1px 2px white}.nemo-rank-top p{font-size:14px;margin:5px 0}.nemo-rank-brow{font-size:11px;letter-spacing:2px;color:#bd80ad}.nemo-rank-layout{display:grid;grid-template-columns:42% 1fr;gap:19px;margin-top:16px}.nemo-rank-left,.nemo-rank-right{background:#fffbf4;border:3px solid #d6aedb;border-radius:22px;padding:16px;min-width:0;box-shadow:inset 0 0 0 2px #fff}.nemo-rank-left label{font-size:12px;display:block;margin:9px 0 6px}.nemo-rank-left input{width:100%;padding:10px 11px;border-radius:13px;border:2px solid #b993ca;color:#644078;background:#fff;font:inherit;font-size:13px}.nemo-rank-left input:focus{outline:3px solid #efc66d}.nemo-rank-local{font-size:13px;background:#f9eafa;border-radius:14px;padding:12px;margin:10px 0 15px}.nemo-rank-setup{border-top:2px dashed #dcc0d9}.nemo-rank-setup h3,.nemo-rank-right h3{font-size:17px;margin:12px 0 7px}.nemo-rank-setup p{font-size:12px;margin:6px 0;line-height:1.4}.nemo-rank-warning{color:#9a587a}.nemo-rank-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.nemo-rank-actions .btn,.nemo-rank-table-title .btn{font-size:12px;padding:8px 11px}.nemo-rank-status{margin-top:9px;background:#f3eaf9;border-radius:10px;padding:9px;font-size:12px}.nemo-rank-table-title{display:flex;justify-content:space-between;align-items:center;gap:10px}.nemo-rank-table-head,.nemo-rank-row{display:grid;grid-template-columns: minmax(120px,1.6fr) minmax(60px,.7fr) minmax(80px,.85fr);align-items:center;gap:8px}.nemo-rank-table-head{background:#e9d7f2;padding:10px;font-size:12px;border-radius:12px;font-weight:900}.nemo-rank-list{max-height:48vh;overflow:auto}.nemo-rank-row{padding:11px 10px;border-bottom:1px dashed #e6cade;font-size:12px}.nemo-rank-row:nth-child(even){background:#fcf3fb}.nemo-rank-row small{display:block;font-size:10px;color:#98759f}.nemo-rank-row strong{font-size:13px}.nemo-rank-row.win{background:linear-gradient(90deg,#fff2c5,#fffbef)}.nemo-rank-empty{color:#9e77a4;text-align:center;line-height:1.6;font-size:13px;padding:22px 5px}.nemo-rank-foot{font-size:10px;color:#967a9d;line-height:1.5}.nemo-rank-result{width:100%}
 @media(max-width:770px){.nemo-leaderboard-board{padding:10px 13px}.nemo-rank-layout{grid-template-columns:1fr}.nemo-rank-list{max-height:140px}.nemo-rank-left,.nemo-rank-right{padding:9px}.nemo-rank-top h2{font-size:19px}.nemo-rank-top p{font-size:11px}.nemo-rank-setup p{font-size:10px}}
 #setting-volume,#setting-music-volume{width:min(124px,36vw);min-width:0;accent-color:#855a9a}
-</style><meta name="nemo-version" content="5.13.1" />
+</style><meta name="nemo-version" content="5.14.0" />
 <meta name="theme-color" content="#7957a1" />
 <style>/* Uniform hand-drawn skill icon scale */.card-icon .new-magic-icon{width:94px;height:84px;max-height:84px;object-fit:contain;filter:drop-shadow(0 2px 3px #8352ad66)}.codex-tab .new-magic-icon{width:48px;height:46px;max-height:46px;filter:drop-shadow(0 2px 3px #86548a44)}.slot .new-magic-icon{height:34px;width:36px;filter:drop-shadow(0 2px 2px #5c457b55)}</style><style>
   .nemo-name-board{width:min(470px,82%);padding:25px 28px}
@@ -615,6 +615,7 @@
 <script src="./assets/stage-v51226/progress.js"></script>
 <script src="./assets/world-v51226/world.js"></script>
 <script src="./assets/world-v51226-art/registry.js"></script>
+<script src="./assets/storybook-v5140/world.js?v=5.14.0"></script>
 <script src="./assets/campaign-v573/maps.js?v=5.9.0"></script>
 <script src="./assets/campaign-v590/bosses.js?v=5.13.0"></script>
 <script src="./assets/campaign-v590/monsters.js?v=5.13.0"></script>
@@ -803,7 +804,10 @@
 
 </style>
 <link rel="stylesheet" href="./assets/stage-v51226/campaign.css">
-</head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
+<style>
+#stages .stage-preview{position:relative;overflow:hidden;background:linear-gradient(145deg,var(--stage-ground),var(--stage-trail))}
+#stages .storybook-stage-prop{display:block;width:90px;height:90px;max-height:none;margin:-8px auto;background-size:400% 200%;background-position:33.3333% 100%;background-repeat:no-repeat}
+</style></head><body><main aria-label="니모의 낯선 모험 무한 생존 게임" id="app">
 <canvas aria-label="니모가 별 마법으로 몬스터와 싸우는 숲 필드" height="900" id="canvas" width="1600"></canvas><div id="glaze"></div><div id="vignette"></div>
 <div class="hidden" id="hud">
  <div class="hud-top">
@@ -1139,12 +1143,14 @@ const FOREST_PATHS=[
 const PATH_SEGMENTS=FOREST_PATHS.flatMap(({segments})=>segments);
 const STAGES=NEMO_CAMPAIGN_RENEWAL.stages;
 function buildRenewedMap(map,index){
+ map=NEMO_STORYBOOK_WORLD.decorate(map,index);
+ const rawPaths=map.paths;
  const key=index<0?'survivalLandmark':'stageLandmark'+(index+1);
  const paths=map.paths.map((points,i)=>makeForestPath(map.pathWidths[i],points.map(([x,y])=>forestPoint(x,y))));
- const structures=map.landmarks.map(([x,y,h,rx,ry])=>placeInForest({key,x,y,h,rx,ry}));
+ const structures=map.landmarks.map(([x,y,h,rx,ry])=>placeInForest({key:map.landmarkKey??key,x,y,h,rx,ry}));
  const pools=map.pools.map(([x,y,w,h,rx,ry])=>placeInForest({key:map.landmarkPool?key:map.poolArt??'pond',x,y,w,h,rx,ry}));
  const trees=map.dressing.map(tree=>placeInForest({...tree}));
- return {...map,key,paths,sections:paths.flatMap(route=>route.segments),structures,pools,dressing:trees,landmarks:[...structures,...pools,...trees]};
+ return {...map,key,rawPaths,paths,sections:paths.flatMap(route=>route.segments),structures,pools,dressing:trees,landmarks:[...structures,...pools,...trees]};
 }
 const CAMPAIGN_MAPS=NEMO_WORLD_RENEWAL.maps.map(buildRenewedMap);
 const SURVIVAL_MAP=buildRenewedMap(NEMO_WORLD_RENEWAL.survivalMap,-1);
@@ -1290,7 +1296,7 @@ ASSET_DATA.ui_gold='./assets/nemo-wardrobe-v5631/gold-pouch.png';
 ASSET_DATA.ui_heal='./assets/nemo-wardrobe-v5631/sweet-snack.png';
 for(const [i,map] of [...CAMPAIGN_MAPS,SURVIVAL_MAP].entries())ASSET_DATA[map.key]=map.art??'./assets/campaign-v573/landmark-'+(i+1)+'.png?v=5.9.0';
 for(const id of ['windstep','leafguard','emberheart','honeypouch'])ASSET_DATA['ui_'+id]='./assets/passives-v580/'+id+'.png';
-Object.assign(ASSET_DATA,NEMO_WORLD_RENEWAL.assetPaths);
+Object.assign(ASSET_DATA,NEMO_WORLD_RENEWAL.assetPaths,NEMO_STORYBOOK_WORLD.assetPaths);
 for(const [kind,art] of Object.entries(NEMO_WORLD_RENEWAL_ART.enemies)){
  ASSET_DATA['renewalEnemy_'+kind]=art.assetPath;
  ASSET_DATA['enemy_'+kind]='./assets/world-v51226-art/'+(kind==='boss'?'crown':kind)+'.webp';
@@ -1300,11 +1306,13 @@ const sprites={};
 function loadSprite(key,url){
  if(!sprites[key]){
   const image=new Image();
+  image.addEventListener('load',()=>{needsDraw=true;});
   image.src=url;
   sprites[key]=image;
  }
  return sprites[key];
 }
+loadCampaignMap(SURVIVAL_MAP);
 for(const [key,file] of Object.entries({pickupBone:'bone',pickupRage:'rage',pickupTimeSeal:'time',pickupSweep:'sweep',pickupMagnet:'magnet',pickupGold:'gold',pickupWard:'ward',pickupFortune:'fortune',pickupHorn:'horn',ui_brave:'brave',ui_breeze:'breeze',ui_gather:'gather'}))ASSET_DATA[key]='./assets/adventure-v5100/'+file+'.webp';
 ASSET_DATA.pickupRage='./assets/pickups-v5123/rage-fang.webp';
 ASSET_DATA.pickupGold='./assets/pastel-ui-v5619/coin.webp';
@@ -1327,7 +1335,7 @@ for(const id of ['windstep','leafguard','emberheart','honeypouch','insight'])ASS
 ASSET_DATA.spell_seed=ASSET_DATA.ui_seed;
 ASSET_DATA.cloudFamiliar=ASSET_DATA.spell_cloud;
 for(const [key,url] of Object.entries(ASSET_DATA)){
- if(!key.startsWith('stageLandmark')&&!['windmill','tree_pink','tree_green','pond','rock','bush','mushroom','flowers','groundFull'].includes(key))loadSprite(key,url);
+ if(!key.startsWith('storybook-')&&!key.startsWith('stageLandmark')&&!['windmill','tree_pink','tree_green','pond','rock','bush','mushroom','flowers','groundFull'].includes(key))loadSprite(key,url);
 }
 const CAMPAIGN_LEGACY_BOSS_ART=Object.fromEntries(
  ['boss','thorn-guardian','moonwing-queen','storm-owl','root-boar'].map(id=>[id,{size:ENEMY_ART[id],flying:FLYING_ENEMIES.has(id)}])
@@ -1341,6 +1349,11 @@ function loadCampaignCreature(id){
  return loadSprite('campaign-creature-'+id,'./assets/creature-storybook-v597/'+id+'.png');
 }
 function loadCampaignMap(map){
+ if(map.storybook){
+  loadSprite('storybookGround',ASSET_DATA.storybookGround);
+  for(const region of map.storybookKits)loadSprite('storybook-'+region,ASSET_DATA['storybook-'+region]);
+  return;
+ }
  loadSprite(map.key,ASSET_DATA[map.key]);
  for(const key of new Set([map.poolArt,...map.dressing.map(prop=>prop.key)]))if(key&&ASSET_DATA[key])loadSprite(key,ASSET_DATA[key]);
 }
@@ -1995,11 +2008,11 @@ function renderStageChapter(){
  $('stage-options').innerHTML=chapter.stages.map(stage=>{
   const cleared=stage.id<=saved.stagesCleared,locked=stage.id>saved.stagesCleared+1;
   const status=cleared?'클리어':locked?'잠김':'도전 가능',record=records[stage.id],medals=record?.medals??0;
-  const map=CAMPAIGN_MAPS[stage.id-1],preview=ASSET_DATA[map.key];
+  const map=CAMPAIGN_MAPS[stage.id-1],preview=map.preview??ASSET_DATA[map.key];
   const goal=`신속: 보스 세 마리를 각각 ${stage.bossEnrageSeconds}초 안에 격파 · 도전: ${stage.challenge.label}`;
   return `<button class="stage-card" type="button" data-stage="${stage.id}" data-theme="${stage.theme}" data-status="${cleared?'cleared':locked?'locked':'next'}" ${locked?'disabled':''} aria-label="스테이지 ${stage.id} ${stage.name}. ${status}. ${goal}">
    <small class="stage-card-status">스테이지 ${stage.id} · ${status}</small><strong>${stage.name}</strong>
-   <span class="stage-preview" style="--stage-ground:${map.ground};--stage-trail:${map.trail}"><img class="stage-landmark-preview" src="${preview}" alt=""></span>
+   <span class="stage-preview" style="--stage-ground:${map.ground};--stage-trail:${map.trail}"><span class="storybook-stage-prop" style="background-image:url('${preview}')" aria-hidden="true"></span></span>
    <span class="stage-boss-name">${stage.title}</span>
    <span class="stage-medals">${[[1,'완주'],[2,'신속'],[4,'도전']].map(([bit,label])=>`<span class="stage-seal" data-earned="${!!(medals&bit)}">${medals&bit?'✦':'◇'} ${label}</span>`).join('')}</span>
    <span class="stage-challenge">${stage.challenge.label}<small>${stage.tactic}</small></span>
@@ -4310,8 +4323,48 @@ function line(x1,y1,x2,y2,color,width=.04){ctx.beginPath();ctx.moveTo(x1,y1);ctx
 function star(x,y,r,rot=0,fill='#fff4a0',stroke='#8655aa'){ctx.save();ctx.translate(x,y);ctx.rotate(rot);ctx.beginPath();for(let i=0;i<10;i++){let a=-Math.PI/2+i*Math.PI/5,ra=i%2?r:r*.48;if(i===0)ctx.moveTo(Math.cos(a)*ra,Math.sin(a)*ra);else ctx.lineTo(Math.cos(a)*ra,Math.sin(a)*ra);}ctx.closePath();ctx.fillStyle=fill;ctx.strokeStyle=stroke;ctx.lineWidth=.09;ctx.lineJoin='round';ctx.fill();ctx.stroke();ctx.restore();}
 function flower(x,y,r,color,rot=0){for(let k=0;k<5;k++){let a=k*TAU/5+rot;ellipse(x+Math.cos(a)*r*.5,y+Math.sin(a)*r*.5,r*.43,r*.43,color);}
  ellipse(x,y,r*.3,r*.3,'#ffe17a');}
+function drawStorybookSprite(key,x,y,w,h,face=1,alpha=1){
+ const frame=NEMO_STORYBOOK_WORLD.frames[key];
+ if(!frame)return false;
+ const img=sprites[frame.sheet];
+ if(!img?.complete||!img.naturalWidth)return true;
+ const cw=img.naturalWidth/4,ch=img.naturalHeight/2;
+ ctx.save();ctx.translate(x,y);ctx.scale(face,1);ctx.globalAlpha*=alpha;
+ ctx.drawImage(img,(frame.frame%4)*cw,Math.floor(frame.frame/4)*ch,cw,ch,-w/2,-h/2,w,h);
+ ctx.restore();return true;
+}
+function drawStorybookGround(c,map){
+ const img=sprites.storybookGround;
+ if(!img?.complete||!img.naturalWidth)return;
+ const size=6,cw=img.naturalWidth/3,ch=img.naturalHeight/3;
+ const sx=(map.groundCell%3)*cw+1,sy=Math.floor(map.groundCell/3)*ch+1;
+ // Mirrored repeats join the same source edge and avoid visible tile seams.
+ const minX=Math.max(0,Math.floor((c.x-SCREEN_W/2-1)/size));
+ const maxX=Math.min(Math.ceil(DATA.world/size),Math.ceil((c.x+SCREEN_W/2+1)/size));
+ const minY=Math.max(0,Math.floor((c.y-SCREEN_H/2-1)/size));
+ const maxY=Math.min(Math.ceil(DATA.world/size),Math.ceil((c.y+SCREEN_H/2+1)/size));
+ for(let x=minX;x<maxX;x++)for(let y=minY;y<maxY;y++){
+  ctx.save();ctx.translate(x*size+(x%2?size:0),y*size+(y%2?size:0));ctx.scale(x%2?-1:1,y%2?-1:1);
+  ctx.drawImage(img,sx,sy,cw-2,ch-2,0,0,size+.006,size+.006);ctx.restore();
+ }
+}
+function drawStorybookMotes(c,map){
+ if(!opts.particles||!['twilight','crystal','astral'].includes(map.region))return;
+ const t=reducedMotion.matches?0:(g?.worldClock??0);
+ const cell=4;
+ for(let x=Math.floor((c.x-SCREEN_W/2)/cell);x<=Math.ceil((c.x+SCREEN_W/2)/cell);x++)
+ for(let y=Math.floor((c.y-SCREEN_H/2)/cell);y<=Math.ceil((c.y+SCREEN_H/2)/cell);y++){
+  const phase=x*2.37+y*5.17,px=x*cell+Math.sin(phase)*1.4,py=y*cell+Math.cos(phase)*1.3+Math.sin(t*.45+phase)*.18;
+  ellipse(px,py,.045,.045,map.region==='astral'?'#ffe5a0':'#c8fff0',.20+.20*(1+Math.sin(t*.7+phase)));
+ }
+}
 function drawWorldProp(prop,player=null){
  const {key,x,y,h,flip=1}=prop;
+ if(NEMO_STORYBOOK_WORLD.frames[key]){
+  const w=prop.w??h;
+  const covers=player&&player.y<y&&player.y>y-h*.88&&Math.abs(player.x-x)<w*.35;
+  drawStorybookSprite(key,x,y-h*.41,w,h,flip,covers?.38:1);return;
+ }
  const img=sprites[key];
  if(!img?.complete||!img.naturalWidth)return;
  const w=h*img.naturalWidth/img.naturalHeight;
@@ -4363,7 +4416,7 @@ function drawForestTrails(c,flecks,map){
  for(const [color,scale,margin] of (map?[[map.fleck+'55',1,.38],[map.trail+'bd',1,.19],[map.trail,.89,0]]:[['#c3bb91',1,.38],['#dfc9a4',1,.19],['#ead6b2',.89,0]])){
   ctx.strokeStyle=color;
   for(const {width,outline} of routes){
-   ctx.lineWidth=width*scale+margin;
+   ctx.lineWidth=width*(map?.storybook?.55:1)*scale+margin;
    ctx.stroke(outline);
   }
  }
@@ -4421,6 +4474,10 @@ function forestDecor(){
 const campaignDecorCache=new Map();
 function campaignDecor(map,id){
  if(campaignDecorCache.has(id))return campaignDecorCache.get(id);
+ if(map.storybook){
+  const decor=NEMO_STORYBOOK_WORLD.makeDecor(map,DATA.world,WORLD_CENTER);
+  campaignDecorCache.set(id,decor);return decor;
+ }
  if(map.cleanGround){
   const rand=hashed(19374+id*893),trees=[...map.dressing],dressing=[],trailFlecks=[],grain=[];
   // Sparse landmarks are readable; cosmetic ground motifs never block movement.
@@ -4479,6 +4536,7 @@ function drawWorldGround(c,deco){
  const width=SCREEN_W+2,height=SCREEN_H+2;
  const map=deco.map;
  ctx.fillStyle=map?.ground??'#d9e5bd';ctx.fillRect(left,top,width,height);
+ if(map?.storybook)drawStorybookGround(c,map);
  const ground=sprites[map?.texture??'groundFull'];
  if(!map?.cleanGround&&ground?.complete&&ground.naturalWidth){
   ctx.save();if(map)ctx.globalAlpha=map.groundTextureAlpha??.25;
@@ -4506,15 +4564,22 @@ function drawWorldGround(c,deco){
   ctx.fillStyle=wash;ctx.fillRect(x-r,y-r,r*2,r*2);
  }
  drawForestTrails(c,deco.trailFlecks,map);
+ if(map?.storybook&&visibleTerrain(WORLD_CENTER,WORLD_CENTER,c,5)){
+  const clearing=ctx.createRadialGradient(WORLD_CENTER,WORLD_CENTER,.2,WORLD_CENTER,WORLD_CENTER,3.4);
+  clearing.addColorStop(0,map.ground+'ee');clearing.addColorStop(.45,map.ground+'b0');clearing.addColorStop(1,map.ground+'00');
+  ctx.fillStyle=clearing;ctx.fillRect(WORLD_CENTER-3.4,WORLD_CENTER-3.4,6.8,6.8);
+ }
  for(const pond of map?.pools??PONDS){
   if(!visibleTerrain(pond.x,pond.y,c,6))continue;
   const key=pond.key??'pond';
-  if(sprites[key]?.naturalWidth)imageSprite(key,pond.x,pond.y-.21,pond.w,pond.h);
+  if(drawStorybookSprite(key,pond.x,pond.y-.21,pond.w,pond.h)){}
+  else if(sprites[key]?.naturalWidth)imageSprite(key,pond.x,pond.y-.21,pond.w,pond.h);
   else ellipse(pond.x,pond.y,pond.rx,pond.ry,map?.water??'#8bc0a9');
  }
  for(const prop of deco.dressing){
   if(visibleTerrain(prop.x,prop.y,c,1.5))drawWorldProp(prop);
  }
+ if(map?.storybook)drawStorybookMotes(c,map);
  ctx.lineWidth=.10;ctx.strokeStyle=map?.fleck??'#a2b184';ctx.strokeRect(.05,.05,DATA.world-.1,DATA.world-.1);
 }
 function imageSprite(key,x,y,w,h,face=1,alpha=1){let im=sprites[key];if(!im?.complete||!im.naturalWidth)return;ctx.save();ctx.translate(x,y);ctx.scale(face,1);ctx.globalAlpha=alpha;ctx.drawImage(im,-w/2,-h/2,w,h);ctx.restore();}
@@ -6036,7 +6101,7 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
 /* Same game URL every patch. Never interrupt a live run. */
 (() => {
   'use strict';
-  const CURRENT='5.13.1';
+  const CURRENT='5.14.0';
   let lastVersion=''; let busy=false;
   const banner=document.createElement('aside');
   banner.id='nemo-live-patch';
@@ -6098,4 +6163,4 @@ rankWire();renderMenu();syncFullscreen();setScreen('menu');if(!nicknameConfirmed
     document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')check();});
   }
 })();
-</script><div id="pickup-status" hidden role="status"></div><script src="./assets/patch-notes/patch-notes.js?v=5.13.1"></script></body></html>
+</script><div id="pickup-status" hidden role="status"></div><script src="./assets/patch-notes/patch-notes.js?v=5.14.0"></script></body></html>

@@ -29,7 +29,7 @@
     if (loaded) return;
     content.textContent = '변경 내용을 불러오는 중이에요…';
     try {
-      const response = await fetch('./assets/patch-notes/history.json?v=5.13.1');
+      const response = await fetch('./assets/patch-notes/history.json?v=5.14.0');
       if (!response.ok) throw new Error('history');
       const history = await response.json();
       if (!Array.isArray(history) || !history.length) throw new Error('empty history');

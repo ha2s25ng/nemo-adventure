@@ -28,7 +28,7 @@ module.exports=function stageIntegrationChecks(){
   game.begin(1);
   assert.equal(game.g.stage,game.NEMO_STAGES[0]);assert.equal(game.g.map,game.CAMPAIGN_MAPS[0]);
   assert.equal(game.g.map.cleanGround,true);assert.equal(game.g.map.texture,undefined);
-  assert.equal(game.g.map.structures.length,1);assert.equal(game.g.map.structures[0].x,91);assert.equal(game.g.map.structures[0].y,71);
+  assert.equal(game.g.map.storybook,true);assert.ok(game.g.map.structures.length>=3);assert.ok(game.g.map.structures.every(p=>p.key==='storybook-garden-landmark'));
   assert.ok(game.ASSET_DATA.renewalOak&&game.ASSET_DATA.renewalBlossom&&game.ASSET_DATA.renewalPond);
   game.begin();assert.equal(game.g.stage,null);assert.equal(game.g.map,game.SURVIVAL_MAP);assert.equal(game.g.map.cleanGround,true);
   for(const item of game.g.map.landmarks){

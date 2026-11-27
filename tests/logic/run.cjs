@@ -23,7 +23,8 @@ const suites = [
   ['World layout and region palettes', './world-config-v51226.cjs'],
   ['Campaign engine integration', './stage-integration-v5130.cjs'],
   ['Renewed world art and actual draws', './world-art-v5130.cjs'],
-  ['Real capsule ticket purchases', './ticket-purchase-v5130.cjs']
+  ['Real capsule ticket purchases', './ticket-purchase-v5130.cjs'],
+  ['Storybook environments', './storybook-world-v5140.cjs']
 ];
 (async()=>{
 let failed = 0;

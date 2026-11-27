@@ -1,0 +1,1036 @@
+{
+  "version": "5.14.0",
+  "generation": "built-in image_gen; eight transparent 4x2 prop kits and nine 3x3 ground materials; WebP encoding only",
+  "assets": [
+    {
+      "file": "ground.webp",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 185252,
+      "sha256": "1809d652834f900a79408153ab8959172b555e63a90f9d5eaa1761ee41a7c49e",
+      "cells": [
+        {
+          "alphaRange": [
+            255,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            418,
+            418
+          ],
+          "digest": "75c7c0c61a55fd47cc2d36953027bfb78d073de8374c8370e6d3b555d157145c"
+        },
+        {
+          "alphaRange": [
+            255,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            418,
+            418
+          ],
+          "digest": "a11fbe29604b121db5ee85f6e1750a8293fd34a2629fdb749bbf4e3f51b971f4"
+        },
+        {
+          "alphaRange": [
+            255,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            418,
+            418
+          ],
+          "digest": "caebe42aa436908ee00235f88aa4ad314c581c1a37119fb0beb5930bc45b2a08"
+        },
+        {
+          "alphaRange": [
+            255,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            418,
+            418
+          ],
+          "digest": "20903d3909d04eaf21c1ab43a99432c1c6db442f5749b48ec213500bddd7f177"
+        },
+        {
+          "alphaRange": [
+            255,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            418,
+            418
+          ],
+          "digest": "dd991cef628e0e2573896714708c996a1020c100b367cc9250735294a35b1c80"
+        },
+        {
+          "alphaRange": [
+            255,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            418,
+            418
+          ],
+          "digest": "75b935b08a95e4fa484f4c8ec72da2e41120cf426e87e47787b018275d46709b"
+        },
+        {
+          "alphaRange": [
+            255,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            418,
+            418
+          ],
+          "digest": "82e2b9786f24704538368de9c10ed232bbc85adfa8f9e41130a47ece5eaf96b9"
+        },
+        {
+          "alphaRange": [
+            255,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            418,
+            418
+          ],
+          "digest": "cec431bca524488f6bc31d5e23d8f0ba0eece68204987f814ae62fc26c10a8fa"
+        },
+        {
+          "alphaRange": [
+            255,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            418,
+            418
+          ],
+          "digest": "16becb9fefc1b1055e0fb1df2ed70fc61ac721516e4afc23ccf38137d32f08fb"
+        }
+      ]
+    },
+    {
+      "file": "garden.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 342914,
+      "sha256": "526719a5f0288c7980299d0189735d5d3afe8083ed7f9f5b3edf3a8904428cce",
+      "cells": [
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            14,
+            444,
+            438
+          ],
+          "digest": "918478b5b5c098cb89423c49ea18228d1f6b283a171745be7742cbfcfb1f1685"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            34,
+            431,
+            421
+          ],
+          "digest": "7e83e2a9bd26d7905bd6e7d39cf90c22e352e9f0a5b9c003226bc303a4d4a036"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            28,
+            45,
+            443,
+            440
+          ],
+          "digest": "ce3eb9a665ab1c9b6cb7e993ab5bd65aa5b059e9481bd02dfc5c4fd1c52d3aac"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            86,
+            410,
+            411
+          ],
+          "digest": "99194c34d183bee4d31ab1ea452d9617a395c7ecf69095de2444f9290c4873fd"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            80,
+            436,
+            443
+          ],
+          "digest": "4e69ce0ec3c61ef7c6610b47f16f482e5a2019915e2fc6bc54034025691d896f"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            8,
+            52,
+            427,
+            421
+          ],
+          "digest": "1627250b60238515319e94c25c298e76288da4953fcfaea31336bb54989f6f04"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            11,
+            80,
+            438,
+            405
+          ],
+          "digest": "f3dd16f90e8a111a8266bde3059f52c1def93cfe74a253f42a0b774760f18331"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            26,
+            4,
+            382,
+            425
+          ],
+          "digest": "48ea7e9425910feb215ecd3102dfd31c1acc34e44ee362ca38e434148e8afbb0"
+        }
+      ]
+    },
+    {
+      "file": "twilight.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 359056,
+      "sha256": "439c122860a19b011cf33fcc9a0a6cfe06f9fb7e38142d252f01e73ec279f350",
+      "cells": [
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "digest": "a1410a7fce09acc2a7ccd97cf96f8638cc021d05800461bee5fb0ec1bec4ffbc"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            16,
+            443,
+            444
+          ],
+          "digest": "eeff53b3dd8a3de02caa7d0ebc6617d68e18a071a0fc60fb29303d598d127177"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            444
+          ],
+          "digest": "bd36e3d5bdfef59619335cb651030441ba2b11cb9f6c2fae93fb548bd343274f"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            7,
+            444,
+            436
+          ],
+          "digest": "88ebd525afd336360341a2156f673f8ff161489f59b970a5d6c8a9cb7ba3b50b"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            444,
+            443
+          ],
+          "digest": "da41bbb953d9101e684eed599a791d86b63a7dcd6c6a8e595ce9f5e194e037aa"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "digest": "af7a3ffc23aace776c66e705eb0701596c22a78305d1bfd88a8d96e967ee193b"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            2,
+            443,
+            443
+          ],
+          "digest": "4e2e6f6bcd4e29772dd241921f4886101cbd5668ea936a7c1a50db47dcc836f5"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            23,
+            428,
+            443
+          ],
+          "digest": "7b01be2957348df002f980ff81c16c5d6e7b1ea5d55d77bd4a617567ddfb19af"
+        }
+      ]
+    },
+    {
+      "file": "crystal.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 383278,
+      "sha256": "5a8599acb3b5f868287b7b7c8852d5806513346e272b86034ca4f013d6ee731b",
+      "cells": [
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            17,
+            444,
+            444
+          ],
+          "digest": "dc5730b87b26be4b294c768f7166ed7a4be0576196e0a5ea17e65e42d071b507"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            9,
+            443,
+            444
+          ],
+          "digest": "b92aab29a536108a6f5096bd0f96b4a9be823a981bdc458a7cb38aee5225ce87"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            3,
+            443,
+            444
+          ],
+          "digest": "da9115818b860bc39c217c734b0b4e69b383ed778a5988562990fe164ae65187"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            21,
+            428,
+            444
+          ],
+          "digest": "cd28377ad5be50ffbedb67ad1dffed34de42407e8b683da11aea0f0a4bda37d3"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            444,
+            443
+          ],
+          "digest": "ee1bf28bdf0c0a6d63a1786d2d64936a06c10bc3b9671bebecb14fe7147e3719"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "digest": "dd76d9713c9ea3ac82d09625efe8c76aff05533fcd85846a04d92c22dfbe0afa"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            433
+          ],
+          "digest": "81070bc255625537aece9b560444be8ff26ab3639563d9d58b1680cb9cf91c40"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            426,
+            425
+          ],
+          "digest": "0cadda3dd1bf3ad84c2f4eeda8f102cd1576202e61ae0683294e1bbff9d87b4b"
+        }
+      ]
+    },
+    {
+      "file": "frost.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 434106,
+      "sha256": "7f34085e5ea8afa34d7cd2f68ea38f6d7dbf50abc722378f1332fce4aefa1eaf",
+      "cells": [
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "digest": "d01b197facfc52f731896b08af95dd7d03e8fec89ab95a7d1efa98b9f54b0c48"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            444
+          ],
+          "digest": "d9a5eddd7393c0b8f6b7be34242f064790de873f33b077a4aaf0b887ceea6ad3"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            17,
+            443,
+            444
+          ],
+          "digest": "30543e31f29824aef8b7a249056b2822ece9da10f6965bdf43dc6d08fc6bd5b4"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            9,
+            444,
+            444
+          ],
+          "digest": "0ec40f695aeeb8463bf5e39002571c6c63e2136849969590e9d376141b6e0935"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            444,
+            443
+          ],
+          "digest": "4586b10fee3e7407e2db0e3964580de5425faa7e9c6409fcdf9736bda1814f60"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "digest": "15c03312d0dadc4bdfbbedc17d95799f92d2429160a5deccb2f4995cede174d2"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "digest": "6ff98bd0f53ef35e1ba2120226e50fdda150b7ac0303e79862624fcb9144a934"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            434,
+            443
+          ],
+          "digest": "8db36eedc70c37ed6633a96af5f089fa6eef859421dd2a3ad721cfd7eddba49c"
+        }
+      ]
+    },
+    {
+      "file": "ember.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 328532,
+      "sha256": "9075ca995f1bd440e265937d71c45c3575c13e957ed803429e2a1b5354886c61",
+      "cells": [
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            9,
+            444,
+            438
+          ],
+          "digest": "722b40cbd138a9c9c483f1e2853324cf21b203ad5432005752f6a96c19d08710"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            35,
+            443,
+            440
+          ],
+          "digest": "5f4a4f28f41ee3cd403f2157b536531a1067c24c63886743e793aa71161cf132"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            19,
+            443,
+            444
+          ],
+          "digest": "2e15e0795634c18bb89937aefaaf7462b806aa283231d7ec9ad29d95ca0a43bc"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            23,
+            426,
+            411
+          ],
+          "digest": "68dd532176f24ecbc00a86a4f89b732988c1035578dc4b1c8698e03053568bc4"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            8,
+            444,
+            443
+          ],
+          "digest": "7c190e7c892d80fe1605b2cc718cd0c24a7e117efe88e60713577a8637807236"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            423
+          ],
+          "digest": "ba783f335945a42f70973d6b2a63f51e89ef2a9c030801f05853d4f7c487518d"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            1,
+            1,
+            443,
+            443
+          ],
+          "digest": "3e4b9a472a415249e4c23a605a6cdf3b95a709ea6de611ddd31203593b5d53f9"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            1,
+            0,
+            430,
+            427
+          ],
+          "digest": "d7c6c57f13a5a293c33e5276eece0e81ee7859a3e32f503b0464bcf0dc75d8d7"
+        }
+      ]
+    },
+    {
+      "file": "clock.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 437074,
+      "sha256": "3dc0601d7ea61dd4b6a601b337c68dbc80636dc46a5c3458b771c228cc2e92c7",
+      "cells": [
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            444,
+            444
+          ],
+          "digest": "bbeaf6b5bc802a766ce4e29717eb4af1bbf7a751310ed8c448888bd401552c55"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            8,
+            443,
+            444
+          ],
+          "digest": "ec4f2b1455465016e337488b8ef6985e5a6b061b30de6c5e82fac6db32f4799c"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            7,
+            443,
+            444
+          ],
+          "digest": "4677547b27cbb31bf33f9abecfb1d2bbf8367cf8727a7c31429f68cbed3cd0ef"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            15,
+            443,
+            444
+          ],
+          "digest": "2bc5b5dc07c73f34472814bc854a68052097919a5e02a0dd51bf345d2b0e02fe"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            444,
+            443
+          ],
+          "digest": "7e693e52ce7cdf99fe7eb8b630cac6f7f6cb61f0dfe146a1252efd1620d2f3ce"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "digest": "ab08351727659a3e19cbe1a3ce330b64b5cd655cd2b52d2a2b5dd43314505196"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "digest": "27d9739798c194e73cb83ff303a66856fa75930768a90fa754ef9cd9aabe4bea"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            428,
+            443
+          ],
+          "digest": "6c0991364b815c195596dea24738543b2cfc055e91503b58abc8efaf159b2335"
+        }
+      ]
+    },
+    {
+      "file": "astral.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 375772,
+      "sha256": "3c458e79d438c12deb5558e7290dba33af28683861bbdf6135c035969ed96f74",
+      "cells": [
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            13,
+            444,
+            444
+          ],
+          "digest": "4ea2adfb1207e745abd91674c1eecbcccfe88e48bd4420b915ec4ed020eb5f6a"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            17,
+            443,
+            444
+          ],
+          "digest": "495bc4f561202235cd486fd6754f488ae73ea01e63483b1055bff2b1a80afe93"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            21,
+            443,
+            444
+          ],
+          "digest": "27f73d2f9024e58fea4da4b67bb5c11aaf160d0c4590bac9f31d937c0ed235e9"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            9,
+            432,
+            444
+          ],
+          "digest": "bb90cbe785478a9463d033a07bb5f88d0d4d517492cb37e2751f72ea4ae2f2c2"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            444,
+            421
+          ],
+          "digest": "58cf71f8c5619dbeb648e94482a8fcd1c1bda430675e76716bc9bb34f415b19e"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            431
+          ],
+          "digest": "605c1006c85034b099dbaa7548061ecdf4faf9f8948f53e8f70fbd1f4c6b2c93"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            412
+          ],
+          "digest": "3521c91cd50670074e5f5c947909f3712c8fbeeafc10f9bb35fde04259218a2f"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            23,
+            420,
+            425
+          ],
+          "digest": "b9aaf23b62738fae93062d3cc4a56cc75776f9e8d683b01762ef7a876095b85f"
+        }
+      ]
+    },
+    {
+      "file": "tide.webp",
+      "width": 1774,
+      "height": 887,
+      "bytes": 399304,
+      "sha256": "49559058bb66869d67833f081ae0f56ca48aa513e467b4b63b85502dae85cf70",
+      "cells": [
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            16,
+            444,
+            444
+          ],
+          "digest": "cc47e8fb0544d1b80ce80825e6436de64aed3f34e10158a2d5713ddb1924853b"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            13,
+            443,
+            444
+          ],
+          "digest": "ab583df9985fb46a3bde460a90254bbf6a1042143cf8d1256748d02a917c8d3b"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            1,
+            24,
+            443,
+            444
+          ],
+          "digest": "0bc6871ba3dc4643d2961413c173d59cbdb772f93146ebc2e8e0969f383d7f13"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            28,
+            438,
+            444
+          ],
+          "digest": "4fba98fc32e4ec47e064220e6ac54f6cf9fed75089a5d18c7f4ca52e4d250bfb"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            25,
+            0,
+            444,
+            411
+          ],
+          "digest": "75e62a4fa2db5d73baf3c43141239780b093cbcf073e5db1a18bec344dedcdcd"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            443,
+            443
+          ],
+          "digest": "cca9403f169554ca63f3306bb19ea55bbbc82f25a21bfdbf1908b0c8cafb6244"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            1,
+            0,
+            443,
+            425
+          ],
+          "digest": "f363332ff3664e1b0fba875bde6ea12594e19ff1794d22e32d35d3cc2f4a9d6a"
+        },
+        {
+          "alphaRange": [
+            0,
+            255
+          ],
+          "bounds": [
+            0,
+            0,
+            416,
+            431
+          ],
+          "digest": "7993d49bf3b92ce109191f5382fbd6a189dda500f5102ff82fc74dc8474880a6"
+        }
+      ]
+    }
+  ]
+}

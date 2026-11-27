@@ -129,6 +129,11 @@ function createHarness(seed = 0x4e454d4f, captureDraws = false, reduceMotion = f
       }
       set src(value) {
         this._src=value;
+        if(value.includes('/storybook-v5140/')){
+          const manifest=JSON.parse(fs.readFileSync(path.join(ROOT,'assets/storybook-v5140/manifest.json'),'utf8'));
+          const asset=manifest.assets.find(item=>value.endsWith('/'+item.file));
+          if(asset){this.naturalWidth=this.width=asset.width;this.naturalHeight=this.height=asset.height;}
+        }
         if(value.includes('world-v51226-art/')&&value.includes('-walk.webp')){
           this.naturalWidth=this.width=1024;this.naturalHeight=this.height=256;
         }

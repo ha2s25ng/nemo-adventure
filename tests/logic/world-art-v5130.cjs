@@ -133,22 +133,28 @@ module.exports=function worldArtChecks(){
   }
  });
 
- check('eight regional landmarks and common trees/pond use renewed bitmaps in the actual world renderer',()=>{
+ check('eight regional landmarks and endless props use the new cropped storybook kits',()=>{
   const {game,drawCalls}=createHarness(13579,true);
   game.saved=game.normalizeSave({...game.saved,stagesCleared:30});
-  const firstMaps=REGIONS.map(region=>game.CAMPAIGN_MAPS.find(map=>map.region===region));
-  for(const map of firstMaps){
+  for(const region of REGIONS){
+   const map=game.CAMPAIGN_MAPS.find(map=>map.region===region);
    game.menu();game.begin(map.id);const g=game.g,landmark=g.map.structures[0];
    g.camera={x:landmark.x,y:landmark.y};g.player.x=landmark.x;g.player.y=landmark.y;
    drawCalls.length=0;game.drawBattle();
-   assert.ok(drawCalls.some(call=>normalize(call.src||'')===normalize(registry.regions[map.region])),map.region+' landmark missing in actual frame');
+   const draws=drawCalls.filter(call=>call.src===game.ASSET_DATA['storybook-'+region]);
+   assert.ok(draws.length>0,region+' storybook kit missing in actual frame');
+   assert.ok(draws.some(call=>call.args.length===8&&call.args[0]>0&&call.args[1]>0),region+' landmark cell missing');
+   assert.ok(drawCalls.some(call=>call.src===game.ASSET_DATA.storybookGround),region+' ground missing');
   }
   game.menu();game.begin();const g=game.g;
-  for(const [key,file] of Object.entries({renewalOak:registry.props.oak,renewalBlossom:registry.props.blossom,renewalPond:registry.props.pond})){
+  assert.equal(g.map.groundCell,8,'endless has a separate ground material');
+  for(const key of ['storybook-garden-tree','storybook-garden-pool','storybook-clock-landmark']){
    const prop=[...g.map.landmarks,...g.deco.trees].find(item=>item.key===key);
-   assert.ok(prop,key+' authored in survival world');g.camera={x:prop.x,y:prop.y};
+   assert.ok(prop,key+' authored in endless world');g.camera={x:prop.x,y:prop.y};
    drawCalls.length=0;game.drawBattle();
-   assert.ok(drawCalls.some(call=>normalize(call.src||'')===normalize(file)),key+' absent from actual frame');
+   const sheet=key.includes('-clock-')?'storybook-clock':'storybook-garden';
+   assert.ok(drawCalls.some(call=>call.src===game.ASSET_DATA[sheet]),key+' absent from actual frame');
+   for(const call of drawCalls)assert.ok(call.args.every(Number.isFinite),'finite source/destination coordinates');
   }
  });
 
